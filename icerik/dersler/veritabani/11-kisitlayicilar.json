@@ -1,0 +1,388 @@
+{
+  "id": "vt-kisitlayicilar",
+  "baslik": "Veri Bütünlüğü ve Kısıtlayıcılar",
+  "kaynak": "normalizasyon_1.pdf, slayt 40–49",
+  "kavramlar": [
+    {
+      "terim": "Veri bütünlüğü (bu konudaki tanım)",
+      "izah": "Veri güncelleme, silme veya ekleme yapılırken diğer tablolardaki verilerin birbirleriyle uyum içinde olması, veri tutarlılığının kaybolmamasının garanti altına alınması.",
+      "yer": "Veri bütünlüğü"
+    },
+    {
+      "terim": "Programsal veri bütünlüğü",
+      "izah": "Trigger, stored procedure ve iş seviyesi uygulamalarla sağlanır; transaction'dan sonra devreye girer, çok kaynak tüketir, her türlü kuralı denetleyebilir.",
+      "yer": "Programsal ve tanımsal veri bütünlüğü"
+    },
+    {
+      "terim": "Tanımsal veri bütünlüğü",
+      "izah": "Constraint'lerle sağlanır; tablo ile birlikte derlenir, transaction'dan önce devreye girer; etkin ama dinamik değildir.",
+      "yer": "Programsal ve tanımsal veri bütünlüğü"
+    },
+    {
+      "terim": "Primary key constraint",
+      "izah": "Her satırın tekilliğini sağlar; NULL kalamaz; her tabloda en fazla 1 tane bulunur; arka planda unique indeks olarak gerçeklenir.",
+      "yer": "Primary key constraint"
+    },
+    {
+      "terim": "Unique constraint",
+      "izah": "Birincil anahtar dışındaki alanlarda tekrarı önler; birden fazla sütunda tanımlanabilir; NULL kalabilir.",
+      "yer": "Unique constraint"
+    },
+    {
+      "terim": "Check constraint (Rule)",
+      "izah": "Belli bir formata uygun veri girişini ya da aynı satırdaki iki sütunun karşılaştırılmasını denetler.",
+      "yer": "Check constraint"
+    },
+    {
+      "terim": "Default constraint",
+      "izah": "Bir sütuna değer verilmezse standart bir değer atar; yalnızca INSERT işleminde devreye girer.",
+      "yer": "Default constraint"
+    },
+    {
+      "terim": "Foreign key constraint",
+      "izah": "Bir sütundaki değerlerin başka bir tablonun belli sütunundan gelmesini denetler; CASCADE UPDATE ve CASCADE DELETE özellikleri vardır.",
+      "yer": "Foreign key constraint"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-kisitlayicilar.s1",
+      "tip": "secme",
+      "yer": "Veri bütünlüğü",
+      "soru": "Bu konudaki tanıma göre veri bütünlüğü nedir?",
+      "secenekler": [
+        "İşlemler yapılırken diğer tablolardaki verilerin birbiriyle uyum içinde olması, tutarlılığın kaybolmamasının garanti altına alınması",
+        "Çok sütun ve satırdan oluşan bir tablonun tekrarlardan arındırılmak için daha küçük alt kümelerine ayrıştırılması",
+        "Tablo oluşturulurken alanlara girilecek verilerin tiplerinin metin, sayı ya da tarih olarak önceden belirtilmesi",
+        "Bir tablodaki alanın değerlerinin, yeni kayıt eklendikçe ardışık sayılarla kendiliğinden artırılması"
+      ],
+      "dogru": 0,
+      "izah": "Veri bütünlüğü; güncelleme, silme veya ekleme yapılırken diğer tablolardaki verilerin birbirleriyle uyum içinde olması, dolayısıyla veri tutarlılığının kaybolmamasının garanti altına alınmasıdır. Diğer tanımlar normalizasyona (ayrıştırma), veri tiplerine ve IDENTITY özelliğine aittir."
+    },
+    {
+      "id": "vt-kisitlayicilar.s2",
+      "tip": "secme",
+      "yer": "Programsal ve tanımsal veri bütünlüğü",
+      "soru": "Aşağıdakilerden hangisi **programsal** veri bütünlüğü aracıdır?",
+      "secenekler": [
+        "Trigger",
+        "Primary key constraint",
+        "Check constraint",
+        "Default constraint"
+      ],
+      "dogru": 0,
+      "izah": "Programsal veri bütünlüğü trigger'lar, stored procedure'ler ve iş seviyesi uygulamalarla sağlanır. Constraint'ler tanımsal veri bütünlüğünün araçlarıdır."
+    },
+    {
+      "id": "vt-kisitlayicilar.s3",
+      "tip": "dy",
+      "yer": "Programsal ve tanımsal veri bütünlüğü",
+      "ifade": "Constraint'ler transaction'dan sonra devreye girer.",
+      "dogru": false,
+      "izah": "Constraint'ler tablo ile birlikte derlenir ve transaction'dan **önce** devreye girer. Transaction'dan sonra devreye giren, programsal veri bütünlüğüdür (trigger gibi)."
+    },
+    {
+      "id": "vt-kisitlayicilar.s4",
+      "tip": "dy",
+      "yer": "Programsal ve tanımsal veri bütünlüğü",
+      "ifade": "Programsal veri bütünlüğü çok kaynak tüketir ama her türlü kuralı denetleyebilir.",
+      "dogru": true,
+      "izah": "Slayttaki ifade budur. Tanımsal veri bütünlüğü ise etkindir ama dinamik değildir, her sorunu çözemeyebilir."
+    },
+    {
+      "id": "vt-kisitlayicilar.s5",
+      "tip": "secme",
+      "yer": "Programsal ve tanımsal veri bütünlüğü",
+      "soru": "Aşağıdakilerden hangisi **tanımsal** veri bütünlüğünün özelliklerinden biri değildir?",
+      "secenekler": [
+        "Her türlü kuralı denetleyebilir",
+        "Tablo ile birlikte derlenir",
+        "Transaction'dan önce devreye girer",
+        "Etkindir ama dinamik değildir"
+      ],
+      "dogru": 0,
+      "izah": "Her türlü kuralı denetleyebilmek programsal veri bütünlüğünün özelliğidir. Tanımsal veri bütünlüğü (constraint) her sorunu çözemeyebilir."
+    },
+    {
+      "id": "vt-kisitlayicilar.s6",
+      "tip": "esles",
+      "yer": "Kısıtlayıcı türleri",
+      "soru": "Kısıtlayıcıları görevleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Primary key",
+          "Her satırın tekilliğini sağlar, NULL kalamaz"
+        ],
+        [
+          "Unique",
+          "Anahtar dışındaki alanlarda tekrarı önler, NULL kalabilir"
+        ],
+        [
+          "Check",
+          "Girilen verinin belli bir formata ya da koşula uymasını denetler"
+        ],
+        [
+          "Default",
+          "Değer verilmezse standart bir değer atar"
+        ],
+        [
+          "Foreign key",
+          "Değerin başka bir tablonun belli sütunundan gelmesini denetler"
+        ]
+      ],
+      "izah": "Beş kısıtlayıcı ve hocanın verdiği görevleri."
+    },
+    {
+      "id": "vt-kisitlayicilar.s7",
+      "tip": "esles",
+      "yer": "Kısıtlayıcı türleri",
+      "soru": "Hocanın örneklerini kullanılacak kısıtlayıcıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Bir dersten alınan not 0 ile 100 arasında olmalı",
+          "Check"
+        ],
+        [
+          "Yeni öğrencinin kayıt tarihi verilmezse günün tarihi yazılsın",
+          "Default"
+        ],
+        [
+          "Not girilen öğrenci, öğrenci tablosunda bulunmalı",
+          "Foreign key"
+        ],
+        [
+          "Birincil anahtar olmayan vergi numarası iki kişide aynı olamaz",
+          "Unique"
+        ]
+      ],
+      "izah": "Değer aralığı: check. Değer verilmeyince standart değer: default. Değerin başka tablodan gelmesi: foreign key. Anahtar olmayan alanda tekrarın önlenmesi: unique."
+    },
+    {
+      "id": "vt-kisitlayicilar.s8",
+      "tip": "hesap",
+      "yer": "Primary key constraint",
+      "soru": "Bir tabloda en fazla kaç primary key constraint bulunabilir?",
+      "cevap": 1,
+      "izah": "Hocaya göre her tabloda en fazla 1 primary key bulunabilir. (Bu tek anahtar birden fazla sütundan oluşabilir.)"
+    },
+    {
+      "id": "vt-kisitlayicilar.s9",
+      "tip": "dy",
+      "yer": "Primary key constraint",
+      "ifade": "Primary key NULL kalabilir ama tekrar edemez.",
+      "dogru": false,
+      "izah": "Primary key NULL kalamaz. \"NULL kalabilir ama tekrar edemez\" unique'in özelliğidir."
+    },
+    {
+      "id": "vt-kisitlayicilar.s10",
+      "tip": "dy",
+      "yer": "Primary key constraint",
+      "ifade": "Primary key, SQL Server tarafından arka planda unique indeks olarak gerçeklenir.",
+      "dogru": true,
+      "izah": "Slayttaki ifade budur; unique constraint de arka planda unique indeks olarak gerçeklenir."
+    },
+    {
+      "id": "vt-kisitlayicilar.s11",
+      "tip": "dy",
+      "yer": "Unique constraint",
+      "ifade": "Unique constraint bir tabloda birden fazla sütunda tanımlanabilir.",
+      "dogru": true,
+      "izah": "Primary key'den farkı budur: primary key en fazla 1 tane olur, unique birden fazla sütunda tanımlanabilir."
+    },
+    {
+      "id": "vt-kisitlayicilar.s12",
+      "tip": "secme",
+      "yer": "Unique constraint",
+      "soru": "Kişi tablosunda sicil numarası primary key seçildi. TC kimlik, vergi ve sosyal güvenlik numaralarının tekrarını engellemek için hocaya göre ne tanımlanır?",
+      "secenekler": [
+        "Unique constraint",
+        "Default constraint",
+        "Foreign key constraint",
+        "Identity özelliği"
+      ],
+      "dogru": 0,
+      "izah": "Kişiye özel bilgilerden yalnızca biri primary key olabilir; diğerlerinin tekrarını engellemek için unique tanımlanır."
+    },
+    {
+      "id": "vt-kisitlayicilar.s13",
+      "tip": "secme",
+      "yer": "Check constraint",
+      "soru": "Doktor tablosunda işten ayrılma tarihinin işe başlama tarihinden önce olamaması hangi kısıtlayıcıyla sağlanır?",
+      "secenekler": [
+        "Check constraint",
+        "Default constraint",
+        "Unique constraint",
+        "Foreign key constraint"
+      ],
+      "dogru": 0,
+      "izah": "Check constraint, aynı tablonun aynı satırındaki iki farklı sütun değerini karşılaştırmak için kullanılır. Bu, hocanın check örneğidir."
+    },
+    {
+      "id": "vt-kisitlayicilar.s14",
+      "tip": "secme",
+      "yer": "Default constraint",
+      "soru": "Default constraint hangi işlemde devreye girer?",
+      "secenekler": [
+        "Yalnızca INSERT işleminde",
+        "Yalnızca UPDATE işleminde",
+        "INSERT ve DELETE işlemlerinde",
+        "SELECT dahil her sorguda"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre default constraint sadece INSERT işleminde devreye girer: yeni kayıtta değer verilmeyen sütuna standart değeri yazar."
+    },
+    {
+      "id": "vt-kisitlayicilar.s15",
+      "tip": "secme",
+      "yer": "Foreign key constraint",
+      "soru": "OgrenciNot tablosundaki `ogr_id`, Ogrenci tablosundaki `ogr_id` ile ilişkilendirilmezse hocaya göre ne olur?",
+      "secenekler": [
+        "Öğrenci tablosunda bulunmayan bir öğrenciye ait not kaydedilebilir",
+        "Hiçbir öğrenciye not girilemez, her not kaydı otomatik olarak reddedilir",
+        "Aynı öğrenciye ikinci bir not girilince ilk not kendiliğinden silinir",
+        "Öğrencinin notu, girilen değer ne olursa olsun NULL olarak kaydedilir"
+      ],
+      "dogru": 0,
+      "izah": "Foreign key, değerin başka bir tablonun belli sütunundan gelmesini denetler. Bu denetim yoksa olmayan bir öğrenciye not girilebilir."
+    },
+    {
+      "id": "vt-kisitlayicilar.s16",
+      "tip": "bosluk",
+      "yer": "Foreign key constraint",
+      "metin": "Foreign key constraint'in CASCADE ___ ve CASCADE DELETE özellikleri vardır.",
+      "cevaplar": [
+        [
+          "update"
+        ]
+      ],
+      "izah": "Foreign key'in iki zincirleme özelliği: CASCADE UPDATE ve CASCADE DELETE."
+    },
+    {
+      "id": "vt-kisitlayicilar.s17",
+      "tip": "secme",
+      "yer": "Kısıtlayıcı türleri",
+      "soru": "Check constraint'in tablo dışında tanımlanan nesne karşılığı hangisidir?",
+      "secenekler": [
+        "Rule",
+        "Default",
+        "Trigger",
+        "Identity"
+      ],
+      "dogru": 0,
+      "izah": "Rule = check constraint, Default = default constraint; ikisi de tablo dışında nesnedir."
+    },
+    {
+      "id": "vt-kisitlayicilar.s18",
+      "tip": "secme",
+      "yer": "Tablo seviyeli kısıtlamalar",
+      "soru": "Hocanın tablo seviyeli kısıtlamalar tablosunda **satır bazlı** veri bütünlüğü kısıtlayıcıları hangileridir?",
+      "secenekler": [
+        "PRIMARY KEY ve UNIQUE",
+        "CHECK ve DEFAULT",
+        "CHECK ve FOREIGN KEY",
+        "DEFAULT ve REFERANS (PK-FK)"
+      ],
+      "dogru": 0,
+      "izah": "Tabloda satır bazlı: PRIMARY KEY, UNIQUE. Sütun bazlı: CHECK, DEFAULT, REFERANS (PK-FK). Referans bütünlüğü: CHECK, FOREIGN KEY."
+    },
+    {
+      "id": "vt-kisitlayicilar.s19",
+      "tip": "secme",
+      "yer": "Tablo seviyeli kısıtlamalar",
+      "soru": "Hocanın tablosunda **referans bütünlüğü** başlığı altında hangi kısıtlayıcılar yer alır?",
+      "secenekler": [
+        "CHECK ve FOREIGN KEY",
+        "PRIMARY KEY ve UNIQUE",
+        "CHECK ve DEFAULT",
+        "DEFAULT ve FOREIGN KEY"
+      ],
+      "dogru": 0,
+      "izah": "Referans bütünlüğünde CHECK (aynı satırdaki sütunların çelişip çelişmediği) ve FOREIGN KEY (değerin başka tablodan gelmesi) vardır."
+    },
+    {
+      "id": "vt-kisitlayicilar.s20",
+      "tip": "klasik",
+      "yer": "Unique constraint",
+      "soru": "Primary key ile unique constraint arasındaki farkları yazın.",
+      "cevap": "Primary key: her satırın tekilliğini sağlar, NULL kalamaz, her tabloda en fazla 1 tane bulunur.\nUnique: birincil anahtar dışındaki alanlarda tekrarı önler, bir tabloda birden fazla sütunda tanımlanabilir, NULL kalabilir (NULL değilse tekrar edemez).\nİkisi de SQL Server'da arka planda unique indeks olarak gerçeklenir.",
+      "anahtarlar": [
+        "NULL kalamaz",
+        "en fazla 1",
+        "birden fazla sütun",
+        "NULL kalabilir"
+      ]
+    },
+    {
+      "id": "vt-kisitlayicilar.s21",
+      "tip": "klasik",
+      "yer": "Programsal ve tanımsal veri bütünlüğü",
+      "soru": "Programsal ve tanımsal veri bütünlüğünü karşılaştırın.",
+      "cevap": "Programsal: trigger, stored procedure ve iş seviyesi uygulamalarla sağlanır; transaction'dan sonra devreye girer ya da bir sorgu daha kullanarak kontrol eder; çok kaynak tüketir; her türlü kuralı denetleyebilir.\nTanımsal: constraint'lerle sağlanır; tablo ile birlikte derlenir ve transaction'dan önce devreye girer; etkindir ama dinamik değildir, her sorunu çözemeyebilir.",
+      "anahtarlar": [
+        "trigger",
+        "stored procedure",
+        "transaction'dan sonra",
+        "kaynak",
+        "constraint",
+        "transaction'dan önce",
+        "dinamik değil"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-kisitlayicilar.k1",
+      "yer": "Veri bütünlüğü",
+      "on": "Veri bütünlüğü nedir? Hangi yollarla sağlanır?",
+      "arka": "Güncelleme, silme veya ekleme yapılırken diğer tablolardaki verilerin birbiriyle uyum içinde olması, veri tutarlılığının kaybolmamasının garanti altına alınmasıdır. İki yolla sağlanır: programsal ve tanımsal veri bütünlüğü."
+    },
+    {
+      "id": "vt-kisitlayicilar.k2",
+      "yer": "Programsal ve tanımsal veri bütünlüğü",
+      "on": "Programsal ve tanımsal veri bütünlüğünün farkı nedir?",
+      "arka": "Programsal: trigger, stored procedure, iş seviyesi uygulamalar; transaction'dan sonra devreye girer; çok kaynak tüketir ama her kuralı denetler.\nTanımsal: constraint'ler; tablo ile derlenir, transaction'dan önce devreye girer; etkin ama dinamik değil, her sorunu çözemeyebilir."
+    },
+    {
+      "id": "vt-kisitlayicilar.k3",
+      "yer": "Kısıtlayıcı türleri",
+      "on": "Kısıtlayıcı (constraint) türlerini sayın. Rule ve Default nedir?",
+      "arka": "Primary key, unique, check, default ve foreign key constraint.\nRule, check constraint'in; Default, default constraint'in tablo dışında tanımlanan nesne karşılığıdır."
+    },
+    {
+      "id": "vt-kisitlayicilar.k4",
+      "yer": "Primary key constraint",
+      "on": "Primary key constraint'in özellikleri nelerdir?",
+      "arka": "Daha önce girilmemiş değerler girmeye zorlar, her satırın tekilliğini sağlar; NULL kalamaz; her tabloda en fazla 1 tane bulunur; SQL Server arka planda unique indeks olarak gerçekler."
+    },
+    {
+      "id": "vt-kisitlayicilar.k5",
+      "yer": "Unique constraint",
+      "on": "Primary key ile unique arasındaki fark nedir? Hocanın örneği ne?",
+      "arka": "Primary key en fazla 1 tanedir ve NULL kalamaz; unique birden fazla sütunda tanımlanabilir ve NULL kalabilir (\"Ya NULL kal ya tekrarlama\").\nÖrnek: kişi tablosunda sicil numarası primary key ise TC kimlik, vergi ve sosyal güvenlik numaralarının tekrarını unique engeller."
+    },
+    {
+      "id": "vt-kisitlayicilar.k6",
+      "yer": "Check constraint",
+      "on": "Check constraint ne zaman kullanılır? Hocanın örnekleri ne?",
+      "arka": "Belli bir formata uygun veri girişi için ve aynı satırdaki iki farklı sütunu karşılaştırmak için.\nÖrnekler: işten ayrılma tarihi başlama tarihinden önce olamaz; not 0 ile 100 arasında olmalı."
+    },
+    {
+      "id": "vt-kisitlayicilar.k7",
+      "yer": "Default constraint",
+      "on": "Default constraint nedir? Hocanın örneği ne?",
+      "arka": "Bir sütuna değer verilmezse girilecek standart değeri tanımlar; yalnızca INSERT işleminde devreye girer.\nÖrnek: yeni öğrenci eklenirken kayıt tarihi verilmezse günün tarihi yazılır."
+    },
+    {
+      "id": "vt-kisitlayicilar.k8",
+      "yer": "Foreign key constraint",
+      "on": "Foreign key constraint nedir? Olmazsa ne olur?",
+      "arka": "Bir sütundaki değerlerin başka bir tablonun belli sütunundan gelmesini denetler; CASCADE UPDATE ve CASCADE DELETE özellikleri vardır.\nOlmazsa öğrenci tablosunda bulunmayan bir öğrenciye ait not sisteme kaydedilebilir."
+    },
+    {
+      "id": "vt-kisitlayicilar.k9",
+      "yer": "Tablo seviyeli kısıtlamalar",
+      "on": "Hocanın tablosunda kısıtlayıcılar hangi gruplara ayrılır?",
+      "arka": "- Satır bazlı: PRIMARY KEY, UNIQUE\n- Sütun bazlı: CHECK, DEFAULT, REFERANS (PK-FK)\n- Referans bütünlüğü: CHECK (aynı satırdaki sütunlar), FOREIGN KEY"
+    }
+  ]
+}

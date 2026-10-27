@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="330" viewBox="0 0 360 330" role="img">
+<title>Oikos kökünden ekoloji ve ekonomi</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="70.0" y="10.0" width="220.0" height="66.0" rx="10" fill="#F7FAFC" stroke="#4A5568" stroke-width="1.6"/>
+<text x="180.0" y="34.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="17" fill="#1A202C" font-weight="600" text-anchor="middle">Oikos</text>
+<text x="180.0" y="56.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="middle">«ev, eve ait»: yaşanılan yer, çevre</text>
+<line x1="140.0" y1="76.0" x2="92.0" y2="116.0" stroke="#4A5568" stroke-width="1.8"/>
+<polygon points="92.0,116.0 96.1,108.0 100.6,113.4" fill="#4A5568"/>
+<line x1="220.0" y1="76.0" x2="268.0" y2="116.0" stroke="#4A5568" stroke-width="1.8"/>
+<polygon points="268.0,116.0 259.4,113.4 263.9,108.0" fill="#4A5568"/>
+<rect x="10.0" y="120.0" width="164.0" height="126.0" rx="10" fill="#E6F4EA" stroke="#276749" stroke-width="1.6"/>
+<text x="92.0" y="146.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#276749" font-weight="600" text-anchor="middle">EKOLOJİ</text>
+<text x="92.0" y="168.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">oikos + logos</text>
+<text x="92.0" y="192.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="middle">logos: «bilim, çalışma,</text>
+<text x="92.0" y="208.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="middle">araştırma»</text>
+<rect x="186.0" y="120.0" width="164.0" height="126.0" rx="10" fill="#E3EEFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="268.0" y="146.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#2B6CB0" font-weight="600" text-anchor="middle">EKONOMİ</text>
+<text x="268.0" y="168.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">oikos + nomicus</text>
+<text x="268.0" y="192.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="middle">nomicus: yönetim</text>
+<text x="92.0" y="226.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#276749" font-weight="600" text-anchor="middle">yaşanılan yer + bilim</text>
+<text x="268.0" y="216.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#2B6CB0" font-weight="600" text-anchor="middle">yaşanılan yerin</text>
+<text x="268.0" y="231.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#2B6CB0" font-weight="600" text-anchor="middle">işlerinin yönetilmesi</text>
+<rect x="10.0" y="262.0" width="340.0" height="58.0" rx="10" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="180.0" y="286.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">Aynı dilsel köke sahip,</text>
+<text x="180.0" y="302.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">birbirini destekleyen iki bilim dalı</text>
+</svg>

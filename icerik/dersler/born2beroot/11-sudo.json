@@ -1,0 +1,125 @@
+{
+  "id": "b2r-sudo",
+  "baslik": "sudo Yapılandırması ve Loglama",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "visudo",
+      "izah": "sudoers dosyasını sözdizimi kontrolüyle düzenleyen komut; doğrudan editörle açmak sudo'yu kilitleyebilir.",
+      "yer": "sudoers dosyasını sadece visudo ile düzenlemenin önemi"
+    },
+    {
+      "terim": "secure_path",
+      "izah": "sudo çalışırken kullanılabilecek PATH'i sabit bir listeyle sınırlayan sudoers ayarı.",
+      "yer": "secure_path ile PATH kısıtlama"
+    },
+    {
+      "terim": "requiretty",
+      "izah": "sudo'nun yalnızca gerçek bir terminalden çalıştırılmasını zorunlu kılan sudoers ayarı.",
+      "yer": "requiretty (TTY modu)"
+    },
+    {
+      "terim": "badpass_message",
+      "izah": "Yanlış parola girildiğinde sudo'nun gösterdiği özel mesajı belirleyen ayar.",
+      "yer": "Yanlış parolada özel mesaj (badpass_message)"
+    },
+    {
+      "terim": "log_input / log_output",
+      "izah": "sudo oturumunda hem yazılan komutu hem ekran çıktısını kaydeden ayar; yeri iolog_dir ile belirlenir.",
+      "yer": "log_input / log_output ile /var/log/sudo/ altına loglama"
+    },
+    {
+      "terim": "sudoreplay",
+      "izah": "sudo I/O kayıtlarını video gibi geri oynatan komut.",
+      "yer": "log_input / log_output ile /var/log/sudo/ altına loglama"
+    },
+    {
+      "terim": "/var",
+      "izah": "Değişken verinin (loglar, önbellek, veritabanı) durduğu dizin. sudo kayıtları /var/log/sudo/ altındadır.",
+      "yer": "log_input / log_output ile /var/log/sudo/ altına loglama"
+    },
+    {
+      "terim": "sudoers",
+      "izah": "sudo'nun kurallarını tutan dosya (/etc/sudoers). Yalnızca visudo ile düzenlenir; sözdizimi hatası sudo'yu tamamen kilitleyebilir.",
+      "yer": "sudoers dosyasını sadece visudo ile düzenlemenin önemi"
+    },
+    {
+      "terim": "/var/log/sudo/",
+      "izah": "sudo girdi ve çıktı kayıtlarının tutulduğu klasör (iolog_dir). sudo onu ilk kayıtta kendisi oluşturur; kayıtlar `sudoreplay -d /var/log/sudo` ile geri oynatılabilir.",
+      "yer": "log_input / log_output ile /var/log/sudo/ altına loglama"
+    },
+    {
+      "terim": "/etc/sudoers.d/",
+      "izah": "sudo kurallarının ayrı dosyalar hâlinde yazılabildiği klasör; ana sudoers dosyasını bozma riskini azaltır.",
+      "yer": "sudoers dosyasını sadece visudo ile düzenlemenin önemi"
+    },
+    {
+      "terim": "passwd_tries",
+      "izah": "sudo'da yanlış parola denemesi sınırını belirleyen ayar; bu projede 3.",
+      "yer": "passwd_tries=3 ile deneme sınırı"
+    },
+    {
+      "terim": "PATH değişkeni",
+      "izah": "Kabuğun komutları hangi dizinlerde arayacağını belirleyen ortam değişkeni. sudo'da secure_path ile sabitlenir ki sahte bir program çalıştırılamasın.",
+      "yer": "secure_path ile PATH kısıtlama"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-sudo.s1",
+      "tip": "secme",
+      "yer": "sudoers dosyasını sadece visudo ile düzenlemenin önemi",
+      "soru": "sudoers dosyasını neden mutlaka visudo ile düzenlemelisiniz?",
+      "secenekler": [
+        "sudoers şifreli tutulur; yalnızca visudo dosyayı çözüp okuyabilir",
+        "Kaydetmeden önce sözdizimini denetler; hatalı bir satır sudo'yu tamamen kilitleyebilir",
+        "Değişiklikleri /var/log/sudo/ altına yazar, böylece yanlış bir kural geri alınabilir",
+        "Kaydetmeden önce değişikliği sistemdeki bütün kullanıcıların onayına sunar"
+      ],
+      "dogru": 1,
+      "izah": "Sözdizimi hatası olursa sudo kullanılamaz hâle gelir; düzeltmek için root'a `su -` ile geçmek gerekir. /etc/sudoers.d/ altına ayrı dosya yazmak riski daha da azaltır."
+    },
+    {
+      "id": "b2r-sudo.s2",
+      "tip": "secme",
+      "yer": "secure_path ile PATH kısıtlama",
+      "soru": "`Defaults secure_path=...` ayarı ne işe yarar?",
+      "secenekler": [
+        "sudo kayıtlarının yazılacağı dizini belirler, iolog_dir'in eski adıdır",
+        "sudo çalışırken kullanılabilecek PATH'i sabit bir listeyle sınırlar",
+        "sudo çalıştıran kullanıcının ev dizinini geçici olarak root'unkine çevirir",
+        "Şifreli bölümlerin açılışta hangi sırayla mount edileceğini belirler"
+      ],
+      "dogru": 1,
+      "izah": "Kullanıcının kendi PATH'ine sızdırdığı sahte bir binary'nin sudo ile çalıştırılmasını engeller."
+    },
+    {
+      "id": "b2r-sudo.s3",
+      "tip": "secme",
+      "yer": "requiretty (TTY modu)",
+      "soru": "`Defaults requiretty` ne yapar?",
+      "secenekler": [
+        "Her sudo çağrısında yeni bir terminal oturumu açıp çıktıyı oraya yönlendirir",
+        "sudo'nun yalnızca gerçek bir terminal (TTY) üzerinden çalıştırılmasını zorunlu kılar",
+        "Parolanın terminalde yıldızla görünmesini sağlar, boş görünmesini engeller",
+        "Log dosyalarını her TTY için ayrı tutar, kayıtların karışmasını önler"
+      ],
+      "dogru": 1,
+      "izah": "Arka planda çalışan betiklerin sudo çalıştırmasını engelleyen bir güvenlik önlemidir."
+    },
+    {
+      "id": "b2r-sudo.s4",
+      "tip": "secme",
+      "yer": "log_input / log_output ile /var/log/sudo/ altına loglama",
+      "soru": "sudo ile yapılan işlemlerin girdi ve çıktısı nereye kaydedilir?",
+      "secenekler": [
+        "/var/log/syslog içine, diğer sistem kayıtlarıyla birlikte satır satır",
+        "/var/log/sudo/ içine; log_input, log_output ve iolog_dir ayarlarıyla",
+        "/etc/sudoers.d/ altına, kuralların yanına ayrı bir kayıt dosyası olarak",
+        "Kullanıcının ev dizinine, kabuk geçmişinin yanındaki gizli bir dosyaya"
+      ],
+      "dogru": 1,
+      "izah": "Klasörü iolog_dir belirler, sudo onu ilk kayıtta kendisi oluşturur. Kayıtlar `sudoreplay -d /var/log/sudo` ile geri oynatılabilir."
+    }
+  ]
+}

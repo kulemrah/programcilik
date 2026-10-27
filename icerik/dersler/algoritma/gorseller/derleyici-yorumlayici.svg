@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" role="img">
+<title>Derleyici ile yorumlayıcı arasındaki fark</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="10" y="10" width="184" height="280" rx="12" fill="#FFFFFF" stroke="#6B46C1" stroke-width="1.8"/>
+<rect x="10" y="10" width="184" height="40" rx="12" fill="#6B46C1"/>
+<rect x="10" y="36" width="184" height="14" fill="#6B46C1"/>
+<text x="102.0" y="36.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">Derleyici</text>
+<text x="102.0" y="84.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">makine diline çevirir,</text>
+<text x="102.0" y="106.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">söz dizimi hatası bulur</text>
+<text x="102.0" y="138.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">makine dili kodu</text>
+<text x="102.0" y="160.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">saklanır</text>
+<line x1="30.0" y1="216.0" x2="174.0" y2="216.0" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="102.0" y="240.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">hocanın örnekleri:</text>
+<text x="102.0" y="262.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Pascal, C/C++, Delphi</text>
+<rect x="206" y="10" width="184" height="280" rx="12" fill="#FFFFFF" stroke="#2C7A7B" stroke-width="1.8"/>
+<rect x="206" y="10" width="184" height="40" rx="12" fill="#2C7A7B"/>
+<rect x="206" y="36" width="184" height="14" fill="#2C7A7B"/>
+<text x="298.0" y="36.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">Yorumlayıcı</text>
+<text x="298.0" y="84.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">o anda çevirir; her</text>
+<text x="298.0" y="106.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">çalıştırmada yeniden</text>
+<text x="298.0" y="138.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">makine dili kodu</text>
+<text x="298.0" y="160.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">saklanmaz</text>
+<line x1="226.0" y1="216.0" x2="370.0" y2="216.0" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="298.0" y="240.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">hocanın örnekleri:</text>
+<text x="298.0" y="262.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">ASP, JavaScript, MATLAB</text>
+</svg>

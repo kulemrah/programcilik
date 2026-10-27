@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="324" viewBox="0 0 400 324" role="img">
+<title>İki tablo üzerinde beş kısıtlayıcı</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="44.0" y="24.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">Ogrenci</text>
+<rect x="44" y="32" width="124" height="28" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="52.0" y="51.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start" text-decoration="underline">ogr_id</text>
+<rect x="176" y="36" width="97" height="20" rx="10" fill="#2B6CB0"/>
+<text x="185.0" y="50.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="start">PRIMARY KEY</text>
+<rect x="44" y="62" width="124" height="28" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="52.0" y="81.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">tcKimlikNo</text>
+<rect x="176" y="66" width="61" height="20" rx="10" fill="#6B46C1"/>
+<text x="185.0" y="80.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="start">UNIQUE</text>
+<rect x="44" y="92" width="124" height="28" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="52.0" y="111.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">ad</text>
+<rect x="44" y="122" width="124" height="28" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="52.0" y="141.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">kayitTarihi</text>
+<rect x="176" y="126" width="111" height="20" rx="10" fill="#2F855A"/>
+<text x="185.0" y="140.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="start">DEFAULT bugün</text>
+<text x="44.0" y="188.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">OgrenciNot</text>
+<rect x="44" y="196" width="124" height="28" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="52.0" y="215.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">ogr_id</text>
+<rect x="176" y="200" width="97" height="20" rx="10" fill="#C53030"/>
+<text x="185.0" y="214.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="start">FOREIGN KEY</text>
+<rect x="44" y="226" width="124" height="28" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="52.0" y="245.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">dersKodu</text>
+<rect x="44" y="256" width="124" height="28" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="52.0" y="275.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">notu</text>
+<rect x="176" y="260" width="97" height="20" rx="10" fill="#C05621"/>
+<text x="185.0" y="274.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="start">CHECK 0–100</text>
+<path d="M 44 210 C 10 210, 10 46, 36 46" fill="none" stroke="#C53030" stroke-width="1.8" stroke-dasharray="5 4"/>
+<polygon points="44,46 35,41.5 35,50.5" fill="#C53030"/>
+<text x="14.0" y="312.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C53030" text-anchor="start">notu girilen ogr_id, Ogrenci tablosunda bulunmalı (foreign key)</text>
+</svg>

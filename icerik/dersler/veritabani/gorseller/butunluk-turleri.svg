@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="316" viewBox="0 0 400 316" role="img">
+<title>Constraint işlemden önce, trigger işlemden sonra devreye girer</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="14" y="10" width="230" height="48" rx="9" fill="#FFFFFF" stroke="#4A5568" stroke-width="1.6"/>
+<text x="129.0" y="30.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">Ekleme, güncelleme ya da</text>
+<text x="129.0" y="46.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">silme isteği</text>
+<line x1="129.0" y1="58.0" x2="129.0" y2="80.0" stroke="#4A5568" stroke-width="1.8"/>
+<polygon points="129.0,80.0 125.5,71.7 132.5,71.7" fill="#4A5568"/>
+<rect x="14" y="82" width="230" height="48" rx="9" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="129.0" y="102.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#2B6CB0" font-weight="600" text-anchor="middle">Constraint denetimi</text>
+<text x="129.0" y="119.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="middle">tanımsal · transaction'dan önce</text>
+<line x1="129.0" y1="130.0" x2="129.0" y2="152.0" stroke="#4A5568" stroke-width="1.8"/>
+<polygon points="129.0,152.0 125.5,143.7 132.5,143.7" fill="#4A5568"/>
+<rect x="14" y="154" width="230" height="48" rx="9" fill="#EDF2F7" stroke="#2D3748" stroke-width="1.6"/>
+<text x="129.0" y="182.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#2D3748" font-weight="600" text-anchor="middle">Transaction (işlem)</text>
+<line x1="129.0" y1="202.0" x2="129.0" y2="224.0" stroke="#4A5568" stroke-width="1.8"/>
+<polygon points="129.0,224.0 125.5,215.7 132.5,215.7" fill="#4A5568"/>
+<rect x="14" y="226" width="230" height="64" rx="9" fill="#F3EEFF" stroke="#6B46C1" stroke-width="1.6"/>
+<text x="129.0" y="246.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#6B46C1" font-weight="600" text-anchor="middle">Trigger, stored procedure,</text>
+<text x="129.0" y="262.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#6B46C1" font-weight="600" text-anchor="middle">iş seviyesi uygulamalar</text>
+<text x="129.0" y="279.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="middle">programsal · transaction'dan sonra</text>
+<text x="256.0" y="92.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#2B6CB0" text-anchor="start">etkin; ama dinamik</text>
+<text x="256.0" y="107.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#2B6CB0" text-anchor="start">değil, her sorunu</text>
+<text x="256.0" y="122.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#2B6CB0" text-anchor="start">çözemeyebilir</text>
+<text x="256.0" y="234.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#6B46C1" text-anchor="start">ya da bir sorgu daha</text>
+<text x="256.0" y="249.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#6B46C1" text-anchor="start">kullanarak kontrol eder;</text>
+<text x="256.0" y="264.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#6B46C1" text-anchor="start">her türlü kuralı</text>
+<text x="256.0" y="279.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#6B46C1" text-anchor="start">denetler; çok kaynak</text>
+<text x="256.0" y="294.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#6B46C1" text-anchor="start">tüketir</text>
+</svg>

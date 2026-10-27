@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="520" viewBox="0 0 400 520" role="img">
+<title>Problem çözümü adımları</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="40" y="10" width="270" height="42" rx="8" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.6"/>
+<circle cx="62" cy="31" r="12" fill="#2B6CB0"/>
+<text x="62.0" y="35.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="600" text-anchor="middle">1</text>
+<text x="84.0" y="36.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">Sorunu net anla</text>
+<line x1="175.0" y1="53.0" x2="175.0" y2="64.0" stroke="#A0AEC0" stroke-width="1.4"/>
+<polygon points="175.0,64.0 171.5,55.7 178.5,55.7" fill="#A0AEC0"/>
+<rect x="40" y="66" width="270" height="42" rx="8" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.6"/>
+<circle cx="62" cy="87" r="12" fill="#2B6CB0"/>
+<text x="62.0" y="91.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="600" text-anchor="middle">2</text>
+<text x="84.0" y="92.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">İhtiyaç ve istekleri belirle</text>
+<line x1="175.0" y1="109.0" x2="175.0" y2="120.0" stroke="#A0AEC0" stroke-width="1.4"/>
+<polygon points="175.0,120.0 171.5,111.7 178.5,111.7" fill="#A0AEC0"/>
+<rect x="40" y="122" width="270" height="42" rx="8" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.6"/>
+<circle cx="62" cy="143" r="12" fill="#2B6CB0"/>
+<text x="62.0" y="147.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="600" text-anchor="middle">3</text>
+<text x="84.0" y="148.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">Zihinsel alıştırmalar yap</text>
+<line x1="175.0" y1="165.0" x2="175.0" y2="176.0" stroke="#A0AEC0" stroke-width="1.4"/>
+<polygon points="175.0,176.0 171.5,167.7 178.5,167.7" fill="#A0AEC0"/>
+<rect x="40" y="178" width="270" height="42" rx="8" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.6"/>
+<circle cx="62" cy="199" r="12" fill="#2B6CB0"/>
+<text x="62.0" y="203.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="600" text-anchor="middle">4</text>
+<text x="84.0" y="204.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">En uygun çözümü seç</text>
+<line x1="175.0" y1="221.0" x2="175.0" y2="232.0" stroke="#A0AEC0" stroke-width="1.4"/>
+<polygon points="175.0,232.0 171.5,223.7 178.5,223.7" fill="#A0AEC0"/>
+<rect x="40" y="234" width="270" height="42" rx="8" fill="#FFFFFF" stroke="#6B46C1" stroke-width="1.6"/>
+<circle cx="62" cy="255" r="12" fill="#6B46C1"/>
+<text x="62.0" y="259.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="600" text-anchor="middle">5</text>
+<text x="84.0" y="260.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">Çözümü algoritmayla ifade et</text>
+<line x1="175.0" y1="277.0" x2="175.0" y2="288.0" stroke="#A0AEC0" stroke-width="1.4"/>
+<polygon points="175.0,288.0 171.5,279.7 178.5,279.7" fill="#A0AEC0"/>
+<rect x="40" y="290" width="270" height="42" rx="8" fill="#FFFFFF" stroke="#6B46C1" stroke-width="1.6"/>
+<circle cx="62" cy="311" r="12" fill="#6B46C1"/>
+<text x="62.0" y="315.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="600" text-anchor="middle">6</text>
+<text x="84.0" y="316.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">Akış çizgesi oluştur</text>
+<line x1="175.0" y1="333.0" x2="175.0" y2="344.0" stroke="#A0AEC0" stroke-width="1.4"/>
+<polygon points="175.0,344.0 171.5,335.7 178.5,335.7" fill="#A0AEC0"/>
+<rect x="40" y="346" width="270" height="42" rx="8" fill="#FFFFFF" stroke="#2F855A" stroke-width="1.6"/>
+<circle cx="62" cy="367" r="12" fill="#2F855A"/>
+<text x="62.0" y="371.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="600" text-anchor="middle">7</text>
+<text x="84.0" y="372.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">Dil seç, bilgisayara aktar</text>
+<line x1="175.0" y1="389.0" x2="175.0" y2="400.0" stroke="#A0AEC0" stroke-width="1.4"/>
+<polygon points="175.0,400.0 171.5,391.7 178.5,391.7" fill="#A0AEC0"/>
+<rect x="40" y="402" width="270" height="42" rx="8" fill="#FFFFFF" stroke="#2F855A" stroke-width="1.6"/>
+<circle cx="62" cy="423" r="12" fill="#2F855A"/>
+<text x="62.0" y="427.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="600" text-anchor="middle">8</text>
+<text x="84.0" y="428.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">Verilerle test et</text>
+<line x1="175.0" y1="445.0" x2="175.0" y2="456.0" stroke="#A0AEC0" stroke-width="1.4"/>
+<polygon points="175.0,456.0 171.5,447.7 178.5,447.7" fill="#A0AEC0"/>
+<rect x="40" y="458" width="270" height="42" rx="8" fill="#FFFFFF" stroke="#C05621" stroke-width="1.6"/>
+<circle cx="62" cy="479" r="12" fill="#C05621"/>
+<text x="62.0" y="483.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="600" text-anchor="middle">9</text>
+<text x="84.0" y="484.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">Sorunları düzelt</text>
+<text x="354.0" y="449.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C05621" text-anchor="middle">ilgili</text>
+<text x="354.0" y="463.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C05621" text-anchor="middle">kısımlar</text>
+<text x="354.0" y="477.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C05621" text-anchor="middle">tekrar</text>
+<text x="354.0" y="491.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C05621" text-anchor="middle">gözden</text>
+<text x="354.0" y="505.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C05621" text-anchor="middle">geçirilir</text>
+</svg>

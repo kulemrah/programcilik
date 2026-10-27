@@ -1,0 +1,312 @@
+{
+  "id": "alg-mantiksal",
+  "baslik": "Karşılaştırma ve Mantıksal Operatörler",
+  "kaynak": "algoritma_ve_programlama_temelleri_3__hafta_2.pdf, slayt 10–17",
+  "kavramlar": [
+    {
+      "terim": "Karşılaştırma işleçleri",
+      "izah": "Hocanın deyişiyle mantıksal işlemler (karşılaştırma operatörleri): >, <, ==, !=, >=, <=. Koşula bağlı olarak akışın hangi yönde ilerleyeceğine karar vermede kullanılır; sonuç doğru (true) ya da yanlış (false) olur.",
+      "yer": "Karşılaştırma işleçleri"
+    },
+    {
+      "terim": "Mantıksal operatörler",
+      "izah": "Birden fazla karşılaştırma ifadesi bir anda kullanılacağında zorunludur: VE (&&), VEYA (||).",
+      "yer": "Mantıksal operatörler"
+    },
+    {
+      "terim": "Mantıksal işlem sonucu",
+      "izah": "Doğru: 1, True(1). Yanlış: 0, False(0).",
+      "yer": "Mantıksal işlem sonuçları"
+    },
+    {
+      "terim": "VE (&&)",
+      "izah": "Bütün ifadelerden ayrı ayrı 1 dönüyorsa sonuç 1, geri kalan durumlarda 0.",
+      "yer": "Birleştirilmiş ifadelerin sonucu"
+    },
+    {
+      "terim": "VEYA (||)",
+      "izah": "En az bir ifadeden 1 dönüyorsa sonuç 1; bütün ifadelerden 0 dönüyorsa 0.",
+      "yer": "Birleştirilmiş ifadelerin sonucu"
+    },
+    {
+      "terim": "Doğruluk tablosu",
+      "izah": "Slaytta tanım yok; tablolar verilmiş: A' (A 0 ise 1, 1 ise 0), A VE B ve A VEYA B. A ve B birer karşılaştırma ifadesini temsil eder.",
+      "yer": "Doğruluk tablosu"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-mantiksal.s1",
+      "tip": "secme",
+      "yer": "Karşılaştırma işleçleri",
+      "soru": "Hocaya göre karşılaştırma operatörleri ne için kullanılır?",
+      "secenekler": [
+        "Koşula bağlı olarak akışın hangi yönde ilerleyeceğine karar vermek için",
+        "Eşittirin sağındaki sonucu soldaki değişkene aktarmak için",
+        "İki sayının toplamını, farkını ya da çarpımını hesaplamak için",
+        "Değişken ve sabit gibi programlama birimlerine isim vermek için"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın tanımı: bir programın akışı içinde, belirli bir koşula bağlı olarak akışın hangi yönde ilerleyeceğine karar vermede kullanılırlar. Sonuç aktarmak atamanın, isim vermek tanımlayıcının işidir."
+    },
+    {
+      "id": "alg-mantiksal.s2",
+      "tip": "esles",
+      "yer": "Karşılaştırma işleçleri",
+      "soru": "Karşılaştırma işleçlerini adlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          ">",
+          "Büyük"
+        ],
+        [
+          "<",
+          "Küçük"
+        ],
+        [
+          "==",
+          "Eşit"
+        ],
+        [
+          "!=",
+          "Farklı"
+        ],
+        [
+          ">=",
+          "Büyük eşit"
+        ],
+        [
+          "<=",
+          "Küçük eşit"
+        ]
+      ],
+      "izah": "Hocanın karşılaştırma işleçleri tablosu."
+    },
+    {
+      "id": "alg-mantiksal.s3",
+      "tip": "secme",
+      "yer": "Karşılaştırma işleçleri",
+      "soru": "Hocanın tablosunda \"farklı\" işlecinin `!=` dışındaki yazılışı hangisidir?",
+      "secenekler": [
+        "`<>`",
+        "`><`",
+        "`=!`",
+        "`=/`"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın tablosu: A!=B ya da A<>B. Eşitlik için de A==B ya da A=B verilmiştir."
+    },
+    {
+      "id": "alg-mantiksal.s4",
+      "tip": "dy",
+      "yer": "Karşılaştırma işleçleri",
+      "ifade": "A=5 ve B=5 iken `A>=B` ifadesinin sonucu doğrudur.",
+      "dogru": true,
+      "izah": ">= büyükse ya da eşitse True döndürür; 5, 5'e eşittir. A>B ise yanlış olurdu."
+    },
+    {
+      "id": "alg-mantiksal.s5",
+      "tip": "dy",
+      "yer": "Karşılaştırma işleçleri",
+      "ifade": "Hocanın tablosunda \"eşit\" işleci için `A==B` yazımının yanında `A=B` yazımı da verilmiştir.",
+      "dogru": true,
+      "izah": "Hocanın tablosu: A==B ya da A=B. Farklı için de A!=B ya da A<>B verilmiştir."
+    },
+    {
+      "id": "alg-mantiksal.s6",
+      "tip": "secme",
+      "yer": "Mantıksal operatörler",
+      "soru": "Hocaya göre mantıksal operatörlerin (VE, VEYA) kullanılması ne zaman zorunludur?",
+      "secenekler": [
+        "Birden fazla karşılaştırma ifadesi bir anda kullanılmak istendiğinde",
+        "Bir değişkene ilk kez değer atanmak istendiğinde",
+        "Bir sayının başka bir sayıya bölümünden kalan bulunurken",
+        "Aynı önceliğe sahip işlemler yan yana bulunduğunda"
+      ],
+      "dogru": 0,
+      "izah": "Programlarda birden fazla karşılaştırma ifadesi bir anda kullanılmak istendiğinde mantıksal operatörler zorunludur."
+    },
+    {
+      "id": "alg-mantiksal.s7",
+      "tip": "esles",
+      "yer": "Mantıksal işlem sonuçları",
+      "soru": "Mantıksal işlemleri işaretleriyle, sonuçları gösterimleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "VE",
+          "&&"
+        ],
+        [
+          "VEYA",
+          "||"
+        ],
+        [
+          "Doğru",
+          "True (1)"
+        ],
+        [
+          "Yanlış",
+          "False (0)"
+        ]
+      ],
+      "izah": "VE && ile, VEYA || ile yazılır. Doğru 1 (True), yanlış 0 (False) ile gösterilir."
+    },
+    {
+      "id": "alg-mantiksal.s8",
+      "tip": "dy",
+      "yer": "Mantıksal operatörler",
+      "ifade": "`&&` ve `||`, iki değeri birbiriyle karşılaştıran karşılaştırma işleçleridir.",
+      "dogru": false,
+      "izah": "&& (VE) ve || (VEYA) mantıksal operatörlerdir: karşılaştırma ifadelerini birleştirirler. İki değeri karşılaştıranlar >, <, ==, !=, >=, <= işleçleridir."
+    },
+    {
+      "id": "alg-mantiksal.s9",
+      "tip": "hesap",
+      "yer": "Doğruluk tablosu",
+      "soru": "Doğruluk tablosuna göre A=1 iken A' kaçtır?",
+      "cevap": 0,
+      "izah": "A' tablosunda A 0 ise 1, A 1 ise 0 olur."
+    },
+    {
+      "id": "alg-mantiksal.s10",
+      "tip": "dy",
+      "yer": "Birleştirilmiş ifadelerin sonucu",
+      "ifade": "VEYA ile birleştirilmiş ifadelerde, ifadelerden yalnızca biri 1 olsa da sonuç 1'dir.",
+      "dogru": true,
+      "izah": "VEYA'da en az bir ifadeden 1 dönüyorsa birleştirilmiş ifadeden de 1 döner."
+    },
+    {
+      "id": "alg-mantiksal.s11",
+      "tip": "dy",
+      "yer": "Birleştirilmiş ifadelerin sonucu",
+      "ifade": "VE ile birleştirilmiş üç ifadeden ikisi 1, biri 0 ise sonuç 1'dir.",
+      "dogru": false,
+      "izah": "VE'de bütün ifadelerden 1 dönmesi gerekir; tek bir 0 sonucu 0 yapar."
+    },
+    {
+      "id": "alg-mantiksal.s12",
+      "tip": "bosluk",
+      "yer": "Birleştirilmiş ifadelerin sonucu",
+      "metin": "VE ile birleştirilmiş ifadelerde ___ ifadelerden ayrı ayrı 1 değeri dönüyorsa birleştirilmiş ifadeden de 1 değeri döner.",
+      "cevaplar": [
+        [
+          "bütün",
+          "tüm"
+        ]
+      ],
+      "izah": "Hocanın kuralı: VE'de bütün ifadeler 1 ise sonuç 1, geri kalan durumlarda 0."
+    },
+    {
+      "id": "alg-mantiksal.s13",
+      "tip": "izleme",
+      "yer": "Örnek: tek ifadenin çözümü",
+      "soru": "İfadenin sonucu nedir?",
+      "kod": "(5>6 && 2<=7)",
+      "secenekler": [
+        "0 (yanlış)",
+        "1 (doğru)"
+      ],
+      "dogru": 0,
+      "izah": "5>6 yanlış (0), 2<=7 doğru (1). İfade 0 VE 1 hâlini alır; VE'de tek bir 0 sonucu 0 yapar."
+    },
+    {
+      "id": "alg-mantiksal.s14",
+      "tip": "secme",
+      "yer": "Örnekler: A=5, B=18",
+      "soru": "A=5, B=18 iken aşağıdaki ifadelerden hangisinin sonucu **0 (yanlış)** olur?",
+      "secenekler": [
+        "`(B<20 && A<6 && 2%2==1)`",
+        "`(A!=B && B>5)`",
+        "`(5==A || B<15)`",
+        "`(4>6 || B!=18 || A>3)`"
+      ],
+      "dogru": 0,
+      "izah": "B<20 doğru, A<6 doğru, ama 2%2 = 0 olduğu için 2%2==1 yanlış; VE'de bir yanlış sonucu 0 yapar. Diğer üç ifadenin sonucu 1'dir (hocanın örnekleri)."
+    },
+    {
+      "id": "alg-mantiksal.s15",
+      "tip": "secme",
+      "yer": "Örnekler: A=5, B=18",
+      "soru": "A=5, B=18 iken aşağıdaki ifadelerden hangisinin sonucu **1 (doğru)** olur?",
+      "secenekler": [
+        "`(A==5 && B>=18 && 5%2==1)`",
+        "`(A==B || B<5)`",
+        "`(B<20 && A<6 && 2%2==1)`",
+        "`(A>B && B>5)`"
+      ],
+      "dogru": 0,
+      "izah": "A==5 doğru, 18>=18 doğru, 5%2 = 1 olduğu için 5%2==1 doğru: üçü de 1, sonuç 1. A==B ve B<5 ikisi de yanlış; A>B yanlış olduğu için A>B && B>5 de 0'dır."
+    },
+    {
+      "id": "alg-mantiksal.s16",
+      "tip": "hesap",
+      "yer": "Örnekler: A=5, B=18",
+      "soru": "A=3, B=7 iken `(A<B && B%2==1)` ifadesinin sonucu (0 ya da 1) nedir?",
+      "cevap": 1,
+      "izah": "3<7 doğru (1); 7%2 = 1 olduğu için B%2==1 doğru (1). 1 VE 1 = 1."
+    },
+    {
+      "id": "alg-mantiksal.s17",
+      "tip": "hesap",
+      "yer": "Örnekler: A=5, B=18",
+      "soru": "A=2, B=9 iken `(A==B || A>B || B<0)` ifadesinin sonucu (0 ya da 1) nedir?",
+      "cevap": 0,
+      "izah": "2==9 yanlış, 2>9 yanlış, 9<0 yanlış. VEYA'da bütün ifadeler 0 ise sonuç 0'dır."
+    },
+    {
+      "id": "alg-mantiksal.s18",
+      "tip": "klasik",
+      "yer": "Doğruluk tablosu",
+      "soru": "VE ve VEYA işlemlerinin doğruluk tablosunu yazın.",
+      "cevap": "A VE B: 0 0 → 0; 0 1 → 0; 1 0 → 0; 1 1 → 1\nA VEYA B: 0 0 → 0; 0 1 → 1; 1 0 → 1; 1 1 → 1\nVE yalnızca ikisi de 1 iken 1, VEYA yalnızca ikisi de 0 iken 0 verir.",
+      "anahtarlar": [
+        "VE",
+        "VEYA"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-mantiksal.k1",
+      "yer": "Karşılaştırma işleçleri",
+      "on": "Karşılaştırma işleçleri hangileri? Sonuçları ne olur?",
+      "arka": "> büyük, < küçük, == eşit (ya da =), != farklı (ya da <>), >= büyük eşit, <= küçük eşit.\nKoşula göre akışın yönüne karar vermede kullanılır; sonuç doğru (true) ya da yanlış (false) olur. Örnek: Yas>=18, Hız<90."
+    },
+    {
+      "id": "alg-mantiksal.k2",
+      "yer": "Mantıksal operatörler",
+      "on": "Karşılaştırma işleci ile mantıksal operatör arasındaki fark nedir?",
+      "arka": "Karşılaştırma işleçleri (>, <, ==, !=, >=, <=) iki değeri karşılaştırır. Mantıksal operatörler (VE &&, VEYA ||) birden fazla karşılaştırma ifadesini birleştirir.\nDikkat: hoca iki gruba da \"mantıksal\" diyor."
+    },
+    {
+      "id": "alg-mantiksal.k3",
+      "yer": "Mantıksal işlem sonuçları",
+      "on": "Mantıksal işlem sonuçları nasıl gösterilir?",
+      "arka": "Doğru: rakam olarak 1, bilgisayar dilinde True(1).\nYanlış: rakam olarak 0, bilgisayar dilinde False(0)."
+    },
+    {
+      "id": "alg-mantiksal.k4",
+      "yer": "Doğruluk tablosu",
+      "on": "VE ve VEYA doğruluk tablolarını söyleyin.",
+      "arka": "A VE B: yalnızca A=1, B=1 iken 1; diğer üç durumda 0.\nA VEYA B: yalnızca A=0, B=0 iken 0; diğer üç durumda 1.\nA': A 0 ise 1, 1 ise 0."
+    },
+    {
+      "id": "alg-mantiksal.k5",
+      "yer": "Birleştirilmiş ifadelerin sonucu",
+      "on": "Birden fazla ifade VE ya da VEYA ile birleşince sonuç nasıl bulunur?",
+      "arka": "VE: bütün ifadeler 1 ise 1, aksi hâlde 0 (tek bir 0 yeter).\nVEYA: en az bir ifade 1 ise 1; hepsi 0 ise 0 (tek bir 1 yeter)."
+    },
+    {
+      "id": "alg-mantiksal.k6",
+      "yer": "Örnek: tek ifadenin çözümü",
+      "on": "(5>6 && 2<=7) ifadesini çöz.",
+      "arka": "&& VE demektir. 5>6 yanlış (0), 2<=7 doğru (1). İfade 0 VE 1 hâlini alır; sonuç 0 (yanlış)."
+    },
+    {
+      "id": "alg-mantiksal.k7",
+      "yer": "Karşılaştırma işleçleri",
+      "on": "Hocanın tablosundaki A=B ve A<>B yazımları C++'ta kullanılır mı?",
+      "arka": "Ek: hayır. C++'ta (ve C, Python'da) = atamadır; eşitlik == ile, farklılık != ile sorulur. <> bu dillerde yoktur."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="262" viewBox="0 0 400 262" role="img">
+<title>Çizgi ucundaki işaretler ve anlamları</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<line x1="20.0" y1="34.0" x2="112.0" y2="34.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<rect x="112" y="19" width="40" height="30" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="105.0" y1="41.0" x2="105.0" y2="27.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="99.0" y1="41.0" x2="99.0" y2="27.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="170.0" y="32.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="start">bir ve yalnız bir</text>
+<text x="170.0" y="49.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">en az 1, en çok 1</text>
+<line x1="20.0" y1="94.0" x2="112.0" y2="94.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<rect x="112" y="79" width="40" height="30" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="105.0" y1="101.0" x2="105.0" y2="87.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<circle cx="93.0" cy="94.0" r="4.5" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.5"/>
+<text x="170.0" y="92.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="start">sıfır ya da bir</text>
+<text x="170.0" y="109.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">en çok 1, zorunlu değil</text>
+<line x1="20.0" y1="154.0" x2="112.0" y2="154.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<rect x="112" y="139" width="40" height="30" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="98.0" y1="154.0" x2="112.0" y2="162.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="98.0" y1="154.0" x2="112.0" y2="154.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="98.0" y1="154.0" x2="112.0" y2="146.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="92.0" y1="161.0" x2="92.0" y2="147.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="170.0" y="152.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="start">bir ya da çok</text>
+<text x="170.0" y="169.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">en az 1, istenirse çok</text>
+<line x1="20.0" y1="214.0" x2="112.0" y2="214.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<rect x="112" y="199" width="40" height="30" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="98.0" y1="214.0" x2="112.0" y2="222.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="98.0" y1="214.0" x2="112.0" y2="214.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="98.0" y1="214.0" x2="112.0" y2="206.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<circle cx="90.0" cy="214.0" r="4.5" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.5"/>
+<text x="170.0" y="212.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="start">sıfır ya da çok</text>
+<text x="170.0" y="229.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">hiç olmayabilir, çok olabilir</text>
+<text x="20.0" y="254.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#C05621" text-anchor="start">yuvarlak: zorunlu değil (0) · düz çizgi: zorunlu (1) · kaz ayağı: çok</text>
+</svg>

@@ -1,0 +1,256 @@
+{
+  "id": "eko-cevre-bilinci",
+  "baslik": "Çevre Bilinci ve Çevre Bilgisinin Doğuşu",
+  "kaynak": "Ekoloji_Bilgisi_2026-2027_GÜZ-1._HAFTA.pdf, slayt 1–6",
+  "kavramlar": [
+    {
+      "terim": "Çevre bilincinin artışı",
+      "izah": "Hocaya göre insanoğlunun kültür seviyesinin yükselmesiyle birlikte çevre bilinci ve doğaya duyarlılık artmaktadır.",
+      "yer": "Çevre bilincinin gelişimi ve küresel boyut"
+    },
+    {
+      "terim": "Organik dünya görüşü",
+      "izah": "Hocaya göre 1500'lü yıllardan önce hâkim olan dünya görüşü; bilim «Tanrı'nın yüce şanı için» ya da «doğal düzenin yolunda gitmek» ve «Tao'nun akışını izlemek» için yapılırdı.",
+      "yer": "1500'lerden önce: organik dünya görüşü"
+    },
+    {
+      "terim": "Yin ve yang",
+      "izah": "Hocaya göre 1500 öncesinde fikirler «yin» paralelindeydi, 17. asırdan sonra düşünce «yang»cı oldu.",
+      "yer": "Yin ve yang"
+    },
+    {
+      "terim": "Geleneksel üretim bilgisi",
+      "izah": "Sistemli ekoloji eğitimi almamış eski çiftçilerin buğday yetiştirme şartlarını, hayvancıların yazın yaylalarda, kışın ılıman bölgelerde otlatma yapılması gerektiğini bilmesi.",
+      "yer": "Geleneksel üretim bilgisi"
+    },
+    {
+      "terim": "Osmanlı hayvan koruma vakıfları",
+      "izah": "Dağlardaki aç kurtların beslenmesi için kurulan vakıflar ile leylek, kedi ve köpeklerin tedavisi için inşa edilen şifahaneler.",
+      "yer": "Osmanlı hayvan koruma vakıfları"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "eko-cevre-bilinci.s1",
+      "tip": "secme",
+      "yer": "Çevre bilincinin gelişimi ve küresel boyut",
+      "soru": "Hocaya göre çevre bilinci ve doğaya duyarlılık neyle birlikte artmaktadır?",
+      "secenekler": [
+        "İnsanoğlunun kültür seviyesinin yükselmesiyle",
+        "Kentlerdeki nüfusun hızla artmasıyla",
+        "Ulusal gelir düzeyinin yükselmesiyle",
+        "Sanayi üretiminin yavaşlamasıyla"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın ifadesi: insanoğlunun **kültür seviyesinin** yükselmesiyle birlikte çevre bilinci ve doğaya duyarlılık artmaktadır."
+    },
+    {
+      "id": "eko-cevre-bilinci.s2",
+      "tip": "secme",
+      "yer": "Çevre bilincinin gelişimi ve küresel boyut",
+      "soru": "Hocanın, çevre koruma raporları hazırlayan ve yaşanabilir çevre oluşturmayı teşvik eden uluslararası kuruluşlara verdiği örnek hangisidir?",
+      "secenekler": [
+        "OECD ve Dünya Bankası",
+        "NATO ve Avrupa Konseyi",
+        "IMF ve Dünya Ticaret Örgütü",
+        "UNICEF ve Kızılhaç"
+      ],
+      "dogru": 0,
+      "izah": "Hoca uluslararası çalışmalara örnek olarak **OECD ve Dünya Bankası**'nı verir."
+    },
+    {
+      "id": "eko-cevre-bilinci.s3",
+      "tip": "dy",
+      "yer": "Çevre bilincinin gelişimi ve küresel boyut",
+      "ifade": "Hocaya göre yapılan çalışmalar doğal hayatı sanayi devrimi öncesine döndürebilecek düzeydedir.",
+      "dogru": false,
+      "izah": "Hocaya göre çalışmalar doğal hayatı sanayi devrimi öncesine **döndüremese de** kötüye gidişi önlemek ve mevcut durumu korumak açısından kritik önem taşır."
+    },
+    {
+      "id": "eko-cevre-bilinci.s4",
+      "tip": "dy",
+      "yer": "Çevre bilincinin gelişimi ve küresel boyut",
+      "ifade": "Hocaya göre gelişmiş ülkelerde doğal hayatı korumaya yönelik kanunlar çıkarılmakta ve kararlar uygulanmaktadır.",
+      "dogru": true,
+      "izah": "Bu, hocanın \"yasal düzenlemeler\" maddesidir."
+    },
+    {
+      "id": "eko-cevre-bilinci.s5",
+      "tip": "secme",
+      "yer": "1500'lerden önce: organik dünya görüşü",
+      "soru": "Hocaya göre insan-doğa ilişkilerinde 1500'lü yıllardan önce hangi dünya görüşü hâkimdi?",
+      "secenekler": [
+        "Organik dünya görüşü",
+        "«Yang»cı dünya görüşü",
+        "Kartezyen dünya görüşü",
+        "Yararcı dünya görüşü"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre 1500'lü yıllardan önce **organik** bir dünya görüşü hâkimdi. «Yang»cı düşünce ise hocaya göre 17. asırdan sonra ortaya çıkmıştır; Kartezyen düşünce Descartes ile, yararcı mantık Newtoncu bilimle anılır."
+    },
+    {
+      "id": "eko-cevre-bilinci.s6",
+      "tip": "bosluk",
+      "yer": "1500'lerden önce: organik dünya görüşü",
+      "metin": "Çinlilere göre bilim «doğal düzenin yolunda gitmek» ve «___'nun akışını izlemek» için yapılıyordu.",
+      "cevaplar": [
+        [
+          "Tao"
+        ]
+      ],
+      "izah": "Hocanın ifadesi: bilim «Tanrı'nın yüce şanı için» ya da Çinlilere göre «doğal düzenin yolunda gitmek» ve «**Tao**'nun akışını izlemek» için yapılıyordu."
+    },
+    {
+      "id": "eko-cevre-bilinci.s7",
+      "tip": "secme",
+      "yer": "Yin ve yang",
+      "soru": "Hocaya göre düşüncenin yin ve yang ile ilişkisi nasıl değişmiştir?",
+      "secenekler": [
+        "Fikirler önce «yin» paralelindeydi, 17. asırdan sonra «yang»cı oldu",
+        "Fikirler önce «yang» paralelindeydi, 17. asırdan sonra «yin»ci oldu",
+        "Fikirler önce «yin» paralelindeydi, 20. asırdan sonra «yang»cı oldu",
+        "Fikirler önce «yang» paralelindeydi, 20. asırdan sonra «yin»ci oldu"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre 1500 öncesinde fikirler **«yin»** paralelindeydi; **17. asırdan sonra** düşünce **«yang»cı** oldu."
+    },
+    {
+      "id": "eko-cevre-bilinci.s8",
+      "tip": "dy",
+      "yer": "Eski çağlarda bilimin amacı",
+      "ifade": "Hocaya göre eski çağlarda bilimin amacı doğayı denetim altına almaktı.",
+      "dogru": false,
+      "izah": "Hocaya göre eski çağlarda bilimin amacı **doğanın düzenini anlamak ve uyum içinde yaşamaktı**."
+    },
+    {
+      "id": "eko-cevre-bilinci.s9",
+      "tip": "dy",
+      "yer": "Çevre bilgisinin ilk insanla başlaması",
+      "ifade": "Hocaya göre çevre bilgisi, sistemli ekoloji eğitiminin başlamasıyla ortaya çıkmıştır.",
+      "dogru": false,
+      "izah": "Hocaya göre çevre bilgisi **ilk insanla birlikte** başlamış; bitki ve hayvanlar tanınarak tecrübe ve yaşayarak öğrenilmiştir. Sistemli eğitim almamış eski çiftçiler ve hayvancılar da bu bilgiye sahipti."
+    },
+    {
+      "id": "eko-cevre-bilinci.s10",
+      "tip": "secme",
+      "yer": "Geleneksel üretim bilgisi",
+      "soru": "Hocaya göre hayvancılıkla uğraşanlar otlatma konusunda neyi bilmekteydi?",
+      "secenekler": [
+        "Yazın yaylalarda, kışın ılıman bölgelerde otlatma yapılması gerektiğini",
+        "Kışın yaylalarda, yazın ılıman bölgelerde otlatma yapılması gerektiğini",
+        "Yıl boyunca aynı otlakta sürekli otlatma yapılması gerektiğini",
+        "Yalnızca ilkbaharda ve yalnızca ovalarda otlatma yapılması gerektiğini"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın örneği: hayvancılıkla uğraşanlar **yazın yaylalarda, kışın ılıman bölgelerde** otlatma yapılması gerektiğini bilmekteydi."
+    },
+    {
+      "id": "eko-cevre-bilinci.s11",
+      "tip": "secme",
+      "yer": "Semavi dinlerin rolü",
+      "soru": "Hocaya göre yazılı kaynaklar incelendiğinde çevre hassasiyetinin en eski ve en iyi ifadeleri nerede yer alır?",
+      "secenekler": [
+        "Kutsal kitaplarda",
+        "Osmanlı fermanlarında",
+        "OECD raporlarında",
+        "Çin'in Tao metinlerinde"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın \"semavi dinlerin rolü\" maddesi: çevre hassasiyetinin en eski ve en iyi ifadeleri **kutsal kitaplarda** yer alır."
+    },
+    {
+      "id": "eko-cevre-bilinci.s12",
+      "tip": "dy",
+      "yer": "Doğaya saygı anlayışı",
+      "ifade": "Hocaya göre Türk-İslam kültüründe yeşil bir yaprağı veya çiçeği dahi koparmama anlayışı, onların Allah'ı tesbih ettiği düşüncesine dayanır.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi: Allah'ı tesbih ettiği düşüncesiyle ibadetine mani olmamak için yeşil bir yaprağı veya çiçeği dahi koparmayan çevreci bir anlayış vardır."
+    },
+    {
+      "id": "eko-cevre-bilinci.s13",
+      "tip": "bosluk",
+      "yer": "Tarihi fermanlar ve atasözleri",
+      "metin": "Hocanın verdiği atasözü: \"Yaş kesen, ___ keser.\"",
+      "cevaplar": [
+        [
+          "baş"
+        ]
+      ],
+      "izah": "Atasözü \"Yaş kesen, **baş** keser\"dir; yaş (canlı) ağacı kesmenin ağır bir suç sayıldığını anlatır."
+    },
+    {
+      "id": "eko-cevre-bilinci.s14",
+      "tip": "secme",
+      "yer": "Osmanlı hayvan koruma vakıfları",
+      "soru": "Hocaya göre Osmanlı'da şifahaneler hangi hayvanların tedavisi için inşa edilmiştir?",
+      "secenekler": [
+        "Leylek, kedi ve köpek",
+        "Kurt, leylek ve at",
+        "At, deve ve kedi",
+        "Güvercin, at ve köpek"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre şifahaneler **leylek, kedi ve köpeklerin** tedavisi için inşa edilmiştir. Kurtlar için ise beslenmeleri amacıyla vakıflar kurulmuştur."
+    },
+    {
+      "id": "eko-cevre-bilinci.s15",
+      "tip": "dy",
+      "yer": "Osmanlı hayvan koruma vakıfları",
+      "ifade": "Hocaya göre Osmanlı'da dağlardaki aç kurtların beslenmesi için vakıflar kurulmuştur.",
+      "dogru": true,
+      "izah": "Hocanın \"Osmanlı hayvan koruma vakıfları\" maddesinde geçer."
+    },
+    {
+      "id": "eko-cevre-bilinci.s16",
+      "tip": "klasik",
+      "yer": "Türk-İslam kültüründe çevre ve hayvan hakları",
+      "soru": "Hocaya göre Türk-İslam kültüründe çevreye ve hayvanlara verilen değeri gösteren örnekleri yazın.",
+      "cevap": "Allah'ı tesbih ettiği düşüncesiyle yeşil bir yaprağı veya çiçeği dahi koparmayan bir anlayış vardır. Fatih Sultan Mehmet Han'ın \"Ormanlarımdan bir dal kesenin başını keserim\" fermanı ve \"Yaş kesen, baş keser\" atasözü çevreye verilen değeri özetler. Osmanlı'da dağlardaki aç kurtların beslenmesi için vakıflar ile leylek, kedi ve köpeklerin tedavisi için şifahaneler kurulmuştur.",
+      "anahtarlar": [
+        "tesbih",
+        "Yaş kesen, baş keser",
+        "kurt",
+        "leylek",
+        "şifahane"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "eko-cevre-bilinci.k1",
+      "yer": "Çevre bilincinin gelişimi ve küresel boyut",
+      "on": "Hoca çevre bilincinin gelişimini ve küresel boyutunu hangi dört başlıkta anlatır?",
+      "arka": "- Çevre bilincinin artışı: kültür seviyesi yükseldikçe çevre bilinci ve doğaya duyarlılık artıyor.\n- Uluslararası çalışmalar: OECD ve Dünya Bankası gibi kuruluşlar çevre koruma raporları hazırlıyor, yaşanabilir çevreyi teşvik ediyor.\n- Yasal düzenlemeler: gelişmiş ülkelerde doğal hayatı koruyan kanunlar çıkarılıyor, kararlar uygulanıyor.\n- Temel amaç: doğal hayat sanayi devrimi öncesine döndürülemese de kötüye gidişi önlemek ve mevcut durumu korumak."
+    },
+    {
+      "id": "eko-cevre-bilinci.k2",
+      "yer": "1500'lerden önce: organik dünya görüşü",
+      "on": "1500'lü yıllardan önce bilim ne için yapılıyordu? Yin ve yang bu değişimde nerede durur?",
+      "arka": "1500'lerden önce organik bir dünya görüşü hâkimdi. Bilim «Tanrı'nın yüce şanı için» ya da Çinlilere göre «doğal düzenin yolunda gitmek» ve «Tao'nun akışını izlemek» için yapılıyordu; amacı doğanın düzenini anlamak ve uyum içinde yaşamaktı.\nFikirler «yin» paralelindeydi; 17. asırdan sonra düşünce «yang»cı oldu."
+    },
+    {
+      "id": "eko-cevre-bilinci.k3",
+      "yer": "Çevre bilgisinin ilk insanla başlaması",
+      "on": "Çevre bilgisi nasıl başlamıştır? Geleneksel üretimden hocanın örneklerini verin.",
+      "arka": "Çevre bilgisi ilk insanla birlikte başlamış; bitki ve hayvanlar tanınarak tecrübe ve yaşayarak öğrenilmiştir.\nÖrnekler: sistemli ekoloji eğitimi almamış eski çiftçiler buğday yetiştirme şartlarını; hayvancılar da yazın yaylalarda, kışın ılıman bölgelerde otlatma yapılması gerektiğini biliyordu."
+    },
+    {
+      "id": "eko-cevre-bilinci.k4",
+      "yer": "Semavi dinlerin rolü",
+      "on": "Hocaya göre semavi dinlerin çevre bilincindeki rolü nedir?",
+      "arka": "Yazılı kaynaklar incelendiğinde çevre hassasiyetinin en eski ve en iyi ifadeleri kutsal kitaplarda yer alır."
+    },
+    {
+      "id": "eko-cevre-bilinci.k5",
+      "yer": "Türk-İslam kültüründe çevre ve hayvan hakları",
+      "on": "Türk-İslam kültüründe çevre ve hayvan haklarına hocanın verdiği örnekler nelerdir?",
+      "arka": "- Doğaya saygı: Allah'ı tesbih ettiği düşüncesiyle yeşil bir yaprağı ya da çiçeği dahi koparmamak.\n- Fatih Sultan Mehmet Han'ın \"Ormanlarımdan bir dal kesenin başını keserim\" fermanı ve \"Yaş kesen, baş keser\" atasözü.\n- Osmanlı vakıfları: aç kurtların beslenmesi için vakıflar; leylek, kedi ve köpeklerin tedavisi için şifahaneler.\nEk: Bursa'daki leylek bakımevleri \"Gurabâhâne-i Laklakan\" adıyla anılır."
+    },
+    {
+      "id": "eko-cevre-bilinci.k6",
+      "yer": "Kainatın bütünlüğü (slayt görseli)",
+      "on": "Slayttaki ağaç görselinde kainat için ne söylenir?",
+      "arka": "Görseldeki cümle: kainat bir bütündür; kainatı oluşturan unsurlar sonu olmayan bir madde dolaşımı ile birbirine dönüşür; canlı varlıklar yaşadıkları ortama uymuştur; hem birbirleri hem de çevreleriyle etkileşim hâlindedir; aralarında yaşam için bir mücadele vardır.\nEk: Bu cümle yalnızca slayttaki görselde yazar."
+    }
+  ]
+}

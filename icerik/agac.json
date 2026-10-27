@@ -1,0 +1,35 @@
+{
+  "gruplar": [
+    {
+      "id": "sinif-1",
+      "ad": "1. Sınıf",
+      "donemler": [
+        {
+          "id": "sinif-1-guz",
+          "ad": "Güz",
+          "dersler": [
+            { "id": "algoritma", "ad": "Algoritma ve Programlama Temelleri", "kisa": "Algoritma" },
+            { "id": "veritabani", "ad": "Veritabanı Yönetimi", "kisa": "Veritabanı" },
+            { "id": "donanim", "ad": "Bilgisayar Donanımı", "kisa": "Donanım" },
+            { "id": "aglar", "ad": "Bilgisayar Ağları", "kisa": "Ağlar" },
+            { "id": "elektrik", "ad": "Temel Elektrik ve Elektronik", "kisa": "Elektrik" },
+            { "id": "ekoloji", "ad": "Ekoloji Bilgisi", "kisa": "Ekoloji" }
+          ]
+        },
+        {
+          "id": "sinif-1-bahar",
+          "ad": "Bahar",
+          "dersler": []
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "ad": "42",
+      "hususi": true,
+      "dersler": [
+        { "id": "born2beroot", "ad": "Born2beRoot" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="250" viewBox="0 0 360 250" role="img">
+<title>Ekolojik diyalektik matrisi: biyotik ilişkiler ve abiyotik çevre</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="4.0" y="10.0" width="164.0" height="176.0" rx="10" fill="#E6F4EA" stroke="#276749" stroke-width="1.6"/>
+<text x="86.0" y="38.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#276749" font-weight="600" text-anchor="middle">Biyotik ilişkiler</text>
+<circle cx="14" cy="68" r="2.5" fill="#276749"/>
+<text x="21.0" y="72.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Tür içi yardımlaşma</text>
+<circle cx="14" cy="98" r="2.5" fill="#276749"/>
+<text x="21.0" y="102.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Türler arası rekabet</text>
+<circle cx="14" cy="128" r="2.5" fill="#276749"/>
+<text x="21.0" y="132.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Av-avcı dinamikleri</text>
+<circle cx="14" cy="158" r="2.5" fill="#276749"/>
+<text x="21.0" y="162.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Ortak yaşam (simbiyoz)</text>
+<rect x="192.0" y="10.0" width="164.0" height="176.0" rx="10" fill="#E3EEFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="274.0" y="38.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#2B6CB0" font-weight="600" text-anchor="middle">Abiyotik çevre</text>
+<circle cx="202" cy="68" r="2.5" fill="#2B6CB0"/>
+<text x="209.0" y="72.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">İklim ve sıcaklık</text>
+<circle cx="202" cy="98" r="2.5" fill="#2B6CB0"/>
+<text x="209.0" y="102.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Su ve nem rejimi</text>
+<circle cx="202" cy="128" r="2.5" fill="#2B6CB0"/>
+<text x="209.0" y="132.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Toprak mineralleri</text>
+<circle cx="202" cy="158" r="2.5" fill="#2B6CB0"/>
+<text x="209.0" y="162.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Güneş enerjisi akışı</text>
+<line x1="170.0" y1="98.0" x2="190.0" y2="98.0" stroke="#4A5568" stroke-width="1.6"/>
+<polygon points="190.0,98.0 181.7,101.5 181.7,94.5" fill="#4A5568"/>
+<line x1="190.0" y1="98.0" x2="170.0" y2="98.0" stroke="#4A5568" stroke-width="1.6"/>
+<polygon points="170.0,98.0 178.3,94.5 178.3,101.5" fill="#4A5568"/>
+<text x="180.0" y="214.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">Canlı ve cansız alem</text>
+<text x="180.0" y="234.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">birbirinden ayrılamaz bir bütündür.</text>
+</svg>

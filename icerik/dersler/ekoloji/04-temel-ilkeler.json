@@ -1,0 +1,336 @@
+{
+  "id": "eko-ilkeler",
+  "baslik": "Ekolojinin Temel İlkeleri",
+  "kaynak": "Ekoloji_Bilgisi_2026-2027_GÜZ-1._HAFTA.pdf, slayt 17–29",
+  "kavramlar": [
+    {
+      "terim": "Bütüncül yöntem",
+      "izah": "Ekolojiyi diğer bilim dallarından ayıran özellik: canlıların yaşadıkları ortam ile çevresindeki cansız varlıklar arasındaki ilişkileri bütüncül bir yöntemle incelemesi. Bu, insan merkezci düşüncenin reddi anlamına gelir.",
+      "yer": "Ekolojiyi diğer bilim dallarından ayıran özellik"
+    },
+    {
+      "terim": "Doğanın bütünlüğü ilkesi",
+      "izah": "Canlı ve cansız tüm varlıklarıyla doğa bir bütündür ve yaşam için birbirleriyle etkileşim ve dayanışma içindedir.",
+      "yer": "a) Doğanın bütünlüğü ilkesi"
+    },
+    {
+      "terim": "Doğanın sınırlılığı ilkesi",
+      "izah": "Doğanın kendini yenileyebilme yeteneği olsa da çoğalan nüfusu ve kirlilikleri taşıma kapasitesi sınırlıdır; doğa sonsuz değildir.",
+      "yer": "b) Doğanın sınırlılığı ilkesi"
+    },
+    {
+      "terim": "Doğanın özdenetim ilkesi",
+      "izah": "Ekosistemler özdenetim (oto organizasyon) ve geri beslenme işlemleriyle bütünlüklerini ve yaşamlarını kendi sınırı içinde korumaya yönelirler.",
+      "yer": "c) Doğanın özdenetim ilkesi"
+    },
+    {
+      "terim": "Doğanın çeşitliliği ilkesi",
+      "izah": "Canlılar arasındaki çeşitlilik birbirine bağımlı bir sistem içinde yaşamın sürekliliğini sağlar.",
+      "yer": "d) Doğanın çeşitliliği ilkesi"
+    },
+    {
+      "terim": "Doğada hiçbir şey yok olmaz ilkesi",
+      "izah": "Termodinamik yasasına dayanır: var olan her madde ve enerji bir şekilden başka bir şekle dönüşür, fakat hiçbir yolla yok olmaz.",
+      "yer": "e) Doğada hiçbir şey yok olmaz ilkesi"
+    },
+    {
+      "terim": "Doğaya karşı elde edilen her başarının bir bedeli vardır ilkesi",
+      "izah": "İkinci termodinamik yasası olan ilke: her enerji dönüşümünde enerjinin bir kısmı iş yapamayacak kadar dağınık bir şekle girer.",
+      "yer": "f) Doğaya karşı elde edilen her başarının bir bedeli vardır ilkesi"
+    },
+    {
+      "terim": "Doğanın geri tepmesi ilkesi",
+      "izah": "Fizikteki her etkinin bir tepkisi olduğu gerçeğinden hareketle doğa, yapılan müdahalelere karşı koyma gücüne sahiptir.",
+      "yer": "g) Doğanın geri tepmesi ilkesi"
+    },
+    {
+      "terim": "En uygun çözümü doğa bulmuştur ilkesi",
+      "izah": "Her canlı milyonlarca yıl süren evrim sonucunda en uygun şeklini almıştır ve bu doğanın temel yasasıdır.",
+      "yer": "h) En uygun çözümü doğa bulmuştur ilkesi"
+    },
+    {
+      "terim": "Kültürel evrim ve geleneksel ekolojiye saygı ilkesi",
+      "izah": "Evrim sonucunda son hâline gelen insan, biyolojik evrim sonucunda kültürü yaratmıştır; bu da bir ekolojik uyumdur.",
+      "yer": "i) Kültürel evrim ve geleneksel ekolojiye saygı ilkesi"
+    },
+    {
+      "terim": "Doğa ile birlikte gitmek ilkesi",
+      "izah": "Doğanın kendi içerisinde meydana getirdiği ekolojik döngüleri ve mevsimleri göz önünde bulundurmak gerekir.",
+      "yer": "j) Doğa ile birlikte gitmek ilkesi"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "eko-ilkeler.s1",
+      "tip": "secme",
+      "yer": "Ekolojiyi diğer bilim dallarından ayıran özellik",
+      "soru": "Hocaya göre ekolojiyi diğer bilim dallarından ayıran en önemli özellik nedir?",
+      "secenekler": [
+        "Canlılar ile cansız varlıklar arasındaki ilişkileri bütüncül bir yöntemle incelemesi",
+        "Canlıların yalnızca kendi aralarındaki ilişkileri ayrıntılı bir yöntemle incelemesi",
+        "Doğadaki olayları mekanik kurallar ve matematiksel bir yöntemle incelemesi",
+        "Doğanın insana sunduğu değerleri parasal bir yöntemle ölçerek incelemesi"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre ekolojiyi ayıran en önemli özellik, canlı varlıkların yaşadıkları ortam ile çevresindeki **cansız varlıklar** arasındaki ilişkileri **\"bütüncül\"** bir yöntemle incelemesidir."
+    },
+    {
+      "id": "eko-ilkeler.s2",
+      "tip": "dy",
+      "yer": "Ekolojiyi diğer bilim dallarından ayıran özellik",
+      "ifade": "Hocaya göre ekolojinin bütüncül yöntemi, insan merkezci düşüncenin reddi anlamına gelir.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi: \"Bu da insan merkezci düşüncenin reddi anlamına gelir.\""
+    },
+    {
+      "id": "eko-ilkeler.s3",
+      "tip": "esles",
+      "yer": "On temel ilke",
+      "soru": "İlkeleri hocanın açıklamalarıyla eşleştir (a–e).",
+      "ciftler": [
+        [
+          "Doğanın bütünlüğü ilkesi",
+          "Canlı ve cansız tüm varlıklar yaşam için etkileşim ve dayanışma içindedir"
+        ],
+        [
+          "Doğanın sınırlılığı ilkesi",
+          "Kendini yenileyebilse de doğa sonsuz değildir; nüfusu ve kirlilikleri taşıma kapasitesi bellidir"
+        ],
+        [
+          "Doğanın özdenetim ilkesi",
+          "Ekosistemler oto organizasyon ve geri beslenmeyle bütünlüklerini kendi sınırı içinde korur"
+        ],
+        [
+          "Doğanın çeşitliliği ilkesi",
+          "Birbirine bağımlı bir sistemde canlıların farklılığı yaşamın sürekliliğini sağlar"
+        ],
+        [
+          "Doğada hiçbir şey yok olmaz ilkesi",
+          "Var olan her madde ve enerji bir şekilden başka bir şekle dönüşür"
+        ]
+      ],
+      "izah": "Hocanın ilk beş ilkesi ve açıklamaları."
+    },
+    {
+      "id": "eko-ilkeler.s4",
+      "tip": "esles",
+      "yer": "On temel ilke",
+      "soru": "İlkeleri hocanın açıklamalarıyla eşleştir (f–j).",
+      "ciftler": [
+        [
+          "Her başarının bir bedeli vardır ilkesi",
+          "Her enerji dönüşümünde enerjinin bir kısmı dağınık bir şekle girer"
+        ],
+        [
+          "Doğanın geri tepmesi ilkesi",
+          "Doğa yapılan müdahalelere karşı koyma gücüne sahiptir"
+        ],
+        [
+          "En uygun çözümü doğa bulmuştur ilkesi",
+          "Her canlı milyonlarca yıllık evrimle en uygun şeklini almıştır"
+        ],
+        [
+          "Kültürel evrim ve geleneksel ekolojiye saygı ilkesi",
+          "İnsanın biyolojik evrim sonucunda kültürü yaratması bir ekolojik uyumdur"
+        ],
+        [
+          "Doğa ile birlikte gitmek ilkesi",
+          "Ekolojik döngüler ve mevsimler göz önünde bulundurulmalıdır"
+        ]
+      ],
+      "izah": "Hocanın son beş ilkesi ve açıklamaları. \"Her başarının bir bedeli vardır\" ilkesinin tam adı \"Doğaya karşı elde edilen her başarının bir bedeli vardır\" ilkesidir."
+    },
+    {
+      "id": "eko-ilkeler.s5",
+      "tip": "secme",
+      "yer": "f) Doğaya karşı elde edilen her başarının bir bedeli vardır ilkesi",
+      "soru": "Hocaya göre hangi ilke **ikinci termodinamik yasasıdır**?",
+      "secenekler": [
+        "Doğaya karşı elde edilen her başarının bir bedeli vardır ilkesi",
+        "Doğada hiçbir şey yok olmaz ilkesi",
+        "Kültürel evrim ve geleneksel ekolojiye saygı ilkesi",
+        "En uygun çözümü doğa bulmuştur ilkesi"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre \"Doğaya karşı elde edilen her başarının bir bedeli vardır\" ilkesi **ikinci termodinamik yasasıdır**: her enerji dönüşümünde enerjinin bir kısmı iş yapamayacak kadar dağınık bir şekle girer. \"Doğada hiçbir şey yok olmaz\" ilkesi de termodinamik yasasına dayanır ama madde ve enerjinin yok olmadığını anlatır; hoca onu ikinci yasa diye adlandırmaz. Kültürel evrim ve \"en uygun çözüm\" ilkeleri ise evrimle ilgilidir."
+    },
+    {
+      "id": "eko-ilkeler.s6",
+      "tip": "secme",
+      "yer": "g) Doğanın geri tepmesi ilkesi",
+      "soru": "Fizikteki her etkinin bir tepkisi olduğu gerçeğinden hareket eden ilke hangisidir?",
+      "secenekler": [
+        "Doğanın geri tepmesi ilkesi",
+        "Doğanın özdenetim ilkesi",
+        "Doğanın sınırlılığı ilkesi",
+        "Doğa ile birlikte gitmek ilkesi"
+      ],
+      "dogru": 0,
+      "izah": "**Doğanın geri tepmesi ilkesi**: fizikteki her etkinin bir tepkisi olduğu gerçeğinden hareketle doğa, yapılan müdahalelere karşı koyma gücüne sahiptir."
+    },
+    {
+      "id": "eko-ilkeler.s7",
+      "tip": "bosluk",
+      "yer": "b) Doğanın sınırlılığı ilkesi",
+      "metin": "Doğanın sınırlılığı ilkesine göre doğanın kendini yenileyebilme yeteneği olsa da çoğalan nüfusu ve kirlilikleri ___ kapasitesi sınırlıdır.",
+      "cevaplar": [
+        [
+          "taşıma"
+        ]
+      ],
+      "izah": "Hocanın ifadesi: çoğalan nüfusu ve kirlilikleri **taşıma** kapasitesi sınırlıdır ve doğa sonsuz değildir."
+    },
+    {
+      "id": "eko-ilkeler.s8",
+      "tip": "bosluk",
+      "yer": "c) Doğanın özdenetim ilkesi",
+      "metin": "Özdenetim ilkesine göre ekosistemler, özdenetim (oto organizasyon) ve ___ işlemleriyle bütünlüklerini ve yaşamlarını kendi sınırı içinde korumaya yönelirler.",
+      "cevaplar": [
+        [
+          "geri beslenme",
+          "geribeslenme"
+        ]
+      ],
+      "izah": "Ekosistemler özdenetim ve **geri beslenme** işlemleriyle bütünlüklerini korumaya yönelirler."
+    },
+    {
+      "id": "eko-ilkeler.s9",
+      "tip": "dy",
+      "yer": "e) Doğada hiçbir şey yok olmaz ilkesi",
+      "ifade": "Doğada hiçbir şey yok olmaz ilkesine göre var olan madde ve enerji bir şekilden başka bir şekle dönüşebilir ama hiçbir yolla yok olmaz.",
+      "dogru": true,
+      "izah": "İlkenin hocanın verdiği açıklaması budur."
+    },
+    {
+      "id": "eko-ilkeler.s10",
+      "tip": "dy",
+      "yer": "d) Doğanın çeşitliliği ilkesi",
+      "ifade": "Hocaya göre doğanın çeşitliliği ilkesi, canlıların birbirinden bağımsız sistemler içinde yaşadığını anlatır.",
+      "dogru": false,
+      "izah": "Hocaya göre canlılar arasındaki çeşitlilik **birbirine bağımlı** bir sistem içinde yaşamın sürekliliğini sağlar."
+    },
+    {
+      "id": "eko-ilkeler.s11",
+      "tip": "dy",
+      "yer": "h) En uygun çözümü doğa bulmuştur ilkesi",
+      "ifade": "Hocaya göre en uygun çözümü doğa bulmuştur ilkesi, her canlının birkaç kuşak içinde en uygun şeklini aldığını söyler.",
+      "dogru": false,
+      "izah": "Hocaya göre her canlı **milyonlarca yıl süren evrim** sonucunda en uygun şeklini almıştır ve bu doğanın temel yasasıdır."
+    },
+    {
+      "id": "eko-ilkeler.s12",
+      "tip": "secme",
+      "yer": "i) Kültürel evrim ve geleneksel ekolojiye saygı ilkesi",
+      "soru": "Kültürel evrim ve geleneksel ekolojiye saygı ilkesine göre insanın kültürü yaratması için hangisi doğrudur?",
+      "secenekler": [
+        "Biyolojik evrimin sonucudur ve bir ekolojik uyumdur",
+        "Sanayi devriminin sonucudur ve bir ekolojik uyumsuzluktur",
+        "Biyolojik evrimin sonucudur ve doğaya karşı bir başarıdır",
+        "Mekanist evren anlayışının sonucudur ve bir ekolojik uyumdur"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre insan **biyolojik evrim** sonucunda kültürü yaratmıştır ve bu da bir **ekolojik uyumdur**."
+    },
+    {
+      "id": "eko-ilkeler.s13",
+      "tip": "secme",
+      "yer": "İlkelerin birbiriyle ilişkisi",
+      "soru": "Hocaya göre ekolojinin temel ilkelerinin birbiriyle ilişkili olmasının nedeni nedir?",
+      "secenekler": [
+        "Doğanın kendi kendini denetleyen bir bütün olması",
+        "Her birinin termodinamik yasasından türetilmiş olması",
+        "Her birinin aynı bilim insanınca ortaya konmuş olması",
+        "Her birinin insanın doğaya müdahalesini meşru kılması"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın ifadesi: \"Yukarıdaki ilkeler birbirleriyle ilişkilidir. Çünkü doğa **kendi kendini denetleyen bir bütündür**.\""
+    },
+    {
+      "id": "eko-ilkeler.s14",
+      "tip": "dy",
+      "yer": "İlkelerin birbiriyle ilişkisi",
+      "ifade": "Hocaya göre insanın doğaya karşı aykırı tutumu, kendine zarar vermenin dışında başka bir işe yaramayacaktır.",
+      "dogru": true,
+      "izah": "Hocanın son maddesidir."
+    },
+    {
+      "id": "eko-ilkeler.s15",
+      "tip": "dy",
+      "yer": "İlkelerin birbiriyle ilişkisi",
+      "ifade": "Hocaya göre insanın ileriyi görmeden yaptığı değişiklikler doğanın dengelerini bozmaz, çünkü doğa kendi kendini denetler.",
+      "dogru": false,
+      "izah": "Hocaya göre insanın ileriyi görmeden, bilinçsizce çevresinde yaptığı değişiklikler bu bütünün çeşitli **dengelerini bozmaktadır**."
+    },
+    {
+      "id": "eko-ilkeler.s16",
+      "tip": "klasik",
+      "yer": "On temel ilke",
+      "soru": "Doğanın sınırlılığı ilkesini ve doğaya karşı elde edilen her başarının bir bedeli vardır ilkesini hocanın anlattığı gibi açıklayın.",
+      "cevap": "Doğanın sınırlılığı ilkesi: her ne kadar doğanın kendini yenileyebilme yeteneği varsa da çoğalan nüfusu ve kirlilikleri taşıma kapasitesi sınırlıdır ve doğa sonsuz değildir.\nDoğaya karşı elde edilen her başarının bir bedeli vardır ilkesi: ikinci termodinamik yasası olan bu ilkeye göre her enerji dönüşümünde enerjinin bir kısmı iş yapamayacak kadar dağınık bir şekle girer.",
+      "anahtarlar": [
+        "kendini yenileyebilme",
+        "taşıma kapasitesi",
+        "sonsuz değil",
+        "ikinci termodinamik",
+        "enerji dönüşüm",
+        "dağınık"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "eko-ilkeler.k1",
+      "yer": "Ekolojiyi diğer bilim dallarından ayıran özellik",
+      "on": "Ekolojiyi diğer bilim dallarından ayıran en önemli özellik nedir?",
+      "arka": "Canlı varlıkların yaşadıkları ortam ile çevresindeki cansız varlıklar arasındaki ilişkileri \"bütüncül\" bir yöntemle incelemesi. Bu da insan merkezci düşüncenin reddi anlamına gelir."
+    },
+    {
+      "id": "eko-ilkeler.k2",
+      "yer": "On temel ilke",
+      "on": "Ekolojinin on temel ilkesini sırasıyla sayın.",
+      "arka": "a) Doğanın bütünlüğü ilkesi\nb) Doğanın sınırlılığı ilkesi\nc) Doğanın özdenetim ilkesi\nd) Doğanın çeşitliliği ilkesi\ne) Doğada hiçbir şey yok olmaz ilkesi\nf) Doğaya karşı elde edilen her başarının bir bedeli vardır ilkesi\ng) Doğanın geri tepmesi ilkesi\nh) En uygun çözümü doğa bulmuştur ilkesi\ni) Kültürel evrim ve geleneksel ekolojiye saygı ilkesi\nj) Doğa ile birlikte gitmek ilkesi"
+    },
+    {
+      "id": "eko-ilkeler.k3",
+      "yer": "e) Doğada hiçbir şey yok olmaz ilkesi",
+      "on": "\"Doğada hiçbir şey yok olmaz\" ilkesi ile \"Her başarının bir bedeli vardır\" ilkesinin farkı nedir?",
+      "arka": "Hiçbir şey yok olmaz: termodinamik yasasına dayanır; her madde ve enerji bir şekilden başka bir şekle dönüşür, fakat yok olmaz.\nHer başarının bir bedeli vardır: ikinci termodinamik yasasıdır; her enerji dönüşümünde enerjinin bir kısmı iş yapamayacak kadar dağınık bir şekle girer.\nEk: Enerjinin yok olmadığını söyleyen birinci termodinamik yasası (enerjinin korunumu), dağınıklığın ölçüsü ise entropidir."
+    },
+    {
+      "id": "eko-ilkeler.k4",
+      "yer": "b) Doğanın sınırlılığı ilkesi",
+      "on": "Doğanın sınırlılığı ilkesi ile özdenetim ilkesi ne söyler?",
+      "arka": "Sınırlılık: doğanın kendini yenileyebilme yeteneği olsa da çoğalan nüfusu ve kirlilikleri taşıma kapasitesi sınırlıdır; doğa sonsuz değildir.\nÖzdenetim: ekosistemler özdenetim (oto organizasyon) ve geri beslenme işlemleriyle bütünlüklerini ve yaşamlarını kendi sınırı içinde korumaya yönelirler."
+    },
+    {
+      "id": "eko-ilkeler.k5",
+      "yer": "a) Doğanın bütünlüğü ilkesi",
+      "on": "Doğanın bütünlüğü ve çeşitliliği ilkeleri ne söyler?",
+      "arka": "Bütünlük: canlı ve cansız tüm varlıklarıyla doğa bir bütündür ve yaşam için birbirleriyle etkileşim ve dayanışma içindedir.\nÇeşitlilik: canlılar arasındaki çeşitlilik birbirine bağımlı bir sistem içinde yaşamın sürekliliğini sağlar."
+    },
+    {
+      "id": "eko-ilkeler.k6",
+      "yer": "g) Doğanın geri tepmesi ilkesi",
+      "on": "Doğanın geri tepmesi ve \"en uygun çözümü doğa bulmuştur\" ilkeleri ne söyler?",
+      "arka": "Geri tepme: fizikteki her etkinin bir tepkisi olduğu gerçeğinden hareketle doğa, yapılan müdahalelere karşı koyma gücüne sahiptir.\nEn uygun çözüm: her canlı milyonlarca yıl süren evrim sonucunda en uygun şeklini almıştır ve bu doğanın temel yasasıdır."
+    },
+    {
+      "id": "eko-ilkeler.k7",
+      "yer": "i) Kültürel evrim ve geleneksel ekolojiye saygı ilkesi",
+      "on": "Kültürel evrim ilkesi ile doğa ile birlikte gitmek ilkesi ne söyler?",
+      "arka": "Kültürel evrim ve geleneksel ekolojiye saygı: evrim sonucunda son hâline gelmiş olan insan, biyolojik evrim sonucunda kültürü yaratmıştır; bu da bir ekolojik uyumdur.\nDoğa ile birlikte gitmek: doğanın kendi içerisinde meydana getirdiği ekolojik döngüleri ve mevsimleri göz önünde bulundurmak gerekir."
+    },
+    {
+      "id": "eko-ilkeler.k8",
+      "yer": "İlkelerin birbiriyle ilişkisi",
+      "on": "İlkeler neden birbiriyle ilişkilidir ve insana düşen görev nedir?",
+      "arka": "Çünkü doğa kendi kendini denetleyen bir bütündür. İnsanın ileriyi görmeden, bilinçsizce yaptığı değişiklikler bu bütünün dengelerini bozar. İnsan doğanın bir parçası olduğunu kabul etmeli ve görevini yerine getirmeye çalışmalıdır; doğaya karşı aykırı tutumu kendine zarar vermenin dışında bir işe yaramaz."
+    },
+    {
+      "id": "eko-ilkeler.k9",
+      "yer": "Görünmez bağlar (slayt görseli)",
+      "on": "Son slayttaki kelebek görselinde ne yazar?",
+      "arka": "\"Dünyanın bir yerinde kelebek kanat çırparsa, diğer yerinde fırtınalar kopabilir. Ekoloji, bu görünmez bağların haritasıdır.\"\nEk: Bu fikir \"kelebek etkisi\" diye bilinir; sözler yalnızca görseldedir."
+    }
+  ]
+}

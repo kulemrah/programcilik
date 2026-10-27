@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="488" viewBox="0 0 360 488" role="img">
+<title>Kainatın bütünü: sonsuz madde dolaşımı</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<circle cx="180" cy="150" r="46" fill="#E6F4EA" stroke="#276749" stroke-width="1.6"/>
+<text x="180.0" y="146.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#276749" font-weight="600" text-anchor="middle">Kainatın</text>
+<text x="180.0" y="164.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#276749" font-weight="600" text-anchor="middle">bütünü</text>
+<circle cx="180" cy="150" r="104" fill="none" stroke="#2B6CB0" stroke-width="2"/>
+<rect x="153.8" y="32.0" width="52.4" height="28.0" rx="14" fill="#E3EEFA" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="180.0" y="51.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">Hava</text>
+<rect x="231.2" y="136.0" width="105.6" height="28.0" rx="14" fill="#E6F4EA" stroke="#276749" stroke-width="1.4"/>
+<text x="284.0" y="155.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">Canlı madde</text>
+<rect x="131.0" y="240.0" width="98.0" height="28.0" rx="14" fill="#E3EEFA" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="180.0" y="259.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">Mineraller</text>
+<rect x="57.4" y="136.0" width="37.2" height="28.0" rx="14" fill="#E3EEFA" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="76.0" y="155.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">Su</text>
+<text x="180.0" y="286.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">sonsuz madde dolaşımı (döngü)</text>
+<rect x="10.0" y="302.0" width="340.0" height="47.0" rx="10" fill="#E6F4EA" stroke="#276749" stroke-width="1.4"/>
+<text x="22.0" y="323.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#276749" font-weight="600" text-anchor="start">Canlı varlıkların uyumu</text>
+<text x="22.0" y="341.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">ortama uyum sağlama</text>
+<rect x="10.0" y="357.0" width="340.0" height="64.0" rx="10" fill="#E3EEFA" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="22.0" y="378.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="start">Etkileşim ağları</text>
+<text x="22.0" y="396.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">besin zinciri, enerji akışı; birbirleriyle</text>
+<text x="22.0" y="413.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">ve çevreleriyle etkileşim</text>
+<rect x="10.0" y="429.0" width="340.0" height="47.0" rx="10" fill="#FEEBD6" stroke="#C05621" stroke-width="1.4"/>
+<text x="22.0" y="450.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#C05621" font-weight="600" text-anchor="start">Yaşam için mücadele</text>
+<text x="22.0" y="468.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">rekabet</text>
+</svg>

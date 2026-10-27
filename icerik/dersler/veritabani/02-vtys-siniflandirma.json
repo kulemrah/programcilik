@@ -1,0 +1,283 @@
+{
+  "id": "vt-siniflandirma",
+  "baslik": "VTYS Türleri ve Veritabanı Yaklaşımı",
+  "kaynak": "veritabani_1_hafta_1.pdf, slayt 8–16",
+  "kavramlar": [
+    {
+      "terim": "Hiyerarşik veritabanı",
+      "izah": "Veritabanları için kullanılan ilk model; bilgileri ağaç yapısında saklar.",
+      "yer": "Hiyerarşik veritabanları"
+    },
+    {
+      "terim": "Ağ veritabanı",
+      "izah": "Hiyerarşik model yetersiz kalınca 1960'ların sonunda ortaya çıkan, verileri ağaçların daha gelişmiş hâli olan graflar şeklinde saklayan model.",
+      "yer": "Ağ veritabanları"
+    },
+    {
+      "terim": "İlişkisel veritabanı",
+      "izah": "1970'lerin başında geliştirilen; verileri tablolarda saklayan ve tablolar arası bağlantıları matematiksel ilişkilerle gösteren model.",
+      "yer": "İlişkisel veritabanları"
+    },
+    {
+      "terim": "Nesneye yönelik veritabanı",
+      "izah": "C++ gibi nesneye yönelik bir dille oluşturulan ve yine bu tarz bir dille kullanılan veritabanı.",
+      "yer": "Nesneye yönelik veritabanları"
+    },
+    {
+      "terim": "Tek / çok kullanıcılı VTYS",
+      "izah": "VTYS'lerin kullanıcı sayısına göre ikiye ayrılması.",
+      "yer": "Kullanıcı sayısına göre"
+    },
+    {
+      "terim": "Geleneksel yaklaşım",
+      "izah": "Verilerin ayrı ayrı dosyalarda gruplanarak tutulması; verilerin artması ve aynı anda erişme ve düzenleme ihtiyacı karşısında yetersiz kalmıştır.",
+      "yer": "Neden veritabanı kullanılır"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-siniflandirma.s1",
+      "tip": "secme",
+      "yer": "Hiyerarşik veritabanları",
+      "soru": "Veritabanları için kullanılan **ilk** model hangisidir?",
+      "secenekler": [
+        "Hiyerarşik",
+        "Ağ",
+        "İlişkisel",
+        "Nesneye yönelik"
+      ],
+      "dogru": 0,
+      "izah": "Hiyerarşik model veritabanları için kullanılan ilk modeldir ve bilgileri ağaç yapısında saklar. Ağ modeli, hiyerarşik model yetersiz kalınca ortaya çıkmıştır."
+    },
+    {
+      "id": "vt-siniflandirma.s2",
+      "tip": "secme",
+      "yer": "Ağ veritabanları",
+      "soru": "Verileri, ağaçların daha gelişmiş hâli olan **graflar** şeklinde saklayan model hangisidir?",
+      "secenekler": [
+        "Ağ",
+        "Hiyerarşik",
+        "İlişkisel",
+        "Nesneye yönelik"
+      ],
+      "dogru": 0,
+      "izah": "Ağ veritabanları, hiyerarşik veritabanları yetersiz kalınca 1960'ların sonunda ortaya çıkmış ve verileri graflar şeklinde saklamıştır. Hiyerarşik model ağaç, ilişkisel model tablo kullanır."
+    },
+    {
+      "id": "vt-siniflandirma.s3",
+      "tip": "dizme",
+      "yer": "Sınıflandırma ölçütleri",
+      "soru": "Veri modellerini ortaya çıkış sırasına göre diz (en eski en üstte).",
+      "parcalar": [
+        "Hiyerarşik",
+        "Ağ",
+        "İlişkisel"
+      ],
+      "izah": "Hiyerarşik model ilk modeldir; o yetersiz kalınca 1960'ların sonunda ağ modeli çıktı; ilişkisel model 1970'lerin başında geliştirildi."
+    },
+    {
+      "id": "vt-siniflandirma.s4",
+      "tip": "esles",
+      "yer": "Sınıflandırma ölçütleri",
+      "soru": "Veri modellerini özellikleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Hiyerarşik",
+          "İlk model; ağaç yapısı"
+        ],
+        [
+          "Ağ",
+          "1960'ların sonu; graf yapısı"
+        ],
+        [
+          "İlişkisel",
+          "1970'lerin başı; tablolar"
+        ],
+        [
+          "Nesneye yönelik",
+          "C++ gibi nesneye yönelik bir dille oluşturulur"
+        ]
+      ],
+      "izah": "Hiyerarşik: ilk model, ağaç. Ağ: 1960'ların sonu, graf. İlişkisel: 1970'lerin başı, tablo ve matematiksel ilişkiler. Nesneye yönelik: C++ gibi nesneye yönelik bir dille oluşturulup kullanılır."
+    },
+    {
+      "id": "vt-siniflandirma.s5",
+      "tip": "secme",
+      "yer": "İlişkisel veritabanları",
+      "soru": "İlişkisel veritabanlarında **tablolar arasındaki bağlantılar** nasıl gösterilir?",
+      "secenekler": [
+        "Matematiksel ilişkilerle",
+        "Ağaçtaki kök ve dal bağlarıyla",
+        "Verileri saran etiketlerle",
+        "Nesnelerin birbirine gönderdiği mesajlarla"
+      ],
+      "dogru": 0,
+      "izah": "İlişkisel modelde veriler tablo şeklinde saklanır ve tablolar arasındaki bağlantılar matematiksel ilişkilerle gösterilir."
+    },
+    {
+      "id": "vt-siniflandirma.s6",
+      "tip": "dy",
+      "yer": "İlişkisel veritabanları",
+      "ifade": "İlişkisel veritabanları 1960'ların sonunda geliştirilmiştir.",
+      "dogru": false,
+      "izah": "İlişkisel veritabanları **1970'lerin başında** geliştirilmiştir. 1960'ların sonunda ortaya çıkan, ağ veritabanlarıdır."
+    },
+    {
+      "id": "vt-siniflandirma.s7",
+      "tip": "dy",
+      "yer": "İlişkisel veritabanları",
+      "ifade": "Hocaya göre günümüzdeki hemen hemen tüm veritabanı programları ilişkisel yapıdadır.",
+      "dogru": true,
+      "izah": "Slaytta ilişkisel veritabanlarının son maddesi budur: günümüzdeki hemen hemen tüm veritabanı programları bu yapıdadır."
+    },
+    {
+      "id": "vt-siniflandirma.s8",
+      "tip": "bosluk",
+      "yer": "Nesneye yönelik veritabanları",
+      "metin": "Kelime işlemci ve hesap tablosu programlarında kullanılan ___ artık veritabanlarında da kullanılmaktadır.",
+      "cevaplar": [
+        [
+          "nesneler",
+          "nesne"
+        ]
+      ],
+      "izah": "Bu cümle nesneye yönelik veritabanlarını anlatır."
+    },
+    {
+      "id": "vt-siniflandirma.s9",
+      "tip": "secme",
+      "yer": "Sınıflandırma ölçütleri",
+      "soru": "Aşağıdakilerden hangisi VTYS'lerin **veri modeline göre** sınıflandırılmasında yer almaz?",
+      "secenekler": [
+        "Tek kullanıcılı",
+        "Hiyerarşik",
+        "Ağ",
+        "Nesneye yönelik"
+      ],
+      "dogru": 0,
+      "izah": "Veri modeline göre türler: hiyerarşik, ağ, ilişkisel, nesneye yönelik. Tek kullanıcılı ve çok kullanıcılı ise **kullanıcı sayısına göre** yapılan sınıflandırmadır."
+    },
+    {
+      "id": "vt-siniflandirma.s10",
+      "tip": "bosluk",
+      "yer": "Sınıflandırma ölçütleri",
+      "metin": "VTYS'ler veri modeline ve ___ sayısına göre sınıflandırılır.",
+      "cevaplar": [
+        [
+          "kullanıcı"
+        ]
+      ],
+      "izah": "Kullanıcı sayısına göre VTYS'ler tek kullanıcılı ve çok kullanıcılı olarak ikiye ayrılır."
+    },
+    {
+      "id": "vt-siniflandirma.s11",
+      "tip": "secme",
+      "yer": "Neden veritabanı kullanılır",
+      "soru": "Verilerin tutulması, saklanması ve erişilmesinde **geleneksel yaklaşım** nedir?",
+      "secenekler": [
+        "Verilerin ayrı ayrı dosyalarda gruplanması",
+        "Verilerin tek bir merkezde tablolar hâlinde tutulması",
+        "Verilerin etiketlerle işaretlenip tek belgede tutulması",
+        "Verilerin ağaç yapısında tek bir kökten dallandırılması"
+      ],
+      "dogru": 0,
+      "izah": "Geleneksel yaklaşım verileri ayrı ayrı dosyalarda gruplar. Verilerin artması ve aynı anda erişme ve düzenleme ihtiyacı karşısında bu yaklaşım yetersiz kalmıştır."
+    },
+    {
+      "id": "vt-siniflandirma.s12",
+      "tip": "secme",
+      "yer": "Neden veritabanı kullanılır",
+      "soru": "Hocaya göre geleneksel yaklaşım **neden** yetersiz kalmıştır?",
+      "secenekler": [
+        "Verilerin artması ve verilere aynı anda erişme ve düzenleme ihtiyacı yüzünden",
+        "Kullanıcı sayısının azalmasıyla ayrı dosyaların gereksiz hâle gelmesi yüzünden",
+        "Dosyaların matematiksel ilişkilerle birbirine bağlanmasının zorlaşması yüzünden",
+        "Verilerin ağaç yapısından graf yapısına taşınması gerektiği için"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki gerekçe: verilerin artması ve verilere aynı anda erişme ve düzenleme ihtiyacı."
+    },
+    {
+      "id": "vt-siniflandirma.s13",
+      "tip": "secme",
+      "yer": "Veritabanı yaklaşımının avantajları",
+      "soru": "Aşağıdakilerden hangisi veritabanı yaklaşımının avantajlarından biri **değildir**?",
+      "secenekler": [
+        "Her birimin ortak veriyi ayrı dosyada kendisi tutması",
+        "Ortak verilerin tekrarının önlenmesi",
+        "Veri paylaşımının sağlanması",
+        "Güvenlik ve gizliliğin istenilen düzeyde sağlanması"
+      ],
+      "dogru": 0,
+      "izah": "Her birimin kendi kopyasını ayrı dosyada tutması geleneksel yaklaşımdır ve ortak verilerin tekrarına yol açar. Veritabanı yaklaşımı ise tekrarı önler, paylaşımı ve güvenliği sağlar."
+    },
+    {
+      "id": "vt-siniflandirma.s14",
+      "tip": "dy",
+      "yer": "Veritabanı yaklaşımının avantajları",
+      "ifade": "Fiziksel yapı ve erişim yöntemi karmaşıklıklarının çok katmanlı mimarilerle kullanıcıdan gizlenmesi, veritabanı yaklaşımının avantajlarındandır.",
+      "dogru": true,
+      "izah": "Bu, slaytta sayılan dokuz avantajdan biridir."
+    },
+    {
+      "id": "vt-siniflandirma.s15",
+      "tip": "klasik",
+      "yer": "Veritabanı yaklaşımının avantajları",
+      "soru": "Veritabanı yaklaşımının avantajlarından en az beşini yazın.",
+      "cevap": "1. Ortak verilerin tekrarının önlenmesi\n2. Verilerin merkezi denetiminin ve tutarlılığının sağlanması\n3. Veri paylaşımının sağlanması\n4. Fiziksel yapı ve erişim yöntemi karmaşıklıklarının çok katmanlı mimarilerle kullanıcıdan gizlenmesi\n5. Her kullanıcıya yalnız ilgilendiği verilerin, alışık olduğu kolay ve anlaşılır yapılarda sunulması\n6. Sunulan çözümleme, tasarım ve geliştirme araçlarıyla uygulama yazılımı geliştirmenin kolaylaşması\n7. Veri bütünlüğü için gerekli olanakların sağlanması\n8. Güvenlik ve gizliliğin istenilen düzeyde sağlanması\n9. Yedekleme, yeniden başlatma, onarma gibi işletim sorunlarına çözüm getirilmesi",
+      "anahtarlar": [
+        "tekrar",
+        "merkezi denetim",
+        "paylaşım",
+        "karmaşıklık",
+        "veri bütünlüğü",
+        "güvenlik",
+        "yedekleme"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-siniflandirma.k1",
+      "yer": "Sınıflandırma ölçütleri",
+      "on": "VTYS'ler hangi ölçütlere göre sınıflandırılır? Her ölçütün türlerini sayın.",
+      "arka": "- Veri modeline göre: hiyerarşik, ağ, ilişkisel, nesneye yönelik.\n- Kullanıcı sayısına göre: tek kullanıcılı, çok kullanıcılı."
+    },
+    {
+      "id": "vt-siniflandirma.k2",
+      "yer": "Ağ veritabanları",
+      "on": "Hiyerarşik ve ağ veritabanları arasındaki fark nedir?",
+      "arka": "Hiyerarşik model ilk modeldir ve bilgileri **ağaç** yapısında saklar. O yetersiz kalınca 1960'ların sonunda ağ modeli çıktı; verileri ağaçların daha gelişmiş hâli olan **graflar** şeklinde saklar. Ağaçta her düğümün tek üstü olur, grafta bir düğüme birden çok düğüm bağlanabilir."
+    },
+    {
+      "id": "vt-siniflandirma.k3",
+      "yer": "İlişkisel veritabanları",
+      "on": "İlişkisel veritabanlarının özelliklerini anlatın.",
+      "arka": "1970'lerin başında geliştirildi. Veriler **tablo** şeklinde saklanır; tablolar arasındaki bağlantılar **matematiksel ilişkilerle** gösterilir. Hocaya göre günümüzdeki hemen hemen tüm veritabanı programları bu yapıdadır."
+    },
+    {
+      "id": "vt-siniflandirma.k4",
+      "yer": "Nesneye yönelik veritabanları",
+      "on": "Nesneye yönelik veritabanı nedir?",
+      "arka": "C++ gibi nesneye yönelik bir dille oluşturulan ve yine bu tarz bir dille kullanılan veritabanıdır. Kelime işlemci ve hesap tablosu programlarındaki nesneler artık veritabanlarında da kullanılmaktadır."
+    },
+    {
+      "id": "vt-siniflandirma.k5",
+      "yer": "Neden veritabanı kullanılır",
+      "on": "Neden veritabanı kullanırız? Geleneksel yaklaşımın sorunu neydi?",
+      "arka": "Geleneksel yaklaşımda veriler ayrı ayrı dosyalarda gruplanır. Verilerin artması ve verilere **aynı anda erişme ve düzenleme** ihtiyacı karşısında bu yaklaşım yetersiz kaldı; veritabanı yaklaşımı bu ihtiyaçtan doğdu."
+    },
+    {
+      "id": "vt-siniflandirma.k6",
+      "yer": "Veritabanı yaklaşımının avantajları",
+      "on": "Veritabanı yaklaşımının avantajlarından beşini sayın.",
+      "arka": "Ortak verilerin tekrarının önlenmesi; merkezi denetim ve tutarlılık; veri paylaşımı; fiziksel yapı ve erişim karmaşıklığının çok katmanlı mimarilerle gizlenmesi; her kullanıcıya ilgilendiği verinin anlaşılır yapıda sunulması; uygulama geliştirmenin kolaylaşması; veri bütünlüğü olanakları; güvenlik ve gizlilik; yedekleme, yeniden başlatma, onarma."
+    },
+    {
+      "id": "vt-siniflandirma.k7",
+      "yer": "Veritabanı yaklaşımının avantajları",
+      "on": "Veritabanı yaklaşımının veriyle ilgili ilk üç avantajı nedir?",
+      "arka": "1. Ortak verilerin tekrarının önlenmesi\n2. Verilerin merkezi denetiminin ve tutarlılığının sağlanması\n3. Veri paylaşımının sağlanması\nEk: aynı veri birden çok dosyada ayrı ayrı tutulursa, değiştiğinde birini güncelleyip ötekini unutmak kolaydır ve dosyalar birbirini tutmaz; veritabanında ortak veri bir kez tutulur."
+    }
+  ]
+}

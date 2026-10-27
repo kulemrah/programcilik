@@ -1,0 +1,306 @@
+{
+  "id": "eko-dusunce",
+  "baslik": "Ekoloji Biliminin Doğuşu: Düşünce Tarihi",
+  "kaynak": "Ekoloji_Bilgisi_2026-2027_GÜZ-1._HAFTA.pdf, slayt 10–13, 15–16",
+  "kavramlar": [
+    {
+      "terim": "Cornucopizm yanılgısı",
+      "izah": "Doğanın sunduğu madde ve hizmetlerin sınırsız olduğu, hiç bitmeyeceği ve teknolojinin gelişimiyle nasıl olsa onların yerine geçebilen yeni keşifler olacağı varsayımı.",
+      "yer": "Cornucopizm yanılgısı"
+    },
+    {
+      "terim": "İnsan-merkezci düşünce",
+      "izah": "Ortaçağ boyunca egemen olan, doğayı insanın dışında tutan ve doğanın insan için var olduğuna inanan düşünce.",
+      "yer": "Ortaçağda insan-merkezci düşünce"
+    },
+    {
+      "terim": "Mekanist evren anlayışı",
+      "izah": "Hocaya göre Ortaçağın son dönemlerinde ortaya çıkan düşünce; geri planında René Descartes'ın zihin-beden ikiliği (Kartezyen düşünce) vardır.",
+      "yer": "Mekanist evren anlayışı ve Descartes"
+    },
+    {
+      "terim": "Kartezyen dünya görüşü",
+      "izah": "Descartes'a dayanan, doğanın işleyişini mekanik kurallara tabi gören görüş; hocaya göre doğayı kullanmak ve sömürmek hâline geldi.",
+      "yer": "Kartezyen dünya görüşü"
+    },
+    {
+      "terim": "Yararcı mantık",
+      "izah": "Newtoncu bilimin yükselişiyle doğanın matematik bir düzenlilik içine sokulup yeniden ele alınmasında gereklerine uyulan mantık.",
+      "yer": "Newtoncu bilim ve yararcı mantık"
+    },
+    {
+      "terim": "Derin ekoloji",
+      "izah": "Temellerini Arne Naess'in attığı kavram. Naess'e göre kendini bulmanın en üst noktası çeşitliliğin içinde herkesle birden bir birlik duygusu içinde yaşamak, en alt noktası egoizmdir.",
+      "yer": "Derin ekoloji: Arne Naess"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "eko-dusunce.s1",
+      "tip": "secme",
+      "yer": "Doğanın sunduğu değerler ve parasal değer",
+      "soru": "Hocaya göre, hangi politik ideoloji olursa olsun, sistemlerin doğanın sunduğu değerlere yaklaşımı nasıldır?",
+      "secenekler": [
+        "Parasal değer biçmezler; bir sorun çıkmadığı sürece bu değerler göz ardı edilir",
+        "Parasal değer biçerler; ancak bu değeri piyasa fiyatının altında tutarlar",
+        "Yalnızca sanayi devriminden sonra bu değerlere parasal değer biçmişlerdir",
+        "Yalnızca gelişmiş ülkelerin sistemleri bu değerlere parasal değer biçer"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın ifadesi: sistemler doğanın sunduğu değerlere **parasal değer biçmezler**; bir sorun çıkmadığı sürece doğanın bedelsiz sunduğu madde ve hizmetlerin değeri hep göz ardı edilir."
+    },
+    {
+      "id": "eko-dusunce.s2",
+      "tip": "secme",
+      "yer": "Cornucopizm yanılgısı",
+      "soru": "Hocanın **Cornucopizm Yanılgısı** dediği varsayım hangisidir?",
+      "secenekler": [
+        "Doğanın madde ve hizmetlerinin sınırsız olduğu, teknolojiyle yerlerine yenilerinin geleceği",
+        "Doğanın insanın dışında tutulduğu ve yalnızca insan için var olduğu, ona hizmet ettiği",
+        "Doğanın işleyişinin baştan sona makine gibi mekanik kurallara tabi olduğu, öngörülebildiği",
+        "Doğanın matematik bir düzenlilik içine sokulup yararcı mantıkla yeniden ele alınabileceği"
+      ],
+      "dogru": 0,
+      "izah": "Cornucopizm yanılgısı: doğanın sunduğu madde ve hizmetlerin **sınırsız** olduğu, hiç bitmeyeceği ve teknolojinin gelişimiyle onların yerine geçebilen yeni keşifler olacağı varsayımıdır. Öbür şıklar insan-merkezci düşünceyi, Descartes'ı ve Newtoncu bilimi anlatır."
+    },
+    {
+      "id": "eko-dusunce.s3",
+      "tip": "bosluk",
+      "yer": "Cornucopizm yanılgısı",
+      "metin": "Doğanın madde ve hizmetlerinin sınırsız olduğu, hiç bitmeyeceği ve teknolojinin gelişimiyle yerlerine yeni keşifler geleceği varsayımına hoca ___ yanılgısı der.",
+      "cevaplar": [
+        [
+          "Cornucopizm",
+          "kornukopizm",
+          "cornucopianizm"
+        ]
+      ],
+      "izah": "Hoca bu varsayıma **Cornucopizm Yanılgısı** der."
+    },
+    {
+      "id": "eko-dusunce.s4",
+      "tip": "secme",
+      "yer": "Ortaçağda insan-merkezci düşünce",
+      "soru": "Ortaçağ boyunca egemen olan, doğayı insanın dışında tutan ve doğanın insan için var olduğuna inanan düşünce hangisidir?",
+      "secenekler": [
+        "İnsan-merkezci düşünce",
+        "Organik dünya görüşü",
+        "Derin ekoloji",
+        "Bütüncül ekoloji yaklaşımı"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre Ortaçağ boyunca egemen olan **insan-merkezci düşünce** doğayı insanın dışında tutmuş, doğanın insan için var olduğuna inanmıştır. Ekolojinin bütüncül yöntemi ve derin ekoloji ise bu düşüncenin karşısındadır."
+    },
+    {
+      "id": "eko-dusunce.s5",
+      "tip": "dy",
+      "yer": "Rönesans'tan sonra ekolojiye dair yazılar",
+      "ifade": "Hocaya göre ekolojiye dair yazılar Rönesans'tan sonra tekrar ortaya çıkmış ve ekoloji bilimine yön vermiştir.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi: \"Rönesans'tan sonra tekrar ortaya çıkan ekolojiye dair yazılar ekoloji bilimine yön vermiştir.\""
+    },
+    {
+      "id": "eko-dusunce.s6",
+      "tip": "secme",
+      "yer": "Mekanist evren anlayışı ve Descartes",
+      "soru": "Hocaya göre **Mekanist Evren Anlayışı**'nın geri planında ne vardır?",
+      "secenekler": [
+        "René Descartes'ın zihin-beden ikiliği",
+        "Charles Darwin'in tabiattaki uyum görüşü",
+        "Arne Naess'in derin ekoloji anlayışı",
+        "Ernst Haeckel'in ekoloji tanımı"
+      ],
+      "dogru": 0,
+      "izah": "Mekanist evren anlayışının geri planında **René Descartes'ın zihin-beden ikiliği**, yani Kartezyen düşünce vardır."
+    },
+    {
+      "id": "eko-dusunce.s7",
+      "tip": "secme",
+      "yer": "Makine görüşü ve endüstri devrimi",
+      "soru": "Hocaya göre endüstri devriminin felsefesini ne oluşturmaktadır?",
+      "secenekler": [
+        "Descartes'taki makine görüşü",
+        "Darwin'in uyum görüşü",
+        "Organik dünya görüşü",
+        "Naess'in derin ekolojisi"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın ifadesi: Descartes'taki **makine görüşü**, endüstri devriminin felsefesini oluşturmaktadır."
+    },
+    {
+      "id": "eko-dusunce.s8",
+      "tip": "dy",
+      "yer": "Makine görüşü ve endüstri devrimi",
+      "ifade": "Hocaya göre makine görüşü yalnızca doğanın makineleştiği bir dönemin kapısını aralamıştır.",
+      "dogru": false,
+      "izah": "Hocaya göre bu görüş **sadece doğanın değil insanın da** makineleştiği bir dönemin kapısını aralamıştır."
+    },
+    {
+      "id": "eko-dusunce.s9",
+      "tip": "secme",
+      "yer": "Newtoncu bilim ve yararcı mantık",
+      "soru": "Hocaya göre Newtoncu bilimin yükselişiyle matematik bir düzenlilik içine sokulan doğa, hangi mantığın gereklerine göre yeniden ele alınmıştır?",
+      "secenekler": [
+        "Yararcı mantık",
+        "Bütüncül mantık",
+        "Organik mantık",
+        "Özdenetim mantığı"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre doğa, Newtoncu bilimin yükselişi paralelinde matematik bir düzenlilik içine sokulmuş ve **\"yararcı mantığın\"** gerekliliklerine göre yeniden ele alınmıştır."
+    },
+    {
+      "id": "eko-dusunce.s10",
+      "tip": "dy",
+      "yer": "Newtoncu bilim ve yararcı mantık",
+      "ifade": "Hocaya göre pre-modern doğa kavranışında doğa, hem üretkenlik kaynağı hem de vahşi ve denetlenemez bir güç olarak görülüyordu.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi: hem üretkenlik kaynağı hem de vahşi ve denetlenemez bir güç olarak görülen pre-modern doğa kavranışı, Newtoncu bilimle yerini yararcı mantığa bırakmıştır."
+    },
+    {
+      "id": "eko-dusunce.s11",
+      "tip": "secme",
+      "yer": "Charles Darwin",
+      "soru": "Hocaya göre bütün tabiattakilerin birbiriyle uyum içinde olduklarını ortaya koyan kimdir?",
+      "secenekler": [
+        "Charles Darwin",
+        "René Descartes",
+        "Isaac Newton",
+        "Justus von Liebig"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre **Charles Darwin** bütün tabiattakilerin birbiriyle uyum içinde olduklarını ortaya koymuştur. Descartes doğanın işleyişini mekanik kurallara bağlamıştır."
+    },
+    {
+      "id": "eko-dusunce.s12",
+      "tip": "dy",
+      "yer": "Ekoloji bilimi gelişiyor",
+      "ifade": "Hocaya göre ekolojinin ayrı bir bilim dalı olması 1900'lü yılları bulmaktadır.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi: \"Ekolojinin ayrı bir bilim dalı olması 1900'lü yılları bulmaktadır.\""
+    },
+    {
+      "id": "eko-dusunce.s13",
+      "tip": "secme",
+      "yer": "Yerkürenin uzaydan görünüşü",
+      "soru": "Hocanın slaytında verilen Ay'a ilk iniş tarihi hangisidir?",
+      "secenekler": [
+        "20 Temmuz 1969",
+        "20 Temmuz 1970",
+        "12 Nisan 1961",
+        "7 Aralık 1972"
+      ],
+      "dogru": 0,
+      "izah": "Ay'a ilk iniş **20 Temmuz 1969**'da gerçekleşmiştir (Apollo 11)."
+    },
+    {
+      "id": "eko-dusunce.s14",
+      "tip": "dy",
+      "yer": "1970'lerde küresel ilgi",
+      "ifade": "Hocaya göre 1970'li yılların başında kirlenme ve hızlı nüfus artışı gibi konulara ilgi yalnızca bilim insanlarıyla sınırlı kalmıştır.",
+      "dogru": false,
+      "izah": "Hocaya göre 1970'li yılların başında **hemen herkes** kirlenme, doğal alanların korunması, hızlı nüfus artışı, gıda ve enerji tüketimi ve biyolojik çeşitlilik konularına ilgi duymaya başlamıştır."
+    },
+    {
+      "id": "eko-dusunce.s15",
+      "tip": "klasik",
+      "yer": "1970'lerde küresel ilgi",
+      "soru": "Hocaya göre 1970'li yılların başında hemen herkesin ilgi duymaya başladığı konuları sayın.",
+      "cevap": "Kirlenme, doğal alanların korunması, hızlı nüfus artışı, gıda ve enerji tüketimi ve biyolojik çeşitlilik.",
+      "anahtarlar": [
+        "kirlenme",
+        "doğal alanların korunması",
+        "nüfus artışı",
+        "gıda",
+        "enerji",
+        "biyolojik çeşitlilik"
+      ]
+    },
+    {
+      "id": "eko-dusunce.s16",
+      "tip": "secme",
+      "yer": "Derin ekoloji: Arne Naess",
+      "soru": "**Derin ekoloji** kavramının temellerini kim atmıştır?",
+      "secenekler": [
+        "Arne Naess",
+        "Ernst Haeckel",
+        "Charles Elton",
+        "Charles Darwin"
+      ],
+      "dogru": 0,
+      "izah": "Derin ekoloji kavramının temellerini **Arne Naess** atmıştır. Haeckel ekoloji terimini ilk kullanan kişidir."
+    },
+    {
+      "id": "eko-dusunce.s17",
+      "tip": "secme",
+      "yer": "Derin ekoloji: Arne Naess",
+      "soru": "Naess'e göre kendini bulmanın **en alt noktası** nedir?",
+      "secenekler": [
+        "İnsanın her şeye yabancılaşmasıyla noktalanan egoizm",
+        "Çeşitliliğin içinde herkesle birden bir birlik duygusu",
+        "Doğayı insanın dışında tutan insan-merkezci bakış",
+        "Doğanın işleyişini mekanik kurallara bağlayan bakış"
+      ],
+      "dogru": 0,
+      "izah": "Naess'e göre kendini bulmanın en üst noktası çeşitliliğin içinde herkesle birden bir birlik duygusu içinde yaşamak; **en alt noktası** ise insanın her şeye yabancılaşmasıyla noktalanan **egoizmdir**."
+    },
+    {
+      "id": "eko-dusunce.s18",
+      "tip": "dy",
+      "yer": "Derin ekoloji: Arne Naess",
+      "ifade": "Naess'e göre kendini bulmanın en üst noktası, insanın doğayı denetim altına almasıdır.",
+      "dogru": false,
+      "izah": "Naess'e göre en üst nokta çeşitliliğin içinde herkesle birden bir **birlik duygusu** içinde yaşamaktır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "eko-dusunce.k1",
+      "yer": "Cornucopizm yanılgısı",
+      "on": "Doğanın değeri neden göz ardı edilir? Cornucopizm yanılgısı nedir?",
+      "arka": "Hangi politik ideoloji olursa olsun sistemler doğanın sunduğu değerlere parasal değer biçmez; bir sorun çıkmadığı sürece doğanın bedelsiz sunduğu madde ve hizmetlerin değeri göz ardı edilir.\nCornucopizm yanılgısı: bu madde ve hizmetlerin sınırsız olduğu, hiç bitmeyeceği ve teknolojinin gelişimiyle nasıl olsa yerlerine yeni keşifler geleceği varsayımı.\nEk: Ad, Yunan mitolojisindeki bolluk boynuzundan (cornucopia) gelir."
+    },
+    {
+      "id": "eko-dusunce.k2",
+      "yer": "Ortaçağda insan-merkezci düşünce",
+      "on": "Ortaçağdaki insan-merkezci düşünce nedir? Rönesans'tan sonra ne oldu?",
+      "arka": "Ortaçağ boyunca egemen olan insan-merkezci düşünce doğayı insanın dışında tutmuş, doğanın insan için var olduğuna inanmış ve bu doğrultuda bir bakış açısı geliştirmiştir.\nRönesans'tan sonra tekrar ortaya çıkan ekolojiye dair yazılar ekoloji bilimine yön vermiştir."
+    },
+    {
+      "id": "eko-dusunce.k3",
+      "yer": "Mekanist evren anlayışı ve Descartes",
+      "on": "Mekanist evren anlayışını ve Descartes'ın etkisini anlatın.",
+      "arka": "Hocaya göre Ortaçağın son dönemlerinde mekanist evren anlayışı oluştu; geri planında René Descartes'ın zihin-beden ikiliği (Kartezyen düşünce) vardır. Descartes'a göre doğanın işleyişi mekanik kurallara tabidir.\nDescartes'taki makine görüşü endüstri devriminin felsefesini oluşturur; yalnızca doğanın değil insanın da makineleştiği bir dönemin kapısını aralamıştır. Kartezyen dünya görüşü doğayı kullanmak ve sömürmek hâline geldi."
+    },
+    {
+      "id": "eko-dusunce.k4",
+      "yer": "Newtoncu bilim ve yararcı mantık",
+      "on": "Newtoncu bilimin yükselişiyle doğa kavrayışı nasıl değişti?",
+      "arka": "Pre-modern dönemde doğa hem üretkenlik kaynağı hem de vahşi ve denetlenemez bir güç olarak görülüyordu. Newtoncu bilimin yükselişi paralelinde doğa matematik bir düzenlilik içerisine sokuldu ve \"yararcı mantığın\" gerekliliklerine göre yeniden ele alındı."
+    },
+    {
+      "id": "eko-dusunce.k5",
+      "yer": "Charles Darwin",
+      "on": "Hocaya göre Charles Darwin ne ortaya koymuştur?",
+      "arka": "Bütün tabiattakilerin birbiriyle uyum içinde olduklarını ortaya koymuştur."
+    },
+    {
+      "id": "eko-dusunce.k6",
+      "yer": "Ekoloji bilimi gelişiyor",
+      "on": "Ekoloji bilimi 20. yüzyılda nasıl gelişti?",
+      "arka": "- Ekolojinin ayrı bir bilim dalı olması 1900'lü yılları bulur.\n- Yerkürenin uzaydan görünüşünün fotoğrafları astronotlarca 1968-1970 arasında çekilmeye başlandı (Ay'a ilk iniş 20 Temmuz 1969). Küresel bilinçlenme bu yıllarda tetiklendi; yerkürenin kırılıp bozulabilen ve uzayda tek başına dolaşan bir gezegen olduğu ilk kez anlaşıldı.\n- 1970'lerin başında hemen herkes kirlenme, doğal alanların korunması, hızlı nüfus artışı, gıda ve enerji tüketimi ve biyolojik çeşitliliğe ilgi duymaya başladı.\nEk: Uzaydan Dünya fotoğrafları daha önce de çekilmiştir (1946 V-2 roketi; 1961'de yörüngeden Titov; 1966 Lunar Orbiter 1)."
+    },
+    {
+      "id": "eko-dusunce.k7",
+      "yer": "Derin ekoloji: Arne Naess",
+      "on": "Derin ekolojinin temellerini kim attı? Kendini bulmanın en üst ve en alt noktası nedir?",
+      "arka": "Arne Naess. Naess'e göre kendini bulmanın en üst noktası çeşitliliğin içinde herkesle birden bir birlik duygusu içinde yaşamak; en alt noktası ise insanın her şeye yabancılaşmasıyla noktalanan egoizmdir.\nEk: \"Derin ekoloji\" adı ilk kez Naess'in 1973 tarihli makalesinde geçer."
+    },
+    {
+      "id": "eko-dusunce.k8",
+      "yer": "Ego ve eko (slayt görseli)",
+      "on": "Slayttaki EGO ve ECO şekilleri neyi gösterir?",
+      "arka": "EGO şeklinde canlılar bir piramit oluşturur ve insan tepededir. ECO şeklinde canlılar bir daireye dağılmıştır ve insan onların arasında yer alır.\nEk: Slaytta açıklama yoktur; EGO insan-merkezci bakışı, ECO insanın doğanın bir parçası olduğu bakışı anlatır."
+    }
+  ]
+}

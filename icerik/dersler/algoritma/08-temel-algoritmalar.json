@@ -1,0 +1,414 @@
+{
+  "id": "alg-temel-algoritmalar",
+  "baslik": "Temel Algoritmalar",
+  "kaynak": "algoritma_ve_programlama_temelleri_3__hafta_2.pdf, slayt 21–28",
+  "kavramlar": [
+    {
+      "terim": "Bubble Sort (Kabarcık Sıralama)",
+      "izah": "Dizi elemanlarını karşılaştırarak ve yer değiştirerek sıralar; basit ama genellikle yavaştır.",
+      "yer": "Basit sıralama algoritmaları"
+    },
+    {
+      "terim": "Selection Sort (Seçmeli Sıralama)",
+      "izah": "Dizide en küçük elemanı bulup baştaki elemanla değiştirir; işlem dizinin tüm elemanları için tekrarlanır.",
+      "yer": "Basit sıralama algoritmaları"
+    },
+    {
+      "terim": "Insertion Sort (Araya Ekleme Sıralaması)",
+      "izah": "Her elemanı, dizinin zaten sıralanmış olan kısmında doğru yerine ekler.",
+      "yer": "Basit sıralama algoritmaları"
+    },
+    {
+      "terim": "Quick Sort (Hızlı Sıralama)",
+      "izah": "\"Böl ve yönet\" yaklaşımıyla bir pivot eleman seçer, diziyi daha küçük ve daha büyük alt dizilere ayırır; genellikle hızlıdır.",
+      "yer": "Gelişmiş sıralama algoritmaları"
+    },
+    {
+      "terim": "Merge Sort (Birleştirmeli Sıralama)",
+      "izah": "Dizi alt dizilere bölünür, her biri sıralanır ve ardından birleştirilir; kararlı bir sıralama algoritmasıdır.",
+      "yer": "Gelişmiş sıralama algoritmaları"
+    },
+    {
+      "terim": "Linear Search (Doğrusal Arama)",
+      "izah": "Dizi elemanlarını baştan sona kontrol ederek aranan değeri bulmaya çalışır; basit ama büyük dizilerde yavaş olabilir.",
+      "yer": "Arama algoritmaları"
+    },
+    {
+      "terim": "Binary Search (İkili Arama)",
+      "izah": "Sıralı bir dizinin orta noktasını kontrol eder; aranan değerin solda mı sağda mı olduğuna bakarak arama alanını sürekli yarıya indirir; çok hızlıdır.",
+      "yer": "Arama algoritmaları"
+    },
+    {
+      "terim": "Graf",
+      "izah": "Düğüm (vertex) ve kenarlardan (edge) oluşan veri yapısı; ağlar, haritalar, sosyal ilişkiler gibi problemlerde kullanılır.",
+      "yer": "Graf algoritmaları"
+    },
+    {
+      "terim": "BFS ve DFS",
+      "izah": "BFS (genişlik öncelikli arama) bir düğümden başlayıp komşuları katman katman gezer; DFS (derinlik öncelikli arama) olabildiğince derine iner, çıkmaz sokakta geri döner.",
+      "yer": "Graf algoritmaları"
+    },
+    {
+      "terim": "Dijkstra ve Floyd-Warshall",
+      "izah": "Dijkstra bir başlangıç düğümünden diğer tüm düğümlere, Floyd-Warshall tüm düğüm çiftleri arasında en kısa yolu bulur.",
+      "yer": "Graf algoritmaları"
+    },
+    {
+      "terim": "Dinamik programlama",
+      "izah": "Büyük bir problemi, daha önce çözülmüş alt problemlerin çözümlerini hafızada tutarak (önbellekleme, memoization) verimli çözer; genellikle optimizasyon problemlerinde kullanılır. Örnekler: Fibonacci, Knapsack.",
+      "yer": "Dinamik programlama"
+    },
+    {
+      "terim": "Greedy (Açgözlü) algoritmalar",
+      "izah": "Her adımda o an için en iyi kararı verir. Hocanın örneği: para üstünde hep en büyük madeni parayı vermek.",
+      "yer": "Karmaşık algoritma sınıfları"
+    },
+    {
+      "terim": "Hashing (Karma) algoritmalar",
+      "izah": "Veriyi sabit uzunluklu bir değere (hash) dönüştürerek hızlı arama ve doğrulama sağlar. Hocanın verdiği kullanım alanları: şifreleme, veri bütünlüğü kontrolü.",
+      "yer": "Karmaşık algoritma sınıfları"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-temel-algoritmalar.s1",
+      "tip": "esles",
+      "yer": "Sıralama algoritmaları",
+      "soru": "Sıralama algoritmalarını hocanın açıklamalarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Bubble Sort",
+          "Elemanları karşılaştırarak ve yer değiştirerek sıralar"
+        ],
+        [
+          "Selection Sort",
+          "En küçük elemanı bulup baştaki elemanla değiştirir"
+        ],
+        [
+          "Insertion Sort",
+          "Her elemanı sıralanmış kısımda doğru yerine ekler"
+        ],
+        [
+          "Quick Sort",
+          "Pivot seçip küçük ve büyük alt dizilere ayırır"
+        ],
+        [
+          "Merge Sort",
+          "Alt dizilere böler, sıralar ve birleştirir"
+        ]
+      ],
+      "izah": "Bubble, Selection ve Insertion basit; Quick ve Merge gelişmiş (daha hızlı) sıralama algoritmalarıdır."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s2",
+      "tip": "secme",
+      "yer": "Gelişmiş sıralama algoritmaları",
+      "soru": "Aşağıdakilerden hangisi hocanın \"gelişmiş (daha hızlı)\" sıralama algoritmalarındandır?",
+      "secenekler": [
+        "Merge Sort",
+        "Bubble Sort",
+        "Selection Sort",
+        "Insertion Sort"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın gelişmiş sıralama algoritmaları Quick Sort ve Merge Sort'tur. Bubble, Selection ve Insertion basit sıralama algoritmalarıdır."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s3",
+      "tip": "secme",
+      "yer": "Karmaşık algoritma sınıfları",
+      "soru": "Hoca karar ağaçlarını ve sinir ağlarını hangi algoritma sınıfının örneği olarak veriyor?",
+      "secenekler": [
+        "Makine öğrenimi",
+        "Şifreleme",
+        "Dinamik programlama",
+        "Graf algoritmaları"
+      ],
+      "dogru": 0,
+      "izah": "Makine öğrenimi algoritmaları veriden öğrenerek tahmin yapar ya da karar alır; hocanın örnekleri karar ağaçları ve sinir ağlarıdır. Şifrelemenin örnekleri RSA ve AES'tir."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s4",
+      "tip": "secme",
+      "yer": "Gelişmiş sıralama algoritmaları",
+      "soru": "Hocanın notunda \"kararlı bir sıralama algoritması\" diye nitelenen algoritma hangisidir?",
+      "secenekler": [
+        "Merge Sort",
+        "Quick Sort",
+        "Selection Sort",
+        "Linear Search"
+      ],
+      "dogru": 0,
+      "izah": "Hoca Merge Sort için \"kararlı bir sıralama algoritmasıdır\" diyor. Linear Search bir arama algoritmasıdır."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s5",
+      "tip": "bosluk",
+      "yer": "Graf algoritmaları",
+      "metin": "BFS (Breadth-First Search) algoritmasının Türkçesi ___ Öncelikli Aramadır.",
+      "cevaplar": [
+        [
+          "Genişlik"
+        ]
+      ],
+      "izah": "BFS genişlik öncelikli aramadır: komşuları katman katman gezer. DFS (Depth-First Search) derinlik öncelikli aramadır."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s6",
+      "tip": "secme",
+      "yer": "Arama algoritmaları",
+      "soru": "Yalnızca **sıralı** bir dizide çalışan, arama alanını sürekli yarıya indiren algoritma hangisidir?",
+      "secenekler": [
+        "Binary Search",
+        "Linear Search",
+        "BFS",
+        "DFS"
+      ],
+      "dogru": 0,
+      "izah": "İkili arama sıralı dizinin orta noktasına bakar ve aranan değerin solda mı sağda mı olduğuna göre arama alanını yarıya indirir."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s7",
+      "tip": "dy",
+      "yer": "Arama algoritmaları",
+      "ifade": "İkili arama (Binary Search), aranan değerin orta noktanın solunda mı sağında mı olduğuna bakarak arama alanını yarıya indirir.",
+      "dogru": true,
+      "izah": "Hocanın ikili arama tanımı budur; bu yüzden çok hızlıdır."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s8",
+      "tip": "dy",
+      "yer": "Arama algoritmaları",
+      "ifade": "Doğrusal arama (Linear Search), dizinin orta noktasından başlayarak arar.",
+      "dogru": false,
+      "izah": "Doğrusal arama dizi elemanlarını baştan sona kontrol eder. Orta noktadan başlayan ikili aramadır."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s9",
+      "tip": "secme",
+      "yer": "Graf algoritmaları",
+      "soru": "Graf algoritmalarının incelediği veri yapıları nelerden oluşur?",
+      "secenekler": [
+        "Düğüm (vertex) ve kenarlardan (edge)",
+        "Satır (kayıt) ve sütunlardan (alan)",
+        "Pivot ve küçük-büyük alt dizilerden",
+        "Değişken ve gömülü değerlerden"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın tanımı: graf algoritmaları düğüm (vertex) ve kenarlardan (edge) oluşan veri yapılarını inceler."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s10",
+      "tip": "esles",
+      "yer": "Graf algoritmaları",
+      "soru": "Graf algoritmalarını hocanın açıklamalarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "BFS",
+          "Bir düğümden başlayıp komşuları katman katman gezer"
+        ],
+        [
+          "DFS",
+          "Olabildiğince derine iner, çıkmaz sokakta geri döner"
+        ],
+        [
+          "Dijkstra",
+          "Bir başlangıç düğümünden diğer tüm düğümlere en kısa yol"
+        ],
+        [
+          "Floyd-Warshall",
+          "Tüm düğüm çiftleri arasındaki en kısa yol"
+        ]
+      ],
+      "izah": "BFS genişliğine, DFS derinliğine gezer. Dijkstra tek başlangıç düğümünden, Floyd-Warshall tüm çiftler arasında en kısa yolu bulur."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s11",
+      "tip": "secme",
+      "yer": "Graf algoritmaları",
+      "soru": "Hocanın, bir şehir haritasındaki iki nokta arasındaki en kısa yolu bulma örneğini verdiği algoritma hangisidir?",
+      "secenekler": [
+        "Dijkstra",
+        "DFS",
+        "Quick Sort",
+        "Binary Search"
+      ],
+      "dogru": 0,
+      "izah": "Hoca bu örneği Dijkstra algoritması için veriyor: bir başlangıç düğümünden diğer tüm düğümlere en kısa yolu bulur."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s12",
+      "tip": "dy",
+      "yer": "Graf algoritmaları",
+      "ifade": "Floyd-Warshall algoritması graftaki tüm düğüm çiftleri arasındaki en kısa yolu bulur.",
+      "dogru": true,
+      "izah": "Hocanın tanımı budur. Tek bir başlangıç düğümünden diğer düğümlere en kısa yolu bulan Dijkstra'dır."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s13",
+      "tip": "secme",
+      "yer": "Dinamik programlama",
+      "soru": "Hocaya göre dinamik programlama nasıl çalışır?",
+      "secenekler": [
+        "Alt problemlerin çözümlerini hafızada tutarak büyük problemi verimli çözer",
+        "Her adımda o an için en iyi görünen kararı vererek ilerler",
+        "Veriyi sabit uzunluklu bir değere dönüştürüp hızlı arama sağlar",
+        "Veriden öğrenerek tahminler yapar ya da kararlar alır"
+      ],
+      "dogru": 0,
+      "izah": "Dinamik programlama daha önce çözülmüş alt problemlerin çözümlerini hafızada tutar (önbellekleme, memoization). O anki en iyi karar greedy'nin, sabit uzunluklu değer hashing'in, veriden öğrenme makine öğreniminin tanımıdır."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s14",
+      "tip": "bosluk",
+      "yer": "Dinamik programlama",
+      "metin": "Dinamik programlamada alt problemlerin çözümlerini hafızada tutmaya önbellekleme ya da ___ denir.",
+      "cevaplar": [
+        [
+          "memoization",
+          "memoizasyon"
+        ]
+      ],
+      "izah": "Hocanın notu: önbellekleme - memoization."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s15",
+      "tip": "secme",
+      "yer": "Dinamik programlama",
+      "soru": "Hoca Fibonacci sayılarını ve Knapsack problemini hangi başlık altında örnek veriyor?",
+      "secenekler": [
+        "Dinamik programlama",
+        "Greedy algoritmalar",
+        "Graf algoritmaları",
+        "Arama algoritmaları"
+      ],
+      "dogru": 0,
+      "izah": "İkisi de hocanın dinamik programlama örnekleridir: Fibonacci önceki sonuçları saklayarak hesaplanır; Knapsack belirli kapasitedeki çantaya en değerli eşyaları sığdırma problemidir."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s16",
+      "tip": "esles",
+      "yer": "Karmaşık algoritma sınıfları",
+      "soru": "Algoritma sınıflarını hocanın açıklamalarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Greedy",
+          "Her adımda o an için en iyi kararı verir"
+        ],
+        [
+          "Hashing",
+          "Veriyi sabit uzunluklu bir değere dönüştürür"
+        ],
+        [
+          "Şifreleme",
+          "Veri güvenliği için kullanılır"
+        ],
+        [
+          "Makine öğrenimi",
+          "Veriden öğrenerek tahmin yapar"
+        ]
+      ],
+      "izah": "Hocanın karmaşık algoritma sınıfları ve açıklamaları."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s17",
+      "tip": "secme",
+      "yer": "Karmaşık algoritma sınıfları",
+      "soru": "Para üstü verirken her zaman en büyük madeni parayı vermek hangi yaklaşımın örneğidir?",
+      "secenekler": [
+        "Greedy (açgözlü)",
+        "Dinamik programlama",
+        "Hashing (karma)",
+        "Merge Sort"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın greedy örneği: her adımda o an için en iyi kararı vermek, yani en büyük madeni parayı seçmek."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s18",
+      "tip": "dy",
+      "yer": "Karmaşık algoritma sınıfları",
+      "ifade": "RSA ve AES, hocanın verdiği şifreleme algoritması örnekleridir.",
+      "dogru": true,
+      "izah": "Hocanın şifreleme (cryptography) algoritmaları örnekleri RSA ve AES'tir."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s19",
+      "tip": "dy",
+      "yer": "Arama algoritmaları",
+      "ifade": "Hocaya göre doğrusal arama yalnızca sıralı dizilerde kullanılabilir.",
+      "dogru": false,
+      "izah": "Hoca doğrusal arama için \"sıralı olmayan dizilerde kullanılır\" diyor. Sıralı dizi gerektiren ikili aramadır."
+    },
+    {
+      "id": "alg-temel-algoritmalar.s20",
+      "tip": "klasik",
+      "yer": "Temel algoritmalar",
+      "soru": "Hocanın verdiği temel algoritma gruplarını yazın.",
+      "cevap": "1. Sıralama algoritmaları\n2. Arama algoritmaları\n3. Graf algoritmaları\n4. Dinamik programlama\n5. Karmaşık algoritma sınıfları",
+      "anahtarlar": [
+        "Sıralama",
+        "Arama",
+        "Graf",
+        "Dinamik programlama",
+        "Karmaşık"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-temel-algoritmalar.k1",
+      "yer": "Temel algoritmalar",
+      "on": "Temel algoritmalar nedir? Hoca hangi grupları veriyor?",
+      "arka": "Bilgisayar bilimlerinde ve programlamada sıkça kullanılan, çeşitli problemleri çözmek için etkili yöntemler.\nGruplar: sıralama, arama, graf algoritmaları, dinamik programlama, karmaşık algoritma sınıfları."
+    },
+    {
+      "id": "alg-temel-algoritmalar.k2",
+      "yer": "Basit sıralama algoritmaları",
+      "on": "Basit sıralama algoritmalarını sayın ve açıklayın.",
+      "arka": "- Bubble Sort: karşılaştırarak ve yer değiştirerek sıralar; basit ama yavaş.\n- Selection Sort: en küçük elemanı bulup baştakiyle değiştirir; tüm elemanlar için tekrarlar.\n- Insertion Sort: her elemanı sıralanmış kısımda doğru yerine ekler."
+    },
+    {
+      "id": "alg-temel-algoritmalar.k3",
+      "yer": "Gelişmiş sıralama algoritmaları",
+      "on": "Gelişmiş sıralama algoritmalarını açıklayın.",
+      "arka": "- Quick Sort: böl ve yönet; pivot seçer, küçük ve büyük alt dizilere ayırır; genellikle hızlı.\n- Merge Sort: alt dizilere böler, her birini sıralar, birleştirir; kararlı."
+    },
+    {
+      "id": "alg-temel-algoritmalar.k4",
+      "yer": "Arama algoritmaları",
+      "on": "Doğrusal arama ile ikili arama arasındaki fark nedir?",
+      "arka": "Doğrusal arama elemanları baştan sona kontrol eder; basit ama büyük dizilerde yavaş. Hoca: sıralı olmayan dizilerde kullanılır.\nİkili arama sıralı dizinin ortasına bakar, arama alanını sürekli yarıya indirir; çok hızlı.\nDikkat: ikili arama yalnızca sıralı dizide çalışır."
+    },
+    {
+      "id": "alg-temel-algoritmalar.k5",
+      "yer": "Graf algoritmaları",
+      "on": "Graf nedir? BFS ile DFS'nin farkı nedir?",
+      "arka": "Graf: düğüm (vertex) ve kenarlardan (edge) oluşan veri yapısı; ağlar, haritalar, sosyal ilişkiler.\nBFS komşuları katman katman (genişliğine) gezer; DFS olabildiğince derine iner, çıkmaz sokakta geri döner."
+    },
+    {
+      "id": "alg-temel-algoritmalar.k6",
+      "yer": "Graf algoritmaları",
+      "on": "Dijkstra ile Floyd-Warshall arasındaki fark nedir?",
+      "arka": "Dijkstra: bir başlangıç düğümünden diğer tüm düğümlere en kısa yol (ör. şehir haritasında iki nokta arası).\nFloyd-Warshall: tüm düğüm çiftleri arasındaki en kısa yol."
+    },
+    {
+      "id": "alg-temel-algoritmalar.k7",
+      "yer": "Dinamik programlama",
+      "on": "Dinamik programlama nedir? Örnekleri neler?",
+      "arka": "Büyük ve karmaşık bir problemi, daha önce çözülmüş alt problemlerin çözümlerini hafızada tutarak (önbellekleme, memoization) verimli çözer; genellikle optimizasyon problemlerinde.\nÖrnekler: Fibonacci sayıları, Knapsack problemi."
+    },
+    {
+      "id": "alg-temel-algoritmalar.k8",
+      "yer": "Karmaşık algoritma sınıfları",
+      "on": "Karmaşık algoritma sınıflarını örnekleriyle sayın.",
+      "arka": "- Greedy: her adımda o anki en iyi karar (para üstünde en büyük madeni para).\n- Hashing: veriyi sabit uzunluklu değere dönüştürür; hızlı arama ve doğrulama.\n- Şifreleme: veri güvenliği (RSA, AES).\n- Makine öğrenimi: veriden öğrenerek tahmin (karar ağaçları, sinir ağları)."
+    },
+    {
+      "id": "alg-temel-algoritmalar.k9",
+      "yer": "Karmaşık algoritma sınıfları",
+      "on": "Hash ile şifreleme aynı şey mi?",
+      "arka": "Ek: hayır. Şifrelenmiş veri anahtarla geri açılabilir (RSA, AES); hash tek yönlüdür, asıl veriye geri dönülemez. Hash daha çok parola saklama ve veri bütünlüğü kontrolünde kullanılır."
+    }
+  ]
+}

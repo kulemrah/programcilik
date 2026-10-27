@@ -1,0 +1,152 @@
+{
+  "id": "b2r-kurulum",
+  "baslik": "Minimal Sunucu Kurulumu",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "netinstall",
+      "izah": "Kurulum sırasında paketleri internetten çeken küçük Debian kurulum imajı.",
+      "yer": "Netinstall / minimal kurulum akışı"
+    },
+    {
+      "terim": "GRUB",
+      "izah": "Açılış yükleyicisi; kurulumda ana diske yazılmazsa VM açılmaz.",
+      "yer": "Kurulum sırasında dikkat edilecek ekranlar (disk, ağ, paket seçimi)"
+    },
+    {
+      "terim": "GUI",
+      "izah": "Grafik kullanıcı arayüzü. Bu projede yasaktır: X.org, Wayland ya da bir masaüstü ortamı kurulu bulunursa not sıfır olur.",
+      "yer": "Neden grafik arayüz (X.org / Wayland) yasak — sunucu felsefesi"
+    },
+    {
+      "terim": "X.org",
+      "izah": "Klasik Linux grafik sunucusu. Sunucuda işi olmadığı için kurulumu yasak.",
+      "yer": "Neden grafik arayüz (X.org / Wayland) yasak — sunucu felsefesi"
+    },
+    {
+      "terim": "Wayland",
+      "izah": "X.org'un yerini almaya aday modern grafik sunucusu; bu projede o da yasak.",
+      "yer": "Neden grafik arayüz (X.org / Wayland) yasak — sunucu felsefesi"
+    },
+    {
+      "terim": "nano",
+      "izah": "Basit terminal editörü: kaydet Ctrl+O, çık Ctrl+X. Minimal kurulumda gelmemişse `apt install nano` ile kurulur.",
+      "yer": "İlk açılışta root'a geçmek ve dosyaları düzenlemek"
+    },
+    {
+      "terim": "vim",
+      "izah": "Güçlü ama öğrenme eğrisi dik terminal editörü; `i` ile yazma moduna geçilir, `:wq` ile kaydedilip çıkılır.",
+      "yer": "İlk açılışta root'a geçmek ve dosyaları düzenlemek"
+    },
+    {
+      "terim": "exit",
+      "izah": "Bulunulan kabuk oturumunu kapatır; `su -` ile geçilen root oturumundan kendi kullanıcınıza böyle dönersiniz.",
+      "yer": "İlk açılışta root'a geçmek ve dosyaları düzenlemek"
+    },
+    {
+      "terim": "su",
+      "izah": "Başka bir kullanıcının kabuğuna geçme komutu. `su -` root'a geçer ve root'un ortamını da yükler; sudo henüz kurulu değilken tek yol budur.",
+      "yer": "İlk açılışta root'a geçmek ve dosyaları düzenlemek"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-kurulum.s1",
+      "tip": "secme",
+      "yer": "Neden grafik arayüz (X.org / Wayland) yasak — sunucu felsefesi",
+      "soru": "Sunucuya grafik arayüz kurmak neden yasak?",
+      "secenekler": [
+        "VirtualBox'ın sanal ekran sürücüsü Debian'da desteklenmez, kurulum yarıda kalır",
+        "Gereksiz kaynak tüketir ve saldırı yüzeyini büyütür; subject bunu 0 puanla cezalandırıyor",
+        "Grafik arayüz şifreli LVM ile çakışır, açılışta disk kilidi çözülemez",
+        "Yasak değil, yalnızca önerilmiyor; kurarsanız sadece bonus puanı alamazsınız"
+      ],
+      "dogru": 1,
+      "izah": "Sunucu arka planda hizmet verir, önünde oturulmaz. X.org/Wayland kurulu bulunursa notun sıfır olur."
+    },
+    {
+      "id": "b2r-kurulum.s2",
+      "tip": "secme",
+      "yer": "Kurulum bitince muhtemelen elle kurmanız gereken paketler",
+      "soru": "Minimal kurulumdan sonra ilk iş olarak `sudo apt install ufw` yazdınız, 'sudo: command not found' hatası aldınız. Sorun ne?",
+      "secenekler": [
+        "Kullanıcınız henüz sudo grubunda değil; önce root olarak gruba eklenmeniz gerekiyor",
+        "Minimal kurulumda sudo paketi kurulu gelmez; root olarak `apt install sudo ufw` gerekir",
+        "sudo /usr/sbin altında duruyor ama bu dizin sizin PATH değişkeninizde tanımlı değil",
+        "Arka planda başka bir paket işlemi sürdüğü için apt kilitli; sudo çağrısı düşüyor"
+      ],
+      "dogru": 1,
+      "izah": "Netinstall'da 'SSH server' ve 'standard system utilities' dışında çoğu şey yoktur; sudo ve ufw genelde elle kurulur. Bu adım atlanırsa bölüm 7 ve 11 hiç başlayamaz."
+    },
+    {
+      "id": "b2r-kurulum.s3",
+      "tip": "secme",
+      "yer": "Kurulumdan sonra GUI kalıntısı sızmadığını doğrulama",
+      "soru": "Kurulumdan sonra GUI kalıntısı kalmadığını hangi komutla doğrularsınız?",
+      "secenekler": [
+        "`df -h | grep -iE 'xserver|wayland|gnome|xfce'`",
+        "`dpkg -l | grep -iE 'xserver|wayland|gnome|xfce'`",
+        "`lsblk | grep -iE 'xserver|wayland|gnome|xfce'`",
+        "`uname -a | grep -iE 'xserver|wayland|gnome|xfce'`"
+      ],
+      "dogru": 1,
+      "izah": "`dpkg -l` kurulu paketleri listeler; grep ile grafik arayüz paketleri aranır ve çıktı boş dönmelidir. Bir şey listelenirse `sudo apt purge <paket>` ile kaldırılır. `df` disk kullanımını, `lsblk` diskleri, `uname` çekirdeği gösterir; paket listesi vermezler."
+    },
+    {
+      "id": "b2r-kurulum.s4",
+      "tip": "secme",
+      "yer": "Klavye düzeni tuzağı",
+      "soru": "Parolayı doğru yazdığınızdan eminsiniz ama sisteme giremiyorsunuz; ekranda yalnızca yıldızlar görünüyor. İlk şüphelenmeniz gereken nedir?",
+      "secenekler": [
+        "Parola politikası devreye girdi ve parolanı geçersiz sayıp reddediyor",
+        "Kurulumda seçtiğiniz klavye düzeni yüzünden özel karakterler farklı tuşlara düşüyor",
+        "Üç hatalı denemeden sonra hesap kilitlendi; beklemeniz gerekiyor",
+        "Parolanın süresi doldu; sistem yenisini istiyor ama ekranda göstermiyor"
+      ],
+      "dogru": 1,
+      "izah": "Türkçe düzende özel işaretler İngilizce düzendekinden farklı tuşlara düşer. Korunmak için ya düzeni not edin ya da parolayı yalnızca harf ve rakamdan kurun. Aynı tuzak LUKS parolasında daha ağır sonuçlanır."
+    },
+    {
+      "id": "b2r-kurulum.s5",
+      "tip": "secme",
+      "yer": "İlk açılışta root'a geçmek ve dosyaları düzenlemek",
+      "soru": "Kurulumdan sonra kendi kullanıcınız henüz sudo grubunda değil. Root'a nasıl geçersiniz?",
+      "secenekler": [
+        "`sudo su` ile; bu komut her Debian kurulumunda hazır gelir",
+        "`su -` ile; kurulumda belirlediğiniz root parolasını ister",
+        "`root` komutunu çalıştırarak; parola sormadan yetkiyi devreder",
+        "Root'a hiç geçilemez; sudo kurulana kadar yetkili işlem yapılamaz"
+      ],
+      "dogru": 1,
+      "izah": "sudo henüz kurulu olmadığı için `sudo su` çalışmaz. `-` işareti root'un kendi ortamını da yükler; root'ken sudo'yu kurar, kendinizi sudo grubuna ekler, sonra `exit` dersiniz."
+    },
+    {
+      "id": "b2r-kurulum.s6",
+      "tip": "dizme",
+      "yer": "Kurulum bitince muhtemelen elle kurmanız gereken paketler",
+      "soru": "Minimal kurulumdan sonra eksik iki temel paketi kuran komutu dizin (root olarak):",
+      "parcalar": [
+        "apt",
+        "install",
+        "sudo",
+        "ufw"
+      ],
+      "komut": true,
+      "izah": "Bu adım atlanırsa firewall ve sudo bölümleri hiç başlayamaz."
+    },
+    {
+      "id": "b2r-kurulum.s7",
+      "tip": "secme",
+      "yer": "İlk açılışta root'a geçmek ve dosyaları düzenlemek",
+      "soru": "GUI olmadığı için config dosyalarını neyle düzenlersiniz?",
+      "secenekler": [
+        "Kurulum sihirbazının yapılandırma ekranından; dosyalar oradan düzenlenir",
+        "nano ya da vim gibi terminal editörleriyle; tek istisna sudoers, ona visudo ile dokunulur",
+        "Yalnızca echo ve yönlendirme ile; terminal editörleri GUI gerektirdiği için kurulamaz",
+        "Root kabuğundaki `set` komutuyla; dosyalara doğrudan dokunulmaz"
+      ],
+      "dogru": 1,
+      "izah": "Minimal kurulumda nano bile gelmemiş olabilir; `apt install nano` yeterli. sudoers'a doğrudan editörle dokunmak sudo'yu kilitleyebilir."
+    }
+  ]
+}

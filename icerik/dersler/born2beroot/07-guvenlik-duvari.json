@@ -1,0 +1,76 @@
+{
+  "id": "b2r-guvenlik-duvari",
+  "baslik": "Güvenlik Duvarı: UFW vs firewalld",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "UFW",
+      "izah": "Debian'da iptables'ı basitleştiren güvenlik duvarı ön yüzü; bu projede sadece 4242 açılır.",
+      "yer": "UFW ile sadece 4242 portunu açma (Debian)"
+    },
+    {
+      "terim": "firewalld",
+      "izah": "Rocky'nin güvenlik duvarı; zone kavramıyla çalışır, --permanent ile kalıcı kural yazılır.",
+      "yer": "firewalld ile zone / service / port kavramları (Rocky)"
+    },
+    {
+      "terim": "systemctl",
+      "izah": "systemd servislerini yöneten komut: başlatma, durdurma, durum sorgulama, açılışta etkinleştirme (`enable`) ve bunu doğrulama (`is-enabled`) bununla yapılır.",
+      "yer": "Açılışta otomatik aktif olacak şekilde servis etkinleştirme"
+    },
+    {
+      "terim": "iptables",
+      "izah": "Linux'ta paket süzme kurallarını yazan klasik araç; yeni sistemlerde yerini nftables'a bırakmaktadır. UFW iptables'ın, Rocky'deki firewalld ise nftables'ın kullanımı kolaylaştıran ön yüzüdür.",
+      "yer": "UFW ile sadece 4242 portunu açma (Debian)"
+    },
+    {
+      "terim": "zone",
+      "izah": "firewalld'nin bölge kavramı: her ağ arayüzü bir zone'a atanır ve kurallar zone bazında tanımlanır. UFW'de böyle bir kavram yoktur.",
+      "yer": "firewalld ile zone / service / port kavramları (Rocky)"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-guvenlik-duvari.s1",
+      "tip": "dizme",
+      "yer": "UFW ile sadece 4242 portunu açma (Debian)",
+      "soru": "UFW'de yalnızca 4242 portunu açan komutu dizin:",
+      "parcalar": [
+        "sudo",
+        "ufw",
+        "allow",
+        "4242/tcp"
+      ],
+      "komut": true,
+      "izah": "Felsefe 'varsayılan red, istisna izin': her şey kapalı, sadece bu port açık."
+    },
+    {
+      "id": "b2r-guvenlik-duvari.s2",
+      "tip": "secme",
+      "yer": "UFW ile sadece 4242 portunu açma (Debian)",
+      "soru": "`sudo ufw allow 4242/tcp` yazdınız ama `sudo ufw status` hâlâ \"Status: inactive\" diyor. Ne eksik?",
+      "secenekler": [
+        "Kuralları yeniden yükleyen `sudo ufw reload` komutu",
+        "Güvenlik duvarını açan `sudo ufw enable` komutu",
+        "Kuralı kalıcı yapan `--permanent` bayrağı",
+        "Portun sshd_config dosyasına da yazılması"
+      ],
+      "dogru": 1,
+      "izah": "`ufw allow` yalnızca kural ekler; güvenlik duvarını `sudo ufw enable` açar. `ufw enable` onu hem hemen hem de her açılışta etkin kılar (/etc/ufw/ufw.conf'a ENABLED=yes yazar). `ufw reload` kapalı bir güvenlik duvarını açmaz; `--permanent` firewalld'ye ait bir bayraktır."
+    },
+    {
+      "id": "b2r-guvenlik-duvari.s3",
+      "tip": "secme",
+      "yer": "firewalld ile zone / service / port kavramları (Rocky)",
+      "soru": "firewalld'yi UFW'den ayıran kavram nedir?",
+      "secenekler": [
+        "Yalnızca IPv6 trafiğini süzer; IPv4 trafiği için ayrıca UFW kurulması gerekir",
+        "Zone kavramı vardır; her arayüz bir zone'a atanır, kurallar zone bazlı tanımlanır",
+        "Yalnızca TCP portlarını yönetir; UDP portları için ayrı bir araç kurmak gerekir",
+        "Kuralları kalıcıdır; UFW'de ise yazılan her kural yeniden başlatmada kaybolur"
+      ],
+      "dogru": 1,
+      "izah": "Ayrıca `--permanent` olmadan yazılan kural reboot'ta kaybolur ve `--reload` ile devreye alınır."
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "id": "vt-tablo",
+  "baslik": "Veritabanı Yapısı: Tablo, Kayıt, Alan",
+  "kaynak": "veritabani_1_hafta_1.pdf, slayt 4, 18–21",
+  "kavramlar": [
+    {
+      "terim": "Tablo",
+      "izah": "Verilerin satırlar ve sütunlar hâlinde düzenlenmesiyle oluşan veri grubu. Bir veritabanı tablolarda saklanan verilerden oluşur.",
+      "yer": "Tablo"
+    },
+    {
+      "terim": "Kayıt",
+      "izah": "Tablo içindeki her bir bilgi; tablonun bir satırı.",
+      "yer": "Kayıt ve alan"
+    },
+    {
+      "terim": "Alan",
+      "izah": "Tablonun sütunları; ör. öğrenci tablosundaki Ogr_no, Ad_soyad.",
+      "yer": "Kayıt ve alan"
+    },
+    {
+      "terim": "Alanın veri türü",
+      "izah": "Kayıtların yapısı hakkında bilgi sahibi olmak için alanların önceden tanımlanan özelliği; ör. sicil numarası tam sayı, ad soyad harf.",
+      "yer": "Alanların veri türü"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-tablo.s1",
+      "tip": "secme",
+      "yer": "Kayıt ve alan",
+      "soru": "Tablo içindeki her bir bilgiye (her satıra) ne ad verilir?",
+      "secenekler": [
+        "Kayıt",
+        "Alan",
+        "Tablo",
+        "Nitelik"
+      ],
+      "dogru": 0,
+      "izah": "Tablo içindeki her bir bilgi **kayıt**, sütunlar ise **alan** olarak adlandırılır."
+    },
+    {
+      "id": "vt-tablo.s2",
+      "tip": "secme",
+      "yer": "Kayıt ve alan",
+      "soru": "Bir tablonun **sütunlarına** ne ad verilir?",
+      "secenekler": [
+        "Alan",
+        "Kayıt",
+        "Tablo",
+        "Veritabanı"
+      ],
+      "dogru": 0,
+      "izah": "Sütunlar **alan**, satırlar (her bir bilgi) **kayıt** olarak adlandırılır."
+    },
+    {
+      "id": "vt-tablo.s3",
+      "tip": "hesap",
+      "yer": "Örnek: öğrenci bilgileri tablosu",
+      "soru": "Bir öğrenci tablosunun sütunları `Ogr_no`, `Ad_soyad`, `d_tarih`, `d_yeri` ve `e-mail`; tabloda 6 öğrencinin bilgisi var. Bu tabloda kaç **alan** vardır?",
+      "cevap": 5,
+      "izah": "Alanlar sütunlardır: Ogr_no, Ad_soyad, d_tarih, d_yeri, e-mail → 5 alan. 6 sayısı kayıt (satır) sayısıdır."
+    },
+    {
+      "id": "vt-tablo.s4",
+      "tip": "hesap",
+      "yer": "Kayıt ve alan",
+      "soru": "Bir personel tablosunda her personelin sicil numarası, adı soyadı ve bölümü tutuluyor. Tabloda 40 personel kayıtlı. Bu tabloda kaç **kayıt** vardır?",
+      "cevap": 40,
+      "izah": "Her personel tabloda bir satırdır, yani bir kayıttır → 40 kayıt. Sicil numarası, ad soyad ve bölüm ise 3 alandır."
+    },
+    {
+      "id": "vt-tablo.s5",
+      "tip": "dy",
+      "yer": "Tablo",
+      "ifade": "Hocanın örneğinde ders içeriği ve öğrenci bilgileri veritabanında tek bir tabloda saklanır.",
+      "dogru": false,
+      "izah": "Hocanın örneğinde bunun için **iki tablo** oluşturulur: `Ogrenci_bilgileri` ve `icerik`."
+    },
+    {
+      "id": "vt-tablo.s6",
+      "tip": "bosluk",
+      "yer": "Tablo",
+      "metin": "Tablo, verilerin satırlar ve ___ hâlinde düzenlenmesiyle oluşan veri grubudur.",
+      "cevaplar": [
+        [
+          "sütunlar",
+          "sütun"
+        ]
+      ],
+      "izah": "Satırlar kayıtları, sütunlar alanları oluşturur."
+    },
+    {
+      "id": "vt-tablo.s7",
+      "tip": "secme",
+      "yer": "Alanların veri türü",
+      "soru": "Hocaya göre alanların bazı özelliklerinin **önceden tanımlanması** neden gerekir?",
+      "secenekler": [
+        "Veritabanında tutulan kayıtların yapısı hakkında bilgi sahibi olmak için",
+        "Bir tabloya girilebilecek kayıt sayısını önceden sınırlamak için",
+        "Verilerin XML'deki gibi etiketlerle ifade edilebilmesi için",
+        "Tabloların birbirine ağaç yapısında bağlanabilmesi için"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki gerekçe: veritabanında tutulan kayıtların yapısı hakkında bilgi sahibi olmak. Örneğin personel sicil numarası mutlaka tam sayı, ad soyad harflerden oluşmalıdır."
+    },
+    {
+      "id": "vt-tablo.s8",
+      "tip": "secme",
+      "yer": "Alanların veri türü",
+      "soru": "Hocanın örneğine göre **personel sicil numarası** alanı hangi türde olmalıdır?",
+      "secenekler": [
+        "Tam sayı",
+        "Harflerden oluşan metin",
+        "Tarih",
+        "Ondalıklı sayı"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki örnek: personel sicil numarası mutlaka tam sayı, ad soyad ise harflerden oluşmalıdır."
+    },
+    {
+      "id": "vt-tablo.s9",
+      "tip": "esles",
+      "yer": "Kayıt ve alan",
+      "soru": "Kavramları tablodaki karşılıklarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Kayıt",
+          "Tablodaki bir satır"
+        ],
+        [
+          "Alan",
+          "Tablodaki bir sütun"
+        ],
+        [
+          "Tablo",
+          "Satır ve sütunlardan oluşan veri grubu"
+        ],
+        [
+          "Veritabanı",
+          "Tablolarda saklanan verilerden oluşan yapı"
+        ]
+      ],
+      "izah": "Veritabanı tablolardan, tablo satır (kayıt) ve sütunlardan (alan) oluşur."
+    },
+    {
+      "id": "vt-tablo.s10",
+      "tip": "dy",
+      "yer": "Örnek: öğrenci bilgileri tablosu",
+      "ifade": "Öğrenci bilgileri tablosunda `d_yeri` bir kayıttır.",
+      "dogru": false,
+      "izah": "`d_yeri` bir sütun başlığıdır, yani bir **alandır** (doğum yeri). Kayıt, bir öğrencinin bütün bilgilerini taşıyan satırdır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-tablo.k1",
+      "yer": "Veritabanı yapısı",
+      "on": "Veritabanı, tablo, kayıt ve alan arasındaki ilişkiyi anlatın.",
+      "arka": "Bir veritabanı tablolarda saklanan verilerden oluşur. Tablo, verilerin satırlar ve sütunlar hâlinde düzenlendiği veri grubudur. Her satır bir **kayıt**, her sütun bir **alandır**."
+    },
+    {
+      "id": "vt-tablo.k2",
+      "yer": "Kayıt ve alan",
+      "on": "Kayıt ile alan arasındaki fark nedir? Öğrenci tablosundan örnek verin.",
+      "arka": "Kayıt satırdır: bir öğrencinin bütün bilgileri (ör. 4, Mehmet Efe, 11.02.1978, Niğde, e-posta). Alan sütundur: tüm öğrencilerin aynı türden bilgisi (ör. `d_yeri`). Hocanın tablosunda 6 kayıt ve 5 alan vardır."
+    },
+    {
+      "id": "vt-tablo.k3",
+      "yer": "Alanların veri türü",
+      "on": "Alanların veri türü neden önceden tanımlanır? Örnek verin.",
+      "arka": "Veritabanında tutulan kayıtların yapısı hakkında bilgi sahibi olmak için. Örneğin personel sicil numarası mutlaka **tam sayı**, ad soyad ise **harflerden** oluşmalıdır."
+    },
+    {
+      "id": "vt-tablo.k4",
+      "yer": "Alanların veri türü",
+      "on": "Derste \"veri türü\" iki ayrı anlamda geçiyor. Bunlar neler?",
+      "arka": "1. Bir **alanın** türü: tam sayı, metin, tarih gibi. Kayıtların yapısını bilmek için önceden tanımlanır.\n2. Verinin **yapısı**: yapısal olmayan, yarı yapısal, yapısal. Verinin belli bir veri modeline uyup uymadığına göre yapılan ayrımdır."
+    }
+  ]
+}

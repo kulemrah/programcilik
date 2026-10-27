@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="194" viewBox="0 0 400 194" role="img">
+<title>SELECT sorgusunun parçaları</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="10" y="16" width="228" height="36" rx="6" fill="#F7FAFC" stroke="#E2E8F0"/>
+<text x="20.0" y="39.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#2B6CB0" font-weight="600" text-anchor="start">SELECT </text>
+<text x="72.5" y="39.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="start">ogrno, tarih</text>
+<line x1="242.0" y1="34.0" x2="256.0" y2="34.0" stroke="#4A5568" stroke-width="1.4"/>
+<polygon points="256.0,34.0 247.7,37.5 247.7,30.5" fill="#4A5568"/>
+<text x="262.0" y="39.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">hangi alanlar?</text>
+<rect x="10" y="62" width="228" height="36" rx="6" fill="#F7FAFC" stroke="#E2E8F0"/>
+<text x="20.0" y="85.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#6B46C1" font-weight="600" text-anchor="start">FROM </text>
+<text x="57.5" y="85.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="start">notlar</text>
+<line x1="242.0" y1="80.0" x2="256.0" y2="80.0" stroke="#4A5568" stroke-width="1.4"/>
+<polygon points="256.0,80.0 247.7,83.5 247.7,76.5" fill="#4A5568"/>
+<text x="262.0" y="85.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">hangi tablodan?</text>
+<rect x="10" y="108" width="228" height="36" rx="6" fill="#F7FAFC" stroke="#E2E8F0"/>
+<text x="20.0" y="131.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#C05621" font-weight="600" text-anchor="start">WHERE </text>
+<text x="65.0" y="131.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="start">ogrno=9801</text>
+<line x1="242.0" y1="126.0" x2="256.0" y2="126.0" stroke="#4A5568" stroke-width="1.4"/>
+<polygon points="256.0,126.0 247.7,129.5 247.7,122.5" fill="#4A5568"/>
+<text x="262.0" y="131.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">hangi kayıtlar? (koşul)</text>
+<rect x="10" y="154" width="228" height="36" rx="6" fill="#F7FAFC" stroke="#E2E8F0"/>
+<text x="20.0" y="177.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#2F855A" font-weight="600" text-anchor="start">ORDER BY </text>
+<text x="87.5" y="177.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="start">tarih </text>
+<text x="132.5" y="177.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#2F855A" font-weight="600" text-anchor="start">DESC</text>
+<text x="162.5" y="177.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="start">;</text>
+<line x1="242.0" y1="172.0" x2="256.0" y2="172.0" stroke="#4A5568" stroke-width="1.4"/>
+<polygon points="256.0,172.0 247.7,175.5 247.7,168.5" fill="#4A5568"/>
+<text x="262.0" y="177.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">hangi sırayla?</text>
+</svg>

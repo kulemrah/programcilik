@@ -1,0 +1,262 @@
+{
+  "id": "alg-karar",
+  "baslik": "Karar Yapıları",
+  "kaynak": "algoritma_ve_programlama_temelleri_4__hafta_2.pdf, slayt 1–4",
+  "kavramlar": [
+    {
+      "terim": "Karar yapısı",
+      "izah": "Karşılaştırma operatörü içeren ifadeler (koşullar) ile birlikte kullanılan yapı. Kullanım şekli: EĞER (koşul) İSE ... DEĞİL İSE ...",
+      "yer": "Karar yapıları ve koşul"
+    },
+    {
+      "terim": "Koşul",
+      "izah": "Karşılaştırma operatörü içeren ifade (hocanın örneğinde A>B).",
+      "yer": "Karar yapıları ve koşul"
+    },
+    {
+      "terim": "EĞER (koşul) İSE",
+      "izah": "Koşuldan dönen değer doğru ise burada belirtilen işlemler gerçekleştirilir; bu durumda DEĞİL İSE kısmındaki işlemler gerçekleştirilmez.",
+      "yer": "Kullanım şekli: EĞER İSE ve DEĞİL İSE"
+    },
+    {
+      "terim": "DEĞİL İSE",
+      "izah": "Koşuldan dönen değer yanlış ise burada belirtilen işlemler başka bir koşula bakılmadan gerçekleştirilir. Bu kısımda başka bir koşul ifadesi kullanılmaz.",
+      "yer": "DEĞİL İSE kısmında koşul kullanılmaz"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-karar.s1",
+      "tip": "bosluk",
+      "yer": "Karar yapıları ve koşul",
+      "metin": "Karşılaştırma operatörü içeren ifade ___ olarak adlandırılır.",
+      "cevaplar": [
+        [
+          "koşul"
+        ]
+      ],
+      "izah": "Hocanın tanımı: karşılaştırma operatörü içeren ifade koşul olarak adlandırılır. Karar yapıları bu ifadelerle birlikte kullanılır."
+    },
+    {
+      "id": "alg-karar.s2",
+      "tip": "secme",
+      "yer": "Karar yapıları ve koşul",
+      "soru": "Hocaya göre karar yapıları hangi ifadeler ile birlikte kullanılır?",
+      "secenekler": [
+        "Karşılaştırma operatörü içeren ifadeler",
+        "Aritmetik işlem operatörü içeren ifadeler",
+        "Değişkene değer ataması yapan ifadeler",
+        "Yalnızca gömülü değer içeren ifadeler"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın ifadesi: karar yapıları karşılaştırma operatörü içeren ifadeler ile birlikte kullanılır; bu ifadeye koşul denir. Aritmetik işlem ve atama \"Temel Öğeler, Aritmetik İşlemler ve Atama\" konusundadır."
+    },
+    {
+      "id": "alg-karar.s3",
+      "tip": "secme",
+      "yer": "Karar yapıları ve koşul",
+      "soru": "Hocanın tanımına göre aşağıdakilerden hangisi bir **koşuldur**?",
+      "secenekler": [
+        "`A>B`",
+        "`A+B`",
+        "`A*B`",
+        "`A%B`"
+      ],
+      "dogru": 0,
+      "izah": "Koşul, karşılaştırma operatörü içeren ifadedir: `>` bir karşılaştırma operatörüdür. `+`, `*` ve `%` aritmetik işleçlerdir; sonuçları doğru ya da yanlış değil, bir sayıdır."
+    },
+    {
+      "id": "alg-karar.s4",
+      "tip": "dy",
+      "yer": "Karar yapıları ve koşul",
+      "ifade": "Hocanın tanımına göre `Yas>=18` ifadesi bir koşuldur.",
+      "dogru": true,
+      "izah": "`>=` bir karşılaştırma operatörüdür; karşılaştırma operatörü içeren ifade koşul olarak adlandırılır. `Yas>=18` hocanın \"Karşılaştırma ve Mantıksal Operatörler\" konusundaki örneğidir."
+    },
+    {
+      "id": "alg-karar.s5",
+      "tip": "esles",
+      "yer": "Kullanım şekli: EĞER İSE ve DEĞİL İSE",
+      "soru": "Karar yapısının öğelerini hocanın açıklamalarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Koşul",
+          "Karşılaştırma operatörü içeren ifade"
+        ],
+        [
+          "EĞER (koşul) İSE",
+          "Koşuldan doğru dönerse işlemleri gerçekleşen kısım"
+        ],
+        [
+          "DEĞİL İSE",
+          "Koşuldan yanlış dönerse işlemleri gerçekleşen kısım"
+        ]
+      ],
+      "izah": "Koşul karşılaştırma operatörü içerir. Koşuldan doğru dönerse EĞER (koşul) İSE kısmındaki, yanlış dönerse DEĞİL İSE kısmındaki işlemler gerçekleştirilir."
+    },
+    {
+      "id": "alg-karar.s6",
+      "tip": "dy",
+      "yer": "Kullanım şekli: EĞER İSE ve DEĞİL İSE",
+      "ifade": "EĞER (koşul) İSE kısmındaki işlemler, koşuldan dönen değer yanlış ise gerçekleştirilir.",
+      "dogru": false,
+      "izah": "EĞER (koşul) İSE kısmındaki işlemler koşuldan dönen değer doğru ise gerçekleştirilir. Değer yanlış ise DEĞİL İSE kısmındaki işlemler gerçekleştirilir."
+    },
+    {
+      "id": "alg-karar.s7",
+      "tip": "klasik",
+      "yer": "Kullanım şekli: EĞER İSE ve DEĞİL İSE",
+      "soru": "Karar yapısının kullanım şeklini yazın: EĞER (koşul) İSE ve DEĞİL İSE kısımlarındaki işlemler ne zaman gerçekleştirilir?",
+      "cevap": "EĞER (koşul) İSE: koşuldan dönen değer doğru ise burada belirtilen işlemler gerçekleştirilir.\nDEĞİL İSE: koşuldan dönen değer yanlış ise burada belirtilen işlemler gerçekleştirilir.\nDEĞİL İSE kısmında başka bir koşul ifadesi kullanılmaz.",
+      "anahtarlar": [
+        "koşul",
+        "doğru",
+        "yanlış",
+        "DEĞİL İSE"
+      ]
+    },
+    {
+      "id": "alg-karar.s8",
+      "tip": "dy",
+      "yer": "DEĞİL İSE kısmında koşul kullanılmaz",
+      "ifade": "Hocaya göre DEĞİL İSE kısmında başka bir koşul ifadesi kullanılır.",
+      "dogru": false,
+      "izah": "Hocanın ifadesi: DEĞİL İSE kısmında başka bir koşul ifadesi kullanılmaz. EĞER kısmındaki koşuldan yanlış dönerse DEĞİL İSE kısmındaki işlemler başka bir koşula bakılmadan gerçekleştirilir."
+    },
+    {
+      "id": "alg-karar.s9",
+      "tip": "secme",
+      "yer": "Koşul yanlış ya da doğru olduğunda",
+      "soru": "EĞER (koşul) İSE kısmındaki koşuldan **yanlış** değeri dönerse DEĞİL İSE kısmındaki işlemler nasıl gerçekleştirilir?",
+      "secenekler": [
+        "Başka bir koşula bakılmadan gerçekleştirilir",
+        "DEĞİL İSE kısmının kendi koşulu doğruysa gerçekleştirilir",
+        "Koşul yeniden yoklanıp doğru çıkınca gerçekleştirilir",
+        "EĞER İSE kısmındaki işlemlerden sonra gerçekleştirilir"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın ifadesi: koşuldan yanlış dönerse EĞER İSE kısmındaki işlemler gerçekleştirilmez ve DEĞİL İSE kısmındaki işlemler başka bir koşula bakılmadan gerçekleştirilir. DEĞİL İSE kısmının kendi koşulu yoktur."
+    },
+    {
+      "id": "alg-karar.s10",
+      "tip": "dy",
+      "yer": "Koşul yanlış ya da doğru olduğunda",
+      "ifade": "Koşuldan doğru değeri dönerse hem EĞER İSE hem de DEĞİL İSE kısmındaki işlemler gerçekleştirilir.",
+      "dogru": false,
+      "izah": "Koşuldan doğru dönerse EĞER İSE kısmındaki işlemler gerçekleştirilir ve bu durumda DEĞİL İSE kısmındaki işlemler gerçekleştirilmez. İki kısımdan yalnızca biri gerçekleştirilir."
+    },
+    {
+      "id": "alg-karar.s11",
+      "tip": "dy",
+      "yer": "Koşul yanlış ya da doğru olduğunda",
+      "ifade": "Koşuldan doğru değeri dönerse DEĞİL İSE kısmındaki işlemler gerçekleştirilmez.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi: koşuldan doğru değeri dönerse EĞER İSE kısmında belirtilen işlemler gerçekleştirilir ve bu durumda DEĞİL İSE kısmındaki işlemler gerçekleştirilmez."
+    },
+    {
+      "id": "alg-karar.s12",
+      "tip": "dizme",
+      "yer": "Örnek: iki sayıdan büyük olanı",
+      "soru": "Klavyeden girilen iki sayıdan büyük olanını bulup ekrana yazan algoritmanın (hocanın çözümü) satırlarını dizin.",
+      "parcalar": [
+        "Başla",
+        "Oku : A, B",
+        "EĞER A>B İSE Yaz: A",
+        "DEĞİL İSE Yaz: B",
+        "Bitir."
+      ],
+      "izah": "Hocanın çözümü: 1.Başla, 2.Oku : A, B, 3.EĞER A>B İSE Yaz: A, DEĞİL İSE Yaz: B (3. adımın parçası), 4.Bitir."
+    },
+    {
+      "id": "alg-karar.s13",
+      "tip": "dizme",
+      "yer": "Örnek: iki sayıdan büyük olanı",
+      "soru": "Hocanın çözümündeki 3. adımın ilk satırını oluşturan parçaları dizin.",
+      "parcalar": [
+        "EĞER",
+        "A>B",
+        "İSE",
+        "Yaz:",
+        "A"
+      ],
+      "komut": true,
+      "izah": "Hocanın yazımı: EĞER (koşul) İSE ve ardından koşul doğruysa gerçekleştirilecek işlem: `EĞER A>B İSE Yaz: A`."
+    },
+    {
+      "id": "alg-karar.s14",
+      "tip": "secme",
+      "yer": "Örnek: iki sayıdan büyük olanı",
+      "soru": "Hocanın çözümündeki `Oku : A, B` adımı ne yapar?",
+      "secenekler": [
+        "Klavyeden okunan iki değeri sırası ile A ve B'de saklar",
+        "A ve B değişkenlerindeki değerleri ekrana yazar",
+        "A ile B'yi karşılaştırır, büyük olanı saklar",
+        "A ve B değişkenlerine sıfır değerini atar"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın açıklaması: klavyeden art arda okunan iki değer sırası ile A ve B değişkenlerinde saklanır. Karşılaştırma 3. adımda, ekrana yazma Yaz ile yapılır."
+    },
+    {
+      "id": "alg-karar.s15",
+      "tip": "izleme",
+      "yer": "Örnek: iki sayıdan büyük olanı",
+      "soru": "Hocanın algoritmasına A için 3, B için 9 girilirse ekrana ne yazılır?",
+      "kod": "Oku : A, B\nEĞER A>B İSE Yaz: A\nDEĞİL İSE Yaz: B",
+      "secenekler": [
+        "9",
+        "3",
+        "12",
+        "-6"
+      ],
+      "dogru": 0,
+      "izah": "3>9 yanlıştır; EĞER İSE kısmı gerçekleştirilmez, DEĞİL İSE kısmı gerçekleştirilir ve B'deki 9 yazılır."
+    },
+    {
+      "id": "alg-karar.s16",
+      "tip": "secme",
+      "yer": "Örnek: iki sayıdan büyük olanı",
+      "soru": "Hocanın algoritmasına A için 7, B için 7 girilirse ne olur?",
+      "kod": "Oku : A, B\nEĞER A>B İSE Yaz: A\nDEĞİL İSE Yaz: B",
+      "secenekler": [
+        "DEĞİL İSE kısmı çalışır, B'deki değer yazılır",
+        "EĞER İSE kısmı çalışır, A'daki değer yazılır",
+        "İki kısım da çalışır, değer iki kez yazılır",
+        "İki kısım da atlanır, ekrana bir şey yazılmaz"
+      ],
+      "dogru": 0,
+      "izah": "`>` eşitliği kapsamaz: 7>7 yanlıştır. Koşuldan yanlış döndüğü için DEĞİL İSE kısmı gerçekleştirilir ve B'deki 7 yazılır. Bir karar yapısında iki kısımdan yalnızca biri gerçekleştirilir."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-karar.k1",
+      "yer": "Karar yapıları ve koşul",
+      "on": "Karar yapıları neyle kullanılır? Koşul nedir?",
+      "arka": "Karar yapıları karşılaştırma operatörü içeren ifadeler ile birlikte kullanılır.\nKarşılaştırma operatörü içeren ifade koşul olarak adlandırılır (hocanın örneğinde A>B)."
+    },
+    {
+      "id": "alg-karar.k2",
+      "yer": "Kullanım şekli: EĞER İSE ve DEĞİL İSE",
+      "on": "Karar yapısının kullanım şeklini anlatın.",
+      "arka": "EĞER (koşul) İSE: koşuldan dönen değer doğru ise burada belirtilen işlemler gerçekleştirilir.\nDEĞİL İSE: koşuldan dönen değer yanlış ise burada belirtilen işlemler gerçekleştirilir.\nEk: C++'ta if (koşul) ... else ..."
+    },
+    {
+      "id": "alg-karar.k3",
+      "yer": "Koşul yanlış ya da doğru olduğunda",
+      "on": "Koşuldan doğru ya da yanlış dönünce hangi işlemler gerçekleştirilir?",
+      "arka": "Yanlış dönerse: EĞER İSE kısmındaki işlemler gerçekleştirilmez, DEĞİL İSE kısmındakiler başka bir koşula bakılmadan gerçekleştirilir.\nDoğru dönerse: EĞER İSE kısmındaki işlemler gerçekleştirilir, DEĞİL İSE kısmındakiler gerçekleştirilmez.\nİki kısımdan yalnızca biri gerçekleştirilir."
+    },
+    {
+      "id": "alg-karar.k4",
+      "yer": "DEĞİL İSE kısmında koşul kullanılmaz",
+      "on": "DEĞİL İSE kısmında koşul yazılır mı? Üç durum varsa ne yapılır?",
+      "arka": "Hocaya göre DEĞİL İSE kısmında başka bir koşul ifadesi kullanılmaz: EĞER kısmındaki koşul yanlışsa başka bir koşula bakılmadan gerçekleştirilir.\nEk: üç ya da daha çok durumda ya art arda ayrı EĞER yapıları (aralık koşulda tam verilerek) ya da DEĞİL İSE kısmının işlemi olarak yeni bir EĞER yapısı (değilse eğer; C++'ta else if) yazılır; hocanın hangisini beklediği slaytta yok."
+    },
+    {
+      "id": "alg-karar.k5",
+      "yer": "Örnek: iki sayıdan büyük olanı",
+      "on": "Hocanın iki sayıdan büyük olanını bulan algoritmasını söyleyin. Sayılar eşitse ne olur?",
+      "arka": "1.Başla\n2.Oku : A, B (klavyeden okunan iki değer sırası ile A ve B'de saklanır)\n3.EĞER A>B İSE Yaz: A\nDEĞİL İSE Yaz: B (3. adımın parçası)\n4.Bitir.\nEşitse A>B yanlıştır: DEĞİL İSE çalışır, B yazılır; değerler eşit olduğu için sonuç yine doğrudur."
+    }
+  ]
+}

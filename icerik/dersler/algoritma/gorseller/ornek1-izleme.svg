@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="322" viewBox="0 0 400 322" role="img">
+<title>Örnek 1'in adımları ve değişkenler</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="14.0" y="22.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" font-weight="600" text-anchor="start">adım</text>
+<text x="206.0" y="22.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#4A5568" font-weight="600" text-anchor="middle">A</text>
+<text x="252.0" y="22.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#4A5568" font-weight="600" text-anchor="middle">B</text>
+<text x="307.0" y="22.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#4A5568" font-weight="600" text-anchor="middle">TOPLAM</text>
+<text x="366.0" y="22.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" font-weight="600" text-anchor="middle">ekran</text>
+<rect x="6" y="32" width="388" height="42" rx="8" fill="#F7FAFC"/>
+<text x="14.0" y="58.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="start">1. BAŞLA</text>
+<text x="14.0" y="94.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="start">2. OKU: A</text>
+<text x="26.0" y="111.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="start">klavye: 4</text>
+<rect x="186" y="82" width="40" height="30" rx="5" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="206.0" y="102.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C05621" font-weight="600" text-anchor="middle">4</text>
+<rect x="6" y="120" width="388" height="42" rx="8" fill="#F7FAFC"/>
+<text x="14.0" y="138.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="start">3. OKU: B</text>
+<text x="26.0" y="155.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="start">klavye: 7</text>
+<rect x="186" y="126" width="40" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>
+<text x="206.0" y="146.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#1A202C" text-anchor="middle">4</text>
+<rect x="232" y="126" width="40" height="30" rx="5" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="252.0" y="146.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C05621" font-weight="600" text-anchor="middle">7</text>
+<text x="14.0" y="182.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="start">4. TOPLAM=A+B</text>
+<text x="26.0" y="199.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="start">4+7 = 11</text>
+<rect x="186" y="170" width="40" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>
+<text x="206.0" y="190.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#1A202C" text-anchor="middle">4</text>
+<rect x="232" y="170" width="40" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>
+<text x="252.0" y="190.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#1A202C" text-anchor="middle">7</text>
+<rect x="278" y="170" width="58" height="30" rx="5" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="307.0" y="190.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C05621" font-weight="600" text-anchor="middle">11</text>
+<rect x="6" y="208" width="388" height="42" rx="8" fill="#F7FAFC"/>
+<text x="14.0" y="234.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="start">5. YAZ: TOPLAM</text>
+<rect x="186" y="214" width="40" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>
+<text x="206.0" y="234.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#1A202C" text-anchor="middle">4</text>
+<rect x="232" y="214" width="40" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>
+<text x="252.0" y="234.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#1A202C" text-anchor="middle">7</text>
+<rect x="278" y="214" width="58" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>
+<text x="307.0" y="234.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#1A202C" text-anchor="middle">11</text>
+<rect x="342" y="214" width="48" height="30" rx="5" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="366.0" y="234.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C05621" font-weight="600" text-anchor="middle">11</text>
+<text x="14.0" y="278.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="start">6. BİTİR</text>
+<rect x="186" y="258" width="40" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>
+<text x="206.0" y="278.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#1A202C" text-anchor="middle">4</text>
+<rect x="232" y="258" width="40" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>
+<text x="252.0" y="278.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#1A202C" text-anchor="middle">7</text>
+<rect x="278" y="258" width="58" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>
+<text x="307.0" y="278.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#1A202C" text-anchor="middle">11</text>
+<rect x="342" y="258" width="48" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>
+<text x="366.0" y="278.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#1A202C" text-anchor="middle">11</text>
+<text x="200.0" y="314.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">turuncu: o adımda değeri değişen yer</text>
+</svg>

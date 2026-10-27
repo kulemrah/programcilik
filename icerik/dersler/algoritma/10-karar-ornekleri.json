@@ -1,0 +1,303 @@
+{
+  "id": "alg-karar-ornekleri",
+  "baslik": "Karar Yapıları: Örnekler",
+  "kaynak": "algoritma_ve_programlama_temelleri_4__hafta_2.pdf, slayt 5–13",
+  "kavramlar": [
+    {
+      "terim": "Harf notu aralıkları (Örnek 7)",
+      "izah": "90 ve üzeri A; 80-89 B; 70-79 C; 60-69 D; 60 altı F.",
+      "yer": "Örnek 7: harf notu"
+    },
+    {
+      "terim": "Yaş grupları (Örnek 8)",
+      "izah": "0-12 Çocuk; 13-19 Genç; 20-64 Yetişkin; 65 ve üzeri Yaşlı.",
+      "yer": "Örnek 8: yaş grubu"
+    },
+    {
+      "terim": "Geçme notu (Örnek 9)",
+      "izah": "Geçme notu 50 ve üzeridir.",
+      "yer": "Örnek 9: geçme notu"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-karar-ornekleri.s1",
+      "tip": "secme",
+      "yer": "Örnek 1: reşit olma",
+      "soru": "Hocanın Örnek 1'i sözde kod biçiminde isteniyor. Hocanın sözde kod kurallarına göre bu çözümde hangisi **yazılmaz**?",
+      "secenekler": [
+        "Başla ve dur adımları",
+        "Yaşı okuyan GET adımı",
+        "Mesajı yazan DISPLAY adımı",
+        "Yaşı yoklayan EĞER koşulu"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre sözde kodda başla ve dur adımları yazılmaz; oku adımı için GET, yaz adımı için DISPLAY kullanılır (\"Algoritma İfade Şekilleri: Metin ve Sözde Kod\" konusu). Reşit olup olmadığı bir koşulla yoklanır."
+    },
+    {
+      "id": "alg-karar-ornekleri.s2",
+      "tip": "secme",
+      "yer": "Örnek 3: 50'den büyük iki sayı",
+      "soru": "Örnek 3'te `c=a+b` işleminin yapılması için hangi koşulun doğru dönmesi gerekir?",
+      "secenekler": [
+        "`a>50 && b>50`",
+        "`a>50 || b>50`",
+        "`a>=50 && b>=50`",
+        "`a+b>50`"
+      ],
+      "dogru": 0,
+      "izah": "İki sayının ikisi de 50'den büyük olmalıdır: iki karşılaştırma VE (`&&`) ile birleştirilir. VEYA'da biri yeterli olurdu; `>=` 50'yi de kapsardı; `a+b>50` ise toplama bakar."
+    },
+    {
+      "id": "alg-karar-ornekleri.s3",
+      "tip": "dy",
+      "yer": "Örnek 3: 50'den büyük iki sayı",
+      "ifade": "Örnek 3'teki programa a için 50, b için 80 girilirse `c=a+b` işlemi yapılır.",
+      "dogru": false,
+      "izah": "\"50'den büyük\" 50'yi kapsamaz: 50>50 yanlıştır. VE ile birleştirilen ifadelerden biri yanlış olduğu için koşul yanlış döner ve \"bu sayılar uygun değil\" yazılır."
+    },
+    {
+      "id": "alg-karar-ornekleri.s4",
+      "tip": "hesap",
+      "yer": "Örnek 3: 50'den büyük iki sayı",
+      "soru": "Örnek 3'teki programa a için 60, b için 70 girilirse c'nin değeri kaç olur?",
+      "cevap": 130,
+      "izah": "60>50 ve 70>50 doğrudur; koşul doğru döner ve c = a+b = 60+70 = 130 olur."
+    },
+    {
+      "id": "alg-karar-ornekleri.s5",
+      "tip": "secme",
+      "yer": "Örnek 4: tek mi çift mi",
+      "soru": "Örnek 4'te hangi koşul doğru dönerse girilen sayı **çifttir**?",
+      "secenekler": [
+        "`SAYI%2==0`",
+        "`SAYI%2==1`",
+        "`SAYI/2==0`",
+        "`SAYI^2==0`"
+      ],
+      "dogru": 0,
+      "izah": "Çift sayının 2'ye bölümünden kalan 0'dır; kalanı mod alma (`%`) verir. `SAYI%2==1` tek sayıda doğru döner. `/` bölümü, `^` hocanın tablosunda üs almayı verir."
+    },
+    {
+      "id": "alg-karar-ornekleri.s6",
+      "tip": "izleme",
+      "yer": "Örnek 4: tek mi çift mi",
+      "soru": "Bu algoritmaya SAYI için 7 girilirse ekrana ne yazılır?",
+      "kod": "Oku: SAYI\nEĞER SAYI%2==0 İSE Yaz: \"Çift\"\nDEĞİL İSE Yaz: \"Tek\"",
+      "secenekler": [
+        "Tek",
+        "Çift",
+        "1",
+        "3"
+      ],
+      "dogru": 0,
+      "izah": "7%2 = 1 (7'nin 2'ye bölümünden kalan); 1==0 yanlış olduğu için DEĞİL İSE kısmı gerçekleştirilir ve \"Tek\" yazılır. 3, 7/2'nin tam sayı bölümüdür."
+    },
+    {
+      "id": "alg-karar-ornekleri.s7",
+      "tip": "secme",
+      "yer": "Örnek 5: GEÇERLİ ya da GEÇERSİZ",
+      "soru": "Örnek 5'teki programa hangi sayı girilirse ekrana \"GEÇERSİZ\" yazılır?",
+      "secenekler": [
+        "-5",
+        "47",
+        "99",
+        "12"
+      ],
+      "dogru": 0,
+      "izah": "-5, 0-100 aralığında değildir: \"GEÇERSİZ\" yazılır. 47, 99 ve 12 aralıktadır: \"GEÇERLİ\" yazılır."
+    },
+    {
+      "id": "alg-karar-ornekleri.s8",
+      "tip": "secme",
+      "yer": "Örnek 5: GEÇERLİ ya da GEÇERSİZ",
+      "soru": "Örnek 5'te sayının 0-100 arasında olduğunu yoklayan iki karşılaştırma hangi operatörle birleştirilir?",
+      "secenekler": [
+        "VE (`&&`)",
+        "VEYA (`||`)",
+        "Eşit (`==`)",
+        "Farklı (`!=`)"
+      ],
+      "dogru": 0,
+      "izah": "Sayı hem 0 sınırını hem 100 sınırını sağlamalıdır; iki karşılaştırma birlikte doğru olmalıdır: VE. VEYA ile her sayı iki karşılaştırmadan birini sağlar ve koşul hep doğru döner. 0 ve 100 dahil alınsa da alınmasa da VE gerekir. `==` ve `!=` karşılaştırma işleçleridir, karşılaştırmaları birleştirmez."
+    },
+    {
+      "id": "alg-karar-ornekleri.s9",
+      "tip": "hesap",
+      "yer": "Örnek 6: büyükten küçüğü çıkarma",
+      "soru": "Örnek 6'daki programa 4 ve 15 girilirse ekrana ne yazılmalıdır?",
+      "cevap": 11,
+      "izah": "Büyük olandan küçük olan çıkarılır: 15 - 4 = 11."
+    },
+    {
+      "id": "alg-karar-ornekleri.s10",
+      "tip": "dy",
+      "yer": "Örnek 6: büyükten küçüğü çıkarma",
+      "ifade": "Örnek 6'da önce 15 sonra 4 girilse de, önce 4 sonra 15 girilse de ekrana aynı sonuç yazılmalıdır.",
+      "dogru": true,
+      "izah": "Her iki durumda da büyük olan 15, küçük olan 4'tür; sonuç 15 - 4 = 11 olur. Girilme sırası sonucu değiştirmez."
+    },
+    {
+      "id": "alg-karar-ornekleri.s11",
+      "tip": "esles",
+      "yer": "Örnek 7: harf notu",
+      "soru": "Örnek 7'deki not aralıklarına göre notları harf notlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "95",
+          "A"
+        ],
+        [
+          "85",
+          "B"
+        ],
+        [
+          "79",
+          "C"
+        ],
+        [
+          "60",
+          "D"
+        ],
+        [
+          "59",
+          "F"
+        ]
+      ],
+      "izah": "90 ve üzeri A, 80-89 B, 70-79 C, 60-69 D, 60 altı F. 60, \"60 - 69\" aralığındadır (D); 59 \"60 altı\"dır (F)."
+    },
+    {
+      "id": "alg-karar-ornekleri.s12",
+      "tip": "secme",
+      "yer": "Örnek 7: harf notu",
+      "soru": "Örnek 7'deki not aralıklarına göre 89 alan öğrencinin harf notu nedir?",
+      "secenekler": [
+        "B",
+        "A",
+        "C",
+        "D"
+      ],
+      "dogru": 0,
+      "izah": "89, \"80 - 89\" aralığındadır: B. A için not 90 ve üzeri olmalıdır."
+    },
+    {
+      "id": "alg-karar-ornekleri.s13",
+      "tip": "klasik",
+      "yer": "Örnek 7: harf notu",
+      "soru": "Hocanın Örnek 7'si: yüzlük notun harf notunu belirleyen algoritmayı yaz (90 ve üzeri A, 80-89 B, 70-79 C, 60-69 D, 60 altı F).",
+      "cevap": "1.Başla\n2.Oku: NOT\n3.EĞER NOT>=90 İSE Yaz: \"A\"\nDEĞİL İSE EĞER NOT>=80 İSE Yaz: \"B\"\nDEĞİL İSE EĞER NOT>=70 İSE Yaz: \"C\"\nDEĞİL İSE EĞER NOT>=60 İSE Yaz: \"D\"\nDEĞİL İSE Yaz: \"F\"\n4.Bitir.\n(Değişken adı farklı olabilir. Çözüm slaytta yok. Art arda ayrı EĞER'lerle de yazılabilir: EĞER NOT>=80 VE NOT<90 İSE Yaz: \"B\" gibi.)",
+      "anahtarlar": [
+        "EĞER",
+        "90",
+        "80",
+        "70",
+        "60"
+      ]
+    },
+    {
+      "id": "alg-karar-ornekleri.s14",
+      "tip": "esles",
+      "yer": "Örnek 8: yaş grubu",
+      "soru": "Örnek 8'deki yaş gruplarına göre yaşları gruplarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "12",
+          "Çocuk"
+        ],
+        [
+          "13",
+          "Genç"
+        ],
+        [
+          "64",
+          "Yetişkin"
+        ],
+        [
+          "65",
+          "Yaşlı"
+        ]
+      ],
+      "izah": "0-12 Çocuk, 13-19 Genç, 20-64 Yetişkin, 65 ve üzeri Yaşlı. Aralıklar sınırlarıyla birlikte verilmiştir."
+    },
+    {
+      "id": "alg-karar-ornekleri.s15",
+      "tip": "dy",
+      "yer": "Örnek 8: yaş grubu",
+      "ifade": "Örnek 8'deki yaş gruplarına göre 19 yaşındaki kişi Genç grubundadır.",
+      "dogru": true,
+      "izah": "Genç grubu 13-19'dur ve 19'u kapsar. Yetişkin grubu 20'den başlar."
+    },
+    {
+      "id": "alg-karar-ornekleri.s16",
+      "tip": "secme",
+      "yer": "Örnek 9: geçme notu",
+      "soru": "Örnek 9'da hangi koşul doğru dönerse kişi sınavı **geçmiştir**?",
+      "secenekler": [
+        "`NOT>=50`",
+        "`NOT>50`",
+        "`NOT<=50`",
+        "`NOT==50`"
+      ],
+      "dogru": 0,
+      "izah": "Geçme notu 50 ve üzeridir: `>=` büyük ya da eşit demektir ve 50'yi kapsar. `NOT>50` yazılırsa 50 alan kişi kalmış sayılır."
+    },
+    {
+      "id": "alg-karar-ornekleri.s17",
+      "tip": "dy",
+      "yer": "Örnek 9: geçme notu",
+      "ifade": "Örnek 9'a göre sınavdan 50 alan kişi geçemez.",
+      "dogru": false,
+      "izah": "Geçme notu 50 ve üzeridir; 50 alan kişi geçer."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-karar-ornekleri.k1",
+      "yer": "Örnek 1: reşit olma",
+      "on": "Hocanın Örnek 1'i (reşit olma) sözde kodla isteniyor. Nelere dikkat edilir?",
+      "arka": "Sözde kodda başla ve dur yazılmaz; oku için GET, yaz için DISPLAY kullanılır.\nEk: GET YAS; EĞER YAS>=18 İSE DISPLAY \"Reşitsiniz\"; DEĞİL İSE DISPLAY \"Reşit değilsiniz\". Çözüm ve yaş sınırı slaytta yok."
+    },
+    {
+      "id": "alg-karar-ornekleri.k2",
+      "yer": "Örnek 2: sayının sıfıra göre durumu",
+      "on": "Örnek 2'de (sayının sıfıra göre durumu) kaç durum var? Nasıl çözülür?",
+      "arka": "Üç durum: sıfıra eşit, sıfırdan büyük, sıfırdan küçük.\nEk: bir EĞER İSE ve DEĞİL İSE yapısı iki kısımlıdır; DEĞİL İSE kısmına yeni bir EĞER yazılabilir (EĞER SAYI==0 ... DEĞİL İSE EĞER SAYI>0 ... DEĞİL İSE ...); ya da art arda ayrı EĞER'ler yazılır (aralık koşulda tam verilir: EĞER SAYI==0 ..., EĞER SAYI>0 ..., EĞER SAYI<0 ...). Çözüm slaytta yok."
+    },
+    {
+      "id": "alg-karar-ornekleri.k3",
+      "yer": "Örnek 3: 50'den büyük iki sayı",
+      "on": "Örnek 3'teki koşul nasıl kurulur? a için 50 girilirse ne olur?",
+      "arka": "İkisi de 50'den büyük olmalı: a>50 VE b>50 (&&).\n50, \"50'den büyük\" değildir: koşul yanlış döner, \"bu sayılar uygun değil\" yazılır.\nMetinsel istendiği için adımlar numaralı yazılır, Başla ile başlayıp son ile biter.\nEk: çözüm slaytta yok."
+    },
+    {
+      "id": "alg-karar-ornekleri.k4",
+      "yer": "Örnek 4: tek mi çift mi",
+      "on": "Örnek 4'te sayının tek mi çift mi olduğu nasıl bulunur?",
+      "arka": "Sayının 2'ye bölümünden kalana mod alma (%) işleciyle bakılır: SAYI%2==0 ise çift, değilse tek. Bölme (/) kalanı vermez.\nEk: çözüm slaytta yok."
+    },
+    {
+      "id": "alg-karar-ornekleri.k5",
+      "yer": "Örnek 5: GEÇERLİ ya da GEÇERSİZ",
+      "on": "Örnek 5'te (0-100 arası) koşul hangi operatörle kurulur? Neden?",
+      "arka": "VE (&&): sayı hem 0 sınırını hem 100 sınırını sağlamalı; iki karşılaştırma birlikte doğru olmalı.\nVEYA ile yazılırsa her sayı birini sağlar, hep \"GEÇERLİ\" yazılır.\nEk: 0 ve 100'ün dahil olup olmadığı slaytta yazmıyor."
+    },
+    {
+      "id": "alg-karar-ornekleri.k6",
+      "yer": "Örnek 7: harf notu",
+      "on": "Örnek 7'deki not aralıklarını ve sınır değerleri söyleyin.",
+      "arka": "90 ve üzeri A; 80-89 B; 70-79 C; 60-69 D; 60 altı F.\nSınırlar: 90 A, 89 B; 60 D, 59 F.\nEk: DEĞİL İSE kısımlarına yeni EĞER'ler yazılabilir (NOT>=90 ise A, değilse NOT>=80 ise B, değilse NOT>=70 ise C, değilse NOT>=60 ise D, değilse F); ya da art arda ayrı EĞER'ler yazılır (aralık koşulda tam verilir: NOT>=80 VE NOT<90 ise B gibi)."
+    },
+    {
+      "id": "alg-karar-ornekleri.k7",
+      "yer": "Örnek 8: yaş grubu",
+      "on": "Örnek 8'deki yaş gruplarını söyleyin.",
+      "arka": "0-12 Çocuk; 13-19 Genç; 20-64 Yetişkin; 65 ve üzeri Yaşlı.\nSınırlar dahil: 12 Çocuk, 13 Genç; 64 Yetişkin, 65 Yaşlı."
+    },
+    {
+      "id": "alg-karar-ornekleri.k8",
+      "yer": "Örnek 9: geçme notu",
+      "on": "Örnek 9'da geçme koşulu nasıl yazılır?",
+      "arka": "Geçme notu 50 ve üzeri: NOT>=50 (>= eşitliği kapsar).\nNOT>50 yazılırsa 50 alan kişi kalmış sayılır."
+    }
+  ]
+}

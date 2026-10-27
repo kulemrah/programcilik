@@ -1,0 +1,201 @@
+{
+  "id": "alg-yazim",
+  "baslik": "Algoritma Yazımı: Örnekler",
+  "kaynak": "algoritma_ve_programlama_temelleri_3__hafta_2.pdf, slayt 18–20",
+  "kavramlar": [
+    {
+      "terim": "BAŞLA ve BİTİR",
+      "izah": "Hocanın çözümünde algoritma BAŞLA ile açılır, BİTİR (ya da SON, DUR) ile kapanır.",
+      "yer": "Örnek 1: iki sayının toplamı"
+    },
+    {
+      "terim": "OKU",
+      "izah": "\"A sayısını oku\" ya da OKU: A: klavyeden bir değer okunur ve A adlı değişkende saklanır.",
+      "yer": "Adımların kısa yazılışı"
+    },
+    {
+      "terim": "YAZ",
+      "izah": "\"TOPLAM değerini ekrana yaz\" ya da YAZ: TOPLAM: değişkenin değeri ekrana yazılır.",
+      "yer": "Adımların kısa yazılışı"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-yazim.s1",
+      "tip": "dizme",
+      "yer": "Örnek 1: iki sayının toplamı",
+      "soru": "Klavyeden girilen iki sayıyı toplayıp sonucu ekrana yazan algoritmanın adımlarını dizin.",
+      "parcalar": [
+        "BAŞLA",
+        "A ve B sayılarını oku",
+        "TOPLAM=A+B işlemini yap",
+        "TOPLAM değerini ekrana yaz",
+        "BİTİR"
+      ],
+      "izah": "Hocanın Örnek 1 çözümü: BAŞLA, A'yı oku, B'yi oku, TOPLAM=A+B, TOPLAM'ı ekrana yaz, BİTİR."
+    },
+    {
+      "id": "alg-yazim.s2",
+      "tip": "secme",
+      "yer": "Örnek 1: iki sayının toplamı",
+      "soru": "Hocanın Örnek 1 çözümündeki \"A sayısını oku\" adımı ne yapar?",
+      "secenekler": [
+        "Klavyeden bir değer okur ve A adlı değişkende saklar",
+        "A değişkenindeki değeri ekrana yazar",
+        "A değişkenine 0 değerini atar",
+        "A ile B'nin toplamını A değişkenine aktarır"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın açıklaması: klavyeden bir değer okunur ve A adlı değişken içinde saklanır. Ekrana yazmak YAZ adımının işidir."
+    },
+    {
+      "id": "alg-yazim.s3",
+      "tip": "dy",
+      "yer": "Örnek 1: iki sayının toplamı",
+      "ifade": "Hocanın çözümünde `TOPLAM=A+B` adımı, A ve B okunmadan önce yazılmıştır.",
+      "dogru": false,
+      "izah": "Önce A ve B okunur (2. ve 3. adım), sonra TOPLAM=A+B yapılır (4. adım). Okunmamış bir değerle işlem yapılamaz."
+    },
+    {
+      "id": "alg-yazim.s4",
+      "tip": "dy",
+      "yer": "Örnek 1: iki sayının toplamı",
+      "ifade": "Hocanın çözümünde `TOPLAM=A+B` adımının sonucu TOPLAM adlı değişkende saklanır.",
+      "dogru": true,
+      "izah": "Hocanın açıklaması: A ve B değişkenlerindeki değerler toplanır; elde edilen sonuç TOPLAM adlı değişkende saklanır."
+    },
+    {
+      "id": "alg-yazim.s5",
+      "tip": "secme",
+      "yer": "Adımların kısa yazılışı",
+      "soru": "\"TOPLAM değerini ekrana yaz\" adımının hocanın verdiği kısa yazılışı hangisidir?",
+      "secenekler": [
+        "`YAZ: TOPLAM`",
+        "`OKU: TOPLAM`",
+        "`TOPLAM=A+B`",
+        "`SON: TOPLAM`"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın çözümü: TOPLAM değerini ekrana yaz (ya da YAZ: TOPLAM). OKU klavyeden değer almak içindir."
+    },
+    {
+      "id": "alg-yazim.s6",
+      "tip": "secme",
+      "yer": "Adımların kısa yazılışı",
+      "soru": "Hocanın çözümünde BİTİR adımının yerine hangisi de yazılabilir?",
+      "secenekler": [
+        "SON",
+        "BAŞLA",
+        "OKU",
+        "YAZ"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın çözümü: BİTİR (ya da SON, DUR)."
+    },
+    {
+      "id": "alg-yazim.s7",
+      "tip": "hesap",
+      "yer": "Örnek 1: iki sayının toplamı",
+      "soru": "Örnek 1'in algoritmasına klavyeden 12 ve 30 girilirse ekrana ne yazılır?",
+      "cevap": 42,
+      "izah": "A = 12, B = 30 okunur; TOPLAM = 12+30 = 42; YAZ: TOPLAM ile 42 yazılır."
+    },
+    {
+      "id": "alg-yazim.s8",
+      "tip": "hesap",
+      "yer": "Örnek 2: dikdörtgenin alanı",
+      "soru": "Örnek 2'deki programa kısa kenar 4, uzun kenar 7 girilirse ekrana ne yazılmalıdır?",
+      "cevap": 28,
+      "izah": "Dikdörtgenin alanı kısa kenar ile uzun kenarın çarpımıdır: 4·7 = 28."
+    },
+    {
+      "id": "alg-yazim.s9",
+      "tip": "hesap",
+      "yer": "Örnek 3: üç sayının ortalaması",
+      "soru": "Örnek 3'teki programa 4, 8 ve 9 girilirse ekrana ne yazılmalıdır?",
+      "cevap": 7,
+      "izah": "Ortalama = (4+8+9)/3 = 21/3 = 7."
+    },
+    {
+      "id": "alg-yazim.s10",
+      "tip": "izleme",
+      "yer": "Örnek 3: üç sayının ortalaması",
+      "soru": "Bu algoritmaya 3, 6 ve 9 girilirse ekrana ne yazılır?",
+      "kod": "BAŞLA\nOKU: A\nOKU: B\nOKU: C\nORTALAMA=A+B+C/3\nYAZ: ORTALAMA\nBİTİR",
+      "secenekler": [
+        "12",
+        "6",
+        "18",
+        "4"
+      ],
+      "dogru": 0,
+      "izah": "Parantez olmadığı için işlem önceliğine göre önce bölme yapılır: C/3 = 9/3 = 3; sonra 3+6+3 = 12. Doğru ortalama (3+6+9)/3 = 6 olurdu."
+    },
+    {
+      "id": "alg-yazim.s11",
+      "tip": "secme",
+      "yer": "Örnek 3: üç sayının ortalaması",
+      "soru": "A, B ve C sayılarının ortalamasını doğru hesaplayan atama hangisidir?",
+      "secenekler": [
+        "`ORTALAMA=(A+B+C)/3`",
+        "`ORTALAMA=A+B+C/3`",
+        "`ORTALAMA=A+(B+C)/3`",
+        "`(A+B+C)/3=ORTALAMA`"
+      ],
+      "dogru": 0,
+      "izah": "Toplam önce parantezle hesaplanmalı, sonra 3'e bölünmeli. Parantezsiz yazımda yalnızca C bölünür. Atamada sonuç soldaki değişkene yazılır; değişken sağda olamaz."
+    },
+    {
+      "id": "alg-yazim.s12",
+      "tip": "klasik",
+      "yer": "Örnek 2: dikdörtgenin alanı",
+      "soru": "Hocanın Örnek 2'si: klavyeden kısa ve uzun kenarı girilen dikdörtgenin alanını hesaplayıp ekrana yazan programın algoritmasını yazın.",
+      "cevap": "1. BAŞLA\n2. OKU: KISA\n3. OKU: UZUN\n4. ALAN=KISA*UZUN\n5. YAZ: ALAN\n6. BİTİR (ya da SON, DUR)\n(Değişken adları farklı olabilir; çözüm slaytta yok, Örnek 1'in kalıbıyla yazıldı.)",
+      "anahtarlar": [
+        "BAŞLA",
+        "OKU",
+        "*",
+        "YAZ"
+      ]
+    },
+    {
+      "id": "alg-yazim.s13",
+      "tip": "klasik",
+      "yer": "Örnek 3: üç sayının ortalaması",
+      "soru": "Hocanın Örnek 3'ü: klavyeden girilen 3 sayının ortalamasını hesaplayıp ekrana yazan programın algoritmasını yazın.",
+      "cevap": "1. BAŞLA\n2. OKU: A\n3. OKU: B\n4. OKU: C\n5. ORTALAMA=(A+B+C)/3\n6. YAZ: ORTALAMA\n7. BİTİR (ya da SON, DUR)\n(Parantez şarttır. Çözüm slaytta yok, Örnek 1'in kalıbıyla yazıldı.)",
+      "anahtarlar": [
+        "BAŞLA",
+        "OKU",
+        "/3",
+        "YAZ"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-yazim.k1",
+      "yer": "Örnek 1: iki sayının toplamı",
+      "on": "Klavyeden girilen iki sayıyı toplayıp ekrana yazan algoritmayı söyle (hocanın Örnek 1'i).",
+      "arka": "1. BAŞLA\n2. A sayısını oku (OKU: A)\n3. B sayısını oku (OKU: B)\n4. TOPLAM=A+B işlemini yap\n5. TOPLAM değerini ekrana yaz (YAZ: TOPLAM)\n6. BİTİR (SON, DUR)"
+    },
+    {
+      "id": "alg-yazim.k2",
+      "yer": "Adımların kısa yazılışı",
+      "on": "Hocanın çözümündeki adımların kısa yazılışları neler?",
+      "arka": "A sayısını oku = OKU: A\nTOPLAM değerini ekrana yaz = YAZ: TOPLAM\nBİTİR = SON ya da DUR"
+    },
+    {
+      "id": "alg-yazim.k3",
+      "yer": "Örnek 2 çözümü (Ek)",
+      "on": "Dikdörtgenin alanını hesaplayan algoritmayı söyle (hocanın Örnek 2'si).",
+      "arka": "BAŞLA → OKU: KISA → OKU: UZUN → ALAN=KISA*UZUN → YAZ: ALAN → BİTİR\nEk: çözüm slaytta yok; Örnek 1'in kalıbıyla yazıldı."
+    },
+    {
+      "id": "alg-yazim.k4",
+      "yer": "Örnek 3 çözümü (Ek)",
+      "on": "Üç sayının ortalamasını hesaplayan algoritmayı söyle (hocanın Örnek 3'ü). Nelere dikkat edilir?",
+      "arka": "BAŞLA → OKU: A → OKU: B → OKU: C → ORTALAMA=(A+B+C)/3 → YAZ: ORTALAMA → BİTİR\nParantez şarttır: A+B+C/3 yazılırsa yalnızca C bölünür.\nEk: çözüm slaytta yok; Örnek 1'in kalıbıyla yazıldı."
+    }
+  ]
+}

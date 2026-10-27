@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="614" viewBox="0 0 400 614" role="img">
+<title>Hiyerarşik, ağ ve ilişkisel veri modelleri</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="10.0" y="10.0" width="380.0" height="170.0" rx="8" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="22.0" y="34.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" font-weight="600" text-anchor="start">Hiyerarşik: ağaç</text>
+<rect x="171.0" y="50.0" width="58" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="200.0" y="66.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">KÖK</text>
+<line x1="200.0" y1="74.0" x2="120.0" y2="98.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="120.0,98.0 126.9,92.3 128.9,99.0" fill="#4A5568"/>
+<rect x="91.0" y="98.0" width="58" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="120.0" y="114.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">DAL</text>
+<line x1="120.0" y1="122.0" x2="82.0" y2="146.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="82.0,146.0 87.1,138.6 90.9,144.5" fill="#4A5568"/>
+<rect x="56.0" y="146.0" width="52" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="82.0" y="162.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">DAL</text>
+<line x1="120.0" y1="122.0" x2="158.0" y2="146.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="158.0,146.0 149.1,144.5 152.9,138.6" fill="#4A5568"/>
+<rect x="132.0" y="146.0" width="52" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="158.0" y="162.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">DAL</text>
+<line x1="200.0" y1="74.0" x2="280.0" y2="98.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="280.0,98.0 271.1,99.0 273.1,92.3" fill="#4A5568"/>
+<rect x="251.0" y="98.0" width="58" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="280.0" y="114.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">DAL</text>
+<line x1="280.0" y1="122.0" x2="242.0" y2="146.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="242.0,146.0 247.1,138.6 250.9,144.5" fill="#4A5568"/>
+<rect x="216.0" y="146.0" width="52" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="242.0" y="162.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">DAL</text>
+<line x1="280.0" y1="122.0" x2="318.0" y2="146.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="318.0,146.0 309.1,144.5 312.9,138.6" fill="#4A5568"/>
+<rect x="292.0" y="146.0" width="52" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="318.0" y="162.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">DAL</text>
+<text x="380.0" y="34.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="end">her düğümün tek üstü var</text>
+<rect x="10.0" y="192.0" width="380.0" height="196.0" rx="8" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="22.0" y="216.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" font-weight="600" text-anchor="start">Ağ: graf</text>
+<text x="380.0" y="216.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="end">bir düğümün birden çok üstü olabilir</text>
+<line x1="171.3" y1="256.0" x2="118.7" y2="278.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="118.7,278.0 125.0,271.6 127.7,278.0" fill="#4A5568"/>
+<line x1="228.7" y1="256.0" x2="281.3" y2="278.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="281.3,278.0 272.3,278.0 275.0,271.6" fill="#4A5568"/>
+<line x1="192.5" y1="256.0" x2="137.5" y2="344.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="137.5,344.0 138.9,335.1 144.9,338.8" fill="#4A5568"/>
+<line x1="119.0" y1="290.0" x2="281.0" y2="290.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="281.0,290.0 272.7,293.5 272.7,286.5" fill="#4A5568"/>
+<line x1="97.3" y1="302.0" x2="122.7" y2="344.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="122.7,344.0 115.4,338.7 121.4,335.1" fill="#4A5568"/>
+<line x1="281.0" y1="300.6" x2="159.0" y2="345.4" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="159.0,345.4 165.6,339.2 168.0,345.8" fill="#4A5568"/>
+<line x1="306.4" y1="302.0" x2="293.6" y2="344.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="293.6,344.0 292.7,335.1 299.4,337.1" fill="#4A5568"/>
+<rect x="171.0" y="232.0" width="58" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="200.0" y="248.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Veri1</text>
+<rect x="61.0" y="278.0" width="58" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="90.0" y="294.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Veri2</text>
+<rect x="281.0" y="278.0" width="58" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="310.0" y="294.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Veri3</text>
+<rect x="101.0" y="344.0" width="58" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="130.0" y="360.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Veri4</text>
+<rect x="261.0" y="344.0" width="58" height="24" rx="3" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="290.0" y="360.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Veri5</text>
+<rect x="10.0" y="400.0" width="380.0" height="204.0" rx="8" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="22.0" y="424.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" font-weight="600" text-anchor="start">İlişkisel: tablolar</text>
+<text x="380.0" y="424.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="end">bağlantılar: matematiksel ilişkiler</text>
+<text x="22.0" y="452.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="start">uye</text>
+<rect x="22.0" y="458.0" width="52" height="20" fill="#4A7FBF" stroke="#FFFFFF"/>
+<text x="48.0" y="472.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="middle">uyeNo</text>
+<rect x="74.0" y="458.0" width="52" height="20" fill="#4A7FBF" stroke="#FFFFFF"/>
+<text x="100.0" y="472.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="middle">adi</text>
+<rect x="22.0" y="478.0" width="52" height="20" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="48.0" y="492.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" text-anchor="middle">7</text>
+<rect x="74.0" y="478.0" width="52" height="20" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="100.0" y="492.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" text-anchor="middle">Ece</text>
+<text x="150.0" y="452.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="start">odunc</text>
+<rect x="150.0" y="458.0" width="60" height="20" fill="#4A7FBF" stroke="#FFFFFF"/>
+<text x="180.0" y="472.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="middle">oduncNo</text>
+<rect x="210.0" y="458.0" width="60" height="20" fill="#4A7FBF" stroke="#FFFFFF"/>
+<text x="240.0" y="472.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="middle">uyeNo</text>
+<rect x="270.0" y="458.0" width="60" height="20" fill="#4A7FBF" stroke="#FFFFFF"/>
+<text x="300.0" y="472.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="middle">kitapNo</text>
+<rect x="150.0" y="478.0" width="60" height="20" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="180.0" y="492.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" text-anchor="middle">1</text>
+<rect x="210.0" y="478.0" width="60" height="20" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="240.0" y="492.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" text-anchor="middle">7</text>
+<rect x="270.0" y="478.0" width="60" height="20" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="300.0" y="492.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" text-anchor="middle">12</text>
+<text x="154.0" y="571.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="start">Kitap</text>
+<rect x="22.0" y="556.0" width="62" height="20" fill="#4A7FBF" stroke="#FFFFFF"/>
+<text x="53.0" y="570.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="middle">kitapNo</text>
+<rect x="84.0" y="556.0" width="62" height="20" fill="#4A7FBF" stroke="#FFFFFF"/>
+<text x="115.0" y="570.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" font-weight="600" text-anchor="middle">kitapAdi</text>
+<rect x="22.0" y="576.0" width="62" height="20" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="53.0" y="590.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" text-anchor="middle">12</text>
+<rect x="84.0" y="576.0" width="62" height="20" fill="#E2ECF7" stroke="#FFFFFF"/>
+<text x="115.0" y="590.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" text-anchor="middle">Nutuk</text>
+<line x1="48.0" y1="498.0" x2="48.0" y2="514.0" stroke="#C05621" stroke-width="1.5" stroke-dasharray="5 4"/>
+<line x1="48.0" y1="514.0" x2="240.0" y2="514.0" stroke="#C05621" stroke-width="1.5" stroke-dasharray="5 4"/>
+<line x1="240.0" y1="514.0" x2="240.0" y2="498.0" stroke="#C05621" stroke-width="1.5" stroke-dasharray="5 4"/>
+<line x1="300.0" y1="498.0" x2="300.0" y2="534.0" stroke="#C05621" stroke-width="1.5" stroke-dasharray="5 4"/>
+<line x1="300.0" y1="534.0" x2="53.0" y2="534.0" stroke="#C05621" stroke-width="1.5" stroke-dasharray="5 4"/>
+<line x1="53.0" y1="534.0" x2="53.0" y2="556.0" stroke="#C05621" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="316.0" y="530.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C05621" text-anchor="start">kitapNo</text>
+<text x="140.0" y="528.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C05621" text-anchor="middle">uyeNo</text>
+</svg>

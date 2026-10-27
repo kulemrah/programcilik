@@ -1,0 +1,341 @@
+{
+  "id": "b2r-monitoring",
+  "baslik": "monitoring.sh: İzleme Betiği ve Cron",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "Mimari/kernel",
+      "izah": "uname -a",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "Fiziksel CPU",
+      "izah": "lscpu | grep \"Socket(s)\"",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "vCPU",
+      "izah": "Sanal işlemci: VM'e ayrılan işlemci çekirdeği sayısı; `nproc` ile öğrenilir.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "RAM kullanımı",
+      "izah": "free -m",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "Disk kullanımı",
+      "izah": "df -h /",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "CPU yükü",
+      "izah": "top -bn1 | grep \"Cpu(s)\" (mpstat de olur ama sysstat paketi ister)",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "Son reboot",
+      "izah": "who -b (ya da uptime -s)",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "LVM aktif mi",
+      "izah": "lsblk | grep lvm (ya da vgs)",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "Aktif bağlantı",
+      "izah": "ss -ta | grep ESTAB | wc -l",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "Kullanıcı sayısı",
+      "izah": "who | wc -l",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "IP + MAC",
+      "izah": "ip a (tek komut yeter — \"inet\" satırı IP, \"link/ether\" satırı MAC)",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "sudo komut sayısı",
+      "izah": "/var/log/sudo/ log dosyasındaki satır/komut sayısı",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "wall",
+      "izah": "Sistemdeki tüm açık terminallere mesaj yayınlayan komut; monitoring.sh bunu kullanır.",
+      "yer": "Betiğin görevi ve wall komutunun rolü"
+    },
+    {
+      "terim": "shebang",
+      "izah": "Betiğin ilk satırındaki #!/bin/bash; hangi yorumlayıcıyla çalışacağını belirtir.",
+      "yer": "Betiği çalıştırılabilir yapma: shebang ve chmod"
+    },
+    {
+      "terim": "@reboot",
+      "izah": "cron'da açılışta bir kez çalıştırma zamanlaması.",
+      "yer": "Açılışta ve her 10 dakikada çalıştırma: cron (@reboot, */10 * * * *)"
+    },
+    {
+      "terim": "çekirdek (kernel)",
+      "izah": "İşletim sisteminin donanımla konuşan en alt katmanı. `uname -a` sürümünü gösterir; monitoring.sh bunu mimariyle birlikte ilk satırda bildirir.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "CPU",
+      "izah": "İşlemci. monitoring.sh hem fiziksel işlemci sayısını (lscpu'daki Socket satırı) hem sanal işlemci sayısını (nproc) ayrı ayrı bildirmek zorundadır.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "df",
+      "izah": "Dosya sistemlerinin doluluk durumunu gösterir; `df -h /` kök bölümün kullanımını okunur biçimde verir.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "bash",
+      "izah": "Linux'un yaygın kabuğu. monitoring.sh bash ile yazılmak zorundadır ve betiğin ilk satırında #!/bin/bash bulunur.",
+      "yer": "Betiği çalıştırılabilir yapma: shebang ve chmod"
+    },
+    {
+      "terim": "kabuk",
+      "izah": "Komutları yorumlayıp çalıştıran program (shell); Linux'ta yaygını bash'tir.",
+      "yer": "Betiği çalıştırılabilir yapma: shebang ve chmod"
+    },
+    {
+      "terim": "terminal",
+      "izah": "Komutların yazılıp çıktının görüldüğü metin arayüzü. Sunucuda tek arayüz budur; wall mesajları açık terminallere düşer.",
+      "yer": "Betiğin görevi ve wall komutunun rolü"
+    },
+    {
+      "terim": "grep",
+      "izah": "Metin içinde kalıp arayan komut; monitoring.sh'te komut çıktılarını süzmek için kullanılır.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "boru (pipe)",
+      "izah": "| işareti: bir komutun çıktısını diğerine girdi olarak verir. `ss -ta | grep ESTAB | wc -l` üç komutu böyle zincirler.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "wc",
+      "izah": "Satır, kelime ve karakter sayan komut. `| wc -l` kalıbı bir çıktının kaç satır olduğunu sayar; kullanıcı ve bağlantı sayısı böyle bulunur.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "izinler (rwx)",
+      "izah": "Bir dosyanın okuma (r), yazma (w) ve çalıştırma (x) hakları; sahip, grup ve diğerleri için ayrı ayrı tutulur. Klasik Linux izin sistemi (DAC) budur, chmod ile değiştirilir.",
+      "yer": "Betiği çalıştırılabilir yapma: shebang ve chmod"
+    },
+    {
+      "terim": "stderr",
+      "izah": "Hata çıktısı akışı. Subject monitoring.sh'in hiç hata basmamasını istiyor; boş dönebilecek değerleri kontrol etmek gerekir.",
+      "yer": "Hatasız (stderr'siz) çalışmayı garanti etme"
+    },
+    {
+      "terim": "TCP",
+      "izah": "Bağlantı kuran, sıralamayı ve teslimi garanti eden aktarım protokolü. SSH TCP üzerinde çalışır; monitoring.sh kurulu TCP bağlantılarını sayar.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "IP adresi",
+      "izah": "Makinenin ağdaki adresi. monitoring.sh IPv4 adresini bildirmek zorundadır; `ip a` çıktısındaki 'inet' satırında görünür.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "MAC adresi",
+      "izah": "Ağ kartının donanım adresi (Media Access Control); `ip a` çıktısındaki 'link/ether' satırında görünür.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "ESTABLISHED",
+      "izah": "Kurulmuş, açık TCP bağlantısını gösteren durum. monitoring.sh aktif bağlantıları bu duruma bakarak sayar.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "monitoring.sh",
+      "izah": "Subject'in istediği bash betiği: sistem bilgilerini açılışta ve her 10 dakikada bir wall ile bütün terminallere yayınlar.",
+      "yer": "Betiğin görevi ve wall komutunun rolü"
+    },
+    {
+      "terim": "yayın (broadcast)",
+      "izah": "Bir mesajın tek seferde bütün açık terminallere gönderilmesi; wall komutunun yaptığı iş.",
+      "yer": "Betiğin görevi ve wall komutunun rolü"
+    },
+    {
+      "terim": "crontab",
+      "izah": "Zamanlanmış görevlerin listesi ve onu düzenleyen komut: `crontab -e` düzenler, `crontab -l` listeler.",
+      "yer": "Açılışta ve her 10 dakikada çalıştırma: cron (@reboot, */10 * * * *)"
+    },
+    {
+      "terim": "chmod",
+      "izah": "Dosya izinlerini değiştiren komut. Betiği çalıştırılabilir yapmak için `chmod +x` kullanılır.",
+      "yer": "Betiği çalıştırılabilir yapma: shebang ve chmod"
+    },
+    {
+      "terim": "uptime",
+      "izah": "Sistemin ne kadardır açık olduğunu ve yük ortalamasını gösterir; `uptime -s` son açılış anını verir.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "who",
+      "izah": "Sisteme giriş yapmış kullanıcıları listeler. `who -b` son açılış zamanını, `who | wc -l` kullanıcı sayısını verir.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "uname",
+      "izah": "Çekirdek ve mimari bilgisini gösteren komut; `uname -a` monitoring.sh'in ilk satırını besler.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "nproc",
+      "izah": "Kullanılabilir sanal işlemci (vCPU) sayısını yazan komut.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "lscpu",
+      "izah": "İşlemci ayrıntılarını listeler; fiziksel işlemci sayısı için Socket(s) satırına bakılır.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "free",
+      "izah": "Bellek kullanımını gösteren komut; `free -m` megabayt cinsinden verir.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "top",
+      "izah": "Çalışan süreçleri ve CPU/bellek kullanımını canlı gösteren araç; `top -bn1` tek seferlik çıktı alıp betikte kullanmayı sağlar.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "ip a",
+      "izah": "Ağ arayüzlerini listeler: 'inet' satırı IP adresini, 'link/ether' satırı MAC adresini verir.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    },
+    {
+      "terim": "load average",
+      "izah": "Sistemin son 1, 5 ve 15 dakikadaki ortalama iş yükü; `uptime` ve `top` çıktısında görünür.",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-monitoring.s1",
+      "tip": "esles",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi",
+      "soru": "monitoring.sh'in bilgi kalemlerini komutlarla eşleştirin:",
+      "ciftler": [
+        [
+          "Mimari ve kernel",
+          "uname -a"
+        ],
+        [
+          "Sanal işlemci (vCPU)",
+          "nproc"
+        ],
+        [
+          "RAM kullanımı",
+          "free -m"
+        ],
+        [
+          "Disk kullanımı",
+          "df -h /"
+        ],
+        [
+          "Son yeniden başlatma",
+          "who -b"
+        ],
+        [
+          "Kullanıcı sayısı",
+          "who | wc -l"
+        ]
+      ],
+      "izah": "Bu eşleşmeleri savunmada betiği satır satır anlatırken kullanacaksınız."
+    },
+    {
+      "id": "b2r-monitoring.s2",
+      "tip": "esles",
+      "yer": "İstenen bilgi kalemleri ↔ hangi komut/dosya eşleştirmesi",
+      "soru": "Kalan bilgi kalemlerini komutlarla eşleştirin:",
+      "ciftler": [
+        [
+          "Fiziksel işlemci",
+          "lscpu | grep \"Socket(s)\""
+        ],
+        [
+          "LVM aktif mi",
+          "lsblk | grep lvm"
+        ],
+        [
+          "Aktif TCP bağlantısı",
+          "ss -ta | grep ESTAB | wc -l"
+        ],
+        [
+          "IP ve MAC adresi",
+          "ip a"
+        ],
+        [
+          "CPU yükü",
+          "top -bn1 | grep \"Cpu(s)\""
+        ]
+      ],
+      "izah": "IP ve MAC için tek komut yeter: 'inet' satırı IP'yi, 'link/ether' satırı MAC'i verir."
+    },
+    {
+      "id": "b2r-monitoring.s3",
+      "tip": "dizme",
+      "yer": "Betiği çalıştırılabilir yapma: shebang ve chmod",
+      "soru": "Betiği çalıştırılabilir yapan komutu dizin:",
+      "parcalar": [
+        "chmod",
+        "+x",
+        "/usr/local/bin/monitoring.sh"
+      ],
+      "komut": true,
+      "izah": "Bunun yanında betiğin ilk satırında #!/bin/bash (shebang) olmalı; ikisi eksikse cron betiği çalıştıramaz."
+    },
+    {
+      "id": "b2r-monitoring.s4",
+      "tip": "secme",
+      "yer": "Betiğin görevi ve wall komutunun rolü",
+      "soru": "`wall` komutu ne yapar?",
+      "secenekler": [
+        "Konsolun arka planındaki açılış mesajını değiştirir",
+        "Sistemdeki tüm açık terminallere aynı anda mesaj yayınlar",
+        "Güvenlik duvarı kurallarını yazar; ufw'nin alt seviye karşılığıdır",
+        "Betiği arka plana alıp çıktısını bir dosyaya yönlendirir"
+      ],
+      "dogru": 1,
+      "izah": "monitoring.sh çıktısını tüm oturum açmış kullanıcıların terminaline bu şekilde basar."
+    },
+    {
+      "id": "b2r-monitoring.s5",
+      "tip": "secme",
+      "yer": "Açılışta ve her 10 dakikada çalıştırma: cron (@reboot, */10 * * * *)",
+      "soru": "Crontab'daki `*/10 * * * *` ne anlama gelir?",
+      "secenekler": [
+        "Her gün saat 10'da",
+        "Her 10 dakikada bir",
+        "10 gün sonra bir kez",
+        "Açılışta 10 saniye sonra"
+      ],
+      "dogru": 1,
+      "izah": "Açılışta bir kez çalıştırma ise `@reboot` ile yapılır; ikisi birlikte kullanılır."
+    },
+    {
+      "id": "b2r-monitoring.s6",
+      "tip": "secme",
+      "yer": "Savunmada betiği değiştirmeden durdurma",
+      "soru": "Değerlendirici: 'monitoring.sh'i DEĞİŞTİRMEDEN durdurun.' Ne yaparsınız?",
+      "secenekler": [
+        "Betiği silerim ya da içini boşaltıp boş bir dosya bırakırım",
+        "`crontab -e` ile ilgili satırın başına # koyup kaydederim",
+        "`systemctl stop monitoring` ile betiğin servisini durdururum",
+        "`sudo reboot` ile makineyi yeniden başlatırım"
+      ],
+      "dogru": 1,
+      "izah": "Betiğe hiç dokunmadan, sadece cron zamanlamasını devre dışı bırakmak istenen cevaptır. Yeniden başlatmak betiği durdurmaz: @reboot satırı yüzünden açılışta yine çalışır. monitoring adında bir servis de yoktur, betik cron ile çalışır."
+    }
+  ]
+}

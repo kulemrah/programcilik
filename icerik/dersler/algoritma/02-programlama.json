@@ -1,0 +1,333 @@
+{
+  "id": "alg-programlama",
+  "baslik": "Programlama Dilleri, Problem ve Program",
+  "kaynak": "1-2._hafta_algoritma_ve_programlama_temelleri_dersi_ders_slayt_.pdf, slayt 20–27",
+  "kavramlar": [
+    {
+      "terim": "Programlama dili",
+      "izah": "İnsan-makine ve makine-makine arasındaki iletişimi sağlar; bir problemin algoritmik çözümünün bilgisayara anlatılmasını sağlayan, sıkı kuralları olan kurallar dizisidir.",
+      "yer": "Programlama dili, derleyici ve yorumlayıcı"
+    },
+    {
+      "terim": "Dil seviyeleri",
+      "izah": "Düşük seviyeli (makine dili, assembly), orta seviyeli (C/C++), yüksek seviyeli (Basic, Fortran, Pascal).",
+      "yer": "Programlama dilleri ve seviyeleri"
+    },
+    {
+      "terim": "Kaynak kodu",
+      "izah": "Kolayca yazılıp okunabilen ve hata ayıklaması yapılabilen biçimde yazılmış kod.",
+      "yer": "Yüksek seviyeli diller ve derleme"
+    },
+    {
+      "terim": "Derleyici",
+      "izah": "Programı bilgisayarın anlayacağı makine diline çeviren ve söz dizimi hatalarını bulan yazılım; kaynak kodunu nesne kodu dosyasına çevirir.",
+      "yer": "Programlama dili, derleyici ve yorumlayıcı"
+    },
+    {
+      "terim": "Makine dili",
+      "izah": "Program çalıştırıldığında CPU'nun yürüttüğü basit yönergelerin ikili sayılardan (0 ve 1) oluşan kodlanmış hâli.",
+      "yer": "Yüksek seviyeli diller ve derleme"
+    },
+    {
+      "terim": "Yorumlayıcı",
+      "izah": "Programları o anda makine diline çeviren yazılım; makine dili kısmı saklanmaz, her çalıştırmada her adım yeniden çevrilir.",
+      "yer": "Programlama dili, derleyici ve yorumlayıcı"
+    },
+    {
+      "terim": "Problem",
+      "izah": "Bir işlemin, otomasyonun ya da bilimsel hesaplamanın bilgisayarla çözülmesi fikrinin ortaya çıkması.",
+      "yer": "Problem"
+    },
+    {
+      "terim": "Program ve programlama",
+      "izah": "Program: problem çözümü adımlarından sonra ortaya çıkan, sorunu bilgisayarda çözen ürün. Programlama: bu adımların tümü.",
+      "yer": "Program ve programlama"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-programlama.s1",
+      "tip": "dy",
+      "yer": "Programlama",
+      "ifade": "Hocaya göre bilgisayar programlama yüksek bir zekâ ve matematik bilgisi gerektirir.",
+      "dogru": false,
+      "izah": "Hocanın ifadesi: programlama yüksek bir zekâ ve matematik bilgisi gerektirmez; asla vazgeçmeme sabrı ve öğrenme isteği yeterlidir."
+    },
+    {
+      "id": "alg-programlama.s2",
+      "tip": "esles",
+      "yer": "Programlama dilleri ve seviyeleri",
+      "soru": "Dil seviyelerini hocanın örnekleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Düşük seviyeli diller",
+          "Makine dili ve assembly"
+        ],
+        [
+          "Orta seviyeli diller",
+          "C/C++"
+        ],
+        [
+          "Yüksek seviyeli diller",
+          "Basic, Fortran, Pascal"
+        ]
+      ],
+      "izah": "Hocanın üç seviyeli sınıflandırması."
+    },
+    {
+      "id": "alg-programlama.s3",
+      "tip": "secme",
+      "yer": "Programlama dilleri ve seviyeleri",
+      "soru": "Hocanın üç seviyeli sınıflandırmasında assembly hangi seviyededir?",
+      "secenekler": [
+        "Düşük seviyeli",
+        "Orta seviyeli",
+        "Yüksek seviyeli"
+      ],
+      "dogru": 0,
+      "izah": "Düşük seviyeli diller makine dili ve assembly'dir. Orta seviyede C/C++, yüksek seviyede Basic, Fortran, Pascal vardır."
+    },
+    {
+      "id": "alg-programlama.s4",
+      "tip": "bosluk",
+      "yer": "Yüksek seviyeli diller ve derleme",
+      "metin": "Kolayca yazılıp okunabilen ve hata ayıklaması yapılabilen biçimde yazılan koda ___ denir.",
+      "cevaplar": [
+        [
+          "kaynak kodu",
+          "kaynak kod"
+        ]
+      ],
+      "izah": "Hocanın ifadesi: bu koda kaynak kodu denir; derleyici onu nesne koduna çevirir."
+    },
+    {
+      "id": "alg-programlama.s5",
+      "tip": "dizme",
+      "yer": "Yüksek seviyeli diller ve derleme",
+      "soru": "Bir programın kaynak kodundan çalıştırılmasına kadarki sırayı dizin.",
+      "parcalar": [
+        "Kaynak kodu yazılır",
+        "Derleyici kaynak kodunu nesne kodu dosyasına çevirir",
+        "CPU makine dili yönergelerini yürütür"
+      ],
+      "izah": "Derleyici kaynak kodunu nesne kodu denen, makine diline çevrilmiş kodu saklayan dosyaya çevirir; program çalıştırılınca CPU bu makine dili yönergelerini yürütür."
+    },
+    {
+      "id": "alg-programlama.s6",
+      "tip": "secme",
+      "yer": "Yüksek seviyeli diller ve derleme",
+      "soru": "Hocaya göre makine dili nedir?",
+      "secenekler": [
+        "CPU'nun yürüttüğü, ikili sayılardan (0 ve 1) oluşan yönergeler",
+        "Kolayca yazılıp okunabilen, hata ayıklanabilen kaynak kod",
+        "Konuşma dilinde, eğer ve iken kelimeleriyle yazılan kod",
+        "Programı o anda çevirip saklamadan çalıştıran yazılım"
+      ],
+      "dogru": 0,
+      "izah": "Makine dili, program çalıştırıldığında CPU'nun yürüttüğü basit yönergelerin ikili sayılardan (0 ve 1) oluşan kodlanmış hâlidir. Diğerleri kaynak kodu, sözde kod ve yorumlayıcının tanımlarıdır."
+    },
+    {
+      "id": "alg-programlama.s7",
+      "tip": "secme",
+      "yer": "Neden C++",
+      "soru": "Hocaya göre bu derste hangi programlama dili öğretilecektir?",
+      "secenekler": [
+        "C++",
+        "Pascal",
+        "Basic",
+        "Fortran"
+      ],
+      "dogru": 0,
+      "izah": "Hoca, genel amaçlı kullanıma uygun dillerden C++'ın bu derste öğretileceğini söylüyor."
+    },
+    {
+      "id": "alg-programlama.s8",
+      "tip": "secme",
+      "yer": "Neden C++",
+      "soru": "Hocaya göre C ile C++ arasındaki fark nedir?",
+      "secenekler": [
+        "C yalnızca yapısal programlamaya izin verir; C++ nesne yönelimli programlamaya da imkân verir",
+        "C nesne yönelimli programlamaya izin verir; C++ yalnızca yapısal programlamaya izin verir",
+        "C yorumlayıcıyla çalıştırılan bir dildir; C++ ise derleyiciyle çalıştırılan bir dildir",
+        "C düşük seviyeli bir dildir; C++ ise hocanın sınıflandırmasında yüksek seviyeli bir dildir"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın ifadesi: C sadece yapısal programlamaya izin verirken C++ nesne yönelimli programlamaya imkân verir."
+    },
+    {
+      "id": "alg-programlama.s9",
+      "tip": "secme",
+      "yer": "Problem",
+      "soru": "Bir işlemin, otomasyonun ya da bilimsel hesaplamanın bilgisayarla çözülmesi fikrinin ortaya çıkmasına ne denir?",
+      "secenekler": [
+        "Problem",
+        "Program",
+        "Algoritma",
+        "Programlama"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın problem tanımı budur. Program sorunu çözen üründür; algoritma çözümün adımlarıdır."
+    },
+    {
+      "id": "alg-programlama.s10",
+      "tip": "dizme",
+      "yer": "Problem çözümü",
+      "soru": "Problem çözümünün adımlarını hocanın verdiği sıraya göre dizin.",
+      "parcalar": [
+        "Sorunu net olarak anla",
+        "İhtiyaç ve istekleri belirle",
+        "Çözümü algoritmayla ifade et",
+        "Programlama diliyle bilgisayara aktar",
+        "Programı verilerle test et"
+      ],
+      "izah": "Hocanın sırası: sorunu anlamak, ihtiyaçları belirlemek, zihinsel alıştırmalar ve en uygun çözümün seçimi, algoritma, akış çizgesi, programlama diliyle aktarma, test, düzeltme."
+    },
+    {
+      "id": "alg-programlama.s11",
+      "tip": "dy",
+      "yer": "Problem çözümü",
+      "ifade": "Hocaya göre bir sorunun yalnızca tek bir çözümü olabilir.",
+      "dogru": false,
+      "izah": "Hocanın ifadesi: bir sorunun birden fazla çözümü olabilir; bu durumda bilgisayar için en uygun çözüm seçilmelidir."
+    },
+    {
+      "id": "alg-programlama.s12",
+      "tip": "secme",
+      "yer": "Program ve programlama",
+      "soru": "Hocaya göre program ile programlama arasındaki fark nedir?",
+      "secenekler": [
+        "Program sorunu çözen üründür; programlama bu ürüne götüren adımların tümüdür",
+        "Programlama sorunu çözen üründür; program bu ürüne götüren adımların tümüdür",
+        "Program bir algoritmanın adıdır; programlama ise derleyicinin yaptığı iştir",
+        "Program kaynak kodudur; programlama ise kaynak kodunun nesne koduna çevrilmesidir"
+      ],
+      "dogru": 0,
+      "izah": "Program, problem çözümü adımları uygulandıktan sonra ortaya çıkan ve sorunu bilgisayarda çözen üründür. Programlama, problem çözümünde anlatılan adımların tümüdür."
+    },
+    {
+      "id": "alg-programlama.s13",
+      "tip": "secme",
+      "yer": "Programlama dili, derleyici ve yorumlayıcı",
+      "soru": "Programın makine dili karşılığını saklamayan, programı her çalıştırmada adım adım o anda makine diline çeviren yazılım hangisidir?",
+      "secenekler": [
+        "Yorumlayıcı",
+        "Derleyici",
+        "İşletim sistemi",
+        "Nesne kodu"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın yorumlayıcı tanımı budur. Derleyici ise programı makine diline çevirip nesne kodu olarak saklar."
+    },
+    {
+      "id": "alg-programlama.s14",
+      "tip": "dy",
+      "yer": "Programlama dili, derleyici ve yorumlayıcı",
+      "ifade": "Hocaya göre derleyici, yazılan programda söz dizimi hatalarının olup olmadığını da bulur.",
+      "dogru": true,
+      "izah": "Hocanın tanımı: derleyici programı makine diline çevirir ve yazılan programda söz dizimi hatalarının olup olmadığını bulur."
+    },
+    {
+      "id": "alg-programlama.s15",
+      "tip": "dy",
+      "yer": "Yüksek seviyeli diller ve derleme",
+      "ifade": "Derleyici, kaynak kodunu makine diline çevrilmiş kodu saklayan bir dosyaya (nesne kodu) çevirir.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi: compiler denilen program, kaynak kodunu nesne kodu denilen, makine diline çevrilmiş kodu saklayan dosyaya çevirir."
+    },
+    {
+      "id": "alg-programlama.s16",
+      "tip": "esles",
+      "yer": "Programlama dili, derleyici ve yorumlayıcı",
+      "soru": "Hocanın örneklerini eşleştirin.",
+      "ciftler": [
+        [
+          "Pascal, C/C++, Delphi",
+          "Derleyici örnekleri"
+        ],
+        [
+          "ASP, JavaScript, MATLAB",
+          "Yorumlayıcı örnekleri"
+        ]
+      ],
+      "izah": "Hoca derleyici için Pascal, C/C++ ve Delphi'yi; yorumlayıcı için ASP, JavaScript ve MATLAB'ı örnek veriyor."
+    },
+    {
+      "id": "alg-programlama.s17",
+      "tip": "secme",
+      "yer": "Programlama dili, derleyici ve yorumlayıcı",
+      "soru": "Bir problemin algoritmik çözümünün bilgisayara anlatılmasını sağlayan, sıkı kuralları olan kurallar dizisine ne denir?",
+      "secenekler": [
+        "Programlama dili",
+        "Programlama süreci",
+        "Derleyici yazılımı",
+        "Makine dili kodu"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın programlama dili tanımı budur. Derleyici, programlama diliyle yazılan programı makine diline çeviren yazılımdır."
+    },
+    {
+      "id": "alg-programlama.s18",
+      "tip": "secme",
+      "yer": "Neden C++",
+      "soru": "Hocanın \"Neden C++\" gerekçelerinde C dili için söylenen hangisidir?",
+      "secenekler": [
+        "Günümüzde çok yaygın olarak kullanılmaktadır",
+        "Yalnızca yorumlayıcıyla çalıştırılabilmektedir",
+        "Nesne yönelimli programlamayı tek başına sağlar",
+        "Hocanın tablosunda yüksek seviyeli diller arasındadır"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın gerekçeleri: C dili çok yaygın kullanılır, makineye en yakın dil olarak görülür; sistem programları bu yüzden hızlı yapılır. Nesne yönelimli programlamaya imkân veren C++'tır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-programlama.k1",
+      "yer": "Programlama",
+      "on": "Hoca programlama öğrenmek hakkında ne diyor?",
+      "arka": "Herkes bir programlama dilini öğrenebilir. Yüksek zekâ ve matematik gerekmez; vazgeçmeme sabrı ve öğrenme isteği yeter. Programlama bir hünerdir; herkes pratik yaparak iyi olabilir."
+    },
+    {
+      "id": "alg-programlama.k2",
+      "yer": "Programlama dilleri ve seviyeleri",
+      "on": "Programlama dilleri kaç seviyede incelenir? Örnekleri neler?",
+      "arka": "Üç seviye:\n- Düşük: makine dili, assembly\n- Orta: C/C++\n- Yüksek: Basic, Fortran, Pascal\nDikkat: bir slaytta C/C++ yüksek seviyeli diller arasında da sayılıyor; üç seviyeli sınıflandırmada orta seviyelidir."
+    },
+    {
+      "id": "alg-programlama.k3",
+      "yer": "Yüksek seviyeli diller ve derleme",
+      "on": "Kaynak kodu, derleyici, nesne kodu ve makine dili nedir?",
+      "arka": "Kaynak kodu: kolay yazılıp okunan kod.\nDerleyici (compiler): kaynak kodunu nesne koduna çevirir.\nNesne kodu: makine diline çevrilmiş kodu saklayan dosya.\nMakine dili: CPU'nun yürüttüğü 0 ve 1'lerden oluşan yönergeler."
+    },
+    {
+      "id": "alg-programlama.k4",
+      "yer": "Neden C++",
+      "on": "Bu derste hangi dil öğretilecek? Neden?",
+      "arka": "C++. C çok yaygındır ve makineye en yakın dil olarak görülür; sistem programları hızlı ve randımanlı yapılır. C yalnızca yapısal programlamaya izin verir, C++ nesne yönelimli programlamaya da imkân verir."
+    },
+    {
+      "id": "alg-programlama.k5",
+      "yer": "Problem",
+      "on": "Problem nedir?",
+      "arka": "Bir işlemin, otomasyonun ya da bilimsel hesaplamanın bilgisayarla çözülmesi fikrinin ortaya çıkmasıdır. İnsanın beyinle çözmesi imkânsız ya da çok zor olan işlerde ya da bir işletmenin otomasyonu için tanımlanır."
+    },
+    {
+      "id": "alg-programlama.k6",
+      "yer": "Problem çözümü",
+      "on": "Problem çözümünün adımları nelerdir?",
+      "arka": "1. Sorunu net anla\n2. İhtiyaç ve istekleri belirle\n3. Zihinsel alıştırmalar yap\n4. En uygun çözümü seç\n5. Algoritmayla ifade et\n6. Akış çizgesi oluştur\n7. Dil seç, bilgisayara aktar\n8. Test et\n9. Sorunları düzelt (gerekirse defalarca)"
+    },
+    {
+      "id": "alg-programlama.k7",
+      "yer": "Program ve programlama",
+      "on": "Program ile programlamanın farkı nedir?",
+      "arka": "Program: problem çözümü adımlarından sonra ortaya çıkan, sorunu bilgisayarda çözen ürün (yazılım da denebilir).\nProgramlama: problem çözümünde anlatılan adımların tümü."
+    },
+    {
+      "id": "alg-programlama.k8",
+      "yer": "Programlama dili, derleyici ve yorumlayıcı",
+      "on": "Derleyici ile yorumlayıcının farkı nedir?",
+      "arka": "Derleyici: programı makine diline çevirir, söz dizimi hatalarını bulur; makine dili kodu saklanır (Pascal, C/C++, Delphi).\nYorumlayıcı: programı o anda çevirir; makine dili kısmı saklanmaz, her çalıştırmada yeniden çevrilir (ASP, JavaScript, MATLAB)."
+    }
+  ]
+}

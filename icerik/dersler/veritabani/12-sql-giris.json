@@ -1,0 +1,325 @@
+{
+  "id": "vt-sql-giris",
+  "baslik": "SQL'e Giriş ve Komut Grupları",
+  "kaynak": "sql_1.pdf, slayt 1–10",
+  "kavramlar": [
+    {
+      "terim": "SQL",
+      "izah": "Structured Query Language, Türkçesiyle Yapısal Sorgulama Dili: veritabanları üzerinde karmaşık sorgular yapmak için tasarlanmış dil. SQL ile yalnızca veritabanı üzerinde işlem yapılır: kayıt ekleme, değiştirme, silme ve kayıtlardan liste oluşturma.",
+      "yer": "SQL nedir"
+    },
+    {
+      "terim": "SQUARE",
+      "izah": "Veri sorgulama ihtiyacı için ilk geliştirilen, matematiksel sözdizimine sahip dil. Geniş kullanıcı kitlelerinin kolay kullanabilmesi için bundan vazgeçildi.",
+      "yer": "SQL'in tarihçesi"
+    },
+    {
+      "terim": "SEQUEL",
+      "izah": "Structured English Query Language: SQUARE'in yerine oluşturulan, İngilizceye benzer sözdizimli dil. Daha sonra İngilizce söylenişine paralel olarak SQL diye adlandırıldı.",
+      "yer": "SQL'in tarihçesi"
+    },
+    {
+      "terim": "DML (Veri İşleme Dili)",
+      "izah": "Data Manipulation Language: tablodaki veriler üzerinde sorgulama, ekleme, güncelleme ve silme işlemleri. Komutları: SELECT, INSERT, UPDATE, DELETE.",
+      "yer": "Veri işleme dili (DML)"
+    },
+    {
+      "terim": "DDL (Veri Tanımlama Dili)",
+      "izah": "Data Definition Language: sıfırdan tablo oluşturma, tablo üzerinde değişiklik yapma, indeks oluşturma ve silme. Komutları: CREATE TABLE, DROP TABLE, ALTER TABLE, CREATE INDEX, DROP INDEX, ALTER VIEW.",
+      "yer": "Veri tanımlama dili (DDL)"
+    },
+    {
+      "terim": "DCL (Veri Kontrol Dili)",
+      "izah": "Data Control Language: kullanıcılara veritabanı üzerinde hak verme ya da verilen hakları geri alma. Komutları: CREATE USER, DROP USER, ALTER USER, GRANT, REVOKE.",
+      "yer": "Veri kontrol dili (DCL)"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-sql-giris.s1",
+      "tip": "secme",
+      "yer": "SQL nedir",
+      "soru": "SQL kısaltmasının açılımı ve Türkçe karşılığı hangisidir?",
+      "secenekler": [
+        "Structured Query Language, Yapısal Sorgulama Dili",
+        "Standard Query Language, Standart Sorgulama Dili",
+        "Structured Question Language, Yapısal Soru Dili",
+        "Sequential Query Language, Sıralı Sorgulama Dili"
+      ],
+      "dogru": 0,
+      "izah": "SQL, Structured Query Language'in kısaltmasıdır; Türkçesi Yapısal Sorgulama Dili'dir."
+    },
+    {
+      "id": "vt-sql-giris.s2",
+      "tip": "dy",
+      "yer": "SQL nedir",
+      "ifade": "SQL ile veritabanına kayıt eklenebilir, var olan kayıtlar değiştirilebilir ve silinebilir.",
+      "dogru": true,
+      "izah": "Hocaya göre SQL ile kayıt eklenebilir, var olan kayıtlar değiştirilebilir, silinebilir ve kayıtlardan listeler oluşturulabilir."
+    },
+    {
+      "id": "vt-sql-giris.s3",
+      "tip": "dy",
+      "yer": "SQL nedir",
+      "ifade": "Hocaya göre SQL ile veritabanı dışındaki işlemler de yapılabilir.",
+      "dogru": false,
+      "izah": "Hocanın ifadesi: SQL ile yalnızca veritabanı üzerinde işlem yapılabilir."
+    },
+    {
+      "id": "vt-sql-giris.s4",
+      "tip": "dizme",
+      "yer": "SQL'in tarihçesi",
+      "soru": "Dilleri ortaya çıkış sırasına göre diz (ilk ortaya çıkan en üstte).",
+      "parcalar": [
+        "SQUARE",
+        "SEQUEL",
+        "SQL"
+      ],
+      "izah": "Önce matematiksel sözdizimli SQUARE geliştirildi. Onun yerine İngilizceye benzer SEQUEL oluşturuldu. SEQUEL daha sonra SQL diye adlandırıldı."
+    },
+    {
+      "id": "vt-sql-giris.s5",
+      "tip": "secme",
+      "yer": "SQL'in tarihçesi",
+      "soru": "Hocaya göre SQUARE dilinden neden vazgeçildi?",
+      "secenekler": [
+        "Matematiksel sözdizimi, geniş kitlelerin kolay kullanmasına uygun değildi",
+        "Veritabanına yeni kayıt eklemeyi ve kayıt silmeyi desteklemiyordu",
+        "Yalnızca tek bir veritabanı ürününde çalışabilen kapalı bir dildi",
+        "Sorguları çok yavaş çalıştırdığı için büyük tablolarda kullanılamıyordu"
+      ],
+      "dogru": 0,
+      "izah": "SQUARE matematiksel bir sözdizimine sahipti. Geniş kullanıcı kitlelerinin kolay kullanabilmesi için ondan vazgeçildi ve İngilizceye benzer sözdizimli SEQUEL oluşturuldu."
+    },
+    {
+      "id": "vt-sql-giris.s6",
+      "tip": "bosluk",
+      "yer": "SQL'in tarihçesi",
+      "metin": "SEQUEL'in açılımı Structured ___ Query Language'dir.",
+      "cevaplar": [
+        [
+          "English"
+        ]
+      ],
+      "izah": "SEQUEL = Structured English Query Language. Adındaki \"English\", sözdiziminin İngilizceye benzemesinden gelir."
+    },
+    {
+      "id": "vt-sql-giris.s7",
+      "tip": "dy",
+      "yer": "SQL'in tarihçesi",
+      "ifade": "SEQUEL, İngilizceye benzer sözdizimine sahip bir dildi.",
+      "dogru": true,
+      "izah": "Matematiksel sözdizimli SQUARE'den vazgeçilerek İngilizceye benzer sözdizimli SEQUEL oluşturuldu."
+    },
+    {
+      "id": "vt-sql-giris.s8",
+      "tip": "klasik",
+      "yer": "SQL dilini kullanan veritabanları",
+      "soru": "Hocanın listesindeki SQL dilini kullanan veritabanlarını yazın.",
+      "cevap": "MySQL, Mssql, PostgreSQL, Microsoft SQL Server, Oracle, Firebird.\nNot: Mssql ile Microsoft SQL Server aynı üründür; hocanın listesinde ayrı ayrı yazılmıştır.",
+      "anahtarlar": [
+        "MySQL",
+        "Mssql",
+        "PostgreSQL",
+        "Microsoft SQL Server",
+        "Oracle",
+        "Firebird"
+      ]
+    },
+    {
+      "id": "vt-sql-giris.s9",
+      "tip": "esles",
+      "yer": "SQL komut grupları",
+      "soru": "Kısaltmaları açılımlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "DML",
+          "Data Manipulation Language"
+        ],
+        [
+          "DDL",
+          "Data Definition Language"
+        ],
+        [
+          "DCL",
+          "Data Control Language"
+        ],
+        [
+          "SQL",
+          "Structured Query Language"
+        ]
+      ],
+      "izah": "DML Veri İşleme Dili, DDL Veri Tanımlama Dili, DCL Veri Kontrol Dili, SQL Yapısal Sorgulama Dili."
+    },
+    {
+      "id": "vt-sql-giris.s10",
+      "tip": "esles",
+      "yer": "SQL komut grupları",
+      "soru": "Komut gruplarını yaptıkları işle eşleştirin.",
+      "ciftler": [
+        [
+          "DML",
+          "Tablodaki veriler üzerinde sorgulama, ekleme, güncelleme, silme"
+        ],
+        [
+          "DDL",
+          "Tablo oluşturma, tabloyu değiştirme, indeks oluşturma ve silme"
+        ],
+        [
+          "DCL",
+          "Kullanıcılara hak verme ve verilen hakları geri alma"
+        ]
+      ],
+      "izah": "DML verilerle, DDL tablo ve indeks gibi yapılarla, DCL kullanıcı haklarıyla ilgilenir."
+    },
+    {
+      "id": "vt-sql-giris.s11",
+      "tip": "secme",
+      "yer": "Veri işleme dili (DML)",
+      "soru": "Aşağıdaki komutlardan hangisi DML (Veri İşleme Dili) grubundadır?",
+      "secenekler": [
+        "UPDATE",
+        "ALTER TABLE",
+        "GRANT",
+        "CREATE INDEX"
+      ],
+      "dogru": 0,
+      "izah": "DML komutları SELECT, INSERT, UPDATE ve DELETE'tir. ALTER TABLE ile CREATE INDEX DDL'de, GRANT DCL'dedir."
+    },
+    {
+      "id": "vt-sql-giris.s12",
+      "tip": "secme",
+      "yer": "Veri tanımlama dili (DDL)",
+      "soru": "Aşağıdaki komutlardan hangisi DDL (Veri Tanımlama Dili) grubunda **değildir**?",
+      "secenekler": [
+        "DELETE",
+        "DROP TABLE",
+        "ALTER VIEW",
+        "CREATE INDEX"
+      ],
+      "dogru": 0,
+      "izah": "DELETE, tablodaki kayıtları silen bir DML komutudur. DROP TABLE, ALTER VIEW ve CREATE INDEX hocanın DDL listesindedir."
+    },
+    {
+      "id": "vt-sql-giris.s13",
+      "tip": "secme",
+      "yer": "Veri tanımlama dili (DDL)",
+      "soru": "Tablonun **kendisini** silen komut ve bu komutun grubu hangisidir?",
+      "secenekler": [
+        "DROP TABLE, DDL",
+        "DELETE, DML",
+        "DROP TABLE, DML",
+        "DELETE, DDL"
+      ],
+      "dogru": 0,
+      "izah": "DROP TABLE tablonun kendisini siler ve DDL'dedir. DELETE ise tablodaki kayıtları siler ve DML'dedir."
+    },
+    {
+      "id": "vt-sql-giris.s14",
+      "tip": "dy",
+      "yer": "Veri tanımlama dili (DDL)",
+      "ifade": "ALTER TABLE komutu tablodaki kayıtların değerlerini değiştirir.",
+      "dogru": false,
+      "izah": "ALTER TABLE tablonun yapısını değiştirir (DDL). Kayıtların değerlerini UPDATE değiştirir (DML)."
+    },
+    {
+      "id": "vt-sql-giris.s15",
+      "tip": "secme",
+      "yer": "Veri kontrol dili (DCL)",
+      "soru": "Bir kullanıcıya veritabanı üzerinde verilmiş bir hakkı geri almak için hangi komut kullanılır?",
+      "secenekler": [
+        "REVOKE",
+        "GRANT",
+        "DROP USER",
+        "DELETE"
+      ],
+      "dogru": 0,
+      "izah": "DCL'de hak vermek GRANT, verilen hakkı geri almak REVOKE ile yapılır. DROP USER kullanıcının kendisini siler."
+    },
+    {
+      "id": "vt-sql-giris.s16",
+      "tip": "secme",
+      "yer": "Veri kontrol dili (DCL)",
+      "soru": "Hocanın sınıflandırmasına göre CREATE USER komutu hangi gruptadır?",
+      "secenekler": [
+        "DCL",
+        "DDL",
+        "DML"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın DCL listesi: CREATE USER, DROP USER, ALTER USER, GRANT, REVOKE."
+    },
+    {
+      "id": "vt-sql-giris.s17",
+      "tip": "bosluk",
+      "yer": "Veri işleme dili (DML)",
+      "metin": "SELECT, INSERT, UPDATE ve DELETE komutları ___ grubundadır.",
+      "cevaplar": [
+        [
+          "DML",
+          "Veri İşleme Dili"
+        ]
+      ],
+      "izah": "Bu dört komut Veri İşleme Dili'nin (DML) komutlarıdır."
+    },
+    {
+      "id": "vt-sql-giris.s18",
+      "tip": "klasik",
+      "yer": "SQL komut grupları",
+      "soru": "SQL komut gruplarını Türkçe adları ve açılımlarıyla yazın; her grubun komutlarını sayın.",
+      "cevap": "DML (Data Manipulation Language, Veri İşleme Dili): SELECT, INSERT, UPDATE, DELETE.\nDDL (Data Definition Language, Veri Tanımlama Dili): CREATE TABLE, DROP TABLE, ALTER TABLE, CREATE INDEX, DROP INDEX, ALTER VIEW.\nDCL (Data Control Language, Veri Kontrol Dili): CREATE USER, DROP USER, ALTER USER, GRANT, REVOKE.",
+      "anahtarlar": [
+        "Veri İşleme Dili",
+        "Veri Tanımlama Dili",
+        "Veri Kontrol Dili",
+        "SELECT",
+        "CREATE TABLE",
+        "GRANT"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-sql-giris.k1",
+      "yer": "SQL nedir",
+      "on": "SQL nedir? SQL ile neler yapılır?",
+      "arka": "Structured Query Language (Yapısal Sorgulama Dili): veritabanları üzerinde karmaşık sorgular yapmak için tasarlanmış dil. SQL ile yalnızca veritabanı üzerinde işlem yapılır: kayıt ekleme, var olan kayıtları değiştirme, silme ve kayıtlardan liste oluşturma."
+    },
+    {
+      "id": "vt-sql-giris.k2",
+      "yer": "SQL'in tarihçesi",
+      "on": "SQL'in tarihçesini anlatın: SQUARE, SEQUEL, SQL.",
+      "arka": "- SQUARE: ilk geliştirilen dil, matematiksel sözdizimi.\n- Geniş kitleler kolay kullansın diye SQUARE'den vazgeçildi; İngilizceye benzer SEQUEL (Structured English Query Language) oluşturuldu.\n- SEQUEL, İngilizce söylenişine paralel olarak SQL diye adlandırıldı."
+    },
+    {
+      "id": "vt-sql-giris.k3",
+      "yer": "SQL dilini kullanan veritabanları",
+      "on": "Hocanın listesindeki SQL kullanan veritabanları hangileri?",
+      "arka": "MySQL, Mssql, PostgreSQL, Microsoft SQL Server, Oracle, Firebird.\nDikkat: Mssql ile Microsoft SQL Server aynı üründür."
+    },
+    {
+      "id": "vt-sql-giris.k4",
+      "yer": "Veri işleme dili (DML)",
+      "on": "DML nedir? Komutları neler?",
+      "arka": "Veri İşleme Dili (Data Manipulation Language): bir tablodaki veriler üzerinde sorgulama, ekleme, güncelleme ve silme işlemlerini yapar.\nKomutları: SELECT, INSERT, UPDATE, DELETE."
+    },
+    {
+      "id": "vt-sql-giris.k5",
+      "yer": "Veri tanımlama dili (DDL)",
+      "on": "DDL nedir? Komutları neler?",
+      "arka": "Veri Tanımlama Dili (Data Definition Language): sıfırdan tablo oluşturma, tablo üzerinde değişiklik yapma, indeks oluşturma ve silme işlemlerini yapar.\nKomutları: CREATE TABLE, DROP TABLE, ALTER TABLE, CREATE INDEX, DROP INDEX, ALTER VIEW."
+    },
+    {
+      "id": "vt-sql-giris.k6",
+      "yer": "Veri kontrol dili (DCL)",
+      "on": "DCL nedir? Komutları neler?",
+      "arka": "Veri Kontrol Dili (Data Control Language): kullanıcılara veritabanı üzerinde hak verme ya da verilen hakları geri alma işlemlerini sağlar.\nKomutları: CREATE USER, DROP USER, ALTER USER, GRANT, REVOKE."
+    },
+    {
+      "id": "vt-sql-giris.k7",
+      "yer": "Veri tanımlama dili (DDL)",
+      "on": "DELETE ile DROP TABLE, UPDATE ile ALTER TABLE arasındaki fark nedir?",
+      "arka": "- DELETE tablodaki kayıtları siler (DML); DROP TABLE tablonun kendisini siler (DDL).\n- UPDATE kayıtların değerlerini değiştirir (DML); ALTER TABLE tablonun yapısını değiştirir (DDL)."
+    }
+  ]
+}

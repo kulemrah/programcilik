@@ -1,0 +1,354 @@
+{
+  "id": "alg-temel-ogeler",
+  "baslik": "Temel Öğeler, Aritmetik İşlemler ve Atama",
+  "kaynak": "algoritma_ve_programlama_temelleri_3__hafta_2.pdf, slayt 1–9",
+  "kavramlar": [
+    {
+      "terim": "Tanımlayıcı",
+      "izah": "Değişken, sabit, alt yordam, alan gibi programlama birimlerine yazılımcı tarafından verilmiş isimler.",
+      "yer": "Tanımlayıcı"
+    },
+    {
+      "terim": "Sabit",
+      "izah": "Program her çalıştığında ve programın içinde herhangi bir anda aynı değeri döndüren tanımlayıcılar. Hocanın örneği: PI=3,14.",
+      "yer": "Sabit ve gömülü değer"
+    },
+    {
+      "terim": "Gömülü değer",
+      "izah": "Kod içinde yazılmış metinsel, sayısal ya da diğer veri tiplerindeki sabit değerler: PI=3,14'teki 3,14; mesaj='merhaba'daki merhaba.",
+      "yer": "Sabit ve gömülü değer"
+    },
+    {
+      "terim": "Değişken",
+      "izah": "Programın akışı içinde farklı değerleri tutmak üzere ayrılmış bellek bölümü; dışarıdan alınan ya da işlem sonucu elde edilen veriler burada saklanır ve verilen isimle tekrar tekrar kullanılır.",
+      "yer": "Değişken"
+    },
+    {
+      "terim": "Değişken isimlendirme kuralları",
+      "izah": "İngiliz alfabesinin 26 harfi, 0-9 rakamları ve sembollerden yalnızca alt çizgi kullanılır; isim harf ya da alt çizgiyle başlar, rakamla başlamaz; boşluk kullanılmaz.",
+      "yer": "Değişken isimlendirme kuralları"
+    },
+    {
+      "terim": "Atama (=)",
+      "izah": "Eşittirin sağındaki işlem yapılır, bulunan sonuç soldaki değişkene aktarılır; değişkenin eski değeri silinir. Matematikteki eşittirle karıştırılmamalıdır.",
+      "yer": "Değişkenlere değer atama"
+    },
+    {
+      "terim": "Üs alma (^) ve mod alma (%)",
+      "izah": "Hocanın tablosunda C=A^B, A'nın B'nci kuvvetini; C=A%B, A'nın mod B'ye göre kalanını C'ye atar.",
+      "yer": "Aritmetik işlemler"
+    },
+    {
+      "terim": "İşlem önceliği",
+      "izah": "Sıra: parantezler, üs alma, çarpma ve bölme, toplama ve çıkarma. Aynı öncelikteki işlemler soldan sağa yapılır.",
+      "yer": "İşlem önceliği"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-temel-ogeler.s1",
+      "tip": "esles",
+      "yer": "Sabit ve gömülü değer",
+      "soru": "Kavramları hocanın tanımlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Tanımlayıcı",
+          "Programlama birimlerine yazılımcının verdiği isim"
+        ],
+        [
+          "Sabit",
+          "Her an aynı değeri döndüren tanımlayıcı"
+        ],
+        [
+          "Gömülü değer",
+          "Kod içine doğrudan yazılmış sabit değer"
+        ],
+        [
+          "Değişken",
+          "Farklı değerleri tutmak üzere ayrılmış bellek bölümü"
+        ]
+      ],
+      "izah": "Tanımlayıcı bir isimdir; sabit ve değişken birer tanımlayıcıdır. Gömülü değer ise koda yazılmış değerin kendisidir."
+    },
+    {
+      "id": "alg-temel-ogeler.s2",
+      "tip": "secme",
+      "yer": "Sabit ve gömülü değer",
+      "soru": "Hocanın tanımlarına göre `PI=3,14` ifadesinde **3,14** nedir?",
+      "secenekler": [
+        "Gömülü değer",
+        "Sabit",
+        "Değişken",
+        "Alt yordam"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın örneği: PI=3,14'teki 3,14 gömülü değerdir, yani koda doğrudan yazılmış değerdir. PI ise sabittir."
+    },
+    {
+      "id": "alg-temel-ogeler.s3",
+      "tip": "secme",
+      "yer": "Sabit ve gömülü değer",
+      "soru": "Hocanın tanımlarına göre `PI=3,14` ifadesinde **PI** nedir?",
+      "secenekler": [
+        "Sabit",
+        "Gömülü değer",
+        "Aritmetik işleç",
+        "Mantıksal ifade"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın sabit örneği PI=3,14'tür: PI, her an aynı değeri döndüren bir tanımlayıcıdır. 3,14 ise gömülü değerdir."
+    },
+    {
+      "id": "alg-temel-ogeler.s4",
+      "tip": "dy",
+      "yer": "Sabit ve gömülü değer",
+      "ifade": "Hocanın tanımlarına göre `mesaj='merhaba'` ifadesindeki **merhaba** bir tanımlayıcıdır.",
+      "dogru": false,
+      "izah": "merhaba, hocanın gömülü değer örneğidir: koda yazılmış metinsel değer. Tanımlayıcı ise yazılımcının verdiği isimdir (burada mesaj)."
+    },
+    {
+      "id": "alg-temel-ogeler.s5",
+      "tip": "secme",
+      "yer": "Değişken",
+      "soru": "Hocanın `C=A+B` örneğinde A, B ve C nedir?",
+      "secenekler": [
+        "Değişken",
+        "Gömülü değer",
+        "Aritmetik işleç",
+        "Alt yordam"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın değişken örneği: C=A+B'de A, B ve C değişkendir; farklı değerler tutabilen bellek bölümleridir."
+    },
+    {
+      "id": "alg-temel-ogeler.s6",
+      "tip": "secme",
+      "yer": "Değişken isimlendirme kuralları",
+      "soru": "Hocanın değişken isimlendirme kurallarına göre aşağıdakilerden hangisi uygun bir değişken adıdır?",
+      "secenekler": [
+        "ogrenci_no",
+        "2ogrenci",
+        "ogrenci no",
+        "öğrenci_no"
+      ],
+      "dogru": 0,
+      "izah": "Harf, rakam ve alt çizgi kullanılabilir. 2ogrenci rakamla başlıyor, ogrenci no boşluk içeriyor, öğrenci_no İngiliz alfabesinde olmayan ö ve ğ harflerini içeriyor."
+    },
+    {
+      "id": "alg-temel-ogeler.s7",
+      "tip": "secme",
+      "yer": "Değişken isimlendirme kuralları",
+      "soru": "Hocanın kurallarına göre aşağıdakilerden hangisi **uygun olmayan** bir değişken adıdır?",
+      "secenekler": [
+        "1_toplam",
+        "_toplam",
+        "toplam1",
+        "TOPLAM_1"
+      ],
+      "dogru": 0,
+      "izah": "Değişken isimleri harf ya da alt çizgiyle başlayabilir ama rakamla başlamaz. _toplam alt çizgiyle başladığı için geçerlidir."
+    },
+    {
+      "id": "alg-temel-ogeler.s8",
+      "tip": "dy",
+      "yer": "Değişken isimlendirme kuralları",
+      "ifade": "Değişken isimlerinde sembollerden tire (-) kullanılabilir.",
+      "dogru": false,
+      "izah": "Sembollerden yalnızca alt çizgi (_) kullanılabilir."
+    },
+    {
+      "id": "alg-temel-ogeler.s9",
+      "tip": "esles",
+      "yer": "Aritmetik işlemler",
+      "soru": "İşleçleri hocanın tablosundaki adlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "+",
+          "Toplama"
+        ],
+        [
+          "*",
+          "Çarpma"
+        ],
+        [
+          "/",
+          "Bölme"
+        ],
+        [
+          "=",
+          "Atama"
+        ],
+        [
+          "^",
+          "Üs alma"
+        ],
+        [
+          "%",
+          "Mod alma"
+        ]
+      ],
+      "izah": "Hocanın aritmetik işlemler tablosu. Atama da bu tabloda yer alır."
+    },
+    {
+      "id": "alg-temel-ogeler.s10",
+      "tip": "hesap",
+      "yer": "Aritmetik işlemler",
+      "soru": "`C=17%5` işleminden sonra C'nin değeri kaçtır?",
+      "cevap": 2,
+      "izah": "% mod alma işlecidir: 17'nin 5'e bölümünden kalan 2'dir (17 = 3·5 + 2)."
+    },
+    {
+      "id": "alg-temel-ogeler.s11",
+      "tip": "hesap",
+      "yer": "Aritmetik işlemler",
+      "soru": "Hocanın tablosuna göre algoritmada `C=2^3` işleminden sonra C'nin değeri kaçtır?",
+      "cevap": 8,
+      "izah": "Hocanın tablosunda ^ üs almadır: 2'nin 3. kuvveti 2·2·2 = 8."
+    },
+    {
+      "id": "alg-temel-ogeler.s12",
+      "tip": "klasik",
+      "yer": "Algoritmanın temel öğeleri",
+      "soru": "Hocaya göre algoritma geliştirirken kullanılan temel öğeleri yazın.",
+      "cevap": "Değişken, sabit, atama, döngü, karar yapısı, alt yordam (hocanın saydığı öğeler).",
+      "anahtarlar": [
+        "değişken",
+        "sabit",
+        "atama",
+        "döngü",
+        "karar yapısı",
+        "alt yordam"
+      ]
+    },
+    {
+      "id": "alg-temel-ogeler.s13",
+      "tip": "secme",
+      "yer": "Değişkenlere değer atama",
+      "soru": "Atama işleminde (`=`) ne olur?",
+      "secenekler": [
+        "Sağdaki işlem yapılır, sonuç soldaki değişkene aktarılır",
+        "Soldaki değişken okunur, değeri sağdaki işleme aktarılır",
+        "İki taraf karşılaştırılır; eşitse True, değilse False döner",
+        "İki taraftaki değişkenler değerlerini birbirleriyle değiştirir"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın tanımı: eşittirin sağındaki işlemler yapılır ve sonuç soldaki değişkene aktarılır. İki tarafı karşılaştırıp True/False veren karşılaştırma işlecidir (==)."
+    },
+    {
+      "id": "alg-temel-ogeler.s14",
+      "tip": "izleme",
+      "yer": "Atama örnekleri",
+      "soru": "Bu atamalar sırayla yapıldıktan sonra TOPLAM'ın değeri kaçtır?",
+      "kod": "SAYI = 2\nSAYI = 5\nSAYI = SAYI + 1\nTOPLAM = SAYI + 5",
+      "secenekler": [
+        "11",
+        "8",
+        "10",
+        "13"
+      ],
+      "dogru": 0,
+      "izah": "SAYI önce 2, sonra 5 olur (2 silinir). SAYI=SAYI+1 ile 5+1 = 6 olur. TOPLAM = 6+5 = 11. Eski değer 2 kullanılsaydı sonuç 8 çıkardı."
+    },
+    {
+      "id": "alg-temel-ogeler.s15",
+      "tip": "dy",
+      "yer": "Atama örnekleri",
+      "ifade": "Bir değişkene yeni değer atanınca değişkenin eski değeri silinir.",
+      "dogru": true,
+      "izah": "Hocanın örneği: SAYI=5 atanınca önceki değer olan 2 silinir; SAYI=SAYI+1 ile SAYI 6 olur, eski değer 5 silinir."
+    },
+    {
+      "id": "alg-temel-ogeler.s16",
+      "tip": "dizme",
+      "yer": "İşlem önceliği",
+      "soru": "İşlemleri öncelik sırasına göre diz (ilk yapılan en üstte).",
+      "parcalar": [
+        "Parantezler",
+        "Üs alma",
+        "Çarpma ve bölme",
+        "Toplama ve çıkarma"
+      ],
+      "izah": "Hocanın işlem önceliği sırası: parantezler, üs alma, çarpma ve bölme, toplama ve çıkarma."
+    },
+    {
+      "id": "alg-temel-ogeler.s17",
+      "tip": "bosluk",
+      "yer": "İşlem önceliği",
+      "metin": "Aynı önceliğe sahip işlemler yan yana bulunuyorsa işlem önceliği ___ doğrudur.",
+      "cevaplar": [
+        [
+          "soldan sağa"
+        ]
+      ],
+      "izah": "Örneğin 2*3/6'da çarpma ile bölme aynı önceliktedir; soldaki çarpma önce yapılır."
+    },
+    {
+      "id": "alg-temel-ogeler.s18",
+      "tip": "hesap",
+      "yer": "İşlem önceliği",
+      "soru": "Hocanın örneği `X=2*3/6+2` işleminden sonra X'in değeri kaçtır?",
+      "cevap": 3,
+      "izah": "Çarpma ve bölme toplamadan önce, kendi aralarında soldan sağa: 2*3 = 6, 6/6 = 1, en son 1+2 = 3."
+    },
+    {
+      "id": "alg-temel-ogeler.s19",
+      "tip": "hesap",
+      "yer": "İşlem önceliği",
+      "soru": "`X=10-2*3+4/2` işleminden sonra X'in değeri kaçtır?",
+      "cevap": 6,
+      "izah": "Önce çarpma ve bölme: 2*3 = 6, 4/2 = 2. Sonra soldan sağa çıkarma ve toplama: 10-6+2 = 6."
+    },
+    {
+      "id": "alg-temel-ogeler.s20",
+      "tip": "hesap",
+      "yer": "İşlem önceliği",
+      "soru": "Hocanın gösterimiyle `Y=(2+3)^2*2` işleminden sonra Y'nin değeri kaçtır?",
+      "cevap": 50,
+      "izah": "Önce parantez: 2+3 = 5. Sonra üs alma: 5^2 = 25. Sonra çarpma: 25*2 = 50."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-temel-ogeler.k1",
+      "yer": "Algoritmanın temel öğeleri",
+      "on": "Algoritma geliştirirken kullanılan temel öğeler nelerdir?",
+      "arka": "Değişken, sabit, atama, döngü, karar yapısı, alt yordam gibi öğeler. Bunlar tüm programlama dillerinde mevcut olan temel kavramlardır."
+    },
+    {
+      "id": "alg-temel-ogeler.k2",
+      "yer": "Sabit ve gömülü değer",
+      "on": "Tanımlayıcı, sabit, gömülü değer ve değişken arasındaki fark nedir?",
+      "arka": "- Tanımlayıcı: programlama birimlerine yazılımcının verdiği isim.\n- Sabit: her an aynı değeri döndüren tanımlayıcı (PI).\n- Gömülü değer: koda yazılmış sabit değer (3,14; 'merhaba').\n- Değişken: farklı değerleri tutmak üzere ayrılmış bellek bölümü (C=A+B'de A, B, C)."
+    },
+    {
+      "id": "alg-temel-ogeler.k3",
+      "yer": "Değişken",
+      "on": "Değişken nedir?",
+      "arka": "Dışarıdan alınan veya bir işlem sonucunda elde edilen verilerin saklandığı bellek birimidir. Değişkene bir isim verilir; içindeki değer bu isimle tekrar tekrar kullanılabilir."
+    },
+    {
+      "id": "alg-temel-ogeler.k4",
+      "yer": "Değişken isimlendirme kuralları",
+      "on": "Değişken isimlendirme kurallarını sayın.",
+      "arka": "- İngiliz alfabesindeki 26 harf (A-Z, a-z)\n- 0-9 rakamları\n- Sembollerden yalnızca alt çizgi (_)\n- Harf ya da alt çizgiyle başlar, rakamla başlamaz\n- Boşluk kullanılmaz: ogrenci no değil ogrenci_no"
+    },
+    {
+      "id": "alg-temel-ogeler.k5",
+      "yer": "Aritmetik işlemler",
+      "on": "Hocanın aritmetik işlemler tablosundaki işleçler hangileri?",
+      "arka": "+ toplama, - çıkarma, * çarpma, / bölme, = atama, ^ üs alma, % mod alma (bölümden kalan).\nEk: C++'ta (ve C, Python'da) ^ üs alma değildir."
+    },
+    {
+      "id": "alg-temel-ogeler.k6",
+      "yer": "Değişkenlere değer atama",
+      "on": "Atama nedir? SAYI=SAYI+1 ne anlama gelir?",
+      "arka": "Eşittirin sağındaki işlem yapılır, sonuç soldaki değişkene aktarılır; eski değer silinir.\nSAYI 5 ise SAYI=SAYI+1 ile 5+1 = 6 hesaplanır ve SAYI'ya yazılır; SAYI artık 6'dır."
+    },
+    {
+      "id": "alg-temel-ogeler.k7",
+      "yer": "İşlem önceliği",
+      "on": "İşlem önceliği sırası nedir? X=2*3/6+2 kaçtır?",
+      "arka": "1. Parantezler\n2. Üs alma\n3. Çarpma ve bölme\n4. Toplama ve çıkarma\nAynı öncelikteki işlemler soldan sağa yapılır: 2*3 = 6, 6/6 = 1, 1+2 = 3."
+    }
+  ]
+}

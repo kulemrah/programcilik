@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="352" viewBox="0 0 400 352" role="img">
+<title>Karar yapısı: koşuldan dönen değere göre iki kısımdan yalnızca biri</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="90" y="10" width="220" height="62" rx="10" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="200.0" y="36.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#2B6CB0" font-weight="600" text-anchor="middle">EĞER (koşul) İSE</text>
+<text x="200.0" y="58.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="middle">koşuldan dönen değer?</text>
+<line x1="165.7" y1="74.0" x2="102.0" y2="128.0" stroke="#2F855A" stroke-width="1.8"/>
+<polygon points="102.0,128.0 106.1,120.0 110.6,125.3" fill="#2F855A"/>
+<text x="68.0" y="104.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2F855A" font-weight="600" text-anchor="middle">doğru</text>
+<rect x="10" y="132" width="184" height="120" rx="10" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.8"/>
+<text x="102.0" y="162.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">EĞER İSE kısmındaki</text>
+<text x="102.0" y="182.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">işlemler gerçekleştirilir</text>
+<line x1="30.0" y1="198.0" x2="174.0" y2="198.0" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="102.0" y="220.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">DEĞİL İSE kısmındaki</text>
+<text x="102.0" y="237.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">işlemler gerçekleştirilmez</text>
+<line x1="102.0" y1="254.0" x2="170.6" y2="292.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="170.6,292.0 161.7,291.0 165.0,284.9" fill="#4A5568"/>
+<line x1="234.3" y1="74.0" x2="298.0" y2="128.0" stroke="#C53030" stroke-width="1.8"/>
+<polygon points="298.0,128.0 289.4,125.3 293.9,120.0" fill="#C53030"/>
+<text x="332.0" y="104.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#C53030" font-weight="600" text-anchor="middle">yanlış</text>
+<rect x="206" y="132" width="184" height="120" rx="10" fill="#FFF5F5" stroke="#C53030" stroke-width="1.8"/>
+<text x="298.0" y="162.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">DEĞİL İSE kısmındaki</text>
+<text x="298.0" y="182.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">işlemler gerçekleştirilir</text>
+<line x1="226.0" y1="198.0" x2="370.0" y2="198.0" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="298.0" y="220.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">başka bir koşula</text>
+<text x="298.0" y="237.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">bakılmadan</text>
+<line x1="298.0" y1="254.0" x2="229.4" y2="292.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="229.4,292.0 235.0,284.9 238.3,291.0" fill="#4A5568"/>
+<rect x="120" y="296" width="160" height="40" rx="10" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.4"/>
+<text x="200.0" y="321.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#4A5568" font-weight="600" text-anchor="middle">sonraki adım</text>
+</svg>

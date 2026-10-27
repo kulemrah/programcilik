@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" role="img">
+<title>Gereksinimlerin belirlenmesi: toplama ve analiz</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="110" y="12" width="180" height="46" rx="8" fill="#2C7A7B"/>
+<text x="200.0" y="32.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">Gereksinimlerin</text>
+<text x="200.0" y="49.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">belirlenmesi</text>
+<line x1="200.0" y1="58.0" x2="200.0" y2="76.0" stroke="#2C7A7B" stroke-width="1.6"/>
+<line x1="100.0" y1="76.0" x2="300.0" y2="76.0" stroke="#2C7A7B" stroke-width="1.6"/>
+<line x1="100.0" y1="76.0" x2="100.0" y2="94.0" stroke="#2C7A7B" stroke-width="1.6"/>
+<polygon points="100.0,94.0 96.5,85.7 103.5,85.7" fill="#2C7A7B"/>
+<line x1="300.0" y1="76.0" x2="300.0" y2="94.0" stroke="#2C7A7B" stroke-width="1.6"/>
+<polygon points="300.0,94.0 296.5,85.7 303.5,85.7" fill="#2C7A7B"/>
+<rect x="12" y="94" width="176" height="46" rx="8" fill="#E6F6F6" stroke="#2C7A7B" stroke-width="1.4"/>
+<text x="100.0" y="114.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">1. Gereksinimlerin</text>
+<text x="100.0" y="131.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">toplanması</text>
+<rect x="212" y="94" width="176" height="46" rx="8" fill="#E6F6F6" stroke="#2C7A7B" stroke-width="1.4"/>
+<text x="300.0" y="114.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">2. Gereksinim</text>
+<text x="300.0" y="131.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">analizi</text>
+<text x="22.0" y="166.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="start">Geleneksel:</text>
+<text x="32.0" y="184.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">• anketler</text>
+<text x="32.0" y="202.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">• açık uçlu görüşmeler</text>
+<text x="32.0" y="220.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">• doküman analizi</text>
+<text x="22.0" y="238.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="start">Grupsal:</text>
+<text x="32.0" y="256.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">• beyin fırtınası</text>
+<text x="32.0" y="274.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">• prototipleme</text>
+<text x="222.0" y="166.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">Gereksinimler</text>
+<text x="222.0" y="184.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">özelliklerine göre</text>
+<text x="222.0" y="202.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">gruplanır ve sistem</text>
+<text x="222.0" y="220.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">tasarımına hazırlanır.</text>
+<text x="222.0" y="238.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start"></text>
+<text x="222.0" y="256.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="start">Araç: Varlık Bağıntı</text>
+<text x="222.0" y="274.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="start">(E-R) diyagramları</text>
+</svg>

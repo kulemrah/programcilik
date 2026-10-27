@@ -1,0 +1,238 @@
+{
+  "id": "alg-ifade",
+  "baslik": "Algoritma İfade Şekilleri: Metin ve Sözde Kod",
+  "kaynak": "1-2._hafta_algoritma_ve_programlama_temelleri_dersi_ders_slayt_.pdf, slayt 39–44",
+  "kavramlar": [
+    {
+      "terim": "Metin algoritması",
+      "izah": "Problem adım adım metin olarak yazılır; her satıra numara verilir; Başla ile başlanır, son ile bitirilir.",
+      "yer": "Algoritmanın metin olarak yazılması"
+    },
+    {
+      "terim": "Sözde kod (pseudo code)",
+      "izah": "Konuşma dilinde ve programlama mantığıyla, eğer, iken gibi koşul kelimeleri ve > = < gibi ifadelerle yazılan kaba kod; iyi yazılmışından programlama diline kolayca geçilir. Başla ve dur yazılmaz.",
+      "yer": "Sözde kod (pseudo code)"
+    },
+    {
+      "terim": "GET",
+      "izah": "Sözde kodda oku adımı için kullanılan komut.",
+      "yer": "Sözde kodda başla, dur, GET ve DISPLAY"
+    },
+    {
+      "terim": "DISPLAY ve WRITE",
+      "izah": "Sözde kodda çıktı komutları: DISPLAY bilgiyi ekranda gösterir, WRITE veritabanına ya da dosyaya yazdırır.",
+      "yer": "Sözde kodda başla, dur, GET ve DISPLAY"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-ifade.s1",
+      "tip": "secme",
+      "yer": "Algoritma ifade şekilleri",
+      "soru": "Hocanın bu notta verdiği iki algoritma ifade şekli hangisidir?",
+      "secenekler": [
+        "Metin olarak yazma ve sözde (kaba) kod",
+        "Makine dili ve assembly diliyle yazma",
+        "Derleyici ve yorumlayıcıyla çevirme",
+        "Kaynak kodu ve nesne kodu olarak yazma"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın algoritma ifade şekilleri: algoritmanın metin olarak yazılması ve pseudo kod (kaba kod, sözde kod)."
+    },
+    {
+      "id": "alg-ifade.s2",
+      "tip": "dy",
+      "yer": "Algoritmanın metin olarak yazılması",
+      "ifade": "Metin algoritmasında her satıra numara verilir.",
+      "dogru": true,
+      "izah": "Hocanın kuralları: problem adım adım metin olarak yazılır, her satıra numara verilir, Başla ile başlanıp son ile bitirilir."
+    },
+    {
+      "id": "alg-ifade.s3",
+      "tip": "secme",
+      "yer": "Algoritmanın metin olarak yazılması",
+      "soru": "Hocaya göre metin olarak yazılan bir algoritma nasıl başlar ve biter?",
+      "secenekler": [
+        "\"Başla\" ile başlar, \"son\" ile biter",
+        "İlk satırla başlar; Başla ve Son yazılmaz",
+        "GET komutuyla başlar, DISPLAY ile biter",
+        "Değişken tanımıyla başlar, WRITE ile biter"
+      ],
+      "dogru": 0,
+      "izah": "Metin algoritması Başla ile başlayıp son ile bitirilir. Başla ve dur yazılmayan, sözde koddur."
+    },
+    {
+      "id": "alg-ifade.s4",
+      "tip": "dizme",
+      "yer": "Örnek: sayının karesi",
+      "soru": "Klavyeden girilen sayının karesini hesaplayıp ekrana yazdıran algoritmanın adımlarını dizin.",
+      "parcalar": [
+        "Başla",
+        "Sayıyı (A) gir",
+        "Kare=A*A işlemini yap",
+        "Sonucu (Kare) yaz",
+        "Dur"
+      ],
+      "izah": "Hocanın çözümü: Başla, sayıyı gir, Kare=A*A, sonucu yaz, Dur."
+    },
+    {
+      "id": "alg-ifade.s5",
+      "tip": "hesap",
+      "yer": "Örnek: sayının karesi",
+      "soru": "Hocanın sayının karesi algoritmasına 9 girilirse ekrana ne yazılır?",
+      "cevap": 81,
+      "izah": "Kare = A*A = 9·9 = 81."
+    },
+    {
+      "id": "alg-ifade.s6",
+      "tip": "secme",
+      "yer": "Sözde kod (pseudo code)",
+      "soru": "Konuşma dilinde, programlama mantığıyla, \"eğer\", \"iken\" gibi koşul kelimeleri ve `>`, `=`, `<` gibi ifadelerle yazılan algoritma ifade şekli hangisidir?",
+      "secenekler": [
+        "Sözde kod",
+        "Makine dili",
+        "Assembly dili",
+        "Nesne kodu"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın sözde kod (pseudo code, kaba kod) tanımı budur."
+    },
+    {
+      "id": "alg-ifade.s7",
+      "tip": "dizme",
+      "yer": "Sözde kod (pseudo code)",
+      "soru": "Bir metin algoritmasını sözde koda dönüştürürken izlenen adımları dizin.",
+      "parcalar": [
+        "Girdi ve çıktıları (değişkenleri) belirle",
+        "Sıralı adımları, karar ve tekrarlı yapıları, işlemleri belirle",
+        "Yapı, işlem ve adımları uygun şekilde düzenle"
+      ],
+      "izah": "Hocanın üç adımı: girdi ve çıktıları belirlemek, yapı ve işlemleri belirlemek, bunları uygun şekilde düzenlemek."
+    },
+    {
+      "id": "alg-ifade.s8",
+      "tip": "dy",
+      "yer": "Sözde kodda başla, dur, GET ve DISPLAY",
+      "ifade": "Sözde kodda başla ve dur adımları yazılır.",
+      "dogru": false,
+      "izah": "Hocaya göre sözde kodda başla ve dur yazılmaz; program olarak düşünüldüğünden zaten ilk satırla başlar, son satırla biter."
+    },
+    {
+      "id": "alg-ifade.s9",
+      "tip": "esles",
+      "yer": "Sözde kodda başla, dur, GET ve DISPLAY",
+      "soru": "Sözde kod komutlarını işleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "GET",
+          "Oku adımı"
+        ],
+        [
+          "DISPLAY",
+          "Bilgiyi ekranda göster"
+        ],
+        [
+          "WRITE",
+          "Veritabanına ya da dosyaya yazdır"
+        ]
+      ],
+      "izah": "Hocaya göre oku için GET, ekrana yazmak için DISPLAY, veritabanına ya da dosyaya yazdırmak için WRITE kullanılır."
+    },
+    {
+      "id": "alg-ifade.s10",
+      "tip": "secme",
+      "yer": "Sözde kodda başla, dur, GET ve DISPLAY",
+      "soru": "Hocaya göre sözde kodda bir bilgiyi dosyaya ya da veritabanına yazdırmak için hangisi kullanılır?",
+      "secenekler": [
+        "WRITE",
+        "DISPLAY",
+        "GET",
+        "Başla"
+      ],
+      "dogru": 0,
+      "izah": "Bir bilgiyi ekranda göstermek için DISPLAY, veritabanına ya da dosyaya yazdırmak için WRITE kullanılır. GET okumak içindir."
+    },
+    {
+      "id": "alg-ifade.s11",
+      "tip": "izleme",
+      "yer": "Örnek: suyun durumu",
+      "soru": "Hocanın sözde koduna sıcaklık olarak 100 girilirse Durum ne olur?",
+      "kod": "Girilen sıcaklığı oku\nEğer sıcaklık<0 ise Durum=\"Buz\"\nEğer sıcaklık>=100 ise Durum=\"Buhar\"\nDeğilse Durum=\"Su\"\nSonucu yaz",
+      "secenekler": [
+        "Durum=\"Buhar\"",
+        "Durum=\"Su\"",
+        "Durum=\"Buz\""
+      ],
+      "dogru": 0,
+      "izah": ">= büyük ya da eşit demektir; 100>=100 doğru olduğu için Durum=\"Buhar\" olur. 100 ve üstü için slayttaki yazım da doğru sonuç verir."
+    },
+    {
+      "id": "alg-ifade.s12",
+      "tip": "izleme",
+      "yer": "Örnek: suyun durumu",
+      "soru": "Hocanın sözde koduna sıcaklık olarak 25 girilirse Durum ne olur?",
+      "kod": "Girilen sıcaklığı oku\nEğer sıcaklık<0 ise Durum=\"Buz\"\nEğer sıcaklık>=100 ise Durum=\"Buhar\"\nDeğilse Durum=\"Su\"\nSonucu yaz",
+      "secenekler": [
+        "Durum=\"Su\"",
+        "Durum=\"Buz\"",
+        "Durum=\"Buhar\""
+      ],
+      "dogru": 0,
+      "izah": "25<0 yanlış, 25>=100 yanlış; Değilse çalışır ve Durum=\"Su\" olur."
+    },
+    {
+      "id": "alg-ifade.s13",
+      "tip": "izleme",
+      "yer": "Örnek: suyun durumu",
+      "soru": "Hocanın sözde koduna sıcaklık olarak 0 girilirse Durum ne olur?",
+      "kod": "Girilen sıcaklığı oku\nEğer sıcaklık<0 ise Durum=\"Buz\"\nEğer sıcaklık>=100 ise Durum=\"Buhar\"\nDeğilse Durum=\"Su\"\nSonucu yaz",
+      "secenekler": [
+        "Durum=\"Su\"",
+        "Durum=\"Buz\"",
+        "Durum=\"Buhar\""
+      ],
+      "dogru": 0,
+      "izah": "< küçük demektir, eşitliği kapsamaz: 0<0 yanlış olduğu için Buz olmaz. 0>=100 de yanlış; Değilse çalışır, Durum=\"Su\" olur."
+    },
+    {
+      "id": "alg-ifade.s14",
+      "tip": "dy",
+      "yer": "Sözde kod (pseudo code)",
+      "ifade": "Hocaya göre iyi bir biçimde yazılmış sözde koddan programlama diline kolaylıkla geçilebilir.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi budur."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-ifade.k1",
+      "yer": "Algoritma ifade şekilleri",
+      "on": "Hocanın verdiği algoritma ifade şekilleri nelerdir?",
+      "arka": "1. Algoritmanın metin olarak yazılması\n2. Pseudo kod (kaba kod, sözde kod)"
+    },
+    {
+      "id": "alg-ifade.k2",
+      "yer": "Algoritmanın metin olarak yazılması",
+      "on": "Metin algoritması nasıl yazılır? Hocanın örneği ne?",
+      "arka": "Adım adım metin olarak yazılır, her satıra numara verilir, Başla ile başlayıp son ile biter.\nÖrnek (sayının karesi): 1. Başla 2. Sayıyı (A) gir 3. Kare=A*A 4. Sonucu (Kare) yaz 5. Dur"
+    },
+    {
+      "id": "alg-ifade.k3",
+      "yer": "Sözde kod (pseudo code)",
+      "on": "Sözde kod nedir? Metin algoritması sözde koda nasıl dönüştürülür?",
+      "arka": "Konuşma dilinde, programlama mantığıyla, eğer ve iken gibi koşul kelimeleri ve > = < ifadeleriyle yazılan kod.\nDönüştürme: girdi ve çıktıları belirle; sıralı adımları, karar ve tekrarlı yapıları belirle; uygun şekilde düzenle."
+    },
+    {
+      "id": "alg-ifade.k4",
+      "yer": "Sözde kodda başla, dur, GET ve DISPLAY",
+      "on": "Sözde kodda başla, dur, GET, DISPLAY ve WRITE nasıl kullanılır?",
+      "arka": "Başla ve dur yazılmaz (ilk satırla başlar, son satırla biter).\nGET: oku. DISPLAY: ekranda göster. WRITE: veritabanına ya da dosyaya yazdır."
+    },
+    {
+      "id": "alg-ifade.k5",
+      "yer": "Örnek: suyun durumu",
+      "on": "Hocanın suyun durumu sözde kodunu anlatın. Nerede hata çıkabilir?",
+      "arka": "Sıcaklık okunur; <0 ise Buz, >=100 ise Buhar, değilse Su.\nEk: iki Eğer ayrı ayrı çalıştırılırsa -5 için önce Buz, sonra Değilse ile Su olur. Doğrusu: Eğer <0 Buz, değilse eğer >=100 Buhar, değilse Su. Hocanın amacı ve sınavda -5 için beklenen cevap: Buz."
+    }
+  ]
+}

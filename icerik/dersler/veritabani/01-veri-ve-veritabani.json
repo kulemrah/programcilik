@@ -1,0 +1,259 @@
+{
+  "id": "vt-veri-veritabani",
+  "baslik": "Veri, Veritabanı ve VTYS",
+  "kaynak": "veritabani_1_hafta_1.pdf, slayt 1–3, 5–7, 17",
+  "kavramlar": [
+    {
+      "terim": "Veri",
+      "izah": "Bilgisayarın girdi olarak alabildiği, işleyebildiği, sonuç üretebildiği ve depolayabildiği her şey.",
+      "yer": "Veri nedir"
+    },
+    {
+      "terim": "Yapısal olmayan veri",
+      "izah": "Önceden belli bir veri modeli olmayan veri. Ör. kitaplar, resim, ses ve video dosyaları, web sayfaları.",
+      "yer": "Yapısal olmayan veri"
+    },
+    {
+      "terim": "Yarı yapısal veri",
+      "izah": "Yapısı olan ama belli bir veri modeline uymayan, verilerin etiketlerle ifade edildiği veri. Ör. XML.",
+      "yer": "Yarı yapısal veri"
+    },
+    {
+      "terim": "Yapısal veri",
+      "izah": "Bir veri modeline sahip veri. Ör. veritabanları.",
+      "yer": "Yapısal veri"
+    },
+    {
+      "terim": "Veritabanı",
+      "izah": "Birbiriyle ilişkisi olan verilerin tutulduğu, kullanım amacına uygun olarak düzenlenmiş veriler topluluğunun mantıksal ve fiziksel olarak tanımlarının bulunduğu bilgi depoları.",
+      "yer": "Veritabanı nedir"
+    },
+    {
+      "terim": "VTYS (Veritabanı Yönetim Sistemi)",
+      "izah": "Yeni bir veritabanı oluşturmak, veritabanını düzenlemek, kullanmak, geliştirmek ve bakımını yapmak için çeşitli karmaşık işlemlerin gerçekleştirildiği yazılım sistemi.",
+      "yer": "Veritabanı yönetim sistemi (VTYS)"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-veri-veritabani.s1",
+      "tip": "secme",
+      "yer": "Veri nedir",
+      "soru": "Hocanın tanımına göre **veri** nedir?",
+      "secenekler": [
+        "Bilgisayarın girdi olarak alabildiği, işleyebildiği, sonuç üretebildiği ve depolayabildiği her şey",
+        "Bir veritabanı tablosunda satırlar ve sütunlar hâlinde düzenlenmiş olarak tutulan bilgiler",
+        "Belli bir veri modeline uyan ve etiketlerle ifade edilen, bilgisayarın okuyabildiği bilgiler",
+        "Bir VTYS tarafından işlendikten sonra kullanıcıya rapor olarak sunulan sonuç bilgileri"
+      ],
+      "dogru": 0,
+      "izah": "Tanım dört eylem üzerine kuruludur: girdi olarak alma, işleme, sonuç üretme ve depolama. Bunları yapabildiği **her şey** veridir; tabloyla ya da modelle sınırlı değildir."
+    },
+    {
+      "id": "vt-veri-veritabani.s2",
+      "tip": "esles",
+      "yer": "Veri türleri (yapı bakımından)",
+      "soru": "Veri türlerini tanımlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Yapısal olmayan veri",
+          "Önceden belli bir veri modeli olmayan veri"
+        ],
+        [
+          "Yarı yapısal veri",
+          "Yapısı var ama belli bir veri modeline uymuyor; veriler etiketlerle ifade ediliyor"
+        ],
+        [
+          "Yapısal veri",
+          "Bir veri modeline sahip veri"
+        ]
+      ],
+      "izah": "Ayrımın ölçütü veri modelidir: hiç yok (yapısal olmayan), yapı var ama modele uymuyor (yarı yapısal), model var (yapısal)."
+    },
+    {
+      "id": "vt-veri-veritabani.s3",
+      "tip": "secme",
+      "yer": "Yarı yapısal veri",
+      "soru": "Aşağıdaki veri, yapı bakımından hangi türdendir?",
+      "kod": "<kisi>Ali\n  <tel>05xxx</tel>\n  <tel>05yyy</tel>\n</kisi>",
+      "secenekler": [
+        "Yarı yapısal veri",
+        "Yapısal olmayan veri",
+        "Yapısal veri"
+      ],
+      "dogru": 0,
+      "izah": "Bu bir XML parçasıdır. Veriler `<tel>` gibi **etiketlerle** ifade edilir; yapısı vardır ama belli bir veri modeline uymaz. Hoca XML'i yarı yapısal verinin örneği olarak verir."
+    },
+    {
+      "id": "vt-veri-veritabani.s4",
+      "tip": "secme",
+      "yer": "Yapısal olmayan veri",
+      "soru": "Hocanın örneğindeki `<b>Ali'nin telefon numaraları 05xxx ve 05yyy'dir</b>` cümlesi hangi veri türüne örnektir?",
+      "secenekler": [
+        "Yapısal olmayan veri",
+        "Yarı yapısal veri",
+        "Yapısal veri"
+      ],
+      "dogru": 0,
+      "izah": "Hoca bu cümleyi **yapısal olmayan** verinin örneği olarak verir; web sayfaları da bu türün örnekleri arasındadır. `<b>` etiketi yalnızca yazıyı kalın gösterir; telefon numaraları cümlenin içinde geçer, onları ayıran bir yapı yoktur."
+    },
+    {
+      "id": "vt-veri-veritabani.s5",
+      "tip": "dy",
+      "yer": "Yapısal veri",
+      "ifade": "Veritabanları, yapısal veriye örnektir.",
+      "dogru": true,
+      "izah": "Yapısal veri bir veri modeline sahip veridir; hocanın verdiği örnek veritabanlarıdır."
+    },
+    {
+      "id": "vt-veri-veritabani.s6",
+      "tip": "dy",
+      "yer": "Yarı yapısal veri",
+      "ifade": "XML, yapısal olmayan veriye örnektir.",
+      "dogru": false,
+      "izah": "XML **yarı yapısal** veriye örnektir: veriler etiketlerle ifade edilir. Yapısal olmayan verinin örnekleri kitaplar, resim, ses, video dosyaları ve web sayfalarıdır."
+    },
+    {
+      "id": "vt-veri-veritabani.s7",
+      "tip": "secme",
+      "yer": "Yapısal olmayan veri",
+      "soru": "Aşağıdakilerden hangisi hocanın **yapısal olmayan** veri örnekleri arasında yer almaz?",
+      "secenekler": [
+        "XML belgeleri",
+        "Kitaplar",
+        "Resim, ses ve video dosyaları",
+        "Web sayfaları"
+      ],
+      "dogru": 0,
+      "izah": "XML, yarı yapısal verinin örneğidir. Kitaplar, resim/ses/video dosyaları ve web sayfaları yapısal olmayan veriye örnektir."
+    },
+    {
+      "id": "vt-veri-veritabani.s8",
+      "tip": "secme",
+      "yer": "Veritabanı nedir",
+      "soru": "Aşağıdakilerden hangisi hocanın **veritabanı** tanımında geçmez?",
+      "secenekler": [
+        "Verilerin etiketlerle ifade edildiği",
+        "Birbiriyle ilişkisi olan verilerin tutulduğu",
+        "Kullanım amacına uygun olarak düzenlenmiş",
+        "Mantıksal ve fiziksel olarak tanımlarının bulunduğu"
+      ],
+      "dogru": 0,
+      "izah": "Veritabanı; birbiriyle ilişkisi olan verilerin tutulduğu, kullanım amacına uygun düzenlenmiş veriler topluluğunun mantıksal ve fiziksel tanımlarının bulunduğu bilgi depolarıdır. Etiketlerle ifade edilme, yarı yapısal verinin (XML) özelliğidir."
+    },
+    {
+      "id": "vt-veri-veritabani.s9",
+      "tip": "bosluk",
+      "yer": "Veritabanı yönetim sistemi (VTYS)",
+      "metin": "VTYS; yeni bir veritabanı oluşturmak, veritabanını düzenlemek, kullanmak, geliştirmek ve bakımını yapmak için çeşitli karmaşık işlemlerin gerçekleştirildiği bir ___ sistemidir.",
+      "cevaplar": [
+        [
+          "yazılım"
+        ]
+      ],
+      "izah": "VTYS bir **yazılım sistemidir**; veritabanı ise bu yazılımla oluşturulan bilgi deposudur."
+    },
+    {
+      "id": "vt-veri-veritabani.s10",
+      "tip": "secme",
+      "yer": "Veritabanı yönetim sistemi (VTYS)",
+      "soru": "Veritabanı ile VTYS arasındaki ilişki için hangisi doğrudur?",
+      "secenekler": [
+        "Veritabanı bilgi deposudur; VTYS onu oluşturan, düzenleyen ve bakımını yapan yazılım sistemidir",
+        "Veritabanı bir yazılım sistemidir; VTYS ise bu yazılımın içinde tutulan bilgi deposunun adıdır",
+        "İkisi aynı şeyi anlatır; VTYS yalnızca veritabanının kısaltılmış, teknik adıdır",
+        "Veritabanı yalnızca tek kullanıcılı, VTYS ise yalnızca çok kullanıcılı sistemlerde kullanılır"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın tanımlarına göre veritabanı **bilgi deposudur**, VTYS ise veritabanını oluşturmak, düzenlemek, kullanmak, geliştirmek ve bakımını yapmak için kullanılan **yazılım sistemidir**. Ör. MySQL bir VTYS'dir."
+    },
+    {
+      "id": "vt-veri-veritabani.s11",
+      "tip": "secme",
+      "yer": "Yaygın VTYS'ler",
+      "soru": "Aşağıdakilerden hangisi hocanın VTYS listesinde **yer almaz**?",
+      "secenekler": [
+        "Microsoft Excel",
+        "Microsoft SQL Server",
+        "Oracle Database",
+        "PostgreSQL"
+      ],
+      "dogru": 0,
+      "izah": "Microsoft SQL Server, Oracle Database ve PostgreSQL hocanın VTYS listesinde yer alır. Microsoft Excel bir hesap tablosu programıdır; listede Microsoft'tan Access, SQL Server ve Visual FoxPro vardır."
+    },
+    {
+      "id": "vt-veri-veritabani.s12",
+      "tip": "klasik",
+      "yer": "Veri türleri (yapı bakımından)",
+      "soru": "Verileri yapı bakımından üç türe ayırın; her birini tanımlayın ve birer örnek verin.",
+      "cevap": "Yapısal olmayan veri: önceden belli bir veri modeli olmayan veri. Ör. kitaplar, resim/ses/video dosyaları, web sayfaları.\nYarı yapısal veri: yapısı var ama belli bir veri modeline uymuyor; veriler etiketlerle ifade ediliyor. Ör. XML.\nYapısal veri: bir veri modeline sahip veri. Ör. veritabanları.",
+      "anahtarlar": [
+        "yapısal olmayan",
+        "yarı yapısal",
+        "veri modeli",
+        "etiket",
+        "XML",
+        "veritabanları"
+      ]
+    },
+    {
+      "id": "vt-veri-veritabani.s13",
+      "tip": "klasik",
+      "yer": "Veritabanı nedir",
+      "soru": "Veritabanını ve VTYS'yi tanımlayın.",
+      "cevap": "Veritabanı; birbiriyle ilişkisi olan verilerin tutulduğu, kullanım amacına uygun olarak düzenlenmiş veriler topluluğunun mantıksal ve fiziksel olarak tanımlarının bulunduğu bilgi depolarıdır.\nVTYS; yeni bir veritabanı oluşturmak, veritabanını düzenlemek, kullanmak, geliştirmek ve bakımını yapmak için çeşitli karmaşık işlemlerin gerçekleştirildiği bir yazılım sistemidir.",
+      "anahtarlar": [
+        "ilişki",
+        "kullanım amacı",
+        "mantıksal",
+        "fiziksel",
+        "bilgi depo",
+        "yazılım"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-veri-veritabani.k1",
+      "yer": "Veri nedir",
+      "on": "Veri nedir?",
+      "arka": "Bilgisayarın girdi olarak alabildiği, işleyebildiği, sonuç üretebildiği ve depolayabildiği **her şey** veridir."
+    },
+    {
+      "id": "vt-veri-veritabani.k2",
+      "yer": "Veri türleri (yapı bakımından)",
+      "on": "Verileri yapı bakımından kaç türe ayırırsınız? Her birine bir örnek verin.",
+      "arka": "Üç türe:\n- Yapısal olmayan: önceden belli bir veri modeli yok. Ör. kitaplar, resim/ses/video, web sayfaları.\n- Yarı yapısal: yapısı var ama belli bir modele uymuyor, etiketlerle ifade ediliyor. Ör. XML.\n- Yapısal: bir veri modeline sahip. Ör. veritabanları."
+    },
+    {
+      "id": "vt-veri-veritabani.k3",
+      "yer": "Yarı yapısal veri",
+      "on": "Yarı yapısal veriyi yapısal veriden ayıran nedir?",
+      "arka": "Yarı yapısal verinin bir yapısı vardır ama **belli bir veri modeline uymaz**; yapı, verileri saran etiketlerden anlaşılır (XML'deki `<tel>` gibi). Yapısal veri ise **bir veri modeline sahiptir** (veritabanları)."
+    },
+    {
+      "id": "vt-veri-veritabani.k4",
+      "yer": "Yapısal olmayan veri",
+      "on": "Web sayfasındaki `<b>Ali'nin telefon numaraları 05xxx ve 05yyy'dir</b>` cümlesinde etiket var. Bu onu yarı yapısal yapar mı?",
+      "arka": "Hayır. Hoca bu cümleyi **yapısal olmayan** verinin örneği olarak verir. `<b>` yalnızca yazıyı kalın gösterir; telefon numaraları cümlenin içindedir ve onları ayıran bir etiket yoktur. XML örneğinde ise her numara `<tel>` etiketiyle işaretlenir."
+    },
+    {
+      "id": "vt-veri-veritabani.k5",
+      "yer": "Veritabanı nedir",
+      "on": "Veritabanı nedir?",
+      "arka": "Birbiriyle ilişkisi olan verilerin tutulduğu, kullanım amacına uygun olarak düzenlenmiş veriler topluluğunun, mantıksal ve fiziksel olarak tanımlarının bulunduğu **bilgi depolarıdır**."
+    },
+    {
+      "id": "vt-veri-veritabani.k6",
+      "yer": "Veritabanı yönetim sistemi (VTYS)",
+      "on": "VTYS nedir? Veritabanından farkı ne?",
+      "arka": "VTYS; yeni bir veritabanı oluşturmak, onu düzenlemek, kullanmak, geliştirmek ve bakımını yapmak için çeşitli karmaşık işlemlerin yapıldığı bir **yazılım sistemidir**.\nVeritabanı verilerin tutulduğu bilgi deposudur; VTYS o depoyu oluşturan ve yöneten yazılımdır. Ör. MySQL bir VTYS'dir."
+    },
+    {
+      "id": "vt-veri-veritabani.k7",
+      "yer": "Yaygın VTYS'ler",
+      "on": "Hocanın listesinden en az beş VTYS sayın.",
+      "arka": "Oracle Database, IBM DB2, Adaptive Server Enterprise, Informix, Microsoft Access, Microsoft SQL Server, Microsoft Visual FoxPro, MySQL, PostgreSQL, Progress, SQLite, Teradata, CSQL, OpenLink Virtuoso."
+    }
+  ]
+}

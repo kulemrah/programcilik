@@ -1,0 +1,340 @@
+{
+  "id": "vt-varlik-nitelik",
+  "baslik": "Kavramsal Model: Varlıklar ve Nitelikler",
+  "kaynak": "3_gereksinim_analizi (1)-2_1.pdf, slayt 19–31 (gösterim özeti: slayt 24–56 şekilleri)",
+  "kavramlar": [
+    {
+      "terim": "Kavramsal model",
+      "izah": "Kullanıcıların ve proje sahibinin anlayacağı biçimde hazırlanan gereksinim modelinin, veritabanı uzmanlarınca veritabanı tasarımında kullanılabilecek modele dönüştürülmüş hâli.",
+      "yer": "Kavramsal model"
+    },
+    {
+      "terim": "Varlık Bağıntı (E-R) diyagramı",
+      "izah": "Bilgi sisteminde bulunması gereken varlıkları, varlıkların niteliklerini ve varlıklar arası ilişkileri gösteren diyagram.",
+      "yer": "Varlık Bağıntı (E-R) diyagramları"
+    },
+    {
+      "terim": "Varlık",
+      "izah": "Veritabanı sistemi içinde tek başına anlam ifade eden ve diğer varlıklardan ayrıştırılabilir her şey. Ör. kullanıcı, sınavlar. Dikdörtgenle gösterilir.",
+      "yer": "Varlık"
+    },
+    {
+      "terim": "Nitelik",
+      "izah": "Varlığın özelliklerini belirleyen öğe; elipsle gösterilir.",
+      "yer": "Nitelikler ve birincil anahtar"
+    },
+    {
+      "terim": "Birincil anahtar",
+      "izah": "Her varlıkta bulunması gereken anahtar nitelik; E-R diyagramında adının altı çizilir.",
+      "yer": "Nitelikler ve birincil anahtar"
+    },
+    {
+      "terim": "Çekirdek nitelik",
+      "izah": "Daha alt parçalara bölünemeyen nitelik. Ör. ePosta, dTarihi.",
+      "yer": "Çekirdek nitelik"
+    },
+    {
+      "terim": "Birleşik nitelik",
+      "izah": "Birden fazla çekirdek niteliğin birleşmesiyle oluşan nitelik. Ör. isim (ad + soyAd).",
+      "yer": "Birleşik nitelik"
+    },
+    {
+      "terim": "Türetilmiş nitelik",
+      "izah": "Veritabanında gerçekte tutulmayan, diğer niteliklerden hesaplanan nitelik. Ör. yaş. Kesikli çizgili elipsle gösterilir.",
+      "yer": "Türetilmiş nitelik"
+    },
+    {
+      "terim": "Birden çok değer alabilen nitelik",
+      "izah": "Veritabanında birden fazla değer alabilecek nitelik. Ör. tel. Çift çizgili elipsle gösterilir.",
+      "yer": "Birden çok değer alabilen nitelik"
+    },
+    {
+      "terim": "Zayıf varlık",
+      "izah": "Sistemde tek başına ayakta duramayan, başka bir varlığa bağlı varlık. Ör. soruSeçenekleri. Çift çizgili dikdörtgenle gösterilir.",
+      "yer": "Zayıf varlıklar"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-varlik-nitelik.s1",
+      "tip": "secme",
+      "yer": "Kavramsal model",
+      "soru": "Hocanın tanımına göre **kavramsal model** nedir?",
+      "secenekler": [
+        "Gereksinim modelinin, veritabanı uzmanlarınca veritabanı tasarımında kullanılabilecek bir modele dönüştürülmüş hâli",
+        "Verilerin diskte hangi dosyalarda ve hangi düzende saklanacağını gösteren ayrıntılı fiziksel düzen",
+        "Gereksinim analistinin kullanıcılarla yaptığı görüşmelerin hiç düzenlenmemiş ham kayıtları",
+        "Kullanılacak VTYS'nin kurulumunu, yedeklenmesini ve bakımını anlatan teknik işletim planı"
+      ],
+      "dogru": 0,
+      "izah": "Kullanıcıların ve proje sahibinin anlayabileceği şekilde hazırlanan gereksinim modeli, veritabanı uzmanlarınca veritabanı tasarımında kullanılabilecek bir modele dönüştürülür; bu modele kavramsal model denir."
+    },
+    {
+      "id": "vt-varlik-nitelik.s2",
+      "tip": "dy",
+      "yer": "Kavramsal model",
+      "ifade": "Kavramsal model, veritabanı tasarım aşamalarının ikincisidir.",
+      "dogru": true,
+      "izah": "Sıra: gereksinim belirlenmesi, kavramsal model, mantıksal model, fiziksel model."
+    },
+    {
+      "id": "vt-varlik-nitelik.s3",
+      "tip": "secme",
+      "yer": "Varlık Bağıntı (E-R) diyagramları",
+      "soru": "Hocaya göre bir Varlık Bağıntı (E-R) diyagramı aşağıdakilerden hangisini **göstermez**?",
+      "secenekler": [
+        "Verilerin diskte hangi dosyada saklandığını",
+        "Bilgi sisteminde bulunması gereken varlıkları",
+        "Varlıkların niteliklerini",
+        "Varlıklar arası ilişkileri"
+      ],
+      "dogru": 0,
+      "izah": "E-R diyagramları varlıkları, varlıkların niteliklerini ve varlıklar arası ilişkileri gösterir. Verilerin diskte nasıl saklandığı E-R diyagramının konusu değildir."
+    },
+    {
+      "id": "vt-varlik-nitelik.s4",
+      "tip": "secme",
+      "yer": "Varlık",
+      "soru": "Hocanın tanımına göre **varlık** nedir?",
+      "secenekler": [
+        "Veritabanı sistemi içinde tek başına anlam ifade eden ve diğer varlıklardan ayrıştırılabilir her şey",
+        "Bir varlığın özelliklerini belirleyen, E-R diyagramında elipsle gösterilen ve varlığa çizgiyle bağlanan öğe",
+        "Varlıklar arasında kurulan, E-R diyagramında baklava dilimiyle gösterilen ve kısa bir isim alan ilişki",
+        "Sistemde tek başına ayakta duramayan, başka bir varlığa bağlı olan ve çift dikdörtgenle gösterilen yapı"
+      ],
+      "dogru": 0,
+      "izah": "Varlık; tek başına anlam ifade eden ve diğer varlıklardan ayrıştırılabilir her şeydir (ör. kullanıcı, sınavlar). Elipsle gösterilen öğe niteliktir, baklava dilimiyle gösterilen ilişki bağıntıdır, tek başına ayakta duramayan yapı zayıf varlıktır."
+    },
+    {
+      "id": "vt-varlik-nitelik.s5",
+      "tip": "dy",
+      "yer": "Nitelikler ve birincil anahtar",
+      "ifade": "Her varlığın bir birincil anahtar niteliği olmalıdır.",
+      "dogru": true,
+      "izah": "Slayttaki kural budur. E-R diyagramında birincil anahtarın adının altı çizilir (kullanıcı varlığında `kod`)."
+    },
+    {
+      "id": "vt-varlik-nitelik.s6",
+      "tip": "bosluk",
+      "yer": "Nitelikler ve birincil anahtar",
+      "metin": "E-R diyagramında birincil anahtar niteliğinin adının ___ çizilir.",
+      "cevaplar": [
+        [
+          "altı"
+        ]
+      ],
+      "izah": "Hocanın kullanıcı varlığı şeklinde `kod` niteliğinin altı çizilidir."
+    },
+    {
+      "id": "vt-varlik-nitelik.s7",
+      "tip": "esles",
+      "yer": "Nitelik türleri",
+      "soru": "Kullanıcı varlığındaki nitelikleri türleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "ePosta",
+          "Çekirdek"
+        ],
+        [
+          "isim (ad + soyAd)",
+          "Birleşik"
+        ],
+        [
+          "yaş",
+          "Türetilmiş"
+        ],
+        [
+          "tel",
+          "Birden çok değer alabilen"
+        ]
+      ],
+      "izah": "ePosta alt parçalara bölünemez (çekirdek). isim, ad ve soyAd'dan oluşur (birleşik). yaş tutulmaz, hesaplanır (türetilmiş). Bir kullanıcının birden çok telefonu olabilir (birden çok değer alabilen)."
+    },
+    {
+      "id": "vt-varlik-nitelik.s8",
+      "tip": "secme",
+      "yer": "Türetilmiş nitelik",
+      "soru": "Veritabanında gerçekte bir değer olarak **tutulmayan**, var olan diğer niteliklerin kullanılmasıyla **hesaplanan** nitelik hangisidir?",
+      "secenekler": [
+        "Türetilmiş nitelik",
+        "Çekirdek nitelik",
+        "Birleşik nitelik",
+        "Birden çok değer alabilen nitelik"
+      ],
+      "dogru": 0,
+      "izah": "Bu, türetilmiş niteliğin tanımıdır. Hocanın örneği `yaş` niteliğidir."
+    },
+    {
+      "id": "vt-varlik-nitelik.s9",
+      "tip": "secme",
+      "yer": "Birleşik nitelik",
+      "soru": "Kullanıcı varlığındaki `isim` niteliği, `ad` ve `soyAd` niteliklerinden oluşuyor. `isim` hangi tür niteliktir?",
+      "secenekler": [
+        "Birleşik",
+        "Çekirdek",
+        "Türetilmiş",
+        "Birden çok değer alabilen"
+      ],
+      "dogru": 0,
+      "izah": "Birden fazla çekirdek niteliğin birleşmesiyle oluşan nitelik birleşik niteliktir. `ad` ve `soyAd` ise çekirdek niteliklerdir."
+    },
+    {
+      "id": "vt-varlik-nitelik.s10",
+      "tip": "secme",
+      "yer": "Çekirdek nitelik",
+      "soru": "Daha alt parçalara **bölünemeyen** nitelik türü hangisidir?",
+      "secenekler": [
+        "Çekirdek",
+        "Birleşik",
+        "Türetilmiş",
+        "Birden çok değer alabilen"
+      ],
+      "dogru": 0,
+      "izah": "Çekirdek nitelikler daha alt parçalara bölünemez; ör. ePosta, dTarihi."
+    },
+    {
+      "id": "vt-varlik-nitelik.s11",
+      "tip": "secme",
+      "yer": "Birden çok değer alabilen nitelik",
+      "soru": "Bir kullanıcının birden fazla telefon numarası olabiliyorsa `tel` niteliği E-R diyagramında nasıl gösterilir?",
+      "secenekler": [
+        "Çift çizgili elips",
+        "Kesikli çizgili elips",
+        "Çift çizgili dikdörtgen",
+        "Baklava dilimi"
+      ],
+      "dogru": 0,
+      "izah": "Birden çok değer alabilen nitelik çift çizgili elipsle gösterilir. Kesikli elips türetilmiş niteliği, çift çizgili dikdörtgen zayıf varlığı, baklava dilimi bağıntıyı gösterir."
+    },
+    {
+      "id": "vt-varlik-nitelik.s12",
+      "tip": "dy",
+      "yer": "Türetilmiş nitelik",
+      "ifade": "Türetilmiş nitelik, E-R diyagramında çift çizgili elipsle gösterilir.",
+      "dogru": false,
+      "izah": "Türetilmiş nitelik **kesikli çizgili** elipsle gösterilir. Çift çizgili elips, birden çok değer alabilen niteliktir."
+    },
+    {
+      "id": "vt-varlik-nitelik.s13",
+      "tip": "secme",
+      "yer": "Zayıf varlıklar",
+      "soru": "**Zayıf varlık** nedir?",
+      "secenekler": [
+        "Sistemde tek başına ayakta duramayan, başka bir varlığa bağlı varlık",
+        "Hiçbir niteliği olmayan, E-R diyagramında yalnızca adıyla gösterilen varlık",
+        "Birincil anahtarı birden çok değer alabilen, bu yüzden çift elipsle gösterilen varlık",
+        "Tabloda yalnızca tek bir kaydı bulunduğu için ayrı tutulmayan varlık"
+      ],
+      "dogru": 0,
+      "izah": "Zayıf varlıklar sistemde tek başına ayakta duramayan, bir başka varlığa bağlı varlıklardır. Hocanın şekillerindeki örnek `soruSeçenekleri` varlığıdır."
+    },
+    {
+      "id": "vt-varlik-nitelik.s14",
+      "tip": "esles",
+      "yer": "E-R gösterim özeti",
+      "soru": "E-R diyagramındaki şekilleri anlamlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Dikdörtgen",
+          "Varlık"
+        ],
+        [
+          "Çift çizgili dikdörtgen",
+          "Zayıf varlık"
+        ],
+        [
+          "Elips",
+          "Nitelik"
+        ],
+        [
+          "Kesikli çizgili elips",
+          "Türetilmiş nitelik"
+        ],
+        [
+          "Çift çizgili elips",
+          "Birden çok değer alabilen nitelik"
+        ],
+        [
+          "Altı çizili nitelik adı",
+          "Birincil anahtar"
+        ],
+        [
+          "Baklava dilimi",
+          "Bağıntı"
+        ],
+        [
+          "Çift çizgili baklava dilimi",
+          "Varolma bağıntısı"
+        ]
+      ],
+      "izah": "Çift çizgi üç yerde geçer ve anlamı şekle göre değişir: dikdörtgende zayıf varlık, elipste birden çok değer alabilen nitelik, baklavada varolma bağıntısı."
+    },
+    {
+      "id": "vt-varlik-nitelik.s15",
+      "tip": "klasik",
+      "yer": "Nitelik türleri",
+      "soru": "Nitelik türlerini tanımlarıyla birlikte yazın ve her birine kullanıcı varlığından bir örnek verin.",
+      "cevap": "Çekirdek: daha alt parçalara bölünemeyen nitelik. Ör. ePosta, dTarihi.\nBirleşik: birden fazla çekirdek niteliğin birleşmesiyle oluşan nitelik. Ör. isim (ad + soyAd).\nTüretilmiş: veritabanında gerçekte tutulmayan, diğer niteliklerden hesaplanan nitelik. Ör. yaş.\nBirden çok değer alabilen: veritabanında birden fazla değer alabilecek nitelik. Ör. tel.",
+      "anahtarlar": [
+        "çekirdek",
+        "birleşik",
+        "türetilmiş",
+        "birden çok değer",
+        "ePosta",
+        "isim",
+        "yaş",
+        "tel"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-varlik-nitelik.k1",
+      "yer": "Kavramsal model",
+      "on": "Kavramsal model nedir, tasarımın hangi aşamasıdır?",
+      "arka": "Tasarımın **ikinci** aşamasıdır. Kullanıcıların ve proje sahibinin anlayabileceği şekilde hazırlanan gereksinim modeli, veritabanı uzmanlarınca veritabanı tasarımında kullanılabilecek bir modele dönüştürülür; bu modele kavramsal model denir. Bu aşamada E-R diyagramları hazırlanır."
+    },
+    {
+      "id": "vt-varlik-nitelik.k2",
+      "yer": "Varlık Bağıntı (E-R) diyagramları",
+      "on": "Bir E-R diyagramı neleri gösterir?",
+      "arka": "Bilgi sisteminde bulunması gereken **varlıkları**, varlıkların **niteliklerini** ve varlıklar arası **ilişkileri** (bağıntıları)."
+    },
+    {
+      "id": "vt-varlik-nitelik.k3",
+      "yer": "Varlık",
+      "on": "Varlık nedir? Örnek verin ve nasıl gösterildiğini söyleyin.",
+      "arka": "Veritabanı sistemi içinde tek başına anlam ifade eden ve diğer varlıklardan ayrıştırılabilir her şeydir. Ör. kullanıcı, sınavlar. E-R diyagramında dikdörtgenle gösterilir."
+    },
+    {
+      "id": "vt-varlik-nitelik.k4",
+      "yer": "Nitelikler ve birincil anahtar",
+      "on": "Nitelik ve birincil anahtar E-R diyagramında nasıl gösterilir?",
+      "arka": "Nitelikler elipsle gösterilir ve varlığa çizgiyle bağlanır. Her varlığın bir birincil anahtar niteliği olmalıdır; birincil anahtarın adının **altı çizilir** (kullanıcı varlığında `kod`)."
+    },
+    {
+      "id": "vt-varlik-nitelik.k5",
+      "yer": "Nitelik türleri",
+      "on": "Nitelik türlerini sayın ve her birine kullanıcı varlığından örnek verin.",
+      "arka": "- Çekirdek (bölünemez): ePosta, dTarihi, faks.\n- Birleşik (çekirdeklerden oluşur): isim = ad + soyAd.\n- Türetilmiş (tutulmaz, hesaplanır): yaş. Kesikli elips.\n- Birden çok değer alabilen: tel. Çift elips."
+    },
+    {
+      "id": "vt-varlik-nitelik.k6",
+      "yer": "Türetilmiş nitelik",
+      "on": "Yaş neden türetilmiş bir niteliktir?",
+      "arka": "Yaş veritabanında bir değer olarak tutulmaz; doğum tarihinden (`dTarihi`) o günün tarihine göre **hesaplanır**. Saklansaydı her yıl güncellenmesi gerekirdi."
+    },
+    {
+      "id": "vt-varlik-nitelik.k7",
+      "yer": "Zayıf varlıklar",
+      "on": "Zayıf varlık nedir? Hocanın örneği ne?",
+      "arka": "Sistemde tek başına ayakta duramayan, başka bir varlığa bağlı varlıktır; çift çizgili dikdörtgenle gösterilir. Örnek `soruSeçenekleri`: bir seçenek ancak ait olduğu soruyla anlam taşır."
+    },
+    {
+      "id": "vt-varlik-nitelik.k8",
+      "yer": "E-R gösterim özeti",
+      "on": "E-R diyagramında \"çift çizgi\" nerelerde geçer, anlamları ne?",
+      "arka": "- Çift çizgili dikdörtgen: zayıf varlık.\n- Çift çizgili elips: birden çok değer alabilen nitelik.\n- Çift çizgili baklava: varolma bağıntısı.\nKesikli çizgi ise yalnızca türetilmiş nitelikte (kesikli elips) kullanılır. Bağıntı çizgisinin ucundaki çift kısa çizgi ise şekil değil, \"bir ve yalnız bir\" işaretidir."
+    }
+  ]
+}

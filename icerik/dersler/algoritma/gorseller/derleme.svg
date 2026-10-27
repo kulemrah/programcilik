@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="296" viewBox="0 0 400 296" role="img">
+<title>Kaynak koddan makine diline</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="60.0" y="10.0" width="280.0" height="54.0" rx="10" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="200.0" y="33.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#2B6CB0" font-weight="600" text-anchor="middle">Kaynak kodu</text>
+<text x="200.0" y="51.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">kolay yazılıp okunan kod</text>
+<line x1="200.0" y1="66.0" x2="200.0" y2="80.0" stroke="#4A5568" stroke-width="1.8"/>
+<polygon points="200.0,80.0 196.5,71.7 203.5,71.7" fill="#4A5568"/>
+<rect x="60.0" y="82.0" width="280.0" height="54.0" rx="10" fill="#FFFFFF" stroke="#6B46C1" stroke-width="1.8"/>
+<text x="200.0" y="105.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#6B46C1" font-weight="600" text-anchor="middle">Derleyici (compiler)</text>
+<text x="200.0" y="123.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">makine diline çevirir</text>
+<line x1="200.0" y1="138.0" x2="200.0" y2="152.0" stroke="#4A5568" stroke-width="1.8"/>
+<polygon points="200.0,152.0 196.5,143.7 203.5,143.7" fill="#4A5568"/>
+<rect x="60.0" y="154.0" width="280.0" height="54.0" rx="10" fill="#FFFFFF" stroke="#2C7A7B" stroke-width="1.8"/>
+<text x="200.0" y="177.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#2C7A7B" font-weight="600" text-anchor="middle">Nesne kodu</text>
+<text x="200.0" y="195.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">makine diline çevrilmiş kod</text>
+<line x1="200.0" y1="210.0" x2="200.0" y2="224.0" stroke="#4A5568" stroke-width="1.8"/>
+<polygon points="200.0,224.0 196.5,215.7 203.5,215.7" fill="#4A5568"/>
+<rect x="60.0" y="226.0" width="280.0" height="54.0" rx="10" fill="#FFFFFF" stroke="#2F855A" stroke-width="1.8"/>
+<text x="200.0" y="249.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#2F855A" font-weight="600" text-anchor="middle">CPU yürütür</text>
+<text x="200.0" y="267.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">0 ve 1'lerden oluşan yönergeler</text>
+</svg>

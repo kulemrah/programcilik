@@ -1,0 +1,316 @@
+{
+  "id": "vt-baginti-kisit",
+  "baslik": "Bağıntılar ve Bütünlük Kısıtları",
+  "kaynak": "3_gereksinim_analizi (1)-2_1.pdf, slayt 32–48",
+  "kavramlar": [
+    {
+      "terim": "Bağıntı",
+      "izah": "Varlıklar arasındaki ilişki; E-R diyagramında baklava dilimiyle gösterilir ve kısa, anlamlı bir isim alır.",
+      "yer": "Varlıklar arası bağıntılar"
+    },
+    {
+      "terim": "Veri bütünlüğü",
+      "izah": "İlişkisel veritabanlarında yanlış ya da ilişkisiz verilerin kaydedilmesi önlenip, farklı tablolara dağıtılan verilerin kendi içinde tutarlılık göstermesi.",
+      "yer": "Veri bütünlüğü"
+    },
+    {
+      "terim": "Bütünlük kısıtları",
+      "izah": "Bağıntı tanımlanırken tanımlanması gereken kısıtlar: eleman sayısı bütünlük kısıtları ve katılım bütünlük kısıtı.",
+      "yer": "Bütünlük kısıtları"
+    },
+    {
+      "terim": "Birebir bağıntı (1-1)",
+      "izah": "Hocanın tanımı: bir varlıktaki bir eleman, diğer varlıkta bir elemana karşılık gelmek zorundadır. Ör. öğretim elemanı – ofis.",
+      "yer": "Birebir bağıntı (1-1)"
+    },
+    {
+      "terim": "Bire çok bağıntı (1-N)",
+      "izah": "Bir varlıktaki bir eleman, diğer varlıkta birden fazla elemanla eşleşebilir. Ör. soru tipleri – sorular.",
+      "yer": "Bire çok bağıntı (1-N)"
+    },
+    {
+      "terim": "Çoğa çok bağıntı (M-N)",
+      "izah": "Bir varlıktaki birden çok eleman, diğer varlıkta birden fazla elemanla eşleşebilir. Ör. sorular – sınavlar.",
+      "yer": "Çoğa çok bağıntı (M-N)"
+    },
+    {
+      "terim": "Bütün (zorunlu) katılım",
+      "izah": "Varlıkların bağıntıya katılımının zorunlu olması; varlık kısmına konulan düz çizgiyle gösterilir. Ör. her sınavda en az bir soru bulunmalı.",
+      "yer": "Bütün (zorunlu) katılım"
+    },
+    {
+      "terim": "Kısmen katılım",
+      "izah": "Varlığın bağıntıya katılımı isteğe bağlı (opsiyonel) olduğunda kullanılır; yuvarlak işaretiyle gösterilir. Ör. bir soru hiçbir sınavda kullanılmamış olabilir.",
+      "yer": "Kısmen katılım"
+    },
+    {
+      "terim": "Varolma bağıntısı",
+      "izah": "Zayıf varlık ile onun sistemde bulunmasını sağlayan varlık arasındaki bağıntı; çift çizgili baklava dilimiyle gösterilir.",
+      "yer": "Varolma bağıntısı"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-baginti-kisit.s1",
+      "tip": "secme",
+      "yer": "Varlıklar arası bağıntılar",
+      "soru": "Bağıntılar Varlık Bağıntı Diyagramlarında nasıl gösterilir?",
+      "secenekler": [
+        "Baklava dilimi",
+        "Çift çizgili dikdörtgen",
+        "Kesikli çizgili elips",
+        "Bulut"
+      ],
+      "dogru": 0,
+      "izah": "Bağıntılar baklava dilimi (eşkenar dörtgen) ile gösterilir. Çift çizgili dikdörtgen zayıf varlığı, kesikli çizgili elips türetilmiş niteliği, bulut kümelenmeyi gösterir."
+    },
+    {
+      "id": "vt-baginti-kisit.s2",
+      "tip": "dy",
+      "yer": "Varlıklar arası bağıntılar",
+      "ifade": "Her bağıntıya kısa ve anlamlı bir isim verilir.",
+      "dogru": true,
+      "izah": "Slayttaki kural budur; ör. `soruTipi`, `ofisi`, `sınavSoruları`."
+    },
+    {
+      "id": "vt-baginti-kisit.s3",
+      "tip": "secme",
+      "yer": "Veri bütünlüğü",
+      "soru": "Hocanın tanımına göre **veri bütünlüğü** nedir?",
+      "secenekler": [
+        "Yanlış ya da ilişkisiz verilerin kaydedilmesi önlenip farklı tablolara dağıtılan verilerin kendi içinde tutarlılık göstermesi",
+        "Bütün verilerin tek bir tabloda toplanarak farklı tablolara dağıtılmasının ve tekrarın tamamen önlenmesi",
+        "Veritabanındaki bütün verilerin düzenli aralıklarla yedeklenmesi ve gerektiğinde geri yüklenebilmesi",
+        "Her kullanıcının yalnızca kendi girdiği verileri görebilmesi ve başkalarının verilerine erişememesi"
+      ],
+      "dogru": 0,
+      "izah": "Veri bütünlüğü: ilişkisel veritabanı modellerinde yanlış ya da ilişkisiz verilerin çeşitli yollarla veritabanına kaydedilmesi önlenip, farklı tablolara dağıtılan verilerin kendi içinde tutarlılık göstermesidir."
+    },
+    {
+      "id": "vt-baginti-kisit.s4",
+      "tip": "secme",
+      "yer": "Bütünlük kısıtları",
+      "soru": "Bağıntılar tanımlanırken tanımlanması gereken **iki tür** bütünlük kısıtı hangileridir?",
+      "secenekler": [
+        "Eleman sayısı ve katılım bütünlük kısıtları",
+        "Birebir ve bire çok bağıntı kısıtları",
+        "Zorunlu katılım ve kısmen katılım kısıtları",
+        "Varolma ve özyineli bağıntı kısıtları"
+      ],
+      "dogru": 0,
+      "izah": "İki tür vardır: eleman sayısı bütünlük kısıtları (1-1, 1-N, M-N) ve katılım bütünlük kısıtı (zorunlu ya da kısmen). Birebir ve bire çok bağıntı ile zorunlu ve kısmen katılım bu iki türün alt türleridir; varolma ve özyineli bağıntı ise kısıt değil, bağıntı türüdür."
+    },
+    {
+      "id": "vt-baginti-kisit.s5",
+      "tip": "esles",
+      "yer": "Eleman sayısı bütünlük kısıtları",
+      "soru": "Hocanın örneklerini eleman sayısı bütünlük kısıtlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Öğretim elemanı – ofis",
+          "Birebir (1-1)"
+        ],
+        [
+          "Soru tipleri – sorular",
+          "Bire çok (1-N)"
+        ],
+        [
+          "Sorular – sınavlar",
+          "Çoğa çok (M-N)"
+        ]
+      ],
+      "izah": "Bir öğretim elemanının yalnızca bir ofisi olabilir (1-1). Bir soru tipi birden fazla soruyla eşleşebilir (1-N). Bir soru birden fazla sınavda çıkabilir, bir sınav birden fazla soru içerir (M-N)."
+    },
+    {
+      "id": "vt-baginti-kisit.s6",
+      "tip": "secme",
+      "yer": "Bire çok bağıntı (1-N)",
+      "soru": "Bir sınıfta birden çok öğrenci bulunuyor; her öğrenci ise yalnızca bir sınıfa kayıtlı. Sınıf ile öğrenci arasındaki bağıntı hangisidir?",
+      "secenekler": [
+        "Bire çok (1-N)",
+        "Birebir (1-1)",
+        "Çoğa çok (M-N)"
+      ],
+      "dogru": 0,
+      "izah": "Bir sınıftaki bir eleman (bir sınıf), öğrenci varlığında birden fazla elemanla eşleşir; her öğrencinin ise tek sınıfı vardır. Bu, hocanın soru tipleri – sorular örneğiyle aynı yapıdadır: 1-N."
+    },
+    {
+      "id": "vt-baginti-kisit.s7",
+      "tip": "secme",
+      "yer": "Çoğa çok bağıntı (M-N)",
+      "soru": "Bir öğrenci birden çok derse kaydolabiliyor; bir derste de birden çok öğrenci bulunuyor. Öğrenci ile ders arasındaki bağıntı hangisidir?",
+      "secenekler": [
+        "Çoğa çok (M-N)",
+        "Bire çok (1-N)",
+        "Birebir (1-1)"
+      ],
+      "dogru": 0,
+      "izah": "İki tarafta da bir eleman, karşı tarafta birden fazla elemanla eşleşebiliyor. Bu, hocanın sorular – sınavlar örneğiyle aynı yapıdadır: M-N."
+    },
+    {
+      "id": "vt-baginti-kisit.s8",
+      "tip": "dy",
+      "yer": "Birebir bağıntı (1-1)",
+      "ifade": "Birebir (1-1) bağıntıda bir varlıktaki bir eleman, diğer varlıkta birden fazla elemanla eşleşebilir.",
+      "dogru": false,
+      "izah": "1-1 bağıntıda bir varlıktaki bir eleman diğer varlıkta **bir** elemana karşılık gelir. Birden fazla elemanla eşleşebilmesi 1-N bağıntının tanımıdır."
+    },
+    {
+      "id": "vt-baginti-kisit.s9",
+      "tip": "secme",
+      "yer": "Bütün (zorunlu) katılım",
+      "soru": "Katılımın **zorunlu** olduğu E-R diyagramında nasıl gösterilir?",
+      "secenekler": [
+        "Varlık kısmına konulan düz çizgiyle",
+        "Varlık kısmına konulan yuvarlak işaretiyle",
+        "Bağıntının çift çizgili baklava dilimiyle çizilmesiyle",
+        "Varlığın kesikli çizgili dikdörtgenle çizilmesiyle"
+      ],
+      "dogru": 0,
+      "izah": "Zorunluluk, varlık kısmına konulan düz çizgiyle ifade edilir. Yuvarlak işareti ise kısmen (isteğe bağlı) katılımı gösterir."
+    },
+    {
+      "id": "vt-baginti-kisit.s10",
+      "tip": "secme",
+      "yer": "Bütün (zorunlu) katılım",
+      "soru": "Sınav sisteminde \"her sınavda en az bir soru bulunmalı\" kısıtı hangi kısıttır?",
+      "secenekler": [
+        "Bütün (zorunlu) katılım",
+        "Kısmen (isteğe bağlı) katılım",
+        "Birebir (1-1) bağıntı",
+        "Varolma bağıntısı"
+      ],
+      "dogru": 0,
+      "izah": "Sınavın soru içermesi zorunludur; bu, hocanın bütün (zorunlu) katılım örneğidir ve düz çizgiyle gösterilir."
+    },
+    {
+      "id": "vt-baginti-kisit.s11",
+      "tip": "secme",
+      "yer": "Kısmen katılım",
+      "soru": "Sınav sisteminde \"bir soru hiçbir sınavda kullanılmamış olabilir\" durumu hangi kısıtla ifade edilir?",
+      "secenekler": [
+        "Kısmen katılım",
+        "Bütün (zorunlu) katılım",
+        "Birebir bağıntı",
+        "Varolma bağıntısı"
+      ],
+      "dogru": 0,
+      "izah": "Sorunun bir sınava katılması isteğe bağlıdır; bu, hocanın kısmen katılım örneğidir ve yuvarlak işaretiyle gösterilir."
+    },
+    {
+      "id": "vt-baginti-kisit.s12",
+      "tip": "dy",
+      "yer": "Kısmen katılım",
+      "ifade": "Kısmen katılım, varlığın bağıntıya katılımı isteğe bağlı olduğunda kullanılır ve yuvarlak işaretiyle gösterilir.",
+      "dogru": true,
+      "izah": "Slayta göre varlık katılımı opsiyonel ise kısmen katılım oluşturulur ve yuvarlak işaretiyle ifade edilir."
+    },
+    {
+      "id": "vt-baginti-kisit.s13",
+      "tip": "secme",
+      "yer": "Varolma bağıntısı",
+      "soru": "Zayıf varlık ile onu sistemde var eden varlık arasındaki bağıntı nasıl gösterilir?",
+      "secenekler": [
+        "Çift çizgili baklava dilimi",
+        "Çift çizgili dikdörtgen",
+        "Çift çizgili elips",
+        "Baklava dilimini çevreleyen bulut"
+      ],
+      "dogru": 0,
+      "izah": "Varolma bağıntısı çift çizgili baklava dilimiyle gösterilir. Çift çizgili dikdörtgen zayıf varlığın kendisini, çift çizgili elips birden çok değer alabilen niteliği, bulut kümelenmeyi gösterir."
+    },
+    {
+      "id": "vt-baginti-kisit.s14",
+      "tip": "bosluk",
+      "yer": "Varolma bağıntısı",
+      "metin": "Zayıf varlık ile zayıf varlığın sistemde bulunmasını sağlayan varlık arasında ___ bağıntısı olması gerekir.",
+      "cevaplar": [
+        [
+          "varolma",
+          "var olma"
+        ]
+      ],
+      "izah": "Hocanın örneğinde `soruSeçenekleri` zayıf varlığı, `sorular` varlığına `seçenek` varolma bağıntısıyla bağlıdır."
+    },
+    {
+      "id": "vt-baginti-kisit.s15",
+      "tip": "klasik",
+      "yer": "Eleman sayısı bütünlük kısıtları",
+      "soru": "Eleman sayısı bütünlük kısıtlarını tanımlarıyla ve hocanın örnekleriyle açıklayın.",
+      "cevap": "Birebir (1-1): bir varlıktaki bir eleman diğer varlıkta bir elemana karşılık gelmek zorundadır. Ör. öğretim elemanı – ofis: bir öğretim elemanının yalnızca bir ofisi olabilir.\nBire çok (1-N): bir varlıktaki bir eleman diğer varlıkta birden fazla elemanla eşleşebilir. Ör. soru tipleri – sorular: bir soru tipi birden fazla soruyla eşleşebilir.\nÇoğa çok (M-N): bir varlıktaki birden çok eleman diğer varlıkta birden fazla elemanla eşleşebilir. Ör. sorular – sınavlar: bir soru birden fazla sınavda çıkabilir, bir sınav birden fazla soru içerir.",
+      "anahtarlar": [
+        "1-1",
+        "1-N",
+        "M-N",
+        "ofis",
+        "soru tipleri",
+        "sınavlar"
+      ]
+    },
+    {
+      "id": "vt-baginti-kisit.s16",
+      "tip": "klasik",
+      "yer": "Katılım bütünlük kısıtları",
+      "soru": "Bütün (zorunlu) katılımı ve kısmen katılımı sınav sistemi örneği üzerinden açıklayın; nasıl gösterildiklerini yazın.",
+      "cevap": "Bütün (zorunlu) katılım: varlığın bağıntıya katılımı zorunludur; varlık kısmına konulan düz çizgiyle gösterilir. Ör. her sınavda en az bir soru bulunmalı.\nKısmen katılım: varlığın katılımı isteğe bağlıdır (opsiyonel); yuvarlak işaretiyle gösterilir. Ör. bir soru hiçbir sınavda kullanılmamış olabilir.",
+      "anahtarlar": [
+        "zorunlu",
+        "düz çizgi",
+        "isteğe bağlı",
+        "yuvarlak",
+        "en az bir soru",
+        "kullanılmamış"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-baginti-kisit.k1",
+      "yer": "Varlıklar arası bağıntılar",
+      "on": "Bağıntı nedir, E-R diyagramında nasıl gösterilir?",
+      "arka": "Varlıklar birbirleriyle bağıntı içinde olabilir. Bağıntılar **baklava dilimi** ile gösterilir ve her bağıntıya kısa, anlamlı bir isim verilir. Ör. `soruTipleri` ile `sorular` arasındaki `soruTipi` bağıntısı."
+    },
+    {
+      "id": "vt-baginti-kisit.k2",
+      "yer": "Veri bütünlüğü",
+      "on": "Veri bütünlüğü nedir?",
+      "arka": "İlişkisel veritabanlarında yanlış ya da ilişkisiz verilerin çeşitli yollarla veritabanına kaydedilmesi önlenip, farklı tablolara dağıtılan verilerin kendi içinde **tutarlılık** göstermesidir."
+    },
+    {
+      "id": "vt-baginti-kisit.k3",
+      "yer": "Bütünlük kısıtları",
+      "on": "Bütünlük kısıtları nelerdir?",
+      "arka": "Bağıntı tanımlanırken bütünlük kısıtları da tanımlanır. İki tür vardır:\n1. Eleman sayısı bütünlük kısıtları: 1-1, 1-N, M-N.\n2. Katılım bütünlük kısıtı: bütün (zorunlu) ya da kısmen katılım."
+    },
+    {
+      "id": "vt-baginti-kisit.k4",
+      "yer": "Eleman sayısı bütünlük kısıtları",
+      "on": "1-1, 1-N ve M-N bağıntıları hocanın örnekleriyle anlatın.",
+      "arka": "- 1-1: öğretim elemanı – ofis; bir öğretim elemanının yalnızca bir ofisi olabilir.\n- 1-N: soru tipleri – sorular; bir soru tipi birden fazla soruyla eşleşir, her sorunun tek tipi vardır.\n- M-N: sorular – sınavlar; bir soru birden çok sınavda çıkabilir, bir sınav birden çok soru içerir."
+    },
+    {
+      "id": "vt-baginti-kisit.k5",
+      "yer": "Katılım bütünlük kısıtları",
+      "on": "Zorunlu katılım ile kısmen katılım arasındaki fark nedir? Nasıl gösterilirler?",
+      "arka": "Zorunlu (bütün) katılımda varlığın bağıntıya katılması zorunludur; varlık kısmına **düz çizgi** konur. Kısmen katılımda katılım isteğe bağlıdır; **yuvarlak** işareti konur."
+    },
+    {
+      "id": "vt-baginti-kisit.k6",
+      "yer": "Katılım bütünlük kısıtları",
+      "on": "Sorular ile sınavlar arasındaki bağıntıyı eleman sayısı ve katılım yönünden anlatın.",
+      "arka": "Eleman sayısı: **M-N**; bir soru birden çok sınavda çıkabilir, bir sınav birden çok soru içerir.\nKatılım: her sınavda en az bir soru bulunmalı (**zorunlu** katılım); bunu gösteren düz çizgi `sorular` ucuna konur. Bir soru hiçbir sınavda kullanılmamış olabilir (**kısmen** katılım); bunu gösteren yuvarlak `sınavlar` ucuna konur.\nİşaret, sayısı sınırlanan varlığın ucunda durur."
+    },
+    {
+      "id": "vt-baginti-kisit.k7",
+      "yer": "Varolma bağıntısı",
+      "on": "Varolma bağıntısı nedir? Hocanın örneği ne?",
+      "arka": "Zayıf varlık ile onun sistemde bulunmasını sağlayan varlık arasında olması gereken bağıntıdır; **çift çizgili baklava dilimi** ile gösterilir. Örnek: `soruSeçenekleri` zayıf varlığı, `sorular` varlığına `seçenek` bağıntısıyla bağlıdır."
+    },
+    {
+      "id": "vt-baginti-kisit.k8",
+      "yer": "İşaretleri okumak",
+      "on": "Hocanın şekillerinde çizgi uçlarındaki işaretler nasıl okunur?",
+      "arka": "Düz çizgi zorunluluğu (en az bir), yuvarlak isteğe bağlılığı (sıfır olabilir) gösterir. Uçtaki tek çizgi \"bir\", kaz ayağı \"çok\" demektir. Çift düz çizgi: bir ve yalnız bir. Yuvarlak + çizgi: sıfır ya da bir. Düz çizgi + kaz ayağı: bir ya da çok. Yuvarlak + kaz ayağı: sıfır ya da çok.\nİşaret, yanında durduğu varlığın kaç elemanının karşı varlığın bir elemanıyla eşleşebileceğini söyler.\nSlaytta yazıyla verilenler yalnızca düz çizgi (zorunlu) ve yuvarlaktır (isteğe bağlı); diğer anlamlar şekillerden ve kaynak kitaptan gelir."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="150" viewBox="0 0 400 150" role="img">
+<title>Örnek 7: not aralıkları</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="200.0" y="22.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">Örnek 7: not aralıkları</text>
+<rect x="20" y="36" width="120" height="52" fill="#C53030" stroke="#FFFFFF" stroke-width="2"/>
+<text x="80.0" y="68.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">F</text>
+<text x="80.0" y="108.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#1A202C" text-anchor="middle">60 altı</text>
+<rect x="140" y="36" width="60" height="52" fill="#C05621" stroke="#FFFFFF" stroke-width="2"/>
+<text x="170.0" y="68.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">D</text>
+<text x="170.0" y="108.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#1A202C" text-anchor="middle">60 - 69</text>
+<rect x="200" y="36" width="60" height="52" fill="#6B46C1" stroke="#FFFFFF" stroke-width="2"/>
+<text x="230.0" y="68.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">C</text>
+<text x="230.0" y="108.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#1A202C" text-anchor="middle">70 - 79</text>
+<rect x="260" y="36" width="60" height="52" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="2"/>
+<text x="290.0" y="68.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">B</text>
+<text x="290.0" y="108.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#1A202C" text-anchor="middle">80 - 89</text>
+<rect x="320" y="36" width="60" height="52" fill="#2F855A" stroke="#FFFFFF" stroke-width="2"/>
+<text x="350.0" y="68.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">A</text>
+<text x="350.0" y="108.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#1A202C" text-anchor="middle">90 ve</text>
+<text x="350.0" y="123.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#1A202C" text-anchor="middle">üzeri</text>
+</svg>
