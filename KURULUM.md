@@ -56,6 +56,14 @@ Supabase'in kendi e-posta servisi yalnızca proje ekibine gönderir; öğrencile
 4. Supabase **Authentication › Emails › SMTP Settings**:
    - Host `smtp.resend.com`, port `465`, kullanıcı adı `resend`, parola: Resend API anahtarı
    - Gönderen adres `giris@posta.eskimezyazi.app`, gönderen adı `Bilgisayar Programcılığı`
+   - Aynı adrese iki kod arasındaki en kısa süre öntanımlı olarak 60 saniyedir; o zaman cihaz değiştiren öğrenci ikinci kodu istemeden önce bir dakika bekler. Bu ayar panelde görünmüyor; Supabase'in yönetim API'siyle (`smtp_max_frequency`) 15 saniyeye indirilir: Supabase'de **Account › Access Tokens**'tan geçici bir erişim anahtarı oluştur, sonra terminalde:
+     ```bash
+     read -s SUPA_TOKEN
+     curl -s -H "Authorization: Bearer $SUPA_TOKEN" https://api.supabase.com/v1/projects/PROJE_KIMLIGI/config/auth | grep -o '"smtp_max_frequency":[0-9]*'
+     curl -s -X PATCH -H "Authorization: Bearer $SUPA_TOKEN" -H "Content-Type: application/json" -d '{"smtp_max_frequency":15}' https://api.supabase.com/v1/projects/PROJE_KIMLIGI/config/auth | grep -o '"smtp_max_frequency":[0-9]*'
+     unset SUPA_TOKEN
+     ```
+     `PROJE_KIMLIGI`, panel adresindeki `/project/` sonrasındaki 20 harflik kısımdır. İlk komut `60`, ikincisi `15` göstermeli. İş bitince erişim anahtarını panelden sil. Uygulamadaki `KOD_ARALIGI` (index.html) da 15'tir; ikisi birlikte değişir. Ayar 60'ta kalsa da uygulama çalışır: sayaç sunucunun söylediği süreyi gösterir.
 5. **Authentication › Rate Limits**: saatlik e-posta sınırını sınıfın ilk gün hep birlikte girebileceği kadar yükselt (ör. 100). Resend'in günlük 100 sınırı ayrıca geçerlidir.
 6. **Authentication › Emails › Templates**: hem **Confirm signup** hem **Magic Link** şablonuna aynı metni koy. Yeni öğrenciye ilki, eskiye ikincisi gider; ikisinde de bağlantı değil kod olmalı. Uygulama öğrencilere "siz" diye hitap eder; e-posta da öyle:
 
