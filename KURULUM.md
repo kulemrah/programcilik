@@ -55,17 +55,17 @@ Supabase'in kendi e-posta servisi yalnızca proje ekibine gönderir; öğrencile
 3. Resend'de bir API anahtarı oluştur (yalnız gönderme yetkili).
 4. Supabase **Authentication › Emails › SMTP Settings**:
    - Host `smtp.resend.com`, port `465`, kullanıcı adı `resend`, parola: Resend API anahtarı
-   - Gönderen adres `giris@posta.eskimezyazi.app`, gönderen adı `Programcılık`
+   - Gönderen adres `giris@posta.eskimezyazi.app`, gönderen adı `Bilgisayar Programcılığı`
 5. **Authentication › Rate Limits**: saatlik e-posta sınırını sınıfın ilk gün hep birlikte girebileceği kadar yükselt (ör. 100). Resend'in günlük 100 sınırı ayrıca geçerlidir.
 6. **Authentication › Emails › Templates**: hem **Confirm signup** hem **Magic Link** şablonuna aynı metni koy. Yeni öğrenciye ilki, eskiye ikincisi gider; ikisinde de bağlantı değil kod olmalı. Uygulama öğrencilere "siz" diye hitap eder; e-posta da öyle:
 
    Konu:
    ```
-   Programcılık giriş kodunuz: {{ .Token }}
+   Bilgisayar Programcılığı giriş kodunuz: {{ .Token }}
    ```
    Gövde:
    ```html
-   <p>Programcılık uygulamasına giriş kodunuz:</p>
+   <p>Bilgisayar Programcılığı uygulamasına giriş kodunuz:</p>
    <p style="font-size:28px;font-weight:bold;letter-spacing:6px">{{ .Token }}</p>
    <p>Bu kod uygulamaya giriş ya da hesabınızı başka bir cihaza geçirmek için istendi ve 15 dakika geçerlidir.</p>
    <p>İsteği siz yapmadıysanız bu e-postayı dikkate almayın; kod girilmedikçe hesabınız başka cihaza geçmez.</p>
@@ -119,7 +119,7 @@ Pages sitesi herkese açıktır ama içinde not yoktur. Notlar yalnızca okul ad
 1. Siteyi telefondan aç, okul adresinle kod iste; kodun gelen kutusuna mı gereksiz klasörüne mi düştüğüne bak.
 2. Kodu gir, sözleşmeyi onayla. Oku sekmesinde 1. Sınıf › Güz derslerini ve 42 grubunu (hususi) görmelisin.
 3. Okul dışı bir adresle kod istemeyi dene: "Yalnızca @kocaelisaglik.edu.tr…" uyarısı gelmeli.
-4. iPhone'da Safari'den **Paylaş › Ana Ekrana Ekle**, Android'de tarayıcının menüsünden **Uygulamayı yükle** ile kur ve ana ekrandan açıp yeniden giriş yap.
+4. iPhone'da Safari'den **••• (adres çubuğunun yanında) › Paylaş › Ana Ekrana Ekle** (eski iOS'ta Paylaş düğmesi doğrudan alt çubuktadır), Android'de tarayıcının menüsünden **Uygulamayı yükle** ile kur ve ana ekrandan açıp yeniden giriş yap.
 
 ## Cihaz sınırı
 

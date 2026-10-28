@@ -1,6 +1,6 @@
 {
-  "name": "Programcılık",
-  "short_name": "Programcılık",
+  "name": "Kostü - Ders",
+  "short_name": "Kostü - Ders",
   "description": "Bilgisayar Programcılığı ders notları, temrinler ve 42 Tarzı kartlar",
   "lang": "tr",
   "dir": "ltr",
@@ -8,8 +8,8 @@
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0F1720",
-  "theme_color": "#0F1720",
+  "background_color": "#F5F6F8",
+  "theme_color": "#F5F6F8",
   "categories": ["education", "productivity"],
   "icons": [
     { "src": "ikon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },

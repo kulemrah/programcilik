@@ -4,15 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="programcilik-kabuk" content="1">
-<title>Programcılık</title>
+<title>Kostü - Ders</title>
 <meta name="description" content="Bilgisayar Programcılığı ders notları, temrinler ve 42 Tarzı kartlar">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#0F1720">
+<meta name="theme-color" content="#F5F6F8">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Programcılık">
+<meta name="apple-mobile-web-app-title" content="Kostü - Ders">
 <script>
+/* Tema ilk boyamadan önce kurulur; yoksa sayfa bir an yanlış renkte görünür.
+   İlk açılışta açık tema; seçilen tema bu cihazda hatırlanır. */
+(function () {
+  var m = null;
+  try { m = JSON.parse(localStorage.getItem("pg.mod") || "null"); } catch (e) {}
+  document.documentElement.setAttribute("data-mod", m === "gece" || m === "siyah" ? m : "gunduz");
+})();
 /* Kurulum olayı sayfa yüklenirken çok erken tetiklenebiliyor; buradan
    yakalanmazsa kimse dinlemediği için kayboluyor ve düğme hiç çıkmıyor. */
 window.kurulumOlayi = null;
@@ -27,40 +34,69 @@ window.addEventListener("appinstalled", function () {
 });
 </script>
 <style>
-/* ---- Renk değişkenleri: gece varsayılan ---- */
+/* ---- Renk değişkenleri ----
+   :root koyu temadır (data-mod="gece"); açık tema (öntanımlı, ilk boyamadan
+   önce <head>'de kurulur) ve simsiyah tema yalnızca değişkenleri değiştirir. */
 :root{
-  --zemin:#0F1720;
-  --yuzey:#17222D;
-  --yuzey2:#1E2B38;
-  --cizgi:#27353F;
-  --yazi:#DDE5EC;
-  --sonuk:#8395A5;
-  --vurgu:#E3A85C;
-  --vurgu-zemin:rgba(227,168,92,.14);
+  --zemin:#0E1116;
+  --yuzey:#161B22;
+  --yuzey2:#1C222B;
+  --cizgi:#262E38;
+  --yazi:#E6EBF0;
+  --sonuk:#8C98A5;
+  --vurgu:#E8A85A;
+  --vurgu-zemin:rgba(232,168,90,.14);
+  --vurgu-yazi:#12181F;
   --dogru:#62B49B;
   --dogru-zemin:rgba(98,180,155,.16);
   --boya:#F2736E;
-  --yanlis:#D4706E;
-  --yanlis-zemin:rgba(212,112,110,.16);
-  --golge:0 1px 0 rgba(255,255,255,.03);
+  --yanlis:#E07B78;
+  --yanlis-zemin:rgba(224,123,120,.15);
+  --golge:none;
+  --golge-yuksek:0 12px 40px rgba(0,0,0,.45);
+  --cam:rgba(14,17,22,.78);
+  --r:12px;
+  --r-buyuk:18px;
   --mono:ui-monospace,"SF Mono",SFMono-Regular,"JetBrains Mono","Cascadia Mono",Menlo,Consolas,monospace;
-  --metin:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --metin:-apple-system,BlinkMacSystemFont,"Segoe UI Variable Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 html[data-mod="gunduz"]{
-  --zemin:#EBEFF3;
+  --zemin:#F5F6F8;
   --yuzey:#FFFFFF;
-  --yuzey2:#F4F7F9;
-  --cizgi:#D3DCE4;
-  --yazi:#16212C;
-  --sonuk:#566674;
-  --vurgu:#965C14;
-  --vurgu-zemin:rgba(150,92,20,.10);
-  --dogru:#2F7F68;
-  --dogru-zemin:rgba(47,127,104,.12);
+  --yuzey2:#F1F3F6;
+  --cizgi:#E1E5EA;
+  --yazi:#121A23;
+  --sonuk:#5A6673;
+  --vurgu:#A45A0E;
+  --vurgu-zemin:rgba(164,90,14,.09);
+  --vurgu-yazi:#FFFFFF;
+  --dogru:#1E7A5C;
+  --dogru-zemin:rgba(30,122,92,.10);
   --boya:#C0322E;
-  --yanlis:#B24A47;
-  --yanlis-zemin:rgba(178,74,71,.12);
-  --golge:0 1px 2px rgba(22,33,44,.06);
+  --yanlis:#B23E3A;
+  --yanlis-zemin:rgba(178,62,58,.09);
+  --golge:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.06);
+  --golge-yuksek:0 16px 48px rgba(16,24,40,.16);
+  --cam:rgba(245,246,248,.8);
+}
+html[data-mod="siyah"]{
+  --zemin:#000000;
+  --yuzey:#0C0C0E;
+  --yuzey2:#141417;
+  --cizgi:#222226;
+  --yazi:#EDEDED;
+  --sonuk:#8E8E95;
+  --vurgu:#E8A85A;
+  --vurgu-zemin:rgba(232,168,90,.13);
+  --vurgu-yazi:#000000;
+  --dogru:#62B49B;
+  --dogru-zemin:rgba(98,180,155,.14);
+  --boya:#F2736E;
+  --yanlis:#E07B78;
+  --yanlis-zemin:rgba(224,123,120,.14);
+  --golge:none;
+  --golge-yuksek:0 0 0 1px #2A2A2F;
+  --cam:rgba(0,0,0,.8);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
@@ -459,9 +495,8 @@ main{max-width:720px;margin:0 auto;padding:16px max(16px, env(safe-area-inset-ri
   flex:1;padding:13px;border-radius:10px;font-size:14.5px;font-weight:550;
   border:1px solid var(--cizgi);background:var(--yuzey);color:var(--yazi);
 }
-.eylem button.ana{background:var(--vurgu);border-color:var(--vurgu);color:#12181F}
-html[data-mod="gunduz"] .eylem button.ana{color:#FFF}
-html[data-mod="gunduz"] .okuma mark{background:rgba(150,92,20,.16)}
+.eylem button.ana{background:var(--vurgu);border-color:var(--vurgu);color:var(--vurgu-yazi)}
+html[data-mod="gunduz"] .okuma mark{background:rgba(164,90,14,.15)}
 .eylem button:disabled{opacity:.4}
 
 /* Sonuç ekranı */
@@ -535,9 +570,8 @@ html[data-mod="gunduz"] .okuma mark{background:rgba(150,92,20,.16)}
 }
 .oynatma .yuvarlak{
   width:38px;height:38px;border-radius:50%;flex:none;
-  background:var(--vurgu);color:#12181F;font-size:13px;
+  background:var(--vurgu);color:var(--vurgu-yazi);font-size:13px;
 }
-html[data-mod="gunduz"] .oynatma .yuvarlak{color:#FFF}
 .oynatma .yazili{
   padding:9px 12px;border-radius:9px;border:1px solid var(--cizgi);
   background:var(--yuzey2);font-size:13.5px;color:var(--yazi);flex:none;
@@ -955,13 +989,121 @@ html[data-mod="gunduz"] .kart-yuz{box-shadow:0 1px 2px rgba(22,33,44,.06), 0 10p
 .ornek-cevap,.anahtar,.kart-yuz .icerik,.senin-cevabin,.sonuc-kart{overflow-wrap:anywhere}
 .anahtar{max-width:100%}
 .ornek-cevap pre{overflow-x:auto}
+
+/* ==========================================================================
+   Görünüm katmanı: köşeler, gölgeler, cam çubuklar, odak halkaları.
+   Yerleşimi değiştirmez; yalnızca yüzeylerin görünüşünü belirler.
+   ========================================================================== */
+body,.ust,.alt-cubuk,.giris-perde{transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+h1,h2,h3,.giris-baslik,.grup-baslik,.ders-basligi{letter-spacing:-.012em}
+
+/* Üst ve alt çubuk: arkası buzlu cam */
+.ust,.alt-cubuk{background:var(--zemin)}
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  .ust,.alt-cubuk{background:var(--cam);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px)}
+}
+.ust{border-bottom-color:var(--cizgi)}
+.ust h1{font-size:15.5px;font-weight:650}
+.mod-dugme,.hesap-dugme{border-radius:var(--r);box-shadow:var(--golge);transition:border-color .15s ease,transform .1s ease}
+.mod-dugme:hover,.hesap-dugme:hover{border-color:var(--sonuk)}
+.mod-dugme svg{stroke:currentColor;color:var(--yazi)}
+
+/* Alt gezinme: etkin sekmenin simgesi hap içinde */
+.alt-cubuk button{padding:7px 4px 9px;gap:2px;font-size:11px;font-weight:500;transition:color .15s ease}
+.alt-cubuk button svg{box-sizing:content-box;padding:4px 16px;border-radius:999px;transition:background-color .2s ease}
+.alt-cubuk button.etkin{font-weight:650}
+.alt-cubuk button.etkin svg{background:var(--vurgu-zemin)}
+
+/* Kart gibi duran yüzeyler */
+.ders-satiri,.fihrist-giris,.devam,.icindekiler,.mod-kart,.suzgec-dugme,.soru,.secenek,.kontrol-oge,
+.sonuc-kart,.sozlesme,.yildiz-satiri,.muhim-konu,.oneri,.fihrist-satir,.okuma-alt button,.okundu-dugme,
+.dene-dugme,.oz-puan button,.eylem button,.yildiz-dugme,.esles-oge,.kademe,.yigin,.geri,.boyut-dugme{
+  border-radius:var(--r);
+}
+.ders-satiri,.fihrist-giris,.icindekiler,.mod-kart,.suzgec-dugme,.soru,.kontrol-oge,.sonuc-kart,
+.sozlesme,.yildiz-satiri,.muhim-konu,.oneri,.secenek,.okuma-alt button,.okundu-dugme,.dene-dugme,
+.geri,.boyut-dugme,.cip,.yigin{box-shadow:var(--golge)}
+.soru,.sozlesme,.mod-kart{border-radius:var(--r-buyuk)}
+.okuma pre,.soru-kod,.soru pre,.okuma blockquote,.izah,.ornek-cevap,.okuma figure img,.senin-cevabin{border-radius:10px}
+.tablo-sarmal{border-radius:10px}
+
+/* Dokunulabilir yüzeylerde yumuşak geçiş ve basılma hissi */
+.ders-satiri,.fihrist-giris,.fihrist-satir,.mod-kart,.suzgec-dugme,.secenek,.kontrol-oge,.muhim-konu,
+.okuma-alt button,.okundu-dugme,.dene-dugme,.oz-puan button,.eylem button,.cip,.kademe,.esles-oge,.parca,
+.geri,.boyut-dugme,.yildiz-dugme{
+  transition:border-color .15s ease,background-color .15s ease,color .15s ease,box-shadow .15s ease,transform .1s ease;
+}
+.ders-satiri:active,.fihrist-giris:active,.mod-kart:active,.suzgec-dugme:active,.secenek:active:not(:disabled),
+.kontrol-oge:active,.eylem button:active:not(:disabled),.okuma-alt button:active:not(:disabled),
+.cip:active,.mod-dugme:active,.hesap-dugme:active,.oz-puan button:active{transform:scale(.985)}
+.ders-satiri .ok,.fihrist-giris .ok{transition:transform .15s ease}
+.ders-satiri:hover .ok,.fihrist-giris:hover .ok{transform:translateX(2px)}
+
+/* Ana düğme */
+.eylem button{padding:14px;font-weight:600}
+.eylem button.ana{box-shadow:0 1px 2px rgba(0,0,0,.1),0 6px 18px -6px var(--vurgu)}
+.eylem button.ana:hover:not(:disabled){filter:brightness(1.06)}
+html[data-mod="siyah"] .eylem button.ana{box-shadow:none}
+
+/* Girdiler: odakta dış çizgi yerine yumuşak halka */
+.giris-girdi,.arama-kutu input,.klasik-girdi,.hesap-satir input,.kart-cevap textarea{
+  border-radius:var(--r);transition:border-color .15s ease,box-shadow .15s ease;
+}
+.giris-girdi:focus,.arama-kutu input:focus,.klasik-girdi:focus,.hesap-satir input:focus,.kart-cevap textarea:focus{
+  outline:none;border-color:var(--vurgu);box-shadow:0 0 0 4px var(--vurgu-zemin);
+}
+.giris-girdi{padding:15px 16px}
+.giris-girdi.kod{padding:14px}
+
+/* Giriş ekranı: başlığın arkasında hafif bir ışık */
+.giris-perde{
+  background:radial-gradient(900px 420px at 50% -120px,var(--vurgu-zemin),transparent 70%),var(--zemin);
+}
+html[data-mod="siyah"] .giris-perde{background:var(--zemin)}
+.giris-baslik{font-size:29px;font-weight:700;line-height:1.2;margin:36px 0 10px}
+.giris-alt{font-size:15px}
+.giris-hata,.giris-bilgi{border-radius:var(--r)}
+
+/* Başlıklar */
+.grup-baslik{font-size:18px;font-weight:700}
+.ders-basligi{font-size:21px;font-weight:700;line-height:1.3}
+.okuma h2{font-size:21px;font-weight:700;line-height:1.3}
+.donem-baslik{font-weight:550;text-transform:none}
+
+/* Açılır pencereler: alt panel, güncelleme notu */
+.panel-perde,.not-perde{-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.panel{border-radius:22px 22px 0 0;box-shadow:var(--golge-yuksek);border-bottom:0}
+.panel::before{
+  content:"";flex:none;align-self:center;width:38px;height:4px;border-radius:2px;
+  background:var(--cizgi);margin:-4px 0 12px;
+}
+.panel-kapat{border-radius:999px}
+.not-kutu{border-color:var(--cizgi);border-radius:22px;box-shadow:var(--golge-yuksek);background:var(--yuzey)}
+.kisa-bildirim{border-color:var(--cizgi);border-radius:999px;padding:10px 18px;box-shadow:var(--golge-yuksek)}
+.kurulum,.oynatma,.secim-cubugu{border-radius:var(--r-buyuk);box-shadow:var(--golge-yuksek)}
+html[data-mod="gunduz"] .kart-yuz{box-shadow:0 1px 2px rgba(16,24,40,.05),0 14px 32px -8px rgba(16,24,40,.16)}
+.kart-yuz{border-radius:20px}
+
+/* Çipler ve anahtarlar */
+.cip{padding:8px 14px;font-weight:500}
+.cip.secili{font-weight:600}
+.anahtar-dugme::after{box-shadow:0 1px 3px rgba(0,0,0,.25)}
+html[data-mod="gunduz"] .anahtar-dugme:not([aria-checked="true"])::after{background:#FFFFFF}
+html[data-mod="gunduz"] .anahtar-dugme:not([aria-checked="true"]){background:#CDD4DC}
+.ilerleme .cubuk{height:6px;border-radius:3px}
+/* Dar telefonda uygulamanın adı üst çubuğa kesilmeden sığsın */
+@media (max-width:374px){
+  .ust{gap:8px}
+  .ust h1{font-size:13.5px}
+  .mod-dugme,.hesap-dugme{width:36px;height:36px}
+}
 </style>
 </head>
 <body>
 <header class="ust">
-  <h1><span class="kok">~/</span>Programcılık</h1>
+  <h1><span class="kok">~/</span>Bilgisayar Programcılığı</h1>
   <button class="hesap-dugme" id="hesapDugme" aria-label="Hesap ve eşitleme"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.4" r="3.9"/><path d="M4.6 20.2a7.4 7.4 0 0 1 14.8 0"/></svg><span class="nokta"></span></button>
-  <button class="mod-dugme" id="modDugme" aria-label="Gece/gündüz modunu değiştir"></button>
+  <button class="mod-dugme" id="modDugme" aria-label="Temayı değiştir"></button>
 </header>
 <main>
   <section class="sayfa acik" id="sayfaOku"></section>
@@ -998,9 +1140,9 @@ const SOZLESME = {
   baslik: "Kullanım sözleşmesi",
   maddeler: [
     "Bu uygulamadaki ders notları, özetler, sorular ve kartlar yalnızca okulun öğrencilerinin kendi çalışmaları için hazırlanmıştır.",
-    "İçeriği ekran görüntüsü, fotoğraf, kopya, dosya ya da başka herhangi bir yolla hiç kimseyle paylaşmayacağımı taahhüt ederim. Paylaşırsam bundan doğacak bütün sorumluluk paylaşan olarak bana aittir.",
+    "İçeriği ekran görüntüsü, fotoğraf, kopya, dosya ya da başka herhangi bir yolla hiç kimseyle paylaşmayacağımı taahhüt ederim. Paylaşırsam bundan doğacak bütün mesuliyet paylaşan olarak bana aittir.",
     "Hesabımı başkasına kullandırmam; giriş kodunu kimseyle paylaşmam.",
-    "Notlar özenle derlenmiştir, yine de hata bulunabilir. Uygulamayı hazırlayan, içerikteki bilgilerin doğruluğu konusunda sorumluluk üstlenmez; asıl kaynak hocanın anlattıkları ve ders materyalleridir.",
+    "Notlar özenle derlenmiştir, yine de hata bulunabilir. Uygulamayı hazırlayan, içerikteki bilgilerin doğruluğu konusunda mesuliyet üstlenmez; asıl kaynak hocanın anlattıkları ve ders materyalleridir.",
     "Bir hata görürsem düzeltilmesi (tashih) için {TASHIH} adresine yazarım.",
     "Hesabımın aynı anda yalnızca izin verilen sayıda cihazda (öntanımlı olarak bir) açık olabileceğini biliyorum. Hangi zamanda hangi tarayıcıdan giriş yapıldığı ve cihaz değişikliklerinin sayısı, hesabın paylaşılmasını tespit etmek için kaydedilir.",
     "E-posta adresim giriş ve hesabın yönetimi için tutulur. Okuma ilerlemem, işaretlerim ve temrin sonuçlarım yalnızca kendi hesabımda saklanır ve kimseyle paylaşılmaz."
@@ -1032,27 +1174,37 @@ const depo = (() => {
   };
 })();
 
-/* ---------- Gece / gündüz modu ---------- */
-const AY_IKON = '<svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>';
-const GUNES_IKON = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>';
+/* ---------- Tema: açık (öntanımlı), koyu, simsiyah ---------- */
+const TEMALAR = {
+  gunduz: { ad: "Açık tema",     renk: "#F5F6F8",
+            ikon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>' },
+  gece:   { ad: "Koyu tema",     renk: "#0E1116",
+            ikon: '<svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>' },
+  siyah:  { ad: "Simsiyah tema", renk: "#000000",
+            ikon: '<svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="currentColor"/></svg>' }
+};
+const TEMA_SIRASI = ["gunduz", "gece", "siyah"];
 
 function moduUygula(mod) {
+  if (!TEMALAR[mod]) mod = "gunduz";
+  const t = TEMALAR[mod];
+  const sonraki = TEMALAR[TEMA_SIRASI[(TEMA_SIRASI.indexOf(mod) + 1) % TEMA_SIRASI.length]];
   document.documentElement.dataset.mod = mod;
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute("content", mod === "gunduz" ? "#EBEFF3" : "#0F1720");
+  if (meta) meta.setAttribute("content", t.renk);
   const d = document.getElementById("modDugme");
-  d.innerHTML = mod === "gunduz" ? AY_IKON : GUNES_IKON;
-  d.setAttribute("aria-label", mod === "gunduz" ? "Gece moduna geç" : "Gündüz moduna geç");
+  d.innerHTML = t.ikon;
+  d.setAttribute("aria-label", t.ad + " açık. " + sonraki.ad + " için dokunun");
+  d.title = t.ad;
 }
 let aktifMod = depo.oku("pg.mod", null);
-if (!aktifMod) {
-  aktifMod = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "gunduz" : "gece";
-}
+if (!TEMALAR[aktifMod]) aktifMod = "gunduz";
 moduUygula(aktifMod);
 document.getElementById("modDugme").addEventListener("click", () => {
-  aktifMod = aktifMod === "gunduz" ? "gece" : "gunduz";
+  aktifMod = TEMA_SIRASI[(TEMA_SIRASI.indexOf(aktifMod) + 1) % TEMA_SIRASI.length];
   depo.yaz("pg.mod", aktifMod);
   moduUygula(aktifMod);
+  kisaBildirim(TEMALAR[aktifMod].ad);
 });
 
 /* ---------- Küçük yardımcılar ---------- */
@@ -1915,7 +2067,7 @@ function girisEkraniAc(ustMesaj) {
   function ciz(hata, bilgi) {
     kutu.innerHTML = "";
     const baslik = olustur("h2", "giris-baslik");
-    baslik.innerHTML = '<span class="kok">~/</span>Programcılık';
+    baslik.innerHTML = '<span class="kok">~/</span>Bilgisayar Programcılığı';
     const alt = olustur("p", "giris-alt");
     alt.textContent = "Bilgisayar Programcılığı ders notları ve temrinleri. Yalnızca okulun öğrencileri ve hocaları içindir; girmek için okul e-posta adresinize gelen kodu kullanırsınız.";
     kutu.append(baslik, alt);
@@ -2040,7 +2192,7 @@ function girisEkraniAc(ustMesaj) {
 
     if (iosMu() && !zatenKurulu()) {
       const not = olustur("p", "giris-bilgi");
-      not.textContent = "iPhone'da önce uygulamayı ana ekrana ekleyip oradan açmanız önerilir: Safari'de yaptığınız giriş ana ekrandaki uygulamaya taşınmaz. (Safari'de Paylaş › Ana Ekrana Ekle)";
+      not.textContent = "iPhone'da önce uygulamayı ana ekrana ekleyip oradan açmanız önerilir: Safari'de yaptığınız giriş ana ekrandaki uygulamaya taşınmaz. (Safari'de ••• › Paylaş › Ana Ekrana Ekle)";
       kutu.appendChild(not);
     }
     const not = olustur("p", "giris-not");
@@ -3464,7 +3616,7 @@ function sesAyarlariAc() {
       dene.addEventListener("click", () => {
         try {
           window.speechSynthesis.cancel();
-          const soz = new window.SpeechSynthesisUtterance("Programcılık ders notları. Ses bu tonda ve bu hızda okunacak.");
+          const soz = new window.SpeechSynthesisUtterance("Bilgisayar Programcılığı ders notları. Ses bu tonda ve bu hızda okunacak.");
           sesAyarlariniUygula(soz);
           window.speechSynthesis.speak(soz);
         } catch (e) {}
@@ -5831,7 +5983,7 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
    ========================================================================== */
 const GUNCELLEME = {
   surum: "2.0",
-  baslik: "Programcılık'a hoş geldiniz",
+  baslik: "Bilgisayar Programcılığı'na hoş geldiniz",
   maddeler: [
     ["Notlar ders ders", "Oku sekmesinde Sınıf › Dönem › Ders › Konu sırasıyla ilerlersiniz. Hocalar not paylaştıkça yeni konular kendiliğinden gelir; bir kez inen konu internetsiz de okunur."],
     ["Temrinde önce kapsam", "Temrin sekmesinde önce hangi derslerin hangi konularından çalışacağınızı seçersiniz; sorular yalnızca oradan gelir."],
@@ -5902,7 +6054,7 @@ function zatenKurulu() {
 /* Yerel istem gelmeyen tarayıcılar için elle kurulum adımları */
 function kurulumAdimlari() {
   const ua = navigator.userAgent || "";
-  if (iosMu()) return ["Safari'de alt çubuktaki Paylaş düğmesine dokunun", "Listeden “Ana Ekrana Ekle”yi seçin", "Sağ üstten “Ekle”ye dokunun", "Uygulamayı ana ekrandan açıp okul adresinizle giriş yapın"];
+  if (iosMu()) return ["Safari'de adres çubuğunun yanındaki ••• düğmesine, sonra “Paylaş”a dokunun (eski iOS sürümlerinde Paylaş düğmesi doğrudan alt çubuktadır)", "Listeyi aşağı kaydırıp “Ana Ekrana Ekle”yi seçin", "Web uygulaması olarak açma seçeneği çıkarsa açık bırakın, sağ üstten “Ekle”ye dokunun", "Uygulamayı ana ekrandan açıp okul adresinizle giriş yapın"];
   if (/Android/.test(ua)) return ["Tarayıcının ⋮ menüsünü açın", "“Uygulamayı yükle” ya da “Ana ekrana ekle”ye dokunun", "Açılan kutuda onaylayın"];
   return ["Adres çubuğunun sağındaki yükleme simgesine tıklayın", "Ya da ⋮ menüsünden “Yükle”yi seçin", "Açılan kutuda onaylayın"];
 }
