@@ -3,7 +3,7 @@
    (notlar, giriş, kayıtlar) başka adrese gittiği için buradan hiç geçmez;
    notların çevrimdışı kopyasını uygulama kendisi IndexedDB'de tutar. */
 const ON_EK = "programcilik-";
-const ONBELLEK = ON_EK + "v8";
+const ONBELLEK = ON_EK + "v9";
 const KABUK = new URL("./", self.registration.scope).href;
 const DOSYALAR = [
   "./",
