@@ -8,7 +8,8 @@
 <meta name="description" content="Ders notları, temrinler ve 42 Tarzı kartlar">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#F2F2F7">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="kostu-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="kostu-apple-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Kostü - Ders">
@@ -1360,7 +1361,7 @@ html.hesap-acik,html.hesap-acik body{overflow:hidden}
 .eksen-yazi{fill:var(--sonuk);font-size:9.5px;font-family:var(--metin)}
 .eksen-yazi.bugun{fill:var(--yazi);font-weight:650}
 .takvim-svg .hucre{cursor:pointer}
-.hucre.k0,.takvim-lejant .k0{fill:var(--yuzey2);background:var(--yuzey2);stroke:var(--cizgi);stroke-width:1}
+.hucre.k0,.takvim-lejant .k0{fill:var(--yuzey2);background:var(--yuzey2);stroke:var(--cizgi);stroke-width:.75}
 .hucre.k1,.takvim-lejant .k1{fill:var(--tk-1);background:var(--tk-1)}
 .hucre.k2,.takvim-lejant .k2{fill:var(--tk-2);background:var(--tk-2)}
 .hucre.k3,.takvim-lejant .k3{fill:var(--tk-3);background:var(--tk-3)}
@@ -1785,7 +1786,7 @@ html[data-mod="gece"] .hedef-kutu,html[data-mod="siyah"] .hedef-kutu{background:
   -webkit-backface-visibility:hidden;backface-visibility:hidden;
 }
 .saat-kart .sabit-ust,.saat-kart .kanat-ust{top:0;border-radius:12px 12px 0 0;transform-origin:50% 100%}
-.saat-kart .sabit-alt,.saat-kart .kanat-alt{bottom:0;border-radius:0 0 12px 12px;transform-origin:50% 0;background:var(--saat-yuz-alt)}
+.saat-kart .sabit-alt,.saat-kart .kanat-alt{bottom:0;border-radius:0 0 12px 12px;transform-origin:50% 0}
 .saat-kart .yaprak span{position:absolute;left:0;right:0;top:0;height:var(--h);line-height:var(--h);text-align:center}
 .saat-kart .sabit-alt span,.saat-kart .kanat-alt span{top:calc(var(--h) / -2)}
 .saat-kart .kanat-ust,.saat-kart .kanat-alt{visibility:hidden;z-index:2}
@@ -1793,13 +1794,11 @@ html[data-mod="gece"] .hedef-kutu,html[data-mod="siyah"] .hedef-kutu{background:
 .saat-kart.donuyor .kanat-alt{visibility:visible;animation:kanat-alt var(--sure, 300ms) cubic-bezier(.1,.5,.5,1) forwards}
 @keyframes kanat-ust{0%{transform:rotateX(0)}50%,100%{transform:rotateX(-90deg)}}
 @keyframes kanat-alt{0%,50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
-/* Ortadaki ince yarık */
-.saat-kart::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:var(--yuzey);z-index:3}
 .saat-kart::before{content:"";position:absolute;inset:0;border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 6px 14px -6px rgba(0,0,0,.18);z-index:0}
-:root{--saat-yuz:#2E2E33;--saat-yuz-alt:#29292E}
-html[data-mod="siyah"]{--saat-yuz:#2C2C2E;--saat-yuz-alt:#262628}
-html[data-mod="gunduz"]{--saat-yuz:#F4F4F7;--saat-yuz-alt:#ECECF1}
-html[data-mod="pembe"]{--saat-yuz:#FBF2F6;--saat-yuz-alt:#F6E8EE}
+:root{--saat-yuz:#2E2E33}
+html[data-mod="siyah"]{--saat-yuz:#2C2C2E}
+html[data-mod="gunduz"]{--saat-yuz:#F4F4F7}
+html[data-mod="pembe"]{--saat-yuz:#FBF2F6}
 .saat-blok.tamam .saat-kart{color:var(--dogru)}
 .saat-alt{margin:6px 0 0;font-size:13.5px;line-height:1.5;color:var(--sonuk)}
 .saat-blok.tamam .saat-alt{color:var(--dogru);font-weight:550}
@@ -1828,7 +1827,8 @@ html[data-mod="pembe"]{--saat-yuz:#FBF2F6;--saat-yuz-alt:#F6E8EE}
 .hafta-gunu.bu-gun .ad{color:var(--yazi);font-weight:700}
 
 /* ---- Dondurma hakkı ve hedef ---- */
-.buzlar{display:flex;gap:10px;margin:2px 0 8px}
+.buzlar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:2px 0 8px}
+.buzlar .buz-sayi{font-size:22px;font-weight:700;color:var(--buz);font-variant-numeric:tabular-nums}
 .buzlar .buz{
   width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;
   background:var(--dolgu);color:var(--ok);
@@ -1841,12 +1841,14 @@ html[data-mod="pembe"]{--saat-yuz:#FBF2F6;--saat-yuz-alt:#F6E8EE}
 
 /* ---- Takvimler ---- */
 .takvim-cizim{max-width:none}
-.ay-siniri{fill:none;stroke:var(--sonuk);stroke-width:1;opacity:.6;pointer-events:none;stroke-linecap:square}
-.hucre.hedefte{stroke:var(--dogru);stroke-width:1.6}
-.hucre.bugun.hedefte{stroke-width:2.6}
-.hucre.donmus{fill:var(--buz-zemin);stroke:var(--buz);stroke-width:.8}
+/* Takvim çizgileri ekran pikseliyle ölçülür (SVG büyüdükçe kalınlaşmasın) */
+.takvim-svg .hucre,.takvim-svg .ay-siniri{vector-effect:non-scaling-stroke}
+.ay-siniri{fill:none;stroke:var(--sonuk);stroke-width:1;opacity:.45;pointer-events:none;stroke-linecap:butt}
+.hucre.hedefte{stroke:var(--dogru);stroke-width:1.5}
+.hucre.bugun.hedefte{stroke-width:2}
+.hucre.donmus{fill:var(--buz-zemin);stroke:var(--buz);stroke-width:1}
 .buz-isaret{fill:none;stroke:var(--buz);stroke-width:1.3;stroke-linecap:round;pointer-events:none}
-.hucre.sabit-isaret{stroke:var(--yazi);stroke-width:2}
+.hucre.sabit-isaret{stroke:var(--yazi);stroke-width:1.75}
 .takvim-alt{margin-top:8px}
 .takvim-detay{
   display:grid;gap:2px;margin:10px 0 0;padding:10px 12px;border-radius:12px;background:var(--yuzey2);
@@ -2648,6 +2650,38 @@ async function icerikEsitle(nesil) {
 }
 let gorselBudandi = false;
 
+/* Notlardaki bütün görseller, konu açılmayı beklemeden arka planda cihaza
+   indirilir; internetsiz ilk kez açılan konuda da şekiller görünsün. Cihazda
+   olanlar atlanır; biri inemezse sonraki eşitlemede yeniden denenir. */
+let gorselIndirmeSuruyor = false;
+async function gorselleriOnceIndir(nesil) {
+  if (gorselIndirmeSuruyor || !istemci) return;
+  gorselIndirmeSuruyor = true;
+  try {
+    const var_ = new Set((await vt.hepsi("gorsel")).map(g => g.yol));
+    const gerekli = new Set();
+    KONULAR.forEach(k => {
+      for (const m of String(k.metin).matchAll(/!\[[^\]]*\]\(gorseller\/([^)\s]+)\)/g)) {
+        const yol = k.ders + "/" + m[1];
+        if (!var_.has(yol)) gerekli.add(yol);
+      }
+    });
+    for (const yol of gerekli) {
+      if (nesil !== oturumNesli || !navigator.onLine) return;
+      try {
+        const r = await istemci.storage.from("gorseller").download(yol);
+        if (r.error) throw r.error;
+        if (nesil !== oturumNesli) return;
+        await vt.yaz("gorsel", { yol, blob: r.data });
+      } catch (e) { console.warn("görsel önceden indirilemedi", yol, e); }
+    }
+  } catch (e) {
+    console.warn("görseller önceden indirilemedi", e);
+  } finally {
+    gorselIndirmeSuruyor = false;
+  }
+}
+
 /* Hiçbir konunun artık kullanmadığı önbellek görselleri silinir: ağaçtan
    kalkan dersinkiler (ör. hususi yetkisi geri alınınca) ve düzeltilip yeni
    adla gelen görselin eski kopyası. Hata eşitlemeyi durdurmaz. */
@@ -2855,6 +2889,7 @@ function esitle() {
       return;
     }
     hesapIsaretiniTazele();
+    if (!esitlemeHatasi) gorselleriOnceIndir(nesil);
     if (degisti) esitlemeSonrasiTazele();
     if (!esitlemeHatasi && !hedefDenetlendi) hedefDenetiminiZamanla();
     /* Tur biterken gelen istek kaçmasın */
@@ -3799,9 +3834,12 @@ function gunSuresi(gunler, gun) {
      tarihi o güne kadar olan son kayıttır; ilk kayıttan önceki günlere ilk
      hedef uygulanır (oncesi: true, "hedef henüz konmamıştı").
    - Haftalık hedef günlüğün 7 katından az olamaz.
-   - Dondurma "ayar/dondurma" kaydında: { gunler: ["GG", ...] }. Her takvim
-     ayında en çok 3 gün dondurulur. Dondurulan gün seriyi bozmaz ama seriyi
-     uzatmaz; o haftanın hedefinden o günün günlük hedefi düşülür.
+   - Dondurma "ayar/dondurma" kaydında: { gunler: ["GG", ...] }. İlk hedefin
+     konduğu aydan başlayarak her takvim ayında 3 hak eklenir; kullanılmayan
+     haklar birikir. Bir gün, ancak o günün ayına kadar kazanılmış haklarla
+     dondurulabilir (sonraki ayların hakkı önceden kullanılamaz). Dondurulan
+     gün seriyi bozmaz ama seriyi uzatmaz; o haftanın hedefinden o günün
+     günlük hedefi düşülür.
    - Seri: günlük hedefine ulaşılan ardışık günler (dondurulanlar köprü olur).
      Bugün henüz tamamlanmadıysa seri dünden sayılır.
    ========================================================================== */
@@ -3833,12 +3871,42 @@ function dondurulanGunler() {
   const k = kayit("ayar", "dondurma");
   return new Set(k && Array.isArray(k.gunler) ? k.gunler.filter(gunMu) : []);
 }
-function aydaDondurulan(ay, kume) {
-  let n = 0;
-  (kume || dondurulanGunler()).forEach(g => { if (g.slice(0, 7) === ay) n++; });
-  return n;
+/* "YYYY-AA" iki ay arasındaki ay farkı (b − a) */
+function ayFarki(a, b) {
+  return (Number(b.slice(0, 4)) - Number(a.slice(0, 4))) * 12 + Number(b.slice(5, 7)) - Number(a.slice(5, 7));
 }
-function kalanDondurma(ay, kume) { return Math.max(0, AYLIK_DONDURMA - aydaDondurulan(ay, kume)); }
+/* Hakların biriktiği ilk ay: ilk hedefin ayı (eski bir dondurma daha önceyse o ay) */
+function dondurmaBaslangicAyi(kume, gecmis) {
+  const l = gecmis || hedefGecmisi();
+  let bas = l.length ? l[0].g.slice(0, 7) : null;
+  kume.forEach(g => { if (!bas || g.slice(0, 7) < bas) bas = g.slice(0, 7); });
+  return bas;
+}
+/* Verilen aya kadar (o ay dahil) kazanılan haklardan, o aya kadar
+   dondurulan günler düşülünce kalan. ekGunler: henüz dondurulmamış adaylar */
+function kalanDondurma(ay, kume, ekGunler) {
+  kume = kume || dondurulanGunler();
+  const bas = dondurmaBaslangicAyi(kume);
+  if (!bas || ay < bas) return 0;
+  let kullanilan = 0;
+  kume.forEach(g => { if (g.slice(0, 7) <= ay) kullanilan++; });
+  (ekGunler || []).forEach(g => { if (!kume.has(g) && g.slice(0, 7) <= ay) kullanilan++; });
+  return (ayFarki(bas, ay) + 1) * AYLIK_DONDURMA - kullanilan;
+}
+/* Adaylar dondurulabilir mi: en eski adayın ayından bu aya kadar her ayın
+   sonunda bakiye eksiye düşmemeli (gelecekteki haklar geçmişe kullanılamaz) */
+function dondurmaYeterMi(gunler, kume) {
+  kume = kume || dondurulanGunler();
+  const yeni = gunler.filter(g => !kume.has(g));
+  if (!yeni.length) return true;
+  const bugunAy = gunAnahtari(Date.now()).slice(0, 7);
+  let ay = yeni.reduce((a, g) => (g.slice(0, 7) < a ? g.slice(0, 7) : a), bugunAy);
+  for (let i = 0; i < 1200 && ay <= bugunAy; i++) {
+    if (kalanDondurma(ay, kume, yeni) < 0) return false;
+    ay = gunEkle(ay + "-01", 32).slice(0, 7);
+  }
+  return true;
+}
 function gunleriDondur(liste) {
   const k = dondurulanGunler();
   liste.forEach(g => k.add(g));
@@ -4634,16 +4702,11 @@ function hedefSorusunuAc() {
 
 /* Seri koptuysa dondurma önerilir. Aynı kopukluk (ilk eksik gün) için bir
    kez sorulur. Hak yetmiyorsa yalnızca bilgi verilir. */
-/* Kopukluğun dondurulabilirliği: her ayın kalan hakkı o aydaki eksik günlere yetiyor mu */
+/* Kopukluğun dondurulabilirliği: biriken haklar eksik günlere yetiyor mu (gelecek ayların hakkı geçmişe kullanılmaz) */
 function kopuklukHakki(kop) {
   const kume = dondurulanGunler();
-  const aylar = new Map();
-  kop.eksik.forEach(g => aylar.set(g.slice(0, 7), (aylar.get(g.slice(0, 7)) || 0) + 1));
-  const satirlar = Array.from(aylar).map(([ay, n]) => {
-    const ad = gunTarihi(ay + "-01").toLocaleDateString("tr-TR", { month: "long" });
-    return { ay, n, kalan: kalanDondurma(ay, kume), ad: ad.charAt(0).toLocaleUpperCase("tr-TR") + ad.slice(1) };
-  });
-  return { yeter: satirlar.every(x => x.kalan >= x.n), yazi: satirlar.map(x => x.ad + " ayında " + x.kalan + " hakkınız kaldı").join(", ") };
+  const kalan = Math.max(0, kalanDondurma(gunAnahtari(Date.now()).slice(0, 7), kume));
+  return { yeter: dondurmaYeterMi(kop.eksik, kume), kalan, yazi: kalan + " hakkınız var" };
 }
 /* elle: Hedef ekranındaki düğmeden; daha önce "Seri bozulsun" denmiş olsa da sorar.
    "Soruldu" işareti yalnızca bir seçim yapılınca yazılır: pencere Esc ile
@@ -4659,13 +4722,13 @@ async function dondurmaSor(elle) {
     : kop.eksik.length + " gün";
   if (!hak.yeter) {
     await uyariGoster({ baslik: "Seriniz bozuldu",
-      metin: gunYazi + " günlük hedefinize ulaşamadınız ve " + kop.onceki + " günlük seriniz bozuldu. Dondurma hakkınız bunu kurtarmaya yetmiyor (her ay " + AYLIK_DONDURMA + " gün; " + hak.yazi + ")." });
+      metin: gunYazi + " günlük hedefinize ulaşamadınız ve " + kop.onceki + " günlük seriniz bozuldu. Dondurma hakkınız bunu kurtarmaya yetmiyor (" + hak.yazi + "; her ay " + AYLIK_DONDURMA + " hak eklenir, kullanılmayanlar birikir)." });
     depo.yaz("pg.dondurmaSoruldu", anahtar);
     return false;
   }
   const cevap = await pencereAc({ baslik: "Seriniz bozuldu",
     metin: gunYazi + " günlük hedefinize ulaşamadınız. " + (kop.eksik.length === 1 ? "Bu gün" : "Bu günler") +
-      " dondurulsun mu? " + kop.onceki + " günlük seriniz korunur. Her ay " + AYLIK_DONDURMA + " gün dondurabilirsiniz; " + hak.yazi + ".",
+      " dondurulsun mu? " + kop.onceki + " günlük seriniz korunur. " + hak.yazi.charAt(0).toLocaleUpperCase("tr-TR") + hak.yazi.slice(1) + "; her ay " + AYLIK_DONDURMA + " hak eklenir, kullanılmayanlar birikir.",
     evet: "Dondur", hayir: "Seri bozulsun", perdeKapatmaz: true, ucluCevap: true });
   if (cevap === null) return false;
   depo.yaz("pg.dondurmaSoruldu", anahtar);
@@ -4679,7 +4742,8 @@ async function dondurmaSor(elle) {
 
 /* ==========================================================================
    Geri sayan saat: kalan süre saat, dakika, saniye kartlarında. Açılınca
-   hedefin tamamından kalan süreye kartlar dönerek iner.
+   kartlar dönerek kalan süreye gelir (hedefin tamamından iner; o gün hiç
+   çalışılmadıysa sıfırdan çıkar).
    ========================================================================== */
 function saatKarti(birim) {
   const kart = olustur("div", "saat-kart");
@@ -4726,10 +4790,11 @@ function geriSayimSaati(baslikMetni, kalanSn, toplamSn, altMetin, tamam) {
   kutu.append(h, satir, alt);
   const parca = sn => { sn = Math.max(0, Math.round(sn)); return [iki(Math.floor(sn / 3600)), iki(Math.floor(sn / 60) % 60), iki(sn % 60)]; };
   const yaz = (sn, sure) => { const [a, b, c] = parca(sn); saat.yaz(a, sure); dakika.yaz(b, sure); saniye.yaz(c, sure); };
-  /* İniş: hedefin tamamından kalana; başta hızlı, sonda yavaş (son adımlar görünsün) */
-  const bas = Math.max(kalanSn, toplamSn);
+  /* Açılış: hedefin tamamından kalana iner; o gün hiç çalışılmadıysa (kalan = hedef)
+     sıfırdan kalana çıkar. Böylece kartlar her açılışta döner. Başta hızlı, sonda yavaş. */
+  const bas = kalanSn < toplamSn ? toplamSn : 0;
   yaz(bas, 0);
-  if (bas > kalanSn) {
+  if (bas !== kalanSn) {
     const ADIM = 22;
     let i = 0;
     const adim = () => {
@@ -4737,7 +4802,7 @@ function geriSayimSaati(baslikMetni, kalanSn, toplamSn, altMetin, tamam) {
       i++;
       const o = i / ADIM;
       const egri = 1 - Math.pow(1 - o, 3);
-      const sn = i >= ADIM ? kalanSn : bas - (bas - kalanSn) * egri;
+      const sn = i >= ADIM ? kalanSn : bas + (kalanSn - bas) * egri;
       const sure = Math.round(70 + 260 * o * o);
       yaz(sn, sure);
       if (i < ADIM) setTimeout(adim, sure);
@@ -4826,15 +4891,22 @@ function hedefEkrani(ic, tumu, yenidenCiz) {
   ic.appendChild(sk);
 
   /* Dondurma hakkı */
-  const ay = bugun.slice(0, 7);
-  const kalan = kalanDondurma(ay, dondurulan);
+  const kalan = Math.max(0, kalanDondurma(bugun.slice(0, 7), dondurulan));
   const dk = olustur("section", "ist-kart dondurma-kart");
   const dh = olustur("h3", "ist-baslik"); dh.textContent = "Dondurma hakkı";
   const buzlar = olustur("div", "buzlar");
-  for (let i = 0; i < AYLIK_DONDURMA; i++) { const b = olustur("span", "buz" + (i < kalan ? " var" : "")); b.textContent = "❄"; buzlar.appendChild(b); }
+  buzlar.setAttribute("aria-label", kalan + " dondurma hakkı");
+  /* 8'e kadar her hak bir buz; daha çoksa tek buz ve sayısı */
+  if (kalan > 8) {
+    const b = olustur("span", "buz var"); b.textContent = "❄";
+    const s = olustur("span", "buz-sayi"); s.textContent = "× " + kalan;
+    buzlar.append(b, s);
+  } else {
+    for (let i = 0; i < Math.max(kalan, AYLIK_DONDURMA); i++) { const b = olustur("span", "buz" + (i < kalan ? " var" : "")); b.textContent = "❄"; buzlar.appendChild(b); }
+  }
   const dp = olustur("p", "ist-alt");
-  const ayAdi = gunTarihi(bugun).toLocaleDateString("tr-TR", { month: "long" });
-  dp.textContent = ayAdi.charAt(0).toLocaleUpperCase("tr-TR") + ayAdi.slice(1) + " ayında " + AYLIK_DONDURMA + " hakkınızdan " + kalan + " tanesi kaldı. " +
+  dp.textContent = (kalan ? kalan + " dondurma hakkınız var. " : "Dondurma hakkınız kalmadı. ") +
+    "Her ayın başında " + AYLIK_DONDURMA + " hak eklenir; kullanmadıklarınız birikir. " +
     "Hedefinize ulaşamadığınız için seriniz bozulursa uygulama açılınca o günü dondurmak isteyip istemediğiniz sorulur. Dondurulan gün seriyi bozmaz; o haftanın hedefinden o günün hedefi düşülür.";
   dk.append(dh, buzlar, dp);
   ic.appendChild(dk);
@@ -4885,8 +4957,8 @@ function hesapSayfasiAc(secenek) {
   calismaTiki(); calismaYaz();
   const sayfa = olustur("div", "hesap-sayfa" + (surukle ? " surukleniyor" : ""));
   const perde = olustur("div", "cekmece-perde");
-  perde.addEventListener("click", () => geriDon());
   const panel = olustur("div", "cekmece");
+  perdeKapatmayiKur(sayfa, perde);
   panel.setAttribute("role", "dialog");
   panel.setAttribute("aria-modal", "true");
   const ust = olustur("div", "hesap-ust");
@@ -4894,7 +4966,7 @@ function hesapSayfasiAc(secenek) {
   const kapat = olustur("button", "hesap-kapat");
   kapat.setAttribute("aria-label", "Kapat");
   kapat.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>';
-  kapat.addEventListener("click", () => geriDon());
+  kapat.addEventListener("click", () => cekmeceyiKapat(sayfa));
   ust.append(baslik, kapat);
   const sekmeler = olustur("div", "cekmece-sekmeler");
   sekmeler.setAttribute("role", "tablist");
@@ -5186,6 +5258,55 @@ document.getElementById("hesapDugme").addEventListener("click", () => hesapSayfa
 document.addEventListener("keydown", e => {
   if (e.key === "Escape" && hesapSayfasi && !document.querySelector(".uyari-perde")) { e.preventDefault(); geriDon(); }
 });
+
+/* Çekmeceyi kapatır. Önce geçmişten bir adım geri gidilir (telefonun geri
+   tuşuyla aynı yol); tarayıcı bu geri gidişi herhangi bir sebeple yapmazsa
+   kısa süre sonra çekmece doğrudan kapatılır ve yığın düzeltilir. */
+function cekmeceyiKapat(sayfa) {
+  if (!sayfa || sayfa !== hesapSayfasi) return;
+  geriDon();
+  setTimeout(() => {
+    if (sayfa !== hesapSayfasi) return;
+    const i = geriYigini.map(x => x.islev).lastIndexOf(hesapSayfasiniKapat);
+    if (i !== -1) geriYigini.splice(i, 1);
+    hesapSayfasiniKapat();
+  }, 450);
+}
+/* Bir dokunuşun ardından gelecek tıklamayı yutar: çekmece parmak kalkınca
+   kapanır; tarayıcının hemen ardından ürettiği tıklama alttaki ekrana
+   (ders satırı vb.) geçmesin. Tıklama hiç gelmezse kısa sürede kalkar. */
+function sonrakiTiklamayiYut(x, y) {
+  let zaman = null;
+  const yut = e => {
+    if (Math.abs(e.clientX - x) < 40 && Math.abs(e.clientY - y) < 40) { e.preventDefault(); e.stopPropagation(); }
+    kaldir();
+  };
+  const kaldir = () => { window.removeEventListener("click", yut, true); clearTimeout(zaman); };
+  window.addEventListener("click", yut, true);
+  zaman = setTimeout(kaldir, 700);
+}
+/* Çekmecenin dışına (karartılmış alana) dokununca kapanır. Kapanma "click"
+   olayını beklemez: bazı telefonlarda kaydırma hareketinin ardından gelen
+   ilk dokunuş tıklamaya dönüşmeyebiliyor ve çekmece ancak ikinci dokunuşta
+   kapanıyordu. Parmak (ya da fare) kalkınca kapanır; kaydırmaya dönüşen
+   dokunuşlar sayılmaz. */
+function perdeKapatmayiKur(sayfa, perde) {
+  let bas = null;
+  perde.addEventListener("pointerdown", e => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    bas = { id: e.pointerId, x: e.clientX, y: e.clientY };
+  });
+  perde.addEventListener("pointerup", e => {
+    const b = bas; bas = null;
+    if (!b || b.id !== e.pointerId || Math.hypot(e.clientX - b.x, e.clientY - b.y) > 14) return;
+    if (sayfa !== hesapSayfasi) return;
+    sonrakiTiklamayiYut(e.clientX, e.clientY);
+    cekmeceyiKapat(sayfa);
+  });
+  perde.addEventListener("pointercancel", () => { bas = null; });
+  /* Yedek: pointer olayı üretmeyen ortamlar */
+  perde.addEventListener("click", () => cekmeceyiKapat(sayfa));
+}
 
 /* Çekmeceyi sağa çekip kapatma: yatay hareket parmağı izler, bırakınca
    üçte birden fazla çekildiyse ya da hızlı atıldıysa kapanır. Dikey hareket
@@ -8723,12 +8844,12 @@ const GUNCELLEME = {
   surum: "2.0",
   baslik: "Kostü - Ders'e hoş geldiniz",
   maddeler: [
-    ["Notlar ders ders", "Oku sekmesinde Sınıf › Dönem › Ders › Konu sırasıyla ilerlersiniz. Hocalar not paylaştıkça yeni konular kendiliğinden gelir; bir kez inen konu internetsiz de okunur."],
+    ["Notlar ders ders", "Oku sekmesinde Sınıf › Dönem › Ders › Konu sırasıyla ilerlersiniz. Hocalar not paylaştıkça yeni konular kendiliğinden gelir. Notlar ve şekilleri cihaza indiği için uygulama internetsiz de açılır; internetsizken yaptıklarınız bağlanınca hesabınıza gider."],
     ["Temrinde önce kapsam", "Temrin sekmesinde önce hangi derslerin hangi konularından çalışacağınızı seçersiniz; sorular yalnızca oradan gelir."],
     ["Yeni soru türleri", "Çoktan seçmeli, doğru-yanlış, boşluk doldurma, sıralama, eşleştirme, kod izleme, hesaplama ve klasik sorular var."],
     ["42 Tarzı", "Sözlü sınav tarzı soru-cevap kartları. Dokunarak çevirin; cevabı gördükten sonra sağa kaydırırsanız bildiniz, sola kaydırırsanız bilemediniz."],
     ["Mühim yerler", "Konu adının ya da bir alt başlığın yanındaki ayraç işaretiyle o yeri mühim işaretlersiniz; metinde bir yeri boyadığınızda da başlığı kendiliğinden mühim olur. Hepsi Oku sekmesindeki Mühimmat listesinde toplanır. Temrin ve 42 Tarzı'nda \u201cYalnızca mühim yerler\u201d seçilirse sorular yalnızca oradan gelir."],
-    ["Hesap ve istatistikler", "Sağ üstteki hesap düğmesinden adınızı ekleyebilir, hangi derse ne kadar zaman ayırdığınızı, temrin ve kart başarınızı, kesintisiz çalıştığınız gün serisini ve çalışma takviminizi görebilirsiniz."],
+    ["Hedef, istatistik ve takvim", "Sağ üstteki menü düğmesinden ya da ekranın sağ kenarından sola çekerek açılan menüde günlük çalışma hedefinizi koyar, serinizi ve dondurma hakkınızı, hangi derse ne kadar zaman ayırdığınızı, temrin ve kart başarınızı ve çalışma takviminizi görürsünüz. Adınızı da oradaki Hesap ekranından eklersiniz."],
     ["Her şey hesabınızda", "Okuduğunuz konular, kırmızıya boyadığınız yerler, yıldızlarınız ve yanlışlarınız okul hesabınızda tutulur. Hesap aynı anda bir cihazda açık olur; başka cihaza geçtiğinizde e-postanıza gelen kodla devralırsınız ve ilerlemeniz oraya gelir."]
   ]
 };

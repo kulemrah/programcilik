@@ -3,16 +3,16 @@
    (notlar, giriş, kayıtlar) başka adrese gittiği için buradan hiç geçmez;
    notların çevrimdışı kopyasını uygulama kendisi IndexedDB'de tutar. */
 const ON_EK = "programcilik-";
-const ONBELLEK = ON_EK + "v11";
+const ONBELLEK = ON_EK + "v12";
 const KABUK = new URL("./", self.registration.scope).href;
 const DOSYALAR = [
   "./",
   "./manifest.webmanifest",
   "./supabase.js?v=2.117.2",
-  "./ikon-192.png",
-  "./ikon-512.png",
-  "./ikon-maskable-512.png",
-  "./apple-touch-icon.png"
+  "./kostu-192.png",
+  "./kostu-512.png",
+  "./kostu-maskable-512.png",
+  "./kostu-apple-180.png"
 ];
 /* Ağ bu sürede cevap vermezse önbellekteki sürüm açılır */
 const AG_SURESI = 4000;
