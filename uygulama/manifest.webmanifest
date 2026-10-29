@@ -1,7 +1,7 @@
 {
   "name": "Kostü - Ders",
   "short_name": "Kostü - Ders",
-  "description": "Bilgisayar Programcılığı ders notları, temrinler ve 42 Tarzı kartlar",
+  "description": "Ders notları, temrinler ve 42 Tarzı kartlar",
   "lang": "tr",
   "dir": "ltr",
   "start_url": "./",

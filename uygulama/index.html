@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="programcilik-kabuk" content="1">
 <title>Kostü - Ders</title>
-<meta name="description" content="Bilgisayar Programcılığı ders notları, temrinler ve 42 Tarzı kartlar">
+<meta name="description" content="Ders notları, temrinler ve 42 Tarzı kartlar">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#F2F2F7">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -19,6 +19,9 @@
   var m = null;
   try { m = JSON.parse(localStorage.getItem("pg.mod") || "null"); } catch (e) {}
   document.documentElement.setAttribute("data-mod", m === "gece" || m === "siyah" || m === "pembe" ? m : "gunduz");
+  var g = 0;
+  try { g = JSON.parse(localStorage.getItem("pg.gozFiltre") || "0"); } catch (e) {}
+  if (g === 1 || g === 2 || g === 3) document.documentElement.setAttribute("data-goz", String(g));
 })();
 /* Kurulum olayı sayfa yüklenirken çok erken tetiklenebiliyor; buradan
    yakalanmazsa kimse dinlemediği için kayboluyor ve düğme hiç çıkmıyor. */
@@ -37,8 +40,8 @@ window.addEventListener("appinstalled", function () {
 /* ---- Renk değişkenleri ----
    :root koyu temadır (data-mod="gece"); açık tema (öntanımlı, ilk boyamadan
    önce <head>'de kurulur), pembe ve simsiyah tema yalnızca değişkenleri
-   değiştirir. Renkler iPhone'un sistem renklerine yakındır: gri zemin
-   üstünde beyaz (koyuda gri) gruplu yüzeyler, mavi vurgu.
+   değiştirir. Yüzeyler iPhone'un sistem renklerine yakındır: gri zemin
+   üstünde beyaz (koyuda gri) gruplu yüzeyler. Vurgu turuncu (pembede mürdüm).
    --dolgu: kenarsız ikincil düğme ve çiplerin zemini
    --ayrac: liste satırları arasındaki ince çizgi
    --ok: satır sonundaki ›  */
@@ -52,9 +55,9 @@ window.addEventListener("appinstalled", function () {
   --ok:#5E5E65;
   --yazi:#F2F2F7;
   --sonuk:#9B9BA2;
-  --vurgu:#0A84FF;
-  --vurgu-zemin:rgba(10,132,255,.17);
-  --vurgu-yazi:#FFFFFF;
+  --vurgu:#E8A85A;
+  --vurgu-zemin:rgba(232,168,90,.15);
+  --vurgu-yazi:#17140F;
   --dogru:#30D158;
   --dogru-zemin:rgba(48,209,88,.15);
   --boya:#FF6961;
@@ -62,6 +65,7 @@ window.addEventListener("appinstalled", function () {
   --yanlis-zemin:rgba(255,69,58,.16);
   --anahtar-acik:#30D158;
   --anahtar-kapali:#39393D;
+  --dogru-yazi:#05210E;
   --golge:none;
   --golge-yuksek:0 12px 40px rgba(0,0,0,.5);
   --cam:rgba(18,18,20,.74);
@@ -80,8 +84,8 @@ html[data-mod="gunduz"]{
   --ok:#BDBDC2;
   --yazi:#1C1C1E;
   --sonuk:#6C6C70;
-  --vurgu:#0068D6;
-  --vurgu-zemin:rgba(0,104,214,.10);
+  --vurgu:#A45A0E;
+  --vurgu-zemin:rgba(164,90,14,.10);
   --vurgu-yazi:#FFFFFF;
   --dogru:#1A7F37;
   --dogru-zemin:rgba(26,127,55,.11);
@@ -90,6 +94,7 @@ html[data-mod="gunduz"]{
   --yanlis-zemin:rgba(201,0,26,.08);
   --anahtar-acik:#34C759;
   --anahtar-kapali:#E3E3E8;
+  --dogru-yazi:#FFFFFF;
   --golge:none;
   --golge-yuksek:0 16px 48px rgba(0,0,0,.16);
   --cam:rgba(242,242,247,.8);
@@ -117,6 +122,7 @@ html[data-mod="pembe"]{
   --yanlis-zemin:rgba(201,0,26,.08);
   --anahtar-acik:#34C759;
   --anahtar-kapali:#EBDCE3;
+  --dogru-yazi:#FFFFFF;
   --golge:none;
   --golge-yuksek:0 16px 48px rgba(70,24,44,.15);
   --cam:rgba(251,242,246,.82);
@@ -131,9 +137,9 @@ html[data-mod="siyah"]{
   --ok:#545458;
   --yazi:#FFFFFF;
   --sonuk:#98989F;
-  --vurgu:#0A84FF;
-  --vurgu-zemin:rgba(10,132,255,.17);
-  --vurgu-yazi:#FFFFFF;
+  --vurgu:#E8A85A;
+  --vurgu-zemin:rgba(232,168,90,.14);
+  --vurgu-yazi:#000000;
   --dogru:#30D158;
   --dogru-zemin:rgba(48,209,88,.15);
   --boya:#FF6961;
@@ -551,7 +557,7 @@ main{max-width:720px;margin:0 auto;padding:16px max(16px, env(safe-area-inset-ri
   border:1px solid var(--cizgi);background:var(--yuzey);color:var(--yazi);
 }
 .eylem button.ana{background:var(--vurgu);border-color:var(--vurgu);color:var(--vurgu-yazi)}
-html[data-mod="gunduz"] .okuma mark{background:rgba(0,104,214,.13)}
+html[data-mod="gunduz"] .okuma mark{background:rgba(164,90,14,.15)}
 html[data-mod="pembe"] .okuma mark{background:rgba(176,48,110,.13)}
 .eylem button:disabled{opacity:.4}
 
@@ -704,6 +710,31 @@ body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .panel-govde{overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1}
 .panel .eylem{margin-top:12px}
 
+/* ---- Uygulama içi soru ve uyarı penceresi ---- */
+.uyari-perde{
+  position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+  animation:uyari-perde .18s ease;
+}
+.uyari-kutu{
+  width:100%;max-width:300px;border-radius:18px;background:var(--yuzey);color:var(--yazi);
+  box-shadow:var(--golge-yuksek);overflow:hidden;text-align:center;animation:uyari-kutu .22s cubic-bezier(.2,.8,.25,1);
+}
+html[data-mod="gece"] .uyari-kutu,html[data-mod="siyah"] .uyari-kutu{background:var(--yuzey2)}
+.uyari-baslik{margin:0;padding:20px 18px 4px;font-size:17px;font-weight:650;line-height:1.3}
+.uyari-metin{margin:0;padding:4px 18px 18px;font-size:14px;line-height:1.5;color:var(--sonuk)}
+.uyari-baslik + .uyari-metin{padding-top:2px}
+.uyari-kutu > :first-child.uyari-metin{padding-top:20px;color:var(--yazi)}
+.uyari-dugmeler{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ayrac)}
+.uyari-dugmeler.tek{grid-template-columns:1fr}
+.uyari-dugmeler button{padding:13px 8px;font-size:16px;color:var(--vurgu);font-weight:500}
+.uyari-dugmeler button + button{border-left:1px solid var(--ayrac)}
+.uyari-dugmeler .evet{font-weight:650}
+.uyari-dugmeler .evet.tehlike{color:var(--yanlis)}
+.uyari-dugmeler button:active{background:var(--dolgu)}
+@keyframes uyari-perde{from{opacity:0}}
+@keyframes uyari-kutu{from{opacity:0;transform:scale(1.08)}}
+
 /* ---- Kısa bildirim ---- */
 .kisa-bildirim{
   position:fixed;left:50%;transform:translateX(-50%);z-index:80;
@@ -729,8 +760,9 @@ body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 
 :focus-visible{outline:2px solid var(--vurgu);outline-offset:2px;border-radius:6px}
 /* Cihazda animasyonlar kapalıysa geçişler kapanır; 42 Tarzı kartının
-   dönmesi, yaylanması ve yığına uçması dokunuşun cevabı olduğu için kalır */
-@media (prefers-reduced-motion:reduce){*:not(.kart-ic):not(.kart-yeri){transition:none!important;animation:none!important}}
+   dönmesi, yaylanması ve yığına uçması dokunuşun cevabı olduğu için, geri
+   sayan saatin dönen kartları da saatin kendisi olduğu için kalır */
+@media (prefers-reduced-motion:reduce){*:not(.kart-ic):not(.kart-yeri):not(.yaprak){transition:none!important;animation:none!important}}
 @media (min-width:640px){
   body{font-size:17px}
 }
@@ -1181,14 +1213,16 @@ html[data-mod="pembe"] .anahtar-dugme:not([aria-checked="true"]){background:#E3C
   --seri-1:#3987e5;--seri-2:#d95926;--seri-3:#199e70;--seri-4:#c98500;
   --seri-5:#d55181;--seri-6:#008300;--seri-7:#9085e9;--seri-8:#e66767;
   --olcek:#3987e5;
-  --tk-1:#184f95;--tk-2:#1c5cab;--tk-3:#2a78d6;--tk-4:#5598e7;--tk-5:#9ec5f4;
+  --tk-1:#23395A;--tk-2:#1F416E;--tk-3:#2563B8;--tk-4:#2F80EA;--tk-5:#62A8FF;
+  --buz:#6CC3FF;--buz-zemin:rgba(108,195,255,.16);
   --izgara:#2c3440;--eksen:#3a4452;
 }
 html[data-mod="gunduz"],html[data-mod="pembe"]{
   --seri-1:#2a78d6;--seri-2:#eb6834;--seri-3:#1baf7a;--seri-4:#eda100;
   --seri-5:#e87ba4;--seri-6:#008300;--seri-7:#6250d6;--seri-8:#e34948;
   --olcek:#2a78d6;
-  --tk-1:#cde2fb;--tk-2:#9ec5f4;--tk-3:#5598e7;--tk-4:#2a78d6;--tk-5:#184f95;
+  --tk-1:#DDEBFC;--tk-2:#A9CBF5;--tk-3:#5598E7;--tk-4:#2A6FC9;--tk-5:#184F95;
+  --buz:#2F8FD8;--buz-zemin:rgba(47,143,216,.13);
   --izgara:#E6E9EE;--eksen:#C9D0D8;
 }
 html[data-mod="siyah"]{--izgara:#1d1d21;--eksen:#2c2c31}
@@ -1375,7 +1409,7 @@ h1,h2,h3,.giris-baslik,.grup-baslik,.ders-basligi{letter-spacing:-.02em}
 
 /* ---- Üst çubuk ---- */
 .ust{gap:8px;border-bottom:1px solid var(--ayrac);padding-top:calc(8px + env(safe-area-inset-top));padding-bottom:8px}
-.ust h1{font-size:19px;font-weight:700}
+.ust h1{font-size:clamp(14px, 4.3vw, 19px);font-weight:700}
 .mod-dugme,.hesap-dugme{
   width:36px;height:36px;border:0;border-radius:50%;background:var(--dolgu);box-shadow:none;color:var(--vurgu);
 }
@@ -1392,7 +1426,7 @@ h1,h2,h3,.giris-baslik,.grup-baslik,.ders-basligi{letter-spacing:-.02em}
 .alt-cubuk button.etkin{color:var(--vurgu);font-weight:650}
 .alt-cubuk button.etkin svg{background:none;fill:currentColor;fill-opacity:.16;stroke-width:1.9}
 
-/* ---- Geri bağlantısı: çerçevesiz, mavi ---- */
+/* ---- Geri bağlantısı: çerçevesiz, vurgu renginde ---- */
 .geri{
   border:0;background:none;box-shadow:none;padding:6px 8px 6px 0;margin-left:-2px;
   color:var(--vurgu);font-size:16.5px;font-weight:500;
@@ -1528,16 +1562,16 @@ h1,h2,h3,.giris-baslik,.grup-baslik,.ders-basligi{letter-spacing:-.02em}
 .secenek .harf{
   width:24px;height:24px;border-radius:50%;border:0;background:var(--dolgu);color:var(--sonuk);font-weight:650;
 }
-.secenek.dogru .harf{background:var(--dogru);color:#FFFFFF}
+.secenek.dogru .harf{background:var(--dogru);color:var(--dogru-yazi)}
 .secenek.yanlis .harf{background:var(--yanlis);color:#FFFFFF}
 .dy-dugmeler .secenek{font-size:16px}
 .esles-oge.secili,.kademe.secili{border-color:var(--vurgu)}
 .dizi-alan{border-color:var(--cizgi);background:transparent}
 
-/* Onay kutuları: yuvarlak, mavi */
+/* Onay kutuları: yuvarlak, vurgu renginde */
 .kutucuk{width:23px;height:23px;border-radius:50%;border:1.5px solid var(--ok)}
 .kontrol-oge{padding:13px 16px;gap:13px;font-size:15.5px}
-.kontrol-oge.tikli .kutucuk{background:var(--vurgu);border-color:var(--vurgu);color:#FFFFFF}
+.kontrol-oge.tikli .kutucuk{background:var(--vurgu);border-color:var(--vurgu);color:var(--vurgu-yazi)}
 .kontrol-oge.tikli{color:var(--yazi)}
 
 /* ---- Düğmeler ---- */
@@ -1629,21 +1663,224 @@ html[data-mod="gece"] .kart-yuz,html[data-mod="siyah"] .kart-yuz{box-shadow:0 10
 .halka-oran .cubuk{background:var(--dolgu)}
 .profil-avatar{background:var(--vurgu);color:var(--vurgu-yazi)}
 
-@media (max-width:374px){
-  .ust h1{font-size:16.5px}
-  .grup-baslik{font-size:25px}
+
+/* ---- Üst çubuk düğmeleri: göz koruyucu, tema, menü ---- */
+.goz-dugme{
+  position:relative;width:36px;height:36px;border:0;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:var(--dolgu);color:var(--vurgu);
 }
+.goz-dugme svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.goz-dugme.etkin{background:var(--vurgu);color:var(--vurgu-yazi)}
+.goz-dugme .kademe-rozet{
+  position:absolute;right:-2px;bottom:-2px;min-width:16px;height:16px;padding:0 3px;border-radius:8px;
+  font-size:10.5px;font-weight:700;line-height:16px;text-align:center;
+  background:var(--yuzey);color:var(--vurgu);box-shadow:0 0 0 1.5px var(--zemin);
+}
+.goz-dugme .kademe-rozet:empty{display:none}
+.hesap-dugme svg{stroke-width:2}
+.ust .mod-dugme{order:2}.ust .goz-dugme{order:1}.ust .hesap-dugme{order:3}
+
+/* Göz koruyucu katman: tıklamayı geçirir, en üstte durur */
+.goz-filtre{
+  position:fixed;inset:0;z-index:2147483000;pointer-events:none;
+  background:#FF9A3C;mix-blend-mode:multiply;opacity:0;transition:opacity .35s ease;
+}
+html[data-goz="1"] .goz-filtre{opacity:.13}
+html[data-goz="2"] .goz-filtre{opacity:.24}
+html[data-goz="3"] .goz-filtre{opacity:.36}
+
+/* ---- Sağ kenar tutamağı: boydan boya ince çizgi; sola çekince menü açılır ---- */
+.kenar-tutamak{
+  position:fixed;right:0;z-index:35;width:18px;touch-action:none;cursor:w-resize;
+  top:calc(58px + env(safe-area-inset-top));bottom:calc(60px + env(safe-area-inset-bottom));
+}
+.kenar-tutamak::after{
+  content:"";position:absolute;right:3px;top:6px;bottom:6px;width:3px;border-radius:2px;
+  background:var(--cizgi);transition:background-color .15s ease,width .15s ease;
+}
+.kenar-tutamak:hover::after,.kenar-tutamak:active::after{background:var(--vurgu);width:4px}
+html:has(.giris-perde) .kenar-tutamak{display:none}
+
+/* ---- Çekmece (hesap alanı) ---- */
+.hesap-sayfa{position:fixed;inset:0;z-index:66;display:block;background:transparent}
+.cekmece-perde{position:absolute;inset:0;background:rgba(0,0,0,.4);opacity:0;transition:opacity .3s ease}
+.hesap-sayfa.acik .cekmece-perde{opacity:1}
+.cekmece{
+  position:absolute;top:0;right:0;bottom:0;width:min(calc(100% - 36px),480px);
+  display:flex;flex-direction:column;background:var(--zemin);
+  box-shadow:-14px 0 44px rgba(0,0,0,.22);touch-action:pan-y;
+  transform:translateX(100%);transition:transform .34s cubic-bezier(.2,.8,.2,1);will-change:transform;
+}
+.hesap-sayfa.acik .cekmece{transform:none}
+.hesap-sayfa.surukleniyor .cekmece,.hesap-sayfa.surukleniyor .cekmece-perde{transition:none}
+.hesap-sayfa.kapaniyor{pointer-events:none}
+.cekmece .hesap-ust{
+  display:flex;align-items:center;gap:10px;border-bottom:0;background:var(--zemin);
+  padding:calc(12px + env(safe-area-inset-top)) calc(14px + env(safe-area-inset-right)) 8px 18px;
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+}
+.cekmece .hesap-ust h2{flex:1;margin:0;font-size:24px;font-weight:750;letter-spacing:-.02em;line-height:1.2}
+.hesap-kapat{
+  flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+  background:var(--dolgu);color:var(--sonuk);
+}
+.hesap-kapat svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+/* Ekran seçici: iPhone'daki bölümlü düğme */
+.cekmece-sekmeler{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;flex:none;
+  margin:4px calc(14px + env(safe-area-inset-right)) 8px 14px;padding:2px;border-radius:10px;background:var(--dolgu);
+}
+.cekmece-sekme{
+  padding:7px 2px;border-radius:8px;font-size:13px;font-weight:550;color:var(--yazi);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background-color .2s ease;
+}
+.cekmece-sekme.secili{background:var(--segment-secili);font-weight:650;box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 1px rgba(0,0,0,.04)}
+:root{--segment-secili:#5B5B61}
+html[data-mod="gunduz"],html[data-mod="pembe"]{--segment-secili:#FFFFFF}
+html[data-mod="siyah"]{--segment-secili:#636366}
+.cekmece .hesap-ic{padding-top:6px}
+.ist-ust-satir{display:flex;align-items:center;justify-content:space-between;gap:10px}
+
+/* ---- Hedef formu ve açılıştaki hedef sorusu ---- */
+.hedef-perde{
+  position:fixed;inset:0;z-index:76;display:flex;align-items:center;justify-content:center;padding:16px;
+  background:rgba(0,0,0,.5);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);overflow-y:auto;
+}
+.hedef-kutu{
+  width:100%;max-width:440px;border-radius:22px;background:var(--yuzey);box-shadow:var(--golge-yuksek);
+  padding:22px 20px 18px;margin:auto;
+}
+html[data-mod="gece"] .hedef-kutu,html[data-mod="siyah"] .hedef-kutu{background:var(--yuzey2)}
+.hedef-kutu h3{margin:0 0 6px;font-size:22px;font-weight:750;letter-spacing:-.02em}
+.hedef-alt{margin:0 0 10px;font-size:14px;line-height:1.55;color:var(--sonuk)}
+.sure-secici{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--ayrac)}
+.sure-secici .etiket{flex:1;font-size:16px;font-weight:600}
+.secici-kutu{display:flex;align-items:center;gap:5px}
+.secici-kutu select{
+  -webkit-appearance:none;appearance:none;border:0;border-radius:10px;background:var(--dolgu);color:var(--yazi);
+  font:inherit;font-size:17px;font-weight:650;padding:8px 10px;min-width:58px;text-align:center;text-align-last:center;
+  font-variant-numeric:tabular-nums;cursor:pointer;
+}
+.secici-kutu select:focus-visible{outline:2px solid var(--vurgu);outline-offset:1px}
+.secici-kutu .birim{font-size:14px;color:var(--sonuk);min-width:18px}
+.hedef-ozet{font-size:13.5px;line-height:1.55;color:var(--sonuk);margin:12px 0 0}
+.hedef-form .eylem{margin-top:14px}
+
+/* ---- Geri sayan saat: dönen yapraklı kartlar ---- */
+.saat-blok{text-align:center}
+.saat-blok .ist-baslik{text-align:left}
+.saat-satiri{display:flex;align-items:flex-start;justify-content:center;gap:5px;margin:8px 0 6px}
+.saat-hane{display:flex;flex-direction:column;align-items:center;gap:6px}
+.saat-birim{font-size:11.5px;color:var(--sonuk);font-weight:550;letter-spacing:.02em}
+.saat-satiri{--h:min(66px, 14vw)}
+.saat-ayrac{font-size:calc(var(--h) * .45);font-weight:700;line-height:var(--h);color:var(--sonuk);padding:0 1px}
+/* Kart boyu ekrana göre küçülür (dar telefonda taşmasın); 3 haneli saat de sığar */
+.saat-kart{
+  position:relative;height:var(--h);width:calc(var(--hane, 2) * var(--h) * .41 + 14px);
+  font-size:calc(var(--h) * .667);font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em;color:var(--yazi);
+  perspective:320px;
+}
+.saat-kart .yaprak{
+  position:absolute;left:0;right:0;height:50%;overflow:hidden;background:var(--saat-yuz);
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
+}
+.saat-kart .sabit-ust,.saat-kart .kanat-ust{top:0;border-radius:12px 12px 0 0;transform-origin:50% 100%}
+.saat-kart .sabit-alt,.saat-kart .kanat-alt{bottom:0;border-radius:0 0 12px 12px;transform-origin:50% 0;background:var(--saat-yuz-alt)}
+.saat-kart .yaprak span{position:absolute;left:0;right:0;top:0;height:var(--h);line-height:var(--h);text-align:center}
+.saat-kart .sabit-alt span,.saat-kart .kanat-alt span{top:calc(var(--h) / -2)}
+.saat-kart .kanat-ust,.saat-kart .kanat-alt{visibility:hidden;z-index:2}
+.saat-kart.donuyor .kanat-ust{visibility:visible;animation:kanat-ust var(--sure, 300ms) cubic-bezier(.5,0,.9,.5) forwards}
+.saat-kart.donuyor .kanat-alt{visibility:visible;animation:kanat-alt var(--sure, 300ms) cubic-bezier(.1,.5,.5,1) forwards}
+@keyframes kanat-ust{0%{transform:rotateX(0)}50%,100%{transform:rotateX(-90deg)}}
+@keyframes kanat-alt{0%,50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
+/* Ortadaki ince yarık */
+.saat-kart::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:var(--yuzey);z-index:3}
+.saat-kart::before{content:"";position:absolute;inset:0;border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 6px 14px -6px rgba(0,0,0,.18);z-index:0}
+:root{--saat-yuz:#2E2E33;--saat-yuz-alt:#29292E}
+html[data-mod="siyah"]{--saat-yuz:#2C2C2E;--saat-yuz-alt:#262628}
+html[data-mod="gunduz"]{--saat-yuz:#F4F4F7;--saat-yuz-alt:#ECECF1}
+html[data-mod="pembe"]{--saat-yuz:#FBF2F6;--saat-yuz-alt:#F6E8EE}
+.saat-blok.tamam .saat-kart{color:var(--dogru)}
+.saat-alt{margin:6px 0 0;font-size:13.5px;line-height:1.5;color:var(--sonuk)}
+.saat-blok.tamam .saat-alt{color:var(--dogru);font-weight:550}
+
+/* ---- Seri ve bu haftanın günleri ---- */
+.seri-bas{display:flex;align-items:center;gap:14px}
+.seri-sayi{
+  flex:none;min-width:58px;height:58px;padding:0 10px;border-radius:17px;display:grid;place-items:center;
+  font-size:28px;font-weight:800;background:var(--vurgu-zemin);color:var(--vurgu);font-variant-numeric:tabular-nums;
+}
+.seri-yazi strong{display:block;font-size:17px;font-weight:700;line-height:1.3}
+.seri-yazi span{display:block;font-size:13.5px;color:var(--sonuk);line-height:1.45;margin-top:2px}
+.hafta-gunleri{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-top:16px}
+.hafta-gunu{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11.5px;color:var(--sonuk)}
+.hafta-gunu .yuvarlak{
+  width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:750;
+  background:var(--dolgu);color:var(--sonuk);
+}
+.hafta-gunu.tamam .yuvarlak{background:var(--dogru);color:var(--dogru-yazi)}
+.hafta-gunu.donmus .yuvarlak{background:var(--buz-zemin);color:var(--buz)}
+.hafta-gunu.eksik .yuvarlak{background:var(--yanlis-zemin);color:var(--yanlis)}
+.hafta-gunu.gelecek .yuvarlak{background:transparent;box-shadow:inset 0 0 0 1.5px var(--ayrac)}
+.hafta-gunu.once .yuvarlak{background:transparent;color:var(--ok);box-shadow:inset 0 0 0 1.5px var(--ayrac)}
+.seri-kurtar{margin-top:14px;color:var(--buz)}
+.hafta-gunu.bu-gun .yuvarlak{box-shadow:0 0 0 2px var(--zemin),0 0 0 4px var(--vurgu)}
+.hafta-gunu.bu-gun .ad{color:var(--yazi);font-weight:700}
+
+/* ---- Dondurma hakkı ve hedef ---- */
+.buzlar{display:flex;gap:10px;margin:2px 0 8px}
+.buzlar .buz{
+  width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;
+  background:var(--dolgu);color:var(--ok);
+}
+.buzlar .buz.var{background:var(--buz-zemin);color:var(--buz)}
+.hedef-satiri{display:flex;align-items:center;gap:12px}
+.hedef-degerler{flex:1;display:flex;gap:22px}
+.hedef-degerler span{font-size:13px;color:var(--sonuk)}
+.hedef-degerler b{display:block;font-size:19px;font-weight:750;color:var(--yazi);letter-spacing:-.01em}
+
+/* ---- Takvimler ---- */
+.takvim-cizim{max-width:none}
+.ay-siniri{fill:none;stroke:var(--sonuk);stroke-width:1;opacity:.6;pointer-events:none;stroke-linecap:square}
+.hucre.hedefte{stroke:var(--dogru);stroke-width:1.6}
+.hucre.bugun.hedefte{stroke-width:2.6}
+.hucre.donmus{fill:var(--buz-zemin);stroke:var(--buz);stroke-width:.8}
+.buz-isaret{fill:none;stroke:var(--buz);stroke-width:1.3;stroke-linecap:round;pointer-events:none}
+.hucre.sabit-isaret{stroke:var(--yazi);stroke-width:2}
+.takvim-alt{margin-top:8px}
+.takvim-detay{
+  display:grid;gap:2px;margin:10px 0 0;padding:10px 12px;border-radius:12px;background:var(--yuzey2);
+  font-size:13px;line-height:1.45;color:var(--sonuk);animation:uyari-perde .18s ease;
+}
+.takvim-detay strong{color:var(--yazi);font-size:14px;font-weight:650}
+.takvim-detay[hidden]{display:none}
+.takvim-lejant .hedefte{outline:1.5px solid var(--dogru);outline-offset:-1.5px}
+.takvim-aciklama{margin:6px 0 0;font-size:12px;line-height:1.5;color:var(--sonuk);text-align:right}
+.ornek-hedefte{display:inline-block;width:10px;height:10px;border-radius:3px;border:1.5px solid var(--dogru);margin-right:5px;vertical-align:-1px}
+.ornek-buz{color:var(--buz)}
+.cekmece .cip{padding:7px 12px;font-size:13.5px}
+.cekmece .dilim.sabit-isaret{stroke:var(--yazi);stroke-width:2}
+
+@media (max-width:374px){
+  .grup-baslik{font-size:25px}
+  .ust{gap:6px}
+}
+/* Çok dar ekranda başlık iki satıra iner */
 @media (max-width:330px){
-  .ust h1{font-size:15px}
+  .ust h1{font-size:14.5px;white-space:normal;line-height:1.2}
+  .mod-dugme,.hesap-dugme,.goz-dugme{width:34px;height:34px}
 }
 </style>
 </head>
 <body>
 <header class="ust">
   <h1>Bilgisayar Programcılığı</h1>
-  <button class="hesap-dugme" id="hesapDugme" aria-label="Hesap ve eşitleme"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.4" r="3.9"/><path d="M4.6 20.2a7.4 7.4 0 0 1 14.8 0"/></svg><span class="nokta"></span></button>
+  <button class="goz-dugme" id="gozDugme" aria-label="Göz koruyucu"><svg viewBox="0 0 24 24"><path d="M2.6 12S6 5.6 12 5.6 21.4 12 21.4 12 18 18.4 12 18.4 2.6 12 2.6 12Z"/><circle cx="12" cy="12" r="2.9"/></svg><span class="kademe-rozet"></span></button>
   <button class="mod-dugme" id="modDugme" aria-label="Temayı değiştir"></button>
+  <button class="hesap-dugme" id="hesapDugme" aria-label="Menü: hedef, istatistik, takvim ve hesap"><svg viewBox="0 0 24 24"><path d="M4.5 7h15M4.5 12h15M4.5 17h15"/></svg><span class="nokta"></span></button>
 </header>
+<div class="goz-filtre" aria-hidden="true"></div>
+<div class="kenar-tutamak" id="kenarTutamak" aria-hidden="true"></div>
 <main>
   <section class="sayfa acik" id="sayfaOku"></section>
   <section class="sayfa" id="sayfaAra"></section>
@@ -1741,6 +1978,28 @@ function moduUygula(mod) {
 let aktifMod = depo.oku("pg.mod", null);
 if (!TEMALAR[aktifMod]) aktifMod = "gunduz";
 moduUygula(aktifMod);
+/* ---------- Göz koruyucu: 3 kademe sıcak renk süzgeci, 4. dokunuş kapatır ----------
+   Bütün ekranın üstünde tıklamayı geçiren turuncu bir katman (çarpma
+   karışımıyla mavi ışığı azaltır). Bu cihazda hatırlanır. */
+function gozFiltresiUygula(k) {
+  const kok = document.documentElement;
+  if (k === 1 || k === 2 || k === 3) kok.setAttribute("data-goz", String(k)); else kok.removeAttribute("data-goz");
+  const d = document.getElementById("gozDugme");
+  d.classList.toggle("etkin", !!k);
+  d.querySelector(".kademe-rozet").textContent = k ? String(k) : "";
+  d.setAttribute("aria-label", k ? "Göz koruyucu " + k + ". kademede. Değiştirmek için dokunun" : "Göz koruyucu kapalı. Açmak için dokunun");
+  d.title = k ? "Göz koruyucu: " + k + ". kademe" : "Göz koruyucu kapalı";
+}
+let gozKademesi = depo.oku("pg.gozFiltre", 0);
+if ([0, 1, 2, 3].indexOf(gozKademesi) === -1) gozKademesi = 0;
+gozFiltresiUygula(gozKademesi);
+document.getElementById("gozDugme").addEventListener("click", () => {
+  gozKademesi = (gozKademesi + 1) % 4;
+  depo.yaz("pg.gozFiltre", gozKademesi);
+  gozFiltresiUygula(gozKademesi);
+  kisaBildirim(gozKademesi ? "Göz koruyucu: " + gozKademesi + ". kademe" : "Göz koruyucu kapalı");
+});
+
 document.getElementById("modDugme").addEventListener("click", () => {
   aktifMod = TEMA_SIRASI[(TEMA_SIRASI.indexOf(aktifMod) + 1) % TEMA_SIRASI.length];
   depo.yaz("pg.mod", aktifMod);
@@ -2204,7 +2463,7 @@ function birikimeEkle(alan, konuId, miktar, zaman) {
 /* Şu an ne çalışılıyor? { alan: "o"|"t"|"k", konu } ya da null */
 function simdikiCalisma() {
   if (!uygulamaAcik || !KULLANICI || document.visibilityState !== "visible") return null;
-  if (document.querySelector(".giris-perde, .not-perde, .hesap-sayfa")) return null;
+  if (document.querySelector(".giris-perde, .not-perde, .hesap-sayfa, .hedef-perde")) return null;
   if (aktifSekme === "oku" && okuAcik && okuAcik.tur === "konu" && KONULAR.has(okuAcik.konu)) return { alan: "o", konu: okuAcik.konu };
   if (aktifSekme === "calis" && oturum && oturum.i < oturum.sorular.length && document.querySelector("#sayfaCalis .soru")) {
     const soru = oturum.sorular[oturum.i];
@@ -2597,6 +2856,7 @@ function esitle() {
     }
     hesapIsaretiniTazele();
     if (degisti) esitlemeSonrasiTazele();
+    if (!esitlemeHatasi && !hedefDenetlendi) hedefDenetiminiZamanla();
     /* Tur biterken gelen istek kaçmasın */
     if (esitlemeTekrar) { esitlemeTekrar = false; esitle(); }
   }).catch(e => console.warn("eşitleme sonrası ekran tazelenemedi", e));
@@ -2629,8 +2889,13 @@ function esitlemeSonrasiTazele() {
   else kisaBildirim("Notlar ve ilerlemeniz güncellendi");
 }
 
+let denetimGunu = gunAnahtari(Date.now());
 document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible" && uygulamaAcik) esitle();
+  if (document.visibilityState !== "visible" || !uygulamaAcik) return;
+  /* Uygulama arka planda açıkken gün döndüyse hedef ve seri yeniden denetlenir */
+  const bugun = gunAnahtari(Date.now());
+  if (bugun !== denetimGunu) { denetimGunu = bugun; hedefDenetlendi = false; }
+  esitle();
 });
 window.addEventListener("online", () => { if (uygulamaAcik) esitle(); hesapIsaretiniTazele(); });
 window.addEventListener("offline", hesapIsaretiniTazele);
@@ -2648,7 +2913,7 @@ async function yerelVeriyiSil() {
   /* Yazılmamış çalışma süresi bu hesabındı; bir sonraki hesaba geçmesin */
   calismaBirikimi.clear(); YAZICI = null; yaziciKilidiniBirakSimdi();
   ["pg.kapsam", "pg.kartDers", "pg.kartKonular", "pg.kartBilemedik", "pg.muhimSuzgec", "pg.kartMuhim",
-   "pg.sonEposta", "pg.bekleyenKod", "pg.devralma", "pg.yarimCalis", "pg.yarimKart"].forEach(a => depo.sil(a));
+   "pg.sonEposta", "pg.bekleyenKod", "pg.devralma", "pg.yarimCalis", "pg.yarimKart", "pg.dondurmaSoruldu"].forEach(a => depo.sil(a));
   yarimBellek.calis = null; yarimBellek.kart = null;
   try { await vt.temizle(); } catch (e) { console.warn("yerel veri silinemedi", e); }
 }
@@ -2688,8 +2953,10 @@ async function yeriBirakVeyaSor() {
       if (!r.error) return true;
     } catch (e) {}
   }
-  const devam = window.confirm("Sunucuya ulaşılamadı. Yine de çıkarsanız bu cihaz hesabınızda yer tutmaya devam eder; " +
-    "başka bir cihazdan girerken e-postanıza devralma kodu gönderilir. Çıkılsın mı?");
+  const devam = await soruSor({ baslik: "Sunucuya ulaşılamadı",
+    metin: "Yine de çıkarsanız bu cihaz hesabınızda yer tutmaya devam eder; " +
+      "başka bir cihazdan girerken e-postanıza devralma kodu gönderilir. Çıkılsın mı?",
+    evet: "Yine de çık", tehlike: true });
   if (!devam) cikisBekliyor = false;
   return devam;
 }
@@ -2769,9 +3036,9 @@ function girisEkraniAc(ustMesaj) {
   function ciz(hata, bilgi) {
     kutu.innerHTML = "";
     const baslik = olustur("h2", "giris-baslik");
-    baslik.textContent = "Bilgisayar Programcılığı";
+    baslik.textContent = "Kostü - Ders";
     const alt = olustur("p", "giris-alt");
-    alt.textContent = "Bilgisayar Programcılığı ders notları ve temrinleri. Yalnızca okulun öğrencileri ve hocaları içindir; girmek için okul e-posta adresinize gelen kodu kullanırsınız.";
+    alt.textContent = "Ders notları, temrinler ve 42 Tarzı kartlar. Yalnızca okulun öğrencileri ve hocaları içindir; girmek için okul e-posta adresinize gelen kodu kullanırsınız.";
     kutu.append(baslik, alt);
     if (!ayarTamam) {
       const h = olustur("p", "giris-hata");
@@ -2796,7 +3063,7 @@ function girisEkraniAc(ustMesaj) {
       devam.addEventListener("click", () => { safaridenDevam = true; ciz(); });
       kutu.append(b, liste, devam);
       const n = olustur("p", "giris-not");
-      n.textContent = "Şifre, öğrenci numarası ya da OBS bilgisi istenmez. Hesap aynı anda bir cihazda açık olabilir. Okuduğunuz konular, boyadığınız yerler ve temrin ilerlemeniz hesabınızda saklanır; cihaz değiştirdiğinizde yeni cihaza gelir.";
+      n.textContent = "Şifre ya da OBS bilgisi istenmez; yalnızca okul e-posta adresiniz (öğrenci numaranız@kocaelisaglik.edu.tr) gerekir. Hesap aynı anda bir cihazda açık olabilir. Okuduğunuz konular, boyadığınız yerler ve temrin ilerlemeniz hesabınızda saklanır; cihaz değiştirdiğinizde yeni cihaza gelir.";
       kutu.appendChild(n);
       return;
     }
@@ -2812,7 +3079,7 @@ function girisEkraniAc(ustMesaj) {
       girdi.inputMode = "email";
       girdi.autocapitalize = "off";
       girdi.spellcheck = false;
-      girdi.placeholder = "ad.soyad@" + AYAR.OKUL_ALANI;
+      girdi.placeholder = "ogrenci_no@" + AYAR.OKUL_ALANI;
       girdi.value = eposta;
       const eylem = olustur("div", "eylem");
       const gonder = olustur("button", "ana");
@@ -2920,7 +3187,7 @@ function girisEkraniAc(ustMesaj) {
       kutu.appendChild(not);
     }
     const not = olustur("p", "giris-not");
-    not.textContent = "Şifre, öğrenci numarası ya da OBS bilgisi istenmez. Hesap aynı anda bir cihazda açık olabilir. Okuduğunuz konular, boyadığınız yerler ve temrin ilerlemeniz hesabınızda saklanır; cihaz değiştirdiğinizde yeni cihaza gelir.";
+    not.textContent = "Şifre ya da OBS bilgisi istenmez; yalnızca okul e-posta adresiniz (öğrenci numaranız@kocaelisaglik.edu.tr) gerekir. Hesap aynı anda bir cihazda açık olabilir. Okuduğunuz konular, boyadığınız yerler ve temrin ilerlemeniz hesabınızda saklanır; cihaz değiştirdiğinizde yeni cihaza gelir.";
     kutu.appendChild(not);
   }
 
@@ -3412,7 +3679,14 @@ let hesapSayfasi = null;
 let hesapSonrasi = null;
 
 function hesapSayfasiniKapat() {
-  if (hesapSayfasi) { hesapSayfasi.remove(); hesapSayfasi = null; }
+  if (hesapSayfasi) {
+    const s = hesapSayfasi;
+    hesapSayfasi = null;
+    s.classList.remove("acik");
+    s.classList.add("kapaniyor");
+    const sure = hareketAz() ? 0 : 280;
+    if (sure) setTimeout(() => s.remove(), sure); else s.remove();
+  }
   document.documentElement.classList.remove("hesap-acik");
   const is = hesapSonrasi;
   hesapSonrasi = null;
@@ -3454,27 +3728,50 @@ function gunEkle(gun, n) {
 }
 
 /* ---------- Toplama ----------
-   Bütün cihazların "calisma" kayıtları toplanır. Sonuç:
+   Bütün cihazların "calisma" kayıtları önce gün gün ve konu konu toplanır.
+   Bir konuda bir günde toplam 3 dakikadan az kalındıysa o günkü süresi
+   (okuma, temrin, 42 Tarzı) hiç sayılmaz; doğru/yanlış ve bildim/bilemedim
+   sayıları kalır. Sonuç:
    gunler: gün → {o,t,k} saniye; konular: konu → {o,t,k,d,y,b,n};
    dersler: ders → aynı alanlar + konular listesi */
+const ASGARI_KONU_SURESI = 180;
+const SURE_ALANLARI = ["o", "t", "k"];
 function istatistikTopla(ilkGun) {
-  const gunler = new Map(), konular = new Map();
-  const ekle = (hedef, alan, deger) => { hedef[alan] = (hedef[alan] || 0) + deger; };
+  const gunKonu = new Map();
   kayitlarTuru(CALISMA_TURU).forEach(r => {
     const gun = String(r.anahtar).split("|")[0];
     if (!/^\d{4}-\d{2}-\d{2}$/.test(gun) || !r.deger || typeof r.deger !== "object") return;
-    const gunToplam = gunler.get(gun) || { o: 0, t: 0, k: 0 };
+    if (!gunKonu.has(gun)) gunKonu.set(gun, new Map());
+    const gk = gunKonu.get(gun);
     CALISMA_ALANLARI.forEach(alan => {
       const m = r.deger[alan];
       if (!m || typeof m !== "object") return;
       Object.keys(m).forEach(konuId => {
         const v = Number(m[konuId]);
         if (!(v > 0)) return;
-        if (alan === "o" || alan === "t" || alan === "k") gunToplam[alan] += v;
-        if (ilkGun && gun < ilkGun) return;
-        if (!konular.has(konuId)) konular.set(konuId, {});
-        ekle(konular.get(konuId), alan, v);
+        if (!gk.has(konuId)) gk.set(konuId, {});
+        const x = gk.get(konuId);
+        x[alan] = (x[alan] || 0) + v;
       });
+    });
+  });
+  const gunler = new Map(), konular = new Map();
+  gunKonu.forEach((gk, gun) => {
+    const gunToplam = { o: 0, t: 0, k: 0 };
+    gk.forEach((x, konuId) => {
+      const sure = SURE_ALANLARI.reduce((a, alan) => a + (x[alan] || 0), 0);
+      const t = {};
+      CALISMA_ALANLARI.forEach(alan => {
+        if (!x[alan]) return;
+        if (SURE_ALANLARI.indexOf(alan) !== -1 && sure < ASGARI_KONU_SURESI) return;
+        t[alan] = x[alan];
+      });
+      SURE_ALANLARI.forEach(alan => { if (t[alan]) gunToplam[alan] += t[alan]; });
+      if (ilkGun && gun < ilkGun) return;
+      if (!Object.keys(t).length) return;
+      if (!konular.has(konuId)) konular.set(konuId, {});
+      const k = konular.get(konuId);
+      Object.keys(t).forEach(alan => { k[alan] = (k[alan] || 0) + t[alan]; });
     });
     gunler.set(gun, gunToplam);
   });
@@ -3485,25 +3782,156 @@ function istatistikTopla(ilkGun) {
     const konu = KONULAR.get(konuId) || { id: konuId, ders: DIGER_DERS, sira: 0, baslik: "Kaldırılmış ya da erişilemeyen konu" };
     if (!dersler.has(konu.ders)) dersler.set(konu.ders, { konular: [] });
     const d = dersler.get(konu.ders);
-    CALISMA_ALANLARI.forEach(a => { if (t[a]) ekle(d, a, t[a]); });
+    CALISMA_ALANLARI.forEach(a => { if (t[a]) d[a] = (d[a] || 0) + t[a]; });
     d.konular.push({ konu, t });
   });
   return { gunler, konular, dersler };
 }
+function gunSuresi(gunler, gun) {
+  const x = gunler.get(gun);
+  return x ? x.o + x.t + x.k : 0;
+}
 
-/* Bugünden geriye kesintisiz çalışılan gün sayısı; bugün henüz
-   çalışılmadıysa seri dünden sayılır (gün bitmeden bozulmuş sayılmaz) */
-function seriHesapla(gunler) {
-  const calisildi = g => { const x = gunler.get(g); return !!x && (x.o + x.t + x.k) >= 60; };
-  let gun = gunAnahtari(Date.now());
-  if (!calisildi(gun)) gun = gunEkle(gun, -1);
+/* ==========================================================================
+   Hedef, seri ve dondurma
+   - Hedef "ayar/hedef" kaydında tarihli bir geçmiştir: { gecmis: [{ g, gun, hafta }] }
+     g: o günden itibaren geçerli; gun ve hafta saniye. Bir günün hedefi,
+     tarihi o güne kadar olan son kayıttır; ilk kayıttan önceki günlere ilk
+     hedef uygulanır (oncesi: true, "hedef henüz konmamıştı").
+   - Haftalık hedef günlüğün 7 katından az olamaz.
+   - Dondurma "ayar/dondurma" kaydında: { gunler: ["GG", ...] }. Her takvim
+     ayında en çok 3 gün dondurulur. Dondurulan gün seriyi bozmaz ama seriyi
+     uzatmaz; o haftanın hedefinden o günün günlük hedefi düşülür.
+   - Seri: günlük hedefine ulaşılan ardışık günler (dondurulanlar köprü olur).
+     Bugün henüz tamamlanmadıysa seri dünden sayılır.
+   ========================================================================== */
+const AYLIK_DONDURMA = 3;
+function gunMu(g) { return typeof g === "string" && /^\d{4}-\d{2}-\d{2}$/.test(g); }
+function hedefGecmisi() {
+  const k = kayit("ayar", "hedef");
+  const l = k && Array.isArray(k.gecmis) ? k.gecmis : [];
+  return l.filter(x => x && gunMu(x.g) && Number(x.gun) > 0 && Number(x.hafta) > 0)
+    .map(x => ({ g: x.g, gun: Math.round(Number(x.gun)), hafta: Math.max(Math.round(Number(x.hafta)), Math.round(Number(x.gun)) * 7) }))
+    .sort((a, b) => (a.g < b.g ? -1 : a.g > b.g ? 1 : 0));
+}
+function hedefVarMi() { return hedefGecmisi().length > 0; }
+/* { gun, hafta, oncesi } ya da hedef hiç yoksa null */
+function gunHedefi(gun, gecmis) {
+  const l = gecmis || hedefGecmisi();
+  if (!l.length) return null;
+  let h = l[0];
+  l.forEach(x => { if (x.g <= gun) h = x; });
+  return { gun: h.gun, hafta: h.hafta, oncesi: gun < l[0].g };
+}
+function hedefKaydet(gunSn, haftaSn) {
+  const bugun = gunAnahtari(Date.now());
+  const l = hedefGecmisi().filter(x => x.g !== bugun);
+  l.push({ g: bugun, gun: gunSn, hafta: Math.max(haftaSn, gunSn * 7) });
+  kayitYaz("ayar", "hedef", { gecmis: l.slice(-400) });
+}
+function dondurulanGunler() {
+  const k = kayit("ayar", "dondurma");
+  return new Set(k && Array.isArray(k.gunler) ? k.gunler.filter(gunMu) : []);
+}
+function aydaDondurulan(ay, kume) {
   let n = 0;
-  while (calisildi(gun)) { n++; gun = gunEkle(gun, -1); }
-  /* En uzun seri */
-  const sirali = Array.from(gunler.keys()).filter(calisildi).sort();
-  let enUzun = 0, simdiki = 0, onceki = null;
-  sirali.forEach(g => { simdiki = onceki && gunEkle(onceki, 1) === g ? simdiki + 1 : 1; enUzun = Math.max(enUzun, simdiki); onceki = g; });
+  (kume || dondurulanGunler()).forEach(g => { if (g.slice(0, 7) === ay) n++; });
+  return n;
+}
+function kalanDondurma(ay, kume) { return Math.max(0, AYLIK_DONDURMA - aydaDondurulan(ay, kume)); }
+function gunleriDondur(liste) {
+  const k = dondurulanGunler();
+  liste.forEach(g => k.add(g));
+  kayitYaz("ayar", "dondurma", { gunler: Array.from(k).sort().slice(-400) });
+}
+/* Haftanın pazartesisi */
+function haftaBasi(gun) {
+  const d = gunTarihi(gun);
+  return gunEkle(gun, -((d.getDay() + 6) % 7));
+}
+/* Bir günün durumu: süre, hedef, ulaşıldı mı, dondurulmuş mu */
+function gunDurumu(gunler, gun, gecmis, dondurulan) {
+  const sn = gunSuresi(gunler, gun);
+  const h = gunHedefi(gun, gecmis);
+  /* Hedef konmadan önceki gün nötrdür: rengi ilk hedefe göre verilir ama
+     "hedefe ulaşıldı" sayılmaz (seri, kopukluk, yeşil kenar hep aynı kurala uyar) */
+  return { sn, hedef: h, oncesi: !!h && h.oncesi, tamam: !!h && !h.oncesi && sn >= h.gun, donmus: dondurulan.has(gun) };
+}
+/* Bir haftanın durumu (pazartesiden pazara; bu haftaysa bugüne kadar).
+   Hedef, haftanın son gününde (bu haftaysa bugün) geçerli olan haftalık
+   hedeftir; dondurulan her gün için o günün günlük hedefi düşülür. */
+function haftaDurumu(gunler, pazartesi, gecmis, dondurulan) {
+  const bugun = gunAnahtari(Date.now());
+  const pazar = gunEkle(pazartesi, 6);
+  const h = gunHedefi(pazar <= bugun ? pazar : bugun, gecmis);
+  let sn = 0, donmus = 0;
+  for (let i = 0; i < 7; i++) {
+    const g = gunEkle(pazartesi, i);
+    if (g > bugun) break;
+    const gs = gunSuresi(gunler, g);
+    sn += gs;
+    /* Dondurulmuş ama sonradan (ör. geç eşitlenen başka cihazla) hedefine ulaşmış gün düşülmez */
+    if (dondurulan.has(g) && !(h && gs >= h.gun)) donmus++;
+  }
+  /* hedeflenen haftalık süre − dondurulan gün × günlük hedef (ikisi aynı hedef kaydından) */
+  const ham = h ? h.hafta : 0;
+  const dusulen = h ? donmus * h.gun : 0;
+  const hedef = h ? Math.max(0, ham - dusulen) : 0;
+  const oncesi = !!(h && h.oncesi);
+  return { sn, ham, hedef, donmus, dusulen, oncesi, varMi: !!h, tamam: !!h && !oncesi && hedef > 0 && sn >= hedef, bitti: pazar < bugun };
+}
+/* Seri ve en uzun seri */
+function seriHesapla(gunler) {
+  const gecmis = hedefGecmisi();
+  const dondurulan = dondurulanGunler();
+  const bugun = gunAnahtari(Date.now());
+  /* Hedef yoksa: 1 dakika ve üstü çalışılan ardışık günler */
+  const tamam = gecmis.length
+    ? g => gunDurumu(gunler, g, gecmis, dondurulan).tamam
+    : g => gunSuresi(gunler, g) >= 60;
+  const kopru = g => !!gecmis.length && dondurulan.has(g) && !tamam(g);
+  let gun = bugun;
+  if (!tamam(gun)) gun = gunEkle(gun, -1);
+  let n = 0;
+  for (let i = 0; i < 4000 && (tamam(gun) || kopru(gun)); i++) { if (tamam(gun)) n++; gun = gunEkle(gun, -1); }
+  /* En uzun seri: verisi olan ilk günden bugüne */
+  const tumGunler = Array.from(gunler.keys()).concat(Array.from(dondurulan)).filter(gunMu)
+    .filter(g => !gecmis.length || g >= gecmis[0].g).sort();
+  let enUzun = n, simdiki = 0;
+  if (tumGunler.length) {
+    for (let g = tumGunler[0], i = 0; g <= bugun && i < 4000; g = gunEkle(g, 1), i++) {
+      if (tamam(g)) { simdiki++; enUzun = Math.max(enUzun, simdiki); }
+      else if (!kopru(g) && g !== bugun) simdiki = 0;
+    }
+  }
   return { n, enUzun };
+}
+/* Seri, dünden geriye hedefine ulaşılmamış ve dondurulmamış günlerle mi
+   koptu? Kopmadan önce en az bir tamamlanmış gün olmalı. Döner:
+   { eksik: [GG...] (eskiden yeniye), onceki: kopmadan önceki seri } ya da null */
+function seriKopuklugu(gunler) {
+  const gecmis = hedefGecmisi();
+  if (!gecmis.length) return null;
+  const dondurulan = dondurulanGunler();
+  const ilk = gecmis[0].g;
+  const bugun = gunAnahtari(Date.now());
+  const durum = g => gunDurumu(gunler, g, gecmis, dondurulan);
+  const eksik = [];
+  let g = gunEkle(bugun, -1);
+  while (g >= ilk && !durum(g).tamam && !durum(g).donmus) {
+    eksik.unshift(g);
+    g = gunEkle(g, -1);
+    if (eksik.length > 40) return null;
+  }
+  if (!eksik.length || g < ilk) return null;
+  let onceki = 0;
+  for (let i = 0; i < 4000 && g >= ilk; i++) {
+    const d = durum(g);
+    if (d.tamam) onceki++;
+    else if (!d.donmus) break;
+    g = gunEkle(g, -1);
+  }
+  return onceki ? { eksik, onceki } : null;
 }
 
 const DIGER_DERS = "__diger";
@@ -3559,6 +3987,9 @@ function halkaDilimi(cx, cy, r1, r2, a1, a2) {
 
 /* Tek ipucu kutusu: imlecin ya da dokunulan işaretin yanında. Metinler
    textContent ile yazılır. */
+/* Son dokunuşun türü: ipucu kutusu parmakla dokununca parmaktan uzakta durur */
+let sonIsaretciTuru = "mouse";
+document.addEventListener("pointerdown", e => { sonIsaretciTuru = e.pointerType || "mouse"; }, true);
 function ipucuGoster(kap, x, y, satirlar) {
   let ip = kap.querySelector(".viz-ipucu");
   if (!ip) { ip = olustur("div", "viz-ipucu"); ip.setAttribute("role", "status"); kap.appendChild(ip); }
@@ -3571,15 +4002,72 @@ function ipucuGoster(kap, x, y, satirlar) {
   ip.hidden = false;
   const kr = kap.getBoundingClientRect();
   const w = ip.offsetWidth, h = ip.offsetHeight;
-  let sol = x - kr.left - w / 2, ust = y - kr.top - h - 12;
+  /* Parmakla dokununca kutu parmağın altında kalmasın: daha yukarıda durur.
+     Yer yoksa çizimin üstüne taşabilir (üst çubuğun altında kalmak şartıyla);
+     o da olmazsa parmağın aşağısına geçer. */
+  const parmak = sonIsaretciTuru === "touch" || sonIsaretciTuru === "pen";
+  const aralik = parmak ? 64 : 12;
+  /* Kutu üst çubuğun altına kadar çıkabilir */
+  const enUst = parmak ? Math.min(4, 68 - kr.top) : 4;
+  let sol = x - kr.left - w / 2, ust = y - kr.top - h - aralik;
   sol = Math.max(4, Math.min(sol, kr.width - w - 4));
-  if (ust < 4) ust = y - kr.top + 16;
+  if (ust < enUst) {
+    if (parmak) {
+      /* Parmağın yanına: parmak hangi yarıdaysa öbür yana; alt kenarı parmağın biraz üstünde */
+      const yanUst = Math.max(enUst, y - kr.top - h - 6);
+      const solaSigar = x - kr.left - 34 - w >= -kr.left + 4;
+      const sagaSigar = x - kr.left + 34 + w <= innerWidth - kr.left - 4;
+      if (x - kr.left > kr.width / 2 && solaSigar) { sol = x - kr.left - 34 - w; ust = yanUst; }
+      else if (sagaSigar) { sol = x - kr.left + 34; ust = yanUst; }
+      else ust = y - kr.top + 80;
+    } else ust = y - kr.top + 16;
+  }
   ip.style.left = sol + "px";
   ip.style.top = ust + "px";
 }
 function ipucuGizle(kap) {
   const ip = kap.querySelector(".viz-ipucu");
   if (ip) ip.hidden = true;
+}
+/* İşarete ipucu bağlar. Fareyle üstüne gelince gösterir, çıkınca gizler;
+   tıklayınca ya da parmakla dokununca ipucu sabitlenir ve parmak
+   çekilince de kalır. Başka bir yere dokununca kapanır (ipuclariniKapat).
+   satirlar: her gösterişte çağrılır; ac/kapa: işaretin kendi görünümü için */
+function ipucuBagla(el, kap, satirlar, ac, kapa, detay) {
+  const goster = olay => { ipucuGoster(kap, olay.clientX, olay.clientY, satirlar()); if (ac) ac(); };
+  el.addEventListener("pointermove", olay => {
+    if (olay.pointerType === "mouse" && !kap.dataset.ipucuSabit) goster(olay);
+  });
+  el.addEventListener("pointerdown", olay => {
+    if (olay.pointerType !== "mouse" && !detay) goster(olay);
+  });
+  el.addEventListener("pointerleave", olay => {
+    if (olay.pointerType === "mouse" && !kap.dataset.ipucuSabit) { ipucuGizle(kap); if (kapa) kapa(); }
+  });
+  el.addEventListener("click", olay => {
+    const kok = kap.closest(".hesap-govde") || kap;
+    kok.querySelectorAll(".sabit-isaret").forEach(e => { if (e !== el) e.classList.remove("sabit-isaret"); });
+    kok.querySelectorAll("[data-ipucu-sabit]").forEach(e => { if (e !== kap) { delete e.dataset.ipucuSabit; ipucuGizle(e); } });
+    kok.querySelectorAll(".takvim-detay").forEach(e => { if (e !== detay) e.hidden = true; });
+    el.classList.add("sabit-isaret");
+    if (detay) {
+      /* Küçük hücreli çizimlerde bilgi çizimin altındaki satırda kalır: parmak örtmez */
+      ipucuGizle(kap);
+      detay.innerHTML = "";
+      satirlar().forEach((s, i) => { const e = olustur(i === 0 ? "strong" : "span"); e.textContent = s; detay.appendChild(e); });
+      detay.hidden = false;
+      return;
+    }
+    kap.dataset.ipucuSabit = "1";
+    goster(olay);
+  });
+}
+/* Kap içindeki bütün ipuçlarını kapatır, sabitlemeyi kaldırır */
+function ipuclariniKapat(kok) {
+  kok.querySelectorAll(".viz-ipucu, .takvim-detay").forEach(i => { i.hidden = true; });
+  kok.querySelectorAll("[data-ipucu-sabit]").forEach(e => { delete e.dataset.ipucuSabit; });
+  kok.querySelectorAll(".sabit-isaret").forEach(e => e.classList.remove("sabit-isaret"));
+  kok.querySelectorAll(".dilim.uzerinde").forEach(e => e.classList.remove("uzerinde"));
 }
 
 /* ---------- Halka çizelgesi + liste (Ubuntu'nun Disk Kullanımı gibi) ----------
@@ -3666,13 +4154,9 @@ function halkaBolumu(ist, suzgec) {
     else ortaYaz(sureYazisi(toplam), "toplam");
   }
   dilimler.forEach(d => {
-    const goster = olay => {
-      ipucuGoster(cizim, olay.clientX, olay.clientY, [sureYazisi(d.sn) + " · %" + yuzde(d.sn, toplam), d.ust ? d.ust + " › " + d.ad : d.ad]);
-      d.el.classList.add("uzerinde");
-    };
-    d.el.addEventListener("pointermove", goster);
-    d.el.addEventListener("pointerdown", goster);
-    d.el.addEventListener("pointerleave", () => { d.el.classList.remove("uzerinde"); ipucuGizle(cizim); });
+    ipucuBagla(d.el, cizim, () => [sureYazisi(d.sn) + " · %" + yuzde(d.sn, toplam), d.ust ? d.ust + " › " + d.ad : d.ad],
+      () => { svg.querySelectorAll(".dilim.uzerinde").forEach(e => { if (e !== d.el) e.classList.remove("uzerinde"); }); d.el.classList.add("uzerinde"); },
+      () => d.el.classList.remove("uzerinde"));
     d.el.addEventListener("click", () => vurgula(secili === d.ders ? null : d.ders));
   });
 
@@ -3769,14 +4253,14 @@ function gunlukBolumu(ist) {
     }
     /* İşaretten büyük, görünmez dokunma alanı */
     const alan = svgOlustur("rect", { x: i * adim, y: 0, width: adim, height: Y, class: "isabet" });
-    const goster = olay => ipucuGoster(cizim, olay.clientX, olay.clientY, [
-      sureYazisi(d.sn),
-      tarih.toLocaleDateString("tr-TR", { day: "numeric", month: "long", weekday: "long" }),
-      "Okuma " + sureYazisi(d.x.o) + " · Temrin " + sureYazisi(d.x.t) + " · 42 Tarzı " + sureYazisi(d.x.k)
-    ]);
-    alan.addEventListener("pointermove", goster);
-    alan.addEventListener("pointerdown", goster);
-    alan.addEventListener("pointerleave", () => ipucuGizle(cizim));
+    ipucuBagla(alan, cizim, () => {
+      const gh = gunHedefi(d.g);
+      return [
+        sureYazisi(d.sn) + (gh && !gh.oncesi ? (d.sn >= gh.gun ? " · hedefe ulaşıldı ✓" : " · hedef " + saatDakika(gh.gun)) : ""),
+        tarih.toLocaleDateString("tr-TR", { day: "numeric", month: "long", weekday: "long" }),
+        "Okuma " + sureYazisi(d.x.o) + " · Temrin " + sureYazisi(d.x.t) + " · 42 Tarzı " + sureYazisi(d.x.k)
+      ];
+    });
     svg.appendChild(alan);
   });
   cizim.appendChild(svg);
@@ -3784,66 +4268,205 @@ function gunlukBolumu(ist) {
   return kart;
 }
 
-/* ---------- Takvim: son 18 hafta, gün başına süre (tek renk tonları) ---------- */
-function takvimBolumu(ist) {
-  const kart = olustur("section", "ist-kart");
-  const h = olustur("h3", "ist-baslik");
-  h.textContent = "Çalışma takvimi";
-  kart.appendChild(h);
-  const HAFTA = 18;
+/* ---------- Takvim: son haftalar (ekrana göre 12–26), gün başına süre ----------
+   Kademe günün hedefine göre: 1 yarısından az, 2 yarısı ile tamamı arası,
+   3 hedefin 1–1,5 katı, 4 1,5–2 katı, 5 iki katı ve üstü. Hedefe ulaşılan
+   gün yeşil kenarlı, dondurulan gün buz işaretli. Ay sınırları ince çizgi.
+   Fareyle üstüne gelince ya da dokununca bilgi çıkar; tıklanan/dokunulan
+   günün bilgisi parmak çekilince de kalır. */
+/* Kaç hafta: hücre en az ~17 px olsun diye çekmecenin genişliğine göre
+   (telefonda 12–15, bilgisayarda 22'ye kadar). Günlük ve haftalık aynı. */
+let TAKVIM_HAFTA = 18;
+function takvimHaftasiniAyarla() {
+  const en = Math.min(window.innerWidth - 36, 480) - 64;
+  TAKVIM_HAFTA = Math.max(12, Math.min(22, Math.floor((en - 24) / 17.5)));
+}
+function hedefKademesi(sn, hedef) {
+  if (!(sn > 0)) return 0;
+  if (!(hedef > 0)) return 1;
+  const o = sn / hedef;
+  return o < 0.5 ? 1 : o < 1 ? 2 : o < 1.5 ? 3 : o < 2 ? 4 : 5;
+}
+function takvimIlkGunu() {
   const bugun = gunAnahtari(Date.now());
-  /* Haftalar pazartesiden başlar; son sütun bu hafta */
-  const bt = gunTarihi(bugun);
-  const haftaGunu = (bt.getDay() + 6) % 7;
-  const ilk = gunEkle(bugun, -haftaGunu - (HAFTA - 1) * 7);
-  const esik = [1, 15 * 60, 30 * 60, 60 * 60, 120 * 60];   /* 1 sn, 15 dk, 30 dk, 1 sa, 2 sa */
-  const kademe = sn => { let k = 0; esik.forEach((e, i) => { if (sn >= e) k = i + 1; }); return k; };
+  return gunEkle(haftaBasi(bugun), -(TAKVIM_HAFTA - 1) * 7);
+}
+function gunTarihYazisi(g) {
+  return gunTarihi(g).toLocaleDateString("tr-TR", { day: "numeric", month: "long", weekday: "long" });
+}
+/* Buz işareti: altı kollu küçük kar tanesi */
+function buzIsareti(cx, cy, r) {
+  let d = "";
+  for (let i = 0; i < 3; i++) {
+    const a = i * Math.PI / 3;
+    d += "M" + (cx - r * Math.cos(a)).toFixed(2) + " " + (cy - r * Math.sin(a)).toFixed(2) + "L" + (cx + r * Math.cos(a)).toFixed(2) + " " + (cy + r * Math.sin(a)).toFixed(2);
+  }
+  return svgOlustur("path", { d, class: "buz-isaret" });
+}
+/* Ay adları: ayın 1'ini içeren sütunun üstünde; ilk sütundaki yarım ay,
+   sonraki ada üç sütundan uzaksa yazılır. Ay sınırı çizgisi: komşu iki
+   hücre farklı aydaysa aralarına (dikey ya da yatay) ince çizgi. */
+function ayEtiketleriniCiz(svg, ilk, sutunX, sonX, haftalik) {
+  const bugun = gunAnahtari(Date.now());
+  const etiketler = [];
+  for (let w = 0; w < TAKVIM_HAFTA; w++) {
+    if (haftalik) {
+      /* Haftalık: haftanın perşembesi hangi aydaysa (ay sınırı çizgisiyle aynı kural) */
+      const g = gunEkle(ilk, w * 7 + 3), once = gunEkle(ilk, (w - 1) * 7 + 3);
+      if (w > 0 && g.slice(0, 7) !== once.slice(0, 7) && gunEkle(ilk, w * 7) <= bugun) etiketler.push({ w, g });
+      continue;
+    }
+    for (let d = 0; d < 7; d++) {
+      const g = gunEkle(ilk, w * 7 + d);
+      if (g > bugun) break;
+      if (g.slice(8) === "01") etiketler.push({ w, g });
+    }
+  }
+  if (!etiketler.length || etiketler[0].w >= 3) etiketler.unshift({ w: 0, g: haftalik ? gunEkle(ilk, 3) : ilk });
+  etiketler.forEach((e, i) => {
+    if (i === 0 && etiketler[1] && etiketler[1].w - e.w < 3) return;
+    const x = sutunX(e.w);
+    const sona = x + 22 > sonX;
+    const t = svgOlustur("text", { x: sona ? sonX : x, y: 11, class: "eksen-yazi", "text-anchor": sona ? "end" : "start" });
+    t.textContent = gunTarihi(e.g).toLocaleDateString("tr-TR", { month: "short" });
+    svg.appendChild(t);
+  });
+}
+function takvimBolumu(ist) {
+  takvimHaftasiniAyarla();
+  const kart = olustur("section", "ist-kart takvim-kart");
+  const h = olustur("h3", "ist-baslik");
+  h.textContent = "Günlük";
+  kart.appendChild(h);
+  const gecmis = hedefGecmisi();
+  const dondurulan = dondurulanGunler();
+  const bugun = gunAnahtari(Date.now());
+  const ilk = takvimIlkGunu();
   const cizim = olustur("div", "takvim-cizim");
-  const H = 13, A = 3;
-  const G = HAFTA * (H + A) + 22, Y = 7 * (H + A) + 18;
+  const detay = olustur("div", "takvim-detay");
+  detay.hidden = true;
+  detay.setAttribute("role", "status");
+  const H = 13, A = 3, SOL = 24, UST = 18;
+  const G = SOL + TAKVIM_HAFTA * (H + A) - A, Y = UST + 7 * (H + A);
   const svg = svgOlustur("svg", { viewBox: "0 0 " + G + " " + Y, class: "takvim-svg", role: "img",
-    "aria-label": "Son " + HAFTA + " haftanın günlük çalışma takvimi" });
-  ["Pzt", "", "Çar", "", "Cum", "", ""].forEach((ad, i) => {
+    "aria-label": "Son " + TAKVIM_HAFTA + " haftanın günlük çalışma takvimi" });
+  ["Pzt", "", "Çar", "", "Cum", "", "Paz"].forEach((ad, i) => {
     if (!ad) return;
-    const t = svgOlustur("text", { x: 0, y: 18 + i * (H + A) + H - 3, class: "eksen-yazi" });
+    const t = svgOlustur("text", { x: 0, y: UST + i * (H + A) + H - 3, class: "eksen-yazi" });
     t.textContent = ad;
     svg.appendChild(t);
   });
-  /* Ay adları: ayın ilk tam haftasının üstünde; birbirine üç sütundan
-     yakın iki addan öncekisi düşer (sığmaz, üst üste biner) */
-  const ayEtiketleri = [];
-  let oncekiAy = -1;
-  for (let w = 0; w < HAFTA; w++) {
-    const g = gunEkle(ilk, w * 7);
-    const ay = gunTarihi(g).getMonth();
-    if (ay !== oncekiAy) { ayEtiketleri.push({ w, ad: gunTarihi(g).toLocaleDateString("tr-TR", { month: "short" }) }); oncekiAy = ay; }
+  const sutunX = w => SOL + w * (H + A);
+  ayEtiketleriniCiz(svg, ilk, sutunX, G);
+  /* Ay sınırları */
+  const ayi = (w, d) => gunEkle(ilk, w * 7 + d).slice(0, 7);
+  const var_ = (w, d) => w < TAKVIM_HAFTA && d < 7 && gunEkle(ilk, w * 7 + d) <= bugun;
+  let sinir = "";
+  for (let w = 0; w < TAKVIM_HAFTA; w++) {
+    for (let d = 0; d < 7; d++) {
+      if (!var_(w, d)) continue;
+      const x = sutunX(w), y = UST + d * (H + A);
+      if (var_(w + 1, d) && ayi(w + 1, d) !== ayi(w, d)) sinir += "M" + (x + H + A / 2) + " " + (y - A / 2) + "V" + (y + H + A / 2);
+      if (var_(w, d + 1) && ayi(w, d + 1) !== ayi(w, d)) sinir += "M" + (x - A / 2) + " " + (y + H + A / 2) + "H" + (x + H + A / 2);
+    }
   }
-  ayEtiketleri.filter((e, i) => !ayEtiketleri[i + 1] || ayEtiketleri[i + 1].w - e.w >= 3).forEach(e => {
-    const t = svgOlustur("text", { x: 22 + e.w * (H + A), y: 11, class: "eksen-yazi" });
-    t.textContent = e.ad;
-    svg.appendChild(t);
-  });
-  for (let w = 0; w < HAFTA; w++) {
+  if (sinir) svg.appendChild(svgOlustur("path", { d: sinir, class: "ay-siniri" }));
+  for (let w = 0; w < TAKVIM_HAFTA; w++) {
     for (let d = 0; d < 7; d++) {
       const g = gunEkle(ilk, w * 7 + d);
       if (g > bugun) continue;
       const x = ist.gunler.get(g) || { o: 0, t: 0, k: 0 };
-      const sn = x.o + x.t + x.k;
-      const cx = 22 + w * (H + A), cy = 18 + d * (H + A);
-      const hucre = svgOlustur("rect", { x: cx, y: cy, width: H, height: H, rx: 3, class: "hucre k" + kademe(sn) + (g === bugun ? " bugun" : "") });
-      const goster = olay => ipucuGoster(cizim, olay.clientX, olay.clientY, [sureYazisi(sn), gunTarihi(g).toLocaleDateString("tr-TR", { day: "numeric", month: "long", weekday: "long" })]);
-      hucre.addEventListener("pointermove", goster);
-      hucre.addEventListener("pointerdown", goster);
-      hucre.addEventListener("pointerleave", () => ipucuGizle(cizim));
+      const du = gunDurumu(ist.gunler, g, gecmis, dondurulan);
+      const hedefSn = du.hedef ? du.hedef.gun : 0;
+      const kd = hedefKademesi(du.sn, hedefSn);
+      const cx = sutunX(w), cy = UST + d * (H + A);
+      const sinif = "hucre k" + kd + (g === bugun ? " bugun" : "") + (du.tamam && !du.hedef.oncesi ? " hedefte" : "") + (du.donmus ? " donmus" : "");
+      const hucre = svgOlustur("rect", { x: cx, y: cy, width: H, height: H, rx: 3, class: sinif });
+      hucre.dataset.gun = g;
       svg.appendChild(hucre);
+      if (du.donmus) svg.appendChild(buzIsareti(cx + H / 2, cy + H / 2, 4.2));
+      ipucuBagla(hucre, cizim, () => {
+        const satirlar = [sureYazisi(du.sn) + (du.tamam && !du.hedef.oncesi ? " · hedefe ulaşıldı ✓" : (hedefSn && du.sn ? " · hedefin %" + yuzde(du.sn, hedefSn) + "'i" : "")), gunTarihYazisi(g)];
+        if (!du.hedef) satirlar.push("Hedef konmamış");
+        else if (du.hedef.oncesi) satirlar.push("Hedef henüz konmamıştı (renk ilk hedefe göre)");
+        else satirlar.push("Günlük hedef: " + saatDakika(hedefSn));
+        if (du.donmus) satirlar.push("❄ Dondurulmuş gün");
+        if (du.sn) satirlar.push("Okuma " + sureYazisi(x.o) + " · Temrin " + sureYazisi(x.t) + " · 42 Tarzı " + sureYazisi(x.k));
+        return satirlar;
+      }, null, null, detay);
     }
   }
   cizim.appendChild(svg);
   kart.appendChild(cizim);
+  kart.appendChild(detay);
+  kart.appendChild(takvimLejanti("gün"));
+  return kart;
+}
+function takvimLejanti(birim) {
+  const kutu = olustur("div", "takvim-alt");
   const lejant = olustur("div", "takvim-lejant");
-  lejant.innerHTML = '<span>Az</span><i class="k0"></i><i class="k1"></i><i class="k2"></i><i class="k3"></i><i class="k4"></i><i class="k5"></i><span>Çok</span>';
-  lejant.title = "Hiç · 15 dk'dan az · 15–30 dk · 30–60 dk · 1–2 sa · 2 sa ve üstü";
-  kart.appendChild(lejant);
+  lejant.innerHTML = '<span>Az</span><i class="k0"></i><i class="k1"></i><i class="k2"></i><i class="k3 hedefte"></i><i class="k4 hedefte"></i><i class="k5 hedefte"></i><span>Çok</span>';
+  lejant.title = "Hiç · hedefin yarısından az · yarısı–tamamı · hedef–1,5 katı · 1,5–2 katı · 2 katı ve üstü";
+  const aciklama = olustur("p", "takvim-aciklama");
+  aciklama.innerHTML = '<span class="ornek-hedefte"></span>Yeşil kenar: o ' + birim + ' hedefe ulaşıldı · <span class="ornek-buz">❄</span> dondurulmuş gün (buz renginde)';
+  kutu.append(lejant, aciklama);
+  return kutu;
+}
+
+/* ---------- Haftalık takvim: aynı haftalar, hafta başına süre ----------
+   Hedef, dondurulan günler düşülmüş haftalık hedeftir. */
+function haftaTakvimiBolumu(ist) {
+  takvimHaftasiniAyarla();
+  const kart = olustur("section", "ist-kart takvim-kart hafta-kart");
+  const h = olustur("h3", "ist-baslik");
+  h.textContent = "Haftalık";
+  kart.appendChild(h);
+  const gecmis = hedefGecmisi();
+  const dondurulan = dondurulanGunler();
+  const ilk = takvimIlkGunu();
+  const cizim = olustur("div", "takvim-cizim");
+  const detay = olustur("div", "takvim-detay");
+  detay.hidden = true;
+  detay.setAttribute("role", "status");
+  const H = 13, A = 3, SOL = 24, UST = 18, YUK = 34;
+  const G = SOL + TAKVIM_HAFTA * (H + A) - A, Y = UST + YUK + 2;
+  const svg = svgOlustur("svg", { viewBox: "0 0 " + G + " " + Y, class: "takvim-svg", role: "img",
+    "aria-label": "Son " + TAKVIM_HAFTA + " haftanın haftalık çalışma takvimi" });
+  const sutunX = w => SOL + w * (H + A);
+  ayEtiketleriniCiz(svg, ilk, sutunX, G, true);
+  /* Ay sınırı: haftanın çoğu (perşembesi) hangi aydaysa hafta o aydandır */
+  const ayi = w => gunEkle(ilk, w * 7 + 3).slice(0, 7);
+  let sinir = "";
+  for (let w = 0; w < TAKVIM_HAFTA - 1; w++) {
+    if (ayi(w + 1) !== ayi(w) && gunEkle(ilk, (w + 1) * 7) <= gunAnahtari(Date.now())) sinir += "M" + (sutunX(w) + H + A / 2) + " " + (UST - A / 2) + "V" + (UST + YUK + A / 2);
+  }
+  if (sinir) svg.appendChild(svgOlustur("path", { d: sinir, class: "ay-siniri" }));
+  for (let w = 0; w < TAKVIM_HAFTA; w++) {
+    const pzt = gunEkle(ilk, w * 7);
+    const hd = haftaDurumu(ist.gunler, pzt, gecmis, dondurulan);
+    const kd = hedefKademesi(hd.sn, hd.hedef);
+    const buHafta = w === TAKVIM_HAFTA - 1;
+    const sinif = "hucre k" + kd + (buHafta ? " bugun" : "") + (hd.tamam && hd.varMi && !hd.oncesi && hd.hedef > 0 ? " hedefte" : "");
+    const hucre = svgOlustur("rect", { x: sutunX(w), y: UST, width: H, height: YUK, rx: 3, class: sinif });
+    hucre.dataset.hafta = pzt;
+    svg.appendChild(hucre);
+    if (hd.donmus) svg.appendChild(buzIsareti(sutunX(w) + H / 2, UST + 7, 3.6));
+    ipucuBagla(hucre, cizim, () => {
+      const pazar = gunEkle(pzt, 6);
+      const aralik = gunTarihi(pzt).toLocaleDateString("tr-TR", { day: "numeric", month: "short" }) + " – " +
+        gunTarihi(pazar).toLocaleDateString("tr-TR", { day: "numeric", month: "short" }) + (buHafta ? " (bu hafta)" : "");
+      const satirlar = [sureYazisi(hd.sn) + (hd.tamam && hd.varMi && !hd.oncesi && hd.hedef > 0 ? " · hedefe ulaşıldı ✓" : (hd.hedef && hd.sn ? " · hedefin %" + yuzde(hd.sn, hd.hedef) + "'i" : "")), aralik];
+      if (!hd.varMi) satirlar.push("Hedef konmamış");
+      else if (hd.oncesi) satirlar.push("Hedef henüz konmamıştı (renk ilk hedefe göre)");
+      else satirlar.push("Haftalık hedef: " + saatDakika(hd.hedef) + (hd.donmus ? " (" + saatDakika(hd.ham) + " − " + hd.donmus + " dondurulan gün)" : ""));
+      if (hd.donmus) satirlar.push("❄ " + hd.donmus + " gün donduruldu");
+      return satirlar;
+    }, null, null, detay);
+  }
+  cizim.appendChild(svg);
+  kart.appendChild(cizim);
+  kart.appendChild(detay);
+  kart.appendChild(takvimLejanti("hafta"));
   return kart;
 }
 
@@ -3887,26 +4510,419 @@ function basariBolumu(ist) {
   return kart;
 }
 
-function hesapSayfasiAc() {
+/* ==========================================================================
+   Hedef formu, açılıştaki hedef sorusu, dondurma sorusu
+   ========================================================================== */
+/* "1 sa 30 dk" gibi; saniye yazılmaz */
+function saatDakika(sn) {
+  const dk = Math.round((sn || 0) / 60);
+  const sa = Math.floor(dk / 60), kalan = dk % 60;
+  if (!sa) return kalan + " dk";
+  return sa + " sa" + (kalan ? " " + kalan + " dk" : "");
+}
+/* Saat ve dakika seçicisi (dakika 5'er). deger saniye; degisince(sn) */
+function sureSecici(etiketMetni, enCokSaat, deger, degisince) {
+  const satir = olustur("div", "sure-secici");
+  const etiket = olustur("span", "etiket");
+  etiket.textContent = etiketMetni;
+  const sa = olustur("select"), dk = olustur("select");
+  sa.setAttribute("aria-label", etiketMetni + ": saat");
+  dk.setAttribute("aria-label", etiketMetni + ": dakika");
+  for (let i = 0; i <= enCokSaat; i++) { const o = olustur("option"); o.value = String(i); o.textContent = String(i); sa.appendChild(o); }
+  for (let i = 0; i < 60; i += 5) { const o = olustur("option"); o.value = String(i); o.textContent = iki(i); dk.appendChild(o); }
+  const kutu = (s, birim) => { const k = olustur("label", "secici-kutu"); const b = olustur("span", "birim"); b.textContent = birim; k.append(s, b); return k; };
+  satir.append(etiket, kutu(sa, "sa"), kutu(dk, "dk"));
+  const yaz = sn => {
+    const toplamDk = Math.round(sn / 60 / 5) * 5;
+    sa.value = String(Math.min(enCokSaat, Math.floor(toplamDk / 60)));
+    dk.value = String(toplamDk % 60);
+  };
+  const oku = () => Number(sa.value) * 3600 + Number(dk.value) * 60;
+  yaz(deger);
+  [sa, dk].forEach(s => s.addEventListener("change", () => degisince(oku())));
+  return { el: satir, yaz, oku };
+}
+
+/* Günlük ve haftalık hedef formu. Günlük değişince haftalık günlüğün 7 katı
+   olur; haftalık artırılabilir, azaltılamaz (azaltılırsa uyarı çıkar). */
+function hedefFormu(baslangic, kaydedince, vazgecince) {
+  const form = olustur("form", "hedef-form");
+  let gunSn = baslangic ? baslangic.gun : 3600;
+  let haftaSn = baslangic ? baslangic.hafta : gunSn * 7;
+  const gunlukS = sureSecici("Günlük", 16, gunSn, sn => {
+    gunSn = sn;
+    haftaSn = gunSn * 7;
+    haftalikS.yaz(haftaSn);
+    ozetYaz();
+  });
+  /* Günlük en çok 16 sa 55 dk; 7 katı 118 sa 25 dk sığsın diye haftalık 120 saate kadar */
+  const haftalikS = sureSecici("Haftalık", 120, haftaSn, async sn => {
+    if (sn < gunSn * 7) {
+      haftalikS.yaz(gunSn * 7);
+      haftaSn = gunSn * 7;
+      ozetYaz();
+      await uyariGoster({ baslik: "Haftalık hedef azaltılamaz",
+        metin: "Haftalık hedef, günlük hedefin 7 katından (" + saatDakika(gunSn * 7) + ") az olamaz. Dilerseniz artırabilirsiniz." });
+      return;
+    }
+    haftaSn = sn;
+    ozetYaz();
+  });
+  const ozet = olustur("p", "hedef-ozet");
+  const ozetYaz = () => {
+    ozet.textContent = "Günde " + saatDakika(gunSn) + ", haftada " + saatDakika(haftaSn) + " çalışmayı hedefliyorsunuz. " +
+      "Okuma, temrin ve 42 Tarzı'nın toplamı sayılır.";
+  };
+  ozetYaz();
+  const eylem = olustur("div", "eylem");
+  if (vazgecince) {
+    const v = olustur("button"); v.type = "button"; v.textContent = "Vazgeç";
+    v.addEventListener("click", vazgecince);
+    eylem.appendChild(v);
+  }
+  const kaydet = olustur("button", "ana"); kaydet.type = "submit"; kaydet.textContent = "Kaydet";
+  eylem.appendChild(kaydet);
+  form.append(gunlukS.el, haftalikS.el, ozet, eylem);
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (gunSn < 5 * 60) {
+      await uyariGoster({ baslik: "Günlük hedef çok kısa", metin: "Günlük hedef en az 5 dakika olmalı." });
+      return;
+    }
+    hedefKaydet(gunSn, Math.max(haftaSn, gunSn * 7));
+    kaydedince();
+  });
+  return form;
+}
+
+/* Açılışta hedef ve seri denetimi: eşitleme bittikten sonra çalışır (başka
+   cihazda konmuş hedef önce gelsin). Hedef yoksa sorulur; varsa seri kopmuş
+   mu diye bakılır. Başka bir pencere açıksa sonra yeniden denenir. */
+let hedefDenetlendi = false, hedefDenetimZamani = null;
+function hedefDenetiminiZamanla(gecikme) {
+  if (hedefDenetimZamani) clearTimeout(hedefDenetimZamani);
+  hedefDenetimZamani = setTimeout(() => { hedefDenetimZamani = null; hedefVeSeriDenetle(); }, gecikme == null ? 400 : gecikme);
+}
+async function hedefVeSeriDenetle() {
+  if (!uygulamaAcik || !KULLANICI || hedefDenetlendi || !sonEsitleme) return;
+  if (guncellemeNotuAcik || document.querySelector(".not-perde, .uyari-perde, .hedef-perde, .giris-perde, .kilit-perde")) {
+    hedefDenetiminiZamanla(1500);
+    return;
+  }
+  hedefDenetlendi = true;
+  if (!hedefVarMi()) { hedefSorusunuAc(); return; }
+  await dondurmaSor();
+}
+
+function hedefSorusunuAc() {
+  const perde = olustur("div", "hedef-perde");
+  const kutu = olustur("div", "hedef-kutu");
+  kutu.setAttribute("role", "dialog");
+  kutu.setAttribute("aria-modal", "true");
+  kutu.setAttribute("aria-labelledby", "hedefBaslik");
+  const h = olustur("h3"); h.id = "hedefBaslik"; h.textContent = "Çalışma hedefiniz";
+  const a = olustur("p", "hedef-alt");
+  a.textContent = "Günde ve haftada ne kadar ders çalışmak istiyorsunuz? Günlük hedefe ulaştığınız her gün serinize eklenir. Hedefi sonra menüdeki Hedef ekranından değiştirebilirsiniz.";
+  kutu.append(h, a, hedefFormu(null, () => {
+    perde.remove();
+    kisaBildirim("Hedefiniz kaydedildi");
+    if (hesapSayfasi && hesapSayfasi._ciz) hesapSayfasi._ciz();
+  }, null));
+  perde.appendChild(kutu);
+  document.body.appendChild(perde);
+}
+
+/* Seri koptuysa dondurma önerilir. Aynı kopukluk (ilk eksik gün) için bir
+   kez sorulur. Hak yetmiyorsa yalnızca bilgi verilir. */
+/* Kopukluğun dondurulabilirliği: her ayın kalan hakkı o aydaki eksik günlere yetiyor mu */
+function kopuklukHakki(kop) {
+  const kume = dondurulanGunler();
+  const aylar = new Map();
+  kop.eksik.forEach(g => aylar.set(g.slice(0, 7), (aylar.get(g.slice(0, 7)) || 0) + 1));
+  const satirlar = Array.from(aylar).map(([ay, n]) => {
+    const ad = gunTarihi(ay + "-01").toLocaleDateString("tr-TR", { month: "long" });
+    return { ay, n, kalan: kalanDondurma(ay, kume), ad: ad.charAt(0).toLocaleUpperCase("tr-TR") + ad.slice(1) };
+  });
+  return { yeter: satirlar.every(x => x.kalan >= x.n), yazi: satirlar.map(x => x.ad + " ayında " + x.kalan + " hakkınız kaldı").join(", ") };
+}
+/* elle: Hedef ekranındaki düğmeden; daha önce "Seri bozulsun" denmiş olsa da sorar.
+   "Soruldu" işareti yalnızca bir seçim yapılınca yazılır: pencere Esc ile
+   kapanırsa ya da uygulama kapanırsa bir sonraki açılışta yeniden sorulur. */
+async function dondurmaSor(elle) {
+  const kop = seriKopuklugu(istatistikTopla(null).gunler);
+  if (!kop) return false;
+  const anahtar = kop.eksik[0];
+  if (!elle && depo.oku("pg.dondurmaSoruldu", null) === anahtar) return false;
+  const hak = kopuklukHakki(kop);
+  const gunYazi = kop.eksik.length === 1
+    ? gunTarihi(kop.eksik[0]).toLocaleDateString("tr-TR", { day: "numeric", month: "long", weekday: "long" })
+    : kop.eksik.length + " gün";
+  if (!hak.yeter) {
+    await uyariGoster({ baslik: "Seriniz bozuldu",
+      metin: gunYazi + " günlük hedefinize ulaşamadınız ve " + kop.onceki + " günlük seriniz bozuldu. Dondurma hakkınız bunu kurtarmaya yetmiyor (her ay " + AYLIK_DONDURMA + " gün; " + hak.yazi + ")." });
+    depo.yaz("pg.dondurmaSoruldu", anahtar);
+    return false;
+  }
+  const cevap = await pencereAc({ baslik: "Seriniz bozuldu",
+    metin: gunYazi + " günlük hedefinize ulaşamadınız. " + (kop.eksik.length === 1 ? "Bu gün" : "Bu günler") +
+      " dondurulsun mu? " + kop.onceki + " günlük seriniz korunur. Her ay " + AYLIK_DONDURMA + " gün dondurabilirsiniz; " + hak.yazi + ".",
+    evet: "Dondur", hayir: "Seri bozulsun", perdeKapatmaz: true, ucluCevap: true });
+  if (cevap === null) return false;
+  depo.yaz("pg.dondurmaSoruldu", anahtar);
+  const evet = cevap === true;
+  if (!evet) return false;
+  gunleriDondur(kop.eksik);
+  kisaBildirim(kop.eksik.length === 1 ? "Gün donduruldu; seriniz korundu" : kop.eksik.length + " gün donduruldu; seriniz korundu");
+  if (hesapSayfasi && hesapSayfasi._ciz) hesapSayfasi._ciz();
+  return true;
+}
+
+/* ==========================================================================
+   Geri sayan saat: kalan süre saat, dakika, saniye kartlarında. Açılınca
+   hedefin tamamından kalan süreye kartlar dönerek iner.
+   ========================================================================== */
+function saatKarti(birim) {
+  const kart = olustur("div", "saat-kart");
+  kart.innerHTML = '<div class="yaprak sabit-ust"><span></span></div><div class="yaprak sabit-alt"><span></span></div>' +
+    '<div class="yaprak kanat-ust"><span></span></div><div class="yaprak kanat-alt"><span></span></div>';
+  const [su, sa, ku, ka] = Array.from(kart.querySelectorAll("span"));
+  let deger = null;
+  const sar = olustur("div", "saat-hane");
+  const b = olustur("div", "saat-birim"); b.textContent = birim;
+  sar.append(kart, b);
+  return {
+    el: sar,
+    yaz(yeni, sure) {
+      if (yeni === deger) return;
+      const eski = deger == null ? yeni : deger;
+      deger = yeni;
+      kart.style.setProperty("--hane", String(yeni.length));
+      if (!sure) {
+        su.textContent = sa.textContent = ku.textContent = ka.textContent = yeni;
+        kart.classList.remove("donuyor");
+        return;
+      }
+      /* Üstte yeni değer, altta eskisi; üst kanat eskiyi götürür, alt kanat yeniyi getirir */
+      su.textContent = yeni; sa.textContent = eski; ku.textContent = eski; ka.textContent = yeni;
+      kart.style.setProperty("--sure", sure + "ms");
+      kart.classList.remove("donuyor");
+      void kart.offsetWidth;
+      kart.classList.add("donuyor");
+      clearTimeout(kart._bitis);
+      kart._bitis = setTimeout(() => { sa.textContent = yeni; kart.classList.remove("donuyor"); }, sure);
+    }
+  };
+}
+function geriSayimSaati(baslikMetni, kalanSn, toplamSn, altMetin, tamam) {
+  const kutu = olustur("section", "ist-kart saat-blok" + (tamam ? " tamam" : ""));
+  const h = olustur("h3", "ist-baslik"); h.textContent = baslikMetni;
+  const satir = olustur("div", "saat-satiri");
+  satir.setAttribute("role", "timer");
+  satir.setAttribute("aria-label", baslikMetni + ": " + (tamam ? "hedefe ulaşıldı" : saatDakika(kalanSn) + " kaldı"));
+  const saat = saatKarti("saat"), dakika = saatKarti("dakika"), saniye = saatKarti("saniye");
+  const ayrac = () => { const a = olustur("div", "saat-ayrac"); a.textContent = ":"; return a; };
+  satir.append(saat.el, ayrac(), dakika.el, ayrac(), saniye.el);
+  const alt = olustur("p", "saat-alt"); alt.textContent = altMetin;
+  kutu.append(h, satir, alt);
+  const parca = sn => { sn = Math.max(0, Math.round(sn)); return [iki(Math.floor(sn / 3600)), iki(Math.floor(sn / 60) % 60), iki(sn % 60)]; };
+  const yaz = (sn, sure) => { const [a, b, c] = parca(sn); saat.yaz(a, sure); dakika.yaz(b, sure); saniye.yaz(c, sure); };
+  /* İniş: hedefin tamamından kalana; başta hızlı, sonda yavaş (son adımlar görünsün) */
+  const bas = Math.max(kalanSn, toplamSn);
+  yaz(bas, 0);
+  if (bas > kalanSn) {
+    const ADIM = 22;
+    let i = 0;
+    const adim = () => {
+      if (!kutu.isConnected && i > 0) return;
+      i++;
+      const o = i / ADIM;
+      const egri = 1 - Math.pow(1 - o, 3);
+      const sn = i >= ADIM ? kalanSn : bas - (bas - kalanSn) * egri;
+      const sure = Math.round(70 + 260 * o * o);
+      yaz(sn, sure);
+      if (i < ADIM) setTimeout(adim, sure);
+    };
+    setTimeout(adim, 250);
+  }
+  return kutu;
+}
+
+/* ==========================================================================
+   Hedef ekranı (çekmece): günlük ve haftalık geri sayım, seri, bu hafta,
+   dondurma hakkı, hedefi değiştirme
+   ========================================================================== */
+function hedefEkrani(ic, tumu, yenidenCiz) {
+  const gunler = tumu.gunler;
+  const gecmis = hedefGecmisi();
+  const dondurulan = dondurulanGunler();
+  const bugun = gunAnahtari(Date.now());
+  if (!gecmis.length) {
+    const kart = olustur("section", "ist-kart");
+    const h = olustur("h3", "ist-baslik"); h.textContent = "Henüz hedef yok";
+    const p = olustur("p", "ist-bos"); p.textContent = "Günlük ve haftalık çalışma hedefinizi koyun; serinizi ve takviminizi buna göre tutalım.";
+    kart.append(h, p, hedefFormu(null, () => { kisaBildirim("Hedefiniz kaydedildi"); yenidenCiz(); }, null));
+    ic.appendChild(kart);
+    return;
+  }
+  const h = gunHedefi(bugun, gecmis);
+  const bg = gunDurumu(gunler, bugun, gecmis, dondurulan);
+  const pzt = haftaBasi(bugun);
+  const hf = haftaDurumu(gunler, pzt, gecmis, dondurulan);
+
+  const gunKalan = Math.max(0, h.gun - bg.sn);
+  ic.appendChild(geriSayimSaati("Günlük hedefe kalan", gunKalan, h.gun,
+    bg.tamam ? "Bugünün hedefine ulaştınız ✓ " + saatDakika(bg.sn) + " çalıştınız."
+             : "Bugün " + saatDakika(bg.sn) + " çalıştınız · hedef " + saatDakika(h.gun) + (bg.donmus ? " · bugün dondurulmuş" : ""),
+    bg.tamam));
+  const haftaKalan = Math.max(0, hf.hedef - hf.sn);
+  ic.appendChild(geriSayimSaati("Haftalık hedefe kalan", haftaKalan, hf.hedef,
+    (hf.tamam ? "Bu haftanın hedefine ulaştınız ✓ " : "") + "Bu hafta " + saatDakika(hf.sn) + " · hedef " + saatDakika(hf.hedef) +
+      (hf.donmus ? " (" + hf.donmus + " gün donduruldu; " + saatDakika(hf.ham) + " olan hedeften " + saatDakika(hf.dusulen) + " düşüldü)" : ""),
+    hf.tamam));
+
+  /* Seri ve bu haftanın günleri */
+  const seri = seriHesapla(gunler);
+  const sk = olustur("section", "ist-kart seri-kart");
+  const sb = olustur("div", "seri-bas");
+  const sayi = olustur("div", "seri-sayi"); sayi.textContent = String(seri.n);
+  const sy = olustur("div", "seri-yazi");
+  const s1 = olustur("strong"); s1.textContent = seri.n === 0 ? "Seri yok" : seri.n + " günlük seri";
+  const s2 = olustur("span");
+  s2.textContent = (bg.tamam ? "Bugün tamam. " : "Bugünün hedefine ulaşınca seri " + (seri.n + 1) + " olur. ") + "En uzun seri: " + seri.enUzun + " gün.";
+  sy.append(s1, s2);
+  sb.append(sayi, sy);
+  const hafta = olustur("div", "hafta-gunleri");
+  ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"].forEach((ad, i) => {
+    const g = gunEkle(pzt, i);
+    const d = gunDurumu(gunler, g, gecmis, dondurulan);
+    const k = olustur("div", "hafta-gunu");
+    let durum = "gelecek", isaret = "";
+    if (g <= bugun) {
+      if (d.oncesi && g !== bugun) { durum = "once"; isaret = "–"; }
+      else if (d.tamam) { durum = "tamam"; isaret = "✓"; }
+      else if (d.donmus) { durum = "donmus"; isaret = "❄"; }
+      else if (g === bugun) { durum = "bugun"; isaret = ""; }
+      else { durum = "eksik"; isaret = "✕"; }
+    }
+    k.classList.add(durum);
+    if (g === bugun) k.classList.add("bu-gun");
+    const yuvarlak = olustur("span", "yuvarlak"); yuvarlak.textContent = isaret;
+    const e = olustur("span", "ad"); e.textContent = ad;
+    k.append(yuvarlak, e);
+    k.title = gunTarihi(g).toLocaleDateString("tr-TR", { day: "numeric", month: "long" }) + ": " +
+      (durum === "tamam" ? "hedefe ulaşıldı" : durum === "donmus" ? "donduruldu" : durum === "eksik" ? "hedefe ulaşılmadı" :
+       durum === "once" ? "hedef henüz konmamıştı" : durum === "bugun" ? "bugün" : "");
+    hafta.appendChild(k);
+  });
+  sk.append(sb, hafta);
+  /* Seri koptuysa ve hak yetiyorsa elle de dondurulabilir (açılıştaki soru kaçırıldıysa) */
+  const kop = seriKopuklugu(gunler);
+  if (kop && kopuklukHakki(kop).yeter) {
+    const kurtar = olustur("button", "dene-dugme seri-kurtar");
+    kurtar.textContent = "❄ Kopan seriyi kurtar (" + (kop.eksik.length === 1 ? "1 gün" : kop.eksik.length + " gün") + " dondur)";
+    kurtar.addEventListener("click", async () => { if (await dondurmaSor(true)) yenidenCiz(); });
+    sk.appendChild(kurtar);
+  }
+  ic.appendChild(sk);
+
+  /* Dondurma hakkı */
+  const ay = bugun.slice(0, 7);
+  const kalan = kalanDondurma(ay, dondurulan);
+  const dk = olustur("section", "ist-kart dondurma-kart");
+  const dh = olustur("h3", "ist-baslik"); dh.textContent = "Dondurma hakkı";
+  const buzlar = olustur("div", "buzlar");
+  for (let i = 0; i < AYLIK_DONDURMA; i++) { const b = olustur("span", "buz" + (i < kalan ? " var" : "")); b.textContent = "❄"; buzlar.appendChild(b); }
+  const dp = olustur("p", "ist-alt");
+  const ayAdi = gunTarihi(bugun).toLocaleDateString("tr-TR", { month: "long" });
+  dp.textContent = ayAdi.charAt(0).toLocaleUpperCase("tr-TR") + ayAdi.slice(1) + " ayında " + AYLIK_DONDURMA + " hakkınızdan " + kalan + " tanesi kaldı. " +
+    "Hedefinize ulaşamadığınız için seriniz bozulursa uygulama açılınca o günü dondurmak isteyip istemediğiniz sorulur. Dondurulan gün seriyi bozmaz; o haftanın hedefinden o günün hedefi düşülür.";
+  dk.append(dh, buzlar, dp);
+  ic.appendChild(dk);
+
+  /* Hedef */
+  const hk = olustur("section", "ist-kart hedef-kart");
+  const hh = olustur("h3", "ist-baslik"); hh.textContent = "Hedefiniz";
+  hk.appendChild(hh);
+  const goster = () => {
+    while (hk.children.length > 1) hk.lastChild.remove();
+    const satir = olustur("div", "hedef-satiri");
+    const y = olustur("div", "hedef-degerler");
+    y.innerHTML = '<span><b></b> günlük</span><span><b></b> haftalık</span>';
+    y.querySelectorAll("b")[0].textContent = saatDakika(h.gun);
+    y.querySelectorAll("b")[1].textContent = saatDakika(h.hafta);
+    const d = olustur("button", "profil-duzenle"); d.textContent = "Değiştir";
+    d.addEventListener("click", () => {
+      while (hk.children.length > 1) hk.lastChild.remove();
+      hk.appendChild(hedefFormu(h, () => { kisaBildirim("Hedefiniz güncellendi"); yenidenCiz(); }, goster));
+    });
+    satir.append(y, d);
+    const not = olustur("p", "ist-alt");
+    not.textContent = "Değişiklik bugünden itibaren geçerli olur; geçmiş günler kendi zamanlarındaki hedefle değerlendirilir.";
+    hk.append(satir, not);
+  };
+  goster();
+  ic.appendChild(hk);
+}
+/* Çekmecenin ekranları; en son açılan ekran bu cihazda hatırlanır */
+const CEKMECE_EKRANLARI = [
+  ["hedef", "Hedef", "Hedef ve seri"],
+  ["istatistik", "İstatistik", "Çalışma istatistikleri"],
+  ["takvim", "Takvim", "Çalışma takvimi"],
+  ["hesap", "Hesap", "Hesap"]
+];
+function cekmeceEkraniOku() {
+  const e = depo.oku("pg.cekmeceEkrani", "hedef");
+  return CEKMECE_EKRANLARI.some(x => x[0] === e) ? e : "hedef";
+}
+
+/* Sağdan açılan çekmece: menü düğmesi ya da sağ kenardan sola çekmek açar.
+   secenek.surukle: kenardan çekilirken açılır; yeri parmağı izler, bırakınca
+   cekmeceBirak() karar verir. */
+function hesapSayfasiAc(secenek) {
   if (!uygulamaAcik || hesapSayfasi) return;
+  const surukle = !!(secenek && secenek.surukle);
   menuyuKapat();
   calismaTiki(); calismaYaz();
-  const sayfa = olustur("div", "hesap-sayfa");
-  sayfa.setAttribute("role", "dialog");
-  sayfa.setAttribute("aria-label", "Hesap ve istatistikler");
+  const sayfa = olustur("div", "hesap-sayfa" + (surukle ? " surukleniyor" : ""));
+  const perde = olustur("div", "cekmece-perde");
+  perde.addEventListener("click", () => geriDon());
+  const panel = olustur("div", "cekmece");
+  panel.setAttribute("role", "dialog");
+  panel.setAttribute("aria-modal", "true");
   const ust = olustur("div", "hesap-ust");
-  const geri = olustur("button", "geri hesap-kapat");
-  geri.textContent = "‹ Geri";
-  geri.addEventListener("click", () => geriDon());
   const baslik = olustur("h2");
-  baslik.textContent = "Hesap";
-  ust.append(geri, baslik);
+  const kapat = olustur("button", "hesap-kapat");
+  kapat.setAttribute("aria-label", "Kapat");
+  kapat.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>';
+  kapat.addEventListener("click", () => geriDon());
+  ust.append(baslik, kapat);
+  const sekmeler = olustur("div", "cekmece-sekmeler");
+  sekmeler.setAttribute("role", "tablist");
   const govde = olustur("div", "hesap-govde");
-  sayfa.append(ust, govde);
+  panel.append(ust, sekmeler, govde);
+  sayfa.append(perde, panel);
   document.body.appendChild(sayfa);
   document.documentElement.classList.add("hesap-acik");
   hesapSayfasi = sayfa;
   derinlesGit(hesapSayfasiniKapat);
+  if (!surukle) { void panel.offsetWidth; sayfa.classList.add("acik"); }
+  try { kapat.focus({ preventScroll: true }); } catch (h) {}
+
+  let ekran = cekmeceEkraniOku();
+  CEKMECE_EKRANLARI.forEach(([ad, etiket]) => {
+    const b = olustur("button", "cekmece-sekme");
+    b.dataset.ekran = ad;
+    b.setAttribute("role", "tab");
+    b.textContent = etiket;
+    b.addEventListener("click", () => {
+      if (ekran === ad) return;
+      ekran = ad; depo.yaz("pg.cekmeceEkrani", ad);
+      govde.scrollTop = 0;
+      ciz();
+    });
+    sekmeler.appendChild(b);
+  });
+  cekmeceSurukleKur(sayfa, panel, perde, govde);
 
   let donem = depo.oku("pg.istDonem", "7");
   if (["1", "7", "30", "hepsi"].indexOf(donem) === -1) donem = "7";
@@ -4071,12 +5087,18 @@ function hesapSayfasiAc() {
       const soru = kalan
         ? kalan + " değişiklik henüz hesabınıza gönderilemedi ve çıkarsanız kaybolacak. Yine de çıkılsın mı?"
         : "Bu cihazdaki notlar ve işaretler silinecek; hesabınızdakiler yerinde kalır. Çıkılsın mı?";
-      if (!window.confirm(soru)) return;
+      if (!(await soruSor({ baslik: "Çıkış yapılsın mı?", metin: soru, evet: "Çıkış yap", tehlike: true }))) return;
       cik.disabled = true;
       if (!(await yeriBirakVeyaSor())) { cik.disabled = false; return; }
       /* Beklerken sayfa kapatıldıysa ya da oturum başka yoldan kapandıysa
-         çıkış doğrudan yapılır; yarıda kalıp eşitlemeyi kilitlemesin */
-      if (sayfa.isConnected) { hesapSonrasi = () => cikisYap("Çıkış yapıldı."); geriDon(); }
+         çıkış doğrudan yapılır; yarıda kalıp eşitlemeyi kilitlemesin.
+         Geçmişte geri adımı yoksa ya da tarayıcı geri gitmezse sayfa
+         doğrudan kapatılır: çıkış tarayıcı geçmişine bağlı kalmaz. */
+      if (sayfa.isConnected) {
+        hesapSonrasi = () => cikisYap("Çıkış yapıldı.");
+        if (geriYigini.length) geriDon();
+        setTimeout(() => { if (hesapSonrasi) hesapSayfasiniKapat(); }, geriYigini.length ? 700 : 0);
+      }
       else if (KULLANICI) cikisYap("Çıkış yapıldı.");
       else cikisBekliyor = false;
     });
@@ -4115,41 +5137,135 @@ function hesapSayfasiAc() {
   function ciz() {
     const kaydirma = govde.scrollTop;
     govde.innerHTML = "";
+    const tanim = CEKMECE_EKRANLARI.find(x => x[0] === ekran);
+    baslik.textContent = tanim[2];
+    panel.setAttribute("aria-label", tanim[2]);
+    sekmeler.querySelectorAll(".cekmece-sekme").forEach(b => {
+      const s = b.dataset.ekran === ekran;
+      b.classList.toggle("secili", s);
+      b.setAttribute("aria-selected", s ? "true" : "false");
+    });
     const ic = olustur("div", "hesap-ic");
+    ic.dataset.ekran = ekran;
     govde.appendChild(ic);
-    ic.appendChild(kimlikBolumu());
-    const bas = olustur("div", "ist-bas");
-    const h = olustur("h2", "ist-ana-baslik");
-    h.textContent = "Çalışma istatistikleri";
-    bas.appendChild(h);
-    ic.appendChild(bas);
-    ic.appendChild(donemSecici());
-    const bugun = gunAnahtari(Date.now());
-    const ilkGun = donem === "hepsi" ? null : gunEkle(bugun, -(Number(donem) - 1));
     const tumu = istatistikTopla(null);
-    const ist = ilkGun ? istatistikTopla(ilkGun) : tumu;
-    ozetBolumu(ist, tumu).forEach(e => ic.appendChild(e));
-    const halka = halkaBolumu(ist, halkaSuzgeci);
-    halka.insertBefore(halkaSuzgeciSatiri(), halka.children[1] || null);
-    ic.appendChild(halka);
-    const ikili = olustur("div", "ist-ikili");
-    ikili.append(gunlukBolumu(tumu), takvimBolumu(tumu));
-    ic.appendChild(ikili);
-    ic.appendChild(basariBolumu(ist));
-    const not = olustur("p", "ist-not");
-    not.textContent = "Süre yalnızca bir konu, soru ya da kart ekrandayken ve uygulamayı kullanırken sayılır; birkaç dakika dokunulmazsa sayaç durur (sesli okuma sürerken saymaya devam eder). Her cihazın süresi hesabınızda birleşir.";
-    ic.appendChild(not);
-    ic.appendChild(hesapBilgiBolumu());
+    if (ekran === "hedef") {
+      hedefEkrani(ic, tumu, ciz);
+    } else if (ekran === "istatistik") {
+      ic.appendChild(donemSecici());
+      const bugun = gunAnahtari(Date.now());
+      const ilkGun = donem === "hepsi" ? null : gunEkle(bugun, -(Number(donem) - 1));
+      const ist = ilkGun ? istatistikTopla(ilkGun) : tumu;
+      ozetBolumu(ist, tumu).forEach(e => ic.appendChild(e));
+      const halka = halkaBolumu(ist, halkaSuzgeci);
+      halka.insertBefore(halkaSuzgeciSatiri(), halka.children[1] || null);
+      ic.appendChild(halka);
+      ic.appendChild(gunlukBolumu(tumu));
+      ic.appendChild(basariBolumu(ist));
+      const not = olustur("p", "ist-not");
+      not.textContent = "Süre yalnızca bir konu, soru ya da kart ekrandayken ve uygulamayı kullanırken sayılır; birkaç dakika dokunulmazsa sayaç durur (sesli okuma sürerken saymaya devam eder). Bir konuda bir günde 3 dakikadan az kalındıysa o süre sayılmaz. Her cihazın süresi hesabınızda birleşir.";
+      ic.appendChild(not);
+    } else if (ekran === "takvim") {
+      ic.appendChild(takvimBolumu(tumu));
+      ic.appendChild(haftaTakvimiBolumu(tumu));
+    } else {
+      ic.appendChild(kimlikBolumu());
+      ic.appendChild(hesapBilgiBolumu());
+    }
     govde.scrollTop = kaydirma;
   }
   /* Grafik dışına dokununca ipucu kapanır */
-  govde.addEventListener("pointerdown", olay => {
-    if (!olay.target.closest(".dilim, .isabet, .hucre, .viz-ipucu")) govde.querySelectorAll(".viz-ipucu").forEach(i => { i.hidden = true; });
+  panel.addEventListener("pointerdown", olay => {
+    if (!olay.target.closest(".dilim, .isabet, .hucre, .viz-ipucu, .takvim-detay")) ipuclariniKapat(govde);
   });
   ciz();
   sayfa._ciz = ciz;
 }
-document.getElementById("hesapDugme").addEventListener("click", hesapSayfasiAc);
+document.getElementById("hesapDugme").addEventListener("click", () => hesapSayfasiAc());
+/* Bilgisayarda Esc çekmeceyi kapatır (üstünde soru penceresi yoksa) */
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && hesapSayfasi && !document.querySelector(".uyari-perde")) { e.preventDefault(); geriDon(); }
+});
+
+/* Çekmeceyi sağa çekip kapatma: yatay hareket parmağı izler, bırakınca
+   üçte birden fazla çekildiyse ya da hızlı atıldıysa kapanır. Dikey hareket
+   sayfayı kaydırır; grafiklere ve çiplere dokunuş sürüklemeye dönmez. */
+function cekmeceSurukleKur(sayfa, panel, perde, govde) {
+  let bas = null, yatay = false;
+  panel.addEventListener("pointerdown", e => {
+    if (e.pointerType === "mouse" || e.target.closest("input, textarea, select, .cip-satiri, svg")) return;
+    bas = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId }; yatay = false;
+  });
+  panel.addEventListener("pointermove", e => {
+    if (!bas || e.pointerId !== bas.id) return;
+    const dx = e.clientX - bas.x, dy = e.clientY - bas.y;
+    if (!yatay) {
+      if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+      if (dx <= 0 || Math.abs(dy) * 1.2 > Math.abs(dx)) { bas = null; return; }
+      yatay = true;
+      try { panel.setPointerCapture(e.pointerId); } catch (h) {}
+      sayfa.classList.add("surukleniyor");
+    }
+    const w = panel.offsetWidth || 1;
+    const oran = Math.max(0, Math.min(1, dx / w));
+    panel.style.transform = "translateX(" + (oran * 100) + "%)";
+    perde.style.opacity = String(1 - oran);
+  });
+  const birak = e => {
+    if (!bas || e.pointerId !== bas.id) return;
+    const dx = e.clientX - bas.x, hiz = dx / Math.max(1, performance.now() - bas.t);
+    const ok = yatay;
+    bas = null; yatay = false;
+    if (!ok) return;
+    sayfa.classList.remove("surukleniyor");
+    void panel.offsetWidth;
+    panel.style.transform = ""; perde.style.opacity = "";
+    if (e.type === "pointerup" && (dx > panel.offsetWidth * 0.33 || hiz > 0.5)) geriDon();
+  };
+  panel.addEventListener("pointerup", birak);
+  panel.addEventListener("pointercancel", birak);
+}
+
+/* Sağ kenardan sola çekince çekmece açılır; dokunmak da açar */
+(function kenarTutamagiKur() {
+  const t = document.getElementById("kenarTutamak");
+  let bas = null, acildi = false;
+  const parcalar = () => hesapSayfasi ? { sayfa: hesapSayfasi, panel: hesapSayfasi.querySelector(".cekmece"), perde: hesapSayfasi.querySelector(".cekmece-perde") } : null;
+  t.addEventListener("pointerdown", e => {
+    if (!uygulamaAcik || hesapSayfasi || (e.pointerType === "mouse" && e.button !== 0)) return;
+    bas = { x: e.clientX, t: performance.now(), id: e.pointerId }; acildi = false;
+    try { t.setPointerCapture(e.pointerId); } catch (h) {}
+  });
+  t.addEventListener("pointermove", e => {
+    if (!bas || e.pointerId !== bas.id) return;
+    const dx = bas.x - e.clientX;
+    if (!acildi) {
+      if (dx < 8) return;
+      hesapSayfasiAc({ surukle: true });
+      acildi = !!hesapSayfasi;
+      if (!acildi) { bas = null; return; }
+    }
+    const p = parcalar(); if (!p) return;
+    const oran = Math.max(0, Math.min(1, dx / (p.panel.offsetWidth || 1)));
+    p.panel.style.transform = "translateX(" + ((1 - oran) * 100) + "%)";
+    p.perde.style.opacity = String(oran);
+  });
+  const birak = e => {
+    if (!bas || e.pointerId !== bas.id) return;
+    const dx = bas.x - e.clientX, hiz = dx / Math.max(1, performance.now() - bas.t);
+    bas = null;
+    if (!acildi) { if (e.type === "pointerup" && dx < 8) hesapSayfasiAc(); return; }
+    acildi = false;
+    const p = parcalar(); if (!p) return;
+    p.sayfa.classList.remove("surukleniyor");
+    void p.panel.offsetWidth;
+    const ac = e.type === "pointerup" && (dx > p.panel.offsetWidth * 0.3 || hiz > 0.4);
+    p.panel.style.transform = ""; p.perde.style.opacity = "";
+    if (ac) p.sayfa.classList.add("acik"); else geriDon();
+  };
+  t.addEventListener("pointerup", birak);
+  t.addEventListener("pointercancel", birak);
+})();
 
 /* ==========================================================================
    Uygulama içi geri: geçmiş yığını
@@ -4320,6 +5436,9 @@ function uygulamayiAc() {
 
 function uygulamayiKapat() {
   uygulamaAcik = false;
+  hedefDenetlendi = false;
+  if (hedefDenetimZamani) { clearTimeout(hedefDenetimZamani); hedefDenetimZamani = null; }
+  document.querySelectorAll(".hedef-perde").forEach(e => e.remove());
   /* Açık paneller ve alt ekranlar kapanır; geçmiş yığını boşaltılır */
   document.querySelectorAll(".panel-perde,.not-perde,.secim-cubugu,.kurulum,.kilit-perde,.oynatma,.hesap-sayfa").forEach(e => e.remove());
   document.documentElement.classList.remove("hesap-acik");
@@ -5607,6 +6726,77 @@ function menuyuKapat() {
   if (secimMenusu) { secimMenusu.remove(); secimMenusu = null; }
 }
 
+/* Uygulamanın kendi soru ve uyarı penceresi (tarayıcının confirm/alert
+   penceresi yerine). Tarayıcı "bu sayfanın başka pencere açmasını engelle"
+   seçeneği işaretlenince confirm sessizce "hayır" döner; bu pencere ondan
+   etkilenmez. Söz verir: evet → true, vazgeç/Esc/perde → false.
+   { baslik, metin, evet, hayir, tehlike }  hayir: null ise tek düğme (uyarı). */
+function pencereAc(s) {
+  return new Promise(coz => {
+    const onceki = document.activeElement;
+    const perde = olustur("div", "uyari-perde");
+    const kutu = olustur("div", "uyari-kutu");
+    kutu.setAttribute("role", "alertdialog");
+    kutu.setAttribute("aria-modal", "true");
+    const kimlik = "uyari" + Date.now();
+    if (s.baslik) {
+      const b = olustur("h3", "uyari-baslik");
+      b.id = kimlik + "b"; b.textContent = s.baslik; kutu.appendChild(b);
+      kutu.setAttribute("aria-labelledby", b.id);
+    }
+    if (s.metin) {
+      const m = olustur("p", "uyari-metin");
+      m.id = kimlik + "m"; m.textContent = s.metin; kutu.appendChild(m);
+      kutu.setAttribute("aria-describedby", m.id);
+    }
+    const dugmeler = olustur("div", "uyari-dugmeler");
+    let bitti = false;
+    const kapat = cevap => {
+      if (bitti) return;
+      bitti = true;
+      document.removeEventListener("keydown", tus, true);
+      window.removeEventListener("popstate", geri);
+      perde.remove();
+      try { if (onceki && onceki.focus) onceki.focus(); } catch (e) {}
+      coz(cevap);
+    };
+    const vazgecDegeri = s.ucluCevap ? null : false;
+    const tus = e => {
+      if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); kapat(vazgecDegeri); return; }
+      /* Odak pencerenin içinde kalır */
+      if (e.key === "Tab") {
+        const d = Array.from(kutu.querySelectorAll("button"));
+        const i = d.indexOf(document.activeElement);
+        e.preventDefault();
+        d[(i + (e.shiftKey ? -1 : 1) + d.length) % d.length].focus();
+      }
+    };
+    /* Pencere açıkken geri tuşu: pencere vazgeçilerek kapanır */
+    const geri = () => kapat(vazgecDegeri);
+    window.addEventListener("popstate", geri);
+    let hayir = null;
+    if (s.hayir !== null) {
+      hayir = olustur("button", "hayir");
+      hayir.textContent = s.hayir || "Vazgeç";
+      hayir.addEventListener("click", () => kapat(false));
+      dugmeler.appendChild(hayir);
+    }
+    const evet = olustur("button", "evet" + (s.tehlike ? " tehlike" : ""));
+    evet.textContent = s.evet || "Tamam";
+    evet.addEventListener("click", () => kapat(true));
+    dugmeler.appendChild(evet);
+    if (!hayir) dugmeler.classList.add("tek");
+    kutu.appendChild(dugmeler);
+    perde.appendChild(kutu);
+    perde.addEventListener("click", e => { if (e.target === perde && !s.perdeKapatmaz) kapat(vazgecDegeri); });
+    document.addEventListener("keydown", tus, true);
+    document.body.appendChild(perde);
+    (hayir || evet).focus();
+  });
+}
+const soruSor = s => pencereAc(s);
+const uyariGoster = s => pencereAc(Object.assign({ hayir: null }, s));
+
 function kisaBildirim(yazi) {
   const eski = document.querySelector(".kisa-bildirim");
   if (eski) eski.remove();
@@ -6005,8 +7195,8 @@ function yildizPaneliAc() {
     });
     const temizle = olustur("button", "dene-dugme");
     temizle.textContent = "Hepsini kaldır";
-    temizle.addEventListener("click", () => {
-      if (!window.confirm("Bütün yıldızlar kaldırılsın mı?")) return;
+    temizle.addEventListener("click", async () => {
+      if (!(await soruSor({ baslik: "Bütün yıldızlar kaldırılsın mı?", evet: "Kaldır", tehlike: true }))) return;
       kayitlarTuru("yildiz").forEach(r => kayitSil("yildiz", r.anahtar));
       listeyiCiz();
     });
@@ -6378,8 +7568,8 @@ function yanlisEkraniCiz() {
   });
   const temizle = olustur("button");
   temizle.textContent = "Defteri temizle";
-  temizle.addEventListener("click", () => {
-    if (!window.confirm("Seçtiğiniz konulardaki yanlışlar defterden silinsin mi?")) return;
+  temizle.addEventListener("click", async () => {
+    if (!(await soruSor({ baslik: "Defter temizlensin mi?", metin: "Seçtiğiniz konulardaki yanlışlar defterden silinecek.", evet: "Temizle", tehlike: true }))) return;
     sorular.forEach(s => kayitSil("yanlis", s.id));
     yanlisEkraniCiz();
   });
@@ -7531,7 +8721,7 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
    ========================================================================== */
 const GUNCELLEME = {
   surum: "2.0",
-  baslik: "Bilgisayar Programcılığı'na hoş geldiniz",
+  baslik: "Kostü - Ders'e hoş geldiniz",
   maddeler: [
     ["Notlar ders ders", "Oku sekmesinde Sınıf › Dönem › Ders › Konu sırasıyla ilerlersiniz. Hocalar not paylaştıkça yeni konular kendiliğinden gelir; bir kez inen konu internetsiz de okunur."],
     ["Temrinde önce kapsam", "Temrin sekmesinde önce hangi derslerin hangi konularından çalışacağınızı seçersiniz; sorular yalnızca oradan gelir."],
@@ -7552,6 +8742,7 @@ function guncellemeNotuKapat() {
   depo.yaz("pg.notSurumu", GUNCELLEME.surum);
   /* Kurulum şeridi hemen değil, kısa bir aradan sonra: iki kutu üst üste binmesin */
   setTimeout(kurulumSeridiniGoster, 1200);
+  hedefDenetiminiZamanla(300);
 }
 
 function guncellemeNotuGoster() {
