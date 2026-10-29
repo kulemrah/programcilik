@@ -1,0 +1,302 @@
+{
+  "id": "el-is-guc-direnc",
+  "baslik": "İş, Güç ve Direnç",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 58, 65–66, 122",
+  "kavramlar": [
+    {
+      "terim": "Mekaniksel iş",
+      "izah": "Bir M kütlesini A noktasından B noktasına götürmek için mekaniksel olarak yapılan iş: EM = F · ℓ = m · a · ℓ; birimi joule.",
+      "yer": "Mekaniksel iş"
+    },
+    {
+      "terim": "Mekaniksel güç",
+      "izah": "Mekaniksel olarak birim zamanda yapılan iş; birimi watt.",
+      "yer": "Mekaniksel güç"
+    },
+    {
+      "terim": "Elektriksel iş",
+      "izah": "U gerilimi altında Q yükü hareket ettirilince yapılan iş: EE = U · Q = U · I · t; birimi joule.",
+      "yer": "Elektriksel iş"
+    },
+    {
+      "terim": "Elektriksel güç",
+      "izah": "Elektriksel olarak birim zamanda harcanan enerji: P = EE / t = U · I; birimi watt.",
+      "yer": "Elektriksel güç"
+    },
+    {
+      "terim": "Güç",
+      "izah": "Harcanan ya da çekilen enerjinin zamanla değişimi (W).",
+      "yer": "Enerji ve güç üzerine maddeler"
+    },
+    {
+      "terim": "Joule",
+      "izah": "Slaytta tanımı yok; iş ve enerjinin birimi olarak geçer: Joule = kg · m²/s² = Volt · Amper · Saniye = Watt · sn.",
+      "yer": "Birimlerin türetilmesi"
+    },
+    {
+      "terim": "Watt",
+      "izah": "Slaytta tanımı yok; gücün birimi olarak geçer: Watt = Joule / Saniye = kg · m²/s³.",
+      "yer": "Birimlerin türetilmesi"
+    },
+    {
+      "terim": "Direnç",
+      "izah": "Elektrik akımına zorluk gösteren elektronik devre elemanı; direnç değeri yüksek olursa içinden geçen akım değeri düşük olur. R harfi ile gösterilir.",
+      "yer": "Direnç"
+    },
+    {
+      "terim": "Ohm (Ω)",
+      "izah": "Direncin birimi; omega simgesi (Ω) ile gösterilir.",
+      "yer": "Direncin gösterimi ve birimi"
+    },
+    {
+      "terim": "Potansiyometre ve reosta",
+      "izah": "Slaytta tanımları yok; hocanın değişken değerli dirence verdiği iki örnek.",
+      "yer": "Direncin kullanım amaçları ve tipleri"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-is-guc-direnc.s1",
+      "tip": "secme",
+      "yer": "Mekaniksel güç",
+      "soru": "Hocaya göre **mekaniksel olarak güç** nedir?",
+      "secenekler": [
+        "Birim zamanda yapılan iş",
+        "Birim yük başına harcanan enerji",
+        "Kuvvet ile yolun çarpımı",
+        "Birim zamanda taşınan yük"
+      ],
+      "dogru": 0,
+      "izah": "Güç, mekaniksel olarak birim zamanda yapılan iştir: P = EM / t. Kuvvet ile yolun çarpımı (F · ℓ) mekaniksel iştir; birim yük başına enerji gerilimdir; akım ise taşınan yükle ilgilidir (Q = I · t)."
+    },
+    {
+      "id": "el-is-guc-direnc.s2",
+      "tip": "hesap",
+      "yer": "Mekaniksel iş",
+      "soru": "Kütlesi 4 kg olan bir cisim 2 m/s² ivmeyle A noktasından B noktasına 10 m götürülüyor. Hocanın EM = m · a · ℓ formülüne göre yapılan mekaniksel iş kaç joule'dür?",
+      "cevap": 80,
+      "birim": "J",
+      "izah": "EM = m · a · ℓ = 4 · 2 · 10 = 80 J (kg · m/s² · m = joule)."
+    },
+    {
+      "id": "el-is-guc-direnc.s3",
+      "tip": "hesap",
+      "yer": "Mekaniksel güç",
+      "soru": "Bir kütleyi A noktasından B noktasına götürmek için 600 J'lük mekaniksel iş 15 saniyede yapılıyor. Mekaniksel güç kaç watt'tır?",
+      "cevap": 40.0,
+      "birim": "W",
+      "izah": "Güç, birim zamanda yapılan iştir: P = EM / t = 600 / 15 = 40 W (joule / saniye = watt)."
+    },
+    {
+      "id": "el-is-guc-direnc.s4",
+      "tip": "hesap",
+      "yer": "Elektriksel iş",
+      "soru": "9 V gerilim altında bir alıcıdan 30 saniye boyunca 2 A akım geçiyor. Yapılan elektriksel iş kaç joule'dür?",
+      "cevap": 540,
+      "birim": "J",
+      "izah": "EE = U · I · t = 9 · 2 · 30 = 540 J (volt · amper · saniye = joule)."
+    },
+    {
+      "id": "el-is-guc-direnc.s5",
+      "tip": "hesap",
+      "yer": "Elektriksel güç",
+      "soru": "230 V gerilim altında 2 A akım çeken bir alıcının gücü kaç watt'tır?",
+      "cevap": 460,
+      "birim": "W",
+      "izah": "P = U · I = 230 · 2 = 460 W."
+    },
+    {
+      "id": "el-is-guc-direnc.s6",
+      "tip": "hesap",
+      "yer": "Elektriksel güç",
+      "soru": "Bir alıcı 1 dakikada 9000 J elektrik enerjisi harcıyor. Alıcının gücü kaç watt'tır?",
+      "cevap": 150.0,
+      "birim": "W",
+      "izah": "Süre saniyeye çevrilir: t = 1 dakika = 60 saniye.\nP = EE / t = 9000 / 60 = 150 W."
+    },
+    {
+      "id": "el-is-guc-direnc.s7",
+      "tip": "hesap",
+      "yer": "Enerji ve güç üzerine maddeler",
+      "soru": "Hocanın \"Joule = Watt · sn\" eşitliğine göre 60 W'lık bir alıcı 5 dakikada kaç joule enerji harcar?",
+      "cevap": 18000,
+      "birim": "J",
+      "izah": "Süre saniyeye çevrilir: t = 5 · 60 = 300 saniye.\nEnerji = 60 · 300 = 18000 J."
+    },
+    {
+      "id": "el-is-guc-direnc.s8",
+      "tip": "secme",
+      "yer": "Birimlerin türetilmesi",
+      "soru": "Hocanın birim türetmelerine göre **watt** hangisine eşittir?",
+      "secenekler": [
+        "kg · m²/s³",
+        "kg · m²/s²",
+        "kg · m/s²",
+        "Volt · Amper · Saniye"
+      ],
+      "dogru": 0,
+      "izah": "Watt = Joule / Saniye = kg · m²/s³. kg · m²/s² ve Volt · Amper · Saniye joule'e eşittir; kg · m/s² ise kütle ile ivmenin çarpımının (kuvvetin) birimidir."
+    },
+    {
+      "id": "el-is-guc-direnc.s9",
+      "tip": "esles",
+      "yer": "Birimlerin türetilmesi",
+      "soru": "Hocanın formüllerindeki birim ifadelerini eşit oldukları birimle eşleştirin.",
+      "ciftler": [
+        [
+          "kg · m²/s²",
+          "Joule"
+        ],
+        [
+          "kg · m²/s³",
+          "Watt"
+        ],
+        [
+          "Joule / Coulomb",
+          "Volt"
+        ],
+        [
+          "Amper · Saniye",
+          "Kulon (Coulomb)"
+        ]
+      ],
+      "izah": "Joule = kg · m²/s² (iş), Watt = Joule / Saniye = kg · m²/s³ (güç), Volt = Joule / Coulomb (V = W / Q), Kulon = Amper · Saniye (Q = I · t)."
+    },
+    {
+      "id": "el-is-guc-direnc.s10",
+      "tip": "dy",
+      "yer": "Elektriksel iş",
+      "ifade": "Hocaya göre mekaniksel işe benzer şekilde U gerilimi altında Q yükü hareket ettirilirse elektriksel iş yapılmış olur.",
+      "dogru": true,
+      "izah": "Doğru. Elektriksel iş EE = U · Q = U · I · t formülüyle bulunur; birimi joule'dür."
+    },
+    {
+      "id": "el-is-guc-direnc.s11",
+      "tip": "dy",
+      "yer": "Enerji ve güç üzerine maddeler",
+      "ifade": "Hocaya göre devrede harcanan toplam enerji, devrenin sağladığı toplam enerjiden her zaman küçüktür.",
+      "dogru": false,
+      "izah": "Yanlış. Slayttaki madde: devrede harcanan toplam enerji, devrenin sağladığı toplam enerjiye **eşittir**."
+    },
+    {
+      "id": "el-is-guc-direnc.s12",
+      "tip": "secme",
+      "yer": "Direnç",
+      "soru": "Hocanın tanımına göre **dirençler** nedir?",
+      "secenekler": [
+        "Elektrik akımına zorluk gösteren elektronik devre elemanları",
+        "Uçları arasında potansiyel fark oluşturan, gerilim üreten yapılar",
+        "Elektrik devresini açıp kapamaya yarayan devre elemanları",
+        "Elektronu belli yönde hareket ettiren harici elektromotor kuvvetler"
+      ],
+      "dogru": 0,
+      "izah": "Dirençler, elektrik akımına zorluk gösteren elektronik devre elemanlarıdır. Gerilim üreten yapılar gerilim kaynağıdır (kaynak, üreteç); elektronu hareket ettiren harici kuvvet EMK'dir; devreyi açıp kapamaya yarayan eleman ise anahtardır."
+    },
+    {
+      "id": "el-is-guc-direnc.s13",
+      "tip": "secme",
+      "yer": "Direncin gösterimi ve birimi",
+      "soru": "Direnç hangi harfle gösterilir ve birimi nedir?",
+      "secenekler": [
+        "R harfiyle; birimi ohm (Ω)",
+        "I harfiyle; birimi amper (A)",
+        "Q harfiyle; birimi kulon (C)",
+        "P harfiyle; birimi watt (W)"
+      ],
+      "dogru": 0,
+      "izah": "Direnç \"R\" harfi ile gösterilir, birimi ohmdur ve omega simgesi ile (Ω) gösterilir. I ve amper akımın, Q ve kulon yükün, P ve watt gücün harfi ve birimidir."
+    },
+    {
+      "id": "el-is-guc-direnc.s14",
+      "tip": "klasik",
+      "yer": "Direncin kullanım amaçları ve tipleri",
+      "soru": "Hocaya göre dirençler hangi üç amaçla kullanılır? Yazın.",
+      "cevap": "Dirençler akımı sınırlamak, gerilimi bölmek ve ısı üretmek amacıyla kullanılırlar.",
+      "anahtarlar": [
+        "akımı sınırlamak",
+        "gerilimi bölmek",
+        "ısı üretmek"
+      ]
+    },
+    {
+      "id": "el-is-guc-direnc.s15",
+      "tip": "secme",
+      "yer": "Direncin kullanım amaçları ve tipleri",
+      "soru": "Hoca **değişken değerli** dirençlere hangi iki örneği verir?",
+      "secenekler": [
+        "Potansiyometre ve reosta",
+        "Ampermetre ve voltmetre",
+        "Sigorta ve elektrik anahtarı",
+        "Kondansatör ve bobin"
+      ],
+      "dogru": 0,
+      "izah": "Dirençler sabit ve değişken (1- potansiyometre, 2- reosta) değerli olmak üzere 2 tipte yapılır."
+    },
+    {
+      "id": "el-is-guc-direnc.s16",
+      "tip": "dy",
+      "yer": "Elektriksel güç",
+      "ifade": "Hocanın formülüne göre elektriksel güç, P = U · I biçiminde gerilim ile akımın çarpımıyla da bulunur.",
+      "dogru": true,
+      "izah": "Doğru. P = EE / t = U · I = Joule / Saniye = kg · m²/s³ = Watt."
+    },
+    {
+      "id": "el-is-guc-direnc.s17",
+      "tip": "bosluk",
+      "yer": "Enerji ve güç üzerine maddeler",
+      "metin": "Güç, harcanan ya da çekilen enerjinin ___ değişimidir (W).",
+      "cevaplar": [
+        [
+          "zamanla",
+          "zamana göre",
+          "zaman ile"
+        ]
+      ],
+      "izah": "Hocanın maddesi: \"Güç: harcanan ya da çekilen enerjinin zamanla değişimidir (W).\" Buradaki W gücün birimi watt'tır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-is-guc-direnc.k1",
+      "yer": "Mekaniksel iş",
+      "on": "Mekaniksel iş ve mekaniksel güç nedir? Formüllerini söyleyin.",
+      "arka": "Bir M kütlesini A noktasından B noktasına götürmek için mekaniksel olarak bir iş yapılır; bu iş sonucunda enerji açığa çıkar.\nEM = F · ℓ = m · a · ℓ = (kg · m/s² · m) = Joule\nGüç: mekaniksel olarak birim zamanda yapılan iştir. P = EM / t = Joule / Saniye = kg · m²/s³ = Watt\nEk: Slaytta mekaniksel güç formülü EE harfiyle yazılmıştır."
+    },
+    {
+      "id": "el-is-guc-direnc.k2",
+      "yer": "Elektriksel iş",
+      "on": "Elektriksel iş ve elektriksel güç nedir? Formüllerini söyleyin.",
+      "arka": "Mekaniksel işe benzer şekilde U gerilimi altında Q yükü hareket ettirilirse elektriksel iş yapılmış olur.\nEE = U · Q = U · I · t = (Volt · Amper · Saniye) = kg · m²/s² = Joule\nGüç: elektriksel olarak birim zamanda harcanan enerjidir. P = EE / t = U · I = Joule / Saniye = kg · m²/s³ = Watt"
+    },
+    {
+      "id": "el-is-guc-direnc.k3",
+      "yer": "Mekaniksel ve elektriksel iş ve güç",
+      "on": "Mekaniksel ve elektriksel iş ile gücü karşılaştırın.",
+      "arka": "- İş: mekanikte M kütlesi A'dan B'ye götürülür (EM = F · ℓ = m · a · ℓ); elektrikte U gerilimi altında Q yükü hareket ettirilir (EE = U · Q = U · I · t).\n- Güç: mekanikte birim zamanda yapılan iş (P = EM / t), elektrikte birim zamanda harcanan enerji (P = EE / t = U · I).\n- Birimler ikisinde de aynıdır: iş joule, güç watt."
+    },
+    {
+      "id": "el-is-guc-direnc.k4",
+      "yer": "Birimlerin türetilmesi",
+      "on": "Joule ve watt birimlerini hocanın formüllerinden türetin.",
+      "arka": "Joule = kg · m/s² · m (mekaniksel iş: m · a · ℓ)\nJoule = Volt · Amper · Saniye = kg · m²/s² (elektriksel iş: U · I · t)\nJoule = Watt · sn\nWatt = Joule / Saniye = kg · m²/s³"
+    },
+    {
+      "id": "el-is-guc-direnc.k5",
+      "yer": "Enerji ve güç üzerine maddeler",
+      "on": "Hocanın enerji ve güç hakkında saydığı üç maddeyi söyleyin.",
+      "arka": "1. İş yapabilme kapasitesi (Joule = Watt · sn).\n2. Devrede harcanan toplam enerji, devrenin sağladığı toplam enerjiye eşittir.\n3. Güç: harcanan ya da çekilen enerjinin zamanla değişimidir (W).\nEk: İlk madde enerjiyi anlatır; (W) burada watt'tır, V = W / Q'daki W ise iştir."
+    },
+    {
+      "id": "el-is-guc-direnc.k6",
+      "yer": "Direnç",
+      "on": "Direnç nedir? Harfini, birimini ve simgesini söyleyin.",
+      "arka": "Dirençler, elektrik akımına zorluk gösteren elektronik devre elemanlarıdır. Direnç değeri yüksek olursa içinden geçen akım değeri düşük olur; bu olay Alman bilim adamı Ohm tarafından 1827 yılında bulunmuştur.\nDirenç R harfi ile gösterilir, birimi ohmdur, omega simgesi ile (Ω) gösterilir."
+    },
+    {
+      "id": "el-is-guc-direnc.k7",
+      "yer": "Direncin kullanım amaçları ve tipleri",
+      "on": "Dirençler hangi amaçlarla kullanılır ve kaç tipte yapılır?",
+      "arka": "Akımı sınırlamak, gerilimi bölmek ve ısı üretmek amacıyla kullanılırlar.\nSabit ve değişken (1- potansiyometre, 2- reosta) değerli olmak üzere 2 tipte yapılırlar."
+    }
+  ]
+}

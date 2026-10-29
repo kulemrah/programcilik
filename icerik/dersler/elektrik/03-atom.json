@@ -1,0 +1,349 @@
+{
+  "id": "el-atom",
+  "baslik": "Atom, İletken, Yarı İletken ve Yalıtkan",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 24–31, 161–162",
+  "kavramlar": [
+    {
+      "terim": "Atom",
+      "izah": "Maddenin en küçük yapı taşı; elektrik enerjisinin elde edilmesini, iletimini (taşınmasını) ve kullanılmasını anlamak için bilgi veren yapı taşı.",
+      "yer": "Atom nedir"
+    },
+    {
+      "terim": "Çekirdek",
+      "izah": "Atomun tam merkezinde bulunan, atomun cinsine göre belirli sayıda proton ve nötrondan oluşan kısım.",
+      "yer": "Atomun yapısı: çekirdek ve elektronlar"
+    },
+    {
+      "terim": "Elektron",
+      "izah": "Çekirdeğin etrafında belirli yörüngelerde durmaksızın dönen parçacık; hem çekirdek etrafında hem de kendi etrafında döner.",
+      "yer": "Atomun yapısı: çekirdek ve elektronlar"
+    },
+    {
+      "terim": "Doymuş yörünge",
+      "izah": "Sekiz elektronlu dış yörünge; bu atomlar bir nevi kararlılık kazanmıştır ve doymuş yörüngenin elektronları çekirdeğe daha sıkı bağlıdır.",
+      "yer": "Dış yörünge ve doymuş yörünge"
+    },
+    {
+      "terim": "Valans elektron (serbest elektron)",
+      "izah": "Atomların dış yörüngelerinde bulunan elektronlar; çekirdeğe zayıf bağla bağlı olduklarından ufak bir enerjiyle atomu terk edebilir, elektrik iletiminde önemli rol oynarlar.",
+      "yer": "Valans elektronları (serbest elektronlar)"
+    },
+    {
+      "terim": "İletken",
+      "izah": "Son yörüngelerinde 3 ya da daha az elektron bulunduran atomlardan oluşan, elektrik akımını iyi ileten maddeler. 11. haftadaki ek tanıma göre akıma karşı çok küçük direnç gösteren malzemeler.",
+      "yer": "İletkenler"
+    },
+    {
+      "terim": "Elektrolit",
+      "izah": "İyi birer iletken olan asit, baz ve tuz çözeltilerine verilen ad.",
+      "yer": "İletken maddeler"
+    },
+    {
+      "terim": "Yarı iletken",
+      "izah": "Son yörüngelerinde dört (4) elektron bulunan maddeler; yarı iletken devre elemanlarının yapımında kullanılır. 11. haftadaki tanıma göre devrede hem yalıtkan hem de bazı özel şartlar altında iletken durumuna geçen devre elemanları.",
+      "yer": "Yarı iletkenler"
+    },
+    {
+      "terim": "N tipi malzeme",
+      "izah": "Silisyum (Si) veya germanyum (Ge) içerisine 5 valans elektronu olan atomların belli bir oranda eklenmesiyle elde edilen malzeme.",
+      "yer": "N tipi ve P tipi malzeme"
+    },
+    {
+      "terim": "P tipi malzeme",
+      "izah": "Silisyum (Si) veya germanyum (Ge) içerisine 3 valans elektronu olan atomların belli bir oranda eklenmesiyle elde edilen malzeme.",
+      "yer": "N tipi ve P tipi malzeme"
+    },
+    {
+      "terim": "Yalıtkan",
+      "izah": "Atomlarının son yörüngelerinde 5 ve daha fazla elektron bulunduran maddeler. İyi bir yalıtkan maddedeki atomların son yörüngelerinde sekiz (8) ya da daha fazla elektron bulunması gerekir. 11. haftadaki ek tanıma göre akıma karşı çok yüksek direnç gösteren malzemeler.",
+      "yer": "Yalıtkanlar"
+    },
+    {
+      "terim": "Periyodik tablo",
+      "izah": "Kimyasal elementlerin sınıflandırılması için geliştirilmiş tablo; periyodik cetvel, periyodik çizelge, elementler tablosu diye de adlandırılır.",
+      "yer": "Periyodik tablo"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-atom.s1",
+      "tip": "secme",
+      "yer": "Atom nedir",
+      "soru": "Maddenin en küçük yapı taşına ne ad verilir?",
+      "secenekler": [
+        "Atom",
+        "Çekirdek",
+        "Elektron",
+        "Nötron"
+      ],
+      "dogru": 0,
+      "izah": "Maddenin en küçük yapı taşına atom denir. Çekirdek atomun merkezindeki kısım, elektron ve nötron ise atomu oluşturan taneciklerdir."
+    },
+    {
+      "id": "el-atom.s2",
+      "tip": "secme",
+      "yer": "Atomun yapısı: çekirdek ve elektronlar",
+      "soru": "Atomun **çekirdeği** nelerden oluşur?",
+      "secenekler": [
+        "Belirli sayıda proton ve nötrondan",
+        "Belirli sayıda proton ve elektrondan",
+        "Belirli sayıda nötron ve elektrondan",
+        "Yalnızca belirli sayıda elektrondan"
+      ],
+      "dogru": 0,
+      "izah": "Çekirdek atomun tam merkezindedir ve atomun cinsine göre belirli sayıda proton ve nötrondan oluşur. Elektronlar çekirdekte değil, çekirdeğin etrafındaki yörüngelerdedir."
+    },
+    {
+      "id": "el-atom.s3",
+      "tip": "dy",
+      "yer": "Atomun yapısı: çekirdek ve elektronlar",
+      "ifade": "Elektronlar yalnızca çekirdeğin etrafında döner; kendi etraflarında dönmezler.",
+      "dogru": false,
+      "izah": "Elektronlar çekirdeğin etrafında belirli yörüngelerde durmaksızın döner ve hem çekirdek etrafında **hem de kendi etraflarında** dönerler."
+    },
+    {
+      "id": "el-atom.s4",
+      "tip": "bosluk",
+      "yer": "Dış yörünge ve doymuş yörünge",
+      "metin": "Sekiz elektronlu dış yörüngelere ___ yörünge denir.",
+      "cevaplar": [
+        [
+          "doymuş"
+        ]
+      ],
+      "izah": "Dış yörüngede sekiz elektronu bulunan atomlar bir nevi kararlılık kazanmıştır; doymuş yörüngenin elektronları çekirdeğe daha sıkı bağlıdır."
+    },
+    {
+      "id": "el-atom.s5",
+      "tip": "hesap",
+      "yer": "Elektron dağılımı örnekleri",
+      "soru": "Atom numarası 16 olan S elementinin elektron dağılımının sonucunda son yörüngesinde kaç elektron bulunur?",
+      "cevap": 6,
+      "birim": "elektron",
+      "izah": "Hocanın çözümü: 16 S: 2 8 6 → son yörüngede 6 elektron bulunmaktadır.\nDağılımdaki sayıların toplamı atom numarasını verir: 2 + 8 + 6 = 16."
+    },
+    {
+      "id": "el-atom.s6",
+      "tip": "hesap",
+      "yer": "Elektron dağılımı örnekleri",
+      "soru": "19 K elementinin elektron dağılımının sonucunda son yörüngesinde kaç elektron bulunur?",
+      "cevap": 1,
+      "birim": "elektron",
+      "izah": "Hocanın çözümü: 19 K: 2 8 8 1 → son yörüngede 1 elektron bulunmaktadır (üçüncü yörüngede 8 elektron vardır, ama son yörünge dördüncüdür).\nDağılımdaki sayıların toplamı atom numarasını verir: 2 + 8 + 8 + 1 = 19."
+    },
+    {
+      "id": "el-atom.s7",
+      "tip": "bosluk",
+      "yer": "Valans elektronları (serbest elektronlar)",
+      "metin": "Atomların dış yörüngelerinde bulunan elektronlara ___ elektron ya da serbest elektron denir.",
+      "cevaplar": [
+        [
+          "valans",
+          "valens"
+        ]
+      ],
+      "izah": "Dış yörüngedeki elektronlar valans elektron ya da serbest elektrondur. Çekirdeğe zayıf bir bağla bağlı olduklarından ufak bir enerjiyle atomu terk edebilir, elektrik iletiminde önemli rol oynarlar."
+    },
+    {
+      "id": "el-atom.s8",
+      "tip": "secme",
+      "yer": "Valans elektronları (serbest elektronlar)",
+      "soru": "Enerji alarak kendi atomundan kopan valans elektronları, kazandıkları enerjiyi **kaybettiklerinde** ne yapar?",
+      "secenekler": [
+        "Ya geri dönerler ya da başka bir atomun son yörüngesine geçerler",
+        "Çekirdeğe girip orada bulunan protonlarla birlikte kalırlar",
+        "Atomun iç yörüngelerine inip orada doymuş yörünge oluştururlar",
+        "Çekirdeğin çekim kuvvetini aşacak enerjiyi kendiliğinden kazanırlar"
+      ],
+      "dogru": 0,
+      "izah": "Valans elektronları enerji aldıklarında çekirdeğin çekim kuvvetini aşıp atomundan kopabilir; kazandıkları enerjiyi kaybettiklerinde ise ya geri dönerler ya da başka bir atomun son yörüngesine geçebilirler."
+    },
+    {
+      "id": "el-atom.s9",
+      "tip": "esles",
+      "yer": "İletken, yarı iletken ve yalıtkanın karşılaştırması",
+      "soru": "Maddeleri, atomlarının son yörüngesindeki elektron sayısıyla eşleştirin.",
+      "ciftler": [
+        [
+          "İletken",
+          "3 ya da daha az elektron"
+        ],
+        [
+          "Yarı iletken",
+          "4 elektron"
+        ],
+        [
+          "Yalıtkan",
+          "5 ve daha fazla elektron"
+        ]
+      ],
+      "izah": "İletken: son yörüngede 3 ya da daha az elektron. Yarı iletken: 4 elektron. Yalıtkan: 5 ve daha fazla elektron."
+    },
+    {
+      "id": "el-atom.s10",
+      "tip": "dizme",
+      "yer": "En iyi iletkenler",
+      "soru": "Hocanın verdiği en iyi iletkenleri, iletkenliği en iyi olandan başlayarak dizin.",
+      "parcalar": [
+        "Gümüş",
+        "Bakır",
+        "Altın",
+        "Alüminyum"
+      ],
+      "izah": "En iyi iletkenler: Gümüş > Bakır > Altın > Alüminyum."
+    },
+    {
+      "id": "el-atom.s11",
+      "tip": "secme",
+      "yer": "En iyi iletkenler",
+      "soru": "Hocaya göre **bakır** neden en çok kullanılan iletken maddedir?",
+      "secenekler": [
+        "Hem iyi bir iletken hem de diğerlerinden daha ucuz olduğu için",
+        "Hafif olduğu için uzun iletim hatlarında rahatça kullanıldığı için",
+        "Son yörüngesinde sekiz elektron bulunup kararlılık kazandığı için",
+        "Gümüşten de iyi ileten, bilinen en iyi iletken olduğu için"
+      ],
+      "dogru": 0,
+      "izah": "Bakır hem iyi bir iletken hem de diğerlerinden daha ucuz olduğu için en çok kullanılan iletkendir. Hafif olduğu için uzun iletim hatlarında kullanılan alüminyumdur; en iyi iletken gümüştür."
+    },
+    {
+      "id": "el-atom.s12",
+      "tip": "dy",
+      "yer": "En iyi iletkenler",
+      "ifade": "Hocaya göre en iyi iletken bakırdır.",
+      "dogru": false,
+      "izah": "En iyi iletken **gümüştür**: Gümüş > Bakır > Altın > Alüminyum. Bakır ise ucuz olduğu için en çok kullanılan iletkendir."
+    },
+    {
+      "id": "el-atom.s13",
+      "tip": "secme",
+      "yer": "İletken maddeler",
+      "soru": "Aşağıdakilerden hangisi hocaya göre **iletkendir**?",
+      "secenekler": [
+        "İçme suyu",
+        "Saf su",
+        "Kuru ağaç",
+        "Porselen"
+      ],
+      "dogru": 0,
+      "izah": "Günlük hayatta kullandığımız içme suyu iletkendir. Saf su, kuru ağaç ve porselen hocanın yalıtkan madde örnekleri arasındadır."
+    },
+    {
+      "id": "el-atom.s14",
+      "tip": "dy",
+      "yer": "N tipi ve P tipi malzeme",
+      "ifade": "Silisyum (Si) veya germanyum (Ge) içerisine 3 valans elektronu olan atomlar belli bir oranda eklenirse N tipi malzeme elde edilir.",
+      "dogru": false,
+      "izah": "3 valans elektronlu atomlar eklenirse **P tipi** malzeme elde edilir. N tipi malzeme için 5 valans elektronlu atomlar eklenir."
+    },
+    {
+      "id": "el-atom.s15",
+      "tip": "klasik",
+      "yer": "Yalıtkan maddeler",
+      "soru": "Hocanın yalıtkan madde örneklerinden en az beşini yazın.",
+      "cevap": "Cam, lastik, plastik, yağ, asfalt, fiberglas, porselen, seramik, mika, kuartz, kuru kumaş, kuru kâğıt, kuru ağaç, hava, elmas, saf su.",
+      "anahtarlar": [
+        "cam",
+        "lastik",
+        "plastik",
+        "yağ",
+        "asfalt",
+        "fiberglas",
+        "porselen",
+        "seramik",
+        "mika",
+        "kuartz",
+        "kuru kumaş",
+        "kuru kâğıt",
+        "kuru ağaç",
+        "hava",
+        "elmas",
+        "saf su"
+      ]
+    },
+    {
+      "id": "el-atom.s16",
+      "tip": "dy",
+      "yer": "Yalıtkan maddeler",
+      "ifade": "Hava iyi bir yalıtkandır, fakat 30000 V/cm'de iletken hâle geçer.",
+      "dogru": true,
+      "izah": "Slayttaki bilgi budur. Cam ise 20 °C'de iyi bir yalıtkan iken 300 °C'nin üzerinde iletken hâle geçer."
+    },
+    {
+      "id": "el-atom.s17",
+      "tip": "bosluk",
+      "yer": "Yarı iletkenler",
+      "metin": "11. haftadaki tanıma göre yarı iletkenler devrede hem yalıtkan hem de bazı özel şartlar altında ___ durumuna geçen devre elemanları olarak tanımlanabilir.",
+      "cevaplar": [
+        [
+          "iletken"
+        ]
+      ],
+      "izah": "Slayt 162'deki tanım: yarı iletkenler devrede hem yalıtkan hem de bazı özel şartlar altında iletken durumuna geçen devre elemanları olarak tanımlanabilir."
+    },
+    {
+      "id": "el-atom.s18",
+      "tip": "dy",
+      "yer": "Dirence göre iletken ve yalıtkan",
+      "ifade": "Elektrik akımına karşı çok küçük direnç gösteren malzemeler iletken olarak adlandırılabilir.",
+      "dogru": true,
+      "izah": "11. haftadaki ek tanım: akıma karşı çok küçük direnç gösteren malzemeler iletken, çok yüksek direnç gösteren malzemeler yalıtkan olarak adlandırılabilir."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-atom.k1",
+      "yer": "Atom nedir",
+      "on": "Atom nedir? Atomun yapısını anlatın.",
+      "arka": "Maddenin en küçük yapı taşına **atom** denir; elektrik enerjisinin elde edilmesini, iletimini ve kullanılmasını anlamak için bilgi veren yapı taşıdır.\n- Çekirdek: atomun tam merkezinde; atomun cinsine göre belirli sayıda **proton** ve **nötrondan** oluşur.\n- Elektronlar: çekirdeğin etrafında belirli **yörüngelerde** durmaksızın döner; hem çekirdek etrafında hem kendi etraflarında dönerler."
+    },
+    {
+      "id": "el-atom.k2",
+      "yer": "Dış yörünge ve doymuş yörünge",
+      "on": "Doymuş yörünge nedir?",
+      "arka": "Sekiz elektronlu dış yörüngelere **doymuş yörünge** denir. Dış yörüngedeki elektron sayısı sekizden fazla olamaz; sekiz elektronu bulunan atomlar bir nevi kararlılık kazanmıştır. Doymuş yörüngenin elektronları çekirdeğe daha sıkı bağlıdır."
+    },
+    {
+      "id": "el-atom.k3",
+      "yer": "Elektron dağılımı örnekleri",
+      "on": "Hocanın S, Na ve K örneklerinde son yörüngede kaç elektron vardır?",
+      "arka": "- 16 S: 2 8 6 → son yörüngede 6 elektron\n- 11 Na: 2 8 1 → son yörüngede 1 elektron\n- 19 K: 2 8 8 1 → son yörüngede 1 elektron"
+    },
+    {
+      "id": "el-atom.k4",
+      "yer": "Valans elektronları (serbest elektronlar)",
+      "on": "Valans (serbest) elektron nedir? Elektrik iletimindeki rolü nedir?",
+      "arka": "Atomların dış yörüngelerinde bulunan elektronlardır. Çekirdeğe zayıf bir bağla bağlı olduklarından ufak bir enerjiyle atomu terk edebilirler; bu hareket özellikleri yüzünden elektrik iletiminde önemli rol oynarlar. Enerji alınca çekirdeğin çekim kuvvetini aşıp kopabilir, enerjiyi kaybedince ya geri döner ya da başka bir atomun son yörüngesine geçerler."
+    },
+    {
+      "id": "el-atom.k5",
+      "yer": "İletken maddeler",
+      "on": "İletken nedir? Hocanın iletkenlikle ilgili verdiği bilgileri sayın.",
+      "arka": "Son yörüngelerinde **3 ya da daha az** elektron bulunduran atomlardan oluşan maddelere iletken denir; elektrik akımını iyi iletirler.\n- Tüm metaller iletkendir; insan vücudu iyi bir iletkendir.\n- Asit, baz ve tuz çözeltileri iyi iletkendir: **elektrolit**.\n- Saf su yalıtkan, içme suyu iletkendir; toprak içinde su olduğu için iletkendir.\n- Gazlar genelde yalıtkandır; iyonlarına ayrılmış gazlar iletkenlik kazanır."
+    },
+    {
+      "id": "el-atom.k6",
+      "yer": "En iyi iletkenler",
+      "on": "En iyi iletkenler hangileridir? Bakır ve alüminyum neden kullanılır?",
+      "arka": "Gümüş > Bakır > Altın > Alüminyum.\n- Bakır: hem iyi iletken hem diğerlerinden ucuz olduğu için en çok kullanılan iletkendir.\n- Alüminyum: hafif olduğundan uzun iletim hatlarında kullanılır."
+    },
+    {
+      "id": "el-atom.k7",
+      "yer": "Yarı iletkenler",
+      "on": "Yarı iletken nedir? N tipi ve P tipi malzeme nasıl elde edilir?",
+      "arka": "Son yörüngelerinde **dört (4)** elektron bulunan maddelere yarı iletken denir; yarı iletken devre elemanlarının yapımında kullanılır. 11. haftadaki tanım: devrede hem yalıtkan hem de bazı özel şartlar altında iletken durumuna geçen devre elemanları.\n- N tipi: Si veya Ge içine **5** valans elektronlu atomlar belli oranda eklenir.\n- P tipi: Si veya Ge içine **3** valans elektronlu atomlar belli oranda eklenir."
+    },
+    {
+      "id": "el-atom.k8",
+      "yer": "Yalıtkanlar",
+      "on": "Yalıtkan nedir? Örnek verin; cam ve hava için hoca ne söyler?",
+      "arka": "Atomlarının son yörüngelerinde **5 ve daha fazla** elektron bulunduran maddelerdir. İyi bir yalıtkan maddedeki atomların son yörüngelerinde sekiz (8) ya da daha fazla elektron bulunması gerekir.\nÖrnekler: cam, lastik, plastik, yağ, asfalt, fiberglas, porselen, seramik, mika, kuartz, kuru kumaş, kuru kâğıt, kuru ağaç, hava, elmas, saf su.\n- Cam 20 °C'de iyi bir yalıtkan iken 300 °C'nin üzerinde iletken hâle geçer.\n- Hava iyi bir yalıtkandır, fakat 30000 V/cm'de iletken hâle geçer."
+    },
+    {
+      "id": "el-atom.k9",
+      "yer": "İletken, yarı iletken ve yalıtkanın karşılaştırması",
+      "on": "İletken, yarı iletken ve yalıtkan arasındaki farkı iki yoldan anlatın.",
+      "arka": "Son yörüngedeki elektron sayısına göre: iletken 3 ya da daha az, yarı iletken 4, yalıtkan 5 ve daha fazla.\nDirence göre (11. hafta): akıma karşı çok küçük direnç gösteren iletken, çok yüksek direnç gösteren yalıtkan; yarı iletken devrede hem yalıtkan hem de bazı özel şartlar altında iletken durumuna geçer."
+    }
+  ]
+}

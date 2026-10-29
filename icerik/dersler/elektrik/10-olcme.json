@@ -1,0 +1,334 @@
+{
+  "id": "el-olcme",
+  "baslik": "Ölçü Aletleri ve Ölçme, EMK",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 80, 82–90",
+  "kavramlar": [
+    {
+      "terim": "Avometre (multimetre)",
+      "izah": "Slaytta tanımı yok; hoca analog ve dijital avometreyle ölçümü anlatır. Analog avometrede değer, kademe anahtarının konumu ile skaladan okunan değer çarpılarak bulunur; dijital avometrede ekranda görünen değer ölçülen değerin kendisidir.",
+      "yer": "Analog avometre (multimetre) ile ölçüm"
+    },
+    {
+      "terim": "Sıfır ayarı",
+      "izah": "Slaytta tanımı yok; hocaya göre analog avometre ile ölçüme başlamadan önce her şeyden önce sıfır ayarı yapılmalıdır.",
+      "yer": "Analog avometre (multimetre) ile ölçüm"
+    },
+    {
+      "terim": "Kademe anahtarı",
+      "izah": "Slaytta tanımı yok; hocaya göre analog avometrede kademe anahtarının bulunduğu konum ile skaladan okunan değer çarpılarak ölçülen büyüklüğün değeri tespit edilir (ör. X100 kademesinde okunan değer 100 ile çarpılır).",
+      "yer": "Analog avometrede ölçülen değerin bulunması"
+    },
+    {
+      "terim": "Kademe seçimi",
+      "izah": "Kademe seçiminin doğru ve uygun yapılması ölçmedeki hata oranını azaltan en önemli faktörlerden biridir.",
+      "yer": "Kademe seçimi"
+    },
+    {
+      "terim": "Dijital avometre",
+      "izah": "Ölçüm yapmanın daha kolay olduğu avometre; ekranında görünen değer ölçülen değerin kendisidir, hesaplama gerektirmez. Bazı değerlerin ölçülmesinde analog avometrelerdeki kadar hassas ölçüm yapılamaz.",
+      "yer": "Dijital avometre (multimetre) ile ölçüm"
+    },
+    {
+      "terim": "Ampermetre",
+      "izah": "Elektrik devrelerinde alıcıların yapmış oldukları iş karşılığında kaynaktan çektikleri akım değerini ölçen ölçü aleti. Devreye seri bağlanır; iç direnci küçüktür (0,1-0,5 Ω).",
+      "yer": "Akımın ölçülmesi: ampermetre"
+    },
+    {
+      "terim": "Voltmetre",
+      "izah": "Elektrik devrelerinde iki nokta arasındaki potansiyel farkı (gerilimi) ölçen ölçü aleti. Devreye paralel bağlanır; iç direnci çok büyüktür (10 kΩ, 100 kΩ).",
+      "yer": "Gerilimin ölçülmesi: voltmetre"
+    },
+    {
+      "terim": "Ohmmetre",
+      "izah": "Direnç ölçümünü tek başına yapabilen ölçü aleti: içindeki 9 voltluk pil sayesinde alıcı uçlarına bir gerilim uygular, alıcının çektiği akımı ölçerek direnci hesaplar. Ölçümde devredeki kaynak kapalı olmalıdır.",
+      "yer": "Direncin ölçülmesi: ohmmetre"
+    },
+    {
+      "terim": "V = I · R",
+      "izah": "Hocanın üçgenlerindeki gerilim, akım ve direnç bağıntısı: V = I · R, I = V / R, R = V / I. Ek: Bu bağıntıya Ohm kanunu denir; slaytta adı yazmaz.",
+      "yer": "V, I ve R üçgenleri"
+    },
+    {
+      "terim": "EMK (elektromotor kuvveti)",
+      "izah": "Kısaca bir kaynağın uçları arasındaki potansiyel fark; açık devrede kaynağın uçları arasındaki potansiyel fark da EMK'dır.",
+      "yer": "Elektromotor kuvveti (EMK)"
+    },
+    {
+      "terim": "Kaynağın gerilimi",
+      "izah": "Kapalı devrede kaynağın uçlarına bağlanan voltmetrenin ölçtüğü gerilim. Bir kaynak için EMK > gerilimdir, çünkü kaynak devreye enerji verirken gerilimin bir kısmı kaynakta harcanır.",
+      "yer": "Elektromotor kuvveti (EMK)"
+    },
+    {
+      "terim": "Kaynakta düşen gerilim",
+      "izah": "Kapalı devrede gerilimin kaynakta harcanan kısmı: EMK = Kaynakta Düşen Gerilim + Kaynak Uçlarındaki Gerilim.",
+      "yer": "EMK ile kaynağın gerilimi"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-olcme.s1",
+      "tip": "dizme",
+      "yer": "Analog avometre (multimetre) ile ölçüm",
+      "soru": "Hocanın anlatımına göre analog avometreyle ölçümün adımlarını sıraya dizin.",
+      "parcalar": [
+        "Sıfır ayarı yapılır",
+        "Uygun kademe seçilir",
+        "Değer yalnız ait olduğu skala taksimatından okunur",
+        "Kademe anahtarının konumu ile okunan değer çarpılır"
+      ],
+      "izah": "Her şeyden önce sıfır ayarı yapılmalıdır. Daha sonra uygun kademe seçildikten sonra değer yalnız ait olduğu skala taksimatından (Ω, V, A gibi) okunur. Büyüklüğün değeri, kademe anahtarının bulunduğu konum ile skaladan okunan değer çarpılarak tespit edilir."
+    },
+    {
+      "id": "el-olcme.s2",
+      "tip": "hesap",
+      "yer": "Analog avometrede ölçülen değerin bulunması",
+      "soru": "Analog avometrenin kademe anahtarı Ω ölçümünde X10 kademesindedir ve ibre Ω skalasında 25 rakamını gösteriyor. Ölçülen direnç kaç ohmdur?",
+      "cevap": 250,
+      "birim": "Ω",
+      "izah": "Kademe anahtarının bulunduğu konum ile skaladan okunan değer çarpılır:\n25 · 10 = 250 Ω.\n(Hocanın örneği: X100 kademesinde 10 → 10 · 100 = 1000 Ω = 1 kΩ.)"
+    },
+    {
+      "id": "el-olcme.s3",
+      "tip": "hesap",
+      "yer": "Analog avometrede ölçülen değerin bulunması",
+      "soru": "Skalasının en son değeri 10 olan bir analog avometreyle AC 250 V kademesinde alternatif gerilim ölçülüyor. İbre 6 rakamının üzerinde durmuştur. Ölçülen gerilim kaç volttur?",
+      "cevap": 150,
+      "birim": "V",
+      "izah": "Skalanın en son değeri 10 yerine 250 V kabul edilir; 6'nın değeri orantı ile bulunur:\n10 → 250 V ise 6 → 6 · 250 / 10 = 150 V.\n(Hocanın örneği: AC 1000 V kademesinde ibre 4'te → 400 V.)"
+    },
+    {
+      "id": "el-olcme.s4",
+      "tip": "dy",
+      "yer": "Dijital avometre (multimetre) ile ölçüm",
+      "ifade": "Dijital avometrelerde ekranda görünen değer ölçülen değerin kendisidir; ayrıca hesaplama işlemi yapılmasını gerektirmez.",
+      "dogru": true,
+      "izah": "Slayttaki cümle budur. Hesaplama gerekebilen alet analog avometredir: orada kademe ile skaladan okunan değer arasında işlem yapılır."
+    },
+    {
+      "id": "el-olcme.s5",
+      "tip": "secme",
+      "yer": "Analog ve dijital ölçü aletlerinin avantaj ve dezavantajları",
+      "soru": "Aşağıdakilerden hangisi dijital ölçü aletlerinin avantajlarından biri **değildir**?",
+      "secenekler": [
+        "Daha basit yapılı oldukları için ucuzdurlar",
+        "Enerji sarfiyatları çok azdır",
+        "Elektromanyetik alandan etkilenmeleri çok azdır",
+        "Mekanik arıza yapmazlar"
+      ],
+      "dogru": 0,
+      "izah": "Daha basit yapılı olmaları sebebiyle ucuz olmaları ve bakım ve onarımlarının kolay olması **analog** ölçü aletlerinin avantajıdır. Dijital ölçü aletlerinin üretimi, onarımı ve bakımı zordur; dolayısıyla daha pahalıdır."
+    },
+    {
+      "id": "el-olcme.s6",
+      "tip": "esles",
+      "yer": "Analog ve dijital ölçü aletlerinin avantaj ve dezavantajları",
+      "soru": "Her maddeyi ait olduğu grupla eşleştirin.",
+      "ciftler": [
+        [
+          "Analog ölçü aletinin avantajı",
+          "Bağlantıya geçtiği anda ibresi sapar; hızlı çalışır"
+        ],
+        [
+          "Analog ölçü aletinin dezavantajı",
+          "İbrenin gösterdiği değer %1-3 arasında farklı olabilir"
+        ],
+        [
+          "Dijital ölçü aletinin avantajı",
+          "Yapısından kaynaklanan hata %0,01 civarındadır"
+        ],
+        [
+          "Dijital ölçü aletinin dezavantajı",
+          "LCD veya LED gösterge yüzünden uzaktan okunması zordur"
+        ]
+      ],
+      "izah": "Analog aletler ölçtükleri büyüklükle bağlantıya geçtikleri anda ibreleri saptığı için hızlı çalışır; ama ibrenin gösterdiği değer %1-3 farklı olabilir. Dijital aletlerin yapısından kaynaklanan hata %0,01 civarındadır; gösterge LCD veya LED olduğu için uzaktan okunması zordur."
+    },
+    {
+      "id": "el-olcme.s7",
+      "tip": "secme",
+      "yer": "Akımın ölçülmesi: ampermetre",
+      "soru": "Ampermetre devreye nasıl bağlanır ve iç direnci nasıldır?",
+      "secenekler": [
+        "Seri bağlanır; iç direnci küçüktür (0,1-0,5 Ω)",
+        "Paralel bağlanır; iç direnci çok büyüktür (10 kΩ, 100 kΩ)",
+        "Seri bağlanır; iç direnci çok büyüktür (10 kΩ, 100 kΩ)",
+        "Paralel bağlanır; iç direnci küçüktür (0,1-0,5 Ω)"
+      ],
+      "dogru": 0,
+      "izah": "Ampermetre devreye **seri** bağlanır ve iç direnci **küçüktür** (0,1-0,5 Ω). Paralel bağlanan ve iç direnci çok büyük (10 kΩ, 100 kΩ) olan alet voltmetredir."
+    },
+    {
+      "id": "el-olcme.s8",
+      "tip": "dy",
+      "yer": "Akımın ölçülmesi: ampermetre",
+      "ifade": "Ampermetre devreye paralel bağlanırsa devre ampermetre üzerinden kısa devre olur ve ampermetre zarar görür.",
+      "dogru": true,
+      "izah": "Slayttaki cümle budur. Ampermetre devreye seri bağlanmalıdır."
+    },
+    {
+      "id": "el-olcme.s9",
+      "tip": "dy",
+      "yer": "Gerilimin ölçülmesi: voltmetre",
+      "ifade": "Voltmetre devreye seri bağlanırsa zarar görür.",
+      "dogru": false,
+      "izah": "Hocaya göre voltmetre devreye seri bağlanırsa **zarar görmez**. Yanlış bağlanınca zarar gören alet ampermetredir (paralel bağlanırsa devre ampermetre üzerinden kısa devre olur)."
+    },
+    {
+      "id": "el-olcme.s10",
+      "tip": "esles",
+      "yer": "Ampermetre ile voltmetrenin karşılaştırması",
+      "soru": "Ölçü aletlerini, hocanın verdiği bilgiyle eşleştirin.",
+      "ciftler": [
+        [
+          "Ampermetre",
+          "Akımı ölçer; devreye seri bağlanır"
+        ],
+        [
+          "Voltmetre",
+          "Gerilimi ölçer; devreye paralel bağlanır"
+        ],
+        [
+          "Ohmmetre",
+          "Direnci ölçer; ölçümde devrede gerilim olmamalıdır"
+        ]
+      ],
+      "izah": "Ampermetre alıcıların kaynaktan çektikleri akımı ölçer ve seri bağlanır. Voltmetre iki nokta arasındaki potansiyel farkı (gerilimi) ölçer ve paralel bağlanır. Ohmmetreyle direnç ölçülürken devredeki kaynak kapalı olmalı, yani devrede gerilim olmamalıdır."
+    },
+    {
+      "id": "el-olcme.s11",
+      "tip": "secme",
+      "yer": "Direncin ölçülmesi: ohmmetre",
+      "soru": "Ohmmetre ile direnç ölçümü yapılırken hangisine dikkat edilmelidir?",
+      "secenekler": [
+        "Ölçülen devrenin kaynağı kapalı tutulmalı, devrede gerilim bulunmamalıdır",
+        "Devredeki kaynak açık olmalıdır; ohmmetre alıcının akımını ondan ölçer",
+        "Ohmmetre alıcıya seri bağlanmalı ve devrenin kaynağı açık tutulmalıdır",
+        "Ohmmetrenin pili çıkarılmalı ve devrenin kendi gerilimi kullanılmalıdır"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre ohmmetre ile direnç ölçümü yapılırken devredeki kaynak kapalı olmalıdır, yani devrede gerilim olmamalıdır. Ohmmetre alıcı uçlarına kendi içindeki 9 voltluk pille gerilim uygular."
+    },
+    {
+      "id": "el-olcme.s12",
+      "tip": "bosluk",
+      "yer": "Direncin ölçülmesi: ohmmetre",
+      "metin": "Ohmmetreler içlerinde ___ voltluk bir pil sayesinde alıcı uçlarına bir gerilim uygular ve daha sonra alıcının çekmiş olduğu akım değerini ölçerek hesaplar.",
+      "cevaplar": [
+        [
+          "9",
+          "dokuz"
+        ]
+      ],
+      "izah": "Ohmmetrenin içinde 9 voltluk bir pil vardır."
+    },
+    {
+      "id": "el-olcme.s13",
+      "tip": "hesap",
+      "yer": "V, I ve R üçgenleri",
+      "soru": "Direnci 20 Ω olan bir alıcıdan 0,6 A akım geçiyor. Alıcının uçları arasındaki gerilim kaç volttur?",
+      "cevap": 12,
+      "birim": "V",
+      "izah": "Hocanın üçgeninde V daire içindeyken formül V = I · R'dir.\nV = 0,6 · 20 = 12 V."
+    },
+    {
+      "id": "el-olcme.s14",
+      "tip": "hesap",
+      "yer": "Direncin ölçülmesi: ohmmetre",
+      "soru": "Bir alıcının uçları arasındaki gerilim voltmetreyle 220 V, alıcının çektiği akım ampermetreyle 0,5 A ölçülüyor. Alıcının direnci kaç ohmdur?",
+      "cevap": 440,
+      "birim": "Ω",
+      "izah": "Direnç, alıcının uçları arasındaki gerilim ve çektiği akım ölçülerek hesaplanabilir. Hocanın üçgeninde R daire içindeyken formül R = V / I'dır.\nR = 220 / 0,5 = 440 Ω."
+    },
+    {
+      "id": "el-olcme.s15",
+      "tip": "dy",
+      "yer": "Elektromotor kuvveti (EMK)",
+      "ifade": "Kapalı devrede kaynağın uçlarına bağlanan voltmetre kaynağın EMK'sını ölçer.",
+      "dogru": false,
+      "izah": "Kapalı devrede kaynağın uçlarına bağlanan voltmetre **kaynağın gerilimini** ölçer. Kaynağın uçları arasındaki potansiyel farkın EMK olduğu durum **açık devredir** (Şekil-2)."
+    },
+    {
+      "id": "el-olcme.s16",
+      "tip": "secme",
+      "yer": "EMK ile kaynağın gerilimi",
+      "soru": "Hocaya göre bir kaynak için EMK ile gerilim arasındaki ilişki nedir ve nedeni nedir?",
+      "secenekler": [
+        "EMK > gerilim; çünkü gerilimin bir kısmı kaynağın kendisinde harcanır",
+        "EMK < gerilim; çünkü kaynak devreye enerji verirken yükteki gerilim kaynağınkine eklenir",
+        "EMK = gerilim; çünkü ikisi de kaynağın uçları arasında voltmetreyle ölçülen farktır",
+        "EMK > gerilim; çünkü voltmetrenin iç direnci çok büyük olduğu için ölçülen değer azalır"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki cümle: \"Bir kaynak için EMK > gerilimdir. Çünkü kaynak devreye enerji verirken gerilimin bir kısmı kaynakta harcanır.\" Voltmetrenin iç direncinin büyük olması voltmetrenin bilgisidir; EMK ile gerilim farkının nedeni olarak verilmez."
+    },
+    {
+      "id": "el-olcme.s17",
+      "tip": "hesap",
+      "yer": "EMK ile kaynağın gerilimi",
+      "soru": "Kapalı bir devrede kaynağın EMK'sı 12 V, kaynak uçlarındaki gerilim 11,4 V'tur. Kaynakta düşen gerilim kaç volttur?",
+      "cevap": 0.6,
+      "tolerans": 0.01,
+      "birim": "V",
+      "izah": "EMK = Kaynakta Düşen Gerilim + Kaynak Uçlarındaki Gerilim\n12 = Kaynakta Düşen Gerilim + 11,4\nKaynakta Düşen Gerilim = 12 − 11,4 = 0,6 V."
+    },
+    {
+      "id": "el-olcme.s18",
+      "tip": "hesap",
+      "yer": "EMK ile kaynağın gerilimi",
+      "soru": "Kapalı bir devrede kaynakta düşen gerilim 0,5 V, kaynak uçlarındaki gerilim 4 V'tur. Kaynağın EMK'sı kaç volttur?",
+      "cevap": 4.5,
+      "birim": "V",
+      "izah": "EMK = Kaynakta Düşen Gerilim + Kaynak Uçlarındaki Gerilim = 0,5 + 4 = 4,5 V."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-olcme.k1",
+      "yer": "Analog avometre (multimetre) ile ölçüm",
+      "on": "Analog avometreyle ölçüm nasıl yapılır? Ölçülen değer nasıl bulunur?",
+      "arka": "- Her şeyden önce sıfır ayarı yapılır.\n- Uygun kademe seçildikten sonra değer yalnız ait olduğu skala taksimatından (Ω, V, A gibi) okunur.\n- Kademe anahtarının bulunduğu konum ile skaladan okunan değer çarpılarak ölçülen büyüklüğün değeri tespit edilir (X100 kademesinde okunan değer 100 ile çarpılır).\n- Skalada aynı noktada alt alta yazılmış değerler, kademe değiştikçe o noktanın yeni değeridir."
+    },
+    {
+      "id": "el-olcme.k2",
+      "yer": "Analog avometrede ölçülen değerin bulunması",
+      "on": "Hocanın iki analog avometre örneğini anlatın: AC 1000 V kademesi ve X100 kademesi.",
+      "arka": "- AC 1000 V kademesinde alternatif gerilim ölçülürken ibre 4'ün üzerinde durmuşsa: skalanın en son değeri 10 yerine 1000 V kabul edilir; 4'ün değeri orantıyla 400 V bulunur.\n- Direnç ölçümünde X100 kademesinde ibre Ω skalasında 10'u gösteriyorsa: 10 · 100 = 1000 Ω = 1 kΩ."
+    },
+    {
+      "id": "el-olcme.k3",
+      "yer": "Analog ve dijital ölçü aletlerinin avantaj ve dezavantajları",
+      "on": "Analog ve dijital ölçü aletlerinin avantaj ve dezavantajlarını sayın.",
+      "arka": "Analog avantajları: hızlı çalışırlar (ibre bağlantı anında sapar); ucuzdurlar; bakım ve onarımları kolaydır.\nAnalog dezavantajları: taksimatlandırma zorluğu (ibrenin gösterdiği değer %1-3 farklı olabilir); okuma hassasiyeti ve hızı kişiden kişiye değişir; elektromanyetik alandan etkilenirler; mekanik arıza olasılıkları fazladır.\nDijital avantajları: insandan kaynaklanan okuma hatası yok; yapısından kaynaklanan hata %0,01 civarı; enerji sarfiyatı çok az; elektromanyetik alandan çok az etkilenir; mekanik arıza yapmaz.\nDijital dezavantajları: LCD veya LED yüzünden uzaktan okunması zor; üretimi, onarımı, bakımı zor, dolayısıyla daha pahalı."
+    },
+    {
+      "id": "el-olcme.k4",
+      "yer": "Akımın ölçülmesi: ampermetre",
+      "on": "Ampermetre nedir, devreye nasıl bağlanır? Paralel bağlanırsa ne olur?",
+      "arka": "Elektrik devrelerinde alıcıların yapmış oldukları iş karşılığında kaynaktan çektikleri akım değerini ölçen ölçü aletidir. Devreye seri bağlanır; iç direnci küçüktür (0,1-0,5 Ω). Paralel bağlanırsa devre ampermetre üzerinden kısa devre olur ve ampermetre zarar görür."
+    },
+    {
+      "id": "el-olcme.k5",
+      "yer": "Gerilimin ölçülmesi: voltmetre",
+      "on": "Voltmetre nedir, devreye nasıl bağlanır? Seri bağlanırsa ne olur?",
+      "arka": "Elektrik devrelerinde iki nokta arasındaki potansiyel farkı (gerilimi) ölçen ölçü aletidir. Devreye paralel bağlanır; iç direnci çok büyüktür (10 kΩ, 100 kΩ). Seri bağlanırsa zarar görmez."
+    },
+    {
+      "id": "el-olcme.k6",
+      "yer": "Direncin ölçülmesi: ohmmetre",
+      "on": "Direnç hangi iki yolla ölçülür? Ohmmetreyle ölçümde nelere dikkat edilir?",
+      "arka": "1. Alıcının uçları arasındaki gerilim ve alıcının çektiği akım ölçülerek hesaplanır.\n2. Ohmmetreyle ölçülür: ohmmetre içindeki 9 voltluk pille alıcı uçlarına gerilim uygular, alıcının çektiği akımı ölçerek hesaplar.\nOhmmetreyle ölçümde devredeki kaynak kapalı olmalı, yani devrede gerilim olmamalıdır."
+    },
+    {
+      "id": "el-olcme.k7",
+      "yer": "V, I ve R üçgenleri",
+      "on": "Hocanın V, I, R üçgenlerini ve üç formülü anlatın.",
+      "arka": "Üçgenin üstünde V (gerilim), altında yan yana I (akım) ve R (direnç) vardır; her üçgende bulunacak harf daire içine alınmıştır. Altlarındaki formüller:\n- V = I · R\n- I = V / R\n- R = V / I\nEk: Bulunacak harf kapatılınca I ile R yan yana kalırsa çarpılır, V üstte kalırsa alttakine bölünür (slaytta yalnızca üçgenler ve formüller var). Bu bağıntıya Ohm kanunu denir; slaytta adı yazmaz."
+    },
+    {
+      "id": "el-olcme.k8",
+      "yer": "EMK ile kaynağın gerilimi",
+      "on": "EMK nedir? EMK ile kaynağın gerilimi arasındaki fark nedir?",
+      "arka": "EMK kısaca bir kaynağın uçları arasındaki potansiyel farktır; açık devrede kaynağın uçları arasındaki potansiyel fark da EMK'dır. Kapalı devrede kaynağın uçlarına bağlanan voltmetre kaynağın gerilimini ölçer.\nBir kaynak için EMK > gerilimdir, çünkü kaynak devreye enerji verirken gerilimin bir kısmı kaynakta harcanır.\nKapalı devre için: EMK = Kaynakta Düşen Gerilim + Kaynak Uçlarındaki Gerilim."
+    }
+  ]
+}

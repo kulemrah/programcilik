@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="400" viewBox="0 0 360 400" role="img">
+<title>Elektron dağılımı örnekleri: 16 S 2 8 6, 11 Na 2 8 1, 19 K 2 8 8 1; son yörüngedeki elektronlar turuncu</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="180.0" y="22.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="middle">Elektronların yörüngelere yerleşimi</text>
+<rect x="6.0" y="40.0" width="348.0" height="112.0" rx="8" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.2"/>
+<circle cx="76" cy="96" r="7" fill="#FED7D7" stroke="#C53030" stroke-width="1.2"/>
+<circle cx="76.0" cy="96.0" r="16.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="76.0" cy="80.0" r="3.6" fill="#2B6CB0"/>
+<circle cx="76.0" cy="112.0" r="3.6" fill="#2B6CB0"/>
+<circle cx="76.0" cy="96.0" r="28.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="85.6" cy="69.7" r="3.6" fill="#2B6CB0"/>
+<circle cx="101.4" cy="84.2" r="3.6" fill="#2B6CB0"/>
+<circle cx="102.3" cy="105.6" r="3.6" fill="#2B6CB0"/>
+<circle cx="87.8" cy="121.4" r="3.6" fill="#2B6CB0"/>
+<circle cx="66.4" cy="122.3" r="3.6" fill="#2B6CB0"/>
+<circle cx="50.6" cy="107.8" r="3.6" fill="#2B6CB0"/>
+<circle cx="49.7" cy="86.4" r="3.6" fill="#2B6CB0"/>
+<circle cx="64.2" cy="70.6" r="3.6" fill="#2B6CB0"/>
+<circle cx="76.0" cy="96.0" r="40.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="101.7" cy="65.4" r="3.6" fill="#C05621"/>
+<circle cx="115.4" cy="102.9" r="3.6" fill="#C05621"/>
+<circle cx="89.7" cy="133.6" r="3.6" fill="#C05621"/>
+<circle cx="50.3" cy="126.6" r="3.6" fill="#C05621"/>
+<circle cx="36.6" cy="89.1" r="3.6" fill="#C05621"/>
+<circle cx="62.3" cy="58.4" r="3.6" fill="#C05621"/>
+<text x="150.0" y="72.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" font-weight="600" text-anchor="start">16 S</text>
+<text x="150.0" y="98.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">Dağılım: 2 8 6</text>
+<text x="150.0" y="124.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#C05621" font-weight="600" text-anchor="start">Son yörüngede 6 elektron</text>
+<rect x="6.0" y="160.0" width="348.0" height="112.0" rx="8" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.2"/>
+<circle cx="76" cy="216" r="7" fill="#FED7D7" stroke="#C53030" stroke-width="1.2"/>
+<circle cx="76.0" cy="216.0" r="16.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="76.0" cy="200.0" r="3.6" fill="#2B6CB0"/>
+<circle cx="76.0" cy="232.0" r="3.6" fill="#2B6CB0"/>
+<circle cx="76.0" cy="216.0" r="28.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="85.6" cy="189.7" r="3.6" fill="#2B6CB0"/>
+<circle cx="101.4" cy="204.2" r="3.6" fill="#2B6CB0"/>
+<circle cx="102.3" cy="225.6" r="3.6" fill="#2B6CB0"/>
+<circle cx="87.8" cy="241.4" r="3.6" fill="#2B6CB0"/>
+<circle cx="66.4" cy="242.3" r="3.6" fill="#2B6CB0"/>
+<circle cx="50.6" cy="227.8" r="3.6" fill="#2B6CB0"/>
+<circle cx="49.7" cy="206.4" r="3.6" fill="#2B6CB0"/>
+<circle cx="64.2" cy="190.6" r="3.6" fill="#2B6CB0"/>
+<circle cx="76.0" cy="216.0" r="40.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="101.7" cy="185.4" r="3.6" fill="#C05621"/>
+<text x="150.0" y="192.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" font-weight="600" text-anchor="start">11 Na</text>
+<text x="150.0" y="218.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">Dağılım: 2 8 1</text>
+<text x="150.0" y="244.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#C05621" font-weight="600" text-anchor="start">Son yörüngede 1 elektron</text>
+<rect x="6.0" y="280.0" width="348.0" height="112.0" rx="8" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.2"/>
+<circle cx="76" cy="336" r="7" fill="#FED7D7" stroke="#C53030" stroke-width="1.2"/>
+<circle cx="76.0" cy="336.0" r="16.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="76.0" cy="320.0" r="3.6" fill="#2B6CB0"/>
+<circle cx="76.0" cy="352.0" r="3.6" fill="#2B6CB0"/>
+<circle cx="76.0" cy="336.0" r="28.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="85.6" cy="309.7" r="3.6" fill="#2B6CB0"/>
+<circle cx="101.4" cy="324.2" r="3.6" fill="#2B6CB0"/>
+<circle cx="102.3" cy="345.6" r="3.6" fill="#2B6CB0"/>
+<circle cx="87.8" cy="361.4" r="3.6" fill="#2B6CB0"/>
+<circle cx="66.4" cy="362.3" r="3.6" fill="#2B6CB0"/>
+<circle cx="50.6" cy="347.8" r="3.6" fill="#2B6CB0"/>
+<circle cx="49.7" cy="326.4" r="3.6" fill="#2B6CB0"/>
+<circle cx="64.2" cy="310.6" r="3.6" fill="#2B6CB0"/>
+<circle cx="76.0" cy="336.0" r="40.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="101.7" cy="305.4" r="3.6" fill="#2B6CB0"/>
+<circle cx="115.8" cy="332.5" r="3.6" fill="#2B6CB0"/>
+<circle cx="106.6" cy="361.7" r="3.6" fill="#2B6CB0"/>
+<circle cx="79.5" cy="375.8" r="3.6" fill="#2B6CB0"/>
+<circle cx="50.3" cy="366.6" r="3.6" fill="#2B6CB0"/>
+<circle cx="36.2" cy="339.5" r="3.6" fill="#2B6CB0"/>
+<circle cx="45.4" cy="310.3" r="3.6" fill="#2B6CB0"/>
+<circle cx="72.5" cy="296.2" r="3.6" fill="#2B6CB0"/>
+<circle cx="76.0" cy="336.0" r="52.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="121.0" cy="310.0" r="3.6" fill="#C05621"/>
+<text x="150.0" y="312.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" font-weight="600" text-anchor="start">19 K</text>
+<text x="150.0" y="338.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="start">Dağılım: 2 8 8 1</text>
+<text x="150.0" y="364.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#C05621" font-weight="600" text-anchor="start">Son yörüngede 1 elektron</text>
+</svg>

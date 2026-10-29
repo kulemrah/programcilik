@@ -1,0 +1,298 @@
+{
+  "id": "el-devre-turleri",
+  "baslik": "Devre Türleri ve Elektrik Akımının Etkileri",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 74–75, 81",
+  "kavramlar": [
+    {
+      "terim": "Açık devre",
+      "izah": "Anahtarın açık olduğu ve akımın geçmediği devre. Sigortanın atması, iletkenlerin kopması, ek yerlerinin değmemesi de açık devreyi oluşturur.",
+      "yer": "Açık devre"
+    },
+    {
+      "terim": "Kapalı devre",
+      "izah": "Devreye kumanda eden anahtarın kapalı olması.",
+      "yer": "Kapalı devre"
+    },
+    {
+      "terim": "Kısa devre",
+      "izah": "Herhangi bir arıza nedeniyle akımın alıcıya gitmeden devresini kısa yoldan tamamlaması. Kısa devre durumunda devreden yüksek akım geçer ve sigorta atar.",
+      "yer": "Kısa devre"
+    },
+    {
+      "terim": "Isı etkisi",
+      "izah": "İçerisinden akım geçen iletkenin ısınması; ör. ocak, ısıtıcı, fırın.",
+      "yer": "Isı etkisi"
+    },
+    {
+      "terim": "Işık etkisi",
+      "izah": "Elektrik ampullerinin elektrik enerjisini ısı dolayısı ile ışık enerjisine çevirmesi.",
+      "yer": "Işık etkisi"
+    },
+    {
+      "terim": "Manyetik etki",
+      "izah": "İçerisinden akım geçen iletken etrafında bir manyetik alan oluşması; ör. motor, generatör, transformatör ve rölenin çalışma prensibi.",
+      "yer": "Manyetik etki"
+    },
+    {
+      "terim": "Kimyasal etki",
+      "izah": "İçerisinden akım geçen elektrolitlerde kimyasal bir değişim görülmesi; ör. pil ve akümülatörün çalışma prensibi.",
+      "yer": "Kimyasal etki"
+    },
+    {
+      "terim": "Fizyolojik etki",
+      "izah": "Elektrik akımının hayvan ve insanların sinir ve kaslarına etki ederek canlılarda organik bozukluklara ve hatta ölümlere yol açabilmesi; 100–500 mA, geçiş süresine bağlı olmakla birlikte ölüme neden olur.",
+      "yer": "Fizyolojik etki"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-devre-turleri.s1",
+      "tip": "secme",
+      "yer": "Elektrik devre türleri",
+      "soru": "Hocaya göre elektrik devreleri **neye göre** üç çeşittir?",
+      "secenekler": [
+        "Akımın alıcıdan geçiş durumuna göre",
+        "Üretecin ürettiği gerilimin cinsine göre",
+        "Kullanılan iletkenlerin kesitine göre",
+        "Devredeki sigortanın çeşidine göre"
+      ],
+      "dogru": 0,
+      "izah": "Elektrik devreleri akımın alıcıdan geçiş durumuna göre üç çeşittir: açık devre, kapalı devre ve kısa devre."
+    },
+    {
+      "id": "el-devre-turleri.s2",
+      "tip": "esles",
+      "yer": "Elektrik devre türleri",
+      "soru": "Devre türlerini hocanın tanımlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Açık devre",
+          "Anahtarın açık olduğu ve akımın geçmediği devre"
+        ],
+        [
+          "Kapalı devre",
+          "Devreye kumanda eden anahtarın kapalı olması"
+        ],
+        [
+          "Kısa devre",
+          "Akımın alıcıya gitmeden devresini kısa yoldan tamamlaması"
+        ]
+      ],
+      "izah": "Açık devrede anahtar açıktır ve akım geçmez; kapalı devrede devreye kumanda eden anahtar kapalıdır; kısa devrede akım bir arıza nedeniyle alıcıya gitmeden devresini kısa yoldan tamamlar."
+    },
+    {
+      "id": "el-devre-turleri.s3",
+      "tip": "secme",
+      "yer": "Açık devre",
+      "soru": "Aşağıdakilerden hangisi hocanın **açık devreyi** oluşturan durumları arasında **yer almaz**?",
+      "secenekler": [
+        "İletkenlerin birbirine değmesi",
+        "Devredeki sigortanın atması",
+        "Devredeki iletkenlerin kopması",
+        "İletkenlerin ek yerlerinin değmemesi"
+      ],
+      "dogru": 0,
+      "izah": "Sigortanın atması, iletkenlerin kopması ve ek yerlerinin değmemesi açık devreyi oluşturur. İletkenlerin (yalıtkan kaplamalarının özelliğini kaybedip) birbirine değmesi ise kısa devreyi oluşturabilir."
+    },
+    {
+      "id": "el-devre-turleri.s4",
+      "tip": "dy",
+      "yer": "Kısa devre",
+      "ifade": "Hocaya göre kısa devre durumunda devreden yüksek akım geçer ve sigorta atar.",
+      "dogru": true,
+      "izah": "Doğru. Elektrik akımı direncin en küçük olduğu yerden geçmek ister; kısa devre durumunda devreden yüksek akım geçer ve sigorta atar."
+    },
+    {
+      "id": "el-devre-turleri.s5",
+      "tip": "dy",
+      "yer": "Kısa devre",
+      "ifade": "Hocaya göre elektrik akımı, direncin en büyük olduğu yerden geçmek ister.",
+      "dogru": false,
+      "izah": "Yanlış. Elektrik akımı direncin **en küçük** olduğu yerden geçmek ister; kısa devrede akımın alıcıya gitmeden kısa yoldan dönmesi bundandır."
+    },
+    {
+      "id": "el-devre-turleri.s6",
+      "tip": "dy",
+      "yer": "Kapalı devre",
+      "ifade": "Hocaya göre kapalı devre, devreye kumanda eden anahtarın kapalı olmasıdır.",
+      "dogru": true,
+      "izah": "Doğru. Hocanın tanımı budur (Şekil 2). Anahtarın açık olduğu ve akımın geçmediği devre ise açık devredir."
+    },
+    {
+      "id": "el-devre-turleri.s7",
+      "tip": "secme",
+      "yer": "Kısa devre",
+      "soru": "Herhangi bir arıza nedeniyle akım alıcıya gitmeden devresini kısa yoldan tamamlıyorsa bu duruma ne denir?",
+      "secenekler": [
+        "Kısa devre",
+        "Açık devre",
+        "Kapalı devre"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın kısa devre tanımıdır (Şekil 3). Açık devrede akım geçmez; kapalı devrede devreye kumanda eden anahtar kapalıdır."
+    },
+    {
+      "id": "el-devre-turleri.s8",
+      "tip": "secme",
+      "yer": "Kısa devre",
+      "soru": "Hocanın notuna göre aşağıdakilerden hangisi **kısa devreyi** oluşturabilir?",
+      "secenekler": [
+        "Yalıtkan kaplaması özelliğini kaybeden iletkenlerin birbirine değmesi",
+        "İletkenlerin ek yerlerinin birbirine değmemesi ve akımın kesilmesi",
+        "Devreye kumanda eden anahtarın açılması ve akımın geçmemesi",
+        "Devredeki iletkenlerden birinin kopması ve akımın tamamen kesilmesi"
+      ],
+      "dogru": 0,
+      "izah": "İletkenlerin, yalıtkan kaplamalarının özelliğini kaybetmesinden ötürü birbirine değmesi kısa devreyi oluşturabilir. Ek yerlerinin değmemesi, anahtarın açılması ve iletkenlerin kopması açık devreyi oluşturur."
+    },
+    {
+      "id": "el-devre-turleri.s9",
+      "tip": "esles",
+      "yer": "Elektrik akımının etkileri",
+      "soru": "Elektrik akımının etkilerini hocanın örnekleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Isı etkisi",
+          "Ocak, ısıtıcı, fırın"
+        ],
+        [
+          "Işık etkisi",
+          "Elektrik ampulleri"
+        ],
+        [
+          "Manyetik etkisi",
+          "Motor, generatör, transformatör ve röle"
+        ],
+        [
+          "Kimyasal etkisi",
+          "Pil ve akümülatör"
+        ],
+        [
+          "Fizyolojik etkisi",
+          "100–500 mA akımın, geçiş süresine bağlı olarak ölüme neden olması"
+        ]
+      ],
+      "izah": "Isı: ocak, ısıtıcı, fırın. Işık: ampuller enerjiyi ısı dolayısı ile ışığa çevirir. Manyetik: motor, generatör, transformatör ve rölenin çalışma prensibi. Kimyasal: pil ve akümülatörün çalışma prensibi. Fizyolojik: 100–500 mA, geçiş süresine bağlı olmakla birlikte ölüme neden olur."
+    },
+    {
+      "id": "el-devre-turleri.s10",
+      "tip": "secme",
+      "yer": "Kimyasal etki",
+      "soru": "İçerisinden akım geçen **elektrolitlerde** kimyasal bir değişim görülmesi, elektrik akımının hangi etkisidir?",
+      "secenekler": [
+        "Kimyasal etkisi",
+        "Manyetik etkisi",
+        "Isı etkisi",
+        "Fizyolojik etkisi"
+      ],
+      "dogru": 0,
+      "izah": "Kimyasal etkide içerisinden akım geçen elektrolitlerde kimyasal bir değişim görülür; pil ve akümülatörün çalışma prensibi buna örnektir."
+    },
+    {
+      "id": "el-devre-turleri.s11",
+      "tip": "bosluk",
+      "yer": "Manyetik etki",
+      "metin": "İçerisinden akım geçen iletken etrafında bir ___ alan oluşur.",
+      "cevaplar": [
+        [
+          "manyetik"
+        ]
+      ],
+      "izah": "Bu, akımın manyetik etkisidir; motor, generatör, transformatör ve rölenin çalışma prensibi buna dayanır."
+    },
+    {
+      "id": "el-devre-turleri.s12",
+      "tip": "secme",
+      "yer": "Manyetik etki",
+      "soru": "Aşağıdakilerden hangisi hocanın **manyetik etki** örnekleri arasında **yer almaz**?",
+      "secenekler": [
+        "Akümülatör",
+        "Röle",
+        "Transformatör",
+        "Generatör"
+      ],
+      "dogru": 0,
+      "izah": "Manyetik etkinin örnekleri motor, generatör, transformatör ve rölenin çalışma prensibidir. Akümülatörün (ve pilin) çalışma prensibi kimyasal etkinin örneğidir."
+    },
+    {
+      "id": "el-devre-turleri.s13",
+      "tip": "dy",
+      "yer": "Işık etkisi",
+      "ifade": "Hocaya göre elektrik ampulleri elektrik enerjisini ısı dolayısı ile ışık enerjisine çevirirler.",
+      "dogru": true,
+      "izah": "Doğru. Bu, hocanın ışık etkisi tanımıdır."
+    },
+    {
+      "id": "el-devre-turleri.s14",
+      "tip": "bosluk",
+      "yer": "Fizyolojik etki",
+      "metin": "Fizyolojik etki örneği: 100–___ mA, geçiş süresine bağlı olmakla birlikte ölüme neden olur.",
+      "cevaplar": [
+        [
+          "500"
+        ]
+      ],
+      "izah": "Hocanın örneği: 100–500 mA, geçiş süresine bağlı olmakla birlikte ölüme neden olur. Fizyolojik etkide akım hayvan ve insanların sinir ve kaslarına etki eder."
+    },
+    {
+      "id": "el-devre-turleri.s15",
+      "tip": "dy",
+      "yer": "Açık devre ile kısa devrenin farkı",
+      "ifade": "Hocaya göre sigortanın atması kısa devreyi oluşturur.",
+      "dogru": false,
+      "izah": "Yanlış. Sigortanın atması **açık devreyi** oluşturur. Kısa devrede ise sigortanın atması bir sonuçtur: devreden yüksek akım geçer ve sigorta atar."
+    },
+    {
+      "id": "el-devre-turleri.s16",
+      "tip": "klasik",
+      "yer": "Elektrik akımının etkileri",
+      "soru": "Hocanın saydığı elektrik akımının beş etkisini yazın.",
+      "cevap": "Elektrik akımının etkileri: ısı etkisi, ışık etkisi, manyetik etkisi, kimyasal etkisi ve fizyolojik etkisi.",
+      "anahtarlar": [
+        "ısı",
+        "ışık",
+        "manyetik",
+        "kimyasal",
+        "fizyolojik"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-devre-turleri.k1",
+      "yer": "Elektrik devre türleri",
+      "on": "Elektrik devreleri neye göre kaç çeşittir? Her birini tanımlayın.",
+      "arka": "Akımın alıcıdan geçiş durumuna göre üç çeşittir:\n- Açık devre: anahtarın açık olduğu ve akımın geçmediği devre\n- Kapalı devre: devreye kumanda eden anahtarın kapalı olması\n- Kısa devre: herhangi bir arıza nedeniyle akımın alıcıya gitmeden devresini kısa yoldan tamamlaması"
+    },
+    {
+      "id": "el-devre-turleri.k2",
+      "yer": "Açık devre",
+      "on": "Anahtarın açılması dışında açık devreyi hangi durumlar oluşturur?",
+      "arka": "Sigortanın atması, iletkenlerin kopması ve ek yerlerinin değmemesi."
+    },
+    {
+      "id": "el-devre-turleri.k3",
+      "yer": "Kısa devre",
+      "on": "Kısa devre nedir, neden olur ve sonucu nedir?",
+      "arka": "Herhangi bir arıza nedeniyle akımın alıcıya gitmeden devresini kısa yoldan tamamlamasıdır. İletkenlerin, yalıtkan kaplamalarının özelliğini kaybetmesinden ötürü birbirine değmesi de kısa devreyi oluşturabilir. Elektrik akımı direncin en küçük olduğu yerden geçmek ister: kısa devre durumunda devreden yüksek akım geçer ve sigorta atar."
+    },
+    {
+      "id": "el-devre-turleri.k4",
+      "yer": "Açık devre ile kısa devrenin farkı",
+      "on": "Açık devre ile kısa devreyi karşılaştırın; sigortanın atması hangisiyle ilgilidir?",
+      "arka": "Açık devrede akım geçmez (anahtar açık, sigorta atmış, iletken kopmuş ya da ek yerleri değmiyor). Kısa devrede akım alıcıya gitmeden kısa yoldan döner ve devreden yüksek akım geçer. Sigortanın atması açık devreyi oluşturan durumlardandır; kısa devrede ise sigortanın atması sonuçtur."
+    },
+    {
+      "id": "el-devre-turleri.k5",
+      "yer": "Elektrik akımının etkileri",
+      "on": "Elektrik akımının beş etkisini örnekleriyle söyleyin.",
+      "arka": "1. Isı etkisi: iletken ısınır (ocak, ısıtıcı, fırın)\n2. Işık etkisi: ampuller elektrik enerjisini ısı dolayısı ile ışığa çevirir\n3. Manyetik etkisi: iletken etrafında manyetik alan oluşur (motor, generatör, transformatör, röle)\n4. Kimyasal etkisi: elektrolitlerde kimyasal değişim (pil ve akümülatör)\n5. Fizyolojik etkisi: sinir ve kaslara etki eder (100–500 mA, geçiş süresine bağlı olarak ölüme neden olur)"
+    },
+    {
+      "id": "el-devre-turleri.k6",
+      "yer": "Fizyolojik etki",
+      "on": "Elektrik akımının fizyolojik etkisi nedir?",
+      "arka": "Elektrik akımı hayvan ve insanların sinir ve kaslarına etki ederek canlılarda organik bozukluklar ve hatta ölümlere yol açabilir. Hocanın örneği: 100–500 mA, geçiş süresine bağlı olmakla birlikte ölüme neden olur.\nEk: 100–500 mA = 0,1–0,5 A."
+    }
+  ]
+}

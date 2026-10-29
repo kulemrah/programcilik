@@ -1,0 +1,295 @@
+{
+  "id": "el-akim-cesitleri",
+  "baslik": "Doğru Akım ve Alternatif Akım",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 94–98, 184–185, 187",
+  "kavramlar": [
+    {
+      "terim": "Doğru akım (DC, DA)",
+      "izah": "Zamana bağlı olarak yönü değişmeyen akım. Doğru akımın yönü değişmese de şiddeti değişebilir.",
+      "yer": "Doğru akım (DC, DA)"
+    },
+    {
+      "terim": "Düzgün doğru akım",
+      "izah": "Zamanın hangi anı alınırsa alınsın değerinde değişme olmayan doğru akım (hocanın Şekil (a)'sında 2. ve 8. saniyede de 2 A). Dinamolar, piller, akü ve bataryalardan elde edilir.",
+      "yer": "Düzgün doğru akım"
+    },
+    {
+      "terim": "Değişken doğru akım",
+      "izah": "Yönü değişmeyen ama şiddeti değişen doğru akım (hocanın Şekil (b)'si). Hocanın şeklindeki iki eğriden birincisi pozitif, ikincisi negatif değere sahiptir.",
+      "yer": "Değişken doğru akım"
+    },
+    {
+      "terim": "Alternatif akım (AC, AA)",
+      "izah": "Zamana bağlı olarak hem yönü hem de şiddeti SİNÜS biçiminde değişen akım (14. haftadaki tanımda: belirli bir düzende değişen). Alternatif akım denince akla ilk olarak şebekeden çekilen akım gelir.",
+      "yer": "Alternatif akım (AC, AA)"
+    },
+    {
+      "terim": "Dalga biçimleri",
+      "izah": "Alternatif akımda farklı uygulamalarda üçgen ve kare dalga gibi değişik dalga biçimleri de kullanılmaktadır.",
+      "yer": "Dalga biçimleri"
+    },
+    {
+      "terim": "Alternatif gerilim kaynaklı devre",
+      "izah": "Kaynağın sabit bir \"+\" ya da \"−\" kutbu yoktur. Kutuplar sürekli değiştiği için her kutup değişiminde direnç üzerinden geçen akımın da yönü değişir.",
+      "yer": "Doğru ve alternatif akım devreleri"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-akim-cesitleri.s1",
+      "tip": "secme",
+      "yer": "Elektrik akımının çeşitleri",
+      "soru": "Hocaya göre elektrik akımı **neye göre** doğru akım ve alternatif akım diye ikiye ayrılır?",
+      "secenekler": [
+        "Değerinin zamana göre değişimine göre",
+        "Üretildiği kaynağın cinsine göre",
+        "Geçtiği iletkenin cinsine göre",
+        "Devredeki alıcının türüne göre"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki cümle: \"Elektrik akımı; değerinin zamana göre değişimine göre DOĞRU AKIM ve ALTERNATİF AKIM diye ikiye ayrılır.\""
+    },
+    {
+      "id": "el-akim-cesitleri.s2",
+      "tip": "secme",
+      "yer": "Doğru akım (DC, DA)",
+      "soru": "Zamana bağlı olarak **yönü değişmeyen** akıma ne denir?",
+      "secenekler": [
+        "Doğru akım",
+        "Alternatif akım",
+        "Şebekeden çekilen akım",
+        "Sinüs biçimli akım"
+      ],
+      "dogru": 0,
+      "izah": "Doğru akım (DC, DA), zamana bağlı olarak yönü değişmeyen akımdır. Alternatif akımın (akla ilk gelen örneği şebekeden çekilen akım) hem yönü hem de şiddeti değişir."
+    },
+    {
+      "id": "el-akim-cesitleri.s3",
+      "tip": "dy",
+      "yer": "Doğru akım (DC, DA)",
+      "ifade": "Doğru akımın yönü değişmese de şiddeti değişebilir.",
+      "dogru": true,
+      "izah": "Slayttaki ikinci madde budur (Şekil-b). Şiddeti değişmeyen doğru akım düzgün, şiddeti değişen doğru akım değişken doğru akımdır."
+    },
+    {
+      "id": "el-akim-cesitleri.s4",
+      "tip": "secme",
+      "yer": "Düzgün doğru akım",
+      "soru": "Hocaya göre **düzgün doğru akım** nelerden elde edilir?",
+      "secenekler": [
+        "Dinamolar, piller, akü ve bataryalardan",
+        "Alternatörlerden ve barajlardaki santrallerden",
+        "Şebekeden ve düşürme trafolarından",
+        "Sabit kutbu olmayan alternatif gerilim kaynaklarından"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki cümle: \"Düzgün doğru akım dinamolar, piller, akü ve bataryalardan elde edilir.\" Alternatör alternatif akım kaynağıdır (barajlarda); şebekeden çekilen akım alternatif akımdır; sabit \"+\" ya da \"−\" kutbu olmayan kaynak alternatif gerilim kaynağıdır."
+    },
+    {
+      "id": "el-akim-cesitleri.s5",
+      "tip": "hesap",
+      "yer": "Düzgün doğru akım",
+      "soru": "Hocanın Şekil (a)'sındaki düzgün doğru akım eğrisinde akımın 2. saniyedeki değeri 2 A'dir. Aynı eğride akımın **9. saniyedeki** değeri kaç amperdir?",
+      "cevap": 2,
+      "birim": "A",
+      "izah": "Düzgün doğru akımda zamanın hangi anı alınırsa alınsın akımın değerinde bir değişme yoktur.\nBu yüzden 9. saniyede de akım 2 A'dir. (Hoca örnek olarak 2. ve 8. saniyelere bakar: ikisinde de 2 A.)"
+    },
+    {
+      "id": "el-akim-cesitleri.s6",
+      "tip": "dy",
+      "yer": "Değişken doğru akım",
+      "ifade": "Hocanın Şekil (b)'sindeki ikinci eğri negatif değerde olduğu için bir alternatif akım eğrisidir.",
+      "dogru": false,
+      "izah": "Hoca Şekil (b)'deki iki eğriyi de **değişken doğru akım** eğrisi sayar: birinci eğri pozitif, ikinci eğri negatif değere sahiptir. Negatif değerde olmak akımı alternatif akım yapmaz."
+    },
+    {
+      "id": "el-akim-cesitleri.s7",
+      "tip": "secme",
+      "yer": "Alternatif akım (AC, AA)",
+      "soru": "Hocanın 7. haftadaki tanımına göre **alternatif akım** nedir?",
+      "secenekler": [
+        "Zamana bağlı olarak hem yönü hem de şiddeti sinüs biçiminde değişen akım",
+        "Zamana bağlı olarak yönü değişmeyen, yalnızca şiddeti değişebilen akım",
+        "Zamana bağlı olarak yönü sürekli değişen, şiddeti hep aynı kalan akım",
+        "Zamana bağlı olarak hem yönü hem de şiddeti hiç değişmeyen akım"
+      ],
+      "dogru": 0,
+      "izah": "7.2'deki tanım: \"Zamana bağlı olarak hem yönü hem de şiddeti SİNÜS biçiminde değişen akımlara denir.\" Yönü değişmeyen, şiddeti değişebilen akım doğru akımdır (değişken doğru akım)."
+    },
+    {
+      "id": "el-akim-cesitleri.s8",
+      "tip": "bosluk",
+      "yer": "Alternatif akım (AC, AA)",
+      "metin": "Hoca 14. haftada alternatif akımı şöyle tanımlar: Zamana bağlı olarak hem yönü hem de şiddeti belirli bir ___ değişen akımlara denir.",
+      "cevaplar": [
+        [
+          "düzende"
+        ]
+      ],
+      "izah": "14. haftadaki tanımda \"belirli bir düzende\", 7. haftadakinde \"SİNÜS biçiminde\" yazar."
+    },
+    {
+      "id": "el-akim-cesitleri.s9",
+      "tip": "secme",
+      "yer": "Alternatif akım (AC, AA)",
+      "soru": "Hocaya göre alternatif akım denince akla **ilk olarak** ne gelir?",
+      "secenekler": [
+        "Şebekeden çekilen akım",
+        "Pilden çekilen akım",
+        "Aküden çekilen akım",
+        "Dinamodan çekilen akım"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki cümle: \"Alternatif akım denince akla ilk olarak şebekeden çekilen akım gelir.\" Pil, akü ve dinamo hocanın düzgün doğru akım kaynaklarıdır."
+    },
+    {
+      "id": "el-akim-cesitleri.s10",
+      "tip": "esles",
+      "yer": "Doğru akım ile alternatif akımın karşılaştırması",
+      "soru": "Akım çeşitlerini özellikleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Düzgün doğru akım",
+          "Yönü değişmez, değeri her an aynıdır"
+        ],
+        [
+          "Değişken doğru akım",
+          "Yönü değişmez, şiddeti değişir"
+        ],
+        [
+          "Alternatif akım",
+          "Hem yönü hem de şiddeti değişir"
+        ]
+      ],
+      "izah": "Doğru akımın yönü değişmez; Şekil (a)'daki düzgün doğru akımda değer de değişmez, Şekil (b)'deki değişken doğru akımda şiddet değişir. Alternatif akımın hem yönü hem de şiddeti değişir."
+    },
+    {
+      "id": "el-akim-cesitleri.s11",
+      "tip": "secme",
+      "yer": "Doğru ve alternatif akım devreleri",
+      "soru": "Alternatif gerilim kaynağı bulunan bir devrede direnç üzerinden geçen akımın **yönü** ne zaman değişir?",
+      "secenekler": [
+        "Kaynağın her kutup değişiminde",
+        "Yalnızca devre açılıp kapandığında",
+        "Yalnızca akımın şiddeti azaldığında",
+        "Hiçbir zaman, yalnızca şiddeti değişir"
+      ],
+      "dogru": 0,
+      "izah": "Alternatif gerilim kaynağının sabit bir \"+\" ya da \"−\" kutbu yoktur. Kutuplar sürekli değiştiği için her kutup değişiminde direnç üzerinden geçen akımın da yönü değişir. Yönü hiç değişmeyen akım doğru akımdır."
+    },
+    {
+      "id": "el-akim-cesitleri.s12",
+      "tip": "dy",
+      "yer": "Doğru ve alternatif akım devreleri",
+      "ifade": "Alternatif gerilim kaynağı bulunan devrelerde kaynağın sabit bir \"+\" ve \"−\" kutbu vardır.",
+      "dogru": false,
+      "izah": "Alternatif gerilim kaynağının sabit bir \"+\" ya da \"−\" kutbu **yoktur**; kutuplar sürekli değişir. Akımın üretecin \"+\" kutbundan \"−\" kutbuna direnç üzerinden geçerek ulaştığı devre doğru akım devresidir."
+    },
+    {
+      "id": "el-akim-cesitleri.s13",
+      "tip": "bosluk",
+      "yer": "Alternatif akımın üstünlükleri",
+      "metin": "Bugün kullanılan elektrik enerjisinin %___'ından fazlası alternatif akım olarak üretilmektedir.",
+      "cevaplar": [
+        [
+          "90"
+        ]
+      ],
+      "izah": "Slayttaki cümle: \"Bugün kullanılan elektrik enerjisinin %90'ından fazlası alternatif akım olarak üretilmektedir.\" Cümle 14. haftadaki tekrarda da aynıdır."
+    },
+    {
+      "id": "el-akim-cesitleri.s14",
+      "tip": "secme",
+      "yer": "Alternatif akımın üstünlükleri",
+      "soru": "Aşağıdakilerden hangisi hocanın saydığı alternatif akım üstünlüklerinden biri **değildir**?",
+      "secenekler": [
+        "Doğru akımdan kolay ve ucuz elde edilmesi",
+        "Doğru akıma kolaylıkla çevrilebilmesi",
+        "Makinelerinin daha basit yapıda olması",
+        "Makinelerinin daha az bakım gerektirmesi"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre doğru akımın alternatif akıma dönüştürülmesi işlemi **daha karmaşık ve daha pahalıdır**. Alternatif akımın doğru akıma kolaylıkla çevrilebilmesi ve makinelerinin daha basit yapıda olup daha az bakım gerektirmesi ise başlıca üstünlükleridir."
+    },
+    {
+      "id": "el-akim-cesitleri.s15",
+      "tip": "dy",
+      "yer": "Alternatif akımın üstünlükleri",
+      "ifade": "Doğru akımın alternatif akıma dönüştürülmesi işlemi daha karmaşık ve daha pahalıdır.",
+      "dogru": true,
+      "izah": "Slayttaki son madde budur; 14. haftadaki tekrarda da aynen yer alır. Tersi, yani alternatif akımın doğru akıma çevrilmesi kolaydır."
+    },
+    {
+      "id": "el-akim-cesitleri.s16",
+      "tip": "secme",
+      "yer": "14. haftadaki karşılaştırma slaytı",
+      "soru": "Hoca 14. haftada alternatif akımın üstünlüklerini sayarken \"**en önemlisi**\" diye hangisini vurgular?",
+      "secenekler": [
+        "Enerjinin taşınmasına imkân vermesi",
+        "Makinelerinin daha az bakım gerektirmesi",
+        "Doğru akıma kolaylıkla dönüştürülebilmesi",
+        "Şebekeden kolaylıkla çekilebilmesi"
+      ],
+      "dogru": 0,
+      "izah": "14. haftadaki madde: \"Trafolar yardımı ile kullanım yerine uygun olarak istenilen değerlerde ayarlanabilmesi ve en önemlisi enerjinin taşınmasına imkân vermesidir.\" Makinelerin az bakım gerektirmesi ve doğru akıma kolaylıkla dönüştürülebilmesi de üstünlüktür, ama \"en önemlisi\" diye anılmaz."
+    },
+    {
+      "id": "el-akim-cesitleri.s17",
+      "tip": "klasik",
+      "yer": "14. haftadaki karşılaştırma slaytı",
+      "soru": "Hocanın 7. ve 14. haftada saydığı alternatif akım üstünlüklerini yazın.",
+      "cevap": "- Trafolar yardımı ile kullanım yerine uygun olarak istenilen değerlerde ayarlanabilmesi ve en önemlisi enerjinin taşınmasına imkân vermesi (14. hafta).\n- Alternatif akım makinelerinin daha basit yapıda olması ve daha az bakım gerektirmesi.\n- Doğru akım ihtiyacı olan cihazlar için kolaylıkla doğru akıma çevrilebilmesi.\n- Buna karşılık doğru akımın alternatif akıma dönüştürülmesi daha karmaşık ve daha pahalıdır.\n- Bugün kullanılan elektrik enerjisinin %90'ından fazlası alternatif akım olarak üretilmektedir.",
+      "anahtarlar": [
+        "Trafolar",
+        "taşınmasına",
+        "basit yapıda",
+        "az bakım",
+        "doğru akıma"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-akim-cesitleri.k1",
+      "yer": "Elektrik akımının çeşitleri",
+      "on": "Elektrik akımı neye göre ayrılır? Çeşitleri nelerdir?",
+      "arka": "Elektrik akımı, değerinin zamana göre değişimine göre ikiye ayrılır:\n- Doğru akım (DC, DA)\n- Alternatif akım (AC, AA)"
+    },
+    {
+      "id": "el-akim-cesitleri.k2",
+      "yer": "Doğru akım (DC, DA)",
+      "on": "Doğru akım nedir? Hocanın Şekil (a) ve Şekil (b)'sini anlatın.",
+      "arka": "Doğru akım, zamana bağlı olarak yönü değişmeyen akımdır; yönü değişmese de şiddeti değişebilir.\n- Şekil (a), düzgün DC akım eğrisi: zamanın hangi anı alınırsa alınsın akımın değeri değişmez; 2. ve 8. saniyede de 2 A. Düzgün doğru akım dinamolar, piller, akü ve bataryalardan elde edilir.\n- Şekil (b), farklı değişken DC akım eğrileri: birinci eğri pozitif, ikinci eğri negatif değere sahiptir."
+    },
+    {
+      "id": "el-akim-cesitleri.k3",
+      "yer": "Alternatif akım (AC, AA)",
+      "on": "Alternatif akım nedir? Hocanın 7. ve 14. haftadaki tanımları arasında ne fark vardır?",
+      "arka": "7. hafta: zamana bağlı olarak hem yönü hem de şiddeti SİNÜS biçiminde değişen akımlardır.\n14. hafta: zamana bağlı olarak hem yönü hem de şiddeti belirli bir düzende değişen akımlardır.\nAlternatif akım denince akla ilk olarak şebekeden çekilen akım gelir."
+    },
+    {
+      "id": "el-akim-cesitleri.k4",
+      "yer": "Dalga biçimleri",
+      "on": "Alternatif akımda hangi dalga biçimleri kullanılır?",
+      "arka": "7. haftadaki tanımda alternatif akım sinüs biçiminde değişir. Farklı uygulamalarda üçgen ve kare dalga gibi değişik dalga biçimleri de kullanılmaktadır.\nEk: Hocanın şeklinde sinüs dalgası, kompleks dalga, üçgen dalga ve kare dalga çizilidir; kompleks dalga yalnızca şekilde geçer."
+    },
+    {
+      "id": "el-akim-cesitleri.k5",
+      "yer": "Alternatif akımın üretimi ve evlerimize kadar iletimi",
+      "on": "Alternatif akım santralden evlerimize nasıl gelir?",
+      "arka": "Hocanın \"Alternatif akımın üretimi ve evlerimize kadar iletimi\" şeklinde: santralden alçak gerilim çıkar; yükseltme trafo gerilimi yükseltir; yüksek gerilim direkler üzerindeki hatla taşınır (hat diğer kullanıcılara da gider); düşürme trafo gerilimi düşürür; ev ya da iş yerine alçak gerilim gelir.\nÜretim kaynakları konusundaki yazılı açıklama: gerilim enerji kayıplarını azaltmak için trafolarla yükseltilir, dağıtım merkezlerinde düşürülür."
+    },
+    {
+      "id": "el-akim-cesitleri.k6",
+      "yer": "Doğru ve alternatif akım devreleri",
+      "on": "Doğru akım ve alternatif akım devrelerinde akımın yönü nasıldır?",
+      "arka": "Doğru akım devrelerinde akım, üretecin \"+\" kutbundan \"−\" kutbuna direnç üzerinden geçerek ulaşır.\nAlternatif gerilim kaynağı bulunan devrelerde kaynağın sabit bir \"+\" ya da \"−\" kutbu yoktur; kutuplar sürekli değiştiği için her kutup değişiminde direnç üzerinden geçen akımın da yönü değişir."
+    },
+    {
+      "id": "el-akim-cesitleri.k7",
+      "yer": "14. haftadaki karşılaştırma slaytı",
+      "on": "Alternatif akımın üstünlüklerini sayın.",
+      "arka": "Bugün kullanılan elektrik enerjisinin %90'ından fazlası alternatif akım olarak üretilmektedir.\n- Trafolar yardımı ile kullanım yerine uygun olarak istenilen değerlerde ayarlanabilmesi ve en önemlisi enerjinin taşınmasına imkân vermesi (14. hafta)\n- Makinelerinin daha basit yapıda olması ve daha az bakım gerektirmesi\n- Doğru akım ihtiyacı olan cihazlar için kolaylıkla doğru akıma çevrilebilmesi\nDoğru akımın alternatif akıma dönüştürülmesi ise daha karmaşık ve daha pahalıdır."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="330" viewBox="0 0 360 330" role="img">
+<title>2021 yılında ülkemizdeki kaynaklara göre elektrik üretimi (pasta grafik)</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="180.0" y="22.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="middle">2021 Yılında Ülkemizdeki Kaynaklara</text>
+<text x="180.0" y="41.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="middle">Göre Elektrik Üretimi</text>
+<path d="M 180.0 148.0 L 180.0 60.0 A 88 88 0 0 1 262.0 179.9 Z" fill="#5B9BD5" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="225.0" y="121.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">%30,9</text>
+<path d="M 180.0 148.0 L 262.0 179.9 A 88 88 0 0 1 111.8 203.7 Z" fill="#ED7D31" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="188.5" y="205.9" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">%33,2</text>
+<path d="M 180.0 148.0 L 111.8 203.7 A 88 88 0 0 1 97.8 116.6 Z" fill="#A5A5A5" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="126.1" y="160.7" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">%16,7</text>
+<path d="M 180.0 148.0 L 97.8 116.6 A 88 88 0 0 1 129.2 76.2 Z" fill="#FFC000" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="136.9" y="118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">%9,4</text>
+<path d="M 180.0 148.0 L 129.2 76.2 A 88 88 0 0 1 149.7 65.4 Z" fill="#4472C4" stroke="#FFFFFF" stroke-width="1.5"/>
+<path d="M 180.0 148.0 L 149.7 65.4 A 88 88 0 0 1 166.8 61.0 Z" fill="#70AD47" stroke="#FFFFFF" stroke-width="1.5"/>
+<path d="M 180.0 148.0 L 166.8 61.0 A 88 88 0 0 1 180.0 60.0 Z" fill="#264478" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="30" y="250" width="11" height="11" fill="#5B9BD5"/>
+<text x="47.0" y="260.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Kömür %30,9</text>
+<rect x="30" y="268" width="11" height="11" fill="#ED7D31"/>
+<text x="47.0" y="278.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Doğal Gaz %33,2</text>
+<rect x="30" y="286" width="11" height="11" fill="#A5A5A5"/>
+<text x="47.0" y="296.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Hidrolik %16,7</text>
+<rect x="30" y="304" width="11" height="11" fill="#FFC000"/>
+<text x="47.0" y="314.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Rüzgâr %9,4</text>
+<rect x="200" y="250" width="11" height="11" fill="#4472C4"/>
+<text x="217.0" y="260.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Güneş %4,2</text>
+<rect x="200" y="268" width="11" height="11" fill="#70AD47"/>
+<text x="217.0" y="278.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Jeotermal %3,2</text>
+<rect x="200" y="286" width="11" height="11" fill="#264478"/>
+<text x="217.0" y="296.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Diğer Kaynaklar %2,4</text>
+</svg>

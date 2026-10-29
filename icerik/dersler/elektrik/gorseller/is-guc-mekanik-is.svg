@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="136" viewBox="0 0 360 136" role="img">
+<title>Mekaniksel iş: M kütlesi F kuvvetiyle A noktasından B noktasına götürülür</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<defs><pattern id="p04tarama" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M 0 0 L 6 6 M 6 0 L 0 6" stroke="#2D3748" stroke-width="0.8"/></pattern></defs>
+<line x1="36.0" y1="76.0" x2="324.0" y2="76.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<rect x="36" y="44" width="32" height="32" fill="url(#p04tarama)" stroke="#2D3748" stroke-width="1.4"/>
+<line x1="68.0" y1="60.0" x2="124.0" y2="60.0" stroke="#1A202C" stroke-width="1.6"/>
+<polygon points="124.0,60.0 115.7,63.5 115.7,56.5" fill="#1A202C"/>
+<text x="52.0" y="36.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">M</text>
+<text x="136.0" y="65.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">F</text>
+<circle cx="36" cy="76" r="3.5" fill="#2B6CB0"/>
+<text x="28.0" y="81.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="end">A</text>
+<line x1="36.0" y1="80.0" x2="36.0" y2="112.0" stroke="#4A5568" stroke-width="1" stroke-dasharray="5 4"/>
+<circle cx="324" cy="76" r="3.5" fill="#2B6CB0"/>
+<text x="332.0" y="81.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">B</text>
+<line x1="324.0" y1="80.0" x2="324.0" y2="112.0" stroke="#4A5568" stroke-width="1" stroke-dasharray="5 4"/>
+<line x1="40.0" y1="104.0" x2="168.0" y2="104.0" stroke="#4A5568" stroke-width="1.2" stroke-dasharray="5 4"/>
+<line x1="192.0" y1="104.0" x2="320.0" y2="104.0" stroke="#4A5568" stroke-width="1.2" stroke-dasharray="5 4"/>
+<polygon points="36.0,104.0 44.0,99.6 44.0,108.4" fill="#4A5568"/>
+<polygon points="324.0,104.0 316.0,108.4 316.0,99.6" fill="#4A5568"/>
+<text x="180.0" y="109.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="middle" font-style="italic">ℓ</text>
+</svg>

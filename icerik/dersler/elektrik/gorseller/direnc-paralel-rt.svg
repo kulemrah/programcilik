@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="280" viewBox="0 0 360 280" role="img">
+<title>Paralel bağlı dirençler: R1, R2, R3 ... Rn karşılıklı uçlarından bağlı; toplam direnç RT</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<line x1="130.0" y1="40.0" x2="130.0" y2="100.0" stroke="#1A202C" stroke-width="1.2" stroke-dasharray="5 4"/>
+<line x1="230.0" y1="40.0" x2="230.0" y2="100.0" stroke="#1A202C" stroke-width="1.2" stroke-dasharray="5 4"/>
+<line x1="130.0" y1="40.0" x2="145.0" y2="40.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="215.0" y1="40.0" x2="230.0" y2="40.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="145.0,40.0 150.8,48.0 162.5,32.0 174.2,48.0 185.8,32.0 197.5,48.0 209.2,32.0 215.0,40.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<text x="180.0" y="24.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="middle">Rn</text>
+<line x1="130.0" y1="196.0" x2="145.0" y2="196.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="215.0" y1="196.0" x2="230.0" y2="196.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="145.0,196.0 150.8,204.0 162.5,188.0 174.2,204.0 185.8,188.0 197.5,204.0 209.2,188.0 215.0,196.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<text x="180.0" y="224.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="middle">R₁</text>
+<line x1="130.0" y1="148.0" x2="145.0" y2="148.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="215.0" y1="148.0" x2="230.0" y2="148.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="145.0,148.0 150.8,156.0 162.5,140.0 174.2,156.0 185.8,140.0 197.5,156.0 209.2,140.0 215.0,148.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<text x="180.0" y="176.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="middle">R₂</text>
+<line x1="130.0" y1="100.0" x2="145.0" y2="100.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="215.0" y1="100.0" x2="230.0" y2="100.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="145.0,100.0 150.8,108.0 162.5,92.0 174.2,108.0 185.8,92.0 197.5,108.0 209.2,92.0 215.0,100.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<text x="180.0" y="128.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="middle">R₃</text>
+<line x1="130.0" y1="100.0" x2="130.0" y2="196.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="230.0" y1="100.0" x2="230.0" y2="196.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="40.0,256.0 40.0,100.0 130.0,100.0" fill="none" stroke="#1A202C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="320.0,256.0 320.0,100.0 230.0,100.0" fill="none" stroke="#1A202C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="180.0" y="251.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#C53030" text-anchor="middle">RT</text>
+<line x1="164.0" y1="246.0" x2="42.0" y2="246.0" stroke="#C53030" stroke-width="1.6"/>
+<polygon points="42.0,246.0 50.3,242.5 50.3,249.5" fill="#C53030"/>
+<line x1="196.0" y1="246.0" x2="318.0" y2="246.0" stroke="#C53030" stroke-width="1.6"/>
+<polygon points="318.0,246.0 309.7,249.5 309.7,242.5" fill="#C53030"/>
+</svg>
