@@ -1,0 +1,260 @@
+{
+  "id": "ag-ip-adresi",
+  "baslik": "IP Kavramı ve IPv4 Adresi",
+  "kaynak": "ip-kavrami-ve-ip-adresleme.pdf, slayt 1–6",
+  "kavramlar": [
+    {
+      "terim": "IP adresi",
+      "izah": "Bilgisayarı ağda tanımlayan sayı. Cihazların birbirini bulması için gereken benzersiz tanımlayıcıdır.",
+      "yer": "Temel fikir: ağda herkesin bir adresi olmalı"
+    },
+    {
+      "terim": "IPv4 adresi",
+      "izah": "Dört oktete ayrılan 32 bitlik sayı.",
+      "yer": "IP adresi nedir"
+    },
+    {
+      "terim": "Mantıksal adres",
+      "izah": "IP adresi mantıksal adrestir: ağdaki konumu gösterir. Fiziksel MAC adresinden farklıdır.",
+      "yer": "IP adresi nedir"
+    },
+    {
+      "terim": "Oktet",
+      "izah": "32 bitin 8'erli dört grubundan her biri; 0–255 arasında değer alır.",
+      "yer": "IPv4'ün yapısı: 32 bit, dört oktet"
+    },
+    {
+      "terim": "Noktalı ondalık gösterim",
+      "izah": "Her oktetin ayrı ayrı ondalığa çevrilip sonuçların noktayla ayrıldığı yazım. Ör. 192.168.0.1.",
+      "yer": "İkilikten noktalı ondalığa dönüşüm"
+    },
+    {
+      "terim": "Ağ kısmı",
+      "izah": "Adresin hangi ağ olduğunu gösteren bölümü. Aynı ağdaki cihazlar bu kısmı paylaşır.",
+      "yer": "Ağ kısmı ve host kısmı"
+    },
+    {
+      "terim": "Host kısmı",
+      "izah": "Adresin, ağdaki belirli cihazı gösteren bölümü.",
+      "yer": "Ağ kısmı ve host kısmı"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "ag-ip-adresi.s1",
+      "tip": "secme",
+      "yer": "Temel fikir: ağda herkesin bir adresi olmalı",
+      "soru": "Hocaya göre **IP adresi** nedir?",
+      "secenekler": [
+        "Bilgisayarı ağda tanımlayan sayı",
+        "Ağ kartına ait fiziksel donanım adresi",
+        "Adresin ağı gösteren ortak bölümü",
+        "Ağ ve host kısmını ayıran ikili şablon"
+      ],
+      "dogru": 0,
+      "izah": "IP adresi, bilgisayarı ağda tanımlayan sayıdır; cihazların birbirini bulması için benzersiz olmalıdır. Fiziksel donanım adresi MAC adresidir, ortak bölüm ağ kısmıdır, ağ ve host kısmını ayıran ikili şablon ise alt ağ maskesidir."
+    },
+    {
+      "id": "ag-ip-adresi.s2",
+      "tip": "dy",
+      "yer": "IP adresi nedir",
+      "ifade": "IP adresi fiziksel bir adrestir ve MAC adresiyle aynı şeyi ifade eder.",
+      "dogru": false,
+      "izah": "IP adresi **mantıksal** adrestir ve ağdaki konumu gösterir; hoca fiziksel MAC adresinden farklı olduğunu açıkça söyler."
+    },
+    {
+      "id": "ag-ip-adresi.s3",
+      "tip": "dy",
+      "yer": "IP adresi nedir",
+      "ifade": "Paketler, kaynak ve hedef IP adresleri kullanılarak iletilir.",
+      "dogru": true,
+      "izah": "Hocanın tanımındaki üçüncü özellik budur: IP adresi bir **yönlendirme bilgisidir**; paketler kaynak ve hedef IP adreslerine göre iletilir."
+    },
+    {
+      "id": "ag-ip-adresi.s4",
+      "tip": "bosluk",
+      "yer": "IP adresi nedir",
+      "metin": "IPv4 adresi, dört oktete ayrılan ___ bitlik bir sayıdır.",
+      "cevaplar": [
+        [
+          "32"
+        ]
+      ],
+      "izah": "IPv4 adresi 32 bittir; 8'erli dört gruba (oktete) bölünür: 4 × 8 = 32."
+    },
+    {
+      "id": "ag-ip-adresi.s5",
+      "tip": "hesap",
+      "yer": "İkilikten noktalı ondalığa dönüşüm",
+      "soru": "Bir IPv4 adresinin ikilik yazımı `00001010.00011000.00001000.00010001`'dir. **İkinci oktetin** ondalık değeri kaçtır?",
+      "cevap": 24,
+      "izah": "İkinci oktet `00011000`'dır. 1 olan bitlerin ağırlıkları 16 ve 8'dir: 16 + 8 = 24. (Adresin tamamı 10.24.8.17'dir.)"
+    },
+    {
+      "id": "ag-ip-adresi.s6",
+      "tip": "hesap",
+      "yer": "İkilikten noktalı ondalığa dönüşüm",
+      "soru": "`11001000` okteti ondalıkta kaçtır?",
+      "cevap": 200,
+      "izah": "1 olan bitlerin ağırlıkları 128, 64 ve 8'dir: 128 + 64 + 8 = 200."
+    },
+    {
+      "id": "ag-ip-adresi.s7",
+      "tip": "secme",
+      "yer": "İkilikten noktalı ondalığa dönüşüm",
+      "soru": "Hocanın örneğindeki **192.168.0.1** adresinin ikilik gösterimi hangisidir?",
+      "secenekler": [
+        "11000000.10101000.00000000.00000001",
+        "11000000.10101000.00000001.00000000",
+        "11000000.10100100.00000000.00000001",
+        "10000001.10101000.00000000.00000001"
+      ],
+      "dogru": 0,
+      "izah": "192 = 128 + 64 → `11000000`, 168 = 128 + 32 + 8 → `10101000`, 0 → `00000000`, 1 → `00000001`. `10100100` 164, `10000001` 129 eder; son iki okteti yer değiştirmiş yazım da 192.168.1.0 olur."
+    },
+    {
+      "id": "ag-ip-adresi.s8",
+      "tip": "dizme",
+      "yer": "İkilikten noktalı ondalığa dönüşüm",
+      "soru": "İkilik yazılmış bir IPv4 adresinin noktalı ondalığa çevrilme adımlarını dizin.",
+      "parcalar": [
+        "32 bit 8'erli dört gruba (oktete) ayrılır",
+        "Her oktette 1 olan bitlerin ağırlıkları toplanır",
+        "Dört ondalık sonuç noktayla ayrılarak yazılır"
+      ],
+      "izah": "Her oktet ayrı ayrı ondalığa çevrilir; sonuçlar noktayla ayrılır. Ör. `11000000.10101000.00000000.00000001` → 192.168.0.1."
+    },
+    {
+      "id": "ag-ip-adresi.s9",
+      "tip": "secme",
+      "yer": "İkilikten noktalı ondalığa dönüşüm",
+      "soru": "Bir oktetteki bitlerin **ağırlıkları**, soldan sağa hangisidir?",
+      "secenekler": [
+        "128, 64, 32, 16, 8, 4, 2, 1",
+        "1, 2, 4, 8, 16, 32, 64, 128",
+        "256, 128, 64, 32, 16, 8, 4, 2",
+        "8, 7, 6, 5, 4, 3, 2, 1"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın tablosunda 1. bitin ağırlığı 128, 8. bitin ağırlığı 1'dir. En soldaki bit en büyük ağırlığı taşır."
+    },
+    {
+      "id": "ag-ip-adresi.s10",
+      "tip": "esles",
+      "yer": "Temel fikir: ağda herkesin bir adresi olmalı",
+      "soru": "Hocanın posta adresi benzetmesindeki öğeleri karşılıklarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Şehir",
+          "Ağ"
+        ],
+        [
+          "Kapı numarası",
+          "Host"
+        ],
+        [
+          "Posta adresinin tamamı",
+          "IP adresi"
+        ]
+      ],
+      "izah": "Hoca IP adresini posta adresine benzetir: şehir ağdır, kapı numarası host'tur. Adresin tamamı, ağ ile host'u birlikte anlatan IP adresidir."
+    },
+    {
+      "id": "ag-ip-adresi.s11",
+      "tip": "dy",
+      "yer": "Ağ kısmı ve host kısmı",
+      "ifade": "Aynı ağdaki cihazlar, IP adresinin host kısmını paylaşır.",
+      "dogru": false,
+      "izah": "Aynı ağdaki cihazların paylaştığı kısım **ağ kısmıdır**. Host kısmı ağdaki belirli cihazı gösterir, bu yüzden her cihazda farklıdır."
+    },
+    {
+      "id": "ag-ip-adresi.s12",
+      "tip": "secme",
+      "yer": "Ağ kısmı ve host kısmı",
+      "soru": "Hocaya göre **adres sınıfları** neyin sabit biçimleridir?",
+      "secenekler": [
+        "Adresin ağ ve host kısmına bölünmesinin",
+        "Oktetlerin ondalığa çevrilme ağırlıklarının",
+        "Paketlerin kaynaktan hedefe gittiği yolun",
+        "MAC adreslerinin üreticilere dağıtılmasının"
+      ],
+      "dogru": 0,
+      "izah": "Bir IP adresi ağ + host diye ikiye bölünür; hoca \"Sınıflar bu bölünmenin sabit biçimleridir\" der."
+    },
+    {
+      "id": "ag-ip-adresi.s13",
+      "tip": "klasik",
+      "yer": "IP adresi nedir",
+      "soru": "Hocanın IP adresi tanımındaki üç özelliği yazın ve kısaca açıklayın.",
+      "cevap": "32 bitlik sayı: IPv4 adresi, dört oktete ayrılan 32 bitlik bir sayıdır.\nMantıksal adres: ağdaki konumu gösterir; fiziksel MAC adresinden farklıdır.\nYönlendirme bilgisi: paketler kaynak ve hedef IP adresleri kullanılarak iletilir.",
+      "anahtarlar": [
+        "32 bit",
+        "oktet",
+        "mantıksal",
+        "MAC",
+        "kaynak ve hedef"
+      ]
+    },
+    {
+      "id": "ag-ip-adresi.s14",
+      "tip": "bosluk",
+      "yer": "IPv4'ün yapısı: 32 bit, dört oktet",
+      "metin": "Her oktet ___ ile ___ arasında değer alır.",
+      "cevaplar": [
+        [
+          "0"
+        ],
+        [
+          "255"
+        ]
+      ],
+      "izah": "Oktet 8 bittir; hocaya göre 0–255 arasında değer alır."
+    },
+    {
+      "id": "ag-ip-adresi.s15",
+      "tip": "dy",
+      "yer": "İkilikten noktalı ondalığa dönüşüm",
+      "ifade": "İkilik yazılmış IPv4 adresi noktalı ondalığa çevrilirken her oktet ayrı ayrı ondalığa çevrilir.",
+      "dogru": true,
+      "izah": "Hoca: \"Her oktet ayrı ayrı ondalığa çevrilir; sonuçlar noktayla ayrılır.\" 32 bit bir kerede çevrilmez."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "ag-ip-adresi.k1",
+      "yer": "Temel fikir: ağda herkesin bir adresi olmalı",
+      "on": "IP adresi nedir? Hocanın benzetmesini anlatın.",
+      "arka": "Bilgisayarı ağda tanımlayan sayıdır. Cihazların birbirini bulması için benzersiz bir tanımlayıcı gerekir.\nHocanın benzetmesi: posta adresi. Şehir ağdır, kapı numarası host'tur."
+    },
+    {
+      "id": "ag-ip-adresi.k2",
+      "yer": "IP adresi nedir",
+      "on": "Hocanın IP adresi tanımındaki üç özellik nedir?",
+      "arka": "- 32 bitlik sayı: IPv4 adresi dört oktete ayrılan 32 bitlik sayıdır.\n- Mantıksal adres: ağdaki konumu gösterir; fiziksel MAC adresinden farklıdır.\n- Yönlendirme bilgisi: paketler kaynak ve hedef IP adresleriyle iletilir."
+    },
+    {
+      "id": "ag-ip-adresi.k3",
+      "yer": "IP adresi nedir",
+      "on": "IP adresi ile MAC adresinin farkı nedir?",
+      "arka": "IP adresi mantıksal adrestir, cihazın ağdaki konumunu gösterir. MAC adresi fiziksel adrestir.\nEk: MAC adresi ağ kartına üretimde verilir ve cihaz başka ağa taşınsa da değişmez; IP adresi bağlanılan ağa göre değişebilir."
+    },
+    {
+      "id": "ag-ip-adresi.k4",
+      "yer": "IPv4'ün yapısı: 32 bit, dört oktet",
+      "on": "Oktet nedir?",
+      "arka": "IPv4'ün 32 biti 8'erli dört gruba bölünür; her grup bir oktettir. Bir oktet 0–255 arasında değer alır."
+    },
+    {
+      "id": "ag-ip-adresi.k5",
+      "yer": "İkilikten noktalı ondalığa dönüşüm",
+      "on": "İkilik bir IPv4 adresi noktalı ondalığa nasıl çevrilir? Hocanın örneğiyle anlatın.",
+      "arka": "Her oktet ayrı ayrı ondalığa çevrilir (ağırlıklar 128, 64, 32, 16, 8, 4, 2, 1); sonuçlar noktayla ayrılır.\n`11000000.10101000.00000000.00000001` → 192.168.0.1 (128+64 = 192; 128+32+8 = 168; 0; 1)."
+    },
+    {
+      "id": "ag-ip-adresi.k6",
+      "yer": "Ağ kısmı ve host kısmı",
+      "on": "Bir IP adresinin ağ kısmı ile host kısmının farkı nedir?",
+      "arka": "Ağ kısmı \"hangi ağ?\" sorusunu cevaplar; aynı ağdaki cihazlar bu kısmı paylaşır.\nHost kısmı \"hangi cihaz?\" sorusunu cevaplar; ağdaki belirli cihazı gösterir.\nSınıflar bu bölünmenin sabit biçimleridir."
+    }
+  ]
+}

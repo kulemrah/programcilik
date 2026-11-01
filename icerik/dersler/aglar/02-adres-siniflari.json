@@ -1,0 +1,322 @@
+{
+  "id": "ag-siniflar",
+  "baslik": "IPv4 Adres Sınıfları ve Alt Ağ Maskesi",
+  "kaynak": "ip-kavrami-ve-ip-adresleme.pdf, slayt 7–14, 16",
+  "kavramlar": [
+    {
+      "terim": "Sınıflı adresleme",
+      "izah": "IPv4 adreslerinin, ağ ve host bölümlerinin sabit biçimlerine göre A'dan E'ye beş sınıfa ayrılması. Sınıfı ilk oktet belirler.",
+      "yer": "Sınıflı adresleme: A'dan E'ye beş sınıf"
+    },
+    {
+      "terim": "Sınıf A",
+      "izah": "İlk oktet ağ (8 bit), kalan üç oktet host (24 bit). Az ağ, ağ başına yaklaşık 16 milyon host.",
+      "yer": "Sınıf A: az ağ, çok host"
+    },
+    {
+      "terim": "Sınıf B",
+      "izah": "İlk oktet 128–191. İlk iki oktet ağ (16 bit), kalan iki oktet host (16 bit); yaklaşık 65 bin host. Orta ölçekli ağ.",
+      "yer": "Sınıf B: orta ölçekli ağ"
+    },
+    {
+      "terim": "Sınıf C",
+      "izah": "İlk oktet 192–223. İlk üç oktet ağ (24 bit), son oktet host (8 bit); 254 host. Küçük ağ.",
+      "yer": "Sınıf C: küçük ağ"
+    },
+    {
+      "terim": "Sınıf D",
+      "izah": "İlk oktet 224–239. Çok noktaya yayın (multicast): bir paketi aynı anda belirli bir abone grubuna iletmek için.",
+      "yer": "Sınıf D ve E: özel kullanım blokları"
+    },
+    {
+      "terim": "Sınıf E",
+      "izah": "İlk oktet 240–255. Deneysel ve Ar-Ge çalışmaları için rezerve; standart yerel ağlarda istemcilere verilmez.",
+      "yer": "Sınıf D ve E: özel kullanım blokları"
+    },
+    {
+      "terim": "Ağ adresi",
+      "izah": "Host bitlerinin tümü 0 olan adres; alt ağın kendisini temsil eder, cihaza verilemez.",
+      "yer": "Ağ adresi: host bitlerinin tümü 0"
+    },
+    {
+      "terim": "Yayın (broadcast) adresi",
+      "izah": "Host bitlerinin tümü 1 olan adres; ağdaki tüm cihazlara toplu duyuru için kullanılır, cihaza atanamaz.",
+      "yer": "Yayın (broadcast) adresi: host bitlerinin tümü 1"
+    },
+    {
+      "terim": "Loopback (127.0.0.1, localhost)",
+      "izah": "127 bloğu donanım ve yazılım içi sınama için ayrılmıştır; bu adrese giden paket kabloya çıkmadan yerel TCP/IP yığınına geri döner.",
+      "yer": "127.x.x.x ve loopback"
+    },
+    {
+      "terim": "Alt ağ maskesi",
+      "izah": "32 bitlik IP adresinin neresinin ağ, neresinin host kimliği olduğunu belirten ikili şablon.",
+      "yer": "Alt ağ maskesi"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "ag-siniflar.s1",
+      "tip": "esles",
+      "yer": "Sınıf B ve Sınıf C",
+      "soru": "Sınıfları ilk oktet aralıklarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Sınıf B",
+          "128–191"
+        ],
+        [
+          "Sınıf C",
+          "192–223"
+        ],
+        [
+          "Sınıf D",
+          "224–239"
+        ],
+        [
+          "Sınıf E",
+          "240–255"
+        ]
+      ],
+      "izah": "İlk oktet sınıfı belirler: B 128–191, C 192–223; 223'ün üzerindekiler özel amaçlıdır: D 224–239, E 240–255."
+    },
+    {
+      "id": "ag-siniflar.s2",
+      "tip": "secme",
+      "yer": "Sınıf B ve Sınıf C",
+      "soru": "**172.20.5.4** adresi hangi sınıftadır?",
+      "secenekler": [
+        "Sınıf B",
+        "Sınıf A",
+        "Sınıf C",
+        "Sınıf D"
+      ],
+      "dogru": 0,
+      "izah": "İlk oktet 172'dir; 128–191 aralığı Sınıf B'dir."
+    },
+    {
+      "id": "ag-siniflar.s3",
+      "tip": "secme",
+      "yer": "Sınıf C: küçük ağ",
+      "soru": "Sınıflı adreslemeye göre **200.10.5.1** adresinin ağ kısmı hangisidir?",
+      "secenekler": [
+        "200.10.5",
+        "200.10",
+        "10.5.1",
+        "200.10.5.1"
+      ],
+      "dogru": 0,
+      "izah": "İlk oktet 200, yani 192–223 aralığında: Sınıf C. Sınıf C'de ilk üç oktet ağ kısmıdır (200.10.5), son oktet (1) host'u tanımlar. 200.10.5.1 ise adresin tamamıdır."
+    },
+    {
+      "id": "ag-siniflar.s4",
+      "tip": "hesap",
+      "yer": "Hocanın örneği: Sınıf C",
+      "soru": "Sınıf C'de 8 bitlik host alanıyla bir ağda kaç **kullanılabilir** host vardır?",
+      "cevap": 254,
+      "izah": "2⁸ − 2 = 256 − 2 = 254. Host bitlerinin tümü 0 olan ağ adresi ve tümü 1 olan yayın adresi cihazlara verilemez."
+    },
+    {
+      "id": "ag-siniflar.s5",
+      "tip": "hesap",
+      "yer": "Neden 2ⁿ − 2 host",
+      "soru": "Host kısmı **5 bit** olan bir alt ağda kaç kullanılabilir host vardır?",
+      "cevap": 30,
+      "izah": "n host biti için 2ⁿ − 2: 2⁵ − 2 = 32 − 2 = 30."
+    },
+    {
+      "id": "ag-siniflar.s6",
+      "tip": "secme",
+      "yer": "Yayın (broadcast) adresi: host bitlerinin tümü 1",
+      "soru": "Host bitlerinin **tümü 1** olan adres hangisidir?",
+      "secenekler": [
+        "Yayın (broadcast) adresi",
+        "Ağ adresi",
+        "Loopback adresi",
+        "Varsayılan alt ağ maskesi"
+      ],
+      "dogru": 0,
+      "izah": "Host bitlerinin tümü 1 ise yayın adresidir; ağdaki tüm cihazlara toplu duyuru için kullanılır. Tümü 0 olan ise ağ adresidir."
+    },
+    {
+      "id": "ag-siniflar.s7",
+      "tip": "dy",
+      "yer": "Ağ adresi: host bitlerinin tümü 0",
+      "ifade": "Host bitlerinin tümü 0 olan adres, ağdaki ilk cihaza verilir.",
+      "dogru": false,
+      "izah": "Host bitlerinin tümü 0 olan adres **ağ adresidir**: alt ağın kendisini temsil eder ve hiçbir cihaza verilemez."
+    },
+    {
+      "id": "ag-siniflar.s8",
+      "tip": "dy",
+      "yer": "127.x.x.x ve loopback",
+      "ifade": "127.0.0.1 adresine gönderilen paket, ağ kartından kabloya çıkmadan yerel TCP/IP yığınına geri döner.",
+      "dogru": true,
+      "izah": "127.0.0.1 (localhost) loopback adresidir; bilgisayar bu adresle kendi kendini sınar."
+    },
+    {
+      "id": "ag-siniflar.s9",
+      "tip": "hesap",
+      "yer": "127.x.x.x ve loopback",
+      "soru": "127 bloğu loopback için ayrıldığından, hocaya göre A sınıfında kullanılabilir **ağ** sayısı kaçtır?",
+      "cevap": 126,
+      "izah": "Hoca: A sınıfı 1'den 126'ya kadar tanımlanır; 127 bloğu loopback için çıkarıldığından kullanılabilir ağ sayısı 127 değil, tam 126'dır. (İlk biti 0 olan 2⁷ = 128 değerden 0 ve 127 çıkar: 128 − 2 = 126.)"
+    },
+    {
+      "id": "ag-siniflar.s10",
+      "tip": "esles",
+      "yer": "Alt ağ maskesi",
+      "soru": "Sınıfları varsayılan alt ağ maskeleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Sınıf A",
+          "255.0.0.0 (/8)"
+        ],
+        [
+          "Sınıf B",
+          "255.255.0.0 (/16)"
+        ],
+        [
+          "Sınıf C",
+          "255.255.255.0 (/24)"
+        ]
+      ],
+      "izah": "Maskedeki her 255 bir ağ oktetidir: A'da 8 bit ağ, B'de 16 bit ağ, C'de 24 bit ağ."
+    },
+    {
+      "id": "ag-siniflar.s11",
+      "tip": "secme",
+      "yer": "Alt ağ maskesi",
+      "soru": "**192.168.1.0/24** yazımındaki **/24** neyi gösterir?",
+      "secenekler": [
+        "İlk 24 bitin ağa ait olduğunu",
+        "Ağda 24 cihaz bulunabileceğini",
+        "Son 24 bitin host'a ait olduğunu",
+        "Adresin 24. alt ağda olduğunu"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın örneği: 192.168.1.0/24, ilk 24 bitin ağa ait olduğunu gösterir. Host'a 32 − 24 = 8 bit kalır."
+    },
+    {
+      "id": "ag-siniflar.s12",
+      "tip": "bosluk",
+      "yer": "Alt ağ maskesi",
+      "metin": "Maske, 32 bitlik IP adresinin neresinin ağ, neresinin host kimliği olduğunu belirten ___ şablondur.",
+      "cevaplar": [
+        [
+          "ikili",
+          "ikilik"
+        ]
+      ],
+      "izah": "Hocanın tanımı: maske, adresin ağ ve host kimliğini ayıran **ikili** şablondur."
+    },
+    {
+      "id": "ag-siniflar.s13",
+      "tip": "secme",
+      "yer": "Sınıf D ve E: özel kullanım blokları",
+      "soru": "Tek bir veri paketini aynı anda belirli bir **abone grubuna** iletmek için ayrılmış sınıf hangisidir?",
+      "secenekler": [
+        "Sınıf D",
+        "Sınıf E",
+        "Sınıf C",
+        "Sınıf B"
+      ],
+      "dogru": 0,
+      "izah": "Sınıf D (224–239) çok noktaya yayın (multicast) için tahsis edilmiştir. Sınıf E deneysel ve Ar-Ge çalışmaları içindir; B ve C genel ağlar içindir."
+    },
+    {
+      "id": "ag-siniflar.s14",
+      "tip": "dy",
+      "yer": "Sınıf D ve E: özel kullanım blokları",
+      "ifade": "Sınıf E adresleri, standart yerel ağlarda istemcilere verilir.",
+      "dogru": false,
+      "izah": "Sınıf E (240–255) gelecekteki araştırma ve laboratuvar çalışmaları için rezerve edilmiştir; standart yerel ağlarda istemcilere **verilmez**."
+    },
+    {
+      "id": "ag-siniflar.s15",
+      "tip": "dy",
+      "yer": "Sınıf B ve Sınıf C",
+      "ifade": "Sınıf A'da ağ bölümü 8 bit, Sınıf C'de 24 bittir; bu yüzden Sınıf C'de ağ başına düşen host sayısı daha azdır.",
+      "dogru": true,
+      "izah": "Hoca: adres sınıfı büyüdükçe ağ bölümü genişler, ağ başına düşen host sayısı azalır. A'da yaklaşık 16 milyon, C'de 254 host vardır."
+    },
+    {
+      "id": "ag-siniflar.s16",
+      "tip": "dizme",
+      "yer": "Sınıf B ve Sınıf C",
+      "soru": "Sınıfları, ağ başına düşen host sayısına göre **çoktan aza** doğru dizin.",
+      "parcalar": [
+        "Sınıf A",
+        "Sınıf B",
+        "Sınıf C"
+      ],
+      "izah": "A: 24 host biti (yaklaşık 16 milyon), B: 16 host biti (yaklaşık 65 bin), C: 8 host biti (254)."
+    },
+    {
+      "id": "ag-siniflar.s17",
+      "tip": "klasik",
+      "yer": "Neden 2ⁿ − 2 host",
+      "soru": "Bir alt ağda neden 2ⁿ − 2 host kullanılabilir? Rezerve edilen iki adresi açıklayın ve Sınıf C için hesaplayın.",
+      "cevap": "Host bitlerinin tümü 0 olan adres ağ adresidir; alt ağın kendisini temsil eder, cihaza verilemez.\nHost bitlerinin tümü 1 olan adres yayın (broadcast) adresidir; ağdaki tüm cihazlara toplu duyuru için kullanılır, cihaza atanamaz.\nSınıf C: 2⁸ − 2 = 256 − 2 = 254 host.",
+      "anahtarlar": [
+        "tümü 0",
+        "ağ adresi",
+        "tümü 1",
+        "yayın",
+        "254"
+      ]
+    },
+    {
+      "id": "ag-siniflar.s18",
+      "tip": "secme",
+      "yer": "Sınıf A: az ağ, çok host",
+      "soru": "Hocanın **10.24.8.17** örneğinde adresin host tarafı hangisidir?",
+      "secenekler": [
+        "24.8.17",
+        "10.24.8",
+        "8.17",
+        "10.24"
+      ],
+      "dogru": 0,
+      "izah": "10 ile başlayan adres Sınıf A'dadır; Sınıf A'da ilk oktet (10) ağı, kalan üç oktet (24.8.17) host'u belirler."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "ag-siniflar.k1",
+      "yer": "Sınıflı adresleme: A'dan E'ye beş sınıf",
+      "on": "Sınıflı adreslemede bir adresin sınıfını ne belirler? Sınıflar nelerdir?",
+      "arka": "İlk oktet belirler. Beş sınıf vardır: A, B ve C kullanıcı (genel) ağları için; D ve E özel amaçlar için ayrılır."
+    },
+    {
+      "id": "ag-siniflar.k2",
+      "yer": "Sınıf B ve Sınıf C",
+      "on": "Sınıf A, B ve C'yi ağ bitleri, host bitleri ve host sayısıyla karşılaştırın.",
+      "arka": "- A: 8 bit ağ, 24 bit host, yaklaşık 16 milyon host (az ağ, çok host)\n- B: ilk oktet 128–191; 16 bit ağ, 16 bit host, yaklaşık 65 bin host\n- C: ilk oktet 192–223; 24 bit ağ, 8 bit host, 254 host\nSınıf büyüdükçe ağ bölümü genişler, host sayısı azalır."
+    },
+    {
+      "id": "ag-siniflar.k3",
+      "yer": "Sınıf D ve E: özel kullanım blokları",
+      "on": "Sınıf D ve Sınıf E ne için ayrılmıştır?",
+      "arka": "İlk okteti 223'ün üzerinde olan adresler host'lara verilmez.\n- D (224–239): çok noktaya yayın (multicast); bir paket aynı anda belirli bir abone grubuna gider.\n- E (240–255): deneysel ve Ar-Ge; standart yerel ağlarda istemcilere verilmez."
+    },
+    {
+      "id": "ag-siniflar.k4",
+      "yer": "Neden 2ⁿ − 2 host",
+      "on": "Bir alt ağda neden 2ⁿ − 2 host kullanılabilir?",
+      "arka": "İki adres rezerve edilir:\n- Host bitlerinin tümü 0: ağ adresi, alt ağın kendisi\n- Host bitlerinin tümü 1: yayın (broadcast) adresi, tüm cihazlara duyuru\nSınıf C: 2⁸ − 2 = 254."
+    },
+    {
+      "id": "ag-siniflar.k5",
+      "yer": "127.x.x.x ve loopback",
+      "on": "Loopback nedir? A sınıfında neden 126 ağ vardır?",
+      "arka": "127 bloğunun tamamı donanım ve yazılım içi sınama için ayrılmıştır. 127.0.0.1'e (localhost) giden paket kabloya çıkmadan yerel TCP/IP yığınına geri döner.\nA sınıfı 1'den 126'ya kadar tanımlanır; 127 çıkarıldığından kullanılabilir ağ sayısı 126'dır."
+    },
+    {
+      "id": "ag-siniflar.k6",
+      "yer": "Alt ağ maskesi",
+      "on": "Alt ağ maskesi nedir? Varsayılan maskeleri sayın.",
+      "arka": "Adresin neresinin ağ, neresinin host kimliği olduğunu belirten ikili şablondur.\n- A: 255.0.0.0 (/8)\n- B: 255.255.0.0 (/16)\n- C: 255.255.255.0 (/24)\n192.168.1.0/24: ilk 24 bit ağa aittir."
+    }
+  ]
+}
