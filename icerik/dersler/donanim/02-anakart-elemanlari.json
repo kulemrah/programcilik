@@ -1,0 +1,401 @@
+{
+  "id": "dn-elemanlar",
+  "baslik": "Anakart Üzerindeki Elemanlar",
+  "kaynak": "donanim_ders_notlari.pptx, slayt 2–3, 13–14, 45",
+  "kavramlar": [],
+  "sorular": [
+    {
+      "id": "dn-elemanlar.s1",
+      "tip": "secme",
+      "yer": "Genişleme yuvaları: PCI, PCI Express ve PCI Express x16",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen **beyaz yuvalar** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-pci.webp",
+        "anakart-isaret-pci-yakin.webp",
+        "anakart-asus-pci.webp",
+        "anakart-x58-pci.webp"
+      ],
+      "secenekler": [
+        "PCI yuvaları",
+        "AGP yuvaları",
+        "RAM yuvaları",
+        "IDE yuvaları"
+      ],
+      "dogru": 0,
+      "izah": "Üç beyaz yuva PCI yuvalarıdır; hocaya göre PCI beyaz renktedir. AGP yuvası kahverengidir; RAM yuvaları bu fotoğrafta sarı ve kırmızıdır. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s2",
+      "tip": "secme",
+      "yer": "Genişleme yuvaları: PCI, PCI Express ve PCI Express x16",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen iki **kısa yuva** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-pcie-x1.webp",
+        "anakart-isaret-pcie-x1-yakin.webp",
+        "anakart-asus-pcie-x1.webp"
+      ],
+      "secenekler": [
+        "PCI Express x1 yuvaları",
+        "PCI Express x16 yuvaları",
+        "AGP grafik yuvaları",
+        "SATA sürücü yuvaları"
+      ],
+      "dogru": 0,
+      "izah": "İki kısa siyah yuva PCI Express (x1) yuvalarıdır; hocanın numaralı resminde (başka bir anakart) 2 numara da bu tür yuvaları gösterir. PCI Express x16 yuvası çok daha uzundur. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s3",
+      "tip": "secme",
+      "yer": "Genişleme yuvaları: PCI, PCI Express ve PCI Express x16",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen **uzun siyah yuva** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-pcie-x16.webp",
+        "anakart-isaret-pcie-x16-yakin.webp",
+        "anakart-asus-pcie-x16.webp",
+        "anakart-x58-pcie-x16.webp"
+      ],
+      "secenekler": [
+        "PCI Express x16 yuvası",
+        "PCI Express x1 yuvası",
+        "PCI genişleme yuvası",
+        "IDE sürücü bağlantısı"
+      ],
+      "dogru": 0,
+      "izah": "Uzun siyah yuva PCI Express x16 yuvasıdır; ekran kartı buraya takılır. PCI Express x1 yuvaları kısadır; PCI yuvaları beyazdır. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s4",
+      "tip": "secme",
+      "yer": "Sürücü bağlantıları: IDE, SATA ve disket",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen **geniş, iki sıra iğneli yuvalar** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-ide.webp",
+        "anakart-isaret-ide-yakin.webp",
+        "anakart-asus-ide.webp",
+        "anakart-x58-ide.webp"
+      ],
+      "secenekler": [
+        "IDE (ATA) yuvaları",
+        "Disket sürücü yuvaları",
+        "SATA bağlantıları",
+        "Güç bağlantıları"
+      ],
+      "dogru": 0,
+      "izah": "Kırmızı ve yeşil geniş yuvalar IDE (ATA) yuvalarıdır; CD-ROM, DVD-ROM ve IDE destekli sabit diskler buraya bağlanır. Disket bağlantısı bunlardan kısadır ve bu fotoğrafta siyahtır. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s5",
+      "tip": "secme",
+      "yer": "Sürücü bağlantıları: IDE, SATA ve disket",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen **küçük turuncu yuvalar** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-sata.webp",
+        "anakart-isaret-sata-yakin.webp",
+        "anakart-asus-sata.webp"
+      ],
+      "secenekler": [
+        "SATA yuvaları",
+        "IDE yuvaları",
+        "Disket bağlantısı",
+        "Güç bağlantısı"
+      ],
+      "dogru": 0,
+      "izah": "Küçük turuncu yuvalar SATA yuvalarıdır; ATA'nın yetersiz kalması üzerine geliştirilmiştir. IDE yuvaları geniş ve iki sıra iğnelidir. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s6",
+      "tip": "secme",
+      "yer": "Sürücü bağlantıları: IDE, SATA ve disket",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen **siyah, uzun bağlantı** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-disket.webp",
+        "anakart-isaret-disket-yakin.webp",
+        "anakart-asus-disket.webp",
+        "anakart-x58-disket.webp"
+      ],
+      "secenekler": [
+        "Disket sürücü bağlantısı",
+        "IDE (ATA) bağlantısı",
+        "Güç bağlantı portu",
+        "SATA bağlantısı"
+      ],
+      "dogru": 0,
+      "izah": "Siyah bağlantı disket sürücü bağlantı portudur (anakartta yanında FDD yazar). Hemen solundaki kırmızı ve daha uzun olan IDE yuvasıdır. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s7",
+      "tip": "secme",
+      "yer": "Güç bağlantısı",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen **beyaz, çok iğneli yuva** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-guc.webp",
+        "anakart-isaret-guc-yakin.webp",
+        "anakart-asus-guc.webp",
+        "anakart-x58-guc.webp"
+      ],
+      "secenekler": [
+        "Güç bağlantı portu",
+        "Disket sürücü portu",
+        "IDE (ATA) portu",
+        "SATA veri portu"
+      ],
+      "dogru": 0,
+      "izah": "Beyaz, çok iğneli yuva güç bağlantı portudur; kasadaki güç kaynağından anakarta güç buradan gelir. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s8",
+      "tip": "secme",
+      "yer": "RAM yuvaları",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen **dört uzun yuva** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-ram.webp",
+        "anakart-isaret-ram-yakin.webp",
+        "anakart-asus-ram.webp",
+        "anakart-x58-ram.webp"
+      ],
+      "secenekler": [
+        "RAM yuvaları",
+        "PCI yuvaları",
+        "IDE yuvaları",
+        "AGP yuvaları"
+      ],
+      "dogru": 0,
+      "izah": "Dört uzun yuva RAM (bellek) yuvalarıdır; bellek modülleri buraya takılır. Hocanın numaralı resminde (başka bir anakart) 8 numara da RAM yuvalarıdır. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s9",
+      "tip": "secme",
+      "yer": "İşlemci yuvası",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen **kare yuva** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-islemci-yuvasi.webp",
+        "anakart-isaret-islemci-yuvasi-yakin.webp",
+        "anakart-asus-islemci-yuvasi.webp",
+        "anakart-x58-islemci-yuvasi.webp"
+      ],
+      "secenekler": [
+        "İşlemci yuvası",
+        "Kuzey köprüsü",
+        "Güney köprüsü",
+        "BIOS yongası"
+      ],
+      "dogru": 0,
+      "izah": "Kare yuva işlemci yuvasıdır. RAM yuvalarına yakındır; çünkü işlemci ile RAM arasında çok sayıda bağlantı vardır. Hocanın numaralı resminde (başka bir anakart) 10 numaradır. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s10",
+      "tip": "secme",
+      "yer": "Kuzey köprüsü ve güney köprüsü",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen, **işlemci yuvasının yanındaki altın renkli soğutucunun altındaki** yonga hangisidir?",
+      "gorseller": [
+        "anakart-isaret-kuzey-koprusu.webp",
+        "anakart-isaret-kuzey-koprusu-yakin.webp",
+        "anakart-x58-kuzey-koprusu.webp"
+      ],
+      "secenekler": [
+        "Kuzey köprüsü",
+        "Güney köprüsü",
+        "BIOS yongası",
+        "İşlemci"
+      ],
+      "dogru": 0,
+      "izah": "İşlemciye, belleklere ve ekran kartı yuvasına en yakın yonga kuzey köprüsüdür; bu fotoğrafta soğutucunun altındadır. Hocanın numaralı resminde (başka bir anakart) benzer yerdeki 9 numara yonga setini gösterir. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s11",
+      "tip": "secme",
+      "yer": "Kuzey köprüsü ve güney köprüsü",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen, **PCI Express x1 yuvalarının altındaki büyük kare yonga** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-guney-koprusu.webp",
+        "anakart-isaret-guney-koprusu-yakin.webp",
+        "anakart-x58-guney-koprusu.webp"
+      ],
+      "secenekler": [
+        "Güney köprüsü",
+        "Kuzey köprüsü",
+        "BIOS yongası",
+        "İşlemci"
+      ],
+      "dogru": 0,
+      "izah": "Çevre birimlerinin bulunduğu bölüme yakın olan yonga güney köprüsüdür; IDE, USB, LAN, PCI ve sesi denetler. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s12",
+      "tip": "secme",
+      "yer": "BIOS pili",
+      "soru": "Resimde kırmızı çerçeveyle gösterilen **yuvarlak, gümüş renkli parça** hangisidir?",
+      "gorseller": [
+        "anakart-isaret-bios-pili.webp",
+        "anakart-isaret-bios-pili-yakin.webp",
+        "anakart-asus-bios-pili.webp"
+      ],
+      "secenekler": [
+        "BIOS pili",
+        "BIOS yongası",
+        "İşlemci yuvası",
+        "Güney köprüsü"
+      ],
+      "dogru": 0,
+      "izah": "Yuvarlak düğme pil BIOS pilidir; bilgisayar kapalıyken BIOS ayarlarının ve tarih-saatin kalmasını sağlar. BIOS yongası ise ROM bellektir. Hocanın numaralı resminde (başka bir anakart) 11 numaradır. Diğer görsellerde aynı eleman başka anakartlarda işaretlidir."
+    },
+    {
+      "id": "dn-elemanlar.s13",
+      "tip": "esles",
+      "yer": "Hocanın numaralı anakart resmi",
+      "gorseller": [
+        "anakart-numarali.jpg"
+      ],
+      "soru": "Hocanın numaralı anakart resmindeki numaraları elemanlarla eşleştirin (1, 2, 4, 5, 6).",
+      "ciftler": [
+        [
+          "1",
+          "PCI yuvası"
+        ],
+        [
+          "2",
+          "PCI Express yuvası"
+        ],
+        [
+          "4",
+          "IDE portu"
+        ],
+        [
+          "5",
+          "SATA portu"
+        ],
+        [
+          "6",
+          "Disket sürücü bağlantı portu"
+        ]
+      ],
+      "izah": "1 beyaz PCI yuvası, 2 kısa siyah PCI Express yuvaları, 4 yeşil geniş IDE yuvası, 5 SATA yuvaları, 6 alttaki siyah disket sürücü bağlantısıdır."
+    },
+    {
+      "id": "dn-elemanlar.s14",
+      "tip": "esles",
+      "yer": "Hocanın numaralı anakart resmi",
+      "gorseller": [
+        "anakart-numarali.jpg"
+      ],
+      "soru": "Hocanın numaralı anakart resmindeki numaraları elemanlarla eşleştirin (7–11).",
+      "ciftler": [
+        [
+          "7",
+          "Güç bağlantı portu"
+        ],
+        [
+          "8",
+          "RAM yuvaları"
+        ],
+        [
+          "9",
+          "Yonga seti (chipset)"
+        ],
+        [
+          "10",
+          "İşlemci yuvası"
+        ],
+        [
+          "11",
+          "BIOS pili"
+        ]
+      ],
+      "izah": "7 beyaz güç bağlantısı, 8 sarı ve kırmızı RAM yuvaları, 9 altın renkli soğutuculu yonga seti, 10 kare işlemci yuvası, 11 yuvarlak BIOS pilidir."
+    },
+    {
+      "id": "dn-elemanlar.s15",
+      "tip": "esles",
+      "yer": "Arka paneldeki portlar",
+      "gorseller": [
+        "arka-panel-numarali.jpg"
+      ],
+      "soru": "Hocanın numaralı arka panel resmindeki numaraları portlarla eşleştirin.",
+      "ciftler": [
+        [
+          "1",
+          "PS/2 portları"
+        ],
+        [
+          "2",
+          "Paralel port"
+        ],
+        [
+          "3",
+          "COM (seri) portu"
+        ],
+        [
+          "5",
+          "LAN (RJ-45) portu"
+        ]
+      ],
+      "izah": "1 yeşil ve mor PS/2 portları, 2 pembe ve uzun paralel port, 3 dokuz iğneli COM portu, 5 ağ kablosunun takıldığı LAN portudur."
+    },
+    {
+      "id": "dn-elemanlar.s16",
+      "tip": "secme",
+      "yer": "Hocanın numaralı anakart resmi",
+      "gorseller": [
+        "anakart-numarali.jpg"
+      ],
+      "soru": "Hocanın numaralı resminde **3 numaranın** gösterdiği uzun yuvaya hangi kart takılır?",
+      "secenekler": [
+        "Ekran kartı",
+        "Ses kartı",
+        "TV kartı",
+        "Ethernet kartı"
+      ],
+      "dogru": 0,
+      "izah": "3 numara uzun siyah yuvayı gösterir. Bu yuva PCI Express x16'dır ve hocaya göre ekran kartı buraya takılır (slayttaki bağlantının gittiği AGP de yalnızca ekran kartları içindir). Ses, TV ve ethernet kartları PCI ya da PCI Express yuvalarına takılır."
+    },
+    {
+      "id": "dn-elemanlar.s17",
+      "tip": "dy",
+      "yer": "Genişleme yuvaları: PCI, PCI Express ve PCI Express x16",
+      "gorseller": [
+        "anakart-genel.jpg"
+      ],
+      "ifade": "Resimdeki anakartta kahverengi bir AGP yuvası vardır.",
+      "dogru": false,
+      "izah": "Bu anakartta AGP yuvası yoktur. Ekran kartı için uzun siyah PCI Express x16 yuvası vardır; beyaz yuvalar PCI'dır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "dn-elemanlar.k1",
+      "yer": "Anakartın genel görünümü",
+      "on": "Anakartın üzerindeki başlıca elemanları sayın.",
+      "arka": "Genişleme yuvaları (PCI, PCI Express, PCI Express x16, eski kartlarda AGP), sürücü bağlantıları (IDE, SATA, disket), güç bağlantısı, RAM yuvaları, işlemci yuvası, yonga seti (kuzey ve güney köprüsü), BIOS ve BIOS pili, arka paneldeki portlar (PS/2, paralel, COM, ekran, USB, LAN)."
+    },
+    {
+      "id": "dn-elemanlar.k2",
+      "yer": "Hocanın numaralı anakart resmi",
+      "on": "Hocanın numaralı anakart resmindeki 1–11 numaralı elemanları sayın.",
+      "arka": "1 PCI yuvası, 2 PCI Express yuvası, 3 uzun siyah yuva (ekran kartı yuvası; resimde PCI Express x16), 4 IDE, 5 SATA, 6 disket sürücü bağlantısı, 7 güç bağlantısı, 8 RAM yuvaları, 9 yonga seti, 10 işlemci yuvası, 11 BIOS pili."
+    },
+    {
+      "id": "dn-elemanlar.k3",
+      "yer": "Arka paneldeki portlar",
+      "on": "Hocanın arka panel resmindeki portları sayın.",
+      "arka": "1 PS/2 (yeşil fare, mor klavye), 2 paralel port, 3 COM (seri) portu, 5 LAN (RJ-45) portu. 4 ve 6'nın bağlantıları slaytta karışık (USB slaytı ve ses girişleri)."
+    },
+    {
+      "id": "dn-elemanlar.k4",
+      "yer": "Genişleme yuvaları: PCI, PCI Express ve PCI Express x16",
+      "on": "PCI, PCI Express ve PCI Express x16 yuvalarını resimde nasıl ayırırsınız?",
+      "arka": "PCI beyazdır (bu fotoğrafta soldaki üç yuva). PCI Express x1 kısa, PCI Express x16 en uzun yuvadır; ekran kartı x16'ya takılır. AGP ise kahverengidir ve PCI'dan kısadır.\nEk: PCI Express yuvalarının rengi anakarta göre değişir."
+    },
+    {
+      "id": "dn-elemanlar.k5",
+      "yer": "Sürücü bağlantıları: IDE, SATA ve disket",
+      "on": "IDE, SATA ve disket bağlantılarını resimde nasıl ayırırsınız?",
+      "arka": "IDE geniş, iki sıra iğneli yuvadır. Disket bağlantısı IDE'ye benzer ama ondan kısadır. SATA küçük yuvalardır (bu fotoğrafta turuncu)."
+    },
+    {
+      "id": "dn-elemanlar.k6",
+      "yer": "Kuzey köprüsü ve güney köprüsü",
+      "on": "Kuzey ve güney köprüsü anakartın neresindedir?",
+      "arka": "Kuzey köprüsü işlemciye, belleklere ve AGP / PCI Express yuvasına en yakın yongadır. Güney köprüsü çevre birimlerinin bulunduğu bölüme yakındır."
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "id": "dn-rom",
+  "baslik": "ROM Bellekler ve BIOS Pili",
+  "kaynak": "donanim_ders_notlari.pptx, slayt 36–39, 44",
+  "kavramlar": [
+    {
+      "terim": "ROM",
+      "izah": "Read Only Memory (Sadece Okunabilir Bellek). Bilgileri kalıcı olan, yalnızca okunabilen bellek; BIOS gibi önemli bilgiler tutulur, işlemci doğrudan yazmaz.",
+      "yer": "ROM nedir"
+    },
+    {
+      "terim": "PROM",
+      "izah": "Programmable ROM. Boş üretilir, kullanıcı tarafından yalnızca bir kez programlanabilir.",
+      "yer": "PROM"
+    },
+    {
+      "terim": "EPROM",
+      "izah": "Erasable Programmable ROM. Ultraviyole ışıkla silinip yeniden yazılabilen ROM.",
+      "yer": "EPROM"
+    },
+    {
+      "terim": "EEPROM",
+      "izah": "Electrically Erasable Programmable ROM. Elektrikle silinip yeniden yazılabilen ROM; hocaya göre BIOS'un kullandığı ROM tipi.",
+      "yer": "EEPROM"
+    },
+    {
+      "terim": "BIOS pili",
+      "izah": "Bilgisayar kapalıyken BIOS ayarlarının ve tarih-saatin hafızada kalmasını sağlayan pil.",
+      "yer": "BIOS pili"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "dn-rom.s1",
+      "tip": "secme",
+      "yer": "ROM nedir",
+      "soru": "Hocaya göre **ROM** nedir?",
+      "secenekler": [
+        "Bilgileri kalıcı olan, yalnızca okunabilen bellek",
+        "Çalışan programların bilgilerini geçici saklayan bellek",
+        "Bilgisayar kapalıyken saati çalıştıran düğme pil",
+        "Donanımlar arasındaki veri akışını yöneten yonga"
+      ],
+      "dogru": 0,
+      "izah": "ROM yalnızca okunabilen, bilgileri kalıcı bir bellektir; BIOS gibi önemli bilgiler burada tutulur. Geçici bellek RAM'dir."
+    },
+    {
+      "id": "dn-rom.s2",
+      "tip": "esles",
+      "yer": "ROM çeşitleri",
+      "soru": "ROM çeşitlerini açıklamalarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "ROM",
+          "Bilgileri yalnızca üretici firma yazar"
+        ],
+        [
+          "PROM",
+          "Boş üretilir, yalnızca bir kez programlanır"
+        ],
+        [
+          "EPROM",
+          "Ultraviyole ışıkla silinip yeniden yazılır"
+        ],
+        [
+          "EEPROM",
+          "Elektrikle silinip yeniden yazılır"
+        ]
+      ],
+      "izah": "Fark, belleğe kimin, kaç kez ve nasıl yazılabildiğindedir: ROM'a yalnızca üretici; PROM'a bir kez; EPROM ultraviyoleyle, EEPROM elektrikle silinir."
+    },
+    {
+      "id": "dn-rom.s3",
+      "tip": "secme",
+      "yer": "EEPROM",
+      "soru": "Hocaya göre **BIOS'un kullandığı** ROM tipi hangisidir?",
+      "secenekler": [
+        "EEPROM",
+        "EPROM",
+        "PROM",
+        "ROM"
+      ],
+      "dogru": 0,
+      "izah": "Hoca: şu anda BIOS'un kullandığı ROM tipi EEPROM'dur; silme işi elektriksel olarak yapılır."
+    },
+    {
+      "id": "dn-rom.s4",
+      "tip": "dy",
+      "yer": "ROM nedir",
+      "ifade": "Merkezi işlemci ROM'a doğrudan bilgi yazabilir.",
+      "dogru": false,
+      "izah": "Hoca: merkezi işlemcinin bu tür belleklere doğrudan bilgi yazması söz konusu değildir."
+    },
+    {
+      "id": "dn-rom.s5",
+      "tip": "bosluk",
+      "yer": "EPROM",
+      "metin": "EPROM'lar ___ ışığıyla silinebilir.",
+      "cevaplar": [
+        [
+          "ultraviyole",
+          "ultraviole",
+          "morötesi",
+          "mor ötesi",
+          "UV"
+        ]
+      ],
+      "izah": "EPROM ultraviyole ışıkla silinir; EEPROM ise elektrikle."
+    },
+    {
+      "id": "dn-rom.s6",
+      "tip": "dy",
+      "yer": "PROM",
+      "ifade": "PROM, kullanıcı tarafından yalnızca bir kez programlanabilir.",
+      "dogru": true,
+      "izah": "PROM boş üretilir ve kullanıcı tarafından isteğe uygun olarak yalnızca bir kez programlanabilir."
+    },
+    {
+      "id": "dn-rom.s7",
+      "tip": "secme",
+      "yer": "BIOS pili",
+      "soru": "Hocaya göre **BIOS pilinin** görevi nedir?",
+      "secenekler": [
+        "Kapalıyken BIOS ayarlarının ve tarih-saatin kalmasını sağlamak",
+        "Bilgisayarın çalışması için gereken ana gücü sağlamak",
+        "İşlemciyi aktif olarak soğutan fanı çalıştırmak",
+        "Kapanırken RAM'deki bilgileri sabit diske yazmak"
+      ],
+      "dogru": 0,
+      "izah": "BIOS pili, BIOS'taki değişikliklerin ve tarih-saatin bilgisayar yeniden açılıncaya kadar kalmasını sağlar. Ana gücü güç kaynağı, güç bağlantı portu üzerinden verir."
+    },
+    {
+      "id": "dn-rom.s8",
+      "tip": "dy",
+      "yer": "BIOS pili",
+      "ifade": "Bilgisayarın gücü kesildiğinde saatin geri kalmamasının sebebi BIOS pilidir.",
+      "dogru": true,
+      "izah": "Hoca bunu açıkça söyler: saatin geri kalmamasının sebebi BIOS pilidir."
+    },
+    {
+      "id": "dn-rom.s9",
+      "tip": "secme",
+      "yer": "BIOS pili",
+      "gorseller": [
+        "bios-pili.jpg"
+      ],
+      "soru": "Resimde kırmızı çemberle gösterilen parça hangisidir?",
+      "secenekler": [
+        "BIOS pili",
+        "BIOS yongası",
+        "Güney köprüsü",
+        "İşlemci"
+      ],
+      "dogru": 0,
+      "izah": "Yuvarlak düğme pil BIOS pilidir. BIOS yongası ise ROM bellektir, kare bir entegre devredir."
+    },
+    {
+      "id": "dn-rom.s10",
+      "tip": "klasik",
+      "yer": "ROM çeşitleri",
+      "soru": "ROM çeşitlerini yazın; her birinde belleğe kimin, kaç kez ya da nasıl yazılabildiğini açıklayın.",
+      "cevap": "ROM: bilgiler değiştirilemez, yalnızca üretici yazar.\nPROM: boş üretilir, kullanıcı yalnızca bir kez programlar.\nEPROM: ultraviyole ışıkla silinip yeniden yazılır.\nEEPROM: elektrikle silinip yeniden yazılır; BIOS bunu kullanır.",
+      "anahtarlar": [
+        "PROM",
+        "bir kez",
+        "EPROM",
+        "ultraviyole",
+        "EEPROM",
+        "elektrik"
+      ]
+    },
+    {
+      "id": "dn-rom.s11",
+      "tip": "dy",
+      "yer": "EEPROM",
+      "ifade": "EEPROM'daki silme işlemi ultraviyole ışıkla yapılır.",
+      "dogru": false,
+      "izah": "EEPROM'da silme **elektriksel** olarak yapılır. Ultraviyole ışıkla silinen EPROM'dur."
+    },
+    {
+      "id": "dn-rom.s12",
+      "tip": "secme",
+      "yer": "ROM",
+      "soru": "Hocaya göre ROM'a bilgileri kim yazar?",
+      "secenekler": [
+        "Yalnızca üretici firmalar",
+        "Kullanıcılar, istedikleri kadar",
+        "İşlemci, bilgisayar çalışırken",
+        "Kullanıcılar, yalnızca bir kez"
+      ],
+      "dogru": 0,
+      "izah": "ROM'a kullanıcılar bilgi yazamaz; bilgileri yalnızca üretici firmalar yazar. Kullanıcının bir kez yazabildiği PROM'dur."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "dn-rom.k1",
+      "yer": "ROM nedir",
+      "on": "ROM nedir? RAM'den farkı nedir?",
+      "arka": "Read Only Memory: yalnızca okunabilen, bilgileri kalıcı bellek; BIOS gibi önemli bilgiler tutulur, işlemci doğrudan yazmaz. RAM ise geçicidir, bilgisayar kapanınca bilgiler silinir."
+    },
+    {
+      "id": "dn-rom.k2",
+      "yer": "ROM çeşitleri",
+      "on": "ROM çeşitlerini sayın ve farklarını söyleyin.",
+      "arka": "- ROM: yalnızca üretici yazar\n- PROM: boş üretilir, kullanıcı bir kez programlar\n- EPROM: ultraviyole ışıkla silinir, yeniden yazılır\n- EEPROM: elektrikle silinir, yeniden yazılır; BIOS bunu kullanır"
+    },
+    {
+      "id": "dn-rom.k3",
+      "yer": "EEPROM",
+      "on": "EPROM ile EEPROM'un farkı nedir?",
+      "arka": "İkisi de silinip yeniden yazılabilir. EPROM ultraviyole ışıkla, EEPROM elektrikle silinir. Hocaya göre BIOS EEPROM kullanır."
+    },
+    {
+      "id": "dn-rom.k4",
+      "yer": "BIOS pili",
+      "on": "BIOS pili ne işe yarar?",
+      "arka": "BIOS'ta yapılan değişikliklerin ve tarih-saatin bilgisayar kapalıyken hafızada kalmasını sağlar. Güç kesildiğinde saatin geri kalmamasının sebebi BIOS pilidir.\nEk: CMOS pili de denir."
+    }
+  ]
+}

@@ -189,6 +189,10 @@ const SORU_ALANLARI = {
   hesap:  ["id", "tip", "yer", "soru", "cevap", "tolerans", "birim", "izah"],
   klasik: ["id", "tip", "yer", "soru", "cevap", "anahtarlar"]
 };
+/* Her soru türü isteğe bağlı görsel alabilir: ders klasörünün gorseller/
+   altındaki dosya adları; birden çoksa uygulamada yana kaydırılır */
+Object.values(SORU_ALANLARI).forEach(l => l.push("gorseller"));
+const SORU_GORSEL_SINIRI = 8;
 
 function seceneklerDogrula(y, s) {
   if (!Array.isArray(s.secenekler) || s.secenekler.length < 2 || s.secenekler.length > 6) {
@@ -204,6 +208,16 @@ function soruDogrula(y, s) {
   if (!s || typeof s !== "object") { hata(y, "nesne olmalı"); return; }
   if (!SORU_TIPLERI.includes(s.tip)) { hata(y, "bilinmeyen tip '" + s.tip + "'"); return; }
   bilinmeyenAlanlar(y, s, SORU_ALANLARI[s.tip]);
+  if (s.gorseller !== undefined) {
+    if (!Array.isArray(s.gorseller) || !s.gorseller.length || s.gorseller.length > SORU_GORSEL_SINIRI) {
+      hata(y, "'gorseller' 1 ile " + SORU_GORSEL_SINIRI + " arası dosya adı olmalı");
+    } else {
+      s.gorseller.forEach((ad, i) => {
+        if (typeof ad !== "string" || !GORSEL_ADI.test(ad)) hata(y, "'gorseller[" + i + "]' gorseller/ klasöründeki bir dosya adı olmalı (ör. 'anakart.jpg')");
+      });
+      if (new Set(s.gorseller).size !== s.gorseller.length) hata(y, "aynı görsel iki kez yazılmış");
+    }
+  }
   if (s.tip !== "klasik" && s.tip !== "dizme" && s.tip !== "esles" && s.tip !== "bosluk") temizMetin(y, "izah", s.izah);
   else temizMetin(y, "izah", s.izah, false);
   switch (s.tip) {
@@ -385,11 +399,21 @@ function dersleriOku(agacDersleri) {
       const basliklar = markdownDogrula(y + ".md", md, dersGorselleri);
       const konu = jsonOku(cift[".json"], y + ".json");
       if (!konu || !konuDogrula(y + ".json", konu, basliklar, kimlikler)) return;
+      /* Soru görselleri: dosya var mı, kullanıldı sayılır; yüklenirken depodaki adla değişir */
+      const sorular = (konu.sorular || []).map((s, i) => {
+        if (!s || !Array.isArray(s.gorseller)) return s;
+        s.gorseller.forEach(ad => {
+          if (typeof ad !== "string") return;
+          if (!dersGorselleri.has(ad)) hata(y + ".json > sorular[" + i + "]", "görsel bulunamadı: gorseller/" + ad);
+          else kullanilanGorseller.add(ad);
+        });
+        return Object.assign({}, s, { gorseller: s.gorseller.map(ad => dersGorselleri.has(ad) ? dersGorselleri.get(ad).depoAdi : ad) });
+      });
       const yuklenecekMetin = md.replace(/(!\[[^\]]*\]\(gorseller\/)([^)]+)\)/g,
         (tum, on, ad) => dersGorselleri.has(ad) ? on + dersGorselleri.get(ad).depoAdi + ")" : tum);
       konular.push({
         id: konu.id, ders, sira, baslik: konu.baslik, metin: yuklenecekMetin, hususi: agacDersleri.get(ders).hususi,
-        kavramlar: konu.kavramlar || [], sorular: konu.sorular || [], kartlar: konu.kartlar || [],
+        kavramlar: konu.kavramlar || [], sorular, kartlar: konu.kartlar || [],
         kaynak: konu.kaynak
       });
     });

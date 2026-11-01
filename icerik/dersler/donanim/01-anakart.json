@@ -1,0 +1,208 @@
+{
+  "id": "dn-anakart",
+  "baslik": "Anakart: Tanımı, Tarihçesi ve Çeşitleri",
+  "kaynak": "donanim_ders_notlari.pptx, slayt 1–12",
+  "kavramlar": [
+    {
+      "terim": "Anakart",
+      "izah": "Bilgisayarın tüm parçalarını üzerinde barındıran ve bu parçaların iletişimini sağlayan elektronik devre; fiberglastan yapılmış, bakır yollu, genellikle koyu yeşil bir levha.",
+      "yer": "Anakart nedir"
+    },
+    {
+      "terim": "XT anakart",
+      "izah": "İlk kişisel bilgisayarların anakartı; 8086 ya da 8088 işlemciyi üzerinde sabit taşır, işlemci değişirse anakart da değişir.",
+      "yer": "XT anakartlar"
+    },
+    {
+      "terim": "AT anakart",
+      "izah": "XT'den sonra gelen, yalnızca 5 ve 12 volt güç alan, PS/2 desteği olmayan, değiştirilebilir işlemcili anakart.",
+      "yer": "AT anakartlar"
+    },
+    {
+      "terim": "ATX anakart",
+      "izah": "Hocaya göre Pentium II ile ilk kez piyasaya sunulan, sürekli geliştirilerek bugün hâlâ yaygın kullanılan anakart standardı.",
+      "yer": "ATX anakartlar"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "dn-anakart.s1",
+      "tip": "secme",
+      "yer": "Anakart nedir",
+      "soru": "Hocaya göre **anakart** nedir?",
+      "secenekler": [
+        "Bilgisayarın tüm parçalarını barındırıp iletişimini sağlayan devre",
+        "Donanımlar arasındaki veri akışını denetleyen entegre devreler",
+        "Çalışan programların bilgilerini geçici olarak saklayan bellek",
+        "Gelen komutları işleyip çıktıları RAM'e aktaran parça"
+      ],
+      "dogru": 0,
+      "izah": "Anakart, bilgisayarın tüm parçalarını üzerinde barındırır ve bu parçaların iletişimini sağlar. Veri akışını denetleyen entegre devreler yonga setidir, geçici bellek RAM'dir, komutları işleyen parça işlemcidir."
+    },
+    {
+      "id": "dn-anakart.s2",
+      "tip": "bosluk",
+      "yer": "Anakart nedir",
+      "metin": "Anakart, ___ yapılmış, üzerinde bakır yolların bulunduğu, genellikle koyu yeşil bir levhadır.",
+      "cevaplar": [
+        [
+          "fiberglastan",
+          "fiberglas"
+        ]
+      ],
+      "izah": "Anakart fiberglastan (sert bir plastik türevi) yapılmıştır; üzerinde bakır yollar vardır."
+    },
+    {
+      "id": "dn-anakart.s3",
+      "tip": "dy",
+      "yer": "Anakartın önemi",
+      "ifade": "Anakart, bir PC'ye hangi tür işlemcilerin takılabileceğini ve en çok bellek kapasitesinin ne kadar olabileceğini belirler.",
+      "dogru": true,
+      "izah": "Hocaya göre anakart, PC'nin hangi özelliklere sahip olabileceğini belirleyen en önemli bileşendir: işlemci türü, en çok bellek kapasitesi, bileşenlerin hızları ve desteklenen yeni teknolojiler."
+    },
+    {
+      "id": "dn-anakart.s4",
+      "tip": "secme",
+      "yer": "İlk anakart",
+      "soru": "Hocaya göre ilk anakartın üzerinde hangi işlemci vardı?",
+      "secenekler": [
+        "Intel 8088",
+        "Intel 4004",
+        "Pentium II",
+        "Pentium III"
+      ],
+      "dogru": 0,
+      "izah": "IBM'in PC'lerinde kullanılan ilk anakartta Intel 8088 işlemci, BIOS, bellek ve kart yuvaları bulunuyordu. Intel 4004 ilk mikroişlemcidir; Pentium II ve III çok sonraki işlemcilerdir."
+    },
+    {
+      "id": "dn-anakart.s5",
+      "tip": "dy",
+      "yer": "İlk anakart",
+      "ifade": "Hocaya göre parçaların takılıp çıkarılmasını kolaylaştırarak bu yöntemde öncülüğü IBM yaptı.",
+      "dogru": false,
+      "izah": "Hoca bu öncülüğü **Apple II**'ye verir. IBM ise ilk anakartı kullanan PC'leri üreten firmadır."
+    },
+    {
+      "id": "dn-anakart.s6",
+      "tip": "esles",
+      "yer": "Anakart çeşitleri",
+      "soru": "Anakart çeşitlerini özellikleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "XT",
+          "İşlemci anakart üzerinde sabittir"
+        ],
+        [
+          "AT",
+          "Yalnızca 5 ve 12 volt güç alır; PS/2 desteği yoktur"
+        ],
+        [
+          "ATX",
+          "Günümüzde hâlâ yaygın olarak kullanılır"
+        ]
+      ],
+      "izah": "XT'de işlemci sabittir, değiştirmek için anakart değişir. AT değiştirilebilir işlemci sunar ama PS/2 desteği yoktur. ATX bugün de kullanılan standarttır."
+    },
+    {
+      "id": "dn-anakart.s7",
+      "tip": "secme",
+      "yer": "XT anakartlar",
+      "soru": "Hangi anakart çeşidinde işlemciyi değiştirmek için anakartın da değiştirilmesi gerekiyordu?",
+      "secenekler": [
+        "XT",
+        "AT",
+        "ATX"
+      ],
+      "dogru": 0,
+      "izah": "XT anakartlar 8086 ya da 8088 işlemciyi üzerinde sabit taşır. AT ve ATX değiştirilebilir işlemci desteği sunar."
+    },
+    {
+      "id": "dn-anakart.s8",
+      "tip": "dy",
+      "yer": "AT anakartlar",
+      "ifade": "AT anakartlarda PS/2 desteği vardır.",
+      "dogru": false,
+      "izah": "Hoca: AT anakartlar yalnızca 5 ve 12 volt güç alır ve **PS/2 desteği yoktur.**"
+    },
+    {
+      "id": "dn-anakart.s9",
+      "tip": "dizme",
+      "yer": "Anakart çeşitleri",
+      "soru": "Anakart çeşitlerini ortaya çıkış sırasına göre eskiden yeniye dizin.",
+      "parcalar": [
+        "XT",
+        "AT",
+        "ATX"
+      ],
+      "izah": "XT ilk kişisel bilgisayarlarda kullanıldı; AT XT'den sonra geldi; ATX Pentium II ile sunuldu ve bugün de kullanılıyor."
+    },
+    {
+      "id": "dn-anakart.s10",
+      "tip": "secme",
+      "yer": "Başlıca anakart üreticileri",
+      "soru": "Hangisi hocanın **başlıca anakart üreticileri** listesinde yoktur?",
+      "secenekler": [
+        "AMD",
+        "Gigabyte",
+        "ASRock",
+        "MSI"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın listesi: Intel, Dell, Asus, ECS, MSI, Gigabyte, Foxconn, Biostar, EPoX ve ASRock. AMD hocanın yonga seti üreticileri arasında geçer."
+    },
+    {
+      "id": "dn-anakart.s11",
+      "tip": "klasik",
+      "yer": "Anakart nedir",
+      "soru": "Hocanın tanımına göre anakart üzerinde neler yer alır? Sayın.",
+      "cevap": "Mikroişlemci yuvası, bellek, genişleme yuvaları, BIOS, diğer kartlar için genişletme yuvaları ve diğer yardımcı devreler (sistem saati, kontrol devreleri gibi).",
+      "anahtarlar": [
+        "işlemci yuvası",
+        "bellek",
+        "genişleme yuvaları",
+        "BIOS",
+        "yardımcı devreler"
+      ]
+    },
+    {
+      "id": "dn-anakart.s12",
+      "tip": "dy",
+      "yer": "ATX anakartlar",
+      "ifade": "ATX standardı günümüzde hâlâ yaygın olarak kullanılmaktadır.",
+      "dogru": true,
+      "izah": "Hoca: ATX standardı sürekli geliştirilerek günümüzde hâlâ yaygın olarak kullanılmaktadır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "dn-anakart.k1",
+      "yer": "Anakart nedir",
+      "on": "Anakart nedir?",
+      "arka": "Bilgisayarın tüm parçalarını üzerinde barındıran ve bu parçaların iletişimini sağlayan elektronik devredir. Fiberglastan yapılmış, üzerinde bakır yollar olan, genellikle koyu yeşil bir levhadır."
+    },
+    {
+      "id": "dn-anakart.k2",
+      "yer": "Anakartın önemi",
+      "on": "Anakart neden bir PC'nin en önemli bileşenidir?",
+      "arka": "PC'nin hangi özelliklere sahip olabileceğini belirler:\n- hangi tür işlemcilerin takılabileceğini\n- en çok bellek kapasitesini\n- bileşenlerin çıkabileceği hızları\n- hangi yeni donanım teknolojilerini destekleyeceğini"
+    },
+    {
+      "id": "dn-anakart.k3",
+      "yer": "İlk anakart",
+      "on": "İlk anakartı anlatın.",
+      "arka": "Hocaya göre 1982'de IBM'in PC'lerinde kullanıldı. Üzerinde Intel 8088 işlemci, BIOS, bellek ve kart yuvaları vardı; disket sürücü gibi bir şey için uygun kart takılması gerekiyordu. Parçaların takılıp çıkarılmasını kolaylaştırarak öncülüğü Apple II yaptı."
+    },
+    {
+      "id": "dn-anakart.k4",
+      "yer": "Anakart çeşitleri",
+      "on": "XT, AT ve ATX anakartların farkı nedir?",
+      "arka": "- XT: ilk kişisel bilgisayarlarda; 8086/8088 işlemci sabit, ek donanım birimi 8 bit\n- AT: yalnızca 5 ve 12 V güç alır, PS/2 desteği yok, değiştirilebilir işlemci\n- ATX: hocaya göre Pentium II ile sunuldu; bugün hâlâ yaygın"
+    },
+    {
+      "id": "dn-anakart.k5",
+      "yer": "Başlıca anakart üreticileri",
+      "on": "Başlıca anakart üreticilerini sayın.",
+      "arka": "Intel, Dell, Asus, ECS, MSI, Gigabyte, Foxconn, Biostar, EPoX, ASRock."
+    }
+  ]
+}

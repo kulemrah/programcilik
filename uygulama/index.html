@@ -870,6 +870,45 @@ html[data-mod="gece"] .uyari-kutu,html[data-mod="siyah"] .uyari-kutu{background:
   background:#FFF;min-height:40px;
 }
 .okuma figcaption{font-size:13px;color:var(--sonuk);margin-top:6px}
+
+/* ---- Görsel dizisi (yana kaydırılır) ve büyüteç ---- */
+.galeri{position:relative;margin:0 0 18px}
+.galeri-serit{
+  display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;overscroll-behavior-x:contain;
+}
+.galeri-serit::-webkit-scrollbar{display:none}
+.galeri-serit figure{flex:0 0 100%;margin:0;scroll-snap-align:center;text-align:center}
+.galeri figure img,.soru figure img{
+  max-width:100%;height:auto;border-radius:8px;border:1px solid var(--cizgi);background:#FFF;min-height:40px;
+}
+.galeri figcaption,.soru figcaption{font-size:13px;color:var(--sonuk);margin-top:6px}
+.soru > figure{margin:10px 0 14px;text-align:center}
+.soru .galeri{margin:10px 0 14px}
+.galeri-sayac{
+  position:absolute;top:8px;right:8px;background:rgba(0,0,0,.62);color:#FFF;font-size:12px;font-weight:650;
+  padding:3px 9px;border-radius:999px;pointer-events:none;
+}
+.galeri-ok{
+  position:absolute;top:calc(50% - 34px);width:38px;height:38px;border-radius:50%;border:0;padding:0;
+  background:rgba(0,0,0,.5);color:#FFF;font-size:22px;line-height:38px;cursor:pointer;
+}
+.galeri-ok.geri{left:6px}
+.galeri-ok.ileri{right:6px}
+.galeri-ok:disabled{opacity:0;pointer-events:none}
+.galeri-noktalar{display:flex;justify-content:center;gap:7px;margin-top:8px}
+.galeri-noktalar span{width:7px;height:7px;border-radius:50%;background:var(--cizgi)}
+.galeri-noktalar span.secili{background:var(--vurgu)}
+.okuma figure img,.galeri figure img,.soru figure img{cursor:zoom-in}
+.buyutec{position:fixed;inset:0;z-index:120;background:#0B0B0C;display:flex;flex-direction:column}
+.buyutec-ust{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;color:#FFF;font-size:13px;
+  padding:calc(env(safe-area-inset-top) + 8px) 12px 8px;
+}
+.buyutec-ust button{background:rgba(255,255,255,.18);color:#FFF;border:0;border-radius:999px;padding:9px 15px;font-size:14px;font-weight:650}
+.buyutec-alan{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;display:flex}
+.buyutec-alan img{margin:auto;max-width:none;background:#FFF;display:block;cursor:zoom-in}
+.buyutec-alan img.yakin{cursor:zoom-out}
 .okuma .baslik-hedef{animation:parla 1.6s ease-out}
 @keyframes parla{from{background:var(--vurgu-zemin)}to{background:transparent}}
 
@@ -2116,16 +2155,141 @@ function markdownCiz(metin, dersId) {
       continue;
     }
     if (satir.trim() === "") { i++; continue; }
-    const g = satir.match(SATIR_GORSELI);
-    if (g) {
-      html += '<figure><img alt="' + kacir(g[1]) + '" data-yol="' + kacir((dersId || "") + "/" + g[2]) + '">' +
-        (g[1].trim() ? "<figcaption>" + kacir(g[1]) + "</figcaption>" : "") + "</figure>";
-      i++; continue;
+    if (SATIR_GORSELI.test(satir)) {
+      /* Boş satırsız art arda gelen görsel satırları tek bir dizi olur; yana kaydırılarak gezilir */
+      const ogeler = topla(s => SATIR_GORSELI.test(s)).map(s => {
+        const g = s.match(SATIR_GORSELI);
+        return { alt: g[1], yol: (dersId || "") + "/" + g[2] };
+      });
+      html += gorselHtml(ogeler);
+      continue;
     }
     html += "<p>" + satiriCiz(satir, dersId) + "</p>";
     i++;
   }
   return html;
+}
+
+/* Tek görsel: açıklamalı şekil. Birden çok görsel: yana kaydırılan dizi;
+   sayaç, noktalar ve oklar hangi görselde olunduğunu gösterir. */
+function gorselHtml(ogeler) {
+  const sekil = o => '<figure><img alt="' + kacir(o.alt) + '" data-yol="' + kacir(o.yol) + '">' +
+    (o.alt.trim() && !o.yazisiz ? "<figcaption>" + kacir(o.alt) + "</figcaption>" : "") + "</figure>";
+  if (ogeler.length === 1) return sekil(ogeler[0]);
+  return '<div class="galeri"><div class="galeri-serit">' + ogeler.map(sekil).join("") + "</div>" +
+    '<span class="galeri-sayac">1 / ' + ogeler.length + "</span>" +
+    '<button type="button" class="galeri-ok geri" aria-label="Önceki görsel" disabled>‹</button>' +
+    '<button type="button" class="galeri-ok ileri" aria-label="Sonraki görsel">›</button>' +
+    '<div class="galeri-noktalar" aria-hidden="true">' + ogeler.map((_, i) => i ? "<span></span>" : '<span class="secili"></span>').join("") + "</div></div>";
+}
+
+/* Dizide görünen görselin sırası; sayaç, noktalar ve oklar ona göre güncellenir */
+function galeriGuncelle(serit) {
+  const g = serit.closest(".galeri");
+  const n = serit.children.length;
+  const i = Math.max(0, Math.min(n - 1, Math.round(serit.scrollLeft / Math.max(1, serit.clientWidth + 10))));
+  if (!g) return i;
+  g.querySelector(".galeri-sayac").textContent = (i + 1) + " / " + n;
+  g.querySelectorAll(".galeri-noktalar span").forEach((s, k) => s.classList.toggle("secili", k === i));
+  g.querySelector(".galeri-ok.geri").disabled = i === 0;
+  g.querySelector(".galeri-ok.ileri").disabled = i === n - 1;
+  return i;
+}
+document.addEventListener("scroll", e => {
+  const t = e.target;
+  if (t && t.classList && t.classList.contains("galeri-serit")) galeriGuncelle(t);
+}, true);
+document.addEventListener("click", e => {
+  if (!e.target || !e.target.closest) return;
+  const ok = e.target.closest(".galeri-ok");
+  if (ok) {
+    const serit = ok.parentElement.querySelector(".galeri-serit");
+    const hedef = galeriGuncelle(serit) + (ok.classList.contains("ileri") ? 1 : -1);
+    serit.scrollTo({ left: hedef * (serit.clientWidth + 10), behavior: hareketAz() ? "auto" : "smooth" });
+    return;
+  }
+  const img = e.target.closest(".okuma figure img, .soru figure img");
+  if (img && img.src && img.naturalWidth) buyutecAc(img);
+});
+
+/* Büyüteç: görsel tam ekranda açılır; dokunulan yer büyütülür (yeniden
+   dokununca ekrana sığar), parmakla kaydırılarak gezilir. Kapat düğmesi,
+   Esc ve telefonun geri tuşu kapatır. */
+function buyutecAc(img) {
+  if (document.querySelector(".buyutec")) return;
+  const perde = olustur("div", "buyutec");
+  perde.setAttribute("role", "dialog");
+  perde.setAttribute("aria-modal", "true");
+  perde.setAttribute("aria-label", img.alt || "Görsel");
+  const ust = olustur("div", "buyutec-ust");
+  const bilgi = olustur("span");
+  bilgi.textContent = "Yakınlaştırmak için görsele dokunun";
+  const kapat = olustur("button");
+  kapat.type = "button";
+  kapat.textContent = "Kapat ✕";
+  ust.append(bilgi, kapat);
+  const alan = olustur("div", "buyutec-alan");
+  const buyuk = new Image();
+  buyuk.src = img.src;
+  buyuk.alt = img.alt;
+  alan.appendChild(buyuk);
+  perde.append(ust, alan);
+  document.body.appendChild(perde);
+  const oran = img.naturalWidth / img.naturalHeight;
+  let yakin = false;
+  const boyutla = () => {
+    const sigan = Math.min(alan.clientWidth, alan.clientHeight * oran);
+    const gen = yakin ? sigan * 2.5 : sigan;
+    buyuk.style.width = gen + "px";
+    buyuk.style.height = (gen / oran) + "px";
+    buyuk.classList.toggle("yakin", yakin);
+  };
+  boyutla();
+  buyuk.addEventListener("click", e => {
+    const r = buyuk.getBoundingClientRect();
+    const fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
+    yakin = !yakin;
+    boyutla();
+    alan.scrollLeft = fx * buyuk.offsetWidth - alan.clientWidth / 2;
+    alan.scrollTop = fy * buyuk.offsetHeight - alan.clientHeight / 2;
+    bilgi.textContent = yakin ? "Kaydırarak gezin; küçültmek için dokunun" : "Yakınlaştırmak için görsele dokunun";
+  });
+  const sigdir = () => { if (!yakin) boyutla(); };
+  window.addEventListener("resize", sigdir);
+  let bitti = false;
+  const tus = e => { if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); geriDon(); } };
+  const kapatIslev = () => {
+    if (bitti) return;
+    bitti = true;
+    document.removeEventListener("keydown", tus, true);
+    window.removeEventListener("resize", sigdir);
+    perde.remove();
+  };
+  document.addEventListener("keydown", tus, true);
+  derinlesGit(kapatIslev);
+  kapat.addEventListener("click", () => geriDon());
+  kapat.focus();
+}
+
+/* Sorunun görselleri (yalnızca dosya adları; açıklama yazısı çizilmez, cevabı ele vermesin) */
+function soruGorselleri(soru) {
+  if (!Array.isArray(soru.gorseller) || !soru.gorseller.length) return null;
+  const n = soru.gorseller.length;
+  const kap = olustur("div");
+  kap.innerHTML = gorselHtml(soru.gorseller.map((ad, i) => ({
+    alt: n > 1 ? "Soru görseli " + (i + 1) + " / " + n : "Soru görseli", yol: soru.konu.ders + "/" + ad, yazisiz: true
+  })));
+  const el = kap.firstElementChild;
+  gorselleriYukle(el);
+  return el;
+}
+
+/* Bir konunun kullandığı bütün görseller: not metnindekiler ve soru görselleri */
+function konuGorselYollari(k) {
+  const l = [];
+  for (const m of String(k.metin).matchAll(/!\[[^\]]*\]\(gorseller\/([^)\s]+)\)/g)) l.push(k.ders + "/" + m[1]);
+  (k.sorular || []).forEach(s => (Array.isArray(s.gorseller) ? s.gorseller : []).forEach(ad => l.push(k.ders + "/" + ad)));
+  return l;
 }
 
 /* Arama ve sesli okuma için işaretsiz düz metin */
@@ -2660,12 +2824,7 @@ async function gorselleriOnceIndir(nesil) {
   try {
     const var_ = new Set((await vt.hepsi("gorsel")).map(g => g.yol));
     const gerekli = new Set();
-    KONULAR.forEach(k => {
-      for (const m of String(k.metin).matchAll(/!\[[^\]]*\]\(gorseller\/([^)\s]+)\)/g)) {
-        const yol = k.ders + "/" + m[1];
-        if (!var_.has(yol)) gerekli.add(yol);
-      }
-    });
+    KONULAR.forEach(k => konuGorselYollari(k).forEach(yol => { if (!var_.has(yol)) gerekli.add(yol); }));
     for (const yol of gerekli) {
       if (nesil !== oturumNesli || !navigator.onLine) return;
       try {
@@ -2690,9 +2849,7 @@ async function gorselleriBuda(nesil) {
     const kayitli = await vt.hepsi("gorsel");
     if (nesil !== oturumNesli) return;
     const kullanilan = new Set();
-    KONULAR.forEach(k => {
-      for (const m of String(k.metin).matchAll(/!\[[^\]]*\]\(gorseller\/([^)\s]+)\)/g)) kullanilan.add(k.ders + "/" + m[1]);
-    });
+    KONULAR.forEach(k => konuGorselYollari(k).forEach(yol => kullanilan.add(yol)));
     const silinecek = kayitli.map(g => g.yol).filter(yol => !kullanilan.has(yol));
     if (!silinecek.length) return;
     await vt.coklu("gorsel", [], silinecek);
@@ -7912,6 +8069,8 @@ function soruKutusu(soru, metin) {
   const p = olustur("p", "metin");
   p.innerHTML = satiriCiz(metin, soru.konu.ders);
   kutu.append(etiket, p);
+  const gorsel = soruGorselleri(soru);
+  if (gorsel) kutu.appendChild(gorsel);
   if (soru.kod) {
     const pre = olustur("pre", "soru-kod");
     const code = olustur("code");
@@ -7992,7 +8151,10 @@ function boslukCiz(sayfa, soru) {
     g.spellcheck = false;
     g.setAttribute("aria-label", (i + 1) + ". boşluk");
   });
-  kutu.append(etiket, metin);
+  kutu.append(etiket);
+  const gorsel = soruGorselleri(soru);
+  if (gorsel) kutu.appendChild(gorsel);
+  kutu.append(metin);
   sayfa.appendChild(kutu);
 
   const eylem = olustur("div", "eylem");

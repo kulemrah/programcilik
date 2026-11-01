@@ -1,0 +1,265 @@
+{
+  "id": "dn-portlar",
+  "baslik": "Arka Panel Portları",
+  "kaynak": "donanim_ders_notlari.pptx, slayt 15–19",
+  "kavramlar": [
+    {
+      "terim": "PS/2 portu",
+      "izah": "Klavye ve fare bağlamak için kullanılan port; ATX anakartlarda iki tane bulunur. Yeşil fare, mor klavye içindir.",
+      "yer": "PS/2 portları"
+    },
+    {
+      "terim": "Paralel port",
+      "izah": "Genellikle tarayıcı ve yazıcı bağlantısı için kullanılan, eski tip anakartlardaki port; yeni anakartlarda yerini USB almıştır.",
+      "yer": "Paralel port"
+    },
+    {
+      "terim": "COM portu",
+      "izah": "Fare ve harici modem bağlantıları için kullanılan port; USB ve PS/2 ile önemini yitirmiştir.",
+      "yer": "COM portu"
+    },
+    {
+      "terim": "USB",
+      "izah": "Universal Serial Bus (Evrensel Seri Veri Yolu). Birçok aygıt bağlanabilen, aygıtların sistemi yeniden başlatmadan kullanılabildiği veri yolu.",
+      "yer": "USB"
+    },
+    {
+      "terim": "LAN (RJ-45) portu",
+      "izah": "Yerel alan ağlarında ağa bağlanmak için kullanılan port; konnektörü telefon kablosunun ucuna benzer.",
+      "yer": "LAN (RJ-45) portu"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "dn-portlar.s1",
+      "tip": "esles",
+      "yer": "PS/2 portları",
+      "soru": "PS/2 portlarının renklerini takılan aygıtlarla eşleştirin.",
+      "ciftler": [
+        [
+          "Yeşil",
+          "Fare (mouse)"
+        ],
+        [
+          "Mor",
+          "Klavye"
+        ]
+      ],
+      "izah": "Hoca: fare yeşil PS/2 portuna, klavye mor PS/2 portuna takılır."
+    },
+    {
+      "id": "dn-portlar.s2",
+      "tip": "secme",
+      "yer": "PS/2 portları",
+      "gorseller": [
+        "ps2-fisler.jpg"
+      ],
+      "soru": "Resimdeki yeşil ve mor fişler hangi portlara takılır?",
+      "secenekler": [
+        "PS/2 portlarına",
+        "USB portlarına",
+        "COM portlarına",
+        "Paralel portlara"
+      ],
+      "dogru": 0,
+      "izah": "Yuvarlak, yeşil ve mor fişler PS/2 fişleridir: yeşil fare, mor klavye içindir."
+    },
+    {
+      "id": "dn-portlar.s3",
+      "tip": "dy",
+      "yer": "PS/2 portları",
+      "ifade": "PS/2 portlarının şekli ve pin sayısı farklı olduğu için renkleri de farklıdır.",
+      "dogru": false,
+      "izah": "Tersine: iki PS/2 portunun şekli ve pin sayısı **aynıdır**; karıştırılmasın diye renkleri farklıdır."
+    },
+    {
+      "id": "dn-portlar.s4",
+      "tip": "secme",
+      "yer": "Paralel port",
+      "soru": "Paralel port genellikle hangi aygıtlar için kullanılır?",
+      "secenekler": [
+        "Tarayıcı ve yazıcı",
+        "Klavye ve fare",
+        "Fare ve harici modem",
+        "Ağ kablosu ve modem"
+      ],
+      "dogru": 0,
+      "izah": "Paralel port genellikle tarayıcı ve yazıcı bağlantısı içindir. Klavye ve fare PS/2'ye, fare ve harici modem COM portuna bağlanır."
+    },
+    {
+      "id": "dn-portlar.s5",
+      "tip": "secme",
+      "yer": "Paralel port",
+      "gorseller": [
+        "paralel-kablo.jpg",
+        "paralel-port.jpg"
+      ],
+      "soru": "Resimlerdeki kablo ve port hangisidir?",
+      "secenekler": [
+        "Paralel port",
+        "COM (seri) portu",
+        "Ekran (VGA) portu",
+        "LAN (RJ-45) portu"
+      ],
+      "dogru": 0,
+      "izah": "Uzun, çok delikli kablo ucu ve port paralel porttur. COM portu çok daha kısa (9 iğneli), LAN portu ise telefon fişine benzer."
+    },
+    {
+      "id": "dn-portlar.s6",
+      "tip": "dy",
+      "yer": "Paralel port",
+      "ifade": "Yeni anakartlarda paralel port yerine USB portlar kullanılmaktadır.",
+      "dogru": true,
+      "izah": "Hoca: paralel port eski tip anakartlarda kullanılır; yeni anakartlarda yerini USB portlar almıştır."
+    },
+    {
+      "id": "dn-portlar.s7",
+      "tip": "secme",
+      "yer": "COM portu",
+      "soru": "Fare ve harici modem bağlantıları için kullanılan, USB ve PS/2'nin yaygınlaşmasıyla önemini yitiren port hangisidir?",
+      "secenekler": [
+        "COM portu",
+        "Paralel port",
+        "LAN portu",
+        "Ekran bağlantısı"
+      ],
+      "dogru": 0,
+      "izah": "COM (Communications) portu fare ve harici modem içindir; USB ve PS/2 portlarının kullanılmaya başlamasıyla önemini yitirmiştir."
+    },
+    {
+      "id": "dn-portlar.s8",
+      "tip": "secme",
+      "yer": "Ekran bağlantısı (display connector)",
+      "soru": "Monitörü bağlamak için anakart üzerinde **onboard** olarak bulunan port hangisidir?",
+      "secenekler": [
+        "Ekran bağlantısı",
+        "COM (seri) portu",
+        "Paralel yazıcı portu",
+        "PS/2 klavye portu"
+      ],
+      "dogru": 0,
+      "izah": "Monitör, anakarta tümleşik (onboard) ekran bağlantısına takılır; hocaya göre genelde harici olanlar tercih edilir."
+    },
+    {
+      "id": "dn-portlar.s9",
+      "tip": "bosluk",
+      "yer": "USB",
+      "metin": "USB portuna bağlanan aygıtlar, sistemin yeniden ___ gerek kalmadan kullanılabilir.",
+      "cevaplar": [
+        [
+          "başlatılmasına",
+          "başlatmaya"
+        ]
+      ],
+      "izah": "USB'nin özelliği budur: aygıt takılınca sistemi yeniden başlatmadan kullanılabilir."
+    },
+    {
+      "id": "dn-portlar.s10",
+      "tip": "secme",
+      "yer": "USB",
+      "gorseller": [
+        "usb-portlar.jpg"
+      ],
+      "soru": "Resimdeki dikdörtgen portlar hangisidir?",
+      "secenekler": [
+        "USB portları",
+        "LAN portları",
+        "PS/2 portları",
+        "SATA portları"
+      ],
+      "dogru": 0,
+      "izah": "Yassı, dikdörtgen portlar USB portlarıdır. LAN portu daha kare ve telefon fişi biçimindedir; PS/2 yuvarlaktır."
+    },
+    {
+      "id": "dn-portlar.s11",
+      "tip": "dy",
+      "yer": "LAN (RJ-45) portu",
+      "ifade": "LAN (RJ-45) portu yerel alan ağlarında ağa bağlanmak için kullanılır.",
+      "dogru": true,
+      "izah": "Hoca: LAN portu yerel alan ağlarında ağa bağlanmak için kullanılır."
+    },
+    {
+      "id": "dn-portlar.s12",
+      "tip": "dy",
+      "yer": "COM portu",
+      "ifade": "COM portu, USB ve PS/2 portlarının kullanılmaya başlamasıyla önem kazanmıştır.",
+      "dogru": false,
+      "izah": "Tersine: USB ve PS/2'nin kullanılmaya başlamasıyla COM portu **önemini yitirmiştir.**"
+    },
+    {
+      "id": "dn-portlar.s13",
+      "tip": "secme",
+      "yer": "LAN (RJ-45) portu",
+      "soru": "Uç yapısı telefon kablosunun ucuna benzeyen konnektör hangi porta takılır?",
+      "secenekler": [
+        "LAN (RJ-45) portu",
+        "PS/2 klavye portu",
+        "Paralel yazıcı portu",
+        "USB veri yolu portu"
+      ],
+      "dogru": 0,
+      "izah": "Hoca: LAN (RJ-45) konnektörü telefon kablosunun uç yapısına benzer."
+    },
+    {
+      "id": "dn-portlar.s14",
+      "tip": "esles",
+      "yer": "PS/2 portları",
+      "soru": "Portları hocanın verdiği kullanımlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "PS/2",
+          "Klavye ve fare"
+        ],
+        [
+          "Paralel port",
+          "Tarayıcı ve yazıcı"
+        ],
+        [
+          "COM portu",
+          "Fare ve harici modem"
+        ],
+        [
+          "LAN (RJ-45)",
+          "Yerel alan ağına bağlanma"
+        ],
+        [
+          "Ekran bağlantısı",
+          "Monitör"
+        ]
+      ],
+      "izah": "PS/2 klavye ve fare, paralel port tarayıcı ve yazıcı, COM fare ve harici modem, LAN yerel ağ, ekran bağlantısı monitör içindir."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "dn-portlar.k1",
+      "yer": "PS/2 portları",
+      "on": "PS/2 portlarını anlatın. Renkleri neden farklıdır?",
+      "arka": "Klavye ve fare bağlamak için kullanılır; ATX anakartlarda iki tane vardır. Şekilleri ve pin sayıları aynı olduğu için renkleri farklıdır: yeşil fare, mor klavye."
+    },
+    {
+      "id": "dn-portlar.k2",
+      "yer": "Paralel port",
+      "on": "Paralel port nedir?",
+      "arka": "Genellikle tarayıcı ve yazıcı bağlantısı için kullanılır. Eski tip anakartlardadır; yeni anakartlarda yerini USB almıştır."
+    },
+    {
+      "id": "dn-portlar.k3",
+      "yer": "COM portu ve ekran bağlantısı",
+      "on": "COM portu ile ekran bağlantısının görevi nedir?",
+      "arka": "COM: fare ve harici modem bağlantıları; USB ve PS/2 ile önemini yitirdi.\nEkran bağlantısı: monitör için anakartta onboard bulunan port; genelde harici olanlar tercih edilir."
+    },
+    {
+      "id": "dn-portlar.k4",
+      "yer": "USB",
+      "on": "USB nedir, en önemli özelliği nedir?",
+      "arka": "Universal Serial Bus (Evrensel Seri Veri Yolu). Birçok aygıt bağlanabilir ve aygıtlar sistemi yeniden başlatmadan kullanılabilir. Yeni anakartlarda klavye ve fare de USB'ye takılır."
+    },
+    {
+      "id": "dn-portlar.k5",
+      "yer": "LAN (RJ-45) portu",
+      "on": "LAN (RJ-45) portu ne işe yarar?",
+      "arka": "Yerel alan ağlarında ağa bağlanmak için kullanılır; konnektörü telefon kablosunun ucuna benzer.\nEk: RJ-45 8 pinlidir (slaytta 10 yazıyor)."
+    }
+  ]
+}

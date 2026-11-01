@@ -1,0 +1,308 @@
+{
+  "id": "dn-yuvalar",
+  "baslik": "Genişleme Yuvaları ve Bağlantı Portları",
+  "kaynak": "donanim_ders_notlari.pptx, slayt 20–27",
+  "kavramlar": [
+    {
+      "terim": "PCI",
+      "izah": "Peripheral Component Interconnect (Çevresel Bileşen Ara Bağlantısı). Intel'in geliştirdiği, 32 bit kullanılan, 33 ya da 66 MHz'lik beyaz yuva; ses, TV ve ethernet kartı takılır.",
+      "yer": "PCI"
+    },
+    {
+      "terim": "PCI Express",
+      "izah": "PCI'ın yerini almak için tasarlanan, PCI ile kıyaslanamayacak kadar hızlı yuva; ses, TV ve ethernet kartı takılır.",
+      "yer": "PCI Express"
+    },
+    {
+      "terim": "PCI Express x16",
+      "izah": "AGP'ye alternatif olarak üretilen, PCI Express mantığını kullanan yuva; ekran kartı takılır.",
+      "yer": "PCI Express x16"
+    },
+    {
+      "terim": "AGP",
+      "izah": "Accelerated Graphics Port (Hızlandırılmış Grafik Yuvası). Intel'in 1997'de yalnızca ekran kartları için geliştirdiği 32 bit, 66 MHz'lik kahverengi yuva; PCI'dan kısadır.",
+      "yer": "AGP"
+    },
+    {
+      "terim": "IDE (ATA)",
+      "izah": "Integrated Drive Electronics (Dahili Sürücü Elektroniği). CD-ROM, CD-RW, DVD-ROM ve IDE destekli sabit diskleri bağlamak için kullanılan port.",
+      "yer": "IDE (ATA) portu"
+    },
+    {
+      "terim": "SATA",
+      "izah": "Serial Advanced Technology Attachment (Seri İleri Teknoloji Bağlantısı). ATA'nın yetersiz kalması üzerine geliştirilen; CD-ROM, DVD-ROM ve sabit disk bağlanan port.",
+      "yer": "SATA portu"
+    },
+    {
+      "terim": "Disket sürücü bağlantı portu",
+      "izah": "Disket sürücülerin bağlandığı, aktarım hızı çok sınırlı, yeni nesil bilgisayarlarda artık kullanılmayan port.",
+      "yer": "Disket sürücü bağlantı portu"
+    },
+    {
+      "terim": "Güç bağlantı portu",
+      "izah": "Kasadaki güç kaynağından anakarta güç sağlayan port; +5 V, −5 V ve +12 V buradan gelir.",
+      "yer": "Güç bağlantı portu"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "dn-yuvalar.s1",
+      "tip": "secme",
+      "yer": "PCI",
+      "soru": "Hocaya göre **beyaz** renkli olan ve ses kartı, TV kartı, ethernet kartı takılan yuva hangisidir?",
+      "secenekler": [
+        "PCI",
+        "AGP",
+        "IDE",
+        "SATA"
+      ],
+      "dogru": 0,
+      "izah": "PCI yuvası beyazdır; ses, TV ve ethernet kartı takılır. AGP kahverengidir ve yalnızca ekran kartı içindir; IDE ve SATA sürücü bağlantılarıdır."
+    },
+    {
+      "id": "dn-yuvalar.s2",
+      "tip": "secme",
+      "yer": "AGP",
+      "soru": "Hocaya göre AGP yuvasının rengi ve boyu nasıldır?",
+      "secenekler": [
+        "Kahverengidir ve PCI yuvalarından kısadır",
+        "Beyazdır ve PCI yuvalarından uzundur",
+        "Kahverengidir ve PCI yuvalarından uzundur",
+        "Siyahtır ve PCI yuvalarıyla aynı boydadır"
+      ],
+      "dogru": 0,
+      "izah": "Hoca: AGP yuvası kahverengi ve PCI yuvalarından kısadır."
+    },
+    {
+      "id": "dn-yuvalar.s3",
+      "tip": "esles",
+      "yer": "PCI Express x16",
+      "soru": "Yuvaları hocanın verdiği özellikleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "AGP",
+          "Yalnızca ekran kartları için geliştirildi"
+        ],
+        [
+          "PCI Express x16",
+          "AGP'ye alternatif olarak üretildi"
+        ],
+        [
+          "PCI Express",
+          "PCI'ın yerini almak için tasarlandı"
+        ],
+        [
+          "PCI",
+          "33 ya da 66 MHz hızında çalışır"
+        ]
+      ],
+      "izah": "AGP 1997'de yalnızca ekran kartları için geliştirildi; PCI Express x16 AGP'ye alternatiftir; PCI Express PCI'ın yerini almak için tasarlandı; PCI 33 ya da 66 MHz'tir."
+    },
+    {
+      "id": "dn-yuvalar.s4",
+      "tip": "hesap",
+      "yer": "AGP",
+      "soru": "Hocaya göre AGP kanalı kaç bit genişliğindedir?",
+      "cevap": 32,
+      "birim": "bit",
+      "izah": "AGP kanalı 32 bit genişliğindedir ve 66 MHz hızında çalışır."
+    },
+    {
+      "id": "dn-yuvalar.s5",
+      "tip": "hesap",
+      "yer": "AGP",
+      "soru": "Hocaya göre Intel AGP'yi hangi yıl geliştirdi?",
+      "cevap": 1997,
+      "izah": "AGP, Intel tarafından 1997'de yalnızca ekran kartları için geliştirildi."
+    },
+    {
+      "id": "dn-yuvalar.s6",
+      "tip": "dizme",
+      "yer": "PCI Express",
+      "soru": "Veri yollarını hocanın verdiği en yüksek bant genişliğine göre **küçükten büyüğe** dizin.",
+      "parcalar": [
+        "PCI",
+        "PCI-X",
+        "PCI Express"
+      ],
+      "izah": "Slayttaki değerler: PCI 533, PCI-X 4266, PCI Express 8000 (slaytta Mbps yazıyor)."
+    },
+    {
+      "id": "dn-yuvalar.s7",
+      "tip": "dy",
+      "yer": "PCI Express x16",
+      "ifade": "PCI Express x16 yuvasına ekran kartı takılır.",
+      "dogru": true,
+      "izah": "Hoca: ekran kartı PCI Express x16 yuvasına takılır."
+    },
+    {
+      "id": "dn-yuvalar.s8",
+      "tip": "dy",
+      "yer": "PCI Express x16",
+      "ifade": "AGP, PCI Express x16'ya alternatif olarak üretilmiştir.",
+      "dogru": false,
+      "izah": "Tersine: **PCI Express x16**, AGP'ye alternatif olarak üretilmiştir. AGP daha eskidir (1997)."
+    },
+    {
+      "id": "dn-yuvalar.s9",
+      "tip": "secme",
+      "yer": "IDE (ATA) portu",
+      "soru": "Hocaya göre IDE portuna neler bağlanır?",
+      "secenekler": [
+        "CD-ROM, DVD-ROM ve IDE destekli sabit diskler",
+        "Ses kartı, TV kartı ve ethernet kartı",
+        "Klavye, fare ve harici modem cihazları",
+        "Tarayıcı, yazıcı ve monitör gibi aygıtlar"
+      ],
+      "dogru": 0,
+      "izah": "IDE portu CD-ROM, CD-RW, DVD-ROM ve IDE destekli sabit diskler içindir. Ses, TV ve ethernet kartı PCI / PCI Express yuvalarına takılır."
+    },
+    {
+      "id": "dn-yuvalar.s10",
+      "tip": "secme",
+      "yer": "SATA portu",
+      "soru": "**ATA'nın yetersiz kalması** üzerine geliştirilen port hangisidir?",
+      "secenekler": [
+        "SATA",
+        "IDE (ATA)",
+        "AGP",
+        "PCI Express"
+      ],
+      "dogru": 0,
+      "izah": "SATA (Seri İleri Teknoloji Bağlantısı), ATA'nın yetersiz kalması üzerine geliştirilmiştir. IDE ise ATA'nın kendisidir."
+    },
+    {
+      "id": "dn-yuvalar.s11",
+      "tip": "dy",
+      "yer": "Disket sürücü bağlantı portu",
+      "ifade": "Disket sürücü bağlantı portu yeni nesil bilgisayarlarda hâlâ yaygın olarak kullanılmaktadır.",
+      "dogru": false,
+      "izah": "Hoca: aktarım hızı son derece sınırlıdır, kullanışlı değildir ve yeni nesil bilgisayarlarda artık kullanılmamaktadır."
+    },
+    {
+      "id": "dn-yuvalar.s12",
+      "tip": "secme",
+      "yer": "Güç bağlantı portu",
+      "soru": "Hocaya göre güç bağlantı portundan anakarta hangi gerilimler sağlanır?",
+      "secenekler": [
+        "+5 V, −5 V ve +12 V",
+        "+12 V, +24 V ve −12 V",
+        "+1,5 V, +1,8 V ve +2,5 V",
+        "+3 V, +9 V ve +15 V"
+      ],
+      "dogru": 0,
+      "izah": "Hoca: kart için gereken +5 V, −5 V ve +12 V güç bağlantı portundan sağlanır. 1,5 / 1,8 / 2,5 V bellek kuşaklarının gerilimleridir."
+    },
+    {
+      "id": "dn-yuvalar.s13",
+      "tip": "secme",
+      "yer": "AGP",
+      "gorseller": [
+        "agp-yuvasi.jpg"
+      ],
+      "soru": "Resimde üstteki **kahverengi** yuva hangisidir?",
+      "secenekler": [
+        "AGP yuvası",
+        "PCI yuvası",
+        "IDE yuvası",
+        "RAM yuvası"
+      ],
+      "dogru": 0,
+      "izah": "Kahverengi ve alttaki beyaz PCI yuvasından kısa olan yuva AGP yuvasıdır."
+    },
+    {
+      "id": "dn-yuvalar.s14",
+      "tip": "secme",
+      "yer": "IDE (ATA) portu",
+      "gorseller": [
+        "ide-kablo.jpg",
+        "anakart-isaret-ide-yakin.webp"
+      ],
+      "soru": "Resimlerdeki geniş, yassı kablo ve anakart üzerinde çerçeveyle gösterilen yuvalar hangi bağlantıya aittir?",
+      "secenekler": [
+        "IDE (ATA)",
+        "SATA (seri)",
+        "Güç bağlantısı",
+        "PCI yuvası"
+      ],
+      "dogru": 0,
+      "izah": "Geniş, yassı kablo ve çok iğneli uzun yuva IDE (ATA) bağlantısıdır. SATA kablosu ince, yuvası küçüktür."
+    },
+    {
+      "id": "dn-yuvalar.s15",
+      "tip": "secme",
+      "yer": "SATA portu",
+      "gorseller": [
+        "sata-kablo.jpg"
+      ],
+      "soru": "Resimdeki ince kırmızı kablolar hangi bağlantı için kullanılır?",
+      "secenekler": [
+        "SATA",
+        "IDE",
+        "Disket",
+        "Güç"
+      ],
+      "dogru": 0,
+      "izah": "İnce, küçük uçlu kablolar SATA kablolarıdır. IDE ve disket kabloları geniş ve yassıdır."
+    },
+    {
+      "id": "dn-yuvalar.s16",
+      "tip": "klasik",
+      "yer": "SATA portu",
+      "soru": "IDE ve SATA portlarına neler bağlanır? İkisinin arasındaki ilişkiyi açıklayın.",
+      "cevap": "IDE (ATA) portuna CD-ROM, CD-RW, DVD-ROM ve IDE destekli sabit diskler bağlanır. SATA portuna CD-ROM, DVD-ROM ve sabit diskler bağlanır. SATA, ATA'nın yetersiz kalması üzerine geliştirilmiştir.",
+      "anahtarlar": [
+        "CD-ROM",
+        "sabit disk",
+        "ATA",
+        "yetersiz"
+      ]
+    },
+    {
+      "id": "dn-yuvalar.s17",
+      "tip": "dy",
+      "yer": "PCI Express",
+      "ifade": "PCI Express yuvalarına da PCI'da olduğu gibi ses kartı, TV kartı ve ethernet kartı takılır.",
+      "dogru": true,
+      "izah": "Hoca: bu porta PCI portuna takıldığı gibi ses kartı, TV kartı ve ethernet kartı takılmaktadır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "dn-yuvalar.k1",
+      "yer": "PCI",
+      "on": "PCI yuvasını anlatın.",
+      "arka": "Peripheral Component Interconnect (Çevresel Bileşen Ara Bağlantısı). Hocaya göre Intel 1993'te geliştirdi; 64 bit üretildi ama uyum sorunu yüzünden 32 bit kullanılır. 33 ya da 66 MHz'tir, beyazdır. Ses, TV ve ethernet kartı takılır."
+    },
+    {
+      "id": "dn-yuvalar.k2",
+      "yer": "PCI Express",
+      "on": "PCI Express nedir? PCI'dan farkı nedir?",
+      "arka": "PCI'ın yerini almak için tasarlandı; hız ve kullanışlılıkta PCI ile kıyaslanamayacak kadar güçlüdür. Bant genişliği: PCI 533, PCI-X 4266, PCI Express 8000 (slayttaki birimle Mbps). Ses, TV ve ethernet kartı takılır."
+    },
+    {
+      "id": "dn-yuvalar.k3",
+      "yer": "PCI Express x16",
+      "on": "AGP ile PCI Express x16'nın farkı nedir?",
+      "arka": "İkisi de ekran kartı içindir.\n- AGP: Intel 1997, yalnızca ekran kartları, 32 bit, 66 MHz, kahverengi, PCI'dan kısa\n- PCI Express x16: AGP'ye alternatif, PCI Express mantığını kullanır"
+    },
+    {
+      "id": "dn-yuvalar.k4",
+      "yer": "SATA portu",
+      "on": "IDE ile SATA'nın farkı nedir?",
+      "arka": "IDE (ATA): CD-ROM, CD-RW, DVD-ROM ve IDE destekli sabit diskler.\nSATA: CD-ROM, DVD-ROM ve sabit diskler; ATA'nın yetersiz kalması üzerine geliştirildi."
+    },
+    {
+      "id": "dn-yuvalar.k5",
+      "yer": "Disket sürücü bağlantı portu",
+      "on": "Disket sürücü bağlantı portu neden artık kullanılmıyor?",
+      "arka": "Aktarım hızı son derece sınırlıdır ve kullanışlı değildir; yeni nesil bilgisayarlarda bu port yoktur."
+    },
+    {
+      "id": "dn-yuvalar.k6",
+      "yer": "Güç bağlantı portu",
+      "on": "Güç bağlantı portu ne işe yarar?",
+      "arka": "Kasadaki güç kaynağından anakarta gerekli gücü sağlar. Karta sağlam monte edilmiştir; +5 V, −5 V ve +12 V buradan gelir."
+    }
+  ]
+}

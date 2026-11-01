@@ -1,0 +1,208 @@
+{
+  "id": "dn-islemci",
+  "baslik": "Yonga Seti ve İşlemci",
+  "kaynak": "donanim_ders_notlari.pptx, slayt 40–43, 45–46",
+  "kavramlar": [
+    {
+      "terim": "Yonga seti (chipset)",
+      "izah": "Anakartın beynini oluşturan entegre devreler; donanımlar arasındaki veri akışını denetler (bilgisayarın trafik polisleri).",
+      "yer": "Yonga seti (chipset)"
+    },
+    {
+      "terim": "Kuzey köprüsü",
+      "izah": "İşlemci, bellekler ve AGP / PCI Express yuvalarına en yakın yonga; bu üçlünün arasındaki iletişimi sağlar ve denetler.",
+      "yer": "Kuzey köprüsü"
+    },
+    {
+      "terim": "Güney köprüsü",
+      "izah": "IDE, USB, LAN, PCI ve ses gibi çevre birimlerini denetleyen, çevre birimlerinin bulunduğu bölüme yakın yonga.",
+      "yer": "Güney köprüsü"
+    },
+    {
+      "terim": "İşlemci",
+      "izah": "Gelen komut ve bilgileri işleyip çıktıları RAM'e ve diğer parçalara aktaran parça; RAM ile arasında çok sayıda bağlantı vardır.",
+      "yer": "İşlemci"
+    },
+    {
+      "terim": "Intel 4004",
+      "izah": "1971'de Intel mühendisleri Federico Faggin, Ted Hoff ve Stan Mazor'un tanıttığı dünyanın ilk mikroişlemcisi.",
+      "yer": "İlk mikroişlemci: Intel 4004"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "dn-islemci.s1",
+      "tip": "secme",
+      "yer": "Yonga seti (chipset)",
+      "soru": "Anakartın beynini oluşturan ve donanımlar arasındaki **veri akışını denetleyen** entegre devrelere ne denir?",
+      "secenekler": [
+        "Yonga seti (chipset)",
+        "BIOS (ROM) yongası",
+        "RAM (bellek) modülü",
+        "Genişleme kartları"
+      ],
+      "dogru": 0,
+      "izah": "Hoca: anakartın beynini oluşturan entegre devrelere yonga seti (chipset) denir; donanımlar arasındaki veri akışını denetler."
+    },
+    {
+      "id": "dn-islemci.s2",
+      "tip": "dy",
+      "yer": "Yonga seti (chipset)",
+      "ifade": "Hoca yonga setlerini bilgisayarın trafik polislerine benzetir.",
+      "dogru": true,
+      "izah": "Hoca: \"Bunlara bilgisayarın trafik polisleri diyebiliriz\"; çünkü donanımlar arasındaki veri akışını denetlerler."
+    },
+    {
+      "id": "dn-islemci.s3",
+      "tip": "esles",
+      "yer": "Kuzey köprüsü ve güney köprüsü",
+      "soru": "Köprüleri görevleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Kuzey köprüsü",
+          "İşlemci, RAM ve AGP / PCI Express arasındaki iletişimi sağlar"
+        ],
+        [
+          "Güney köprüsü",
+          "IDE, USB, LAN, PCI ve ses birimlerini denetler"
+        ]
+      ],
+      "izah": "Kuzey köprüsü hızlı üçlüyü (işlemci, RAM, ekran kartı yuvası) bağlar; güney köprüsü çevre birimlerini denetler."
+    },
+    {
+      "id": "dn-islemci.s4",
+      "tip": "secme",
+      "yer": "Güney köprüsü",
+      "soru": "Aşağıdakilerden hangisini **güney köprüsü** denetler?",
+      "secenekler": [
+        "USB",
+        "RAM",
+        "İşlemci",
+        "AGP yuvası"
+      ],
+      "dogru": 0,
+      "izah": "Güney köprüsü IDE, USB, LAN, PCI ve sesi denetler. RAM, işlemci ve AGP / PCI Express kuzey köprüsünün üçlüsüdür."
+    },
+    {
+      "id": "dn-islemci.s5",
+      "tip": "secme",
+      "yer": "İşlemci",
+      "soru": "Hocaya göre işlemci ile RAM neden genellikle birbirine yakın tasarlanır?",
+      "secenekler": [
+        "Aralarında çok sayıda bağlantı olduğu için",
+        "İkisi de BIOS pilinden güç aldığı için",
+        "RAM işlemciyi soğutmaya yardım ettiği için",
+        "İkisi de güney köprüsüne bağlı olduğu için"
+      ],
+      "dogru": 0,
+      "izah": "Bilgilerin büyük kısmı RAM'de toplandığı için işlemci ile RAM arasında çok sayıda bağlantı vardır; bu yüzden birbirine yakın tasarlanırlar."
+    },
+    {
+      "id": "dn-islemci.s6",
+      "tip": "dy",
+      "yer": "İşlemcinin soğutulması",
+      "ifade": "Hocaya göre işlemcilerin pasif soğutulması yeterlidir; fan gerekmez.",
+      "dogru": false,
+      "izah": "Hoca: işlemcilerin pasif değil, fan takılarak aktif olarak soğutulmaları gerekir."
+    },
+    {
+      "id": "dn-islemci.s7",
+      "tip": "hesap",
+      "yer": "İlk mikroişlemci: Intel 4004",
+      "soru": "Dünyanın ilk mikroişlemcisi Intel 4004 hangi yıl tanıtıldı?",
+      "cevap": 1971,
+      "izah": "Intel 4004, 1971 yılının Kasım ayında tanıtıldı."
+    },
+    {
+      "id": "dn-islemci.s8",
+      "tip": "secme",
+      "yer": "İlk mikroişlemci: Intel 4004",
+      "soru": "Hangisi Intel 4004'ü tanıtan Intel mühendislerinden biri **değildir**?",
+      "secenekler": [
+        "Gordon Moore",
+        "Federico Faggin",
+        "Ted Hoff",
+        "Stan Mazor"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre Intel 4004'ü Federico Faggin, Ted Hoff ve Stan Mazor tanıttı. Gordon Moore Intel'in kurucularındandır, bu üçlü arasında değildir."
+    },
+    {
+      "id": "dn-islemci.s9",
+      "tip": "dy",
+      "yer": "Yonga seti (chipset)",
+      "ifade": "Günümüzde yonga setini Intel, AMD, VIA ve SiS gibi firmalar üretmektedir.",
+      "dogru": true,
+      "izah": "Hoca: günümüzde yonga setini Intel, AMD, VIA, SiS gibi belli başlı firmalar üretmektedir."
+    },
+    {
+      "id": "dn-islemci.s10",
+      "tip": "dy",
+      "yer": "Kuzey köprüsü",
+      "ifade": "Kuzey köprüsü, çevre birimlerinin bulunduğu bölüme yakındır.",
+      "dogru": false,
+      "izah": "Çevre birimlerine yakın olan **güney köprüsüdür**. Kuzey köprüsü işlemci, bellekler ve AGP / PCI Express yuvalarına en yakın yongadır."
+    },
+    {
+      "id": "dn-islemci.s11",
+      "tip": "klasik",
+      "yer": "Kuzey köprüsü ve güney köprüsü",
+      "soru": "Kuzey köprüsü ile güney köprüsünün görevlerini ve anakart üzerindeki yerlerini karşılaştırın.",
+      "cevap": "Kuzey köprüsü işlemci, RAM ve AGP / PCI Express yuvalarına en yakın yongadır; bu üçlünün arasındaki iletişimi sağlar ve denetler.\nGüney köprüsü IDE, USB, LAN, PCI ve ses gibi çevre birimlerini denetler; çevre birimlerinin bulunduğu bölüme yakındır.",
+      "anahtarlar": [
+        "işlemci",
+        "RAM",
+        "IDE",
+        "USB",
+        "çevre birimleri"
+      ]
+    },
+    {
+      "id": "dn-islemci.s12",
+      "tip": "bosluk",
+      "yer": "İlk mikroişlemci: Intel 4004",
+      "metin": "İlk mikroişlemciyle, bilgisayarların büyük olmasına neden olan bütün işlemler küçük bir ___ içine sığdırıldı.",
+      "cevaplar": [
+        [
+          "çipin",
+          "yonganın",
+          "çip",
+          "yonga"
+        ]
+      ],
+      "izah": "Intel 4004 ile bütün işlemler küçük bir çipin (yonganın) içine sığdırıldı."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "dn-islemci.k1",
+      "yer": "Yonga seti (chipset)",
+      "on": "Yonga seti (chipset) nedir?",
+      "arka": "Anakartın beynini oluşturan entegre devrelerdir; işlemci, önbellek, sistem veri yolları ve çevre birimleri arasındaki veri akışını denetler (bilgisayarın trafik polisleri). Intel, AMD, VIA, SiS gibi firmalar üretir."
+    },
+    {
+      "id": "dn-islemci.k2",
+      "yer": "Kuzey köprüsü ve güney köprüsü",
+      "on": "Kuzey köprüsü ile güney köprüsünün farkı nedir?",
+      "arka": "Kuzey: işlemci, bellekler ve AGP / PCI Express'e en yakın; bu üçlünün iletişimini sağlar ve denetler.\nGüney: IDE, USB, LAN, PCI ve sesi denetler; çevre birimlerine yakındır."
+    },
+    {
+      "id": "dn-islemci.k3",
+      "yer": "İşlemci",
+      "on": "İşlemci ne yapar? RAM'e neden yakındır?",
+      "arka": "Gelen komut ve bilgileri işleyip çıktıları RAM'e ve diğer parçalara aktarır. Bilgilerin çoğu RAM'de toplandığı için aralarında çok bağlantı vardır; bu yüzden yakın tasarlanırlar."
+    },
+    {
+      "id": "dn-islemci.k4",
+      "yer": "İşlemcinin soğutulması",
+      "on": "İşlemci neden soğutulmalıdır?",
+      "arka": "Çalışırken ısınır; pasif değil, fanla aktif soğutulmalıdır. Yuvanın çevresinde soğutucu için boşluk vardır. Hocaya göre soğutucu yoksa işlemci 2–5 saniyede çok ısınır; bilgisayar kapanır ya da işlemci yanar."
+    },
+    {
+      "id": "dn-islemci.k5",
+      "yer": "İlk mikroişlemci: Intel 4004",
+      "on": "Dünyanın ilk mikroişlemcisi hangisidir?",
+      "arka": "Intel 4004. Kasım 1971'de Intel mühendisleri Federico Faggin, Ted Hoff ve Stan Mazor tanıttı; bütün işlemler küçük bir yongaya sığdırıldı."
+    }
+  ]
+}

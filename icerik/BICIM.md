@@ -62,7 +62,7 @@ Her boş olmayan satır ayrı bir paragraftır; satırlar birleştirilmez. Konu 
 | `> not` | Vurgulu not kutusu |
 | `**kalın**` | Kalın yazı |
 | `` `kod` `` | Satır içi kod |
-| `![açıklama](gorseller/ad.svg)` | Görsel; satırda tek başınaysa altına açıklaması yazılır |
+| `![açıklama](gorseller/ad.svg)` | Görsel; satırda tek başınaysa altına açıklaması yazılır. Boş satır bırakmadan art arda yazılan görsel satırları tek bir dizi olur: yana kaydırılarak gezilir |
 
 Kod bloğu satır başından başlayan üç ters tırnakla açılıp kapanır; dil adı yazılabilir ama gösterilmez. Açılış da kapanış da satır başında olur; girintili çit hata sayılır.
 
@@ -96,11 +96,11 @@ Bir konudaki başlık metinleri birbirinden farklı olmalıdır ve en çok 150 k
 - Soru kimliği `<konu-id>.s<n>`, kart kimliği `<konu-id>.k<n>` biçimindedir; bunlar da sonradan değiştirilmez. Bir soru silinirse kimliği yeniden kullanılmaz.
 - `yer` isteğe bağlıdır; metindeki bir `###` ya da `####` başlığıyla harfi harfine aynı olmalıdır. Uygulama "konuda oku" denince o başlığa gider.
 - Metin alanlarının başında ve sonunda boşluk olmaz. Soru, şık, izah ve kart metinlerinde `` `kod` `` ve `**kalın**` kullanılabilir (`` **`sudo`** `` gibi iç içe de olur); kart arkası ve klasik cevap birden çok satır olabilir.
-- Görsel yalnızca konu metninde (.md) kullanılır; .json alanlarına görsel yazılmaz.
+- Görsel konu metninde (.md) ve sorunun `gorseller` alanında kullanılır; başka .json alanlarına (kart, kavram, şık) görsel yazılmaz.
 
 ## Soru türleri
 
-Bütün türlerde `id`, `tip` ve isteğe bağlı `yer` bulunur.
+Bütün türlerde `id`, `tip` ve isteğe bağlı `yer` bulunur. Her tür isteğe bağlı `gorseller` alabilir: `gorseller/` klasöründeki 1–8 dosya adı (`["anakart-isaret-pci.webp", "anakart-isaret-pci-yakin.webp"]` gibi). Görseller soru metninin altında çizilir; birden çoksa yana kaydırılır. Soru görsellerinin açıklaması gösterilmez (cevabı ele vermesin); işaret ya da numara görselin içine çizilir.
 
 | tip | Alanlar | Not |
 | --- | --- | --- |
@@ -123,7 +123,9 @@ Bütün türlerde `id`, `tip` ve isteğe bağlı `yer` bulunur.
 ## Görseller
 
 - `gorseller/` içindeki dosya adı küçük harf, rakam ve tireden oluşur; uzantısı `svg`, `png`, `jpg`, `jpeg` ya da `webp` olur.
-- Her görsel en çok 2 MB olabilir ve en az bir konuda kullanılmalıdır.
+- Her görsel en çok 2 MB olabilir.
 - Açıklama (alt metin) boş bırakılmaz.
+- Bir görsel ya notta ya da bir sorunun `gorseller` alanında kullanılmış olmalıdır; ikisi de kullanım sayılır.
+- Uygulamada nottaki ya da sorudaki bir görsele dokunulunca görsel tam ekran büyüteçte açılır.
 - Görseller notlarla aynı korumayla gizli bir kovada durur; yalnızca sözleşmeyi onaylamış okul hesapları görür.
 - Bir görseli düzeltmek için dosyayı aynı adla değiştirmek yeterlidir. Aktarıcı depoya içeriğin özetiyle başlayan bir adla yükler (`900fbe9342-sema.svg` gibi); görsel değişince adı da değişir ve cihazlar yenisini indirir.
