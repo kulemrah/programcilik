@@ -23,7 +23,7 @@ Bu proje gibi okul yan işleri için ayrı adres: `birkulemrah@gmail.com`. Aşa�
 
 Ücretsiz planların bu projeyi ilgilendiren sınırları:
 
-- **GitHub Free**: private depodan Pages yayımı **yoktur**; GitHub Pro gerekir. Öğrenci adresini GitHub hesabına ekleyip GitHub Education (Student Developer Pack) başvurusu onaylanınca Pro ücretsiz gelir; onay hemen gelmeyebilir. Pro gelene kadar ne yapılacağı bölüm 3'te.
+- **GitHub Free**: private depodan Pages yayımı **yoktur**; GitHub Pro gerekir. Öğrenci adresini GitHub hesabına ekleyip GitHub Education (Student Developer Pack) başvurusu onaylanınca Pro ücretsiz gelir; onay hemen gelmeyebilir. Şimdilik depo açık tutuluyor (bölüm 3).
 - **Supabase Free**: bir hafta boyunca hiç kullanılmayan proje duraklatılır (tatillerde olabilir). Öğrenciler her gün açtıkça olmaz; olursa panelde projeye girip **Resume project** ile geri açılır, veriler yerinde kalır.
 - **Resend Free**: günde 100, ayda 3.000 e-posta. Her giriş bir, cihaz devralma iki e-posta harcar; sınıfın ilk gününe yeter, ama aynı gün herkes birkaç kez kod isterse sınıra yaklaşılabilir.
 
@@ -55,77 +55,54 @@ Supabase'in kendi e-posta servisi yalnızca proje ekibine gönderir; öğrencile
 3. Resend'de bir API anahtarı oluştur (yalnız gönderme yetkili).
 4. Supabase **Authentication › Emails › SMTP Settings**:
    - Host `smtp.resend.com`, port `465`, kullanıcı adı `resend`, parola: Resend API anahtarı
-   - Gönderen adres `giris@posta.eskimezyazi.app`, gönderen adı `Bilgisayar Programcılığı`
-   - Aynı adrese iki kod arasındaki en kısa süre öntanımlı olarak 60 saniyedir; o zaman cihaz değiştiren öğrenci ikinci kodu istemeden önce bir dakika bekler. Bu ayar panelde görünmüyor; Supabase'in yönetim API'siyle (`smtp_max_frequency`) 15 saniyeye indirilir: Supabase'de **Account › Access Tokens**'tan geçici bir erişim anahtarı oluştur, sonra terminalde:
-     ```bash
-     read -s SUPA_TOKEN
-     curl -s -H "Authorization: Bearer $SUPA_TOKEN" https://api.supabase.com/v1/projects/PROJE_KIMLIGI/config/auth | grep -o '"smtp_max_frequency":[0-9]*'
-     curl -s -X PATCH -H "Authorization: Bearer $SUPA_TOKEN" -H "Content-Type: application/json" -d '{"smtp_max_frequency":15}' https://api.supabase.com/v1/projects/PROJE_KIMLIGI/config/auth | grep -o '"smtp_max_frequency":[0-9]*'
-     unset SUPA_TOKEN
-     ```
-     `PROJE_KIMLIGI`, panel adresindeki `/project/` sonrasındaki 20 harflik kısımdır. İlk komut `60`, ikincisi `15` göstermeli. İş bitince erişim anahtarını panelden sil. Uygulamadaki `KOD_ARALIGI` (index.html) da 15'tir; ikisi birlikte değişir. Ayar 60'ta kalsa da uygulama çalışır: sayaç sunucunun söylediği süreyi gösterir.
+   - Gönderen adres `giris@posta.eskimezyazi.app`, gönderen adı `Kostü - Ders`
+   - Aynı adrese iki kod arasındaki en kısa süre (`smtp_max_frequency`) öntanımlı 60 saniyede kalır; cihaz değiştiren öğrenci ikinci kodu istemeden önce bir dakika bekler. Uygulamadaki `KOD_ARALIGI` (index.html) da 60'tır; ikisi birlikte değişir. Sunucu daha uzun bekletirse sayaç sunucunun söylediği süreyi gösterir.
 5. **Authentication › Rate Limits**: saatlik e-posta sınırını sınıfın ilk gün hep birlikte girebileceği kadar yükselt (ör. 100). Resend'in günlük 100 sınırı ayrıca geçerlidir.
-6. **Authentication › Emails › Templates**: hem **Confirm signup** hem **Magic Link** şablonuna aynı metni koy. Yeni öğrenciye ilki, eskiye ikincisi gider; ikisinde de bağlantı değil kod olmalı. Uygulama öğrencilere "siz" diye hitap eder; e-posta da öyle:
+6. **Authentication › Emails › Templates**: hem **Confirm sign up** hem **Magic link or OTP** şablonuna aynı metni koy. Yeni öğrenciye ilki, eskiye ikincisi gider; ikisinde de bağlantı değil kod olmalı. Uygulama öğrencilere "siz" diye hitap eder; e-posta da öyle:
 
    Konu:
    ```
-   Bilgisayar Programcılığı giriş kodunuz: {{ .Token }}
+   Kostü - Ders giriş kodunuz: {{ .Token }}
    ```
    Gövde:
    ```html
-   <p>Bilgisayar Programcılığı uygulamasına giriş kodunuz:</p>
+   <p>Kostü - Ders uygulamasına giriş kodunuz:</p>
    <p style="font-size:28px;font-weight:bold;letter-spacing:6px">{{ .Token }}</p>
    <p>Bu kod uygulamaya giriş ya da hesabınızı başka bir cihaza geçirmek için istendi ve 15 dakika geçerlidir.</p>
    <p>İsteği siz yapmadıysanız bu e-postayı dikkate almayın; kod girilmedikçe hesabınız başka cihaza geçmez.</p>
    ```
 
-Supabase aynı adrese en çok dakikada bir e-posta gönderir (**Authentication › Rate Limits**'teki kullanıcı başı aralık). Uygulama cihaz devralma kodunda bu süreyi sayaçla bekletir; bu değeri değiştirirsen `index.html` içindeki `KOD_ARALIGI` da aynı olmalı.
+Supabase aynı adrese en çok dakikada bir e-posta gönderir. Uygulama hem "Yeni kod gönder"de hem cihaz devralma kodunda bu süreyi sayaçla bekletir.
 
 ## 3. GitHub
 
-1. Yeni bir **private** depo aç (ör. `programcilik`). Henüz dosya yükleme.
-2. **Settings › Secrets and variables › Actions**:
-   - **Variables** sekmesi: `SUPABASE_URL` = proje adresi
-   - **Secrets** sekmesi: `SUPABASE_GIZLI_ANAHTAR` = Supabase secret key
-3. `uygulama/index.html` içindeki `AYAR` bölümünü doldur:
-   ```js
-   SUPABASE_URL: "https://xxxx.supabase.co",
-   ANAHTAR: "sb_publishable_…",
-   OKUL_ALANI: "kocaelisaglik.edu.tr",
-   TASHIH_EPOSTA: "birkulemrah@gmail.com"   // dolduruldu
-   ```
-   `SUPABASE_URL`, `ANAHTAR` ve `TASHIH_EPOSTA` dolu değilse uygulama giriş ekranında "yapılandırılmadı" uyarısı verir. Tashih adresi sözleşmede ve hesap panelinde öğrencilere görünür.
-4. Bu klasörün tamamını depoya yükle (`uygulama/`, `icerik/`, `araclar/`, `supabase/`, `.github/`, `KURULUM.md`). İki dikkat: proje 180'den fazla dosyadır, GitHub'ın web sayfasından tek seferde en çok 100 dosya yüklenir; ve `.github` klasörü noktayla başladığı için bazı sistemlerde gizli görünür, yüklenmezse otomatik işler hiç çalışmaz. Bu yüzden terminalden git ile yüklemek en sağlamıdır (klasörün içindeyken):
+Depo: `kulemrah/programcilik`, **herkese açık** (bilinçli karar: GitHub Pro gelene kadar ücretsiz hesapta Pages yalnızca açık depodan çalışır). Bunun bedeli: `icerik/` klasöründeki notlar GitHub'dan girişsiz okunabilir. Pro gelince **Settings › General › Danger Zone › Change visibility › Make private**; site aynı adreste yayında kalır, öğrencilerin bir şey yapması gerekmez.
+
+1. **Settings › Secrets and variables › Actions** (ortam değil, depo düzeyi):
+   - **Variables** sekmesi: `SUPABASE_URL` = `https://nzhruevikugpmyoozpyc.supabase.co` (sonunda `/rest/v1/` olmadan)
+   - **Secrets** sekmesi: `SUPABASE_GIZLI_ANAHTAR` = Supabase **secret key** (`sb_secret_…`)
+2. `uygulama/index.html` içindeki `AYAR`: `SUPABASE_URL` proje adresi, `ANAHTAR` **publishable key** (`sb_publishable_…`). İkisi karıştırılmaz: secret key hiçbir dosyaya yazılmaz; yazılırsa GitHub'ın sır koruması push'u reddeder (reddedince "unblock" bağlantısına tıklanmaz, dosya düzeltilip commit yenilenir).
+3. Yükleme SSH anahtarıyla yapılır (`~/.ssh/id_ed25519_kulemrah`; GitHub'da **Settings › SSH and GPG keys**'e eklidir). Depo klasöründe bir kez:
    ```bash
-   git init                       # bu klasörü bir git deposu yapar
-   git config user.name "KULLANICIADI"              # kayıtlarda görünecek ad; --global yazılmadığı için yalnızca bu depoda geçerli,
-   git config user.email "birkulemrah@gmail.com"    # öbür projelerindeki kimliğine dokunmaz
-   git add .                      # bütün dosyaları (gizli .github dahil) gönderilecekler listesine ekler; nokta "bu klasör" demek
-   git commit -m "İlk yükleme"    # o listeyi bir kayıt (commit) olarak saklar; -m kaydın açıklamasıdır
-   git branch -M main             # dalın adını main yapar (iş akışları main dalını dinler)
-   git remote add origin https://github.com/KULLANICIADI/programcilik.git   # GitHub'daki depoyu "origin" adıyla tanıtır
-   git push -u origin main        # kaydı GitHub'a gönderir; -u bundan sonra yalnızca "git push" yazmayı yeter kılar
+   git config user.name "kulemrah"                       # bu depodaki commit'lerin yazarı
+   git config user.email "…@users.noreply.github.com"    # GitHub › Settings › Emails'teki gizli adres; gerçek e-posta görünmez
+   git config core.sshCommand "ssh -i ~/.ssh/id_ed25519_kulemrah -o IdentitiesOnly=yes"   # bu depo yalnız bu anahtarı kullanır
+   git remote add origin git@github.com:kulemrah/programcilik.git
    ```
-   Sonuncusu GitHub kullanıcı adını ve parola yerine bir **erişim anahtarı** ister: **Settings › Developer settings › Personal access tokens**'tan, yalnızca bu depoya, **Contents** ve **Workflows** için okuma-yazma izniyle oluştur (Workflows izni olmazsa `.github/workflows` dosyaları reddedilir); GitHub Desktop kullanılırsa bu adımlar düğmelerle yapılır. Çıktıda `main -> main` görünmesi yüklemenin bittiği anlamına gelir. Yükleme iki işi başlatır (**Actions** sekmesi):
-   - *İçeriği aktar*: `icerik/` klasörünü doğrulayıp Supabase'e yükler. Ücretsiz hesapta da çalışır.
-   - *Uygulamayı yayımla*: `uygulama/` klasörünü Pages'e koyar. **GitHub Pro yoksa bu iş hata verir** (aşağıya bak).
-5. Pages: **Settings › Pages › Source**: *GitHub Actions*. Pro geldikten sonra **Actions › Uygulamayı yayımla › Run workflow** ile yayımı başlat.
+   Sonraki her güncelleme: `git add .` → `git commit -m "…"` → `git push`.
+4. Yükleme iki işi başlatır (**Actions** sekmesi):
+   - *İçeriği aktar*: `icerik/` ya da `araclar/` değişince içeriği doğrulayıp Supabase'e yükler.
+   - *Uygulamayı yayımla*: `uygulama/` değişince Pages'e koyar.
+   Değişken ya da sır sonradan düzeltildiyse başarısız çalışma **Re-run all jobs** ile yeniden başlatılır; yeni commit gerekmez.
+5. **Settings › Pages › Source**: *GitHub Actions*. Site: `https://kulemrah.github.io/programcilik/`.
+6. Supabase **Authentication › URL Configuration › Site URL** = site adresi. **Redirect URLs** boş kalır (giriş bağlantıyla değil kodla).
 
-### GitHub Pro gelene kadar
-
-Private depo Pages'e çıkamaz. Notlar zaten Supabase'de olduğu için yalnızca uygulamanın kabuğu (içinde not olmayan `uygulama/` klasörü) için şu yollardan biri seçilir:
-
-- **Bekle**: öğrenci başvurusu onaylanıp Pro gelince 5. adım. O zamana kadar *Uygulamayı yayımla* işini **Actions › Uygulamayı yayımla › ⋯ › Disable workflow** ile kapatabilirsin; kırmızı çarpılar birikmez.
-- **Ayrı, herkese açık bir site deposu**: ikinci bir **public** depo aç (ör. `programcilik-site`), içine yalnızca `uygulama/` klasörünün **içindekileri** yükle, **Settings › Pages › Source**: *Deploy from a branch*, dal `main`, klasör `/ (root)`. Bu depoda not yoktur; yayımlanabilir anahtar zaten herkese açık olacak şekilde tasarlandı (verileri RLS kuralları korur). Uygulamada değişiklik olunca `uygulama/` dosyalarını bu depoya da yükle. Pro gelince bu depo silinip ana depodan yayıma geçilebilir; adres değişeceği için öğrencilere yeni adres verilir.
-
-Site adresi belli olunca Supabase'de **Authentication › URL Configuration › Site URL** alanına bu adresi yaz (ör. `https://kullaniciadi.github.io/programcilik/`). Giriş bağlantıyla değil kodla olduğu için yönlendirme kullanılmaz; bu ayar yalnızca Supabase'in varsayılan adresi (`localhost`) yerine doğru adresin durması içindir. **Redirect URLs** listesine bir şey eklemek gerekmez.
-
-Pages sitesi herkese açıktır ama içinde not yoktur. Notlar yalnızca okul adresiyle kod girip sözleşmeyi onaylayan hesaplara veritabanından gelir.
+Pages sitesinde not yoktur; notlar yalnızca okul adresiyle kod girip sözleşmeyi onaylayan hesaplara veritabanından gelir.
 
 ## 4. İlk deneme
 
 1. Siteyi telefondan aç, okul adresinle kod iste; kodun gelen kutusuna mı gereksiz klasörüne mi düştüğüne bak.
-2. Kodu gir, sözleşmeyi onayla. Oku sekmesinde 1. Sınıf › Güz derslerini ve 42 grubunu (hususi) görmelisin.
+2. Kodu gir, sözleşmeyi onayla. Kıraat sekmesinde 1. Sınıf › Güz derslerini ve 42 grubunu (hususi) görmelisin.
 3. Okul dışı bir adresle kod istemeyi dene: "Yalnızca @kocaelisaglik.edu.tr…" uyarısı gelmeli.
 4. iPhone'da Safari'den **••• (adres çubuğunun yanında) › Paylaş › Ana Ekrana Ekle** (eski iOS'ta Paylaş düğmesi doğrudan alt çubuktadır), Android'de tarayıcının menüsünden **Uygulamayı yükle** ile kur ve ana ekrandan açıp yeniden giriş yap.
 
@@ -205,7 +182,6 @@ Sıra önemli: dosyaları depoya **yüklemeden önce** `01-sema.sql`'i çalışt
 - Bir konuyu silmek: dosya çiftini depodan kaldır. Aynı anda çok sayıda konu silinecekse iş durur; bilerek yapıyorsan *İçeriği aktar*'ı **Run workflow** ile elle çalıştırıp "Çok sayıda konunun silinmesine izin ver" kutusunu işaretle.
 - Bir güncellemede `supabase/01-sema.sql` da değiştiyse önce onu SQL Editor'de çalıştır, sonra uygulamayı yayımla. (Uygulama yeni bir kayıt türünü şemadan önce kullanırsa o kayıtlar cihazda bekler, şema güncellenince gönderilir.)
 - Uygulamada değişiklik yaptıktan sonra `uygulama/sw.js` içindeki `ONBELLEK` satırında sürümü bir artır (`"v2"` ise `"v3"` gibi); kurulu uygulamalar yeni sürümü böyle alır.
-- Uygulama ayrı bir site deposundan yayımlanıyorsa (bölüm 3, "GitHub Pro gelene kadar") değişen `uygulama/` dosyalarını o depoya da yükle.
 - `supabase.js` kütüphanesini yenilersen `index.html` ve `sw.js` içindeki `supabase.js?v=…` sürümünü de değiştir; yoksa cihazlar bir açılış boyunca eski kütüphaneyle çalışır.
 - Sözleşme metnini değiştirirsen `SOZLESME.surum` (index.html) ve `public.sozlesme_surumu()` (SQL) birlikte artırılır; herkes yeni metni yeniden onaylar.
 - Yeni bir bölüm (program) eklemek: `public.programlar` tablosuna satır ekle. Birden fazla program olunca uygulama girişte bölüm sorar.

@@ -1,11 +1,13 @@
 """Programcılık — iki cihazlı tarayıcı testi.
 Supabase istekleri Playwright içinde taklit edilir. Oturumlar, tek cihaz kuralı
 ve RLS, 01-sema.sql'deki mantıkla aynı biçimde taklit edilir."""
-import json, base64, time, sys, re, urllib.parse, datetime, uuid, shutil
+import json, base64, time, sys, re, os, urllib.parse, datetime, uuid, shutil
 from playwright.sync_api import sync_playwright
 
-YUK = json.load(open("/home/claude/test/gercek/cikti/yuklenen.json"))
-DEPO = "/home/claude/test/gercek/cikti/depo"
+# Taklit sunucuya yüklenen içerik: test/gercek/cikti (testler test/tarayici içinden çalıştırılır)
+GERCEK = os.path.join(os.getcwd(), "..", "gercek", "cikti")
+YUK = json.load(open(os.path.join(GERCEK, "yuklenen.json")))
+DEPO = os.path.join(GERCEK, "depo")
 SVG = open("akis-1.svg", "rb").read()
 KOK = "http://127.0.0.1:8765/"
 SUPA = "https://test.supabase.co"
@@ -292,3 +294,65 @@ def bekle_ki(s, kosul, sure=10):
         s.wait_for_timeout(250)
     return False
 
+
+def kart_kapsam_sina(s, KONULAR_VT, onek):
+    """42 Tarzı: ders ve konu seçimi Temrin'deki seçim ekranıyla yapılır (ayrı tutulur).
+    Ders testleri (alg, vt, eko, el, ag, dn) bunu kendi dersleriyle çağırır."""
+    ders = KONULAR_VT[0]["ders"]
+    agac = next(r for r in YUK["agac"] if r["id"] == 1)["veri"]
+    dersler = [d for g in agac["gruplar"] if not g.get("hususi") for dn in g.get("donemler", [{"dersler": g.get("dersler", [])}]) for d in dn["dersler"]]
+    bilgi = next(d for d in dersler if d["id"] == ders)
+    kisa, tam = bilgi.get("kisa", bilgi["ad"]), bilgi["ad"]
+    kartli = [k for k in KONULAR_VT if k["kartlar"]]
+    kart_top = sum(len(k["kartlar"]) for k in kartli)
+    KARTLI_DERSLER = [d["ad"] for d in dersler if any(k["ders"] == d["id"] and k["kartlar"] for k in YUK["konular"])]
+    print("--- 42 Tarzı (ders ve konu seçimi)", flush=True)
+    temrin_once = s.evaluate("() => JSON.stringify(depo.oku('pg.kapsam', {}))")
+    s.click(".alt-cubuk button:has-text('42 Tarzı')")
+    s.wait_for_selector("#sayfaKart .suzgec-dugme")
+    kontrol("42 Tarzı: ilk açılışta seçim yok", s.inner_text("#sayfaKart .suzgec-dugme .deger") == "Seçilmedi" and s.locator("#sayfaKart .cip").count() == 0)
+    s.click("#sayfaKart button:has-text('Ders ve konu seç')")
+    s.wait_for_selector("#sayfaKart button:has-text('‹ 42 Tarzı')")
+    adlar = s.locator("#sayfaKart .kontrol-oge > button:not(.kutucuk) > span").evaluate_all("els => els.filter(e => !e.classList.contains('ileri')).map(e => e.firstChild.textContent)")
+    kontrol("seçim ekranında kartlı dersler sırasıyla", adlar == KARTLI_DERSLER, (adlar, KARTLI_DERSLER))
+    s.click("#sayfaKart .kontrol-oge:has-text('%s') .kutucuk" % tam)
+    s.click("#sayfaKart .eylem button:has-text('Tamam')")
+    s.wait_for_selector("#sayfaKart button.ana:has-text('kartla çalış')")
+    kontrol("dersin tamamı: %d kart, özet '%s'" % (kart_top, kisa), ("%d kartla çalış" % kart_top) in s.inner_text("#sayfaKart") and s.inner_text("#sayfaKart .suzgec-dugme .deger") == kisa, s.inner_text("#sayfaKart .suzgec-dugme .deger"))
+    kontrol("Temrin seçimi etkilenmedi", s.evaluate("() => JSON.stringify(depo.oku('pg.kapsam', {}))") == temrin_once)
+    # İki konu
+    s.click("#sayfaKart .suzgec-dugme")
+    s.click("#sayfaKart .kontrol-oge:has-text('%s') button:not(.kutucuk)" % tam)
+    s.wait_for_selector("#sayfaKart button:has-text('‹ Dersler')")
+    kontrol("konu listesi: Tümü + %d kartlı konu" % len(kartli), s.locator("#sayfaKart .kontrol .kontrol-oge").count() == len(kartli) + 1)
+    s.click("#sayfaKart .kontrol .kontrol-oge >> nth=0")    # Tümü kalkar
+    k6, k7 = kartli[1], kartli[2]
+    s.click("#sayfaKart .kontrol .kontrol-oge >> nth=2"); s.click("#sayfaKart .kontrol .kontrol-oge >> nth=3")
+    s.click("#sayfaKart button:has-text('‹ Dersler')")
+    s.click("#sayfaKart .eylem button:has-text('Tamam')")
+    s.wait_for_selector("#sayfaKart button.ana:has-text('kartla çalış')")
+    iki = len(k6["kartlar"]) + len(k7["kartlar"])
+    kontrol("iki konu: %d kart" % iki, ("%d kartla çalış" % iki) in s.inner_text("#sayfaKart"), s.inner_text("#sayfaKart")[:200])
+    kontrol("ana ekranda kart listesi yok", s.locator("#sayfaKart .sonuc-kart").count() == 0)
+    s.click("#sayfaKart button:has-text('liste hâlinde oku')")
+    s.wait_for_selector("#sayfaKart button:has-text('‹ 42 Tarzı')")
+    kontrol("liste ekranı yalnızca o iki konunun kartları", s.locator("#sayfaKart .sonuc-kart").count() == iki)
+    s.click("#sayfaKart button:has-text('‹ 42 Tarzı')")
+    s.wait_for_selector("#sayfaKart button.ana:has-text('kartla çalış')")
+    s.reload(); s.wait_for_selector(".alt-cubuk")
+    s.click(".alt-cubuk button:has-text('42 Tarzı')"); s.wait_for_selector("#sayfaKart button.ana:has-text('kartla çalış')")
+    kontrol("seçim yenilemeden sonra duruyor", ("%d kartla çalış" % iki) in s.inner_text("#sayfaKart"))
+    s.click("#sayfaKart button.ana:has-text('kartla çalış')")
+    s.wait_for_selector(".deste .kart-yeri:not(.sonraki)")
+    beklenen = "%s · 2 konu" % kisa
+    kontrol("deste başlığı '%s'" % beklenen, s.inner_text(".ilerleme span >> nth=0") == beklenen, s.inner_text(".ilerleme span >> nth=0"))
+    s.click(".deste-eylem button:has-text('Cevabı göster')"); s.wait_for_timeout(700)
+    s.screenshot(path=onek + "-kart-arka.png")
+    s.click(".alt-cubuk button:has-text('42 Tarzı')")   # etkin sekmeye dokununca ana ekran
+    s.wait_for_selector("#sayfaKart .suzgec-dugme")
+    s.click("#sayfaKart .suzgec-dugme")
+    s.click("#sayfaKart .eylem button:has-text('Seçimi temizle')")
+    s.click("#sayfaKart .eylem button:has-text('Tamam')")
+    s.wait_for_selector("#sayfaKart button:has-text('Ders ve konu seç')")
+    kontrol("seçim temizlenince 'Seçilmedi'", s.inner_text("#sayfaKart .suzgec-dugme .deger") == "Seçilmedi")
+    s.screenshot(path=onek + "-kart-sayfa.png", full_page=False)

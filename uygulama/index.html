@@ -563,6 +563,7 @@ main{max-width:720px;margin:0 auto;padding:16px max(16px, env(safe-area-inset-ri
 html[data-mod="gunduz"] .okuma mark{background:rgba(164,90,14,.15)}
 html[data-mod="pembe"] .okuma mark{background:rgba(176,48,110,.13)}
 .eylem button:disabled{opacity:.4}
+.eylem.dikey{flex-direction:column}
 
 /* Sonuç ekranı */
 .bitis{text-align:center;padding:30px 10px}
@@ -3070,7 +3071,7 @@ function kokteMi() {
   if (aktifSekme === "oku") return okuAcik === null;
   const sayfa = document.getElementById(SEKMELER.find(s => s.ad === aktifSekme).sayfa);
   if (aktifSekme === "calis") return !sayfa.querySelector(".geri, .ilerleme, .bitis");
-  if (aktifSekme === "kart") return !sayfa.querySelector(".deste, .bitis");
+  if (aktifSekme === "kart") return !sayfa.querySelector(".geri, .deste, .bitis");
   return false;
 }
 
@@ -3106,7 +3107,7 @@ async function yerelVeriyiSil() {
   KULLANICI = null; sonEsitleme = null; esitlemeHatasi = null; erisimYok = false; cihazSiniri = 1;
   /* Yazılmamış çalışma süresi bu hesabındı; bir sonraki hesaba geçmesin */
   calismaBirikimi.clear(); YAZICI = null; yaziciKilidiniBirakSimdi();
-  ["pg.kapsam", "pg.kartDers", "pg.kartKonular", "pg.kartBilemedik", "pg.muhimSuzgec", "pg.kartMuhim",
+  ["pg.kapsam", "pg.kartKapsam", "pg.kartDers", "pg.kartKonular", "pg.kartBilemedik", "pg.muhimSuzgec", "pg.kartMuhim",
    "pg.sonEposta", "pg.bekleyenKod", "pg.devralma", "pg.yarimCalis", "pg.yarimKart", "pg.dondurmaSoruldu"].forEach(a => depo.sil(a));
   yarimBellek.calis = null; yarimBellek.kart = null;
   try { await vt.temizle(); } catch (e) { console.warn("yerel veri silinemedi", e); }
@@ -5557,15 +5558,36 @@ const geriYigini = [];
    adımlar (sayfa yenilenince) bununla tanınır ve sessizce atlanır */
 const YUKLEME = Math.random().toString(36).slice(2, 10);
 
-function derinlesGit(geriIslevi) {
-  geriYigini.push({ islev: geriIslevi, sekme: aktifSekme });
+/* gecis: bu adım bir sekme geçişidir (geri alınınca önceki sekmeye dönülür) */
+function derinlesGit(geriIslevi, gecis) {
+  geriYigini.push({ islev: geriIslevi, sekme: aktifSekme, gecis: !!gecis });
   try { history.pushState({ pg: geriYigini.length, y: YUKLEME }, ""); } catch (e) {}
 }
 
-/* Uygulama içindeki geri düğmeleri de bunu kullanır; böylece ekran ile
-   tarayıcı geçmişi birbirinden kopmaz. */
+/* Bulunulan sekmenin kendi adımlarından en üsttekinin sırası; yoksa -1.
+   Sekme geçişleri ve başka sekmelerde açılmış ekranların adımları sayılmaz. */
+function sekmeAdimi() {
+  for (let i = geriYigini.length - 1; i >= 0; i--) {
+    const a = geriYigini[i];
+    if (!a.gecis && a.sekme === aktifSekme) return i;
+  }
+  return -1;
+}
+
+/* Uygulama içindeki geri düğmeleri (‹ Temrin yolları, Tamam, Kapat…) bunu
+   kullanır; böylece ekran ile tarayıcı geçmişi birbirinden kopmaz.
+   Sayfa içi geri, bulunulan sekmenin bir üst ekranına gider: araya giren
+   sekme geçişleri atlanır (yoksa konu seçimindeyken 42 Tarzı'na gidip
+   dönünce "‹ Temrin yolları" 42 Tarzı'na atıyordu). Atlanan adımlar
+   geçmişten de birlikte geri sarılır. Bu sekmeye ait adım kalmadıysa
+   sekmenin kökü çizilir. Telefonun geri tuşu ise geçmişi olduğu gibi izler. */
 function geriDon() {
-  if (geriYigini.length) history.back();
+  const i = sekmeAdimi();
+  if (i !== -1) { history.go(i - geriYigini.length); return; }
+  if (!uygulamaAcik) return;
+  if (aktifSekme === "oku") { okuAcik = null; okuKaydirma = 0; okuKokuCiz(); }
+  else sekmeyiTazele(false, true);
+  window.scrollTo(0, 0);
 }
 
 /* Etkin sekmeye tekrar dokunulduğunda o sekmede açılmış alt ekranlar
@@ -5622,7 +5644,7 @@ window.addEventListener("popstate", olay => {
    Sekmeler
    ========================================================================== */
 const SEKMELER = [
-  { ad: "oku",   etiket: "Oku",      sayfa: "sayfaOku",   ikon: '<path d="M3 5.2A2 2 0 0 1 5 3.4h5.4v17.2H5a2 2 0 0 1-2-2Z"/><path d="M21 5.2a2 2 0 0 0-2-1.8h-5.4v17.2H19a2 2 0 0 0 2-2Z"/>' },
+  { ad: "oku",   etiket: "Kıraat",   sayfa: "sayfaOku",   ikon: '<path d="M3 5.2A2 2 0 0 1 5 3.4h5.4v17.2H5a2 2 0 0 1-2-2Z"/><path d="M21 5.2a2 2 0 0 0-2-1.8h-5.4v17.2H19a2 2 0 0 0 2-2Z"/>' },
   { ad: "ara",   etiket: "Ara",      sayfa: "sayfaAra",   ikon: '<circle cx="10.5" cy="10.5" r="6.6"/><path d="m15.4 15.4 4.7 4.7"/>' },
   { ad: "calis", etiket: "Temrin",   sayfa: "sayfaCalis", ikon: '<path d="M4.5 12.4 9 16.9l10-10.6"/><path d="M4.5 6.4 6.8 8.7"/>' },
   { ad: "kart",  etiket: "42 Tarzı", sayfa: "sayfaKart",  ikon: '<rect x="3.5" y="6" width="13" height="14" rx="2"/><path d="M8 3.6h10.5a2 2 0 0 1 2 2V17"/>' }
@@ -5630,7 +5652,7 @@ const SEKMELER = [
 let aktifSekme = "oku";
 let uygulamaAcik = false;
 
-/* Oku sekmesinde açık ekran ve kaydırma yeri: başka sekmeye geçip dönünce
+/* Kıraat (oku) sekmesinde açık ekran ve kaydırma yeri: başka sekmeye geçip dönünce
    listeye değil, kaldığı yere dönsün. */
 let okuAcik = null;          /* { tur: "ders", ders } | { tur: "konu", konu } */
 let okuKaydirma = 0;
@@ -5661,7 +5683,7 @@ function sekmeAc(ad, gecmiseEkle) {
     sekmeKokuneDon();
     if (ad === "oku") { okuAcik = null; okuKaydirma = 0; }
   }
-  if (gecmiseEkle !== false && ad !== onceki) derinlesGit(() => sekmeAc(onceki, false));
+  if (gecmiseEkle !== false && ad !== onceki) derinlesGit(() => sekmeAc(onceki, false), true);
   aktifSekme = ad;
   SEKMELER.forEach(s => document.getElementById(s.sayfa).classList.toggle("acik", s.ad === ad));
   altCubukCiz();
@@ -5975,7 +5997,7 @@ function muhimlerCiz(geriIslev) {
   const geri = olustur("button", "geri");
   geri.textContent = "‹ Dersler";
   geri.addEventListener("click", () => {
-    if (geriYigini.length && geriYigini[geriYigini.length - 1].sekme === "oku") geriDon(); else okuKokuCiz();
+    if (sekmeAdimi() !== -1) geriDon(); else okuKokuCiz();
   });
   sayfa.appendChild(geri);
   const baslik = olustur("h2", "ders-basligi");
@@ -6155,7 +6177,7 @@ function konuAc(konuId, geriIslev, vurguSorgusu, kaydirmaYeri, hedefBaslik) {
   geri.textContent = "‹ Geri";
   geri.addEventListener("click", () => {
     /* Geçmişte adım yoksa (ör. sekme yeniden çizildi) derse dönülür */
-    if (geriYigini.length && geriYigini[geriYigini.length - 1].sekme === "oku") geriDon();
+    if (sekmeAdimi() !== -1) geriDon();
     else dersCiz(konu.ders, null);
   });
   const bosluk = olustur("span", "bosluk");
@@ -7454,7 +7476,7 @@ function yildizPaneliAc() {
     baslik.textContent = "Yıldızlılar (" + liste.length + ")";
     if (!liste.length) {
       const bos = olustur("p", "bos");
-      bos.textContent = "Henüz yıldızladığınız kelime yok. Arama kutusunun yanındaki ☆ ile ya da Oku'da bir kelimeyi seçip ☆ ile ekleyebilirsiniz.";
+      bos.textContent = "Henüz yıldızladığınız kelime yok. Arama kutusunun yanındaki ☆ ile ya da Kıraat'te bir kelimeyi seçip ☆ ile ekleyebilirsiniz.";
       govde.appendChild(bos);
       return;
     }
@@ -7496,22 +7518,35 @@ function yildizPaneliAc() {
    Kapsam cihazda tutulur: { dersId: "tumu" | [konuId, ...] }
    "tumu" seçilen derse sonradan eklenen konular da kendiliğinden girer.
    ========================================================================== */
-function kapsam() {
-  const k = depo.oku("pg.kapsam", {});
+/* Aynı seçim ekranı iki yerde kullanılır; her birinin seçimi ayrı tutulur:
+   "calis" (Temrin) bütün konulardan, "kart" (42 Tarzı) yalnızca kartı olan
+   konulardan seçer. Alan verilmezse Temrin'dir. */
+const KAPSAM_ALANLARI = {
+  calis: { depo: "pg.kapsam", sayfa: "#sayfaCalis", geri: "‹ Temrin yolları", konuUygun: () => true,
+           konuAlti: k => k.sorular.length + " soru · " + k.kavramlar.length + " kavram" },
+  kart:  { depo: "pg.kartKapsam", sayfa: "#sayfaKart", geri: "‹ 42 Tarzı", konuUygun: k => k.kartlar.length > 0,
+           konuAlti: k => k.kartlar.length + " kart" }
+};
+function alanKonulari(dersId, alan) {
+  const a = KAPSAM_ALANLARI[alan || "calis"];
+  return (DERS_KONULARI.get(dersId) || []).filter(a.konuUygun);
+}
+function kapsam(alan) {
+  const k = depo.oku(KAPSAM_ALANLARI[alan || "calis"].depo, {});
   return k && typeof k === "object" && !Array.isArray(k) ? k : {};
 }
-function kapsamYaz(k) { depo.yaz("pg.kapsam", k); }
+function kapsamYaz(k, alan) { depo.yaz(KAPSAM_ALANLARI[alan || "calis"].depo, k); }
 
-function dersKapsami(dersId) {
-  const k = kapsam()[dersId];
-  const konular = DERS_KONULARI.get(dersId) || [];
+function dersKapsami(dersId, alan) {
+  const k = kapsam(alan)[dersId];
+  const konular = alanKonulari(dersId, alan);
   if (k === "tumu") return konular.map(x => x.id);
   if (Array.isArray(k)) return k.filter(id => konular.some(x => x.id === id));
   return [];
 }
-function seciliKonular() {
+function seciliKonular(alan) {
   const liste = [];
-  DERS_KONULARI.forEach((_, dersId) => dersKapsami(dersId).forEach(id => liste.push(id)));
+  DERS_KONULARI.forEach((_, dersId) => dersKapsami(dersId, alan).forEach(id => liste.push(id)));
   return new Set(liste);
 }
 /* "Yalnızca mühim yerler" anahtarı: kapsamın üstüne ikinci bir süzgeç.
@@ -7523,10 +7558,11 @@ function kapsamdakiSorular() {
   const secili = seciliKonular();
   return TUM_SORULAR.filter(s => secili.has(s.konu.id) && muhimSuzgecindenGecer(s.konu, s.yer));
 }
-function kapsamOzeti() {
+function kapsamOzeti(alan) {
   const parcalar = [];
-  DERS_KONULARI.forEach((konular, dersId) => {
-    const n = dersKapsami(dersId).length;
+  DERS_KONULARI.forEach((_, dersId) => {
+    const konular = alanKonulari(dersId, alan);
+    const n = dersKapsami(dersId, alan).length;
     if (!n) return;
     parcalar.push(dersAdi(dersId, true) + (n === konular.length ? "" : " (" + n + "/" + konular.length + ")"));
   });
@@ -7671,12 +7707,14 @@ function calisMenusuCiz() {
   sayfa.appendChild(liste);
 }
 
-/* ---------- Kapsam: Sınıf > Dönem > Ders ---------- */
-function kapsamCiz() {
-  const sayfa = $("#sayfaCalis");
+/* ---------- Kapsam: Sınıf > Dönem > Ders (Temrin ve 42 Tarzı ortak) ---------- */
+function kapsamCiz(alan) {
+  alan = alan || "calis";
+  const A = KAPSAM_ALANLARI[alan];
+  const sayfa = $(A.sayfa);
   sayfa.innerHTML = "";
   const geri = olustur("button", "geri");
-  geri.textContent = "‹ Temrin yolları";
+  geri.textContent = A.geri;
   geri.addEventListener("click", geriDon);
   sayfa.appendChild(geri);
 
@@ -7692,19 +7730,19 @@ function kapsamCiz() {
     if (g.hususi) b.appendChild(hususiEtiketi());
     grup.appendChild(b);
     const dersler = liste => (liste || []).forEach(d => {
-      const konular = DERS_KONULARI.get(d.id) || [];
+      const konular = alanKonulari(d.id, alan);
       if (!konular.length) return;
-      const n = dersKapsami(d.id).length;
+      const n = dersKapsami(d.id, alan).length;
       const satir = olustur("div", "kontrol-oge" + (n === konular.length ? " tikli" : n ? " kismi" : ""));
       satir.style.marginBottom = "8px";
       const kutucuk = olustur("button", "kutucuk");
       kutucuk.textContent = n === konular.length ? "✓" : n ? "–" : "";
       kutucuk.setAttribute("aria-label", d.ad + (n === konular.length ? " seçimini kaldır" : " dersinin tamamını seç"));
       kutucuk.addEventListener("click", () => {
-        const k = kapsam();
+        const k = kapsam(alan);
         if (n === konular.length) delete k[d.id]; else k[d.id] = "tumu";
-        kapsamYaz(k);
-        kapsamCiz();
+        kapsamYaz(k, alan);
+        kapsamCiz(alan);
       });
       const yazi = olustur("button");
       yazi.style.cssText = "flex:1;text-align:left;display:flex;align-items:center;min-width:0";
@@ -7717,13 +7755,13 @@ function kapsamCiz() {
       const ileri = olustur("span", "ileri");
       ileri.textContent = "›";
       yazi.append(ad, ileri);
-      yazi.addEventListener("click", () => { derinlesGit(kapsamCiz); dersKapsamiCiz(d.id); });
+      yazi.addEventListener("click", () => { derinlesGit(() => kapsamCiz(alan)); dersKapsamiCiz(d.id, alan); });
       satir.append(kutucuk, yazi);
       grup.appendChild(satir);
     });
     if (Array.isArray(g.donemler)) {
       g.donemler.forEach(dn => {
-        if (!(dn.dersler || []).some(d => (DERS_KONULARI.get(d.id) || []).length)) return;
+        if (!(dn.dersler || []).some(d => alanKonulari(d.id, alan).length)) return;
         const db = olustur("div", "donem-baslik");
         db.textContent = dn.ad;
         grup.appendChild(db);
@@ -7739,23 +7777,25 @@ function kapsamCiz() {
   tamam.addEventListener("click", geriDon);
   const temizle = olustur("button");
   temizle.textContent = "Seçimi temizle";
-  temizle.addEventListener("click", () => { kapsamYaz({}); kapsamCiz(); });
+  temizle.addEventListener("click", () => { kapsamYaz({}, alan); kapsamCiz(alan); });
   eylem.append(tamam, temizle);
   sayfa.appendChild(eylem);
 }
 
 /* ---------- Kapsam: bir dersin konuları ---------- */
-function dersKapsamiCiz(dersId) {
-  const sayfa = $("#sayfaCalis");
+function dersKapsamiCiz(dersId, alan) {
+  alan = alan || "calis";
+  const A = KAPSAM_ALANLARI[alan];
+  const sayfa = $(A.sayfa);
   sayfa.innerHTML = "";
   const geri = olustur("button", "geri");
   geri.textContent = "‹ Dersler";
   geri.addEventListener("click", geriDon);
   sayfa.appendChild(geri);
 
-  const konular = DERS_KONULARI.get(dersId) || [];
-  const secili = dersKapsami(dersId);
-  const tumu = kapsam()[dersId] === "tumu";
+  const konular = alanKonulari(dersId, alan);
+  const secili = dersKapsami(dersId, alan);
+  const tumu = kapsam(alan)[dersId] === "tumu";
 
   const baslik = olustur("h2", "ders-basligi");
   baslik.textContent = dersAdi(dersId);
@@ -7766,10 +7806,10 @@ function dersKapsamiCiz(dersId) {
   const hepsi = olustur("button", "kontrol-oge" + (tumu ? " tikli" : ""));
   hepsi.innerHTML = '<span class="kutucuk">✓</span><span>Tümü<span class="alt-yazi">Sonradan eklenecek konular da dahil</span></span>';
   hepsi.addEventListener("click", () => {
-    const k = kapsam();
+    const k = kapsam(alan);
     if (tumu) delete k[dersId]; else k[dersId] = "tumu";
-    kapsamYaz(k);
-    dersKapsamiCiz(dersId);
+    kapsamYaz(k, alan);
+    dersKapsamiCiz(dersId, alan);
   });
   liste.appendChild(hepsi);
 
@@ -7781,19 +7821,19 @@ function dersKapsamiCiz(dersId) {
     const yazi = olustur("span");
     yazi.textContent = konuEtiketi(konu);
     const alt = olustur("span", "alt-yazi");
-    alt.textContent = konu.sorular.length + " soru · " + konu.kavramlar.length + " kavram";
+    alt.textContent = A.konuAlti(konu);
     yazi.appendChild(alt);
     d.append(kutucuk, yazi);
     d.addEventListener("click", () => {
-      const k = kapsam();
-      const simdiki = dersKapsami(dersId);
+      const k = kapsam(alan);
+      const simdiki = dersKapsami(dersId, alan);
       const yeri = simdiki.indexOf(konu.id);
       if (yeri === -1) simdiki.push(konu.id); else simdiki.splice(yeri, 1);
       if (simdiki.length === konular.length) k[dersId] = "tumu";
       else if (simdiki.length) k[dersId] = simdiki;
       else delete k[dersId];
-      kapsamYaz(k);
-      dersKapsamiCiz(dersId);
+      kapsamYaz(k, alan);
+      dersKapsamiCiz(dersId, alan);
     });
     liste.appendChild(d);
   });
@@ -8480,126 +8520,134 @@ function sonucCiz() {
 /* ==========================================================================
    4) 42 TARZI — sözlü soru-cevap kartları
    ========================================================================== */
-function kartDersi() { return depo.oku("pg.kartDers", "tumu"); }
 function sadeceBilemediklerim() { return depo.oku("pg.kartBilemedik", false) === true; }
 function bilemedimMi(kartId) { const d = kayit("kart", kartId); return !!(d && d.s === "bilemedim"); }
 function kartMuhimSuzgeci() { return depo.oku("pg.kartMuhim", false) === true; }
-/* Ders seçiliyken konu seçimi: { dersId: [konuId, ...] }; boş ya da yok = bütün konular */
-function kartKonulari(dersId) {
-  const k = depo.oku("pg.kartKonular", {});
-  const liste = k && typeof k === "object" && Array.isArray(k[dersId]) ? k[dersId] : [];
-  return liste.filter(id => KONULAR.has(id));
+
+/* 42 Tarzı'nın ders ve konu seçimi Temrin'deki seçim ekranıyla yapılır
+   (kapsamCiz(..., "kart")), ayrı tutulur: pg.kartKapsam. Eski çip seçimi
+   (pg.kartDers: "tumu" ya da ders; pg.kartKonular: { ders: [konu…] }) bir
+   kez yeni biçime taşınır: "Hepsi" seçiliyse kartlı bütün dersler gelir. */
+function kartKapsaminiTasi() {
+  if (depo.oku("pg.kartKapsam", null) !== null) return;
+  const ders = depo.oku("pg.kartDers", null);
+  const konular = depo.oku("pg.kartKonular", {}) || {};
+  const yeni = {};
+  if (ders === "tumu") DERS_KONULARI.forEach((_, id) => { if (alanKonulari(id, "kart").length) yeni[id] = "tumu"; });
+  else if (ders && DERSLER.has(ders)) yeni[ders] = Array.isArray(konular[ders]) && konular[ders].length ? konular[ders] : "tumu";
+  kapsamYaz(yeni, "kart");
+  depo.sil("pg.kartDers"); depo.sil("pg.kartKonular");
 }
-function kartKonulariniYaz(dersId, liste) {
-  const k = depo.oku("pg.kartKonular", {});
-  const yeni = k && typeof k === "object" && !Array.isArray(k) ? k : {};
-  if (liste.length) yeni[dersId] = liste; else delete yeni[dersId];
-  depo.yaz("pg.kartKonular", yeni);
-}
 
-function kartSayfasiCiz() {
-  const sayfa = $("#sayfaKart");
-  sayfa.innerHTML = "";
-  const kartliDersler = Array.from(DERSLER.keys()).filter(id => TUM_KARTLAR.some(k => k.konu.ders === id));
-  if (!kartliDersler.length) {
-    const bos = olustur("p", "bos");
-    bos.textContent = AGAC ? "Henüz kart yok. Notlar eklendikçe her konunun sözlü sınav tarzı soruları burada kart olur."
-      : "Notlar indirilince kartlar burada açılacak.";
-    sayfa.appendChild(bos);
-    return;
-  }
-  devamKarti("kart", sayfa, kartSayfasiCiz);
-  let secili = kartDersi();
-  if (secili !== "tumu" && kartliDersler.indexOf(secili) === -1) secili = "tumu";
-
-  const ciplar = olustur("div", "cip-satiri");
-  const cip = (id, ad) => {
-    const d = olustur("button", "cip" + (secili === id ? " secili" : ""));
-    d.textContent = ad;
-    d.addEventListener("click", () => { depo.yaz("pg.kartDers", id); kartSayfasiCiz(); });
-    ciplar.appendChild(d);
-  };
-  cip("tumu", "Hepsi");
-  kartliDersler.forEach(id => cip(id, dersAdi(id, true)));
-  sayfa.appendChild(ciplar);
-
-  /* Bir ders seçiliyse konuları da seçilebilir (birden çok); hiçbiri seçili
-     değilse dersin bütün konuları gelir */
-  let seciliKonular = [];
-  if (secili !== "tumu") {
-    const kartliKonular = (DERS_KONULARI.get(secili) || []).filter(k => k.kartlar.length);
-    seciliKonular = kartKonulari(secili).filter(id => kartliKonular.some(k => k.id === id));
-    if (kartliKonular.length > 1) {
-      const konuCiplari = olustur("div", "cip-satiri konu-ciplari");
-      konuCiplari.setAttribute("aria-label", "Konular");
-      const konuCipi = (id, ad, acik, tikla) => {
-        const d = olustur("button", "cip" + (acik ? " secili" : ""));
-        d.textContent = ad;
-        d.setAttribute("aria-pressed", acik ? "true" : "false");
-        d.addEventListener("click", tikla);
-        konuCiplari.appendChild(d);
-      };
-      konuCipi("tumu", "Bütün konular", !seciliKonular.length, () => { kartKonulariniYaz(secili, []); kartSayfasiCiz(); });
-      kartliKonular.forEach(k => konuCipi(k.id, konuEtiketi(k), seciliKonular.indexOf(k.id) !== -1, () => {
-        const yeni = seciliKonular.indexOf(k.id) !== -1 ? seciliKonular.filter(x => x !== k.id) : seciliKonular.concat([k.id]);
-        kartKonulariniYaz(secili, yeni);
-        kartSayfasiCiz();
-      }));
-      sayfa.appendChild(konuCiplari);
-    }
-  }
-
-  const hepsi = TUM_KARTLAR.filter(k => (secili === "tumu" || k.konu.ders === secili) &&
-    (!seciliKonular.length || seciliKonular.indexOf(k.konu.id) !== -1));
+/* Seçimin ve süzgeçlerin sonucu: listede okunacak ve destede çalışılacak kartlar */
+function kartSecimi() {
+  const secili = seciliKonular("kart");
+  const hepsi = TUM_KARTLAR.filter(k => secili.has(k.konu.id));
   /* İki süzgeç üst üste: önce mühim yerler, sonra bilemediklerim */
   const muhimler = hepsi.filter(k => muhimYerdenMi(k.konu, k.yer));
   const muhimYalniz = kartMuhimSuzgeci() && muhimler.length > 0;
   const taban = muhimYalniz ? muhimler : hepsi;
   const bilemedikler = taban.filter(k => bilemedimMi(k.id));
   const yalniz = sadeceBilemediklerim() && bilemedikler.length > 0;
-  const calisilacak = yalniz ? bilemedikler : taban;
+  return { secili, hepsi, muhimler, muhimYalniz, taban, bilemedikler, yalniz, calisilacak: yalniz ? bilemedikler : taban };
+}
 
-  const muhimSatiri = olustur("div", "anahtarli-satir");
-  const muhimYazi = olustur("span");
-  muhimYazi.textContent = "Yalnızca mühim yerler (" + muhimler.length + ")";
-  const muhimAnahtar = olustur("button", "anahtar-dugme");
-  muhimAnahtar.setAttribute("role", "switch");
-  muhimAnahtar.setAttribute("aria-checked", muhimYalniz ? "true" : "false");
-  muhimAnahtar.setAttribute("aria-label", "Yalnızca mühim yerlerin kartları");
-  muhimAnahtar.disabled = !muhimler.length;
-  muhimAnahtar.addEventListener("click", () => { depo.yaz("pg.kartMuhim", !kartMuhimSuzgeci()); kartSayfasiCiz(); });
-  muhimSatiri.append(muhimYazi, muhimAnahtar);
-  sayfa.appendChild(muhimSatiri);
+/* Destenin başlığı: tek konu → konunun adı; tek dersin hepsi → dersin adı */
+function kartBasligi(secili) {
+  if (secili.size === 1) return konuEtiketi(KONULAR.get(Array.from(secili)[0]));
+  const dersler = new Set(Array.from(secili).map(id => KONULAR.get(id).ders));
+  if (dersler.size === 1) {
+    const ders = Array.from(dersler)[0];
+    const n = alanKonulari(ders, "kart").length;
+    return dersAdi(ders, true) + (secili.size === n ? "" : " · " + secili.size + " konu");
+  }
+  return "42 Tarzı";
+}
 
-  const anahtarSatiri = olustur("div", "anahtarli-satir");
-  const yazi = olustur("span");
-  yazi.textContent = "Yalnızca bilemediklerim (" + bilemedikler.length + ")";
-  const anahtar = olustur("button", "anahtar-dugme");
-  anahtar.setAttribute("role", "switch");
-  anahtar.setAttribute("aria-checked", yalniz ? "true" : "false");
-  anahtar.setAttribute("aria-label", "Yalnızca bilemediğim kartlar");
-  anahtar.disabled = !bilemedikler.length;
-  anahtar.addEventListener("click", () => { depo.yaz("pg.kartBilemedik", !sadeceBilemediklerim()); kartSayfasiCiz(); });
-  anahtarSatiri.append(yazi, anahtar);
-  sayfa.appendChild(anahtarSatiri);
+function kartSayfasiCiz() {
+  const sayfa = $("#sayfaKart");
+  sayfa.innerHTML = "";
+  if (!TUM_KARTLAR.length) {
+    const bos = olustur("p", "bos");
+    bos.textContent = AGAC ? "Henüz kart yok. Notlar eklendikçe her konunun sözlü sınav tarzı soruları burada kart olur."
+      : "Notlar indirilince kartlar burada açılacak.";
+    sayfa.appendChild(bos);
+    return;
+  }
+  kartKapsaminiTasi();
+  devamKarti("kart", sayfa, kartSayfasiCiz);
 
-  const eylem = olustur("div", "eylem");
+  const ozet = kapsamOzeti("kart");
+  const kapsamDugme = olustur("button", "suzgec-dugme" + (ozet.length ? " etkin" : ""));
+  const etiket = olustur("span");
+  etiket.textContent = "Ders ve konular";
+  const deger = olustur("span", "deger");
+  deger.textContent = ozet.length ? ozet.join(", ") : "Seçilmedi";
+  kapsamDugme.append(etiket, deger);
+  kapsamDugme.addEventListener("click", () => { derinlesGit(kartSayfasiCiz); kapsamCiz("kart"); });
+  sayfa.appendChild(kapsamDugme);
+
+  if (!ozet.length) {
+    const bos = olustur("p", "bos");
+    bos.textContent = "Önce hangi derslerin hangi konularından çalışacağınızı seçin; kartlar yalnızca o konulardan gelir.";
+    sayfa.appendChild(bos);
+    const eylem = olustur("div", "eylem");
+    const sec = olustur("button", "ana");
+    sec.textContent = "Ders ve konu seç";
+    sec.addEventListener("click", () => { derinlesGit(kartSayfasiCiz); kapsamCiz("kart"); });
+    eylem.appendChild(sec);
+    sayfa.appendChild(eylem);
+    return;
+  }
+
+  const S = kartSecimi();
+  const anahtarSatiri = (yaziMetni, acik, etkin, etiketMetni, tikla) => {
+    const satir = olustur("div", "anahtarli-satir");
+    const yazi = olustur("span");
+    yazi.textContent = yaziMetni;
+    const anahtar = olustur("button", "anahtar-dugme");
+    anahtar.setAttribute("role", "switch");
+    anahtar.setAttribute("aria-checked", acik ? "true" : "false");
+    anahtar.setAttribute("aria-label", etiketMetni);
+    anahtar.disabled = !etkin;
+    anahtar.addEventListener("click", tikla);
+    satir.append(yazi, anahtar);
+    sayfa.appendChild(satir);
+  };
+  anahtarSatiri("Yalnızca mühim yerler (" + S.muhimler.length + ")", S.muhimYalniz, S.muhimler.length > 0,
+    "Yalnızca mühim yerlerin kartları", () => { depo.yaz("pg.kartMuhim", !kartMuhimSuzgeci()); kartSayfasiCiz(); });
+  anahtarSatiri("Yalnızca bilemediklerim (" + S.bilemedikler.length + ")", S.yalniz, S.bilemedikler.length > 0,
+    "Yalnızca bilemediğim kartlar", () => { depo.yaz("pg.kartBilemedik", !sadeceBilemediklerim()); kartSayfasiCiz(); });
+
+  const eylem = olustur("div", "eylem dikey");
   eylem.style.marginTop = "6px";
   const basla = olustur("button", "ana");
-  basla.textContent = calisilacak.length + " kartla çalış";
+  basla.textContent = S.calisilacak.length + " kartla çalış";
+  basla.disabled = !S.calisilacak.length;
   basla.addEventListener("click", () => {
     derinlesGit(kartSayfasiCiz);
-    const baslik = secili === "tumu" ? "42 Tarzı"
-      : seciliKonular.length === 1 ? konuEtiketi(KONULAR.get(seciliKonular[0]))
-      : dersAdi(secili, true) + (seciliKonular.length ? " · " + seciliKonular.length + " konu" : "");
-    kartOturumu(calisilacak, baslik, $("#sayfaKart"), { tur: "kart" });
+    kartOturumu(S.calisilacak, kartBasligi(S.secili), $("#sayfaKart"), { tur: "kart" });
   });
-  eylem.appendChild(basla);
+  const liste = olustur("button", "kart-liste-dugme");
+  liste.textContent = "Kartları liste hâlinde oku (" + S.taban.length + ")";
+  liste.disabled = !S.taban.length;
+  liste.addEventListener("click", () => { derinlesGit(kartSayfasiCiz); kartListesiCiz(); });
+  eylem.append(basla, liste);
   sayfa.appendChild(eylem);
+}
 
-  /* Liste: konu konu soru ve cevaplar, okuyarak tekrar için (mühim süzgeci açıksa yalnızca onlar) */
+/* Liste: konu konu soru ve cevaplar, okuyarak tekrar için (mühim süzgeci açıksa yalnızca onlar) */
+function kartListesiCiz() {
+  const sayfa = $("#sayfaKart");
+  sayfa.innerHTML = "";
+  window.scrollTo(0, 0);
+  const geri = olustur("button", "geri");
+  geri.textContent = "‹ 42 Tarzı";
+  geri.addEventListener("click", geriDon);
+  sayfa.appendChild(geri);
+  const S = kartSecimi();
   let sonKonu = null;
-  taban.forEach(k => {
+  S.taban.forEach(k => {
     if (k.konu !== sonKonu) {
       sonKonu = k.konu;
       const b = olustur("h3");
@@ -9008,11 +9056,11 @@ const GUNCELLEME = {
   surum: "2.0",
   baslik: "Kostü - Ders'e hoş geldiniz",
   maddeler: [
-    ["Notlar ders ders", "Oku sekmesinde Sınıf › Dönem › Ders › Konu sırasıyla ilerlersiniz. Hocalar not paylaştıkça yeni konular kendiliğinden gelir. Notlar ve şekilleri cihaza indiği için uygulama internetsiz de açılır; internetsizken yaptıklarınız bağlanınca hesabınıza gider."],
+    ["Notlar ders ders", "Kıraat sekmesinde Sınıf › Dönem › Ders › Konu sırasıyla ilerlersiniz. Hocalar not paylaştıkça yeni konular kendiliğinden gelir. Notlar ve şekilleri cihaza indiği için uygulama internetsiz de açılır; internetsizken yaptıklarınız bağlanınca hesabınıza gider."],
     ["Temrinde önce kapsam", "Temrin sekmesinde önce hangi derslerin hangi konularından çalışacağınızı seçersiniz; sorular yalnızca oradan gelir."],
     ["Yeni soru türleri", "Çoktan seçmeli, doğru-yanlış, boşluk doldurma, sıralama, eşleştirme, kod izleme, hesaplama ve klasik sorular var."],
     ["42 Tarzı", "Sözlü sınav tarzı soru-cevap kartları. Dokunarak çevirin; cevabı gördükten sonra sağa kaydırırsanız bildiniz, sola kaydırırsanız bilemediniz."],
-    ["Mühim yerler", "Konu adının ya da bir alt başlığın yanındaki ayraç işaretiyle o yeri mühim işaretlersiniz; metinde bir yeri boyadığınızda da başlığı kendiliğinden mühim olur. Hepsi Oku sekmesindeki Mühimmat listesinde toplanır. Temrin ve 42 Tarzı'nda \u201cYalnızca mühim yerler\u201d seçilirse sorular yalnızca oradan gelir."],
+    ["Mühim yerler", "Konu adının ya da bir alt başlığın yanındaki ayraç işaretiyle o yeri mühim işaretlersiniz; metinde bir yeri boyadığınızda da başlığı kendiliğinden mühim olur. Hepsi Kıraat sekmesindeki Mühimmat listesinde toplanır. Temrin ve 42 Tarzı'nda \u201cYalnızca mühim yerler\u201d seçilirse sorular yalnızca oradan gelir."],
     ["Hedef, istatistik ve takvim", "Sağ üstteki menü düğmesinden ya da ekranın sağ kenarından sola çekerek açılan menüde günlük çalışma hedefinizi koyar, serinizi ve dondurma hakkınızı, hangi derse ne kadar zaman ayırdığınızı, temrin ve kart başarınızı ve çalışma takviminizi görürsünüz. Adınızı da oradaki Hesap ekranından eklersiniz."],
     ["Her şey hesabınızda", "Okuduğunuz konular, kırmızıya boyadığınız yerler, yıldızlarınız ve yanlışlarınız okul hesabınızda tutulur. Hesap aynı anda bir cihazda açık olur; başka cihaza geçtiğinizde e-postanıza gelen kodla devralırsınız ve ilerlemeniz oraya gelir."]
   ]

@@ -35,7 +35,7 @@ programcilik/
 │   ├── icerik-aktar.mjs     ← doğrula (--kuru) / yükle
 │   ├── icerik-denetle.py    ← kalite denetimi
 │   └── sekiller/<ders>.py   ← şekil/görsel üreticiler (donanim-kaynak/ = fotoğraf kaynakları)
-├── uygulama/index.html      ← tek dosya uygulama (sw.js önbellek: programcilik-v14)
+├── uygulama/index.html      ← tek dosya uygulama (sw.js önbellek: programcilik-v15)
 ├── supabase/01-sema.sql
 └── test/tarayici/*_sina.py  ← Playwright testleri; yardim/hepsi.sh hepsini çalıştırır
 ```

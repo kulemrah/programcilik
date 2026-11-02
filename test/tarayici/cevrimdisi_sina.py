@@ -70,10 +70,11 @@ with sync_playwright() as p:
     kontrol("temrin internetsiz çalışıyor", s.locator(".secenek.dogru, .secenek.yanlis").count() > 0)
     # 42 Tarzı
     s.click(".alt-cubuk button:has-text('42 Tarzı')")
+    s.evaluate("() => { depo.yaz('pg.kartKapsam', Object.fromEntries(Array.from(DERS_KONULARI.keys()).map(d => [d, 'tumu']))); kartSayfasiCiz(); }")
     s.click("text=/kartla çalış/")
     kontrol("42 Tarzı internetsiz çalışıyor", bekle_ki(s, lambda: s.locator(".deste .kart-yeri:not(.sonraki)").count() == 1, 5))
     # Menü: hedef ve takvim
-    s.click(".alt-cubuk button:has-text('Oku')")
+    s.click(".alt-cubuk button:has-text('Kıraat')")
     cekmece(s, "hedef")
     kontrol("hedef ekranı internetsiz (saat çiziliyor)", s.locator(".saat-kart").count() >= 6)
     s.click(".cekmece-sekme[data-ekran=takvim]")

@@ -34,7 +34,7 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
 
 - Bu sohbetteki çalışma kopyasının son hâli `programcilik-son.zip`'tedir (Elektrik 13–15 hariç, bkz. 7). GitHub'daki deponun bu hâle getirilmesi gerekir.
 - Teslim edilen ama GitHub'a yüklendiği **teyit edilmeyen** paketler: guncelleme-20, 21, 22, 23, 24, aglar-ders-1, guncelleme-25. `programcilik-son.zip` bunların hepsini kapsar; tek tek yüklemeye gerek yok.
-- guncelleme-26 (kurulum şeridinin konu seçimindeki "Tamam"ı örtmesi düzeltildi; `index.html`, `sw.js` v14, `serit_sina.py`): teslim edildi, GitHub'a yüklendiği teyit edilmedi. `programcilik-son.zip`'in üstüne yüklenir.
+- guncelleme-27 (guncelleme-26'yı da kapsar): kurulum şeridinin en alttaki düğmeleri örtmesi; sayfa içi geri düğmelerinin sekme değişince başka sekmeye atması; "Oku" sekmesinin adı "Kıraat"; 42 Tarzı'nda ders ve konu seçimi Temrin'deki seçim ekranıyla. Teslim edildi, GitHub'a yüklendiği teyit edilmedi. `programcilik-son.zip`'in üstüne yüklenir; guncelleme-26'yı ayrıca yüklemeye gerek yok.
 - guncelleme-24'te eski ikonlar silindi: depoda `uygulama/ikon-*.png` ve `uygulama/apple-touch-icon.png` kaldıysa `git rm` ile silinir.
 
 ## 4. 🔶 Açık kalanlar
@@ -66,7 +66,7 @@ icerik/
   dersler/<ders>/    NN-ad.md (not) + NN-ad.json (kavram, soru, kart) + gorseller/
   envanter/<ders>.md slayt slayt döküm, sorunlar tablosu ve kararlar (uygulamaya gitmez)
 supabase/01-sema.sql tekrar çalıştırılabilir tam şema
-uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v14), manifest,
+uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v15), manifest,
                      supabase.js, ikonlar kostu-192/512.png, kostu-maskable-512.png, kostu-apple-180.png
 test/tarayici/       Playwright testleri (test-son.zip'te), test/gercek/sahte_supa.py
 KURULUM.md           kurulum ve günlük kullanım
@@ -126,7 +126,7 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 - **Veri:** içerik `konular`/`agac` tablolarından, IndexedDB'de (`vt`) internetsiz durur. Notlardaki ve sorulardaki bütün görseller eşitlemeden sonra arka planda iner (`gorselleriOnceIndir`, `konuGorselYollari`); kullanılmayanlar budanır (`gorselleriBuda`).
 - **İnternetsiz:** giriş yapılmış cihaz internetsiz açılır; oturum süresi dolsa da kapatılmaz; yapılanlar bekler, internet gelince gider.
 - **Kayıtlar** (`kayitlar`, tür + anahtar, son yazan kazanır, silme `silindi`): okundu, boya, yildiz, yanlis, kart, ayar, yer, muhim, calisma. `ayar/hedef` = `{gecmis:[{g,gun,hafta}]}`, `ayar/dondurma` = `{gunler:[...]}`, `ayar/kimlik`.
-- **Cihazda kalanlar (localStorage):** `pg.mod` (tema), `pg.gozFiltre`, `pg.cekmeceEkrani`, `pg.dondurmaSoruldu`, `pg.yarimCalis`, `pg.yarimKart`, `pg.kartKonular`.
+- **Cihazda kalanlar (localStorage):** `pg.mod` (tema), `pg.gozFiltre`, `pg.cekmeceEkrani`, `pg.dondurmaSoruldu`, `pg.yarimCalis`, `pg.yarimKart`, `pg.kapsam` (Temrin seçimi), `pg.kartKapsam` (42 Tarzı seçimi), `pg.muhimSuzgec`, `pg.kartMuhim`, `pg.kartBilemedik`. Eski `pg.kartDers` / `pg.kartKonular` ilk açılışta `pg.kartKapsam`'a taşınıp silinir (`kartKapsaminiTasi`).
 - **Üst çubuk:** başlık, göz koruyucu (3 kademe), tema (açık, pembe, koyu, simsiyah), menü (≡).
 - **Çekmece:** menü düğmesi ya da sağ kenardan çekme (`#kenarTutamak`). Dışarıya tek dokunuşla kapanır (`perdeKapatmayiKur`, `cekmeceyiKapat`). Dört ekran:
   - **Hedef ve seri:** yapraklı geri sayan saat (`saatKarti`, `geriSayimSaati`; animasyonlar kapalıyken de döner).
@@ -137,9 +137,12 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 - **Seri:** günlük hedefe ulaşılan ardışık günler; dondurulan gün köprüdür.
 - **Süre ölçümü:** 5 sn'lik tik, `calisma/"GG|YAZICI"`; bir konuda günde 3 dakikadan azsa süre sayılmaz.
 - **Görseller:** `gorselHtml` (tek görsel ya da dizi), `galeriGuncelle` (sayaç/nokta/ok), `buyutecAc`, `soruGorselleri` (soru kutusunda).
-- **Geri tuşu:** `derinlesGit` / `geriDon`, kökte bekçi adımı.
+- **Alt çubuk:** Kıraat (iç adı `oku`, `#sayfaOku`), Ara, Temrin (`calis`), 42 Tarzı (`kart`). Görünen ad yalnızca `SEKMELER`'deki `etiket`tir; kimlikler değişmez.
+- **Geri tuşu:** `derinlesGit(islev, gecis)` / `geriDon`, kökte bekçi adımı. Sekme geçişleri yığında `gecis` diye işaretlenir. Sayfa içi geri düğmeleri (`geriDon`) bulunulan sekmenin en yakın kendi adımına döner (`sekmeAdimi`); aradaki sekme geçişleri ve başka sekmelerin adımları geçmişten birlikte geri sarılır. Bu sekmeye ait adım yoksa sekmenin kökü çizilir. Telefonun geri tuşu geçmişi olduğu gibi izler (önceki sekmeye dönebilir).
+- **Seçim ekranı (kapsam):** `kapsamCiz(alan)` / `dersKapsamiCiz(ders, alan)` Temrin (`calis`, bütün konular) ve 42 Tarzı (`kart`, yalnızca kartlı konular) için ortaktır; ayarları `KAPSAM_ALANLARI`'nda. Seçimler ayrı tutulur.
+- **42 Tarzı:** ana ekranda "Ders ve konular" düğmesi, iki anahtar (mühim yerler, bilemediklerim), "N kartla çalış" ve "Kartları liste hâlinde oku" (`kartListesiCiz`, ayrı ekran). Seçim yoksa yalnızca "Ders ve konu seç".
 - **Yüzen şeritler:** kurulum şeridi (`.kurulum`) ve okuma çubuğu (`.oynatma`) alt çubuğun üstünde sabit durur. `altBosluguAyarla` (MutationObserver + ResizeObserver) görünür şeridin yüksekliğini `--serit-alt` değişkenine yazar; `body`'nin alt boşluğu buna göre büyür ki en alttaki düğmeler (konu seçimindeki "Tamam" gibi) şeridin altında kalmasın. Yeni bir sabit alt şerit eklenirse `YUZEN_SERITLER` seçicisine eklenir.
-- **Service worker:** önbellek `programcilik-v14`; index.html değişince `sw.js`'teki sürüm bir artırılır.
+- **Service worker:** önbellek `programcilik-v15`; index.html değişince `sw.js`'teki sürüm bir artırılır.
 
 ## 9. Test düzeneği (test-son.zip)
 
@@ -163,6 +166,8 @@ Proje `/home/claude/programcilik`, testler `test/tarayici` ve `test/gercek` alt�
    - `hedef_sina.py`, `saat_cekmece_sina.py`, `takvim_gelecek_sina.py`
    - `tasma_sina.py`, `tema_sina.py`, `ios_sina.py`, `dokunus_sina.py`
    - `istatistik_sina.py`, `kalicilik_sina.py`, `devam_sina.py`, `aralik_sina.py`, `baslik_sina.py`
+   - `geri_sina.py` (sekme değişince sayfa içi geri düğmeleri, Kıraat etiketi, 42 Tarzı eski seçiminin taşınması)
+   - Ders testlerinin 42 Tarzı bölümü ortak `kart_kapsam_sina` (vt_taban.py) ile yapılır.
    - `serit_sina.py` (kurulum şeridi açıkken en alttaki düğmeler dokunulabilir mi; konu seçimi → Tamam → temrin yolları)
    - Ortak düzenek `vt_taban.py`: Supabase taklidi; görselleri uzantısına göre doğru türle verir. `akis-1.svg` (test görseli) `test/tarayici/` içinde durur.
    - Testlerin çoğu gerçek ilk kullanımı taklit etmez: `cihaz_ac` kurulum şeridini öntanımlı olarak gizler, test hesabına hedef önceden konur. Şerit `serit_sina.py`'de, hedef sorusu `hedef_sina.py`'de denenir; ilk kullanıma dokunan bir değişiklikte bu ikisi mutlaka çalıştırılır.

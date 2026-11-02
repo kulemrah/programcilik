@@ -138,41 +138,7 @@ with sync_playwright() as p:
     ust = s.evaluate("() => document.querySelector('.okuma [data-baslik=\"%s\"]').getBoundingClientRect().top" % OKU_SORU["yer"])
     kontrol("konuda oku: '%s' başlığı ekranın üstünde" % OKU_SORU["yer"], -2 <= ust < 200, ust)
 
-    # ---------------- 42 Tarzı: ders ve konu seçimi ----------------
-    print("--- 42 Tarzı", flush=True)
-    kart_top = sum(len(k["kartlar"]) for k in KONULAR_VT)
-    GENEL = [d["id"] for g in next(r for r in YUK["agac"] if r["id"] == 1)["veri"]["gruplar"] if not g.get("hususi") for dn in g.get("donemler", [{"dersler": g.get("dersler", [])}]) for d in dn["dersler"]]
-    hepsi_top = sum(len(k["kartlar"]) for k in YUK["konular"] if k["ders"] in GENEL)
-    CIPLER = ["Hepsi"] + [d.get("kisa", d["ad"]) for g in next(r for r in YUK["agac"] if r["id"] == 1)["veri"]["gruplar"] if not g.get("hususi") for dn in g.get("donemler", []) for d in dn["dersler"] if any(k["ders"] == d["id"] for k in YUK["konular"])]
-    s.click(".alt-cubuk button:has-text('42 Tarzı')")
-    s.wait_for_selector("#sayfaKart .cip-satiri")
-    kontrol("ders çipleri: " + " + ".join(CIPLER), s.locator("#sayfaKart .cip-satiri:not(.konu-ciplari) .cip").all_inner_texts() == CIPLER, s.locator("#sayfaKart .cip-satiri:not(.konu-ciplari) .cip").all_inner_texts())
-    kontrol("Hepsi seçiliyken konu çipi yok", s.locator(".konu-ciplari").count() == 0)
-    kontrol("Hepsi: %d kart" % hepsi_top, ("%d kartla çalış" % hepsi_top) in s.inner_text("#sayfaKart"))
-    s.click("#sayfaKart .cip:text-is('Ağlar')")
-    s.wait_for_selector(".konu-ciplari")
-    kontrol("konu çipleri: Bütün konular + %d konu" % len(KONULAR_VT), s.locator(".konu-ciplari .cip").count() == len(KONULAR_VT) + 1 and s.locator(".konu-ciplari .cip.secili").all_inner_texts() == ["Bütün konular"])
-    k6, k7 = KONULAR_VT[1], KONULAR_VT[2]
-    s.click(".konu-ciplari .cip:has-text('%s')" % k6["baslik"])
-    kontrol("tek konu: %d kart" % len(k6["kartlar"]), ("%d kartla çalış" % len(k6["kartlar"])) in s.inner_text("#sayfaKart") and s.locator(".konu-ciplari .cip:has-text('Bütün konular').secili").count() == 0)
-    s.click(".konu-ciplari .cip:has-text('%s')" % k7["baslik"])
-    iki = len(k6["kartlar"]) + len(k7["kartlar"])
-    kontrol("iki konu: %d kart, liste yalnızca o iki konu" % iki, ("%d kartla çalış" % iki) in s.inner_text("#sayfaKart") and s.locator("#sayfaKart .sonuc-kart").count() == iki)
-    s.reload(); s.wait_for_selector(".alt-cubuk")
-    s.click(".alt-cubuk button:has-text('42 Tarzı')"); s.wait_for_selector(".konu-ciplari")
-    kontrol("seçim yenilemeden sonra duruyor", s.locator(".konu-ciplari .cip.secili").count() == 2 and ("%d kartla çalış" % iki) in s.inner_text("#sayfaKart"))
-    s.click("text=/kartla çalış/")
-    s.wait_for_selector(".deste .kart-yeri:not(.sonraki)")
-    kontrol("deste başlığı 'Ağlar · 2 konu'", s.inner_text(".ilerleme span >> nth=0") == "Ağlar · 2 konu", s.inner_text(".ilerleme span >> nth=0"))
-    s.click(".deste-eylem button:has-text('Cevabı göster')"); s.wait_for_timeout(700)
-    s.screenshot(path="ag-kart-arka.png")
-    s.click("text=‹ Geri") if s.locator("text=‹ Geri").count() else s.go_back()
-    s.click(".alt-cubuk button:has-text('42 Tarzı')")
-    s.wait_for_selector(".konu-ciplari")
-    s.click(".konu-ciplari .cip:has-text('Bütün konular')")
-    kontrol("Bütün konular: %d kart" % kart_top, ("%d kartla çalış" % kart_top) in s.inner_text("#sayfaKart") and s.locator(".konu-ciplari .cip.secili").all_inner_texts() == ["Bütün konular"])
-    kontrol("depo temizlendi", s.evaluate("() => JSON.stringify(depo.oku('pg.kartKonular', {}))") == "{}")
-    s.screenshot(path="ag-kart-sayfa.png", full_page=False)
+    kart_kapsam_sina(s, KONULAR_VT, "ag")
 
     c.close()
 

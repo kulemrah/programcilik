@@ -64,15 +64,16 @@ with sync_playwright() as p:
 
     # --- 42 Tarzı ---
     s.click(".alt-cubuk button:has-text('42 Tarzı')")
+    s.evaluate("() => { depo.yaz('pg.kartKapsam', Object.fromEntries(Array.from(DERS_KONULARI.keys()).map(d => [d, 'tumu']))); kartSayfasiCiz(); }")
     s.wait_for_selector("#sayfaKart button.ana")
-    dokunulur(s, "42 Tarzı: kart listesinin sonu şeridin altında değil", "#sayfaKart > :last-child")
+    dokunulur(s, "42 Tarzı: 'Kartları liste hâlinde oku' şeridin altında değil", "#sayfaKart .eylem button:last-child")
     s.click("#sayfaKart button.ana")
     s.wait_for_selector("#sayfaKart .deste")
     s.wait_for_timeout(400)
     dokunulur(s, "42 Tarzı destesi: en alttaki düğme şeridin altında değil", "#sayfaKart button")
 
     # --- Oku: ders listesinin son satırı ---
-    s.click(".alt-cubuk button:has-text('Oku')")
+    s.click(".alt-cubuk button:has-text('Kıraat')")
     s.wait_for_timeout(400)
     dokunulur(s, "Oku: son satır şeridin altında değil", "#sayfaOku button, #sayfaOku .ders-satiri")
 
