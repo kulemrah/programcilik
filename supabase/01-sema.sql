@@ -764,6 +764,20 @@ create table if not exists public.kaynak_tasnif (
 );
 create index if not exists kaynak_tasnif_ust on public.kaynak_tasnif (kullanici, ust);
 
+-- Uygulama değişiklikleri önce cihaza yazar, bağlantı olunca gönderir: bir
+-- not internetsiz yazılıp saatler sonra gelebilir. Cihazın bildirdiği an makul
+-- aralıktaysa (son 90 gün ile 5 dakika sonrası arası) o kullanılır; değilse
+-- (yanlış ayarlı saat) sunucunun anı.
+create or replace function public.kaynak_zaman(istenen timestamptz)
+returns timestamptz
+language sql
+stable
+set search_path = ''
+as $$
+  select case when istenen between now() - interval '90 days' and now() + interval '5 minutes'
+              then istenen else now() end;
+$$;
+
 -- Kademe sunucuda hesaplanır: üst tasnif aynı kişinin olmalı, kademe 3'ü
 -- geçemez. Oluştuktan sonra yalnızca adı değişir (yeri ve sahibi değişmez).
 create or replace function public.kaynak_tasnif_denetle()
@@ -802,8 +816,8 @@ begin
     end if;
     new.derinlik := ust_kademe + 1;
   end if;
-  new.olusma := now();
-  new.guncellendi := now();
+  new.olusma := public.kaynak_zaman(new.olusma);
+  new.guncellendi := new.olusma;
   return new;
 end;
 $$;
@@ -813,29 +827,56 @@ create trigger kaynak_tasnif_denetle
   before insert or update on public.kaynak_tasnif
   for each row execute function public.kaynak_tasnif_denetle();
 
--- Tasnifin içindekiler: not (metin) ya da resim (R2'deki dosyanın bilgisi).
+-- Tasnifin içindekiler: not ya da resim (R2'deki dosyanın bilgisi).
+--   not:   baslik (boş olabilir) ve metin. bicim 'duz' ise metin düz yazıdır
+--          (ilk sürümün notları); 'html' ise uygulamanın editörünün ürettiği,
+--          izinli birkaç etiketten oluşan biçimli metindir (p, b, i, u, s,
+--          h3, ul/ol/li, renk için span[data-renk], img[data-resim]). Uygulama
+--          gösterirken yeniden süzer; burada yalnızca metin olarak saklanır.
+--   resim: not_id boşsa tasnife doğrudan konmuş resimdir; doluysa o notun
+--          metninin arasındaki resimdir (img data-resim="<id>").
 -- Tasnif silinirken içinde öğe varsa silinmez (on delete restrict): resimler
--- önce R2'den silinmeli. Silme kaynak_tasnif_sil (yalnız notlu) ya da Worker
--- (resimli) üzerinden yapılır.
+-- önce R2'den silinmeli. Notun resimleri varken not tek başına silinemez
+-- (not_id dış anahtarı); not resimleriyle birlikte Worker'dan silinir.
+-- İstemci kimliği kendisi üretebilir (bağlantısızken açılan not ve resim).
 create table if not exists public.kaynak_oge (
   id          uuid primary key default gen_random_uuid(),
   kullanici   uuid not null default auth.uid() references auth.users(id) on delete cascade,
   tasnif      uuid not null references public.kaynak_tasnif(id) on delete restrict,
   tur         text not null check (tur in ('not', 'resim')),
-  metin       text check (metin is null or char_length(metin) <= 20000),
+  baslik      text,
+  metin       text,
+  bicim       text not null default 'duz',
+  not_id      uuid references public.kaynak_oge(id),
   bayt        integer check (bayt is null or bayt > 0),
   en          integer,
   boy         integer,
   olusma      timestamptz not null default now(),
-  guncellendi timestamptz not null default now(),
-  constraint kaynak_oge_turu check (
-    (tur = 'not' and metin is not null and bayt is null) or
-    (tur = 'resim' and bayt is not null))
+  guncellendi timestamptz not null default now()
 );
+-- İlk sürümden yükseltme: sütunlar ve sınırlar (yeniden çalıştırılabilir)
+alter table public.kaynak_oge add column if not exists baslik text;
+alter table public.kaynak_oge add column if not exists bicim text not null default 'duz';
+alter table public.kaynak_oge add column if not exists not_id uuid references public.kaynak_oge(id);
+alter table public.kaynak_oge drop constraint if exists kaynak_oge_metin_check;
+alter table public.kaynak_oge add constraint kaynak_oge_metin_check
+  check (metin is null or char_length(metin) <= 60000);
+alter table public.kaynak_oge drop constraint if exists kaynak_oge_baslik_check;
+alter table public.kaynak_oge add constraint kaynak_oge_baslik_check
+  check (baslik is null or char_length(baslik) <= 200);
+alter table public.kaynak_oge drop constraint if exists kaynak_oge_bicim_check;
+alter table public.kaynak_oge add constraint kaynak_oge_bicim_check
+  check (bicim in ('duz', 'html'));
+alter table public.kaynak_oge drop constraint if exists kaynak_oge_turu;
+alter table public.kaynak_oge add constraint kaynak_oge_turu check (
+  (tur = 'not' and metin is not null and bayt is null and not_id is null) or
+  (tur = 'resim' and bayt is not null and metin is null and baslik is null));
 create index if not exists kaynak_oge_tasnif on public.kaynak_oge (kullanici, tasnif);
+create index if not exists kaynak_oge_notu on public.kaynak_oge (not_id) where not_id is not null;
 
--- Uygulama yalnızca not ekler ve notun metnini değiştirir; satırın sahibi,
--- tasnifi, türü ve oluşma anı sonradan değişmez.
+-- Uygulama yalnızca not ekler ve notun başlığını, metnini, biçimini
+-- değiştirir; satırın sahibi, tasnifi, türü, bağlı olduğu not ve oluşma anı
+-- sonradan değişmez.
 create or replace function public.kaynak_oge_denetle()
 returns trigger
 language plpgsql
@@ -843,36 +884,49 @@ security definer
 set search_path = ''
 as $$
 begin
-  /* Notlar kişi başı en çok 3000 adet ve toplam 2 MB metin (yaklaşık bin
-     sayfa): resimler kotaya sayılır, notlar bu sınırla veritabanını
-     dolduramaz. Aynı kişinin eşzamanlı yazımları sıraya girer. */
+  /* Notlar kişi başı en çok 3000 adet ve toplam 5 MB metin (biçimli
+     metinle birkaç bin sayfa): resimler kotaya sayılır, notlar bu sınırla
+     veritabanını dolduramaz. Aynı kişinin eşzamanlı yazımları sıraya girer. */
   if (tg_op = 'INSERT' and new.tur = 'not') or (tg_op = 'UPDATE' and old.tur = 'not') then
     perform pg_advisory_xact_lock(hashtext('kaynak:' || coalesce(old.kullanici, new.kullanici)::text));
     if tg_op = 'INSERT' and (select count(*) from public.kaynak_oge where kullanici = new.kullanici and tur = 'not') >= 3000 then
       raise exception 'Not sınırına (3000) ulaşıldı.' using errcode = 'P0001';
     end if;
-    if (select coalesce(sum(octet_length(o.metin)), 0) from public.kaynak_oge o
+    if (select coalesce(sum(octet_length(o.metin) + coalesce(octet_length(o.baslik), 0)), 0) from public.kaynak_oge o
         where o.kullanici = coalesce(old.kullanici, new.kullanici) and o.tur = 'not'
-          and (tg_op = 'INSERT' or o.id <> old.id)) + octet_length(new.metin) > 2097152 then
-      raise exception 'Notların toplam sınırına (2 MB) ulaşıldı.' using errcode = 'P0001';
+          and (tg_op = 'INSERT' or o.id <> old.id))
+        + octet_length(new.metin) + coalesce(octet_length(new.baslik), 0) > 5242880 then
+      raise exception 'Notların toplam sınırına (5 MB) ulaşıldı.' using errcode = 'P0001';
     end if;
   end if;
   if tg_op = 'UPDATE' then
     new.kullanici := old.kullanici;
     new.tasnif := old.tasnif;
     new.tur := old.tur;
+    new.not_id := old.not_id;
     new.bayt := old.bayt;
     new.en := old.en;
     new.boy := old.boy;
     new.olusma := old.olusma;
-    new.guncellendi := now();
+    /* Bağlantısızken yapılan düzenleme kendi anıyla gelir */
+    if new.guncellendi is distinct from old.guncellendi then
+      new.guncellendi := greatest(old.olusma, public.kaynak_zaman(new.guncellendi));
+    else
+      new.guncellendi := now();
+    end if;
     return new;
   end if;
   if not exists (select 1 from public.kaynak_tasnif t where t.id = new.tasnif and t.kullanici = new.kullanici) then
     raise exception 'Tasnif bulunamadı.' using errcode = 'P0001';
   end if;
-  new.olusma := now();
-  new.guncellendi := now();
+  /* Notun içindeki resim: not aynı kişinin ve aynı tasnifte olmalı */
+  if new.not_id is not null and not exists (
+      select 1 from public.kaynak_oge n
+      where n.id = new.not_id and n.kullanici = new.kullanici and n.tur = 'not' and n.tasnif = new.tasnif) then
+    raise exception 'Not bulunamadı.' using errcode = 'P0001';
+  end if;
+  new.olusma := public.kaynak_zaman(new.olusma);
+  new.guncellendi := greatest(new.olusma, public.kaynak_zaman(new.guncellendi));
   return new;
 end;
 $$;
@@ -922,7 +976,7 @@ revoke all on public.kaynak_kota, public.kaynak_tasnif, public.kaynak_oge from a
 grant select, insert on public.kaynak_tasnif to authenticated;
 grant update (ad) on public.kaynak_tasnif to authenticated;
 grant select, insert, delete on public.kaynak_oge to authenticated;
-grant update (metin) on public.kaynak_oge to authenticated;
+grant update (baslik, metin, bicim, guncellendi) on public.kaynak_oge to authenticated;
 grant all on public.kaynak_kota, public.kaynak_tasnif, public.kaynak_oge to service_role;
 
 -- Kaynak durumu: kim, izni var mı, hakkı ve kullandığı. Kota satırı yoksa
@@ -1033,7 +1087,12 @@ $$;
 
 -- R2'ye yüklenen resmin satırını açar. Kota burada, kişinin satırı
 -- kilitlenerek denetlenir (aynı anda iki yükleme sınırı aşamasın).
-create or replace function public.kaynak_resim_ekle(sahip uuid, oge_id uuid, tasnif_id uuid, boyut integer, genislik integer, yukseklik integer)
+-- Kimliği uygulama üretir; aynı kimlikle yeniden gönderilirse (cevap yolda
+-- kaybolmuştu) ikinci satır açılmaz, var olan döner. not_id: resim bir notun
+-- içindeyse o not. zaman: resmin cihazda eklendiği an (bkz. kaynak_zaman).
+drop function if exists public.kaynak_resim_ekle(uuid, uuid, uuid, integer, integer, integer);
+create or replace function public.kaynak_resim_ekle(sahip uuid, oge_id uuid, tasnif_id uuid, boyut integer,
+  genislik integer, yukseklik integer, not_kimligi uuid default null, zaman timestamptz default null)
 returns jsonb
 language plpgsql
 security definer
@@ -1048,15 +1107,54 @@ begin
   if hak is null then
     raise exception 'Kota satırı yok.' using errcode = 'P0001';
   end if;
+  select * into satir from public.kaynak_oge o where o.id = oge_id;
+  if found then
+    if satir.kullanici = sahip and satir.tur = 'resim' then
+      return to_jsonb(satir);
+    end if;
+    raise exception 'kimlik' using errcode = 'P0001';
+  end if;
   select coalesce(sum(o.bayt), 0) into kullanilan from public.kaynak_oge o
   where o.kullanici = sahip and o.tur = 'resim';
   if kullanilan + boyut > hak::bigint * 1048576 then
     raise exception 'kota' using errcode = 'P0001';
   end if;
-  insert into public.kaynak_oge (id, kullanici, tasnif, tur, bayt, en, boy)
-  values (oge_id, sahip, tasnif_id, 'resim', boyut, genislik, yukseklik)
+  insert into public.kaynak_oge (id, kullanici, tasnif, tur, bayt, en, boy, not_id, olusma, guncellendi)
+  values (oge_id, sahip, tasnif_id, 'resim', boyut, genislik, yukseklik, not_kimligi,
+          coalesce(zaman, now()), coalesce(zaman, now()))
   returning * into satir;
   return to_jsonb(satir);
+end;
+$$;
+
+-- Resmin satırı (yoksa null): Worker aynı kimlikle gelen resmi R2'ye yeniden
+-- yazmadan var olanı döndürür
+create or replace function public.kaynak_resim_satiri(sahip uuid, oge_id uuid)
+returns jsonb
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select to_jsonb(o) from public.kaynak_oge o where o.id = oge_id and o.kullanici = sahip and o.tur = 'resim';
+$$;
+
+-- Notu, içindeki resimlerle birlikte siler; silinen resimlerin kimliklerini
+-- döndürür (Worker onları R2'den siler). Not yoksa boş döner (yeniden
+-- gönderilen silme zararsızdır).
+create or replace function public.kaynak_not_sil(sahip uuid, not_kimligi uuid)
+returns setof uuid
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  perform 1 from public.kaynak_kota where kullanici = sahip for update;
+  return query
+    delete from public.kaynak_oge o
+    where o.not_id = not_kimligi and o.kullanici = sahip and o.tur = 'resim'
+    returning o.id;
+  delete from public.kaynak_oge where id = not_kimligi and kullanici = sahip and tur = 'not';
 end;
 $$;
 
@@ -1089,11 +1187,12 @@ $$;
 
 revoke execute on function public.kaynak_durum(), public.kaynak_tasnif_sil(uuid),
   public.kaynak_tasnif_resimleri(uuid, uuid), public.kaynak_tasnif_icini_sil(uuid, uuid),
-  public.kaynak_resim_ekle(uuid, uuid, uuid, integer, integer, integer), public.kaynak_resim_sil(uuid, uuid),
-  public.kaynak_resim_var(uuid, uuid), public.kaynak_tasnif_denetle(), public.kaynak_oge_denetle()
+  public.kaynak_resim_ekle(uuid, uuid, uuid, integer, integer, integer, uuid, timestamptz), public.kaynak_resim_sil(uuid, uuid),
+  public.kaynak_resim_var(uuid, uuid), public.kaynak_resim_satiri(uuid, uuid), public.kaynak_not_sil(uuid, uuid),
+  public.kaynak_zaman(timestamptz), public.kaynak_tasnif_denetle(), public.kaynak_oge_denetle()
   from public, anon, authenticated;
 grant execute on function public.kaynak_durum(), public.kaynak_tasnif_sil(uuid) to authenticated;
 grant execute on function public.kaynak_tasnif_resimleri(uuid, uuid), public.kaynak_tasnif_icini_sil(uuid, uuid),
-  public.kaynak_resim_ekle(uuid, uuid, uuid, integer, integer, integer), public.kaynak_resim_sil(uuid, uuid),
-  public.kaynak_resim_var(uuid, uuid)
+  public.kaynak_resim_ekle(uuid, uuid, uuid, integer, integer, integer, uuid, timestamptz), public.kaynak_resim_sil(uuid, uuid),
+  public.kaynak_resim_var(uuid, uuid), public.kaynak_resim_satiri(uuid, uuid), public.kaynak_not_sil(uuid, uuid)
   to service_role;

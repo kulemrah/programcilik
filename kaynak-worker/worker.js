@@ -4,10 +4,16 @@
    erişemez (anahtar uygulamaya yazılamaz); her istek buradan geçer:
 
      GET    /durum            hak ve kullanım (bayt)
-     POST   /resim?tasnif=…&en=…&boy=…   gövde: WebP; R2'ye koyar, satırı açar
+     POST   /resim?tasnif=…&en=…&boy=…[&id=…&not=…&zaman=…]
+                              gövde: WebP; R2'ye koyar, satırı açar. id: uygulamanın
+                              ürettiği kimlik (aynı id yeniden gelirse var olan satır
+                              döner, R2'ye yeniden yazılmaz); not: resim bu notun
+                              metninin içinde; zaman: cihazda eklendiği an (ISO)
      GET    /resim/<id>       resmi verir (yalnızca sahibine ve kaydı varsa)
      DELETE /resim/<id>       R2'den ve tablodan siler
+     DELETE /not/<id>         notu içindeki resimlerle (R2'den) siler
      DELETE /tasnif/<id>      tasnifi bütün içiyle (resimler R2'den) siler
+   Silmeler yeniden gönderilebilir: olmayanı silmek hata değildir.
 
    Kimlik: istekteki Supabase belirteci (Authorization: Bearer …) ile
    public.kaynak_durum çağrılır. PostgREST belirteci doğrular; işlev,
@@ -167,8 +173,19 @@ export default {
       if (istek.method === "POST" && yol.length === 1 && yol[0] === "resim") {
         const tasnif = url.searchParams.get("tasnif") || "";
         const en = parseInt(url.searchParams.get("en"), 10), boy = parseInt(url.searchParams.get("boy"), 10);
+        const istenenId = url.searchParams.get("id") || "";
+        const notId = url.searchParams.get("not") || "";
+        const zamanYazisi = url.searchParams.get("zaman") || "";
         if (!UUID.test(tasnif)) return hata("Tasnif geçersiz.", 400, k);
         if (!(en > 0 && en <= AZAMI_KENAR && boy > 0 && boy <= AZAMI_KENAR)) return hata("Resim ölçüsü geçersiz.", 400, k);
+        if (istenenId && !UUID.test(istenenId)) return hata("Kimlik geçersiz.", 400, k);
+        if (notId && !UUID.test(notId)) return hata("Not geçersiz.", 400, k);
+        const zaman = zamanYazisi && Number.isFinite(Date.parse(zamanYazisi)) ? new Date(Date.parse(zamanYazisi)).toISOString() : null;
+        /* Aynı kimlik yeniden geldi (önceki cevap yolda kaybolmuştu): var olan satır döner */
+        if (istenenId) {
+          const var_ = await servis(env, "kaynak_resim_satiri", { sahip: ben, oge_id: istenenId });
+          if (var_ && var_.id) return cevap(var_, 200, k);
+        }
         const uzunluk = parseInt(istek.headers.get("Content-Length") || "0", 10);
         if (uzunluk > AZAMI_DOSYA) return hata("Resim çok büyük.", 413, k);
         const bayt = await sinirliOku(istek, AZAMI_DOSYA);
@@ -177,17 +194,22 @@ export default {
         if (!webpMi(bayt)) return hata("Yalnızca WebP kabul edilir.", 415, k);
         /* Hızlı ön denetim (asıl denetim kaynak_resim_ekle'de, kilitle) */
         if (Number(kim.k.kullanilan_bayt) + bayt.length > Number(kim.k.azami_bayt)) {
-          return cevap({ hata: "Kaynak hakkınız doldu.", kota: true }, 413, k);
+          return cevap({ hata: "Resim hakkınız doldu.", kota: true }, 413, k);
         }
-        const id = crypto.randomUUID();
+        const id = istenenId || crypto.randomUUID();
         await env.KAYNAK.put(anahtar(ben, id), bayt, { httpMetadata: { contentType: "image/webp" } });
         let satir;
         try {
-          satir = await servis(env, "kaynak_resim_ekle", { sahip: ben, oge_id: id, tasnif_id: tasnif, boyut: bayt.length, genislik: en, yukseklik: boy });
+          const govde = { sahip: ben, oge_id: id, tasnif_id: tasnif, boyut: bayt.length, genislik: en, yukseklik: boy };
+          if (notId) govde.not_kimligi = notId;
+          if (zaman) govde.zaman = zaman;
+          satir = await servis(env, "kaynak_resim_ekle", govde);
         } catch (e) {
           await env.KAYNAK.delete(anahtar(ben, id));
-          if (/^kota$/.test(e.message)) return cevap({ hata: "Kaynak hakkınız doldu.", kota: true }, 413, k);
+          if (/^kota$/.test(e.message)) return cevap({ hata: "Resim hakkınız doldu.", kota: true }, 413, k);
           if (/Tasnif/.test(e.message)) return hata("Tasnif bulunamadı.", 404, k);
+          if (/Not bulunamad/.test(e.message)) return hata("Not bulunamadı.", 404, k);
+          if (/^kimlik$/.test(e.message)) return hata("Kimlik kullanılıyor.", 409, k);
           throw e;
         }
         return cevap(satir, 201, k);
@@ -213,6 +235,17 @@ export default {
           await env.KAYNAK.delete(anahtar(ben, id));
           return cevap(null, 204, k);
         }
+      }
+
+      /* DELETE /not/<id> */
+      if (istek.method === "DELETE" && yol.length === 2 && yol[0] === "not" && UUID.test(yol[1])) {
+        const resimler = [].concat(await servis(env, "kaynak_not_sil", { sahip: ben, not_kimligi: yol[1] }) || []);
+        const anahtarlar = resimler
+          .map(x => typeof x === "string" ? x : x && x.kaynak_not_sil)
+          .filter(x => UUID.test(String(x)))
+          .map(x => anahtar(ben, x));
+        for (let i = 0; i < anahtarlar.length; i += 1000) await env.KAYNAK.delete(anahtarlar.slice(i, i + 1000));
+        return cevap({ silinen_resim: anahtarlar.length }, 200, k);
       }
 
       /* DELETE /tasnif/<id> */

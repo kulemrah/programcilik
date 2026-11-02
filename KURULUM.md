@@ -188,7 +188,7 @@ Sıra önemli: dosyaları depoya **yüklemeden önce** `01-sema.sql`'i çalışt
 
 ## Kaynak (R2)
 
-Kaynak sekmesinde her öğrenci kendi tasniflerini (en çok üç kademe iç içe) açar, içine derste çektiği resimleri ve notlarını koyar; hepsini yalnızca kendisi görür. Tasnifler ve notlar Supabase'dedir; resimler Cloudflare R2'dedir. Uygulama R2'ye doğrudan erişemez (anahtar uygulamaya yazılamaz): yükleme, okuma, silme ve kota denetimi `kaynak-worker/` klasöründeki küçük Cloudflare Worker'ı üzerinden yapılır. Worker her istekte öğrencinin oturumunu Supabase'e sorar; öğrenci okul üyesi değilse, sözleşmeyi onaylamamışsa ya da hesabın aktif cihazında değilse reddeder.
+Uygulamadaki adı **Notlar** (kod, tablolar, Worker ve R2 kovası "kaynak" adını taşır). Notlar sekmesinde her öğrenci kendi tasniflerini (en çok üç kademe iç içe) açar, içine biçimli notlarını ve derste çektiği resimleri koyar (resim bir notun metninin arasına da konabilir); hepsini yalnızca kendisi görür. Tasnifler ve notlar Supabase'dedir; resimler Cloudflare R2'dedir. Uygulama her değişikliği önce cihaza yazar, bağlantı olunca gönderir: sınıfta internet yokken de not yazılır, resim eklenir. Uygulama R2'ye doğrudan erişemez (anahtar uygulamaya yazılamaz): yükleme, okuma, silme ve kota denetimi `kaynak-worker/` klasöründeki küçük Cloudflare Worker'ı üzerinden yapılır. Worker her istekte öğrencinin oturumunu Supabase'e sorar; öğrenci okul üyesi değilse, sözleşmeyi onaylamamışsa ya da hesabın aktif cihazında değilse reddeder.
 
 Resimler yüklenmeden önce telefonda küçültülür: uzun kenar en çok 2048 px, WebP %80 kalite. Bir telefon fotoğrafı 3–5 MB'tan yaklaşık 0,25–0,4 MB'a iner; 100 MB'lık hak kabaca 250–400 fotoğraf eder.
 
@@ -209,7 +209,9 @@ Kurulum bir kez yapılır; sıra önemlidir.
    - `npx wrangler deploy`: `wrangler.toml`'daki ayarlarla (ad `kostu-kaynak`, kova bağlantısı `KAYNAK`, Supabase adresi ve publishable anahtar) Worker'ı yayımlar. İlk seferde workers.dev için bir alt alan adı seçmenizi isteyebilir. Beklenen çıktının sonunda Worker'ın adresi yazar: `https://kostu-kaynak.<alt-alan-adınız>.workers.dev`. Bu adresi not edin.
    - `npx wrangler secret put SUPABASE_GIZLI_ANAHTAR`: Supabase **secret key**'ini (`sb_secret_…`) Worker'a sır olarak ekler. Komut değeri sorar; yapıştırıp Enter'a basın. Değer ekranda görünmez, hiçbir dosyaya yazılmaz. Beklenen çıktı: "Success! Uploaded secret SUPABASE_GIZLI_ANAHTAR". Anahtar sohbete ya da depoya yazılmaz.
 5. **Uygulama:** `uygulama/index.html` içindeki `AYAR.KAYNAK_URL`'ye 4. adımdaki adresi yazın (`KAYNAK_URL: "https://kostu-kaynak.<alt-alan-adınız>.workers.dev"`), `uygulama/sw.js`'teki önbellek sürümünü bir artırın ve depoya gönderin. `KAYNAK_URL` boşken Kaynak sekmesi "Kaynak henüz kurulmadı" der.
-6. **Deneme:** Uygulamada Kaynak › Yeni tasnif › Resim ekle. Cloudflare panelinde **R2 › kostu-kaynak** içinde `<kullanıcı kimliği>/<resim kimliği>.webp` adlı bir dosya görünmeli.
+6. **Deneme:** Uygulamada Notlar › + (yeni tasnif) › tasnifin içinde + › Resim. Cloudflare panelinde **R2 › kostu-kaynak** içinde `<kullanıcı kimliği>/<resim kimliği>.webp` adlı bir dosya görünmeli.
+
+**Sonraki güncellemelerde sıra:** Bir güncelleme hem `01-sema.sql`'i hem `kaynak-worker/worker.js`'i değiştiriyorsa önce SQL Editor'de `01-sema.sql` yeniden çalıştırılır, sonra `kaynak-worker` klasöründe `npx wrangler deploy`, en son uygulama depoya gönderilir. Şema ve Worker eski uygulamayla da çalışacak biçimde yazılır; tersi (yeni uygulama, eski şema) çalışmaz. Yine de yeni uygulama eski şemaya denk gelirse not ve resimler kaybolmaz: cihazda bekler, şema güncellenince gider.
 
 Site adresi değişirse (ör. GitHub Pages'ten başka bir alan adına taşınırsa) `kaynak-worker/wrangler.toml`'daki `IZINLI_KOKENLER` satırına yeni adres eklenip `npx wrangler deploy` yeniden çalıştırılır; Worker başka adresten gelen isteği reddeder.
 
@@ -246,11 +248,11 @@ group by k.eposta, k.azami_mb
 order by kullanilan_mb desc;
 ```
 
-Notlar kotaya sayılmaz; veritabanı dolmasın diye kişi başı sınırları vardır: en çok 300 tasnif, 3000 not, notların toplamı 2 MB metin (yaklaşık bin sayfa). Bu sınırlar `01-sema.sql`'deki `kaynak_tasnif_denetle` ve `kaynak_oge_denetle` işlevlerindedir.
+Notlar (yazı) kotaya sayılmaz; veritabanı dolmasın diye kişi başı sınırları vardır: en çok 300 tasnif, 3000 not, bir not biçimiyle en çok 60.000 harf, bütün notların toplamı 5 MB. Bu sınırlar `01-sema.sql`'deki `kaynak_tasnif_denetle` ve `kaynak_oge_denetle` işlevlerindedir. Notun içindeki resimler de resim hakkına sayılır.
 
 Bir öğrencinin hesabını Supabase'den silerseniz tasnifleri ve notları da silinir, ama R2'deki resimleri kalır: Cloudflare panelinde **R2 › kostu-kaynak** içinde öğrencinin kullanıcı kimliğiyle başlayan klasörü (`<kullanıcı kimliği>/`) elle silin. Kullanıcı kimliği Supabase'de **Authentication › Users**'tadır.
 
-Hak düşürülürse var olan resimler silinmez; öğrenci yalnızca yeni resim ekleyemez. Öğrenciler resimlerini Kaynak sekmesinde ya da **menü › Hesap › Kaynak resimleri**'nde görür ve siler; silinen resim R2'den de silinir.
+Hak düşürülürse var olan resimler silinmez; öğrenci yalnızca yeni resim ekleyemez. Öğrenciler resimlerini Notlar sekmesinde ya da **menü › Hesap › Notlar › Resimler**'de görür ve siler (silme 5 saniye geri alınabilir); silinen resim R2'den de silinir.
 
 ## Yedek
 

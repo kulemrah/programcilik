@@ -154,7 +154,108 @@ select pg_temp.denetle('tasnif silme silinen 2 resmin kimliğini döndürür (no
   (select count(*) = 2 and bool_and(id::text like 'a2000000%') from silinenler));
 select pg_temp.denetle('tasnif bütün içiyle silindi', (select count(*) = 0 from public.kaynak_tasnif) and (select count(*) = 0 from public.kaynak_oge));
 
--- ===== Sınırlar: 300 tasnif, 3000 not, notların toplamı 2 MB =====
+-- ===== Bağlantısız yazım: istemci kimliği ve anı; biçimli notlar; notun resimleri =====
+reset role;
+set role authenticated;
+select set_config('request.jwt.claims', '{"sub":"aaaaaaaa-0000-0000-0000-000000000001","session_id":"aaaaaaaa-1111-0000-0000-000000000001","role":"authenticated"}', false);
+insert into public.kaynak_tasnif (id, ad, olusma) values ('a3000000-0000-0000-0000-000000000001', 'Ağlar', now() - interval '2 hours');
+insert into public.kaynak_tasnif (id, ad, olusma) values ('a3000000-0000-0000-0000-000000000002', 'Elektrik', '2020-01-01');
+select pg_temp.denetle('cihazın bildirdiği an (2 saat önce) korunur',
+  (select abs(extract(epoch from (olusma - (now() - interval '2 hours')))) < 2 from public.kaynak_tasnif where id = 'a3000000-0000-0000-0000-000000000001'));
+select pg_temp.denetle('makul aralık dışındaki an (2020) sunucu anıyla değişir',
+  (select olusma > now() - interval '1 minute' from public.kaynak_tasnif where id = 'a3000000-0000-0000-0000-000000000002'));
+insert into public.kaynak_oge (id, tasnif, tur, baslik, metin, bicim, olusma, guncellendi) values
+  ('a4000000-0000-0000-0000-000000000001', 'a3000000-0000-0000-0000-000000000001', 'not', 'OSI katmanları',
+   '<p><b>7 katman</b></p><ul><li>Fiziksel</li></ul>', 'html', now() - interval '1 hour', now() - interval '1 hour');
+select pg_temp.denetle('biçimli not başlığıyla ve kendi anıyla eklenir',
+  (select baslik = 'OSI katmanları' and bicim = 'html' and abs(extract(epoch from (olusma - (now() - interval '1 hour')))) < 2
+          and guncellendi = olusma from public.kaynak_oge where id = 'a4000000-0000-0000-0000-000000000001'));
+select pg_temp.hata_beklenir('aynı kimlikle ikinci not açılmaz (yeniden gönderim)',
+  $$insert into public.kaynak_oge (id, tasnif, tur, metin) values ('a4000000-0000-0000-0000-000000000001', 'a3000000-0000-0000-0000-000000000001', 'not', 'x')$$, 'duplicate key');
+update public.kaynak_oge set baslik = 'OSI', metin = '<p>yeni</p>', guncellendi = now() - interval '30 minutes' where id = 'a4000000-0000-0000-0000-000000000001';
+select pg_temp.denetle('bağlantısız düzenleme kendi anıyla gelir',
+  (select baslik = 'OSI' and abs(extract(epoch from (guncellendi - (now() - interval '30 minutes')))) < 2 from public.kaynak_oge where id = 'a4000000-0000-0000-0000-000000000001'));
+update public.kaynak_oge set metin = '<p>daha yeni</p>' where id = 'a4000000-0000-0000-0000-000000000001';
+select pg_temp.denetle('an verilmeyen düzenlemede değiştirilme anı şimdi',
+  (select guncellendi > now() - interval '1 minute' from public.kaynak_oge where id = 'a4000000-0000-0000-0000-000000000001'));
+update public.kaynak_oge set metin = '<p>eski an</p>', guncellendi = now() - interval '5 hours' where id = 'a4000000-0000-0000-0000-000000000001';
+select pg_temp.denetle('değiştirilme anı oluşmadan önce olamaz',
+  (select guncellendi = olusma from public.kaynak_oge where id = 'a4000000-0000-0000-0000-000000000001'));
+insert into public.kaynak_oge (id, tasnif, tur, metin) values ('a4000000-0000-0000-0000-000000000002', 'a3000000-0000-0000-0000-000000000001', 'not', 'ilk sürümün düz notu');
+update public.kaynak_oge set metin = '<p>ilk sürümün düz notu</p>', bicim = 'html' where id = 'a4000000-0000-0000-0000-000000000002';
+select pg_temp.denetle('düz not biçimli nota çevrilebilir', (select bicim = 'html' from public.kaynak_oge where id = 'a4000000-0000-0000-0000-000000000002'));
+select pg_temp.hata_beklenir('başlık en çok 200 harf',
+  $$update public.kaynak_oge set baslik = repeat('b', 201) where id = 'a4000000-0000-0000-0000-000000000001'$$, 'kaynak_oge_baslik_check');
+select pg_temp.hata_beklenir('metin en çok 60000 harf',
+  $$update public.kaynak_oge set metin = repeat('m', 60001) where id = 'a4000000-0000-0000-0000-000000000001'$$, 'kaynak_oge_metin_check');
+update public.kaynak_oge set metin = repeat('m', 60000) where id = 'a4000000-0000-0000-0000-000000000002';
+select pg_temp.denetle('60000 harflik not olur', (select char_length(metin) = 60000 from public.kaynak_oge where id = 'a4000000-0000-0000-0000-000000000002'));
+select pg_temp.hata_beklenir('bilinmeyen biçim olmaz',
+  $$update public.kaynak_oge set bicim = 'xml' where id = 'a4000000-0000-0000-0000-000000000001'$$, 'kaynak_oge_bicim_check');
+select pg_temp.hata_beklenir('not başka nota bağlanamaz',
+  $$insert into public.kaynak_oge (tasnif, tur, metin, not_id) values ('a3000000-0000-0000-0000-000000000001', 'not', 'x', 'a4000000-0000-0000-0000-000000000001')$$, 'kaynak_oge_turu');
+select pg_temp.hata_beklenir('bağlı olduğu not değiştirilemez (sütun izni yok)',
+  $$update public.kaynak_oge set not_id = null where id = 'a4000000-0000-0000-0000-000000000001'$$, 'permission denied');
+insert into public.kaynak_oge (id, tasnif, tur, metin) values ('a4000000-0000-0000-0000-000000000003', 'a3000000-0000-0000-0000-000000000002', 'not', 'Elektrik notu');
+
+reset role;
+insert into public.kaynak_kota (kullanici, eposta) values ('bbbbbbbb-0000-0000-0000-000000000002', 'b@kocaelisaglik.edu.tr') on conflict do nothing;
+set role service_role;
+select pg_temp.denetle('notun içine resim eklenir (kendi anıyla)',
+  (select r->>'not_id' = 'a4000000-0000-0000-0000-000000000001'
+          and abs(extract(epoch from ((r->>'olusma')::timestamptz - (now() - interval '10 minutes')))) < 2
+   from public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', 'a5000000-0000-0000-0000-000000000001', 'a3000000-0000-0000-0000-000000000001',
+        1000, 800, 600, 'a4000000-0000-0000-0000-000000000001', now() - interval '10 minutes') r));
+select pg_temp.denetle('aynı kimlikle yeniden gönderilen resim ikinci satır açmaz, kotaya iki kez sayılmaz',
+  (select (public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', 'a5000000-0000-0000-0000-000000000001', 'a3000000-0000-0000-0000-000000000001', 1000, 800, 600, 'a4000000-0000-0000-0000-000000000001')->>'id')
+          = 'a5000000-0000-0000-0000-000000000001')
+  and (select count(*) = 1 and sum(bayt) = 1000 from public.kaynak_oge where tur = 'resim'));
+select pg_temp.hata_beklenir('başkasının resim kimliğiyle resim eklenemez',
+  $$select public.kaynak_resim_ekle('bbbbbbbb-0000-0000-0000-000000000002', 'a5000000-0000-0000-0000-000000000001', 'a3000000-0000-0000-0000-000000000001', 10, 1, 1)$$, 'kimlik');
+select pg_temp.hata_beklenir('başka tasnifteki nota resim bağlanamaz',
+  $$select public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', gen_random_uuid(), 'a3000000-0000-0000-0000-000000000001', 10, 1, 1, 'a4000000-0000-0000-0000-000000000003')$$, 'Not bulunamadı');
+select pg_temp.hata_beklenir('resim resme bağlanamaz',
+  $$select public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', gen_random_uuid(), 'a3000000-0000-0000-0000-000000000001', 10, 1, 1, 'a5000000-0000-0000-0000-000000000001')$$, 'Not bulunamadı');
+select pg_temp.denetle('tasnife doğrudan resim (notsuz)',
+  (select (public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', 'a5000000-0000-0000-0000-000000000002', 'a3000000-0000-0000-0000-000000000001', 2000, 1, 1)->>'not_id') is null));
+select pg_temp.denetle('resim satırı sahibine döner, başkasına null',
+  (public.kaynak_resim_satiri('aaaaaaaa-0000-0000-0000-000000000001', 'a5000000-0000-0000-0000-000000000001')->>'bayt')::int = 1000
+  and public.kaynak_resim_satiri('bbbbbbbb-0000-0000-0000-000000000002', 'a5000000-0000-0000-0000-000000000001') is null);
+
+reset role;
+set role authenticated;
+select pg_temp.hata_beklenir('resimli not doğrudan silinemez (resimler R2''de kalırdı)',
+  $$delete from public.kaynak_oge where id = 'a4000000-0000-0000-0000-000000000001'$$, 'foreign key');
+select pg_temp.hata_beklenir('not silme işlevi öğrenciye kapalı',
+  $$select public.kaynak_not_sil('aaaaaaaa-0000-0000-0000-000000000001', 'a4000000-0000-0000-0000-000000000001')$$, 'permission denied');
+delete from public.kaynak_oge where id = 'a4000000-0000-0000-0000-000000000003';
+select pg_temp.denetle('resimsiz not doğrudan silinir', (select count(*) = 0 from public.kaynak_oge where id = 'a4000000-0000-0000-0000-000000000003'));
+
+reset role;
+set role service_role;
+select pg_temp.denetle('B adına A''nın notu silinmez (boş döner)',
+  (select count(*) = 0 from public.kaynak_not_sil('bbbbbbbb-0000-0000-0000-000000000002', 'a4000000-0000-0000-0000-000000000001')));
+select pg_temp.denetle('A''nın notu yerinde', (select count(*) = 1 from public.kaynak_oge where id = 'a4000000-0000-0000-0000-000000000001'));
+create temp table not_silinen as select * from public.kaynak_not_sil('aaaaaaaa-0000-0000-0000-000000000001', 'a4000000-0000-0000-0000-000000000001') as id;
+select pg_temp.denetle('not resmiyle silinir, resmin kimliği döner',
+  (select count(*) = 1 and bool_and(id = 'a5000000-0000-0000-0000-000000000001') from not_silinen)
+  and (select count(*) = 0 from public.kaynak_oge where id in ('a4000000-0000-0000-0000-000000000001', 'a5000000-0000-0000-0000-000000000001')));
+select pg_temp.denetle('tasnife doğrudan konan resim yerinde', (select count(*) = 1 from public.kaynak_oge where id = 'a5000000-0000-0000-0000-000000000002'));
+select pg_temp.denetle('silinmiş notu yeniden silmek zararsız (boş döner)',
+  (select count(*) = 0 from public.kaynak_not_sil('aaaaaaaa-0000-0000-0000-000000000001', 'a4000000-0000-0000-0000-000000000001')));
+-- Tasnif, içindeki notun resimleriyle birlikte tek seferde silinir
+reset role;
+set role authenticated;
+insert into public.kaynak_oge (id, tasnif, tur, metin, bicim) values ('a4000000-0000-0000-0000-000000000004', 'a3000000-0000-0000-0000-000000000001', 'not', '<p>resimli</p>', 'html');
+reset role;
+set role service_role;
+select public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', 'a5000000-0000-0000-0000-000000000003', 'a3000000-0000-0000-0000-000000000001', 10, 1, 1, 'a4000000-0000-0000-0000-000000000004');
+create temp table tasnif_silinen as select * from public.kaynak_tasnif_icini_sil('aaaaaaaa-0000-0000-0000-000000000001', 'a3000000-0000-0000-0000-000000000001') as id;
+select pg_temp.denetle('tasnif silinince notun resmi ve doğrudan resim birlikte döner',
+  (select count(*) = 2 from tasnif_silinen) and (select count(*) = 0 from public.kaynak_oge where tasnif = 'a3000000-0000-0000-0000-000000000001'));
+select public.kaynak_tasnif_icini_sil('aaaaaaaa-0000-0000-0000-000000000001', 'a3000000-0000-0000-0000-000000000002');
+
+-- ===== Sınırlar: 300 tasnif, 3000 not, notların toplamı 5 MB =====
 reset role;
 set role authenticated;
 select set_config('request.jwt.claims', '{"sub":"bbbbbbbb-0000-0000-0000-000000000002","session_id":"bbbbbbbb-1111-0000-0000-000000000002","role":"authenticated"}', false);
@@ -162,13 +263,15 @@ insert into public.kaynak_tasnif (ad) select 'T' || g from generate_series(1, 30
 select pg_temp.hata_beklenir('301. tasnif açılamaz', $$insert into public.kaynak_tasnif (ad) values ('fazla')$$, 'Tasnif sınırına');
 select pg_temp.hata_beklenir('toplu eklemede de sınır işler', $$insert into public.kaynak_tasnif (ad) select 'U' || g from generate_series(1, 5) g$$, 'Tasnif sınırına');
 insert into public.kaynak_oge (tasnif, tur, metin)
-  select (select id from public.kaynak_tasnif where ad = 'T1'), 'not', repeat('x', 20000) from generate_series(1, 104);
+  select (select id from public.kaynak_tasnif where ad = 'T1'), 'not', repeat('x', 60000) from generate_series(1, 87);
 insert into public.kaynak_oge (tasnif, tur, metin) values ((select id from public.kaynak_tasnif where ad = 'T2'), 'not', 'kucuk');
-select pg_temp.hata_beklenir('notların toplamı 2 MB''ı aşamaz (105 × 20000)',
-  $$insert into public.kaynak_oge (tasnif, tur, metin) values ((select id from public.kaynak_tasnif where ad = 'T1'), 'not', repeat('x', 20000))$$, '2 MB');
-select pg_temp.hata_beklenir('düzenlemeyle de aşılamaz (kısa notu 20000''e büyütmek)',
-  $$update public.kaynak_oge set metin = repeat('y', 20000) where id = (select id from public.kaynak_oge where metin = 'kucuk')$$, '2 MB');
-update public.kaynak_oge set metin = repeat('y', 20000) where id = (select id from public.kaynak_oge where metin like 'x%' order by olusma limit 1);
+select pg_temp.hata_beklenir('notların toplamı 5 MB''ı aşamaz (88 × 60000)',
+  $$insert into public.kaynak_oge (tasnif, tur, metin) values ((select id from public.kaynak_tasnif where ad = 'T1'), 'not', repeat('x', 60000))$$, '5 MB');
+select pg_temp.hata_beklenir('başlık da toplama sayılır',
+  $$insert into public.kaynak_oge (tasnif, tur, baslik, metin) values ((select id from public.kaynak_tasnif where ad = 'T1'), 'not', repeat('b', 200), repeat('x', 22700))$$, '5 MB');
+select pg_temp.hata_beklenir('düzenlemeyle de aşılamaz (kısa notu 60000''e büyütmek)',
+  $$update public.kaynak_oge set metin = repeat('y', 60000) where id = (select id from public.kaynak_oge where metin = 'kucuk')$$, '5 MB');
+update public.kaynak_oge set metin = repeat('y', 60000) where id = (select id from public.kaynak_oge where metin like 'x%' order by olusma limit 1);
 select pg_temp.denetle('aynı boyda düzenleme yapılabilir', (select count(*) = 1 from public.kaynak_oge where metin like 'y%'));
 delete from public.kaynak_oge where tur = 'not';
 insert into public.kaynak_oge (tasnif, tur, metin)

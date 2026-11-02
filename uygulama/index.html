@@ -1927,9 +1927,12 @@ html[data-mod="pembe"]{--saat-yuz:#FBF2F6}
   .mod-dugme,.hesap-dugme,.goz-dugme{width:34px;height:34px}
 }
 
-/* ---- Kaynak ---- */
+/* ---- Notlar (iç adı kaynak) ---- */
 .kaynak-aciklama{color:var(--sonuk);font-size:14.5px;line-height:1.55;margin:2px 0 14px}
 .kaynak-uyari{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:12px;padding:10px 14px;font-size:14px;color:var(--sonuk);margin:8px 0 12px;line-height:1.5}
+.kaynak-uyari.hata{display:flex;align-items:center;gap:12px;border-color:var(--yanlis);color:var(--yazi)}
+.kaynak-uyari.hata p{margin:0;flex:1;min-width:0;overflow-wrap:anywhere}
+.kaynak-uyari.hata button{flex:none;color:var(--vurgu);font-size:14px;padding:6px 2px}
 .kaynak-kota{margin:12px 0 14px}
 .kaynak-kota-yazi{font-size:13px;color:var(--sonuk);margin-bottom:6px;font-variant-numeric:tabular-nums}
 .kaynak-kota-cubuk{height:8px;border-radius:999px;background:var(--cizgi);overflow:hidden}
@@ -1943,29 +1946,138 @@ html[data-mod="pembe"]{--saat-yuz:#FBF2F6}
 .kaynak-yol{font-size:13px;color:var(--sonuk);margin:0 0 6px}
 .kaynak-menu{display:flex;gap:14px;margin:4px 0 8px}
 .kaynak-menu button{font-size:14px;color:var(--vurgu);padding:4px 0}
-.kaynak-menu button.tehlike,.kaynak-not-alt button.tehlike{color:var(--yanlis)}
-.kaynak-eylem{flex-wrap:wrap;margin:10px 0 14px}
-.kaynak-eylem button{flex:1 1 30%;min-width:0;white-space:nowrap}
-.kaynak-izgara{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:10px 0}
-.kaynak-resim{position:relative;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--yuzey);border:1px solid var(--cizgi)}
-.kaynak-resim-ac{display:block;width:100%;height:100%;padding:0}
-.kaynak-resim-ac img,.kaynak-hesap-kucuk img{display:block;width:100%;height:100%;object-fit:cover}
-.kaynak-resim img.yok,.kaynak-hesap-kucuk img.yok{visibility:hidden}
-.kaynak-resim-sil{position:absolute;top:4px;right:4px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:14px;line-height:30px;text-align:center;padding:0}
-.kaynak-is{display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--sonuk);text-align:center;padding:6px}
+.kaynak-menu button.tehlike{color:var(--yanlis)}
+/* İki sütunlu kutucuklar (+ düğmesi son kutucukları örtmesin diye altta boşluk) */
+.kaynak-izgara{display:flex;align-items:flex-start;gap:10px;margin:10px 0 84px}
+.kaynak-sutun{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:10px}
+.kaynak-kart{position:relative;display:block;width:100%;text-align:left;background:var(--yuzey);border:1px solid var(--cizgi);
+  border-radius:16px;overflow:hidden;color:var(--yazi);font:inherit}
+.kaynak-kart.hata{border-color:var(--yanlis)}
+.kaynak-not-kart{padding:13px 14px 11px}
+.kaynak-not-kart:active,.kaynak-resim-ac:active{opacity:.85}
+.kk-resim{margin:-13px -14px 10px;height:96px;background:var(--yuzey2);overflow:hidden}
+.kk-resim img{display:block;width:100%;height:100%;object-fit:cover}
+.kk-baslik{font-size:15.5px;font-weight:650;line-height:1.4;margin-bottom:6px;overflow-wrap:anywhere;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.kk-metin{font-size:14px;line-height:1.5;color:var(--sonuk);white-space:pre-line;overflow-wrap:anywhere;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;overflow:hidden}
+.kk-metin.bos{font-style:italic}
+.kk-alt{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:12px;color:var(--sonuk);font-variant-numeric:tabular-nums}
+.kk-alt span:first-child{flex:1;min-width:0}
+.kk-resim-sayisi{display:inline-flex;align-items:center;gap:3px}
+.kk-resim-sayisi svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.kk-rozet{position:absolute;left:8px;bottom:8px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.6);color:#fff;font-size:14px;font-weight:700;pointer-events:none}
+.kaynak-not-kart .kk-rozet{left:auto;right:8px;top:8px;bottom:auto;background:var(--yuzey2);color:var(--sonuk)}
+.kk-rozet svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.kk-rozet.hata,.kaynak-not-kart .kk-rozet.hata{background:var(--yanlis);color:#fff}
+.kaynak-resim-kart{background:var(--yuzey2)}
+.kaynak-resim-ac{display:block;width:100%;padding:0}
+.kaynak-resim-ac img{display:block;width:100%;height:100%;object-fit:cover}
+.kaynak-resim-kart img.yok,.kaynak-hesap-kucuk img.yok,.kk-resim img.yok{visibility:hidden}
+.kaynak-resim-sil{position:absolute;top:6px;right:6px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:14px;line-height:30px;text-align:center;padding:0}
+.kaynak-is{display:flex;align-items:center;justify-content:center;height:100px;font-size:12.5px;color:var(--sonuk);text-align:center;padding:6px}
 .kaynak-is.hata{color:var(--yanlis)}
-.kaynak-not{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:var(--r-buyuk);padding:14px 16px;margin:10px 0}
-.kaynak-not-metin{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:15.5px;line-height:1.6}
-.kaynak-not-alt{display:flex;align-items:center;gap:14px;margin-top:10px;font-size:13px;color:var(--sonuk)}
-.kaynak-not-alt span{flex:1;min-width:0}
-.kaynak-not-alt button{font-size:13.5px;color:var(--vurgu);padding:4px 0}
-.kaynak-hesap-liste{margin-top:10px}
+
+/* + düğmesi ve seçenekleri */
+.kaynak-fab{position:fixed;right:calc(16px + env(safe-area-inset-right));bottom:calc(76px + env(safe-area-inset-bottom) + var(--serit-alt, 0px));z-index:45;
+  display:flex;flex-direction:column;align-items:flex-end;gap:12px;transition:transform .2s ease}
+html.geri-al-var .kaynak-fab{transform:translateY(-58px)}
+.kaynak-fab-ana{width:58px;height:58px;border-radius:50%;background:var(--vurgu);color:var(--vurgu-yazi);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.35);padding:0;position:relative;z-index:2}
+.kaynak-fab-ana svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;transition:transform .2s ease}
+.kaynak-fab.acik .kaynak-fab-ana svg{transform:rotate(45deg)}
+.kaynak-fab-perde{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1}
+.kaynak-fab.acik .kaynak-fab-perde{display:block}
+.kaynak-fab-menu{display:none;flex-direction:column;align-items:flex-end;gap:12px;position:relative;z-index:2}
+.kaynak-fab.acik .kaynak-fab-menu{display:flex;animation:fab-ac .16s ease-out}
+@keyframes fab-ac{from{opacity:0;transform:translateY(10px)}}
+.kaynak-fab-secenek{display:flex;align-items:center;gap:10px;padding:0 5px 0 0}
+.kaynak-fab-secenek .etiket{background:var(--yuzey);color:var(--yazi);font-size:13.5px;padding:6px 11px;border-radius:9px;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.kaynak-fab-secenek .simge{width:48px;height:48px;border-radius:50%;background:var(--yuzey);color:var(--vurgu);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.3);border:1px solid var(--cizgi)}
+.kaynak-fab-secenek .simge svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* "… silindi · Geri al (5)" */
+.geri-al{position:fixed;left:12px;right:12px;bottom:calc(80px + env(safe-area-inset-bottom) + var(--serit-alt, 0px));z-index:85;
+  max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px;background:var(--yazi);color:var(--zemin);
+  border-radius:12px;padding:8px 8px 8px 16px;box-shadow:0 8px 26px rgba(0,0,0,.35);animation:geri-al-gel .18s ease-out}
+@keyframes geri-al-gel{from{opacity:0;transform:translateY(10px)}}
+.geri-al-yazi{flex:1;min-width:0;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.geri-al-dugme{flex:none;font-size:14px;font-weight:650;color:var(--vurgu);padding:8px 10px;border-radius:8px;font-variant-numeric:tabular-nums}
+html.editor-acik .geri-al{bottom:calc(16px + env(safe-area-inset-bottom))}
+
+/* Hesap › Notlar */
+.kaynak-resim-kutusu{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;padding:12px 14px;border-radius:14px;
+  background:var(--yuzey2);border:1px solid var(--cizgi);text-align:left;color:var(--yazi)}
+.kaynak-resim-kutusu .simge{flex:none;width:36px;height:36px;border-radius:10px;background:var(--vurgu-zemin);color:var(--vurgu);display:flex;align-items:center;justify-content:center}
+.kaynak-resim-kutusu .simge svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.kaynak-resim-kutusu .yazi{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.kaynak-resim-kutusu .ad{font-size:15px;font-weight:600}
+.kaynak-resim-kutusu .alt{font-size:12.5px;color:var(--sonuk)}
+.kaynak-resim-kutusu .ok{flex:none;color:var(--vurgu);font-family:var(--mono)}
+.kaynak-resim-paneli .panel{height:82vh}
+.kaynak-hesap-liste{margin-top:6px}
 .kaynak-hesap-satir{display:flex;align-items:center;gap:12px;padding:8px 0;border-top:1px solid var(--cizgi)}
-.kaynak-hesap-kucuk{flex:none;width:52px;height:52px;border-radius:8px;overflow:hidden;padding:0;background:var(--zemin);border:1px solid var(--cizgi)}
+.kaynak-hesap-kucuk{flex:none;width:56px;height:56px;border-radius:8px;overflow:hidden;padding:0;background:var(--yuzey2);border:1px solid var(--cizgi)}
+.kaynak-hesap-kucuk img{display:block;width:100%;height:100%;object-fit:cover}
 .kaynak-hesap-bilgi{flex:1;min-width:0}
 .kaynak-hesap-bilgi .yol{font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .kaynak-hesap-bilgi .alt{font-size:12.5px;color:var(--sonuk);margin-top:2px}
 .kaynak-hesap-sil{flex:none;color:var(--yanlis);font-size:14px;padding:8px 4px}
+
+/* ---- Not editörü ---- */
+html.editor-acik,html.editor-acik body{overflow:hidden}
+.not-editor [hidden]{display:none !important}
+.not-editor{position:fixed;top:0;left:0;right:0;height:100%;z-index:68;display:flex;flex-direction:column;background:var(--zemin);
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left)}
+.ne-ust{flex:none;display:flex;align-items:center;gap:2px;padding:6px 6px 2px}
+.ne-bosluk{flex:1}
+.ne-ust-dugme{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--yazi);padding:0}
+.ne-ust-dugme svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ne-ust-dugme.sil{color:var(--sonuk)}
+.ne-ust-dugme.tamam{color:var(--vurgu)}
+.ne-ust-dugme:active{background:var(--dolgu)}
+.ne-govde{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:4px 20px 28px;position:relative}
+.ne-baslik{display:block;width:100%;border:0;background:transparent;color:var(--yazi);font:inherit;font-size:24px;font-weight:650;line-height:1.3;padding:6px 0 4px;outline:none}
+.ne-baslik::placeholder{color:var(--sonuk);opacity:.6}
+.ne-bilgi{display:flex;flex-direction:column;gap:1px;font-size:12.5px;color:var(--sonuk);margin:2px 0 12px;font-variant-numeric:tabular-nums}
+.ne-uyari{font-size:13px;color:var(--sonuk);background:var(--yuzey);border:1px solid var(--cizgi);border-radius:10px;padding:8px 12px;margin:0 0 12px;line-height:1.5}
+.ne-uyari.hata{border-color:var(--yanlis);color:var(--yazi)}
+.ne-metin{position:relative;min-height:50vh;outline:none;font-size:17px;line-height:1.6;color:var(--yazi);overflow-wrap:anywhere;caret-color:var(--vurgu)}
+.ne-metin.bos::before{content:attr(data-yer);position:absolute;left:0;top:0;color:var(--sonuk);opacity:.6;pointer-events:none}
+.ne-metin p,.ne-metin h3{margin:0}
+.ne-metin h3{font-size:20px;font-weight:700;line-height:1.4;margin:6px 0 2px}
+.ne-metin ul,.ne-metin ol{margin:2px 0;padding-left:26px}
+.ne-metin li{margin:1px 0}
+.ne-metin img{display:block;max-width:100%;height:auto;margin:8px 0;border-radius:10px;background:var(--yuzey2)}
+.ne-metin img.yukleniyor{min-height:120px}
+.ne-metin img.yok{min-height:60px;outline:1px dashed var(--cizgi)}
+[data-renk="kirmizi"]{color:#e5484d}
+[data-renk="turuncu"]{color:#d9620a}
+[data-renk="yesil"]{color:#2b9a55}
+[data-renk="mavi"]{color:#2f7fe0}
+[data-renk="mor"]{color:#9b4dca}
+[data-renk="yok"]{color:var(--yazi)}
+.ne-resim-araci{position:absolute;z-index:3;display:flex;gap:2px;background:var(--yuzey);border:1px solid var(--cizgi);border-radius:10px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.ne-resim-araci button{font-size:14px;padding:7px 12px;border-radius:8px;color:var(--yazi)}
+.ne-resim-araci button.tehlike{color:var(--yanlis)}
+.ne-arac{flex:none;display:flex;justify-content:space-between;gap:1px;overflow-x:auto;scrollbar-width:none;background:var(--yuzey);border-top:1px solid var(--cizgi);
+  padding:5px 8px calc(5px + env(safe-area-inset-bottom))}
+.ne-arac::-webkit-scrollbar{display:none}
+.ne-arac-dugme{flex:1 1 0;min-width:34px;max-width:52px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--yazi);padding:0;font-size:18px}
+.ne-arac-dugme svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ne-arac-dugme.kalin span{font-weight:800}
+.ne-arac-dugme.italik span{font-style:italic;font-family:Georgia,"Times New Roman",serif}
+.ne-arac-dugme.alti span{text-decoration:underline;text-underline-offset:3px}
+.ne-arac-dugme.ustu span{text-decoration:line-through}
+.ne-arac-dugme.renk span{border-bottom:3px solid #e5484d;line-height:1.1;font-weight:650}
+.ne-arac-dugme.baslik span{font-weight:800;font-size:19px}
+.ne-arac-dugme.etkin{background:var(--vurgu-zemin);color:var(--vurgu)}
+.ne-renkler{flex:none;display:flex;gap:12px;padding:10px 14px;background:var(--yuzey);border-top:1px solid var(--cizgi);overflow-x:auto}
+.ne-renk{flex:none;width:34px;height:34px;border-radius:50%;padding:0;border:2px solid var(--cizgi)}
+.ne-renk.yok{background:var(--zemin);position:relative}
+.ne-renk.yok::after{content:"";position:absolute;left:4px;right:4px;top:50%;height:2px;background:var(--yazi);transform:rotate(-45deg)}
 .uyari-girdi{display:block;width:calc(100% - 36px);margin:8px 18px 18px;padding:10px 12px;border:1px solid var(--cizgi);border-radius:10px;background:var(--zemin);color:var(--yazi);font:inherit;font-size:16px;line-height:1.5}
 textarea.uyari-girdi{resize:vertical;min-height:140px}
 .uyari-girdi:focus{outline:2px solid var(--vurgu);outline-offset:1px}
@@ -2004,8 +2116,8 @@ const AYAR = {
   OKUL_ALANI: "kocaelisaglik.edu.tr",
   /* Notlardaki hataların bildirileceği adres; sözleşmede de yazar */
   TASHIH_EPOSTA: "birkulemrah@gmail.com",
-  /* Kaynak resimlerini R2'de tutan Cloudflare Worker'ının adresi (KURULUM.md,
-     "Kaynak (R2)"). Boşsa Kaynak sekmesi "henüz kurulmadı" der. */
+  /* Notlar sekmesinin resimlerini R2'de tutan Cloudflare Worker'ının adresi
+     (KURULUM.md, "Kaynak (R2)"). Boşsa Notlar sekmesi "henüz kurulmadı" der. */
   KAYNAK_URL: "https://kostu-kaynak.kostu.workers.dev"
 };
 
@@ -2300,15 +2412,20 @@ document.addEventListener("click", e => {
 
 /* Büyüteç: görsel tam ekranda açılır; dokunulan yer büyütülür (yeniden
    dokununca ekrana sığar), parmakla kaydırılarak gezilir. Görsel bir dizideyse
-   (yana kaydırılan görseller ya da Kaynak ızgarası) aynı dizinin öbür
+   (yana kaydırılan görseller ya da Notlar'daki resim kutucukları) aynı dizinin öbür
    görsellerine oklarla, parmakla yana kaydırarak (büyütülmemişken) ya da
    klavyenin ok tuşlarıyla geçilir; kapanınca dizi son bakılan görselde
    durur. Kapat düğmesi, Esc ve telefonun geri tuşu kapatır. */
 function buyutecAc(img) {
   if (document.querySelector(".buyutec")) return;
   /* Aynı dizideki yüklenmiş görseller */
-  const kap = img.closest(".galeri-serit, .kaynak-izgara");
-  const dizi = kap ? Array.from(kap.querySelectorAll("img")).filter(x => x.src && x.naturalWidth) : [img];
+  const kap = img.closest(".galeri-serit, [data-buyutec-dizi]");
+  /* Notlar'da dizi ekrandaki sırayla (data-sira) gezilir; iki sütuna dağıtıldığı için belge sırası farklıdır */
+  const dizi = !kap ? [img]
+    : kap.hasAttribute("data-buyutec-dizi")
+      ? Array.from(kap.querySelectorAll("img[data-sira]")).filter(x => x.src && x.naturalWidth).sort((a, b) => a.dataset.sira - b.dataset.sira)
+      : Array.from(kap.querySelectorAll("img")).filter(x => x.src && x.naturalWidth);
+  if (dizi.indexOf(img) === -1) dizi.splice(0, dizi.length, img);
   let sira = Math.max(0, dizi.indexOf(img));
   if (!dizi.length) dizi.push(img);
 
@@ -2456,7 +2573,8 @@ function duzMetin(md) {
    Yerel veritabanı (IndexedDB) — açılmazsa hafızada çalışır
    ========================================================================== */
 const vt = (() => {
-  /* kaynak: Kaynak listesi ("liste") ve resimleri ("r/<id>"); sürüm 2'de eklendi */
+  /* kaynak: Notlar sekmesinin sunucu kopyası ("liste"), gönderilecekler sırası
+     (her iş ayrı: "k/<sıra no>") ve resimleri ("r/<id>"); sürüm 2'de eklendi */
   const ANAHTAR = { icerik: "anahtar", kayit: "k", gorsel: "yol", durum: "ad", kaynak: "ad" };
   const bellek = { icerik: new Map(), kayit: new Map(), gorsel: new Map(), durum: new Map(), kaynak: new Map() };
   let db = null;
@@ -2515,6 +2633,18 @@ const vt = (() => {
     hepsi(depoAdi) {
       return islem(d => d ? istekSoz(d.transaction(depoAdi).objectStore(depoAdi).getAll())
                          : Array.from(bellek[depoAdi].values()));
+    },
+    /* Anahtarı verilen önekle başlayan kayıtlar */
+    onEkli(depoAdi, onek) {
+      return islem(d => {
+        if (!d) return Array.from(bellek[depoAdi].entries()).filter(([k]) => String(k).startsWith(onek)).map(x => x[1]);
+        return istekSoz(d.transaction(depoAdi).objectStore(depoAdi).getAll(IDBKeyRange.bound(onek, onek + "\uffff")));
+      });
+    },
+    /* Yalnızca anahtarlar (değerler — ör. resimler — belleğe alınmaz) */
+    anahtarlar(depoAdi) {
+      return islem(d => d ? istekSoz(d.transaction(depoAdi).objectStore(depoAdi).getAllKeys())
+                         : Array.from(bellek[depoAdi].keys()));
     },
     /* Yazılacaklar ve silinecekler tek işlemde: ya hepsi olur ya hiçbiri */
     coklu(depoAdi, yazilacaklar, silinecekler) {
@@ -3231,7 +3361,7 @@ function esitlemeSonrasiTazele() {
   if (!uygulamaAcik) return;
   if (aktifSekme === "oku" && okuAcik && okuAcik.tur === "muhim") { muhimlerCiz(null); return; }
   if (kokteMi()) sekmeyiTazele();
-  else kisaBildirim("Notlar ve ilerlemeniz güncellendi");
+  else kisaBildirim("Ders içeriği ve ilerlemeniz güncellendi");
 }
 
 let denetimGunu = gunAnahtari(Date.now());
@@ -3260,9 +3390,14 @@ async function yerelVeriyiSil() {
   ["pg.kapsam", "pg.kartKapsam", "pg.kartDers", "pg.kartKonular", "pg.kartBilemedik", "pg.muhimSuzgec", "pg.kartMuhim",
    "pg.sonEposta", "pg.bekleyenKod", "pg.devralma", "pg.yarimCalis", "pg.yarimKart", "pg.dondurmaSoruldu"].forEach(a => depo.sil(a));
   yarimBellek.calis = null; yarimBellek.kart = null;
-  /* Kaynak: liste ve resimler bu hesabındı */
-  KAYNAK.tasnifler = []; KAYNAK.ogeler = []; KAYNAK.durum = null; KAYNAK.yuklendi = false; KAYNAK.hata = null;
-  kaynakAcik = null; kaynakIsleri.length = 0; kaynakResimAdresleriniBirak();
+  /* Notlar: liste, gönderilecekler sırası ve resimler bu hesabındı */
+  kaynakSilinecek.forEach(x => { clearTimeout(x.zaman); if (x.bildirim) x.bildirim.kapat(); });
+  kaynakSilinecek.clear();
+  if (kaynakBeklemeZamanlayici) { clearTimeout(kaynakBeklemeZamanlayici); kaynakBeklemeZamanlayici = null; }
+  KAYNAK_SUNUCU.tasnifler = []; KAYNAK_SUNUCU.ogeler = []; KAYNAK_SUNUCU.durum = null;
+  KAYNAK_KUYRUK = []; kaynakKayitliIsler.clear(); kaynakGiden = null; kaynakYukleme = null; kaynakBeklemeSayisi = 0;
+  KAYNAK.yuklendi = false; KAYNAK.hata = null; kaynakGorunumuKur();
+  kaynakAcik = null; kaynakIsleri.length = 0; kaynakResimAdresleriniBirak(); kaynakOnizlemeBellegi.clear();
   try { await vt.temizle(); } catch (e) { console.warn("yerel veri silinemedi", e); }
 }
 
@@ -5462,16 +5597,19 @@ function hesapSayfasiAc(secenek) {
     const simdi = olustur("button", "ana");
     simdi.textContent = "Şimdi eşitle";
     simdi.disabled = !navigator.onLine;
-    simdi.addEventListener("click", async () => { simdi.disabled = true; simdi.textContent = "Eşitleniyor…"; calismaYaz(); await esitle(); ciz(); });
+    simdi.addEventListener("click", async () => { simdi.disabled = true; simdi.textContent = "Eşitleniyor…"; calismaYaz(); await esitle(); kaynakGonder(); kaynakYenile(); ciz(); });
     const cik = olustur("button");
     cik.textContent = "Çıkış yap";
     cik.addEventListener("click", async () => {
       calismaTiki(); calismaYaz();
       if (gonderilmemisSayisi() && navigator.onLine) await esitle();
-      const kalan = gonderilmemisSayisi();
+      /* Notlar: geri sayımdaki silmeler sıraya girer, sıra gönderilmeye çalışılır */
+      kaynakSilmeleriniBitir();
+      if (KAYNAK_KUYRUK.length && navigator.onLine) { try { await kaynakGonder(); } catch (e) {} }
+      const kalan = gonderilmemisSayisi() + KAYNAK_KUYRUK.length;
       const soru = kalan
         ? kalan + " değişiklik henüz hesabınıza gönderilemedi ve çıkarsanız kaybolacak. Yine de çıkılsın mı?"
-        : "Bu cihazdaki notlar ve işaretler silinecek; hesabınızdakiler yerinde kalır. Çıkılsın mı?";
+        : "Bu cihazdaki ders notları, işaretler ve Notlar'ın kopyası silinecek; hesabınızdakiler yerinde kalır. Çıkılsın mı?";
       if (!(await soruSor({ baslik: "Çıkış yapılsın mı?", metin: soru, evet: "Çıkış yap", tehlike: true }))) return;
       cik.disabled = true;
       if (!(await yeriBirakVeyaSor())) { cik.disabled = false; return; }
@@ -5841,7 +5979,7 @@ const SEKMELER = [
   { ad: "ara",   etiket: "Ara",      sayfa: "sayfaAra",   ikon: '<circle cx="10.5" cy="10.5" r="6.6"/><path d="m15.4 15.4 4.7 4.7"/>' },
   { ad: "calis", etiket: "Temrin",   sayfa: "sayfaCalis", ikon: '<path d="M4.5 12.4 9 16.9l10-10.6"/><path d="M4.5 6.4 6.8 8.7"/>' },
   { ad: "kart",  etiket: "42 Tarzı", sayfa: "sayfaKart",  ikon: '<rect x="3.5" y="6" width="13" height="14" rx="2"/><path d="M8 3.6h10.5a2 2 0 0 1 2 2V17"/>' },
-  { ad: "kaynak", etiket: "Kaynak", sayfa: "sayfaKaynak", ikon: '<rect x="3.5" y="5" width="17" height="14" rx="2.2"/><circle cx="9" cy="10" r="1.7"/><path d="m4.5 17.5 4.8-4.8 3.7 3.7 2.4-2.4 4.1 4.1"/>' }
+  { ad: "kaynak", etiket: "Notlar", sayfa: "sayfaKaynak", ikon: '<path d="M14.5 3.5h-8a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-10Z"/><path d="M14.5 3.5v5h5"/><path d="M8 13h8M8 16.5h5"/>' }
 ];
 let aktifSekme = "oku";
 let uygulamaAcik = false;
@@ -5911,7 +6049,11 @@ function sekmeyiTazele(sekmeDegisti, kokeDon) {
   }
   if (aktifSekme === "calis" && !yarimKalsin) calisMenusuCiz();
   if (aktifSekme === "kart" && !yarimKalsin) kartSayfasiCiz();
-  if (aktifSekme === "kaynak") { kaynakCiz(); kaynakYenile(); }
+  if (aktifSekme === "kaynak") {
+    /* Etkin sekmeye yeniden dokunuldu: Notlar'ın köküne */
+    if (kokeDon) { kaynakAcik = null; kaynakFabAcik = null; }
+    kaynakCiz(); kaynakYenile();
+  }
 }
 
 function uygulamayiAc() {
@@ -5934,6 +6076,8 @@ function uygulamayiAc() {
   hesapIsaretiniTazele();
   guncellemeNotuGoster();
   setTimeout(kurulumSeridiniGoster, 1500);
+  /* Notlar'da bağlantısızken yapılmış değişiklikler varsa gönderilir */
+  setTimeout(kaynakBasla, 0);
 }
 
 function uygulamayiKapat() {
@@ -5942,8 +6086,10 @@ function uygulamayiKapat() {
   if (hedefDenetimZamani) { clearTimeout(hedefDenetimZamani); hedefDenetimZamani = null; }
   document.querySelectorAll(".hedef-perde").forEach(e => e.remove());
   /* Açık paneller ve alt ekranlar kapanır; geçmiş yığını boşaltılır */
-  document.querySelectorAll(".panel-perde,.not-perde,.secim-cubugu,.kurulum,.kilit-perde,.oynatma,.hesap-sayfa").forEach(e => e.remove());
-  document.documentElement.classList.remove("hesap-acik");
+  if (kaynakEditor) { const ed = kaynakEditor; kaynakEditor = null; try { ed.kaydet(false); } catch (e) {} }
+  document.querySelectorAll(".panel-perde,.not-perde,.secim-cubugu,.kurulum,.kilit-perde,.oynatma,.hesap-sayfa,.not-editor,.geri-al").forEach(e => e.remove());
+  document.documentElement.classList.remove("hesap-acik", "editor-acik", "geri-al-var");
+  kaynakResimPaneli = null;
   aramaPaneli = null; secimMenusu = null; kurulumSeridi = null; panelSonrasi = null; hesapSayfasi = null; hesapSonrasi = null;
   gecmisiTemizle();
   okuAcik = null; araSorgusu = ""; oturum = null;
@@ -9339,48 +9485,99 @@ function guncellemeNotuGoster() {
 }
 
 /* ==========================================================================
-   Kaynak — öğrencinin kendi ders resimleri ve notları
+   Notlar (iç adı "kaynak") — öğrencinin kendi notları ve ders resimleri
    Öğrenci tasnifler açar (en çok üç kademe iç içe: tasnif › alt › alt-alt),
-   içlerine derste çektiği resimleri ve notlarını koyar. Hepsini yalnızca
+   içlerine notlarını ve derste çektiği resimleri koyar. Hepsini yalnızca
    kendisi görür. Tasnifler ve notlar Supabase'de (kaynak_tasnif, kaynak_oge);
-   resimler R2'de, Worker üzerinden (AYAR.KAYNAK_URL). Kişi başı hak
+   resimler R2'de, Worker üzerinden (AYAR.KAYNAK_URL). Kişi başı resim hakkı
    kaynak_kota tablosundadır (öntanımlı 100 MB).
 
-   Resimler yüklenmeden önce küçültülür: uzun kenar en çok 2048 px, WebP
-   %80 kalite (telefon fotoğrafı 3–5 MB → ~0,25–0,4 MB). Tarayıcı canvas'tan
-   WebP üretemiyorsa (iPhone Safari PNG verir) uygulamadaki WebAssembly
-   kodlayıcı (webp/kodla.js) bir kez indirilip kullanılır.
+   Önce cihaz, sonra sunucu: her değişiklik (tasnif açma, not yazma, resim
+   ekleme, silme) önce cihaza yazılır ve "gönderilecekler sırası"na
+   (KAYNAK_KUYRUK) girer; bağlantı varken sıra baştan sona gönderilir.
+   Ekranda görünen (KAYNAK) = sunucudan son alınan kopya (KAYNAK_SUNUCU) +
+   sıradaki işler. Bağlantı yokken de her şey yapılabilir; bağlantı gelince
+   gider. Kimlikleri uygulama üretir: yolda cevabı kaybolan iş yeniden
+   gönderilince ikinci kayıt açılmaz (01-sema.sql ve Worker buna göre).
+   Bir hesap aynı anda tek cihazda açık olduğundan çakışma olmaz. Sıranın her
+   işi cihazda ayrı kayıttır ("k/<no>"): uygulama aynı tarayıcıda iki sekmede
+   açıksa her sekme yalnızca kendi işlerini yazar, birbirininkini ezmez.
 
-   Liste ve resimler cihazda da tutulur (vt "kaynak" deposu): bağlantı
-   yokken Kaynak açılır ve görüntülenir; ekleme, silme ve düzenleme için
-   bağlantı gerekir.
+   Silme 5 saniye geri alınabilir: silinen öğe hemen gizlenir, süre dolunca
+   (ya da uygulama arka plana geçince) sıraya girer.
+
+   Resimler eklenirken küçültülür: uzun kenar en çok 2048 px, WebP %80 kalite
+   (telefon fotoğrafı 3–5 MB → ~0,25–0,4 MB). Tarayıcı canvas'tan WebP
+   üretemiyorsa (iPhone Safari PNG verir) uygulamadaki WebAssembly kodlayıcı
+   (webp/kodla.js) bir kez indirilip kullanılır. Küçültülen resim cihazda
+   ("r/<id>") bekler, sırası gelince yüklenir.
+
+   Notlar biçimlidir (kalın, italik, altı/üstü çizili, renk, madde, numaralı
+   liste, ara başlık, metnin arasında resim). Biçim yalnızca izinli birkaç
+   etiketle saklanır; gösterilirken ve kaydedilirken notHtmlDugumleri ile
+   yeniden süzülür (yabancı etiket, öznitelik ve betik geçmez).
    ========================================================================== */
 const KAYNAK_KENAR = 2048;
 const KAYNAK_KALITE = 0.8;
 const KAYNAK_KADEME = 3;
-let kaynakAcik = null;                 /* açık tasnifin kimliği; null: kök */
+const KAYNAK_TASNIF_SINIRI = 300;
+const NOT_AZAMI = 60000;                /* biçimli metnin en çok uzunluğu (01-sema.sql ile aynı) */
+const NOT_BASLIK_AZAMI = 200;
+const KAYNAK_GERI_AL_SURESI = 5000;
+const KAYNAK_BEKLEMELER = [3, 10, 30, 60, 120, 300];   /* gönderilemeyince yeniden deneme aralıkları (sn) */
+const KIMLIK_DESENI = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+
+let kaynakAcik = null;                  /* açık tasnifin kimliği; null: kök */
+/* Ekranda görünen: dizi olarak (geri sayımdaki silmeler gizli) */
 const KAYNAK = { tasnifler: [], ogeler: [], durum: null, yuklendi: false, hata: null };
-const kaynakResimAdresleri = new Map();   /* oge id → blob: adresi */
-const kaynakIsleri = [];               /* hazırlanan ve yüklenen resimler (ekranda yer tutar) */
+/* Aynı görünümün geri sayımdakiler dahil hâli (kimlik → satır) */
+let KAYNAK_HAM = { tasnifler: new Map(), ogeler: new Map() };
+/* Sunucudan son alınan kopya (cihazda "liste" olarak saklanır) */
+const KAYNAK_SUNUCU = { tasnifler: [], ogeler: [], durum: null };
+/* Gönderilecekler sırası (cihazda "kuyruk" olarak saklanır). Her iş:
+   { tur, id, durum: "bekliyor" | "hata", mesaj, ...alanlar } */
+let KAYNAK_KUYRUK = [];
+const kaynakKayitliIsler = new Map();   /* cihaza yazılmış işler: no → JSON (yalnızca değişen yazılır) */
+let kaynakIsSayaci = 0;
+/* Sıra numarası: zamana göre artar, metin olarak da sıralanır */
+function kaynakIsNo() {
+  return Date.now().toString(36).padStart(9, "0") + "-" + (kaynakIsSayaci++ % 1679616).toString(36).padStart(4, "0") + Math.random().toString(36).slice(2, 6);
+}
+let kaynakGiden = null;                 /* şu an gönderilmekte olan iş (birleştirilmez, atılmaz) */
+const kaynakSilinecek = new Map();      /* geri sayımdaki silmeler: id → { tur, id, zaman, bildirim } */
+const kaynakResimAdresleri = new Map(); /* oge id → blob: adresi */
+const kaynakIsleri = [];                /* küçültülmekte olan resimler (ekranda yer tutar) */
+let kaynakYukleme = null;               /* cihazdaki kopya ve sıra oturum başına bir kez okunur */
 let kaynakYenileniyor = null;
-let kaynakSonDeneme = 0;               /* Hesap ekranı aynı yenilemeyi döngüye sokmasın */
+let kaynakSonDeneme = 0;                /* Hesap ekranı aynı yenilemeyi döngüye sokmasın */
+let kaynakGonderim = null, kaynakGonderimTekrar = false;
+let kaynakBeklemeSayisi = 0, kaynakBeklemeZamanlayici = null;
+let kaynakEditor = null;                /* açık not editörünün denetimi */
+let kaynakResimPaneli = null;           /* Hesap'taki resim paneli açıksa { ciz } */
 
 function kaynakKurulu() { return !!(AYAR.KAYNAK_URL && istemci); }
 function kaynakTasnifi(id) { return KAYNAK.tasnifler.find(t => t.id === id) || null; }
 /* Zaman sırası: sunucu zamanları farklı biçimlerde gelebilir (Z / +03:00), metin olarak değil zaman olarak karşılaştırılır */
 const kaynakZamani = x => Date.parse(x && x.olusma) || 0;
+const kaynakDegisimZamani = x => Date.parse(x && (x.guncellendi || x.olusma)) || 0;
 const kaynakSirala = (a, b) => kaynakZamani(a) - kaynakZamani(b) || String(a.id).localeCompare(String(b.id));
-function kaynakAltlari(id) { return KAYNAK.tasnifler.filter(t => t.ust === id).sort(kaynakSirala); }
-function kaynakOgeleri(id) { return KAYNAK.ogeler.filter(o => o.tasnif === id).sort(kaynakSirala); }
-/* Tasnif ve bütün alt tasniflerinin kimlikleri */
-function kaynakAltAgac(id) {
-  const liste = [id];
-  for (let i = 0; i < liste.length; i++) KAYNAK.tasnifler.forEach(t => { if (t.ust === liste[i]) liste.push(t.id); });
+function kaynakAltlari(id) { return KAYNAK.tasnifler.filter(t => (t.ust || null) === id).sort(kaynakSirala); }
+/* Tasnife doğrudan konanlar: notlar ve notun içinde olmayan resimler */
+function kaynakOgeleri(id) { return KAYNAK.ogeler.filter(o => o.tasnif === id && !o.not_id); }
+/* Tasnif ve bütün alt tasniflerinin kimlikleri (T: kimlik → tasnif) */
+function kaynakAgacKimlikleri(id, T) {
+  const liste = new Set([id]);
+  let degisti = true;
+  while (degisti) {
+    degisti = false;
+    T.forEach(t => { if (t.ust && liste.has(t.ust) && !liste.has(t.id)) { liste.add(t.id); degisti = true; } });
+  }
   return liste;
 }
+function kaynakAltAgac(id) { return Array.from(kaynakAgacKimlikleri(id, new Map(KAYNAK.tasnifler.map(t => [t.id, t])))); }
 function kaynakYolu(id) {
   const parca = [];
-  for (let t = kaynakTasnifi(id); t; t = t.ust ? kaynakTasnifi(t.ust) : null) parca.unshift(t.ad);
+  for (let t = KAYNAK_HAM.tasnifler.get(id), i = 0; t && i < 5; t = t.ust ? KAYNAK_HAM.tasnifler.get(t.ust) : null, i++) parca.unshift(t.ad);
   return parca.join(" › ");
 }
 function mbYazisi(bayt) {
@@ -9390,6 +9587,26 @@ function mbYazisi(bayt) {
 function kbYazisi(bayt) {
   const kb = (Number(bayt) || 0) / 1024;
   return kb >= 1024 ? mbYazisi(bayt) : Math.round(kb) + " KB";
+}
+/* Tarih: kutucukta kısa ("Bugün 20:22", "2 Kasım"), editörde uzun */
+function kaynakTarihi(iso, uzun) {
+  const t = new Date(iso);
+  if (isNaN(t.getTime())) return "";
+  const saat = t.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
+  const simdi = new Date();
+  if (uzun) return t.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }) + " " + saat;
+  if (t.toDateString() === simdi.toDateString()) return "Bugün " + saat;
+  const dun = new Date(simdi.getFullYear(), simdi.getMonth(), simdi.getDate() - 1);
+  if (t.toDateString() === dun.toDateString()) return "Dün " + saat;
+  return t.toLocaleDateString("tr-TR", t.getFullYear() === simdi.getFullYear()
+    ? { day: "numeric", month: "long" } : { day: "numeric", month: "long", year: "numeric" });
+}
+function yeniKimlik() {
+  if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+  const b = crypto.getRandomValues(new Uint8Array(16));
+  b[6] = (b[6] & 0x0f) | 0x40; b[8] = (b[8] & 0x3f) | 0x80;
+  const h = Array.from(b, x => x.toString(16).padStart(2, "0")).join("");
+  return h.slice(0, 8) + "-" + h.slice(8, 12) + "-" + h.slice(12, 16) + "-" + h.slice(16, 20) + "-" + h.slice(20);
 }
 
 async function kaynakBelirteci() {
@@ -9405,67 +9622,721 @@ async function kaynakIstek(yol, secenek) {
 async function kaynakHatasi(c) {
   let v = null;
   try { v = await c.json(); } catch (e) {}
-  if (v && v.kota) return "Kaynak hakkınız doldu. Yer açmak için Hesap ekranından resim silebilirsiniz.";
+  if (v && v.kota) return "Resim hakkınız doldu. Yer açmak için Hesap › Notlar › Resimler'den resim silebilirsiniz.";
   if (c.status === 401) return "Oturumunuz yenilenmeli; uygulamayı kapatıp yeniden açın.";
-  if (c.status === 403) return "Bu cihazdan Kaynak'a erişilemiyor (hesabınız başka cihazda açık olabilir).";
+  if (c.status === 403) return "Bu cihazdan Notlar'a erişilemiyor (hesabınız başka cihazda açık olabilir).";
   return (v && v.hata) || ("Sunucu hatası (" + c.status + ")");
 }
+/* Sıradaki işin hatası: kalıcı (yeniden denemekle düzelmez) ya da geçici (ağ, oturum, sunucu) */
+function kaynakHata(mesaj, kalici) { const e = new Error(mesaj); e.kalici = !!kalici; return e; }
 
-/* ---------- Liste: cihazdaki kopya + sunucu ---------- */
-async function kaynakCihazdanOku() {
-  if (KAYNAK.yuklendi) return;
-  try {
-    const k = await vt.oku("kaynak", "liste");
-    if (k && !KAYNAK.yuklendi) {
-      KAYNAK.tasnifler = k.tasnifler || []; KAYNAK.ogeler = k.ogeler || []; KAYNAK.durum = k.durum || null;
+/* ---------- Cihazdaki kopya ve sıra ---------- */
+function kaynakYukle() {
+  if (kaynakYukleme) return kaynakYukleme;
+  const nesil = oturumNesli;
+  kaynakYukleme = (async () => {
+    let k = null, q = null;
+    try { [k, q] = await Promise.all([vt.oku("kaynak", "liste"), vt.onEkli("kaynak", "k/")]); } catch (e) {}
+    if (oturumNesli !== nesil) return;
+    if (k) {
+      KAYNAK_SUNUCU.tasnifler = k.tasnifler || []; KAYNAK_SUNUCU.ogeler = k.ogeler || [];
+      KAYNAK_SUNUCU.durum = k.durum && k.durum.azami ? { azami: Number(k.durum.azami) } : null;
       KAYNAK.yuklendi = true;
     }
-  } catch (e) {}
+    if (Array.isArray(q)) {
+      const isler = q.map(x => x && x.is).filter(x => x && x.tur && x.id && x.no).sort((a, b) => a.no < b.no ? -1 : a.no > b.no ? 1 : 0);
+      isler.forEach(x => kaynakKayitliIsler.set(x.no, JSON.stringify(x)));
+      KAYNAK_KUYRUK = isler.concat(KAYNAK_KUYRUK);
+    }
+    kaynakGorunumuKur();
+  })();
+  return kaynakYukleme;
 }
 function kaynakSakla() {
-  vt.yaz("kaynak", { ad: "liste", tasnifler: KAYNAK.tasnifler, ogeler: KAYNAK.ogeler, durum: KAYNAK.durum }).catch(() => {});
+  vt.yaz("kaynak", { ad: "liste", tasnifler: KAYNAK_SUNUCU.tasnifler, ogeler: KAYNAK_SUNUCU.ogeler, durum: KAYNAK_SUNUCU.durum }).catch(() => {});
 }
-/* Sunucudan tazeler; bitince Kaynak (ya da Hesap) ekranı açıksa yeniden çizer */
+/* Sıranın yalnızca değişen işleri yazılır, çıkanlar silinir */
+function kaynakKuyruguSakla() {
+  const yazilacak = [], silinecek = [], simdiki = new Set();
+  KAYNAK_KUYRUK.forEach(is => {
+    if (!is.no) is.no = kaynakIsNo();
+    simdiki.add(is.no);
+    const j = JSON.stringify(is);
+    if (kaynakKayitliIsler.get(is.no) !== j) { yazilacak.push({ ad: "k/" + is.no, is: JSON.parse(j) }); kaynakKayitliIsler.set(is.no, j); }
+  });
+  kaynakKayitliIsler.forEach((j, no) => { if (!simdiki.has(no)) { silinecek.push("k/" + no); kaynakKayitliIsler.delete(no); } });
+  if (yazilacak.length || silinecek.length) vt.coklu("kaynak", yazilacak, silinecek).catch(() => {});
+}
+/* Gönderilmeyi bekleyen değişiklik sayısı (çıkışta uyarı için) */
+function kaynakBekleyenSayisi() { return KAYNAK_KUYRUK.length + kaynakSilinecek.size; }
+
+/* ---------- Görünüm: sunucu kopyası + sıradaki işler ---------- */
+/* İşin görünüme etkisi (T, O: kimlik → satır; satırlar yerinde değiştirilmez,
+   yenisi konur). Hedefi ya da üstü yoksa false. */
+function kaynakIsiUygula(is, T, O) {
+  switch (is.tur) {
+    case "tasnif_ekle": {
+      const var_ = T.get(is.id);
+      if (var_) { T.set(is.id, { ...var_, ad: is.ad }); return true; }
+      const ust = is.ust ? T.get(is.ust) : null;
+      if (is.ust && !ust) return false;
+      T.set(is.id, { id: is.id, ust: is.ust || null, ad: is.ad, derinlik: ust ? ust.derinlik + 1 : 1, olusma: is.zaman, guncellendi: is.zaman });
+      return true;
+    }
+    case "tasnif_adlandir": {
+      const t = T.get(is.id);
+      if (!t) return false;
+      T.set(is.id, { ...t, ad: is.ad });
+      return true;
+    }
+    case "tasnif_sil": {
+      if (!T.has(is.id)) return false;
+      const agac = kaynakAgacKimlikleri(is.id, T);
+      agac.forEach(k => T.delete(k));
+      O.forEach((o, k) => { if (agac.has(o.tasnif)) O.delete(k); });
+      return true;
+    }
+    case "not_ekle":
+    case "not_guncelle": {
+      const o = O.get(is.id);
+      if (o) {
+        if (o.tur !== "not") return false;
+        O.set(is.id, { ...o, baslik: is.baslik || null, metin: is.metin, bicim: is.bicim || "html", guncellendi: is.guncellendi || o.guncellendi });
+        return true;
+      }
+      if (is.tur === "not_guncelle" || !T.has(is.tasnif)) return false;
+      O.set(is.id, { id: is.id, tasnif: is.tasnif, tur: "not", baslik: is.baslik || null, metin: is.metin, bicim: is.bicim || "html",
+        not_id: null, olusma: is.zaman, guncellendi: is.guncellendi || is.zaman });
+      return true;
+    }
+    case "not_sil": {
+      if (!O.has(is.id)) return false;
+      O.delete(is.id);
+      O.forEach((o, k) => { if (o.not_id === is.id) O.delete(k); });
+      return true;
+    }
+    case "resim_ekle": {
+      if (O.has(is.id)) return true;
+      if (!T.has(is.tasnif)) return false;
+      if (is.not_id) { const n = O.get(is.not_id); if (!n || n.tur !== "not") return false; }
+      O.set(is.id, { id: is.id, tasnif: is.tasnif, tur: "resim", not_id: is.not_id || null, bayt: is.bayt, en: is.en, boy: is.boy,
+        olusma: is.zaman, guncellendi: is.zaman });
+      return true;
+    }
+    case "resim_sil": {
+      if (!O.has(is.id)) return false;
+      O.delete(is.id);
+      return true;
+    }
+  }
+  return false;
+}
+
+function kaynakGorunumuKur() {
+  const T = new Map(KAYNAK_SUNUCU.tasnifler.map(t => [t.id, t]));
+  const O = new Map(KAYNAK_SUNUCU.ogeler.map(o => [o.id, o]));
+  for (const is of KAYNAK_KUYRUK) {
+    if (!kaynakIsiUygula(is, T, O) || is.tur.endsWith("_sil")) continue;
+    /* Gönderilmemiş ve gönderilemeyen öğeler işaretlenir (son işin durumu geçerli) */
+    const M = is.tur.startsWith("tasnif") ? T : O;
+    const x = M.get(is.id);
+    if (x) M.set(is.id, { ...x, _bekliyor: true, _hata: is.durum === "hata" ? (is.mesaj || "Gönderilemedi.") : null });
+  }
+  KAYNAK_HAM = { tasnifler: T, ogeler: O };
+  const gT = new Map(T), gO = new Map(O);
+  kaynakSilinecek.forEach(s => kaynakIsiUygula({ tur: s.tur + "_sil", id: s.id }, gT, gO));
+  KAYNAK.tasnifler = Array.from(gT.values());
+  KAYNAK.ogeler = Array.from(gO.values());
+  /* Kullanım: bekleyen yüklemeler dahil, geri sayımdakiler de (henüz silinmedi) */
+  let kullanilan = 0;
+  O.forEach(o => { if (o.tur === "resim") kullanilan += Number(o.bayt) || 0; });
+  KAYNAK.durum = KAYNAK_SUNUCU.durum ? { azami: KAYNAK_SUNUCU.durum.azami, kullanilan } : null;
+}
+
+/* Görünüm değişti: açık ekranlar yeniden çizilir */
+function kaynakDegisti() {
+  kaynakGorunumuKur();
+  kaynakEkranlariniTazele();
+}
+function kaynakEkranlariniTazele() {
+  if (uygulamaAcik && aktifSekme === "kaynak") kaynakCiz();
+  if (hesapSayfasi) {
+    const eski = hesapSayfasi.querySelector(".kaynak-hesap");
+    if (eski) eski.replaceWith(kaynakHesapBolumu());
+  }
+  if (kaynakResimPaneli) kaynakResimPaneli.ciz();
+  if (kaynakEditor) kaynakEditor.bilgiYaz();
+}
+
+/* ---------- Sıraya iş ekleme ---------- */
+function kaynakBekleyenIs(sart) { return KAYNAK_KUYRUK.find(x => x !== kaynakGiden && sart(x)); }
+function kaynakKuyrukDegisti() {
+  kaynakKuyruguSakla();
+  kaynakDegisti();
+  kaynakGonder();
+}
+/* ertele: birden çok iş art arda eklenirken kaydetme, çizim ve gönderim sona bırakılır */
+function kaynakIsEkle(is, ertele) {
+  is.durum = "bekliyor";
+  delete is.mesaj;
+  /* Aynı notun (tasnifin) gönderilmemiş işi varsa yenisi onunla birleşir */
+  let ilk = null;
+  if (is.tur === "not_guncelle") ilk = kaynakBekleyenIs(x => x.id === is.id && (x.tur === "not_ekle" || x.tur === "not_guncelle"));
+  if (is.tur === "tasnif_adlandir") ilk = kaynakBekleyenIs(x => x.id === is.id && (x.tur === "tasnif_ekle" || x.tur === "tasnif_adlandir"));
+  if (ilk) {
+    if (is.tur === "not_guncelle") Object.assign(ilk, { baslik: is.baslik, metin: is.metin, bicim: is.bicim, guncellendi: is.guncellendi });
+    else ilk.ad = is.ad;
+    ilk.durum = "bekliyor";
+    delete ilk.mesaj;
+  } else { is.no = kaynakIsNo(); KAYNAK_KUYRUK.push(is); }
+  if (!ertele) kaynakKuyrukDegisti();
+}
+
+/* Silme (geri sayım bitince). Silinenle ilgili gönderilmemiş işler atılır;
+   öğe sunucuda varsa (ya da şu an gönderiliyorsa) silme işi sıraya girer,
+   yalnızca cihazdaysa başka bir şey gerekmez. */
+function kaynakSilIsiEkle(tur, id, ertele) {
+  const T = KAYNAK_HAM.tasnifler, O = KAYNAK_HAM.ogeler;
+  const tasnifler = tur === "tasnif" ? kaynakAgacKimlikleri(id, T) : new Set();
+  const ogeler = new Set();
+  if (tur === "tasnif") O.forEach(o => { if (tasnifler.has(o.tasnif)) ogeler.add(o.id); });
+  if (tur === "not") { ogeler.add(id); O.forEach(o => { if (o.not_id === id) ogeler.add(o.id); }); }
+  if (tur === "resim") ogeler.add(id);
+  const sunucuda = (tur === "tasnif" ? KAYNAK_SUNUCU.tasnifler : KAYNAK_SUNUCU.ogeler).some(x => x.id === id) ||
+    !!(kaynakGiden && kaynakGiden.id === id && kaynakGiden.tur === tur + "_ekle");
+  const ilgili = x => {
+    if (x === kaynakGiden) return false;
+    if (x.tur.startsWith("tasnif_")) return tasnifler.has(x.id);
+    if (ogeler.has(x.id)) return true;
+    if ((x.tur === "not_ekle" || x.tur === "resim_ekle") && tasnifler.has(x.tasnif)) return true;
+    return x.tur === "resim_ekle" && !!x.not_id && ogeler.has(x.not_id);
+  };
+  /* Sıradan atılan resimlerin (hiç yüklenmemiş) ve silinen resimlerin cihaz kopyaları */
+  const resimler = new Set(Array.from(ogeler).filter(k => (O.get(k) || {}).tur === "resim"));
+  KAYNAK_KUYRUK.forEach(x => { if (x.tur === "resim_ekle" && ilgili(x)) resimler.add(x.id); });
+  KAYNAK_KUYRUK = KAYNAK_KUYRUK.filter(x => !ilgili(x));
+  if (sunucuda) KAYNAK_KUYRUK.push({ tur: tur + "_sil", id, durum: "bekliyor", no: kaynakIsNo() });
+  resimler.forEach(k => {
+    const a = kaynakResimAdresleri.get(k);
+    if (a) { try { URL.revokeObjectURL(a); } catch (e) {} kaynakResimAdresleri.delete(k); }
+  });
+  if (resimler.size) vt.coklu("kaynak", [], Array.from(resimler, k => "r/" + k)).catch(() => {});
+  if (!ertele) kaynakKuyrukDegisti();
+}
+
+/* ---------- Gönderim ---------- */
+/* Sunucuyla konuşan işler (gönderim ve yenileme) sırayla çalışır: yenileme
+   gönderimin ortasında gelip yeni gönderilmiş bir öğeyi gizlemesin */
+let kaynakZincir = Promise.resolve();
+function kaynakSirada(is) {
+  const p = kaynakZincir.then(is);
+  kaynakZincir = p.catch(() => {});
+  return p;
+}
+
+function kaynakGonder() {
+  if (!kaynakKurulu() || !KULLANICI) return Promise.resolve();
+  if (kaynakGonderim) { kaynakGonderimTekrar = true; return kaynakGonderim; }
+  if (kaynakBeklemeZamanlayici) { clearTimeout(kaynakBeklemeZamanlayici); kaynakBeklemeZamanlayici = null; }
+  const nesil = oturumNesli;
+  kaynakGonderim = kaynakSirada(async () => {
+    await kaynakYukle();
+    do {
+      kaynakGonderimTekrar = false;
+      for (;;) {
+        if (oturumNesli !== nesil) return;
+        const is = KAYNAK_KUYRUK.find(x => x.durum !== "hata");
+        if (!is || !navigator.onLine) break;
+        kaynakGiden = is;
+        let satir = null, hata = null;
+        try { satir = await kaynakIsiGonder(is); } catch (e) { hata = e; }
+        kaynakGiden = null;
+        if (oturumNesli !== nesil) return;
+        if (!hata) {
+          KAYNAK_KUYRUK = KAYNAK_KUYRUK.filter(x => x !== is);
+          kaynakSunucuyaIsle(is, satir);
+          kaynakBeklemeSayisi = 0;
+          kaynakSakla(); kaynakKuyruguSakla(); kaynakDegisti();
+          continue;
+        }
+        if (!hata.kalici) {
+          if (!kaynakBeklemeZamanlayici) {
+            const sn = KAYNAK_BEKLEMELER[Math.min(kaynakBeklemeSayisi, KAYNAK_BEKLEMELER.length - 1)];
+            kaynakBeklemeSayisi++;
+            kaynakBeklemeZamanlayici = setTimeout(() => { kaynakBeklemeZamanlayici = null; kaynakGonder(); }, sn * 1000);
+          }
+          kaynakEkranlariniTazele();
+          return;
+        }
+        if (kaynakIsBosaDustu(is)) KAYNAK_KUYRUK = KAYNAK_KUYRUK.filter(x => x !== is);
+        else { is.durum = "hata"; is.mesaj = hata.message; }
+        kaynakKuyruguSakla(); kaynakDegisti();
+      }
+    } while (kaynakGonderimTekrar && navigator.onLine && oturumNesli === nesil);
+  }).finally(() => { kaynakGonderim = null; });
+  return kaynakGonderim;
+}
+
+/* Kalıcı hata alan iş, kullanıcı o arada öğeyi ya da üstünü sildiyse
+   sessizce düşer (gösterilecek bir şey kalmadı) */
+function kaynakIsBosaDustu(is) {
+  if (KAYNAK_KUYRUK.some(x => x !== is && x.id === is.id && x.tur.endsWith("_sil"))) return true;
+  const T = KAYNAK_HAM.tasnifler, O = KAYNAK_HAM.ogeler;
+  if ((is.tur === "not_ekle" || is.tur === "resim_ekle") && !T.has(is.tasnif)) return true;
+  if (is.tur === "resim_ekle" && is.not_id && !O.has(is.not_id)) return true;
+  if (is.tur === "tasnif_ekle" && is.ust && !T.has(is.ust)) return true;
+  if (is.tur === "resim_ekle" && !O.has(is.id)) return true;
+  return false;
+}
+
+/* Supabase hatası → kalıcı mı? SQL durum kodu olan veri hataları kalıcıdır;
+   kodsuz (ağ), yetki (cihaz devri, oturum) ve PostgREST hataları (ör. şema
+   henüz güncellenmemiş) geçicidir: düzelince kendiliğinden gider. */
+function kaynakSupabaseHatasi(h) {
+  const kod = String((h && h.code) || "");
+  const mesaj = (h && h.message) || "Kaydedilemedi.";
+  if (kod === "23505") { const e = kaynakHata(mesaj, true); e.kopya = true; return e; }
+  if (/^(P0001|23\d{3}|22\d{3})$/.test(kod)) return kaynakHata(kaynakSqlMesaji(mesaj), true);
+  return kaynakHata(kod ? mesaj : "Sunucuya ulaşılamadı.", false);
+}
+function kaynakSqlMesaji(m) {
+  if (/kaynak_oge_metin_check/.test(m)) return "Not çok uzun (biçimiyle en çok 60.000 harf).";
+  if (/kaynak_oge_baslik_check/.test(m)) return "Başlık çok uzun.";
+  return m;
+}
+async function kaynakSb(sorgu) {
+  let r;
+  try { r = await sorgu; } catch (e) { throw kaynakHata(hataMesaji(e), false); }
+  if (r.error) throw kaynakSupabaseHatasi(r.error);
+  return r;
+}
+async function kaynakWorker(yol, secenek) {
+  let c;
+  try { c = await kaynakIstek(yol, secenek); } catch (e) { throw kaynakHata(hataMesaji(e), false); }
+  if (c.ok) return c;
+  const m = await kaynakHatasi(c);
+  throw kaynakHata(m, [400, 404, 409, 413, 415].includes(c.status));
+}
+
+/* Bir işi sunucuya gönderir; dönen satır (varsa) sunucu kopyasına işlenir */
+async function kaynakIsiGonder(is) {
+  switch (is.tur) {
+    case "tasnif_ekle":
+      try {
+        const r = await kaynakSb(istemci.from("kaynak_tasnif").insert({ id: is.id, ust: is.ust || null, ad: is.ad, olusma: is.zaman }).select());
+        return r.data && r.data[0];
+      } catch (e) {
+        if (!e.kopya) throw e;
+        /* Önceki gönderim ulaşmış, cevabı kaybolmuştu; o arada ad değiştiyse yazılır */
+        const r = await kaynakSb(istemci.from("kaynak_tasnif").update({ ad: is.ad }).eq("id", is.id).select());
+        return r.data && r.data[0];
+      }
+    case "tasnif_adlandir": {
+      const r = await kaynakSb(istemci.from("kaynak_tasnif").update({ ad: is.ad }).eq("id", is.id).select());
+      if (!r.data || !r.data.length) throw kaynakHata("Tasnif bulunamadı.", true);
+      return r.data[0];
+    }
+    case "not_ekle":
+      try {
+        const r = await kaynakSb(istemci.from("kaynak_oge").insert({ id: is.id, tasnif: is.tasnif, tur: "not", baslik: is.baslik || null,
+          metin: is.metin, bicim: is.bicim || "html", olusma: is.zaman, guncellendi: is.guncellendi || is.zaman }).select());
+        return r.data && r.data[0];
+      } catch (e) {
+        if (!e.kopya) throw e;
+        return kaynakIsiGonder({ ...is, tur: "not_guncelle" });
+      }
+    case "not_guncelle": {
+      const r = await kaynakSb(istemci.from("kaynak_oge").update({ baslik: is.baslik || null, metin: is.metin, bicim: is.bicim || "html",
+        guncellendi: is.guncellendi }).eq("id", is.id).select());
+      if (!r.data || !r.data.length) throw kaynakHata("Not bulunamadı.", true);
+      return r.data[0];
+    }
+    case "resim_ekle": {
+      let blob = null;
+      try { const k = await vt.oku("kaynak", "r/" + is.id); blob = k && k.veri; } catch (e) {}
+      if (!blob) throw kaynakHata("Resim bu cihazda bulunamadı.", true);
+      const c = await kaynakWorker("/resim?tasnif=" + encodeURIComponent(is.tasnif) + "&en=" + is.en + "&boy=" + is.boy +
+        "&id=" + encodeURIComponent(is.id) + (is.not_id ? "&not=" + encodeURIComponent(is.not_id) : "") +
+        "&zaman=" + encodeURIComponent(is.zaman || ""),
+        { method: "POST", headers: { "Content-Type": "image/webp" }, body: blob });
+      return c.json();
+    }
+    case "tasnif_sil": await kaynakWorker("/tasnif/" + is.id, { method: "DELETE" }); return null;
+    case "not_sil": await kaynakWorker("/not/" + is.id, { method: "DELETE" }); return null;
+    case "resim_sil": await kaynakWorker("/resim/" + is.id, { method: "DELETE" }); return null;
+  }
+  throw kaynakHata("Bilinmeyen iş.", true);
+}
+
+function kaynakSunucuyaIsle(is, satir) {
+  const T = new Map(KAYNAK_SUNUCU.tasnifler.map(t => [t.id, t]));
+  const O = new Map(KAYNAK_SUNUCU.ogeler.map(o => [o.id, o]));
+  if (satir && satir.id === is.id && is.tur.startsWith("tasnif_") && !is.tur.endsWith("_sil")) T.set(satir.id, satir);
+  else if (satir && satir.id === is.id && /^(not_ekle|not_guncelle|resim_ekle)$/.test(is.tur)) O.set(satir.id, satir);
+  else kaynakIsiUygula(is, T, O);
+  KAYNAK_SUNUCU.tasnifler = Array.from(T.values());
+  KAYNAK_SUNUCU.ogeler = Array.from(O.values());
+}
+
+/* Gönderilemeyenleri yeniden dene (kullanıcı ister) */
+function kaynakHatalilariYenidenDene(id) {
+  KAYNAK_KUYRUK.forEach(x => { if (x.durum === "hata" && (!id || x.id === id)) { x.durum = "bekliyor"; delete x.mesaj; } });
+  kaynakBeklemeSayisi = 0;
+  kaynakKuyrukDegisti();
+}
+
+/* ---------- Sunucudan yenileme ---------- */
+/* Supabase bir istekte en çok 1000 satır verir: sayfa sayfa alınır */
+async function kaynakHepsiniCek(tablo) {
+  const hepsi = [];
+  for (let bas = 0; ; bas += 1000) {
+    const r = await istemci.from(tablo).select("*").order("olusma", { ascending: true }).order("id", { ascending: true }).range(bas, bas + 999);
+    if (r.error) throw r.error;
+    hepsi.push(...(r.data || []));
+    if (!r.data || r.data.length < 1000) return hepsi;
+  }
+}
+/* Sunucudan tazeler; bitince açık ekranlar yeniden çizilir, sıra gönderilir */
 function kaynakYenile() {
   if (!kaynakKurulu() || !KULLANICI) return Promise.resolve();
   if (kaynakYenileniyor) return kaynakYenileniyor;
   kaynakSonDeneme = Date.now();
-  kaynakYenileniyor = (async () => {
-    await kaynakCihazdanOku();
-    if (!navigator.onLine) return;
+  const nesil = oturumNesli;
+  kaynakYenileniyor = kaynakSirada(async () => {
+    await kaynakYukle();
+    if (!navigator.onLine || oturumNesli !== nesil) return;
     try {
-      const [t, o, d] = await Promise.all([
-        istemci.from("kaynak_tasnif").select("*").order("olusma", { ascending: true }),
-        istemci.from("kaynak_oge").select("*").order("olusma", { ascending: true }),
-        istemci.rpc("kaynak_durum")
-      ]);
-      if (t.error || o.error || d.error) throw (t.error || o.error || d.error);
-      KAYNAK.tasnifler = t.data || []; KAYNAK.ogeler = o.data || [];
-      KAYNAK.durum = d.data && d.data.izin ? { azami: Number(d.data.azami_bayt), kullanilan: Number(d.data.kullanilan_bayt) } : null;
+      const [t, o, d] = await Promise.all([kaynakHepsiniCek("kaynak_tasnif"), kaynakHepsiniCek("kaynak_oge"), istemci.rpc("kaynak_durum")]);
+      if (d.error) throw d.error;
+      if (oturumNesli !== nesil) return;
+      KAYNAK_SUNUCU.tasnifler = t; KAYNAK_SUNUCU.ogeler = o;
+      KAYNAK_SUNUCU.durum = d.data && d.data.izin ? { azami: Number(d.data.azami_bayt) } : null;
       KAYNAK.yuklendi = true; KAYNAK.hata = null;
-      kaynakSakla();
+      kaynakKuyruguBuda();
+      kaynakSakla(); kaynakKuyruguSakla();
+      kaynakGorunumuKur();
       kaynakResimleriBuda();
     } catch (e) {
-      KAYNAK.hata = "Kaynak yenilenemedi: " + hataMesaji(e);
+      KAYNAK.hata = "Notlar yenilenemedi: " + hataMesaji(e);
     }
-  })().finally(() => {
+  }).finally(() => {
     kaynakYenileniyor = null;
-    if (uygulamaAcik && aktifSekme === "kaynak") kaynakCiz();
-    if (hesapSayfasi && hesapSayfasi._ciz && hesapSayfasi.querySelector(".kaynak-hesap")) hesapSayfasi._ciz();
+    if (oturumNesli !== nesil) return;
+    kaynakEkranlariniTazele();
+    if (KAYNAK_KUYRUK.some(x => x.durum !== "hata")) kaynakGonder();
   });
   return kaynakYenileniyor;
 }
-/* Silinmiş resimlerin cihazdaki kopyaları atılır */
+/* Yeni sunucu kopyasına göre sıra ayıklanır: gönderilemeyen ekleme aslında
+   yapılmışsa (cevabı kaybolmuştu) ya da hedefi artık yoksa iş atılır;
+   zaten silinmiş öğenin silme işi de. */
+function kaynakKuyruguBuda() {
+  const T = new Map(KAYNAK_SUNUCU.tasnifler.map(t => [t.id, t]));
+  const O = new Map(KAYNAK_SUNUCU.ogeler.map(o => [o.id, o]));
+  KAYNAK_KUYRUK = KAYNAK_KUYRUK.filter(is => {
+    if (is === kaynakGiden) { kaynakIsiUygula(is, T, O); return true; }
+    if (is.durum === "hata" && is.tur.endsWith("_ekle") && (is.tur === "tasnif_ekle" ? T : O).has(is.id)) return false;
+    const etki = kaynakIsiUygula(is, T, O);
+    if (!etki && (is.tur.endsWith("_sil") || is.durum === "hata")) return false;
+    return true;
+  });
+}
+/* Artık hiçbir yerde geçmeyen resimlerin cihazdaki kopyaları atılır */
 async function kaynakResimleriBuda() {
   try {
-    const var_ = new Set(KAYNAK.ogeler.filter(o => o.tur === "resim").map(o => "r/" + o.id));
-    const hepsi = await vt.hepsi("kaynak");
-    const silinecek = hepsi.map(x => x.ad).filter(a => a.startsWith("r/") && !var_.has(a));
+    const var_ = new Set();
+    KAYNAK_HAM.ogeler.forEach(o => { if (o.tur === "resim") var_.add("r/" + o.id); });
+    KAYNAK_KUYRUK.forEach(x => { if (x.tur === "resim_ekle") var_.add("r/" + x.id); });
+    if (kaynakEditor) kaynakEditor.resimler().forEach(id => var_.add("r/" + id));
+    const anahtarlar = await vt.anahtarlar("kaynak");
+    const silinecek = anahtarlar.filter(a => typeof a === "string" && a.startsWith("r/") && !var_.has(a));
     if (silinecek.length) await vt.coklu("kaynak", [], silinecek);
   } catch (e) {}
 }
-function kaynakDurumunuDegistir(fark) {
-  if (KAYNAK.durum) KAYNAK.durum.kullanilan = Math.max(0, KAYNAK.durum.kullanilan + fark);
+
+/* Uygulama açılınca (ve bağlantı gelince) bekleyenler gönderilir */
+function kaynakBasla() {
+  if (!kaynakKurulu() || !KULLANICI) return;
+  kaynakYukle().then(() => { if (KAYNAK_KUYRUK.length) kaynakGonder(); });
+}
+window.addEventListener("online", () => { kaynakBeklemeSayisi = 0; if (uygulamaAcik) { kaynakGonder(); kaynakEkranlariniTazele(); } });
+window.addEventListener("offline", () => { if (uygulamaAcik) kaynakEkranlariniTazele(); });
+document.addEventListener("visibilitychange", () => {
+  if (!uygulamaAcik) return;
+  if (document.visibilityState === "hidden") {
+    /* Arka plana geçerken (telefon uygulamayı kapatabilir) yarım iş kalmasın */
+    if (kaynakEditor) kaynakEditor.kaydet(false);
+    kaynakSilmeleriniBitir();
+  } else kaynakGonder();
+});
+window.addEventListener("pagehide", () => {
+  if (!uygulamaAcik) return;
+  if (kaynakEditor) kaynakEditor.kaydet(false);
+  kaynakSilmeleriniBitir();
+});
+
+/* ---------- 5 saniye geri alınabilir silme ---------- */
+function kaynakSilmeyeBasla(tur, id, yazi) {
+  kaynakSilmeleriniBitir();
+  const s = { tur, id, zaman: null, bildirim: null };
+  kaynakSilinecek.set(id, s);
+  s.bildirim = geriAlBildirimi(yazi, KAYNAK_GERI_AL_SURESI, () => {
+    if (kaynakSilinecek.get(id) !== s) return;
+    clearTimeout(s.zaman);
+    kaynakSilinecek.delete(id);
+    kaynakDegisti();
+  });
+  s.zaman = setTimeout(() => kaynakSilmeyiBitir(id), KAYNAK_GERI_AL_SURESI);
+  kaynakDegisti();
+}
+function kaynakSilmeyiBitir(id) {
+  const s = kaynakSilinecek.get(id);
+  if (!s) return;
+  clearTimeout(s.zaman);
+  kaynakSilinecek.delete(id);
+  if (s.bildirim) s.bildirim.kapat();
+  kaynakSilIsiEkle(s.tur, s.id);
+}
+function kaynakSilmeleriniBitir() { Array.from(kaynakSilinecek.keys()).forEach(kaynakSilmeyiBitir); }
+
+/* Alttan çıkan "… silindi · Geri al (5)" bildirimi. Süre dolunca kendiliğinden
+   kapanır (işi çağıran yapar); Geri al'a dokunulursa geriAl çağrılır. */
+function geriAlBildirimi(yazi, sure, geriAl) {
+  document.querySelectorAll(".geri-al, .kisa-bildirim").forEach(e => e.remove());
+  const b = olustur("div", "geri-al");
+  b.setAttribute("role", "status");
+  const y = olustur("span", "geri-al-yazi");
+  y.textContent = yazi;
+  const d = olustur("button", "geri-al-dugme");
+  d.type = "button";
+  const sayac = olustur("span", "geri-al-sayac");
+  d.append("Geri al ", sayac);
+  b.append(y, d);
+  document.body.appendChild(b);
+  document.documentElement.classList.add("geri-al-var");
+  const bitis = Date.now() + sure;
+  const say = () => { sayac.textContent = "(" + Math.max(1, Math.ceil((bitis - Date.now()) / 1000)) + ")"; };
+  say();
+  const aralik = setInterval(say, 250);
+  let kapandi = false;
+  const kapat = () => {
+    if (kapandi) return;
+    kapandi = true;
+    clearInterval(aralik);
+    b.remove();
+    if (!document.querySelector(".geri-al")) document.documentElement.classList.remove("geri-al-var");
+  };
+  d.addEventListener("click", () => { kapat(); geriAl(); kisaBildirim("Geri alındı"); });
+  return { kapat };
+}
+
+/* ---------- Biçimli not: süzgeç ----------
+   Not metni yalnızca şu biçimde saklanır ve gösterilir:
+     bloklar: p, h3 (ara başlık), ul, ol, li, br
+     yazı:    b, i, u, s, span[data-renk=<NOT_RENKLERI'nden biri | yok>]
+     resim:   img[data-resim=<kimlik>][width][height]
+   Gelen her şey (kayıtlı not, yapıştırılan ya da tarayıcının editörde
+   ürettiği biçim) etkisiz bir belgede (DOMParser) çözülür, izinli olanlar
+   yeni öğelerle yeniden kurulur; geri kalan etiketler açılır (yazısı kalır),
+   betik, stil, çerçeve gibileri içiyle atılır. Hiçbir öznitelik kopyalanmaz. */
+const NOT_RENKLERI = { kirmizi: "#e5484d", turuncu: "#d9620a", yesil: "#2b9a55", mavi: "#2f7fe0", mor: "#9b4dca" };
+const NOT_RENK_ADLARI = { kirmizi: "Kırmızı", turuncu: "Turuncu", yesil: "Yeşil", mavi: "Mavi", mor: "Mor" };
+const NOT_ATILAN = new Set(["script", "style", "template", "iframe", "frame", "frameset", "object", "embed", "noscript", "svg", "math",
+  "head", "title", "meta", "link", "base", "select", "textarea", "input", "button", "canvas", "video", "audio", "source", "track",
+  "picture", "map", "area", "dialog", "form"]);
+const NOT_BLOKLAR = new Set(["p", "div", "section", "article", "header", "footer", "main", "aside", "nav", "blockquote", "pre",
+  "figure", "figcaption", "address", "dd", "dt", "dl", "tr", "caption", "h4", "h5", "h6", "center"]);
+
+/* "#abc", "#aabbcc", "rgb(1, 2, 3)" → "#rrggbb" (küçük harf); okunamazsa null */
+function renkOnaltilik(deger) {
+  const d = String(deger || "").trim().toLowerCase();
+  let m = /^#([0-9a-f]{3})$/.exec(d);
+  if (m) return "#" + m[1].split("").map(c => c + c).join("");
+  if (/^#[0-9a-f]{6}$/.test(d)) return d;
+  m = /^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*([\d.]+)\s*)?\)$/.exec(d);
+  if (m && (m[4] === undefined || Number(m[4]) > 0)) return "#" + [m[1], m[2], m[3]].map(x => Math.min(255, Number(x)).toString(16).padStart(2, "0")).join("");
+  return null;
+}
+function notRengi(deger, varsayilan) {
+  const h = renkOnaltilik(deger);
+  if (!h) return null;
+  for (const ad in NOT_RENKLERI) if (NOT_RENKLERI[ad] === h) return ad;
+  return varsayilan && h === varsayilan ? "yok" : null;
+}
+/* Bir öğenin taşıdığı yazı biçimleri (etiketinden ve style özniteliğinden) */
+function notYaziBicimleri(el, varsayilan) {
+  const ad = el.localName;
+  const b = { b: ad === "b" || ad === "strong", i: ad === "i" || ad === "em", u: ad === "u" || ad === "ins",
+    s: ad === "s" || ad === "strike" || ad === "del", renk: null };
+  const stil = (el.getAttribute("style") || "").toLowerCase();
+  const al = ozellik => { const m = new RegExp("(?:^|;)\\s*" + ozellik + "\\s*:\\s*([^;]+)").exec(stil); return m ? m[1].trim() : ""; };
+  const kalinlik = al("font-weight");
+  if (kalinlik === "bold" || kalinlik === "bolder" || Number(kalinlik) >= 600) b.b = true;
+  /* Açıkça "normal" denen biçim yok sayılır (Google Docs bütün yapıştırılanı
+     <b style="font-weight:normal"> içine alır) */
+  if (kalinlik === "normal" || kalinlik === "lighter" || (Number(kalinlik) > 0 && Number(kalinlik) < 600)) b.b = false;
+  const yazi = al("font-style");
+  if (yazi === "italic" || yazi === "oblique") b.i = true; else if (yazi === "normal") b.i = false;
+  const cizgi = al("text-decoration") + " " + al("text-decoration-line");
+  if (/underline/.test(cizgi)) b.u = true;
+  if (/line-through/.test(cizgi)) b.s = true;
+  if (/^\s*none\b/.test(cizgi)) b.u = b.s = false;
+  const renkAdi = el.getAttribute("data-renk");
+  if (renkAdi && (renkAdi === "yok" || NOT_RENKLERI[renkAdi])) b.renk = renkAdi;
+  else if (ad === "font" && el.getAttribute("color")) b.renk = notRengi(el.getAttribute("color"), varsayilan);
+  else if (al("color")) b.renk = notRengi(al("color"), varsayilan);
+  return b;
+}
+
+/* Metni süzüp DocumentFragment olarak kurar.
+   secenek: { varsayilan: "#rrggbb" (editörün yazı rengi → data-renk="yok"),
+              resimKabul: id → bool (hangi resim kimlikleri geçer; yoksa hepsi),
+              resimKur: (img, id) → void (editör/gösterim resmi yükler) } */
+function notHtmlDugumleri(kaynak, secenek) {
+  const s = secenek || {};
+  const parca = document.createDocumentFragment();
+  let govde;
+  try { govde = new DOMParser().parseFromString("<!doctype html><body>" + String(kaynak || ""), "text/html").body; }
+  catch (e) { return parca; }
+  if (!govde) return parca;
+
+  const gez = (kaynakDugum, hedef, derinlik) => {
+    for (const c of Array.from(kaynakDugum.childNodes)) {
+      if (c.nodeType === 3) { if (c.data) hedef.appendChild(document.createTextNode(c.data)); continue; }
+      if (c.nodeType !== 1) continue;
+      const ad = c.localName;
+      if (NOT_ATILAN.has(ad)) continue;
+      if (derinlik > 40) { hedef.appendChild(document.createTextNode(c.textContent || "")); continue; }
+      if (ad === "br") { hedef.appendChild(document.createElement("br")); continue; }
+      if (ad === "img") {
+        const id = String(c.getAttribute("data-resim") || "").toLowerCase();
+        if (!KIMLIK_DESENI.test(id) || (s.resimKabul && !s.resimKabul(id))) continue;
+        const img = document.createElement("img");
+        img.setAttribute("data-resim", id);
+        const en = parseInt(c.getAttribute("width"), 10), boy = parseInt(c.getAttribute("height"), 10);
+        if (en > 0 && en <= 8192 && boy > 0 && boy <= 8192) { img.setAttribute("width", String(en)); img.setAttribute("height", String(boy)); }
+        img.setAttribute("alt", "");
+        if (s.resimKur) s.resimKur(img, id);
+        hedef.appendChild(img);
+        continue;
+      }
+      if (ad === "hr") continue;
+      let yeni = null;
+      if (ad === "ul" || ad === "ol" || ad === "li" || ad === "p" || ad === "h3") yeni = document.createElement(ad);
+      else if (ad === "h1" || ad === "h2") yeni = document.createElement("h3");
+      else if (NOT_BLOKLAR.has(ad)) yeni = document.createElement("p");
+      else if (ad === "td" || ad === "th") { gez(c, hedef, derinlik + 1); hedef.appendChild(document.createTextNode(" ")); continue; }
+      if (yeni) {
+        /* Blok da yazı biçimi taşıyabilir (<p style="font-weight:bold">) */
+        const ic = yaziSarmala(yeni, notYaziBicimleri(c, s.varsayilan));
+        gez(c, ic, derinlik + 1);
+        hedef.appendChild(yeni);
+        continue;
+      }
+      /* Yazı öğesi ya da tanınmayan: biçimleri sarmalanır, etiketi açılır */
+      const kap = document.createDocumentFragment();
+      const ic = yaziSarmala(kap, notYaziBicimleri(c, s.varsayilan));
+      gez(c, ic, derinlik + 1);
+      hedef.appendChild(kap);
+    }
+  };
+  /* Biçimler iç içe sarmalanır; en içteki kap döner */
+  const yaziSarmala = (dis, b) => {
+    let ic = dis;
+    const sar = el => { ic.appendChild(el); ic = el; };
+    if (b.renk) { const sp = document.createElement("span"); sp.setAttribute("data-renk", b.renk); sar(sp); }
+    if (b.b) sar(document.createElement("b"));
+    if (b.i) sar(document.createElement("i"));
+    if (b.u) sar(document.createElement("u"));
+    if (b.s) sar(document.createElement("s"));
+    return ic;
+  };
+  gez(govde, parca, 0);
+  return notDuzenle(parca);
+}
+
+/* Kök düzeni: üst düzeydeki yazı ve yazı öğeleri <p> içine alınır, listesiz
+   <li> bir listeye, boş biçim öğeleri atılır */
+function notDuzenle(parca) {
+  const BLOK = /^(p|h3|ul|ol)$/;
+  const sonuc = document.createDocumentFragment();
+  let p = null;
+  for (const c of Array.from(parca.childNodes)) {
+    if (c.nodeType === 1 && BLOK.test(c.localName)) { p = null; sonuc.appendChild(c); continue; }
+    if (c.nodeType === 1 && c.localName === "li") {
+      p = null;
+      const son = sonuc.lastChild;
+      const liste = son && son.nodeType === 1 && son.localName === "ul" ? son : sonuc.appendChild(document.createElement("ul"));
+      liste.appendChild(c);
+      continue;
+    }
+    if (c.nodeType === 1 && c.localName === "br" && p) { p.appendChild(c); p = null; continue; }
+    if (c.nodeType === 3 && !p && !c.data.trim()) continue;   /* bloklar arası boşluk */
+    if (!p) { p = document.createElement("p"); sonuc.appendChild(p); }
+    p.appendChild(c);
+  }
+  /* İçi boş biçim öğeleri ve bloklar atılır (boş satır <p><br></p> olarak kalır) */
+  Array.from(sonuc.querySelectorAll("b, i, u, s, span")).reverse().forEach(e => { if (!e.firstChild) e.remove(); });
+  sonuc.querySelectorAll("p, h3").forEach(e => { if (!e.firstChild) e.remove(); });
+  sonuc.querySelectorAll("ul, ol").forEach(e => { if (!e.querySelector("li")) e.remove(); });
+  return sonuc;
+}
+
+/* Süzülmüş metni saklanacak yazıya çevirir */
+function notHtmlYaz(parcaYaDaKok) {
+  const kap = document.createElement("div");
+  kap.appendChild(parcaYaDaKok);
+  return kap.innerHTML;
+}
+function notHtmlTemizle(kaynak, secenek) { return notHtmlYaz(notHtmlDugumleri(kaynak, secenek)); }
+/* İlk sürümün düz notu → biçimli metin */
+function duzMetniHtmle(metin) {
+  return String(metin || "").replace(/\r\n?/g, "\n").split("\n").map(s => {
+    const e = s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    return "<p>" + (e || "<br>") + "</p>";
+  }).join("");
+}
+function notIcerigi(o) { return o.bicim === "html" ? o.metin || "" : duzMetniHtmle(o.metin); }
+
+/* Kutucuk için düz yazı (bloklar satır olur, liste öğeleri "• ") */
+function notDuzMetni(kok) {
+  const satirlar = [];
+  let satir = "";
+  const bitir = () => { satirlar.push(satir); satir = ""; };
+  const gez = n => {
+    for (const c of Array.from(n.childNodes)) {
+      if (c.nodeType === 3) { satir += c.data; continue; }
+      if (c.nodeType !== 1) continue;
+      const ad = c.localName;
+      if (ad === "br") { bitir(); continue; }
+      if (ad === "img") continue;
+      const blok = /^(p|h3|li|ul|ol)$/.test(ad);
+      if (blok && satir) bitir();
+      if (ad === "li") satir += "• ";
+      gez(c);
+      if (blok && satir) bitir();
+    }
+  };
+  gez(kok);
+  if (satir) bitir();
+  const temiz = satirlar.map(x => x.replace(/\u00a0/g, " ").replace(/[ \t]+/g, " ").trim());
+  return temiz.filter((x, i) => x || (i > 0 && temiz[i - 1])).join("\n").trim();
+}
+const kaynakOnizlemeBellegi = new Map();
+/* { metin, resimler: [kimlik…] } — not değişmedikçe bellekten */
+function kaynakNotOnizleme(o) {
+  const anahtar = o.id + "|" + (o.guncellendi || "") + "|" + (o.metin || "").length + "|" + o.bicim;
+  const b = kaynakOnizlemeBellegi.get(o.id);
+  if (b && b.anahtar === anahtar) return b;
+  const resimler = [];
+  const parca = o.bicim === "html"
+    ? notHtmlDugumleri(o.metin, { resimKur: (img, id) => resimler.push(id) })
+    : null;
+  const metin = parca ? notDuzMetni(parca) : String(o.metin || "").trim();
+  const sonuc = { anahtar, metin, resimler };
+  if (kaynakOnizlemeBellegi.size > 4000) kaynakOnizlemeBellegi.clear();
+  kaynakOnizlemeBellegi.set(o.id, sonuc);
+  return sonuc;
 }
 
 /* ---------- Resimler ---------- */
@@ -9475,11 +10346,15 @@ async function kaynakResimAdresi(id) {
   try { const k = await vt.oku("kaynak", "r/" + id); blob = k && k.veri; } catch (e) {}
   if (!blob) {
     if (!navigator.onLine || !kaynakKurulu()) return null;
-    const c = await kaynakIstek("/resim/" + id);
+    /* Henüz yüklenmemiş (sırada bekleyen) resim sunucuda yok */
+    if (KAYNAK_KUYRUK.some(x => x.tur === "resim_ekle" && x.id === id)) return null;
+    let c;
+    try { c = await kaynakIstek("/resim/" + id); } catch (e) { return null; }
     if (!c.ok) return null;
     blob = await c.blob();
     vt.yaz("kaynak", { ad: "r/" + id, veri: blob }).catch(() => {});
   }
+  if (kaynakResimAdresleri.has(id)) return kaynakResimAdresleri.get(id);
   const adres = URL.createObjectURL(blob);
   kaynakResimAdresleri.set(id, adres);
   return adres;
@@ -9488,13 +10363,30 @@ function kaynakResimAdresleriniBirak() {
   kaynakResimAdresleri.forEach(a => { try { URL.revokeObjectURL(a); } catch (e) {} });
   kaynakResimAdresleri.clear();
 }
+/* Resim ekrana yaklaşınca yüklenir (yüzlerce resim birden indirilmesin) */
+const kaynakGozcu = typeof IntersectionObserver === "function"
+  ? new IntersectionObserver(girdiler => girdiler.forEach(g => {
+      if (!g.isIntersecting) return;
+      kaynakGozcu.unobserve(g.target);
+      kaynakResmiYerlestir(g.target);
+    }), { rootMargin: "400px 0px" })
+  : null;
+function kaynakResmiYerlestir(img) {
+  const id = img.getAttribute("data-resim");
+  if (!id) return;
+  kaynakResimAdresi(id).then(a => { if (a) img.src = a; else img.classList.add("yok"); }).catch(() => img.classList.add("yok"));
+}
 /* <img> önce boş çizilir, resim gelince yerleşir */
 function kaynakResimOgesi(oge, sinif) {
   const img = olustur("img", sinif || "");
   img.alt = "Resim · " + kaynakYolu(oge.tasnif);
   img.decoding = "async";
+  img.setAttribute("data-resim", oge.id);
   if (oge.en && oge.boy) { img.width = oge.en; img.height = oge.boy; }
-  kaynakResimAdresi(oge.id).then(a => { if (a) img.src = a; else img.classList.add("yok"); }).catch(() => img.classList.add("yok"));
+  const hazir = kaynakResimAdresleri.get(oge.id);
+  if (hazir) img.src = hazir;
+  else if (kaynakGozcu) kaynakGozcu.observe(img);
+  else kaynakResmiYerlestir(img);
   return img;
 }
 
@@ -9507,12 +10399,12 @@ async function kaynakResmiHazirla(dosya) {
       const i = new Image();
       const adres = URL.createObjectURL(dosya);
       i.onload = () => { URL.revokeObjectURL(adres); coz(i); };
-      i.onerror = () => { URL.revokeObjectURL(adres); red(new Error("Resim okunamadı")); };
+      i.onerror = () => { URL.revokeObjectURL(adres); red(new Error("Resim okunamadı (" + (dosya.name || "dosya") + ").")); };
       i.src = adres;
     });
   }
   const en0 = kaynak.width || kaynak.naturalWidth, boy0 = kaynak.height || kaynak.naturalHeight;
-  if (!en0 || !boy0) throw new Error("Resim okunamadı");
+  if (!en0 || !boy0) throw new Error("Resim okunamadı.");
   const oran = Math.min(1, KAYNAK_KENAR / Math.max(en0, boy0));
   const en = Math.max(1, Math.round(en0 * oran)), boy = Math.max(1, Math.round(boy0 * oran));
   const tuval = document.createElement("canvas");
@@ -9530,142 +10422,90 @@ async function kaynakResmiHazirla(dosya) {
   tuval.width = tuval.height = 0;
   return { blob, en, boy };
 }
+/* Eklenecek resim hakka sığıyor mu (ek: aynı anda eklenmekte olanlar) */
+function kaynakHakkaSigar(bayt, ek) {
+  const d = KAYNAK.durum;
+  return !d || d.kullanilan + (ek || 0) + bayt <= d.azami;
+}
+const KAYNAK_HAK_DOLU = "Resim hakkınız doldu. Yer açmak için Hesap › Notlar › Resimler'den resim silebilirsiniz.";
 
+/* Tasnife doğrudan resim: küçültülür, cihaza yazılır, sıraya girer */
 async function kaynakResimEkle(tasnifId, dosyalar) {
-  const isler = Array.from(dosyalar).map(d => ({ dosya: d, tasnif: tasnifId, durum: "sirada", mesaj: "" }));
+  await kaynakYukle();
+  const isler = Array.from(dosyalar).map(d => ({ dosya: d, tasnif: tasnifId, durum: "sirada" }));
   kaynakIsleri.push(...isler);
   kaynakCiz();
+  let eklenen = 0;
+  const hatalar = [];
   for (const is of isler) {
-    if (is.durum !== "sirada") continue;
     try {
       is.durum = "hazirlaniyor"; kaynakCiz();
       const { blob, en, boy } = await kaynakResmiHazirla(is.dosya);
-      is.durum = "yukleniyor"; kaynakCiz();
-      const c = await kaynakIstek("/resim?tasnif=" + encodeURIComponent(tasnifId) + "&en=" + en + "&boy=" + boy,
-        { method: "POST", headers: { "Content-Type": "image/webp" }, body: blob });
-      if (!c.ok) {
-        const m = await kaynakHatasi(c);
-        if (c.status === 413) isler.forEach(x => { if (x.durum === "sirada") { x.durum = "hata"; x.mesaj = m; } });
-        throw new Error(m);
-      }
-      const satir = await c.json();
-      KAYNAK.ogeler.push(satir);
-      kaynakDurumunuDegistir(satir.bayt);
-      vt.yaz("kaynak", { ad: "r/" + satir.id, veri: blob }).catch(() => {});
-      kaynakIsleri.splice(kaynakIsleri.indexOf(is), 1);
+      if (!KAYNAK_HAM.tasnifler.has(tasnifId)) throw new Error("Tasnif silinmiş.");
+      if (!kaynakHakkaSigar(blob.size)) throw new Error(KAYNAK_HAK_DOLU);
+      const id = yeniKimlik();
+      try { await vt.yaz("kaynak", { ad: "r/" + id, veri: blob }); }
+      catch (e) { throw new Error("Resim cihaza kaydedilemedi (cihazda yer kalmamış olabilir)."); }
+      kaynakResimAdresleri.set(id, URL.createObjectURL(blob));
+      kaynakIsEkle({ tur: "resim_ekle", id, tasnif: tasnifId, not_id: null, bayt: blob.size, en, boy, zaman: new Date().toISOString() }, true);
+      eklenen++;
     } catch (e) {
-      is.durum = "hata"; is.mesaj = (e && e.message) || "Yüklenemedi";
+      hatalar.push((e && e.message) || "Resim eklenemedi.");
     }
-    kaynakCiz();
+    kaynakIsleri.splice(kaynakIsleri.indexOf(is), 1);
+    if (eklenen) kaynakKuyrukDegisti(); else kaynakCiz();
   }
-  kaynakSakla();
-  const hatali = isler.filter(x => x.durum === "hata");
-  if (hatali.length) {
-    hatali.forEach(x => { const i = kaynakIsleri.indexOf(x); if (i !== -1) kaynakIsleri.splice(i, 1); });
-    kaynakCiz();
-    uyariGoster({ baslik: hatali.length === isler.length ? "Resim eklenemedi" : hatali.length + " resim eklenemedi", metin: hatali[0].mesaj });
-  } else kisaBildirim(isler.length === 1 ? "Resim eklendi" : isler.length + " resim eklendi");
+  if (hatalar.length) {
+    uyariGoster({ baslik: hatalar.length === isler.length ? "Resim eklenemedi" : hatalar.length + " resim eklenemedi", metin: hatalar[0] });
+  } else if (eklenen && !navigator.onLine) {
+    kisaBildirim("Bağlantı yok: resim cihazda bekliyor, bağlanınca yüklenecek");
+  }
 }
 
-async function kaynakResimSil(oge, sonra) {
-  if (!(await soruSor({ baslik: "Resim silinsin mi?", metin: "Resim hesabınızdan ve bütün cihazlarınızdan silinir; geri alınamaz.", evet: "Sil", tehlike: true }))) return;
-  if (!navigator.onLine) { uyariGoster({ baslik: "Bağlantı yok", metin: "Silmek için internet bağlantısı gerekir." }); return; }
-  try {
-    const c = await kaynakIstek("/resim/" + oge.id, { method: "DELETE" });
-    if (!c.ok) throw new Error(await kaynakHatasi(c));
-    KAYNAK.ogeler = KAYNAK.ogeler.filter(o => o.id !== oge.id);
-    kaynakDurumunuDegistir(-oge.bayt);
-    const a = kaynakResimAdresleri.get(oge.id);
-    if (a) { try { URL.revokeObjectURL(a); } catch (e) {} kaynakResimAdresleri.delete(oge.id); }
-    vt.coklu("kaynak", [], ["r/" + oge.id]).catch(() => {});
-    kaynakSakla();
-    kisaBildirim("Resim silindi");
-    if (sonra) sonra();
-  } catch (e) { uyariGoster({ baslik: "Resim silinemedi", metin: hataMesaji(e) }); }
-}
-
-/* ---------- Tasnif ve not işlemleri ---------- */
-function kaynakBaglantiVarMi() {
-  if (navigator.onLine) return true;
-  uyariGoster({ baslik: "Bağlantı yok", metin: "Kaynak'ta değişiklik yapmak için internet bağlantısı gerekir. Bağlantı yokken yalnızca görüntüleyebilirsiniz." });
-  return false;
-}
+/* ---------- Tasnif işlemleri ---------- */
 async function kaynakTasnifAc(ust) {
-  if (!kaynakBaglantiVarMi()) return;
+  await kaynakYukle();
+  if (KAYNAK_HAM.tasnifler.size >= KAYNAK_TASNIF_SINIRI) {
+    uyariGoster({ baslik: "Tasnif sınırı", metin: "En çok " + KAYNAK_TASNIF_SINIRI + " tasnif açılabilir." });
+    return;
+  }
   const ad = await soruSor({ baslik: ust ? "Alt tasnif" : "Yeni tasnif", evet: "Oluştur",
     girdi: { yer: ust ? "ör. 3. hafta" : "ör. Algoritma", azami: 80 } });
   if (!ad) return;
-  const r = await istemci.from("kaynak_tasnif").insert({ ad, ust: ust || null }).select();
-  if (r.error) { uyariGoster({ baslik: "Tasnif oluşturulamadı", metin: hataMesaji(r.error) }); return; }
-  KAYNAK.tasnifler.push(r.data[0]);
-  kaynakSakla();
-  kaynakCiz();
+  if (ust && !KAYNAK_HAM.tasnifler.has(ust)) return;
+  kaynakIsEkle({ tur: "tasnif_ekle", id: yeniKimlik(), ust: ust || null, ad, zaman: new Date().toISOString() });
 }
 async function kaynakTasnifAdlandir(t) {
-  if (!kaynakBaglantiVarMi()) return;
   const ad = await soruSor({ baslik: "Tasnifin adı", evet: "Kaydet", girdi: { deger: t.ad, azami: 80 } });
-  if (!ad || ad === t.ad) return;
-  const r = await istemci.from("kaynak_tasnif").update({ ad }).eq("id", t.id).select();
-  if (r.error || !r.data || !r.data.length) { uyariGoster({ baslik: "Ad değiştirilemedi", metin: r.error ? hataMesaji(r.error) : "Tasnif bulunamadı." }); return; }
-  Object.assign(t, r.data[0]);
-  kaynakSakla();
-  kaynakCiz();
+  if (!ad || ad === t.ad || !KAYNAK_HAM.tasnifler.has(t.id)) return;
+  kaynakIsEkle({ tur: "tasnif_adlandir", id: t.id, ad });
 }
 async function kaynakTasnifSil(t) {
-  if (!kaynakBaglantiVarMi()) return;
   const agac = new Set(kaynakAltAgac(t.id));
   const ogeler = KAYNAK.ogeler.filter(o => agac.has(o.tasnif));
   const resim = ogeler.filter(o => o.tur === "resim").length, not = ogeler.length - resim, alt = agac.size - 1;
-  const parca = [];
-  if (alt) parca.push(alt + " alt tasnif");
-  if (resim) parca.push(resim + " resim");
-  if (not) parca.push(not + " not");
-  const metin = parca.length ? "İçindeki " + parca.join(", ") + " de silinir; geri alınamaz." : "Tasnif boş; silinir.";
-  if (!(await soruSor({ baslik: "“" + t.ad + "” silinsin mi?", metin, evet: "Sil", tehlike: true }))) return;
-  try {
-    if (resim) {
-      const c = await kaynakIstek("/tasnif/" + t.id, { method: "DELETE" });
-      if (!c.ok) throw new Error(await kaynakHatasi(c));
-    } else {
-      const r = await istemci.rpc("kaynak_tasnif_sil", { tasnif_id: t.id });
-      if (r.error) throw r.error;
-    }
-  } catch (e) { uyariGoster({ baslik: "Tasnif silinemedi", metin: hataMesaji(e) }); return; }
-  const silinenResimler = ogeler.filter(o => o.tur === "resim");
-  KAYNAK.tasnifler = KAYNAK.tasnifler.filter(x => !agac.has(x.id));
-  KAYNAK.ogeler = KAYNAK.ogeler.filter(o => !agac.has(o.tasnif));
-  silinenResimler.forEach(o => kaynakDurumunuDegistir(-o.bayt));
-  vt.coklu("kaynak", [], silinenResimler.map(o => "r/" + o.id)).catch(() => {});
-  kaynakSakla();
-  kisaBildirim("Tasnif silindi");
-  /* Silinen tasnifin içindeysek bir üstüne çıkılır */
-  if (agac.has(kaynakAcik)) geriDon(); else kaynakCiz();
+  /* İçi doluysa ne silineceği söylenir; boşsa doğrudan (5 sn geri alınabilir) */
+  if (resim || not || alt) {
+    const parca = [];
+    if (alt) parca.push(alt + " alt tasnif");
+    if (not) parca.push(not + " not");
+    if (resim) parca.push(resim + " resim");
+    if (!(await soruSor({ baslik: "“" + t.ad + "” silinsin mi?", metin: "İçindeki " + parca.join(", ") + " de silinir. Silindikten sonra 5 saniye içinde geri alabilirsiniz.",
+      evet: "Sil", tehlike: true }))) return;
+  }
+  /* Silinen tasnifin içindeysek önce bir üstüne çıkılır */
+  if (agac.has(kaynakAcik)) geriDon();
+  kaynakSilmeyeBasla("tasnif", t.id, "“" + t.ad + "” silindi");
 }
-async function kaynakNotYaz(tasnifId, oge) {
-  if (!kaynakBaglantiVarMi()) return;
-  const metin = await soruSor({ baslik: oge ? "Notu düzenle" : "Not", evet: "Kaydet",
-    girdi: { deger: oge ? oge.metin : "", yer: "Notunuz…", azami: 20000, cok: true } });
-  if (!metin || (oge && metin === oge.metin)) return;
-  const r = oge
-    ? await istemci.from("kaynak_oge").update({ metin }).eq("id", oge.id).select()
-    : await istemci.from("kaynak_oge").insert({ tasnif: tasnifId, tur: "not", metin }).select();
-  if (r.error || !r.data || !r.data.length) { uyariGoster({ baslik: "Not kaydedilemedi", metin: r.error ? hataMesaji(r.error) : "Not bulunamadı." }); return; }
-  if (oge) Object.assign(oge, r.data[0]); else KAYNAK.ogeler.push(r.data[0]);
-  kaynakSakla();
-  kaynakCiz();
-}
-async function kaynakNotSil(oge) {
-  if (!kaynakBaglantiVarMi()) return;
-  if (!(await soruSor({ baslik: "Not silinsin mi?", evet: "Sil", tehlike: true }))) return;
-  const r = await istemci.from("kaynak_oge").delete().eq("id", oge.id);
-  if (r.error) { uyariGoster({ baslik: "Not silinemedi", metin: hataMesaji(r.error) }); return; }
-  KAYNAK.ogeler = KAYNAK.ogeler.filter(o => o.id !== oge.id);
-  kaynakSakla();
-  kaynakCiz();
+async function kaynakHataliIsiGoster(o) {
+  const tekrar = await soruSor({ baslik: o.tur === "resim" ? "Resim gönderilemedi" : "Gönderilemedi",
+    metin: o._hata + " Bu cihazda duruyor; yeniden deneyebilir ya da silebilirsiniz.", evet: "Yeniden dene", hayir: "Kapat" });
+  if (tekrar) kaynakHatalilariYenidenDene(o.id);
 }
 
 /* ---------- Ekran ---------- */
 function kaynakAc(id) {
+  kaynakFabAcik = null;
   const once = kaynakAcik;
   derinlesGit(() => { kaynakAcik = once; kaynakCiz(); window.scrollTo(0, 0); });
   kaynakAcik = id;
@@ -9679,33 +10519,43 @@ function kaynakKotaCubugu() {
   if (!d) return kap;
   const oran = d.azami ? Math.min(1, d.kullanilan / d.azami) : 1;
   const yazi = olustur("div", "kaynak-kota-yazi");
-  yazi.textContent = mbYazisi(d.kullanilan) + " / " + mbYazisi(d.azami) + " kullanıldı";
+  yazi.textContent = mbYazisi(d.kullanilan) + " / " + mbYazisi(d.azami) + " kullanıldı (resimler)";
   const cubuk = olustur("div", "kaynak-kota-cubuk" + (oran >= 1 ? " dolu" : oran >= 0.9 ? " az" : ""));
   const dolu = olustur("span");
   dolu.style.width = Math.round(oran * 100) + "%";
   cubuk.appendChild(dolu);
   cubuk.setAttribute("role", "progressbar");
   cubuk.setAttribute("aria-valuenow", String(Math.round(oran * 100)));
-  cubuk.setAttribute("aria-label", "Kaynak hakkının kullanılan kısmı");
+  cubuk.setAttribute("aria-label", "Resim hakkının kullanılan kısmı");
   kap.append(yazi, cubuk);
   return kap;
 }
+
+const KAYNAK_SIMGELERI = {
+  tasnif: '<path d="M3.5 7.2a2 2 0 0 1 2-2h4l2 2.3h7a2 2 0 0 1 2 2v8.3a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z"/>',
+  altTasnif: '<path d="M3.5 7.2a2 2 0 0 1 2-2h4l2 2.3h7a2 2 0 0 1 2 2v8.3a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z"/><path d="M12 11v5M9.5 13.5h5"/>',
+  resim: '<rect x="3.5" y="5" width="17" height="14" rx="2.2"/><circle cx="9" cy="10" r="1.7"/><path d="m4.5 17.5 4.8-4.8 3.7 3.7 2.4-2.4 4.1 4.1"/>',
+  not: '<path d="M14.5 3.5h-8a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-10Z"/><path d="M14.5 3.5v5h5"/><path d="M8 13h8M8 16.5h5"/>',
+  arti: '<path d="M12 5v14M5 12h14"/>',
+  bekliyor: '<path d="M12 16V6.5M8 10l4-4 4 4"/><path d="M5 19h14"/>'
+};
+const kaynakSimge = ad => '<svg viewBox="0 0 24 24" aria-hidden="true">' + KAYNAK_SIMGELERI[ad] + "</svg>";
 
 function kaynakTasnifSatiri(t) {
   const d = olustur("button", "ders-satiri kaynak-tasnif");
   const simge = olustur("span", "ders-simge kaynak-simge");
   simge.setAttribute("aria-hidden", "true");
-  simge.innerHTML = '<svg viewBox="0 0 24 24"><path d="M3.5 7.2a2 2 0 0 1 2-2h4l2 2.3h7a2 2 0 0 1 2 2v8.3a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z"/></svg>';
+  simge.innerHTML = '<svg viewBox="0 0 24 24">' + KAYNAK_SIMGELERI.tasnif + "</svg>";
   const ad = olustur("span", "ad");
   ad.textContent = t.ad;
   const agac = new Set(kaynakAltAgac(t.id));
-  const og = KAYNAK.ogeler.filter(o => agac.has(o.tasnif));
+  const og = KAYNAK.ogeler.filter(o => agac.has(o.tasnif) && !o.not_id);
   const resim = og.filter(o => o.tur === "resim").length, not = og.length - resim, alt = kaynakAltlari(t.id).length;
   const durum = olustur("span", "durum");
   const parca = [];
   if (alt) parca.push(alt + " tasnif");
-  if (resim) parca.push(resim + " resim");
   if (not) parca.push(not + " not");
+  if (resim) parca.push(resim + " resim");
   durum.textContent = parca.join(" · ") || "boş";
   const ok = olustur("span", "ok");
   ok.textContent = "›";
@@ -9714,30 +10564,65 @@ function kaynakTasnifSatiri(t) {
   return d;
 }
 
-function kaynakCiz() {
-  const sayfa = $("#sayfaKaynak");
-  if (!sayfa) return;
-  sayfa.innerHTML = "";
-  if (!kaynakKurulu()) {
-    const b = olustur("p", "bos");
-    b.textContent = "Kaynak henüz kurulmadı.";
-    sayfa.appendChild(b);
-    return;
-  }
-  const t = kaynakAcik ? kaynakTasnifi(kaynakAcik) : null;
-  if (kaynakAcik && !t && KAYNAK.yuklendi) kaynakAcik = null;
+/* Bağlantı ve gönderim durumu (ekranın başında) */
+function kaynakUyarilari(sayfa) {
+  const bekleyen = KAYNAK_KUYRUK.filter(x => x.durum !== "hata").length;
+  const hatali = KAYNAK_KUYRUK.filter(x => x.durum === "hata");
   if (!navigator.onLine) {
     const n = olustur("p", "kaynak-uyari");
-    n.textContent = "Bağlantı yok: kayıtlı olanları görüntüleyebilirsiniz; değişiklik için internet gerekir.";
+    n.textContent = bekleyen
+      ? "Bağlantı yok. " + bekleyen + " değişiklik bu cihazda saklanıyor; bağlantı gelince hesabınıza gönderilecek."
+      : "Bağlantı yok. Yine de not yazabilir, resim ekleyebilirsiniz; bağlantı gelince gönderilir.";
     sayfa.appendChild(n);
   } else if (KAYNAK.hata) {
     const n = olustur("p", "kaynak-uyari");
     n.textContent = KAYNAK.hata;
     sayfa.appendChild(n);
   }
+  if (hatali.length) {
+    const n = olustur("div", "kaynak-uyari hata");
+    const y = olustur("p");
+    y.textContent = (hatali.length === 1 ? "Bir değişiklik" : hatali.length + " değişiklik") + " gönderilemedi: " + hatali[0].mesaj;
+    const d = olustur("button");
+    d.textContent = "Yeniden dene";
+    d.addEventListener("click", () => kaynakHatalilariYenidenDene());
+    n.append(y, d);
+    sayfa.appendChild(n);
+  }
+}
+
+/* Ekranda görünen her şeyin özeti: değişmediyse sayfa yeniden çizilmez
+   (arka planda gönderim sürerken açık menü kapanmasın, dokunulan kutucuk
+   yerinden kalkmasın) */
+let kaynakSonImza = "";
+function kaynakImzasi() {
+  const p = [kaynakAcik, navigator.onLine, KAYNAK.hata, KAYNAK.yuklendi, kaynakKurulu(), JSON.stringify(KAYNAK.durum),
+    KAYNAK_KUYRUK.filter(x => x.durum !== "hata").length, KAYNAK_KUYRUK.filter(x => x.durum === "hata").map(x => x.mesaj).join("|")];
+  KAYNAK.tasnifler.forEach(t => p.push(t.id, t.ad, t.ust, t.derinlik));
+  KAYNAK.ogeler.forEach(o => p.push(o.id, o.tasnif, o.not_id, o.guncellendi, o._bekliyor ? 1 : 0, o._hata || "", o.baslik, (o.metin || "").length));
+  kaynakIsleri.forEach(x => p.push(x.tasnif, x.durum));
+  return p.join("\u0001");
+}
+function kaynakCiz() {
+  const sayfa = $("#sayfaKaynak");
+  if (!sayfa) return;
+  const imza = kaynakImzasi();
+  if (imza === kaynakSonImza && sayfa.childElementCount) return;
+  kaynakSonImza = imza;
+  sayfa.innerHTML = "";
+  if (!kaynakKurulu()) {
+    const b = olustur("p", "bos");
+    b.textContent = "Notlar henüz kurulmadı.";
+    sayfa.appendChild(b);
+    return;
+  }
+  if (!kaynakYukleme && KULLANICI) kaynakYukle().then(() => { if (uygulamaAcik && aktifSekme === "kaynak") kaynakCiz(); });
+  const t = kaynakAcik ? kaynakTasnifi(kaynakAcik) : null;
+  if (kaynakAcik && !t && KAYNAK.yuklendi) kaynakAcik = null;
+  kaynakUyarilari(sayfa);
   if (!KAYNAK.yuklendi) {
     const b = olustur("p", "bos");
-    b.textContent = navigator.onLine ? "Yükleniyor…" : "Kaynak bu cihaza henüz inmedi; bağlanınca açılır.";
+    b.textContent = navigator.onLine ? "Yükleniyor…" : "Notlar bu cihaza henüz inmedi; bağlanınca açılır.";
     sayfa.appendChild(b);
     return;
   }
@@ -9746,40 +10631,39 @@ function kaynakCiz() {
 
 function kaynakKokCiz(sayfa) {
   const h = olustur("h2", "ders-basligi");
-  h.textContent = "Kaynak";
+  h.textContent = "Notlar";
   const a = olustur("p", "kaynak-aciklama");
-  a.textContent = "Derste çektiğiniz resimleri ve notlarınızı tasnif edin. Yalnızca siz görürsünüz.";
+  a.textContent = "Ders notlarınızı ve derste çektiğiniz resimleri tasnif edin. Yalnızca siz görürsünüz.";
   sayfa.append(h, a, kaynakKotaCubugu());
   const kokler = kaynakAltlari(null);
   if (!kokler.length) {
     const b = olustur("p", "bos");
-    b.textContent = "Henüz tasnif yok. Bir ders ya da konu adıyla ilk tasnifinizi oluşturun; içine resim ve not ekleyebilir, en çok üç kademe alt tasnif açabilirsiniz.";
+    b.textContent = "Henüz tasnif yok. Sağ alttaki + ile bir ders ya da konu adıyla ilk tasnifinizi oluşturun; içine not ve resim ekleyebilir, en çok üç kademe alt tasnif açabilirsiniz.";
     sayfa.appendChild(b);
   } else {
     const liste = olustur("div", "kaynak-liste");
     kokler.forEach(t => liste.appendChild(kaynakTasnifSatiri(t)));
     sayfa.appendChild(liste);
   }
-  const eylem = olustur("div", "eylem");
-  const yeni = olustur("button", "ana");
-  yeni.textContent = "+ Yeni tasnif";
-  yeni.addEventListener("click", () => kaynakTasnifAc(null));
-  eylem.appendChild(yeni);
-  sayfa.appendChild(eylem);
+  kaynakFab(sayfa, [{ ad: "Yeni tasnif", simge: "tasnif", is: () => kaynakTasnifAc(null) }]);
 }
 
 function kaynakTasnifCiz(sayfa, t) {
   const ust = t.ust ? kaynakTasnifi(t.ust) : null;
   const geri = olustur("button", "geri");
-  geri.textContent = "‹ " + (ust ? ust.ad : "Kaynak");
+  geri.textContent = "‹ " + (ust ? ust.ad : "Notlar");
   geri.addEventListener("click", geriDon);
   sayfa.appendChild(geri);
 
   const baslik = olustur("div", "kaynak-baslik");
   const h = olustur("h2", "ders-basligi");
   h.textContent = t.ad;
-  const yol = olustur("div", "kaynak-yol");
-  yol.textContent = t.derinlik > 1 ? kaynakYolu(t.id) : "";
+  baslik.append(h);
+  if (t.derinlik > 1) {
+    const yol = olustur("div", "kaynak-yol");
+    yol.textContent = kaynakYolu(t.id);
+    baslik.append(yol);
+  }
   const menu = olustur("div", "kaynak-menu");
   const adlandir = olustur("button");
   adlandir.textContent = "Adını değiştir";
@@ -9788,15 +10672,25 @@ function kaynakTasnifCiz(sayfa, t) {
   sil.textContent = "Tasnifi sil";
   sil.addEventListener("click", () => kaynakTasnifSil(t));
   menu.append(adlandir, sil);
-  baslik.append(h);
-  if (yol.textContent) baslik.append(yol);
   baslik.append(menu);
   sayfa.appendChild(baslik);
 
-  /* Ekleme düğmeleri */
-  const eylem = olustur("div", "eylem kaynak-eylem");
-  const resimDugme = olustur("button", "ana");
-  resimDugme.textContent = "Resim ekle";
+  const altlar = kaynakAltlari(t.id);
+  if (altlar.length) {
+    const liste = olustur("div", "kaynak-liste");
+    altlar.forEach(a => liste.appendChild(kaynakTasnifSatiri(a)));
+    sayfa.appendChild(liste);
+  }
+  const ogeler = kaynakOgeleri(t.id);
+  const isler = kaynakIsleri.filter(x => x.tasnif === t.id);
+  if (!ogeler.length && !isler.length && !altlar.length) {
+    const b = olustur("p", "bos");
+    b.textContent = "Bu tasnif boş. Sağ alttaki + ile not yazın ya da derste çektiğiniz resimleri ekleyin" +
+      (t.derinlik < KAYNAK_KADEME ? "; alt tasnif de açabilirsiniz." : ".");
+    sayfa.appendChild(b);
+  }
+  if (ogeler.length || isler.length) sayfa.appendChild(kaynakIzgara(ogeler, isler));
+
   const secici = olustur("input");
   secici.type = "file"; secici.accept = "image/*"; secici.multiple = true; secici.hidden = true;
   secici.addEventListener("change", () => {
@@ -9804,136 +10698,834 @@ function kaynakTasnifCiz(sayfa, t) {
     secici.value = "";
     if (d.length) kaynakResimEkle(t.id, d);
   });
-  resimDugme.addEventListener("click", () => { if (kaynakBaglantiVarMi()) secici.click(); });
-  const notDugme = olustur("button");
-  notDugme.textContent = "Not yaz";
-  notDugme.addEventListener("click", () => kaynakNotYaz(t.id, null));
-  eylem.append(resimDugme, notDugme);
-  if (t.derinlik < KAYNAK_KADEME) {
-    const alt = olustur("button");
-    alt.textContent = "Alt tasnif";
-    alt.addEventListener("click", () => kaynakTasnifAc(t.id));
-    eylem.appendChild(alt);
-  }
-  sayfa.append(eylem, secici);
-
-  /* Alt tasnifler */
-  const altlar = kaynakAltlari(t.id);
-  if (altlar.length) {
-    const liste = olustur("div", "kaynak-liste");
-    altlar.forEach(a => liste.appendChild(kaynakTasnifSatiri(a)));
-    sayfa.appendChild(liste);
-  }
-
-  /* İçindekiler: zaman sırasıyla; art arda resimler bir ızgara olur */
-  const ogeler = kaynakOgeleri(t.id);
-  const isler = kaynakIsleri.filter(x => x.tasnif === t.id);
-  if (!ogeler.length && !isler.length && !altlar.length) {
-    const b = olustur("p", "bos");
-    b.textContent = "Bu tasnif boş. Derste çektiğiniz resimleri ekleyin ya da bir not yazın." +
-      (t.derinlik < KAYNAK_KADEME ? " Alt tasnif de açabilirsiniz." : "");
-    sayfa.appendChild(b);
-  }
-  let izgara = null;
-  const izgaraAl = () => {
-    if (!izgara) { izgara = olustur("div", "kaynak-izgara"); sayfa.appendChild(izgara); }
-    return izgara;
-  };
-  ogeler.forEach(o => {
-    if (o.tur === "resim") {
-      const kutu = olustur("div", "kaynak-resim");
-      const ac = olustur("button", "kaynak-resim-ac");
-      ac.setAttribute("aria-label", "Resmi büyüt");
-      const img = kaynakResimOgesi(o);
-      ac.appendChild(img);
-      ac.addEventListener("click", () => { if (img.src) buyutecAc(img); });
-      const sil = olustur("button", "kaynak-resim-sil");
-      sil.setAttribute("aria-label", "Resmi sil");
-      sil.textContent = "✕";
-      sil.addEventListener("click", () => kaynakResimSil(o, kaynakCiz));
-      kutu.append(ac, sil);
-      izgaraAl().appendChild(kutu);
-      return;
-    }
-    izgara = null;
-    const kart = olustur("div", "kaynak-not");
-    const metin = olustur("p", "kaynak-not-metin");
-    metin.textContent = o.metin;
-    const alt = olustur("div", "kaynak-not-alt");
-    const zaman = olustur("span");
-    try { zaman.textContent = new Date(o.guncellendi || o.olusma).toLocaleString("tr-TR", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" }); } catch (e) {}
-    const duzenle = olustur("button");
-    duzenle.textContent = "Düzenle";
-    duzenle.addEventListener("click", () => kaynakNotYaz(t.id, o));
-    const sil = olustur("button", "tehlike");
-    sil.textContent = "Sil";
-    sil.addEventListener("click", () => kaynakNotSil(o));
-    alt.append(zaman, duzenle, sil);
-    kart.append(metin, alt);
-    sayfa.appendChild(kart);
-  });
-  isler.forEach(is => {
-    const kutu = olustur("div", "kaynak-resim kaynak-is" + (is.durum === "hata" ? " hata" : ""));
-    kutu.textContent = is.durum === "hazirlaniyor" ? "Küçültülüyor…" : is.durum === "yukleniyor" ? "Yükleniyor…" : is.durum === "hata" ? "Eklenemedi" : "Sırada";
-    izgaraAl().appendChild(kutu);
-  });
-  sayfa.appendChild(kaynakKotaCubugu());
+  sayfa.appendChild(secici);
+  const secenekler = [
+    { ad: "Not", simge: "not", is: () => kaynakNotAc(t.id, null) },
+    { ad: "Resim", simge: "resim", is: () => secici.click() }
+  ];
+  if (t.derinlik < KAYNAK_KADEME) secenekler.push({ ad: "Alt tasnif", simge: "altTasnif", is: () => kaynakTasnifAc(t.id) });
+  kaynakFab(sayfa, secenekler);
 }
 
-/* ---------- Hesap ekranı: Kaynak resimleri ---------- */
+/* İki sütunlu kutucuklar: en son değişen üstte; her kutucuk o an daha kısa
+   olan sütuna konur (yükseklik içerikten tahmin edilir, ölçüm beklenmez) */
+function kaynakIzgara(ogeler, isler) {
+  const kap = olustur("div", "kaynak-izgara");
+  kap.setAttribute("data-buyutec-dizi", "");
+  const sutunlar = [olustur("div", "kaynak-sutun"), olustur("div", "kaynak-sutun")];
+  const boy = [0, 0];
+  const koy = (el, h) => { const i = boy[0] <= boy[1] ? 0 : 1; sutunlar[i].appendChild(el); boy[i] += h + 10; };
+  isler.forEach(is => {
+    const k = olustur("div", "kaynak-kart kaynak-is" + (is.durum === "hata" ? " hata" : ""));
+    k.textContent = is.durum === "hazirlaniyor" ? "Küçültülüyor…" : "Sırada";
+    koy(k, 100);
+  });
+  const sirali = ogeler.slice().sort((a, b) => kaynakDegisimZamani(b) - kaynakDegisimZamani(a) || String(b.id).localeCompare(String(a.id)));
+  let sira = 0;
+  sirali.forEach(o => {
+    if (o.tur === "resim") {
+      const oran = Math.max(0.6, Math.min(1.5, (o.boy || 1) / (o.en || 1)));
+      koy(kaynakResimKarti(o, sira++, oran), 160 * oran);
+    } else {
+      const k = kaynakNotKarti(o);
+      koy(k.el, k.boy);
+    }
+  });
+  kap.append(...sutunlar);
+  return kap;
+}
+
+function kaynakDurumRozeti(o) {
+  if (!o._bekliyor && !o._hata) return null;
+  const r = olustur("span", "kk-rozet" + (o._hata ? " hata" : ""));
+  if (o._hata) { r.textContent = "!"; r.title = "Gönderilemedi"; r.setAttribute("aria-label", "Gönderilemedi"); }
+  else { r.innerHTML = kaynakSimge("bekliyor"); r.title = "Gönderilmeyi bekliyor"; r.setAttribute("aria-label", "Gönderilmeyi bekliyor"); }
+  return r;
+}
+
+function kaynakResimKarti(o, sira, oran) {
+  const k = olustur("div", "kaynak-kart kaynak-resim-kart" + (o._hata ? " hata" : ""));
+  const ac = olustur("button", "kaynak-resim-ac");
+  ac.setAttribute("aria-label", "Resmi büyüt");
+  ac.style.aspectRatio = "1 / " + oran.toFixed(3);
+  const img = kaynakResimOgesi(o);
+  img.dataset.sira = String(sira);
+  ac.appendChild(img);
+  ac.addEventListener("click", () => {
+    if (o._hata) { kaynakHataliIsiGoster(o); return; }
+    if (img.src && img.naturalWidth) buyutecAc(img);
+  });
+  const sil = olustur("button", "kaynak-resim-sil");
+  sil.setAttribute("aria-label", "Resmi sil");
+  sil.textContent = "✕";
+  sil.addEventListener("click", () => kaynakSilmeyeBasla("resim", o.id, "Resim silindi"));
+  k.append(ac, sil);
+  const r = kaynakDurumRozeti(o);
+  if (r) k.appendChild(r);
+  return k;
+}
+
+function kaynakNotKarti(o) {
+  const k = olustur("button", "kaynak-kart kaynak-not-kart" + (o._hata ? " hata" : ""));
+  const on = kaynakNotOnizleme(o);
+  let h = 44;   /* iç boşluk ve tarih satırı */
+  /* Notun ilk resmi kutucuğun başında küçük görünür */
+  const ilkResim = on.resimler.map(id => KAYNAK_HAM.ogeler.get(id)).find(x => x && x.tur === "resim");
+  if (ilkResim) {
+    const r = olustur("div", "kk-resim");
+    r.appendChild(kaynakResimOgesi(ilkResim));
+    k.appendChild(r);
+    h += 96;
+  }
+  if (o.baslik) {
+    const b = olustur("div", "kk-baslik");
+    b.textContent = o.baslik;
+    k.appendChild(b);
+    h += Math.min(2, Math.ceil(o.baslik.length / 16)) * 22;
+  }
+  if (on.metin) {
+    const m = olustur("div", "kk-metin");
+    m.textContent = on.metin;
+    k.appendChild(m);
+    const satir = on.metin.split("\n").reduce((n, s) => n + Math.max(1, Math.ceil(s.length / 19)), 0);
+    h += Math.min(7, satir) * 21;
+  } else if (!o.baslik && !ilkResim) {
+    const m = olustur("div", "kk-metin bos");
+    m.textContent = "Boş not";
+    k.appendChild(m);
+    h += 21;
+  }
+  const alt = olustur("div", "kk-alt");
+  const tarih = olustur("span");
+  tarih.textContent = kaynakTarihi(o.guncellendi || o.olusma);
+  alt.appendChild(tarih);
+  if (on.resimler.length) {
+    const r = olustur("span", "kk-resim-sayisi");
+    r.innerHTML = kaynakSimge("resim");
+    r.append(String(on.resimler.length));
+    r.setAttribute("aria-label", on.resimler.length + " resim");
+    alt.appendChild(r);
+  }
+  k.appendChild(alt);
+  const rozet = kaynakDurumRozeti(o);
+  if (rozet) k.appendChild(rozet);
+  k.setAttribute("aria-label", (o.baslik || on.metin.split("\n")[0] || "Not") + ", " + tarih.textContent);
+  k.addEventListener("click", () => kaynakNotAc(o.tasnif, o.id));
+  return { el: k, boy: h };
+}
+
+/* Sağ alttaki + düğmesi. Tek seçenekse doğrudan onu yapar; birden çoksa
+   üstünde simgeli seçenekler açılır. */
+let kaynakFabAcik = null;   /* açık menünün sayfası (kaynakAcik); yeniden çizimde açık kalır */
+function kaynakFab(sayfa, secenekler) {
+  const kap = olustur("div", "kaynak-fab");
+  const ana = olustur("button", "kaynak-fab-ana");
+  ana.type = "button";
+  ana.innerHTML = kaynakSimge("arti");
+  if (secenekler.length === 1) {
+    ana.setAttribute("aria-label", secenekler[0].ad);
+    ana.addEventListener("click", () => secenekler[0].is());
+    kap.appendChild(ana);
+    sayfa.appendChild(kap);
+    return;
+  }
+  ana.setAttribute("aria-label", "Ekle");
+  ana.setAttribute("aria-expanded", "false");
+  const perde = olustur("div", "kaynak-fab-perde");
+  const menu = olustur("div", "kaynak-fab-menu");
+  menu.setAttribute("role", "menu");
+  const kapat = () => {
+    kaynakFabAcik = null;
+    kap.classList.remove("acik");
+    ana.setAttribute("aria-expanded", "false");
+    document.removeEventListener("keydown", tus, true);
+  };
+  const ac = () => {
+    kaynakFabAcik = kaynakAcik;
+    kap.classList.add("acik");
+    ana.setAttribute("aria-expanded", "true");
+    document.removeEventListener("keydown", tus, true);
+    document.addEventListener("keydown", tus, true);
+  };
+  const tus = e => { if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); kapat(); ana.focus(); } };
+  secenekler.forEach(s => {
+    const b = olustur("button", "kaynak-fab-secenek");
+    b.type = "button";
+    b.setAttribute("role", "menuitem");
+    const etiket = olustur("span", "etiket");
+    etiket.textContent = s.ad;
+    const simge = olustur("span", "simge");
+    simge.innerHTML = kaynakSimge(s.simge);
+    b.append(etiket, simge);
+    b.addEventListener("click", () => { kapat(); s.is(); });
+    menu.appendChild(b);
+  });
+  perde.addEventListener("click", kapat);
+  ana.addEventListener("click", () => { if (kap.classList.contains("acik")) kapat(); else ac(); });
+  kap.append(perde, menu, ana);
+  sayfa.appendChild(kap);
+  if (kaynakFabAcik !== null && kaynakFabAcik === kaynakAcik) ac();
+}
+
+/* ---------- Hesap ekranı: Notlar kutusu ve resim paneli ---------- */
+function kaynakHesapResimleri() {
+  return KAYNAK.ogeler.filter(o => o.tur === "resim").sort((a, b) => kaynakSirala(b, a));
+}
 function kaynakHesapBolumu() {
   const kart = olustur("section", "ist-kart kaynak-hesap");
   const h = olustur("h3", "ist-baslik");
-  h.textContent = "Kaynak resimleri";
+  h.textContent = "Notlar";
   kart.appendChild(h);
   if (!kaynakKurulu()) {
     const p = olustur("p", "hesap-durum");
-    p.textContent = "Kaynak henüz kurulmadı.";
+    p.textContent = "Notlar henüz kurulmadı.";
     kart.appendChild(p);
     return kart;
   }
   if (!KAYNAK.yuklendi) {
     const p = olustur("p", "hesap-durum");
-    /* Bir kez denenir: yenileme bitince bu ekran yeniden çizilir; başarısızsa
-       hata yazılır, yeniden denemek için "Şimdi eşitle" ya da Kaynak sekmesi */
+    /* Bir kez denenir: yenileme bitince bu bölüm yeniden çizilir; başarısızsa
+       hata yazılır, yeniden denemek için "Şimdi eşitle" ya da Notlar sekmesi */
     const denenecek = navigator.onLine && !kaynakYenileniyor && Date.now() - kaynakSonDeneme > 30000;
-    p.textContent = !navigator.onLine ? "Kaynak bu cihaza henüz inmedi; bağlanınca görünür."
-      : (kaynakYenileniyor || denenecek) ? "Yükleniyor…" : (KAYNAK.hata || "Kaynak yüklenemedi.");
+    p.textContent = !navigator.onLine ? "Notlar bu cihaza henüz inmedi; bağlanınca görünür."
+      : (kaynakYenileniyor || denenecek) ? "Yükleniyor…" : (KAYNAK.hata || "Notlar yüklenemedi.");
     kart.appendChild(p);
     if (denenecek) kaynakYenile();
     return kart;
   }
-  kart.appendChild(kaynakKotaCubugu());
-  const resimler = KAYNAK.ogeler.filter(o => o.tur === "resim").sort((a, b) => kaynakSirala(b, a));
-  const p = olustur("p", "hesap-durum");
-  p.textContent = resimler.length
-    ? resimler.length + " resim hesabınızda yedekli. Sildiğiniz resim bütün cihazlarınızdan da silinir."
-    : "Hesabınızda yedekli resim yok. Resimleri Kaynak sekmesinden eklersiniz.";
-  kart.appendChild(p);
-  const liste = olustur("div", "kaynak-hesap-liste");
-  resimler.forEach(o => {
-    const satir = olustur("div", "kaynak-hesap-satir");
-    const kucuk = olustur("button", "kaynak-hesap-kucuk");
-    kucuk.setAttribute("aria-label", "Resmi büyüt");
-    const img = kaynakResimOgesi(o);
-    kucuk.appendChild(img);
-    kucuk.addEventListener("click", () => { if (img.src) buyutecAc(img); });
-    const bilgi = olustur("div", "kaynak-hesap-bilgi");
-    const yol = olustur("div", "yol");
-    yol.textContent = kaynakYolu(o.tasnif) || "—";
-    const alt = olustur("div", "alt");
-    let tarih = "";
-    try { tarih = new Date(o.olusma).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }); } catch (e) {}
-    alt.textContent = kbYazisi(o.bayt) + (tarih ? " · " + tarih : "");
-    bilgi.append(yol, alt);
-    const sil = olustur("button", "kaynak-hesap-sil");
-    sil.textContent = "Sil";
-    sil.addEventListener("click", () => kaynakResimSil(o, () => { if (hesapSayfasi && hesapSayfasi._ciz) hesapSayfasi._ciz(); }));
-    satir.append(kucuk, bilgi, sil);
-    liste.appendChild(satir);
-  });
-  kart.appendChild(liste);
+  if (KAYNAK.durum) kart.appendChild(kaynakKotaCubugu());
+  else {
+    const p = olustur("p", "hesap-durum");
+    p.textContent = "Resim hakkınız bağlantı gelince görünür.";
+    kart.appendChild(p);
+    if (navigator.onLine && !kaynakYenileniyor && Date.now() - kaynakSonDeneme > 30000) kaynakYenile();
+  }
+  const resimler = kaynakHesapResimleri();
+  const bekleyen = resimler.filter(o => o._bekliyor).length;
+  const kutu = olustur("button", "kaynak-resim-kutusu");
+  kutu.type = "button";
+  const simge = olustur("span", "simge");
+  simge.innerHTML = kaynakSimge("resim");
+  const yazi = olustur("span", "yazi");
+  const ad = olustur("span", "ad");
+  ad.textContent = "Resimler";
+  const alt = olustur("span", "alt");
+  alt.textContent = resimler.length
+    ? resimler.length + " resim yedekli" + (bekleyen ? " · " + bekleyen + " gönderilmeyi bekliyor" : "")
+    : "Yedekli resim yok";
+  yazi.append(ad, alt);
+  const ok = olustur("span", "ok");
+  ok.textContent = "›";
+  kutu.append(simge, yazi, ok);
+  kutu.addEventListener("click", kaynakResimPaneliAc);
+  kart.appendChild(kutu);
   return kart;
+}
+
+/* Hesap › Notlar › Resimler: bütün resimler (notların içindekiler dahil),
+   yolları, boyutları; buradan silinebilir (5 sn geri alınabilir) */
+function kaynakResimPaneliAc() {
+  if (kaynakResimPaneli) return;
+  const perde = olustur("div", "panel-perde kaynak-resim-paneli");
+  perde.addEventListener("click", olay => { if (olay.target === perde) geriDon(); });
+  const panel = olustur("div", "panel");
+  panel.setAttribute("role", "dialog");
+  panel.setAttribute("aria-modal", "true");
+  panel.setAttribute("aria-label", "Resimler");
+  const ust = olustur("div", "panel-ust");
+  const baslik = olustur("h3");
+  const kapat = olustur("button", "panel-kapat");
+  kapat.textContent = "×";
+  kapat.setAttribute("aria-label", "Kapat");
+  kapat.addEventListener("click", () => geriDon());
+  ust.append(baslik, kapat);
+  const govde = olustur("div", "panel-govde");
+  panel.append(ust, govde);
+  perde.appendChild(panel);
+  document.body.appendChild(perde);
+
+  const ciz = () => {
+    const resimler = kaynakHesapResimleri();
+    baslik.textContent = "Resimler (" + resimler.length + ")";
+    const kaydirma = govde.scrollTop;
+    govde.innerHTML = "";
+    const aciklama = olustur("p", "hesap-durum");
+    aciklama.textContent = resimler.length
+      ? "Hesabınızda yedekli resimler. Sildiğiniz resim bütün cihazlarınızdan da silinir; notun içindeyse notta yeri boş kalır."
+      : "Hesabınızda yedekli resim yok. Resimleri Notlar sekmesinde bir tasnifin ya da notun içine eklersiniz.";
+    govde.appendChild(aciklama);
+    const liste = olustur("div", "kaynak-hesap-liste");
+    liste.setAttribute("data-buyutec-dizi", "");
+    resimler.forEach((o, i) => {
+      const satir = olustur("div", "kaynak-hesap-satir");
+      const kucuk = olustur("button", "kaynak-hesap-kucuk");
+      kucuk.setAttribute("aria-label", "Resmi büyüt");
+      const img = kaynakResimOgesi(o);
+      img.dataset.sira = String(i);
+      kucuk.appendChild(img);
+      kucuk.addEventListener("click", () => { if (img.src && img.naturalWidth) buyutecAc(img); });
+      const bilgi = olustur("div", "kaynak-hesap-bilgi");
+      const yol = olustur("div", "yol");
+      const not = o.not_id ? KAYNAK_HAM.ogeler.get(o.not_id) : null;
+      yol.textContent = (kaynakYolu(o.tasnif) || "—") + (not ? " › " + (not.baslik || "not") : "");
+      const alt = olustur("div", "alt");
+      const tarih = kaynakTarihi(o.olusma);
+      alt.textContent = kbYazisi(o.bayt) + (tarih ? " · " + tarih : "") +
+        (o._hata ? " · gönderilemedi" : o._bekliyor ? " · gönderilmeyi bekliyor" : "");
+      bilgi.append(yol, alt);
+      const sil = olustur("button", "kaynak-hesap-sil");
+      sil.textContent = "Sil";
+      sil.addEventListener("click", () => kaynakSilmeyeBasla("resim", o.id, "Resim silindi"));
+      satir.append(kucuk, bilgi, sil);
+      liste.appendChild(satir);
+    });
+    govde.appendChild(liste);
+    govde.scrollTop = kaydirma;
+  };
+  ciz();
+  const denetim = { ciz };
+  kaynakResimPaneli = denetim;
+  derinlesGit(() => {
+    perde.remove();
+    if (kaynakResimPaneli === denetim) kaynakResimPaneli = null;
+  });
+}
+
+/* ---------- Not editörü ----------
+   Tam ekran açılır: üstte geri, geri al / yinele, sil, tamam; altında başlık,
+   tarih ve harf sayısı, sonra metin. Klavyenin hemen üstünde biçim çubuğu
+   durur (ekranın görünen kısmı visualViewport ile izlenir; klavye açılınca
+   editör onun üstüne sığar). Biçimler tarayıcının kendi düzenleme komutlarıyla
+   (execCommand) uygulanır; böylece geri al / yinele her adımı kapsar.
+   Satır başında "- " (ya da "* ") yazılınca madde, "1. " yazılınca numaralı
+   liste başlar.
+   Kayıt: yazmaya ara verilince (1,5 sn), uygulama arka plana geçerken ve
+   kapanırken. Her kayıt sıraya bir iş olarak girer (bağlantı gerekmez).
+   Metne eklenen resim hemen küçültülüp cihaza yazılır; not kaydedilince
+   resim de sıraya girer. Kapanırken metinden çıkarılmış resimler silinir. */
+const NOT_ARACLARI = [
+  { ad: "kalin", etiket: "Kalın", komut: "bold", yazi: "B" },
+  { ad: "italik", etiket: "İtalik", komut: "italic", yazi: "I" },
+  { ad: "alti", etiket: "Altı çizili", komut: "underline", yazi: "U" },
+  { ad: "ustu", etiket: "Üstü çizili", komut: "strikeThrough", yazi: "S" },
+  { ad: "renk", etiket: "Yazı rengi", yazi: "A" },
+  { ad: "madde", etiket: "Madde işaretli liste", komut: "insertUnorderedList",
+    svg: '<circle cx="5" cy="7" r="1.3"/><circle cx="5" cy="12" r="1.3"/><circle cx="5" cy="17" r="1.3"/><path d="M9.5 7H20M9.5 12H20M9.5 17H20"/>' },
+  { ad: "sira", etiket: "Numaralı liste", komut: "insertOrderedList",
+    svg: '<path d="M4 5.5h1.6v4M4 9.5h3M3.8 14.3c.3-.6.9-.9 1.5-.8.8.1 1.2.8.9 1.5-.3.6-2.4 2-2.4 2.5h2.8"/><path d="M10 7H20M10 12H20M10 17H20"/>' },
+  { ad: "baslik", etiket: "Ara başlık", yazi: "H" },
+  { ad: "resim", etiket: "Resim ekle", svg: KAYNAK_SIMGELERI.resim }
+];
+const NOT_UST_SIMGELERI = {
+  geri: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
+  geriAl: '<path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/>',
+  yinele: '<path d="m15 14 5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13"/>',
+  sil: '<path d="M4.5 7h15M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4.5h6V7"/>',
+  tamam: '<path d="m5 12.5 4.5 4.5L19 7.5"/>'
+};
+
+let kaynakNotAciliyor = false;
+async function kaynakNotAc(tasnifId, notId) {
+  if (kaynakEditor || kaynakNotAciliyor) return;   /* iki kez dokunuşta iki editör açılmasın */
+  kaynakNotAciliyor = true;
+  try { await kaynakYukle(); } finally { kaynakNotAciliyor = false; }
+  if (kaynakEditor) return;
+  const ilk = notId ? KAYNAK_HAM.ogeler.get(notId) : null;
+  if (notId && (!ilk || ilk.tur !== "not")) return;
+  if (!KAYNAK_HAM.tasnifler.has(tasnifId)) return;
+  const id = ilk ? ilk.id : yeniKimlik();
+  const acilis = new Date().toISOString();
+  let olustu = !!ilk;                      /* not sıraya ya da sunucuya girdi mi */
+  let silinsin = false;
+  const eklenenler = new Map();            /* bu oturumda eklenen resimler: id → { bayt, en, boy, zaman } */
+
+  /* ---- Yapı ---- */
+  const kap = olustur("div", "not-editor");
+  kap.setAttribute("role", "dialog");
+  kap.setAttribute("aria-modal", "true");
+  kap.setAttribute("aria-label", ilk ? "Notu düzenle" : "Yeni not");
+  const ust = olustur("div", "ne-ust");
+  const ustDugme = (ad, etiket) => {
+    const d = olustur("button", "ne-ust-dugme " + ad);
+    d.type = "button";
+    d.setAttribute("aria-label", etiket);
+    d.title = etiket;
+    d.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + NOT_UST_SIMGELERI[ad] + "</svg>";
+    return d;
+  };
+  const geriD = ustDugme("geri", "Kaydet ve kapat");
+  const geriAlD = ustDugme("geriAl", "Geri al");
+  const yineleD = ustDugme("yinele", "Yinele");
+  const silD = ustDugme("sil", "Notu sil");
+  const tamamD = ustDugme("tamam", "Kaydet ve kapat");
+  const bosluk = olustur("span", "ne-bosluk");
+  ust.append(geriD, bosluk, geriAlD, yineleD, silD, tamamD);
+
+  const govde = olustur("div", "ne-govde");
+  const baslik = olustur("input", "ne-baslik");
+  baslik.type = "text";
+  baslik.placeholder = "Başlık";
+  baslik.maxLength = NOT_BASLIK_AZAMI;
+  baslik.setAttribute("aria-label", "Başlık");
+  baslik.setAttribute("enterkeyhint", "next");
+  baslik.value = ilk && ilk.baslik ? ilk.baslik : "";
+  const bilgi = olustur("div", "ne-bilgi");
+  const uyari = olustur("div", "ne-uyari");
+  uyari.hidden = true;
+  const metin = olustur("div", "ne-metin");
+  metin.contentEditable = "true";
+  metin.setAttribute("role", "textbox");
+  metin.setAttribute("aria-multiline", "true");
+  metin.setAttribute("aria-label", "Not");
+  metin.setAttribute("data-yer", "Yazmaya başlayın");
+  metin.spellcheck = true;
+  const resimAraci = olustur("div", "ne-resim-araci");
+  resimAraci.hidden = true;
+  govde.append(baslik, bilgi, uyari, metin, resimAraci);
+
+  const renkler = olustur("div", "ne-renkler");
+  renkler.hidden = true;
+  renkler.setAttribute("role", "group");
+  renkler.setAttribute("aria-label", "Yazı rengi");
+  const arac = olustur("div", "ne-arac");
+  arac.setAttribute("role", "toolbar");
+  arac.setAttribute("aria-label", "Biçim");
+  const dosya = olustur("input");
+  dosya.type = "file"; dosya.accept = "image/*"; dosya.multiple = true; dosya.hidden = true;
+  kap.append(ust, govde, renkler, arac, dosya);
+
+  /* ---- İçerik ---- */
+  const resimKur = (img, rid) => {
+    img.classList.add("yukleniyor");
+    kaynakResimAdresi(rid).then(a => {
+      img.classList.remove("yukleniyor");
+      if (a) img.src = a; else img.classList.add("yok");
+    }).catch(() => { img.classList.remove("yukleniyor"); img.classList.add("yok"); });
+  };
+  /* Bu notun resmi mi (yapıştırılan metinde başka notun resmi geçmesin) */
+  const bununResmi = rid => eklenenler.has(rid) || (KAYNAK_HAM.ogeler.get(rid) || {}).not_id === id;
+  metin.appendChild(notHtmlDugumleri(ilk ? notIcerigi(ilk) : "", { resimKur }));
+  if (!metin.firstChild) metin.innerHTML = "<p><br></p>";
+  const varsayilanRenk = () => renkOnaltilik(getComputedStyle(metin).color);
+  const yaz = () => notHtmlYaz(notHtmlDugumleri(metin.innerHTML, { varsayilan: varsayilanRenk() }));
+  const basligiOku = () => baslik.value.replace(/\s+/g, " ").trim().slice(0, NOT_BASLIK_AZAMI);
+  /* Yapıştırma ya da geri almayla gelen resimlerin görüntüsü */
+  const eksikResimleriYukle = () => {
+    metin.querySelectorAll("img[data-resim]").forEach(img => { if (!img.getAttribute("src") && !img.classList.contains("yukleniyor")) resimKur(img, img.getAttribute("data-resim")); });
+  };
+
+  /* ---- Biçim çubuğu ---- */
+  const dugmeler = {};
+  NOT_ARACLARI.forEach(a => {
+    const d = olustur("button", "ne-arac-dugme " + a.ad);
+    d.type = "button";
+    d.setAttribute("aria-label", a.etiket);
+    d.title = a.etiket;
+    if (a.svg) d.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + a.svg + "</svg>";
+    else { const y = olustur("span"); y.textContent = a.yazi; d.appendChild(y); }
+    if (a.komut) d.setAttribute("aria-pressed", "false");
+    /* Dokununca odak metinde kalsın (klavye kapanmasın, seçim kaybolmasın) */
+    d.addEventListener("mousedown", e => e.preventDefault());
+    dugmeler[a.ad] = d;
+    arac.appendChild(d);
+  });
+  const renkDugmesi = (ad, etiket, deger) => {
+    const d = olustur("button", "ne-renk" + (ad === "yok" ? " yok" : ""));
+    d.type = "button";
+    d.setAttribute("aria-label", etiket);
+    d.title = etiket;
+    if (ad !== "yok") d.style.background = deger;
+    d.addEventListener("mousedown", e => e.preventDefault());
+    d.addEventListener("click", () => {
+      komut("foreColor", ad === "yok" ? varsayilanRenk() : deger);
+      renkler.hidden = true;
+      dugmeler.renk.classList.remove("etkin");
+    });
+    renkler.appendChild(d);
+  };
+  renkDugmesi("yok", "Varsayılan renk");
+  Object.keys(NOT_RENKLERI).forEach(ad => renkDugmesi(ad, NOT_RENK_ADLARI[ad], NOT_RENKLERI[ad]));
+
+  /* ---- Seçim ---- */
+  let sonAralik = null;
+  const metindeMi = n => !!n && (n === metin || metin.contains(n));
+  const secimMetindeMi = () => {
+    const s = document.getSelection();
+    return !!(s && s.rangeCount && metindeMi(s.getRangeAt(0).commonAncestorContainer));
+  };
+  /* Odak metinde değilse son seçim (yoksa metnin sonu) geri getirilir */
+  const odakla = () => {
+    if (secimMetindeMi() && document.activeElement === metin) return;
+    try { metin.focus({ preventScroll: true }); } catch (e) { metin.focus(); }
+    const s = document.getSelection();
+    if (sonAralik && metindeMi(sonAralik.startContainer)) { s.removeAllRanges(); s.addRange(sonAralik); return; }
+    const r = document.createRange();
+    r.selectNodeContents(metin);
+    r.collapse(false);
+    s.removeAllRanges(); s.addRange(r);
+  };
+  const durumlariTazele = () => {
+    if (!secimMetindeMi()) return;
+    NOT_ARACLARI.forEach(a => {
+      if (!a.komut) return;
+      let acik = false;
+      try { acik = document.queryCommandState(a.komut); } catch (e) {}
+      dugmeler[a.ad].classList.toggle("etkin", acik);
+      dugmeler[a.ad].setAttribute("aria-pressed", String(acik));
+    });
+    let blok = "";
+    try { blok = String(document.queryCommandValue("formatBlock") || "").toLowerCase().replace(/[<>]/g, ""); } catch (e) {}
+    dugmeler.baslik.classList.toggle("etkin", blok === "h3");
+  };
+  const secimDinle = () => {
+    const s = document.getSelection();
+    if (s && s.rangeCount && metindeMi(s.getRangeAt(0).commonAncestorContainer)) {
+      sonAralik = s.getRangeAt(0).cloneRange();
+      durumlariTazele();
+    }
+  };
+  document.addEventListener("selectionchange", secimDinle);
+  const komut = (ad, deger) => {
+    if (document.activeElement === baslik) return;   /* başlık biçimsizdir */
+    odakla();
+    try {
+      document.execCommand("styleWithCSS", false, false);
+      document.execCommand("defaultParagraphSeparator", false, "p");
+    } catch (e) {}
+    document.execCommand(ad, false, deger);
+    durumlariTazele();
+    degisti();
+  };
+
+  NOT_ARACLARI.forEach(a => {
+    if (a.komut) dugmeler[a.ad].addEventListener("click", () => komut(a.komut));
+  });
+  dugmeler.renk.addEventListener("click", () => {
+    renkler.hidden = !renkler.hidden;
+    dugmeler.renk.classList.toggle("etkin", !renkler.hidden);
+  });
+  dugmeler.baslik.addEventListener("click", () => {
+    if (document.activeElement === baslik) return;
+    odakla();
+    let blok = "";
+    try { blok = String(document.queryCommandValue("formatBlock") || "").toLowerCase().replace(/[<>]/g, ""); } catch (e) {}
+    komut("formatBlock", blok === "h3" ? "<p>" : "<h3>");
+  });
+  dugmeler.resim.addEventListener("click", () => {
+    if (!secimMetindeMi()) odakla();
+    secimDinle();
+    dosya.click();
+  });
+  dosya.addEventListener("change", () => {
+    const d = Array.from(dosya.files || []);
+    dosya.value = "";
+    if (d.length) resimleriEkle(d);
+  });
+
+  /* ---- Satır başı kısayolları: "- " madde, "1. " numaralı ---- */
+  const BLOKLAR = /^(p|div|h3|li)$/;
+  const listeyeCevir = () => {
+    const s = document.getSelection();
+    if (!s || !s.rangeCount || !s.isCollapsed) return;
+    const r = s.getRangeAt(0);
+    if (!metindeMi(r.startContainer)) return;
+    let blok = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentNode;
+    while (blok && blok !== metin && !(blok.nodeType === 1 && BLOKLAR.test(blok.localName))) blok = blok.parentNode;
+    if (!blok || blok.localName === "li") return;
+    const on = document.createRange();
+    on.setStart(blok, 0);
+    on.setEnd(r.startContainer, r.startOffset);
+    const yazi = on.toString().replace(/\u00a0/g, " ");
+    let liste = null;
+    if (/^[-*•] $/.test(yazi)) liste = "insertUnorderedList";
+    else if (/^1[.)] $/.test(yazi)) liste = "insertOrderedList";
+    if (!liste) return;
+    s.removeAllRanges(); s.addRange(on);
+    document.execCommand("delete", false);
+    document.execCommand(liste, false);
+  };
+  let yaziliyor = false;   /* klavyenin kelime önerisi (IME) sürerken dokunulmaz */
+  metin.addEventListener("compositionstart", () => { yaziliyor = true; });
+  metin.addEventListener("compositionend", () => { yaziliyor = false; listeyeCevir(); degisti(); });
+  metin.addEventListener("input", e => {
+    if (!yaziliyor && (!e.inputType || /^insert(Text|CompositionText)?$/.test(e.inputType))) listeyeCevir();
+    degisti();
+  });
+  baslik.addEventListener("input", degisti);
+  baslik.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const r = document.createRange();
+      r.selectNodeContents(metin); r.collapse(true);
+      metin.focus();
+      const s = document.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+  });
+
+  /* ---- Yapıştırma ve bırakma: yalnızca süzülmüş biçim; resim dosyası gelirse eklenir ---- */
+  const disaridanEkle = (dt, e) => {
+    if (!dt) return;
+    const resimDosyalari = Array.from(dt.files || []).filter(f => /^image\//.test(f.type));
+    if (resimDosyalari.length) { e.preventDefault(); resimleriEkle(resimDosyalari); return; }
+    const html = dt.getData("text/html");
+    const duz = dt.getData("text/plain");
+    e.preventDefault();
+    let ek = html ? notHtmlTemizle(html, { varsayilan: varsayilanRenk(), resimKabul: bununResmi, resimKur })
+      : duz ? duzMetniHtmle(duz) : "";
+    if (!ek) return;
+    /* Tek satırlık düz yazı paragraf açmadan araya girer */
+    if (!html && duz && !/\n/.test(duz)) { document.execCommand("insertText", false, duz); degisti(); return; }
+    document.execCommand("insertHTML", false, ek);
+    eksikResimleriYukle();
+    degisti();
+  };
+  metin.addEventListener("paste", e => disaridanEkle(e.clipboardData, e));
+  const dosyaMi = e => !!(e.dataTransfer && Array.from(e.dataTransfer.types || []).includes("Files"));
+  kap.addEventListener("dragover", e => { if (dosyaMi(e)) e.preventDefault(); });
+  kap.addEventListener("drop", e => { if (dosyaMi(e) && !metin.contains(e.target)) e.preventDefault(); });
+  let icSurukleme = false;
+  metin.addEventListener("dragstart", () => { icSurukleme = true; });
+  metin.addEventListener("dragend", () => { icSurukleme = false; });
+  metin.addEventListener("drop", e => {
+    if (icSurukleme) { icSurukleme = false; setTimeout(() => { eksikResimleriYukle(); degisti(); }, 0); return; }
+    const dt = e.dataTransfer;
+    if (dt && document.caretRangeFromPoint) {
+      const r = document.caretRangeFromPoint(e.clientX, e.clientY);
+      if (r && metindeMi(r.startContainer)) { const s = document.getSelection(); s.removeAllRanges(); s.addRange(r); }
+    }
+    disaridanEkle(dt, e);
+  });
+
+  /* ---- Resimler ---- */
+  const bekleyenBayt = () => {
+    let n = 0;
+    eklenenler.forEach((h, rid) => { if (!KAYNAK_HAM.ogeler.has(rid)) n += h.bayt; });
+    return n;
+  };
+  let hazirlanan = 0;
+  async function resimleriEkle(dosyalar) {
+    for (const f of dosyalar) {
+      hazirlanan++; uyariYaz();
+      try {
+        const r = await kaynakResmiHazirla(f);
+        if (!kaynakEditor || kaynakEditor.id !== id) return;
+        if (!kaynakHakkaSigar(r.blob.size, bekleyenBayt())) { uyariGoster({ baslik: "Resim eklenemedi", metin: KAYNAK_HAK_DOLU }); return; }
+        const rid = yeniKimlik();
+        try { await vt.yaz("kaynak", { ad: "r/" + rid, veri: r.blob }); }
+        catch (e) { uyariGoster({ baslik: "Resim eklenemedi", metin: "Resim cihaza kaydedilemedi (cihazda yer kalmamış olabilir)." }); return; }
+        eklenenler.set(rid, { bayt: r.blob.size, en: r.en, boy: r.boy, zaman: new Date().toISOString() });
+        const adres = URL.createObjectURL(r.blob);
+        kaynakResimAdresleri.set(rid, adres);
+        odakla();
+        document.execCommand("insertHTML", false, '<img data-resim="' + rid + '" width="' + r.en + '" height="' + r.boy + '" alt="" src="' + adres + '">');
+        degisti();
+      } catch (e) {
+        uyariGoster({ baslik: "Resim eklenemedi", metin: (e && e.message) || "Resim okunamadı." });
+      } finally {
+        hazirlanan--; uyariYaz();
+      }
+    }
+  }
+  /* Metindeki resme dokununca küçük bir çubuk: büyüt ya da sil */
+  let seciliResim = null;
+  const resimAraciniKapat = () => { resimAraci.hidden = true; seciliResim = null; };
+  const buyut = olustur("button");
+  buyut.type = "button"; buyut.textContent = "Büyüt";
+  const resmiSil = olustur("button", "tehlike");
+  resmiSil.type = "button"; resmiSil.textContent = "Sil";
+  [buyut, resmiSil].forEach(d => d.addEventListener("mousedown", e => e.preventDefault()));
+  resimAraci.append(buyut, resmiSil);
+  buyut.addEventListener("click", () => { const img = seciliResim; resimAraciniKapat(); if (img && img.src && img.naturalWidth) buyutecAc(img); });
+  resmiSil.addEventListener("click", () => {
+    const img = seciliResim;
+    resimAraciniKapat();
+    if (!img || !metin.contains(img)) return;
+    try { metin.focus({ preventScroll: true }); } catch (e) {}
+    const r = document.createRange();
+    r.selectNode(img);
+    const s = document.getSelection(); s.removeAllRanges(); s.addRange(r);
+    document.execCommand("delete", false);
+    degisti();
+  });
+  metin.addEventListener("click", e => {
+    const img = e.target && e.target.closest ? e.target.closest("img") : null;
+    if (!img || !metin.contains(img)) { resimAraciniKapat(); return; }
+    seciliResim = img;
+    const g = govde.getBoundingClientRect(), b = img.getBoundingClientRect();
+    resimAraci.style.top = Math.max(0, b.top - g.top + govde.scrollTop + 8) + "px";
+    resimAraci.style.right = Math.max(8, g.right - b.right + 8) + "px";
+    resimAraci.hidden = false;
+  });
+
+  /* ---- Bilgi satırı ve uyarılar ---- */
+  function bilgiYaz() {
+    const o = KAYNAK_HAM.ogeler.get(id);
+    const olusma = (o && o.olusma) || acilis;
+    const degisme = (o && o.guncellendi) || olusma;
+    const harf = metin.textContent.replace(/\u200b/g, "").length;
+    bilgi.innerHTML = "";
+    const s1 = olustur("span");
+    s1.textContent = (Math.abs(Date.parse(degisme) - Date.parse(olusma)) > 60000 ? "Değiştirildi " + kaynakTarihi(degisme, true) : kaynakTarihi(olusma, true)) +
+      " · " + harf + " karakter";
+    bilgi.appendChild(s1);
+    if (Math.abs(Date.parse(degisme) - Date.parse(olusma)) > 60000) {
+      const s2 = olustur("span");
+      s2.textContent = "Oluşturuldu " + kaynakTarihi(olusma, true);
+      bilgi.appendChild(s2);
+    }
+    uyariYaz();
+  }
+  let cokUzun = false;
+  function uyariYaz() {
+    const o = KAYNAK_HAM.ogeler.get(id);
+    let y = "";
+    if (hazirlanan) y = "Resim hazırlanıyor…";
+    else if (cokUzun) y = "Not çok uzun: biçimiyle birlikte en çok 60.000 harf kaydedilebilir. Bir kısmını yeni bir nota taşıyın.";
+    else if (o && o._hata) y = "Bu not hesabınıza kaydedilemedi: " + o._hata;
+    else if (o && o._bekliyor && !navigator.onLine) y = "Bağlantı yok: not bu cihaza kaydedildi, bağlantı gelince hesabınıza gönderilecek.";
+    uyari.textContent = y;
+    uyari.hidden = !y;
+    uyari.classList.toggle("hata", !!(cokUzun || (o && o._hata)));
+  }
+  const bosMu = () => !metin.textContent.replace(/[\s\u200b]/g, "") && !metin.querySelector("img, li");
+  function yerTutucu() { metin.classList.toggle("bos", bosMu()); }
+
+  /* ---- Kayıt ---- */
+  let kayitli = { b: basligiOku(), m: "" };
+  let zamanlayici = null;
+  function degisti() {
+    if (!resimAraci.hidden && (!seciliResim || !metin.contains(seciliResim))) resimAraciniKapat();
+    yerTutucu();
+    bilgiYaz();
+    if (zamanlayici) clearTimeout(zamanlayici);
+    zamanlayici = setTimeout(() => { zamanlayici = null; kaydet(false); }, 1500);
+  }
+  const icerikteResimler = m => {
+    const k = [];
+    m.replace(/data-resim="([0-9a-f-]{36})"/g, (_, x) => { if (!k.includes(x)) k.push(x); return _; });
+    return k;
+  };
+  /* son: editör kapanıyor. Dönüş: "bos" (hiç kaydedilmedi) | "silindi" | undefined */
+  function kaydet(son) {
+    if (zamanlayici) { clearTimeout(zamanlayici); zamanlayici = null; }
+    if (!KAYNAK_HAM.tasnifler.has(tasnifId)) return "bos";
+    const b = basligiOku();
+    const m = yaz();
+    let degisen = false;
+    const resimler = icerikteResimler(m);
+    const icerikVar = !!b || !bosMu();
+    const simdi = new Date().toISOString();
+    let sonuc;
+    cokUzun = m.length > NOT_AZAMI;
+    if (!olustu) {
+      if (!icerikVar) sonuc = "bos";
+      else if (!cokUzun || son) {
+        kaynakIsEkle({ tur: "not_ekle", id, tasnif: tasnifId, baslik: b || null, metin: m, bicim: "html", zaman: acilis, guncellendi: simdi }, true);
+        olustu = true; degisen = true;
+        kayitli = { b, m };
+      }
+    } else if (b !== kayitli.b || m !== kayitli.m) {
+      /* Boşaltılan not: ara kayıtta yazılmaz (geri alınırsa son dolu hâli
+         döner), kapanırken silinir */
+      if (!icerikVar) { if (son) sonuc = "silindi"; }
+      else if (!cokUzun || son) {
+        kaynakIsEkle({ tur: "not_guncelle", id, baslik: b || null, metin: m, bicim: "html", guncellendi: simdi }, true);
+        kayitli = { b, m }; degisen = true;
+      }
+    }
+    if (olustu && sonuc !== "silindi") {
+      /* Metindeki yeni resimler (not sıraya girdikten sonra) */
+      resimler.forEach(rid => {
+        const h = eklenenler.get(rid);
+        if (!h || KAYNAK_HAM.ogeler.has(rid) || KAYNAK_KUYRUK.some(x => x.tur === "resim_ekle" && x.id === rid)) return;
+        kaynakIsEkle({ tur: "resim_ekle", id: rid, tasnif: tasnifId, not_id: id, bayt: h.bayt, en: h.en, boy: h.boy, zaman: h.zaman }, true);
+        degisen = true;
+      });
+    }
+    if (son) {
+      /* Metinden çıkarılmış resimler silinir (notun resmi olup artık geçmeyenler) */
+      if (olustu && sonuc !== "silindi") {
+        const icerik = new Set(resimler);
+        kaynakGorunumuKur();   /* yeni eklenen işler hesaba girsin */
+        const cikan = [];
+        KAYNAK_HAM.ogeler.forEach(o => { if (o.tur === "resim" && o.not_id === id && !icerik.has(o.id)) cikan.push(o.id); });
+        cikan.forEach(rid => { kaynakSilIsiEkle("resim", rid, true); degisen = true; });
+      }
+      /* Bu oturumda eklenip sıraya girmemiş resimlerin cihaz kopyaları atılır */
+      const atilacak = [];
+      eklenenler.forEach((h, rid) => { if (!KAYNAK_KUYRUK.some(x => x.tur === "resim_ekle" && x.id === rid) && !KAYNAK_HAM.ogeler.has(rid)) atilacak.push(rid); });
+      if (atilacak.length) vt.coklu("kaynak", [], atilacak.map(x => "r/" + x)).catch(() => {});
+    }
+    if (degisen) kaynakKuyrukDegisti();
+    uyariYaz();
+    return sonuc;
+  }
+
+  /* ---- Üst düğmeler ---- */
+  [geriAlD, yineleD].forEach(d => d.addEventListener("mousedown", e => e.preventDefault()));
+  geriAlD.addEventListener("click", () => { odakla(); document.execCommand("undo", false); eksikResimleriYukle(); degisti(); });
+  yineleD.addEventListener("click", () => { odakla(); document.execCommand("redo", false); eksikResimleriYukle(); degisti(); });
+  /* Bir kez kapatılır: iki kez dokununca ikinci geri adımı bir üst ekrana atmasın */
+  let kapatIstendi = false;
+  const kapatIste = () => { if (kapatIstendi) return; kapatIstendi = true; geriDon(); };
+  geriD.addEventListener("click", kapatIste);
+  tamamD.addEventListener("click", kapatIste);
+  silD.addEventListener("click", () => { silinsin = true; kapatIste(); });
+
+  /* ---- Ekranın görünen kısmına sığma (klavye) ---- */
+  const vv = window.visualViewport;
+  const sigdir = () => {
+    if (!vv) return;
+    kap.style.height = vv.height + "px";
+    kap.style.transform = "translateY(" + vv.offsetTop + "px)";
+  };
+  if (vv) { vv.addEventListener("resize", sigdir); vv.addEventListener("scroll", sigdir); }
+  sigdir();
+
+  /* ---- Açılış ve kapanış ---- */
+  const tus = e => {
+    if (document.querySelector(".uyari-perde, .buyutec")) return;
+    if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); kapatIste(); }
+  };
+  document.addEventListener("keydown", tus, true);
+  document.body.appendChild(kap);
+  document.documentElement.classList.add("editor-acik");
+  try {
+    document.execCommand("styleWithCSS", false, false);
+    document.execCommand("defaultParagraphSeparator", false, "p");
+  } catch (e) {}
+  kayitli.m = ilk ? yaz() : "";
+  yerTutucu();
+  bilgiYaz();
+
+  const denetim = {
+    id,
+    kaydet: son => kaydet(!!son),
+    bilgiYaz: () => { if (kap.isConnected) bilgiYaz(); },
+    resimler: () => Array.from(eklenenler.keys())
+  };
+  kaynakEditor = denetim;
+  let kapandi = false;
+  const kapat = () => {
+    if (kapandi) return;
+    kapandi = true;
+    let sonuc;
+    try { sonuc = kaydet(true); } catch (e) { console.warn("not kaydedilemedi", e); }
+    document.removeEventListener("selectionchange", secimDinle);
+    document.removeEventListener("keydown", tus, true);
+    if (vv) { vv.removeEventListener("resize", sigdir); vv.removeEventListener("scroll", sigdir); }
+    kap.remove();
+    document.documentElement.classList.remove("editor-acik");
+    if (kaynakEditor === denetim) kaynakEditor = null;
+    if (sonuc === "silindi") kaynakSilmeyeBasla("not", id, "Boş not silindi");
+    else if (silinsin && olustu) kaynakSilmeyeBasla("not", id, "Not silindi");
+    else kaynakEkranlariniTazele();
+  };
+  denetim.kapat = kapat;
+  derinlesGit(kapat);
+  /* Yeni notta başlığa odaklanılır (kullanıcı başka bir yere dokunmadıysa;
+     yazmaya başlamışken odak kaçmasın) */
+  if (!ilk && !kap.contains(document.activeElement)) { try { baslik.focus({ preventScroll: true }); } catch (e) { baslik.focus(); } }
 }
 
 /* ==========================================================================

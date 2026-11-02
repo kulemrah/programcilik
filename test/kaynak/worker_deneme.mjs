@@ -84,12 +84,48 @@ try {
   r = await ist("/resim/" + R1.id, A);
   kontrol("resim yanıtı tarayıcı diskine yazılmaz (no-store, nosniff)", r.headers.get("cache-control").includes("no-store") && r.headers.get("x-content-type-options") === "nosniff");
 
+  // Uygulamanın ürettiği kimlik: yeniden gönderim çift kayıt açmaz
+  const RID = "aaaaaaaa-5555-4000-8000-000000000001";
+  const r2say = async () => (await (await fetch(K + "/r2")).json()).length;
+  const once = await r2say();
+  r = await ist("/resim?tasnif=" + T.id + "&en=10&boy=10&id=" + RID + "&zaman=" + encodeURIComponent(new Date(Date.now() - 3600e3).toISOString()), A, { method: "POST", body: webp(2000) });
+  const RK = await r.json();
+  kontrol("istenen kimlikle yüklenir (201) ve cihazdaki anı korunur", r.status === 201 && RK.id === RID && Math.abs(Date.parse(RK.olusma) - (Date.now() - 3600e3)) < 5000, RK);
+  r = await ist("/resim?tasnif=" + T.id + "&en=10&boy=10&id=" + RID, A, { method: "POST", body: webp(2000) });
+  const RK2 = await r.json();
+  const satirSay = (await sql("select count(*)::int as n, sum(bayt)::int as b from public.kaynak_oge where id = '" + RID + "'"))[0];
+  kontrol("aynı kimlik yeniden gelince var olan satır döner (200), ikinci satır yok", r.status === 200 && RK2.id === RID && satirSay.n === 1 && satirSay.b === 2000 && (await r2say()) === once + 1, [r.status, satirSay]);
+  r = await ist("/resim?tasnif=" + T.id + "&en=10&boy=10&id=" + RID, B, { method: "POST", body: webp(1000) });
+  kontrol("başkasının kimliğiyle yükleme reddedilir, R2'de artık kalmaz", r.status === 409 && (await r2say()) === once + 1, r.status);
+  r = await ist("/resim?tasnif=" + T.id + "&en=10&boy=10&id=bozuk", A, { method: "POST", body: webp(1000) });
+  kontrol("geçersiz kimlik 400", r.status === 400);
+
+  // Notun içindeki resim; notu resimleriyle silme
+  const NID = "aaaaaaaa-6666-4000-8000-000000000001";
+  r = await rest("/kaynak_oge", A, { method: "POST", body: JSON.stringify({ id: NID, tasnif: T.id, tur: "not", baslik: "Başlık", metin: "<p>x</p>", bicim: "html" }) });
+  kontrol("biçimli not kimliğiyle açılır", r.status === 200 && (await r.json())[0].id === NID);
+  r = await ist("/resim?tasnif=" + T.id + "&en=10&boy=10&not=" + NID + "&id=aaaaaaaa-5555-4000-8000-000000000002", A, { method: "POST", body: webp(1500) });
+  const NR = await r.json();
+  kontrol("notun içine resim (not_id)", r.status === 201 && NR.not_id === NID, NR);
+  r = await ist("/resim?tasnif=" + T2.id + "&en=10&boy=10&not=" + NID, A, { method: "POST", body: webp(1500) });
+  kontrol("başka tasnifteki nota resim bağlanamaz (404), R2'de artık kalmaz", r.status === 404 && (await r2say()) === once + 2, r.status);
+  r = await rest("/kaynak_oge?id=eq." + NID, A, { method: "DELETE" });
+  kontrol("resimli not doğrudan silinemez", r.status !== 200 || (await sql("select count(*)::int as n from public.kaynak_oge where id = '" + NID + "'"))[0].n === 1);
+  r = await ist("/not/" + NID, B, { method: "DELETE" });
+  kontrol("başkası A'nın notunu silemez (hiçbir şey silinmez)", r.status === 200 && (await r.json()).silinen_resim === 0 && (await sql("select count(*)::int as n from public.kaynak_oge where id = '" + NID + "'"))[0].n === 1);
+  r = await ist("/not/" + NID, A, { method: "DELETE" });
+  const ns = await r.json();
+  kontrol("not resmiyle silinir, resim R2'den de", r.status === 200 && ns.silinen_resim === 1 && !(await (await fetch(K + "/r2")).json()).some(x => x.includes(NR.id))
+    && (await sql("select count(*)::int as n from public.kaynak_oge where id in ('" + NID + "', '" + NR.id + "')"))[0].n === 0, ns);
+  r = await ist("/not/" + NID, A, { method: "DELETE" });
+  kontrol("silinmiş notu yeniden silmek zararsız (200)", r.status === 200 && (await r.json()).silinen_resim === 0);
+
   // Silme
   r = await ist("/resim/" + R1.id, A, { method: "DELETE" });
   kontrol("resim silinir (204), R2'den de", r.status === 204 && !(await (await fetch(K + "/r2")).json()).some(x => x.includes(R1.id)));
   r = await ist("/tasnif/" + T.id, A, { method: "DELETE" });
   const ts = await r.json();
-  kontrol("tasnif bütün içiyle silinir (silinen kayıtların resimleri R2'den)", r.status === 200 && ts.silinen_resim === 0 && !(await (await fetch(K + "/r2")).json()).some(x => x.includes(R1.id)), ts);
+  kontrol("tasnif bütün içiyle silinir (içindeki resim R2'den)", r.status === 200 && ts.silinen_resim === 1 && !(await (await fetch(K + "/r2")).json()).some(x => x.includes(R1.id) || x.includes(RID)), ts);
   // Cihaz devredilince yazma hemen durur (yazmada kimlik önbelleği yok)
   r = await ist("/durum", A); await r.json();
   r = await rest("/kaynak_tasnif", A, { method: "POST", body: JSON.stringify({ ad: "Yeni" }) });
