@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="250" viewBox="0 0 360 250" role="img">
+<title>5 renk örnek: yeşil, mavi, siyah, kırmızı, altın; BANT-1, BANT-2, BANT-3, ÇARPAN, TOLERANS; 560 x 100 = 56k ±5%</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="180.0" y="22.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" font-weight="600" text-anchor="middle">5 renk örnek</text>
+<line x1="50.0" y1="64.0" x2="110.0" y2="64.0" stroke="#1A202C" stroke-width="3"/>
+<line x1="250.0" y1="64.0" x2="310.0" y2="64.0" stroke="#1A202C" stroke-width="3"/>
+<rect x="110.0" y="44.0" width="140.0" height="40.0" fill="#CF9B66" stroke="#1A202C" stroke-width="2.4"/>
+<rect x="122.5" y="45.2" width="9.0" height="37.6" fill="#00B400" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="142.5" y="45.2" width="9.0" height="37.6" fill="#0000F0" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="165.5" y="45.2" width="9.0" height="37.6" fill="#000000" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="188.5" y="45.2" width="9.0" height="37.6" fill="#F00000" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="223.5" y="45.2" width="9.0" height="37.6" fill="#F0E070" stroke="#4A5568" stroke-width="0.8"/>
+<line x1="40.0" y1="168.0" x2="40.0" y2="100.0" stroke="#1A202C" stroke-width="1.6"/>
+<line x1="40.0" y1="100.0" x2="127.0" y2="100.0" stroke="#1A202C" stroke-width="1.6"/>
+<line x1="127.0" y1="100.0" x2="127.0" y2="88.0" stroke="#1A202C" stroke-width="1.6"/>
+<polygon points="127.0,88.0 130.5,96.3 123.5,96.3" fill="#1A202C"/>
+<rect x="6.0" y="168" width="68" height="26" fill="#FFFFFF" stroke="#1A202C" stroke-width="1.8"/>
+<text x="40.0" y="185.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" font-weight="600" text-anchor="middle">BANT-1</text>
+<line x1="110.0" y1="168.0" x2="110.0" y2="124.0" stroke="#1A202C" stroke-width="1.6"/>
+<line x1="110.0" y1="124.0" x2="147.0" y2="124.0" stroke="#1A202C" stroke-width="1.6"/>
+<line x1="147.0" y1="124.0" x2="147.0" y2="88.0" stroke="#1A202C" stroke-width="1.6"/>
+<polygon points="147.0,88.0 150.5,96.3 143.5,96.3" fill="#1A202C"/>
+<rect x="76.0" y="168" width="68" height="26" fill="#FFFFFF" stroke="#1A202C" stroke-width="1.8"/>
+<text x="110.0" y="185.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" font-weight="600" text-anchor="middle">BANT-2</text>
+<line x1="180.0" y1="168.0" x2="180.0" y2="112.0" stroke="#1A202C" stroke-width="1.6"/>
+<line x1="180.0" y1="112.0" x2="170.0" y2="112.0" stroke="#1A202C" stroke-width="1.6"/>
+<line x1="170.0" y1="112.0" x2="170.0" y2="88.0" stroke="#1A202C" stroke-width="1.6"/>
+<polygon points="170.0,88.0 173.5,96.3 166.5,96.3" fill="#1A202C"/>
+<rect x="146.0" y="168" width="68" height="26" fill="#FFFFFF" stroke="#1A202C" stroke-width="1.8"/>
+<text x="180.0" y="185.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" font-weight="600" text-anchor="middle">BANT-3</text>
+<line x1="250.0" y1="168.0" x2="250.0" y2="124.0" stroke="#1A202C" stroke-width="1.6"/>
+<line x1="250.0" y1="124.0" x2="193.0" y2="124.0" stroke="#1A202C" stroke-width="1.6"/>
+<line x1="193.0" y1="124.0" x2="193.0" y2="88.0" stroke="#1A202C" stroke-width="1.6"/>
+<polygon points="193.0,88.0 196.5,96.3 189.5,96.3" fill="#1A202C"/>
+<rect x="216.0" y="168" width="68" height="26" fill="#FFFFFF" stroke="#1A202C" stroke-width="1.8"/>
+<text x="250.0" y="185.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" font-weight="600" text-anchor="middle">ÇARPAN</text>
+<line x1="320.0" y1="168.0" x2="320.0" y2="100.0" stroke="#1A202C" stroke-width="1.6"/>
+<line x1="320.0" y1="100.0" x2="228.0" y2="100.0" stroke="#1A202C" stroke-width="1.6"/>
+<line x1="228.0" y1="100.0" x2="228.0" y2="88.0" stroke="#1A202C" stroke-width="1.6"/>
+<polygon points="228.0,88.0 231.5,96.3 224.5,96.3" fill="#1A202C"/>
+<rect x="286.0" y="168" width="68" height="26" fill="#FFFFFF" stroke="#1A202C" stroke-width="1.8"/>
+<text x="320.0" y="185.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#1A202C" font-weight="600" text-anchor="middle">TOLERANS</text>
+<text x="180.0" y="230.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="16" fill="#1A202C" font-weight="600" text-anchor="middle">560 x 100 = 56k ±5%</text>
+</svg>

@@ -58,7 +58,7 @@ with sync_playwright() as p:
         s.wait_for_timeout(700)
         kontrol("%d. kez: dışarıya tek dokunuşla kapandı" % tur, s.locator(".hesap-sayfa").count() == 0)
         kontrol("%d. kez: dokunuş alttaki derse geçmedi" % tur, s.locator(".agac").count() == 0 and s.locator(".grup-baslik").count() > 0)
-        kontrol("%d. kez: geçmiş yığını boşaldı" % tur, s.evaluate("geriYigini.length") == 0)
+        kontrol("%d. kez: geçmiş yığını boşaldı" % tur, s.evaluate("Object.values(SEKME_GECMISI).reduce((n, y) => n + y.length, 0)") == 0)
 
     # Telefonda olası arızalar taklit edilir: (a) dokunuştan tıklama hiç doğmaz, (b) tarayıcı geri gitmez
     s.evaluate("() => { window._yut = e => { e.stopImmediatePropagation(); e.preventDefault(); }; window.addEventListener('click', _yut, true); }")
@@ -70,7 +70,7 @@ with sync_playwright() as p:
     s.evaluate("() => { window._geri = history.back; history.back = () => {}; }")
     kenardan_cek(s, cdp)
     tikla(s, cdp, 14, satir["y"] + 10); s.wait_for_timeout(900)
-    kontrol("tarayıcı geri gitmese de kapanır ve yığın düzelir", s.locator(".hesap-sayfa").count() == 0 and s.evaluate("geriYigini.length") == 0)
+    kontrol("tarayıcı geri gitmese de kapanır ve yığın düzelir", s.locator(".hesap-sayfa").count() == 0 and s.evaluate("Object.values(SEKME_GECMISI).reduce((n, y) => n + y.length, 0)") == 0)
     s.evaluate("() => { history.back = window._geri; }")
     s.go_back(); s.wait_for_timeout(500)   # taklitte kalan geçmiş adımı (gerçekte de geri tuşu sessizce geçer)
     kontrol("artık adımdan geri basınca bir şey bozulmaz", s.locator(".grup-baslik").count() > 0 and s.locator(".hesap-sayfa").count() == 0)
@@ -86,7 +86,7 @@ with sync_playwright() as p:
     # Kapat düğmesi ve geri tuşu hâlâ çalışıyor
     s.click("#hesapDugme"); s.wait_for_selector(".hesap-sayfa.acik")
     s.click(".hesap-kapat"); s.wait_for_timeout(600)
-    kontrol("kapat düğmesi çalışıyor", s.locator(".hesap-sayfa").count() == 0 and s.evaluate("geriYigini.length") == 0)
+    kontrol("kapat düğmesi çalışıyor", s.locator(".hesap-sayfa").count() == 0 and s.evaluate("Object.values(SEKME_GECMISI).reduce((n, y) => n + y.length, 0)") == 0)
     s.click("#hesapDugme"); s.wait_for_selector(".hesap-sayfa.acik")
     s.go_back(); s.wait_for_timeout(600)
     kontrol("telefonun geri tuşu çalışıyor", s.locator(".hesap-sayfa").count() == 0 and s.locator(".grup-baslik").count() > 0)

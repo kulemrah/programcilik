@@ -50,7 +50,7 @@ with sync_playwright() as p:
     s.screenshot(path="galeri-not.png")
 
     # ---------- 2) Büyüteç ----------
-    yigin = s.evaluate("geriYigini.length")
+    yigin = s.evaluate("sekmeGecmisi('oku').length")
     g.locator("figure >> nth=%d" % (n - 1)).locator("img").click(); s.wait_for_selector(".buyutec")
     kontrol("dokununca büyüteç açıldı", s.locator(".buyutec img").count() == 1)
     gen0 = s.evaluate("() => document.querySelector('.buyutec img').offsetWidth")
@@ -61,10 +61,10 @@ with sync_playwright() as p:
     kontrol("büyüyen görsel kaydırılabilir", s.evaluate("() => { const a = document.querySelector('.buyutec-alan'); return a.scrollWidth > a.clientWidth; }"))
     s.screenshot(path="galeri-buyutec.png")
     s.go_back(); s.wait_for_timeout(500)
-    kontrol("geri tuşu büyüteci kapattı, not açık kaldı", s.locator(".buyutec").count() == 0 and s.locator(".okuma h2").count() == 1 and s.evaluate("geriYigini.length") == yigin)
+    kontrol("geri tuşu büyüteci kapattı, not açık kaldı", s.locator(".buyutec").count() == 0 and s.locator(".okuma h2").count() == 1 and s.evaluate("sekmeGecmisi('oku').length") == yigin)
     s.locator(".okuma > figure img >> nth=0").click(); s.wait_for_selector(".buyutec")
     s.click(".buyutec-ust button"); s.wait_for_timeout(500)
-    kontrol("Kapat düğmesi kapattı", s.locator(".buyutec").count() == 0 and s.evaluate("geriYigini.length") == yigin)
+    kontrol("Kapat düğmesi kapattı", s.locator(".buyutec").count() == 0 and s.evaluate("sekmeGecmisi('oku').length") == yigin)
 
     # ---------- 3) Görselli sorular ----------
     s.click(".alt-cubuk button:has-text('Temrin')")

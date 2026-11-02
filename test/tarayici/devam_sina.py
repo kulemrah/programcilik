@@ -70,13 +70,12 @@ with sync_playwright() as p:
     kontrol("× yarımı bırakır", s.locator("#sayfaKart .devam-satiri").count() == 0 and s.evaluate("() => localStorage.getItem('pg.yarimKart')") is None)
     # ---------------- Kök ekranda geri ----------------
     s.click(".alt-cubuk button >> nth=0"); s.wait_for_timeout(200)
-    while s.evaluate("() => geriYigini.length") > 0:
-        s.go_back(); s.wait_for_timeout(250)
-    kontrol("kökte bekçi kurulu", s.evaluate("() => !!(history.state && history.state.bekci)"))
+    # Kıraat'in kökü: sekme geçmişi boş; tabanın üstünde en az bir yer tutucu (bekçi) var
+    kontrol("kökte bekçi kurulu", s.evaluate("() => sekmeGecmisi('oku').length === 0 && gecmisKonumu >= 1"))
     s.go_back(); s.wait_for_timeout(250)
     kontrol("ilk geri: uyarı, uygulamada kalınır", s.url.startswith(KOK) and s.locator(".kisa-bildirim:has-text('bir daha basın')").count() == 1)
     s.wait_for_timeout(2800)
-    kontrol("süre geçince bekçi yeniden kurulur", s.evaluate("() => !!(history.state && history.state.bekci)"))
+    kontrol("süre geçince bekçi yeniden kurulur", s.evaluate("() => gecmisKonumu === 1"))
     s.go_back(); s.wait_for_timeout(250)
     kontrol("yine uyarı", s.url.startswith(KOK))
     s.go_back(); s.wait_for_timeout(600)

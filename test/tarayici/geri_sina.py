@@ -1,7 +1,9 @@
-"""Sayfa içi geri düğmeleri sekme değiştirince başka sekmeye atmasın.
-Hata: Temrin'de konu seçimindeyken 42 Tarzı'na geçip Temrin'e dönülünce
-"‹ Temrin yolları" ya da "Tamam" Temrin yollarına değil 42 Tarzı'na atıyordu.
-Telefonun geri tuşu ise geçmişi izler (önceki sekmeye dönebilir); bu ayrıca denetlenir."""
+"""Her sekmenin kendi geri geçmişi.
+Telefonun geri tuşu da sayfadaki geri düğmeleri de yalnızca bulunulan sekmenin
+geçmişinden bir adım geri alır; arada başka sekmeye gidip gelmek bir şey
+değiştirmez. Sekmenin kökünde geri → Kıraat; Kıraat'in kökünde geri → çıkış uyarısı.
+Sekmeler arası atlama (sorudan "konuda oku"): geri → gelinen yer; atlamadan sonra
+başka sekmeye geçilirse açılan konu Kıraat'in kendi ekranı olur."""
 exec(open("vt_taban.py", encoding="utf-8").read())
 
 SEKME = "() => aktifSekme"
@@ -22,6 +24,14 @@ def konu_secimine_gir(s):
     sekme(s, "Temrin")
     s.click("#sayfaCalis .suzgec-dugme, #sayfaCalis button:has-text('Ders ve konu seç')")
     s.wait_for_selector("#sayfaCalis button:has-text('‹ Temrin yolları')")
+
+def geri(s):
+    """Telefonun geri tuşu"""
+    s.go_back(); s.wait_for_timeout(350)
+
+def oku_ekrani(s):
+    """Kıraat'te ne görünüyor: kök / ders:<id> / konu:<id>"""
+    return s.evaluate("() => okuAcik === null ? 'kök' : okuAcik.tur + ':' + (okuAcik.konu || okuAcik.ders || '')")
 
 def temrin_yollarinda_mi(s):
     try:
@@ -74,12 +84,10 @@ with sync_playwright() as p:
     s.click("#sayfaCalis button:has-text('‹ Temrin yolları')")
     kontrol("ardından '‹ Temrin yolları' Temrin yollarına götürür", temrin_yollarinda_mi(s), s.evaluate(SEKME))
 
-    # 4) Geçmiş ile yığın aynı hizada kalmalı: telefonun geri tuşu Temrin kökünden önceki sekmeye döner
+    # 4) Temrin'in kökünde telefonun geri tuşu → Kıraat (önceki sekme 42 Tarzı olsa da)
     sekme(s, "42 Tarzı"); sekme(s, "Temrin")
-    s.go_back(); s.wait_for_timeout(400)
-    kontrol("telefonun geri tuşu Temrin kökünden önceki sekmeye (42 Tarzı) döner", s.evaluate(SEKME) == "kart", s.evaluate(SEKME))
-    hiza = s.evaluate("() => [geriYigini.length, history.state && history.state.pg]")
-    kontrol("geçmiş adımı ile yığın aynı hizada", hiza[0] == (hiza[1] or 0), hiza)
+    geri(s)
+    kontrol("Temrin kökünde geri tuşu Kıraat'e götürür", s.evaluate(SEKME) == "oku", s.evaluate(SEKME))
 
     # 5) Sıradan durum bozulmadı: doğrudan girilen konu seçiminden geri
     konu_secimine_gir(s)
@@ -104,6 +112,83 @@ with sync_playwright() as p:
     kontrol("eski 'Hepsi' kartlı bütün dersler olur", sorted(json.loads(r[0]).keys()) == kartli and set(json.loads(r[0]).values()) == {"tumu"}, r)
     r = s.evaluate("() => { depo.sil('pg.kartKapsam'); depo.sil('pg.kartDers'); kartSayfasiCiz(); return JSON.stringify(depo.oku('pg.kartKapsam', null)); }")
     kontrol("eski seçim yoksa 42 Tarzı seçimsiz başlar", r == "{}", r)
+
+    # 8) Bildirilen akış: Kıraat'te konu → Temrin → Kıraat → geri tuşu → ders listesi → kök → çıkış uyarısı
+    VT = sorted([k for k in YUK["konular"] if k["ders"] == "veritabani"], key=lambda k: k["sira"])
+    sekme(s, OKU_ADI); sekme(s, OKU_ADI)       # Kıraat'in köküne
+    s.click(".ders-satiri:has-text('Veritabanı')"); s.wait_for_selector(".agac .dal")
+    s.click(".agac .dal >> nth=2"); s.wait_for_selector(".okuma h2")
+    kontrol("Kıraat'te konu açık", oku_ekrani(s) == "konu:" + VT[2]["id"], oku_ekrani(s))
+    sekme(s, "Temrin"); sekme(s, "42 Tarzı"); sekme(s, OKU_ADI)
+    kontrol("Kıraat'e dönünce konu yerinde", oku_ekrani(s) == "konu:" + VT[2]["id"] and s.locator("#sayfaOku .okuma h2").count() == 1, oku_ekrani(s))
+    geri(s)
+    kontrol("geri tuşu: Kıraat'in ders listesi (Temrin'e değil)", s.evaluate(SEKME) == "oku" and oku_ekrani(s) == "ders:veritabani", (s.evaluate(SEKME), oku_ekrani(s)))
+    geri(s)
+    kontrol("geri tuşu: Kıraat'in kökü", s.evaluate(SEKME) == "oku" and oku_ekrani(s) == "kök", oku_ekrani(s))
+    geri(s)
+    kontrol("Kıraat kökünde geri: çıkış uyarısı, uygulama yerinde", s.evaluate(SEKME) == "oku" and s.evaluate("() => gecmisKonumu") == 0
+            and "Çıkmak için" in s.evaluate("() => (document.querySelector('.kisa-bildirim') || {}).textContent || ''"), s.evaluate("() => gecmisKonumu"))
+    s.wait_for_timeout(2800)
+    kontrol("uyarı süresi geçince bekçi yeniden kurulur", s.evaluate("() => gecmisKonumu") == 1)
+
+    # 9) Aynısı sayfadaki '‹ Geri' düğmesiyle
+    s.click(".ders-satiri:has-text('Veritabanı')"); s.wait_for_selector(".agac .dal")
+    s.click(".agac .dal >> nth=1"); s.wait_for_selector(".okuma h2")
+    sekme(s, "Ara"); sekme(s, OKU_ADI)
+    s.click("#sayfaOku button.geri:has-text('‹ Geri')"); s.wait_for_timeout(350)
+    kontrol("'‹ Geri' de ders listesine götürür", s.evaluate(SEKME) == "oku" and oku_ekrani(s) == "ders:veritabani", oku_ekrani(s))
+
+    # 10) Her sekme kendi yerinde: Kıraat konu, Temrin konu seçimi; ikisi arasında gidip gelip geri
+    s.click(".agac .dal >> nth=3"); s.wait_for_selector(".okuma h2")
+    konu_secimine_gir(s)
+    sekme(s, OKU_ADI); sekme(s, "Temrin")
+    geri(s)
+    kontrol("Temrin'de geri tuşu Temrin yollarına (Kıraat'e değil)", temrin_yollarinda_mi(s), s.evaluate(SEKME))
+    sekme(s, OKU_ADI)
+    geri(s)
+    kontrol("Kıraat'te geri tuşu ders listesine", s.evaluate(SEKME) == "oku" and oku_ekrani(s) == "ders:veritabani", oku_ekrani(s))
+
+    # 11) Sorudan 'konuda oku': geri → soru; Kıraat önceki konusuna kavuşur
+    s.click(".agac .dal >> nth=4"); s.wait_for_selector(".okuma h2")
+    once = oku_ekrani(s)
+    sekme(s, "Temrin")
+    s.evaluate("() => { kapsamYaz({ veritabani: 'tumu' }); calisMenusuCiz(); }")
+    s.click(".mod-kart:has-text('Sınav provası')"); s.wait_for_selector(".ilerleme")
+    soru_id = s.evaluate("() => oturum.sorular[oturum.i].id")
+    s.evaluate("() => { const s = oturum.sorular[oturum.i]; s.yer = s.yer || null; }")
+    s.evaluate("() => document.getElementById('sayfaCalis').appendChild(konudaOkuDugmesi(oturum.sorular[oturum.i], 'test-konuda-oku'))")
+    s.click("#sayfaCalis .test-konuda-oku"); s.wait_for_timeout(350)
+    hedef = s.evaluate("() => oturum.sorular[oturum.i].konu.id")
+    kontrol("'konuda oku' Kıraat'te sorunun konusunu açar", s.evaluate(SEKME) == "oku" and oku_ekrani(s) == "konu:" + hedef, (s.evaluate(SEKME), oku_ekrani(s)))
+    geri(s)
+    kontrol("geri tuşu soruya döner (aynı soru)", s.evaluate(SEKME) == "calis" and s.evaluate("() => oturum && oturum.sorular[oturum.i].id") == soru_id, s.evaluate(SEKME))
+    sekme(s, OKU_ADI)
+    kontrol("Kıraat atlamadan önceki konusunda", oku_ekrani(s) == once, (oku_ekrani(s), once))
+
+    # 12) Atlamadan sonra başka sekmeye geçilirse konu Kıraat'in olur: geri → o konunun dersi
+    sekme(s, "Temrin")
+    s.evaluate("() => document.getElementById('sayfaCalis').appendChild(konudaOkuDugmesi(oturum.sorular[oturum.i], 'test-konuda-oku2'))")
+    s.click("#sayfaCalis .test-konuda-oku2"); s.wait_for_timeout(350)
+    sekme(s, "42 Tarzı"); sekme(s, OKU_ADI)
+    kontrol("sahiplenilen konu Kıraat'te açık", oku_ekrani(s) == "konu:" + hedef, oku_ekrani(s))
+    geri(s)
+    ders = s.evaluate("(id) => KONULAR.get(id).ders", hedef)
+    kontrol("geri tuşu sahiplenilen konunun dersine (Temrin'e değil)", s.evaluate(SEKME) == "oku" and oku_ekrani(s) == "ders:" + ders, (s.evaluate(SEKME), oku_ekrani(s)))
+
+    # 13) Kaplama: çekmece açıkken geri tuşu yalnızca çekmeceyi kapatır
+    s.click("#hesapDugme"); s.wait_for_selector(".hesap-sayfa.acik")
+    geri(s); s.wait_for_timeout(400)
+    kontrol("çekmece geri tuşuyla kapanır, ekran yerinde", s.locator(".hesap-sayfa.acik").count() == 0 and oku_ekrani(s) == "ders:" + ders, oku_ekrani(s))
+
+    # 14) 42 Tarzı: deste → Kıraat → 42 Tarzı → geri tuşu → 42 Tarzı ana ekranı
+    sekme(s, "42 Tarzı")
+    s.evaluate("() => { depo.yaz('pg.kartKapsam', { algoritma: 'tumu' }); kartSayfasiCiz(); }")
+    s.click("#sayfaKart button.ana:has-text('kartla çalış')"); s.wait_for_selector("#sayfaKart .deste")
+    sekme(s, OKU_ADI); sekme(s, "42 Tarzı")
+    geri(s)
+    kontrol("destede geri tuşu 42 Tarzı ana ekranına", s.evaluate(SEKME) == "kart" and s.locator("#sayfaKart .deste").count() == 0 and s.locator("#sayfaKart button.ana:has-text('kartla çalış')").count() == 1, s.evaluate(SEKME))
+    geri(s)
+    kontrol("42 Tarzı kökünde geri tuşu Kıraat'e", s.evaluate(SEKME) == "oku", s.evaluate(SEKME))
 
 kontrol("sayfa hatası yok", not hatalar, hatalar)
 gecen = sum(1 for _, k in sonuclar if k)

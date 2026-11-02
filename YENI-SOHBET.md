@@ -35,7 +35,7 @@ programcilik/
 │   ├── icerik-aktar.mjs     ← doğrula (--kuru) / yükle
 │   ├── icerik-denetle.py    ← kalite denetimi
 │   └── sekiller/<ders>.py   ← şekil/görsel üreticiler (donanim-kaynak/ = fotoğraf kaynakları)
-├── uygulama/index.html      ← tek dosya uygulama (sw.js önbellek: programcilik-v15)
+├── uygulama/index.html      ← tek dosya uygulama (sw.js önbellek: programcilik-v16)
 ├── supabase/01-sema.sql
 └── test/tarayici/*_sina.py  ← Playwright testleri; yardim/hepsi.sh hepsini çalıştırır
 ```
@@ -58,7 +58,7 @@ programcilik/
 
 ## Şu an açık olanlar
 
-- **Elektrik:** konu 13–15 yazıldı, denetlenmedi; 16–23 kalan. Yalnızca Hamza "devam" deyince.
+- **Elektrik:** konu 01–15 yayında; 16–23 (P09–P14) kalan. Yalnızca Hamza "devam" deyince.
 - **Hocaya sorulacaklar:**
   - Veritabanı konu 14 (iç içe SELECT)
   - Ağlar: A sınıfı 0–126 / 1–126; ODTÜ/IANA ifadesi

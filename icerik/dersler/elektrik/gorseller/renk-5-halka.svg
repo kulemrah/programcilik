@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="250" viewBox="0 0 360 250" role="img">
+<title>5 renkli direnç: Renk-1 Rakam-1, Renk-2 Rakam-2, Renk-3 Rakam-3, Renk-4 Çarpan Değeri, Renk-5 Tolerans Değeri</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="110.0" y="24.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" font-weight="600" text-anchor="middle">5 Renkli Direnç</text>
+<line x1="6.0" y1="62.0" x2="40.0" y2="62.0" stroke="#1A202C" stroke-width="3"/>
+<line x1="170.0" y1="62.0" x2="200.0" y2="62.0" stroke="#1A202C" stroke-width="3"/>
+<rect x="40.0" y="38.0" width="130.0" height="48.0" fill="#FFFFFF" stroke="#1A202C" stroke-width="2.4"/>
+<rect x="49.0" y="39.2" width="10.0" height="45.6" fill="#E01B1B" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="69.0" y="39.2" width="10.0" height="45.6" fill="#E01B1B" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="89.0" y="39.2" width="10.0" height="45.6" fill="#E01B1B" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="109.0" y="39.2" width="10.0" height="45.6" fill="#E01B1B" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="149.0" y="39.2" width="10.0" height="45.6" fill="#C9A227" stroke="#4A5568" stroke-width="0.8"/>
+<line x1="54.0" y1="88.0" x2="54.0" y2="222.0" stroke="#1F3FD6" stroke-width="2.2"/>
+<line x1="54.0" y1="222.0" x2="176.0" y2="222.0" stroke="#1F3FD6" stroke-width="2.2"/>
+<polygon points="176.0,222.0 167.7,225.5 167.7,218.5" fill="#1F3FD6"/>
+<text x="180.0" y="227.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">Renk-1 Rakam-1</text>
+<line x1="74.0" y1="88.0" x2="74.0" y2="194.0" stroke="#1F3FD6" stroke-width="2.2"/>
+<line x1="74.0" y1="194.0" x2="176.0" y2="194.0" stroke="#1F3FD6" stroke-width="2.2"/>
+<polygon points="176.0,194.0 167.7,197.5 167.7,190.5" fill="#1F3FD6"/>
+<text x="180.0" y="199.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">Renk-2 Rakam-2</text>
+<line x1="94.0" y1="88.0" x2="94.0" y2="166.0" stroke="#1F3FD6" stroke-width="2.2"/>
+<line x1="94.0" y1="166.0" x2="176.0" y2="166.0" stroke="#1F3FD6" stroke-width="2.2"/>
+<polygon points="176.0,166.0 167.7,169.5 167.7,162.5" fill="#1F3FD6"/>
+<text x="180.0" y="171.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">Renk-3 Rakam-3</text>
+<line x1="114.0" y1="88.0" x2="114.0" y2="138.0" stroke="#1F3FD6" stroke-width="2.2"/>
+<line x1="114.0" y1="138.0" x2="176.0" y2="138.0" stroke="#1F3FD6" stroke-width="2.2"/>
+<polygon points="176.0,138.0 167.7,141.5 167.7,134.5" fill="#1F3FD6"/>
+<text x="180.0" y="143.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">Renk-4 Çarpan Değeri</text>
+<line x1="154.0" y1="88.0" x2="154.0" y2="110.0" stroke="#1F3FD6" stroke-width="2.2"/>
+<line x1="154.0" y1="110.0" x2="176.0" y2="110.0" stroke="#1F3FD6" stroke-width="2.2"/>
+<polygon points="176.0,110.0 167.7,113.5 167.7,106.5" fill="#1F3FD6"/>
+<text x="180.0" y="115.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">Renk-5 Tolerans Değeri</text>
+</svg>

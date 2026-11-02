@@ -1296,7 +1296,7 @@ html.hesap-acik,html.hesap-acik body{overflow:hidden}
 
 /* Kimlik kartı */
 .profil-kart{
-  display:flex;align-items:center;gap:14px;padding:16px;border-radius:var(--r-buyuk);
+  display:flex;align-items:center;gap:14px;margin:0 0 12px;padding:16px;border-radius:var(--r-buyuk);
   background:var(--yuzey);border:1px solid var(--cizgi);box-shadow:var(--golge);
 }
 .profil-kart.duzenleniyor{align-items:flex-start}
@@ -5328,8 +5328,9 @@ function hesapSayfasiAc(secenek) {
          doğrudan kapatılır: çıkış tarayıcı geçmişine bağlı kalmaz. */
       if (sayfa.isConnected) {
         hesapSonrasi = () => cikisYap("Çıkış yapıldı.");
-        if (geriYigini.length) geriDon();
-        setTimeout(() => { if (hesapSonrasi) hesapSayfasiniKapat(); }, geriYigini.length ? 700 : 0);
+        const adimVar = sekmeGecmisi().length > 0;
+        if (adimVar) geriDon();
+        setTimeout(() => { if (hesapSonrasi) hesapSayfasiniKapat(); }, adimVar ? 700 : 0);
       }
       else if (KULLANICI) cikisYap("Çıkış yapıldı.");
       else cikisBekliyor = false;
@@ -5427,8 +5428,9 @@ function cekmeceyiKapat(sayfa) {
   geriDon();
   setTimeout(() => {
     if (sayfa !== hesapSayfasi) return;
-    const i = geriYigini.map(x => x.islev).lastIndexOf(hesapSayfasiniKapat);
-    if (i !== -1) geriYigini.splice(i, 1);
+    const y = sekmeGecmisi();
+    const i = y.map(x => x.islev).lastIndexOf(hesapSayfasiniKapat);
+    if (i !== -1) y.splice(i, 1);
     hesapSayfasiniKapat();
   }, 450);
 }
@@ -5549,95 +5551,124 @@ function cekmeceSurukleKur(sayfa, panel, perde, govde) {
 })();
 
 /* ==========================================================================
-   Uygulama içi geri: geçmiş yığını
-   Telefonun geri tuşu uygulamadan atmasın diye her derinleşmede tarayıcı
-   geçmişine bir adım eklenir; geri basıldığında o adımın geri işlevi çalışır.
+   Uygulama içi geri: her sekmenin kendi geçmişi
+   Her sekme (Kıraat, Ara, Temrin, 42 Tarzı) kendi alt ekranlarının geri
+   adımlarını ayrı bir yığında tutar. Telefonun geri tuşu da, sayfadaki geri
+   düğmeleri de yalnızca bulunulan sekmenin yığınından bir adım geri alır;
+   arada başka sekmeye gidilip gelinmesi bir şey değiştirmez.
+   Sekmenin kökünde geri basılırsa Kıraat'e dönülür (Kıraat yerinde durur);
+   Kıraat'in kökünde geri basılırsa çıkış uyarısı çıkar, ikinci basış çıkarır.
+
+   Tarayıcı geçmişi yalnızca geri tuşunu yakalamak içindir: tabanın üstünde
+   anlamı olmayan "yer tutucu" adımlar durur ({ k: sıra, y: yükleme }). Yer
+   tutucular kullanıcının dokunuşlarıyla eklenir (derinleşme, sekme
+   değiştirme). Her geri basışta tarayıcı bir adım iner, popstate gelir ve
+   geri adımının ne yapacağına burada, o anki sekmeye bakılarak karar verilir.
    ========================================================================== */
-const geriYigini = [];
+const SEKME_GECMISI = { oku: [], ara: [], calis: [], kart: [] };
 /* Her sayfa yüklemesinin kimliği: önceki yüklemelerden geçmişte kalmış
    adımlar (sayfa yenilenince) bununla tanınır ve sessizce atlanır */
 const YUKLEME = Math.random().toString(36).slice(2, 10);
+let gecmisKonumu = 0;          /* tarayıcı geçmişinde bulunulan adım: 0 taban */
+let atlamaSonrasi = null;      /* programla history.go yapıldı: gelen popstate bunu çalıştırır */
 
-/* gecis: bu adım bir sekme geçişidir (geri alınınca önceki sekmeye dönülür) */
-function derinlesGit(geriIslevi, gecis) {
-  geriYigini.push({ islev: geriIslevi, sekme: aktifSekme, gecis: !!gecis });
-  try { history.pushState({ pg: geriYigini.length, y: YUKLEME }, ""); } catch (e) {}
+function sekmeGecmisi(ad) { return SEKME_GECMISI[ad || aktifSekme] || SEKME_GECMISI.oku; }
+function gecmisiTemizle() { Object.keys(SEKME_GECMISI).forEach(k => { SEKME_GECMISI[k].length = 0; }); }
+function yerTutucuEkle() {
+  gecmisKonumu++;
+  try { history.pushState({ k: gecmisKonumu, y: YUKLEME }, ""); } catch (e) {}
 }
 
-/* Bulunulan sekmenin kendi adımlarından en üsttekinin sırası; yoksa -1.
-   Sekme geçişleri ve başka sekmelerde açılmış ekranların adımları sayılmaz. */
-function sekmeAdimi() {
-  for (let i = geriYigini.length - 1; i >= 0; i--) {
-    const a = geriYigini[i];
-    if (!a.gecis && a.sekme === aktifSekme) return i;
+/* Bulunulan sekmede bir alt ekrana inilir; geri işlevi o sekmenin yığınına girer */
+function derinlesGit(geriIslevi) {
+  sekmeGecmisi().push({ islev: geriIslevi, donus: !!(geriIslevi && geriIslevi.donus) });
+  yerTutucuEkle();
+}
+
+/* Sekmeler arası atlama (aramadan ya da sorudan konuyu Kıraat'te açmak):
+   geri basılınca gelinen yere dönülür ve Kıraat atlamadan önceki hâline
+   (okunan konu, kaydırma yeri) kavuşur. Atlamadan sonra kullanıcı başka bir
+   sekmeye geçerse açılan konu Kıraat'in kendi ekranı sayılır (sekmeAc). */
+function donusIslevi(islev) {
+  const okuOnce = okuAcik, kaydirmaOnce = okuKaydirma;
+  const f = () => { okuAcik = okuOnce; okuKaydirma = kaydirmaOnce; islev(); };
+  f.donus = true;
+  return f;
+}
+
+/* Bir geri adımı. Sırası: sekmenin yığını; yığın boşsa ama sekme kökte
+   değilse bir üst ekran (adımı olmayan alt ekran, ör. sahiplenilen konu);
+   kökteyse Kıraat'e geçilir. Kıraat'in kökündeyse false döner (çıkış). */
+function geriAdimi() {
+  const y = sekmeGecmisi();
+  if (y.length) { y.pop().islev(); return true; }
+  if (aktifSekme === "oku") {
+    if (okuAcik && okuAcik.tur === "konu" && KONULAR.has(okuAcik.konu)) {
+      dersCiz(KONULAR.get(okuAcik.konu).ders, null); window.scrollTo(0, 0); return true;
+    }
+    if (okuAcik) { okuAcik = null; okuKaydirma = 0; okuKokuCiz(); window.scrollTo(0, 0); return true; }
+    return false;
   }
-  return -1;
+  if (aktifSekme !== "ara" && !kokteMi()) { sekmeyiTazele(false, true); window.scrollTo(0, 0); return true; }
+  sekmeAc("oku", false);
+  return true;
 }
 
 /* Uygulama içindeki geri düğmeleri (‹ Temrin yolları, Tamam, Kapat…) bunu
-   kullanır; böylece ekran ile tarayıcı geçmişi birbirinden kopmaz.
-   Sayfa içi geri, bulunulan sekmenin bir üst ekranına gider: araya giren
-   sekme geçişleri atlanır (yoksa konu seçimindeyken 42 Tarzı'na gidip
-   dönünce "‹ Temrin yolları" 42 Tarzı'na atıyordu). Atlanan adımlar
-   geçmişten de birlikte geri sarılır. Bu sekmeye ait adım kalmadıysa
-   sekmenin kökü çizilir. Telefonun geri tuşu ise geçmişi olduğu gibi izler. */
+   kullanır: telefonun geri tuşuyla aynı adım, geçmişten de bir yer tutucu
+   düşer. Sekmenin yığını boşsa (ekran adımsız açıldıysa) adım doğrudan
+   atılır; geçmiş tüketilmez. */
 function geriDon() {
-  const i = sekmeAdimi();
-  if (i !== -1) { history.go(i - geriYigini.length); return; }
   if (!uygulamaAcik) return;
-  if (aktifSekme === "oku") { okuAcik = null; okuKaydirma = 0; okuKokuCiz(); }
-  else sekmeyiTazele(false, true);
-  window.scrollTo(0, 0);
+  if (sekmeGecmisi().length && gecmisKonumu > 0) { history.back(); return; }
+  geriAdimi();
 }
 
-/* Etkin sekmeye tekrar dokunulduğunda o sekmede açılmış alt ekranlar
-   geçmişten de geri sarılır; yoksa sonraki geri basışları hiçbir şey
-   yapmamış gibi görünür. */
+/* Etkin sekmeye tekrar dokunulunca o sekmenin geçmişi silinir (ekran köke
+   çizilir). Tarayıcıdaki yer tutucular kalır; anlamlarına geri basıldığı
+   an karar verildiği için zararsızdır. */
 function sekmeKokuneDon() {
-  let i = geriYigini.length;
-  while (i > 0 && geriYigini[i - 1].sekme === aktifSekme) i--;
-  const adim = geriYigini.length - i;
-  if (adim > 0) { history.go(-adim); return true; }
+  sekmeGecmisi().length = 0;
   return false;
 }
 
-/* Kök ekranda geri tuşu uygulamadan hemen atmasın: geçmişin en altında,
-   tabanın üstünde bir "bekçi" adımı durur. Bekçiden geri basılınca kısa bir
-   uyarı çıkar ve taban adımda kalınır; CIKIS_SURESI içinde bir daha basılırsa
+/* Kök ekranda geri tuşu uygulamadan hemen atmasın: tabanın üstünde en az bir
+   yer tutucu ("bekçi") durur. Kıraat'in kökünde geri basılınca tabana
+   inilir ve kısa bir uyarı çıkar; CIKIS_SURESI içinde bir daha basılırsa
    telefon/tarayıcı uygulamadan çıkar. Süre geçerse bekçi yeniden kurulur. */
 const CIKIS_SURESI = 2500;
 let bekciZamanlayici = null;
 function bekciKur() {
   if (bekciZamanlayici) { clearTimeout(bekciZamanlayici); bekciZamanlayici = null; }
-  try { if (!(history.state && history.state.bekci && history.state.y === YUKLEME)) history.pushState({ pg: 0, bekci: true, y: YUKLEME }, ""); } catch (e) {}
+  if (gecmisKonumu === 0) yerTutucuEkle();
 }
-
-/* Geçmiş adımının derinlik damgasına bakılır; böylece birden fazla adım
-   birden geri gidilse de yığın ekranla aynı hizada kalır. */
-window.addEventListener("popstate", olay => {
-  const durum = olay.state || {};
-  const hedef = durum.pg || 0;
-  let girdi = null;
-  while (geriYigini.length > hedef) girdi = geriYigini.pop();
-  if (girdi) {
-    girdi.islev();
-    /* Bekçi yeniden kurulmadan önce derinleşilmişti: tabana inildiyse bekçi döner */
-    if (uygulamaAcik && hedef === 0 && !durum.bekci) bekciKur();
-    return;
-  }
-  /* Önceki bir yüklemeden kalmış adım: bu yüklemenin tabanının altındadır,
-     yani kullanıcı çıkıyor; eski adımlar sessizce geçilir */
-  if (durum.y !== YUKLEME) { history.back(); return; }
-  if (!uygulamaAcik || durum.bekci) return;
-  /* Çıkış-giriş sonrası kalmış derin adım: sessizce bekçiye doğru geçilir */
-  if (durum.pg > 0) { history.back(); return; }
-  /* Bekçinin altına inildi: bu bir çıkış denemesi */
+function cikisUyarisi() {
   kisaBildirim("Çıkmak için geri tuşuna bir daha basın");
   if (bekciZamanlayici) clearTimeout(bekciZamanlayici);
   bekciZamanlayici = setTimeout(() => {
     bekciZamanlayici = null;
-    if (uygulamaAcik && !geriYigini.length && history.state && history.state.y === YUKLEME && !history.state.bekci) bekciKur();
+    if (uygulamaAcik && gecmisKonumu === 0) bekciKur();
   }, CIKIS_SURESI);
+}
+
+window.addEventListener("popstate", olay => {
+  const durum = olay.state || {};
+  /* Önceki bir yüklemeden kalmış adım: bu yüklemenin tabanının altındadır,
+     yani kullanıcı çıkıyor; eski adımlar sessizce geçilir */
+  if (durum.y !== YUKLEME) { history.back(); return; }
+  const k = typeof durum.k === "number" ? durum.k : 0;
+  const geriMi = k < gecmisKonumu;
+  gecmisKonumu = k;
+  if (atlamaSonrasi) { const is = atlamaSonrasi; atlamaSonrasi = null; is(); return; }
+  if (!uygulamaAcik || !geriMi) return;
+  if (geriAdimi()) {
+    if (gecmisKonumu === 0) bekciKur();
+    return;
+  }
+  /* Kıraat'in kökü: çıkış. Üstte artakalan yer tutucular varsa tabana
+     inilir ki bir sonraki basış gerçekten çıkarsın. */
+  if (gecmisKonumu > 0) { atlamaSonrasi = cikisUyarisi; history.go(-gecmisKonumu); return; }
+  cikisUyarisi();
 });
 
 /* ==========================================================================
@@ -5683,7 +5714,14 @@ function sekmeAc(ad, gecmiseEkle) {
     sekmeKokuneDon();
     if (ad === "oku") { okuAcik = null; okuKaydirma = 0; }
   }
-  if (gecmiseEkle !== false && ad !== onceki) derinlesGit(() => sekmeAc(onceki, false), true);
+  if (gecmiseEkle !== false && ad !== onceki) {
+    /* Kullanıcı başka sekmeye geçiyor: atlamayla açılmış ekran artık bu
+       sekmenin kendi ekranıdır; dönüş adımı ve altındakiler geçersizleşir
+       (geri basılınca geriAdimi bir üst ekranı çizer). */
+    const y = sekmeGecmisi(onceki);
+    if (y.some(a => a.donus)) y.length = 0;
+    yerTutucuEkle();
+  }
   aktifSekme = ad;
   SEKMELER.forEach(s => document.getElementById(s.sayfa).classList.toggle("acik", s.ad === ad));
   altCubukCiz();
@@ -5714,18 +5752,16 @@ function sekmeyiTazele(sekmeDegisti, kokeDon) {
 
 function uygulamayiAc() {
   uygulamaAcik = true;
-  /* Çıkıştan sonra sayfa yenilenmeden yeniden girilince tarayıcı geçmişinde
-     önceki oturumun adım numaraları kalır; geri işlevi onları görüp hiçbir
-     şey kapatmaz. Bulunulan adım burada sıfır olarak işaretlenir. */
+  /* Yeni bir yüklemede bulunulan adım taban olur, üstüne bekçi kurulur
+     (altındaki eski adımlar geri basılınca sessizce atlanır). Aynı yüklemede
+     çıkış yapılıp yeniden girildiyse bulunulan yer tutucu olduğu gibi kalır. */
+  gecmisiTemizle();
   try {
     const d = history.state;
-    /* Aynı yüklemede çıkış yapılıp yeniden girildiyse taban ve bekçi zaten
-       vardır; yeni bir yüklemede bulunulan adım taban olur, üstüne bekçi
-       kurulur (altındaki eski adımlar geri basılınca sessizce atlanır). */
-    if (d && d.y === YUKLEME && d.bekci) { /* olduğu gibi */ }
-    else if (d && d.y === YUKLEME && d.pg > 0) history.replaceState({ pg: 0, bekci: true, y: YUKLEME }, "");
-    else { history.replaceState({ pg: 0, y: YUKLEME }, ""); bekciKur(); }
-  } catch (e) {}
+    if (d && d.y === YUKLEME && typeof d.k === "number") gecmisKonumu = d.k;
+    else { history.replaceState({ k: 0, y: YUKLEME }, ""); gecmisKonumu = 0; }
+  } catch (e) { gecmisKonumu = 0; }
+  bekciKur();
   aktifSekme = "oku";
   okuAcik = null;
   SEKMELER.forEach(s => document.getElementById(s.sayfa).classList.toggle("acik", s.ad === "oku"));
@@ -5745,7 +5781,7 @@ function uygulamayiKapat() {
   document.querySelectorAll(".panel-perde,.not-perde,.secim-cubugu,.kurulum,.kilit-perde,.oynatma,.hesap-sayfa").forEach(e => e.remove());
   document.documentElement.classList.remove("hesap-acik");
   aramaPaneli = null; secimMenusu = null; kurulumSeridi = null; panelSonrasi = null; hesapSayfasi = null; hesapSonrasi = null;
-  geriYigini.length = 0;
+  gecmisiTemizle();
   okuAcik = null; araSorgusu = ""; oturum = null;
   SEKMELER.forEach(s => { document.getElementById(s.sayfa).innerHTML = ""; });
 }
@@ -5997,7 +6033,7 @@ function muhimlerCiz(geriIslev) {
   const geri = olustur("button", "geri");
   geri.textContent = "‹ Dersler";
   geri.addEventListener("click", () => {
-    if (sekmeAdimi() !== -1) geriDon(); else okuKokuCiz();
+    geriDon();
   });
   sayfa.appendChild(geri);
   const baslik = olustur("h2", "ders-basligi");
@@ -6177,8 +6213,7 @@ function konuAc(konuId, geriIslev, vurguSorgusu, kaydirmaYeri, hedefBaslik) {
   geri.textContent = "‹ Geri";
   geri.addEventListener("click", () => {
     /* Geçmişte adım yoksa (ör. sekme yeniden çizildi) derse dönülür */
-    if (sekmeAdimi() !== -1) geriDon();
-    else dersCiz(konu.ders, null);
+    geriDon();
   });
   const bosluk = olustur("span", "bosluk");
   const kucult_ = olustur("button", "boyut-dugme");
@@ -7359,8 +7394,9 @@ function aramaSayfasiCiz(baslangic) {
         '<span class="kisa">' + kacir(k.izah ? k.izah.replace(/[`*]/g, "") : konuYeri(k.konu)) + "</span>";
       d.addEventListener("click", () => {
         if (k.tur === "baslik") {
+          const geri = donusIslevi(araDon());
           sekmeAc("oku", false);
-          konuAc(k.konu.id, araDon(), null, 0, k.yer);
+          konuAc(k.konu.id, geri, null, 0, k.yer);
           return;
         }
         girdi.value = k.terim;
@@ -7394,7 +7430,7 @@ function aramaSayfasiCiz(baslangic) {
       const git = olustur("button", "nereden");
       git.textContent = konuYeri(k.konu) + " ›";
       git.addEventListener("click", () => {
-        const geri = araDon();
+        const geri = donusIslevi(araDon());
         sekmeAc("oku", false);
         konuAc(k.konu.id, geri, k.terim, 0, k.yer);
       });
@@ -7424,7 +7460,7 @@ function aramaSayfasiCiz(baslangic) {
       const git = olustur("button", "nereden");
       git.textContent = "bu konuda oku ›";
       git.addEventListener("click", () => {
-        const geri = araDon(), q2 = girdi.value;
+        const geri = donusIslevi(araDon()), q2 = girdi.value;
         sekmeAc("oku", false);
         konuAc(k.konu.id, geri, q2);
       });
@@ -8063,13 +8099,14 @@ function konudaOkuDugmesi(soru, sinif) {
   n.textContent = konuYeri(soru.konu) + (soru.yer ? " › " + soru.yer : "") + " ›";
   n.addEventListener("click", () => {
     const o = oturum;
-    sekmeAc("oku", false);
     /* Temrin sayfası sekme değişince silinmez; soru cevaplanmış hâliyle
        durur. Yalnızca oturum başka bir şeyle değiştiyse yeniden çizilir. */
-    konuAc(soru.konu.id, () => {
+    const geri = donusIslevi(() => {
       sekmeAc("calis", false);
       if (o && (oturum !== o || !$("#sayfaCalis").childElementCount)) { oturum = o; soruCiz(); }
-    }, null, 0, soru.yer || null);
+    });
+    sekmeAc("oku", false);
+    konuAc(soru.konu.id, geri, null, 0, soru.yer || null);
   });
   return n;
 }
@@ -8496,8 +8533,9 @@ function sonucCiz() {
       git.textContent = konuYeri(s.konu) + " ›";
       git.addEventListener("click", () => {
         const o = oturum;
+        const geri = donusIslevi(() => { sekmeAc("calis", false); oturum = o; sonucCiz(); });
         sekmeAc("oku", false);
-        konuAc(s.konu.id, () => { sekmeAc("calis", false); oturum = o; sonucCiz(); }, null, 0, s.yer || null);
+        konuAc(s.konu.id, geri, null, 0, s.yer || null);
       });
       k.append(p, git);
       kutu.appendChild(k);

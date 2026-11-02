@@ -32,9 +32,9 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
 
 ## 3. Teslim durumu
 
-- Bu sohbetteki çalışma kopyasının son hâli `programcilik-son.zip`'tedir (Elektrik 13–15 hariç, bkz. 7). GitHub'daki deponun bu hâle getirilmesi gerekir.
+- Çalışma kopyasının son hâli: `programcilik-son.zip` + üstüne guncelleme-28 (guncelleme-26 ve 27'yi kapsar). GitHub'daki deponun bu hâle getirilmesi gerekir.
 - Teslim edilen ama GitHub'a yüklendiği **teyit edilmeyen** paketler: guncelleme-20, 21, 22, 23, 24, aglar-ders-1, guncelleme-25. `programcilik-son.zip` bunların hepsini kapsar; tek tek yüklemeye gerek yok.
-- guncelleme-27 (guncelleme-26'yı da kapsar): kurulum şeridinin en alttaki düğmeleri örtmesi; sayfa içi geri düğmelerinin sekme değişince başka sekmeye atması; "Oku" sekmesinin adı "Kıraat"; 42 Tarzı'nda ders ve konu seçimi Temrin'deki seçim ekranıyla. Teslim edildi, GitHub'a yüklendiği teyit edilmedi. `programcilik-son.zip`'in üstüne yüklenir; guncelleme-26'yı ayrıca yüklemeye gerek yok.
+- guncelleme-28 (26 ve 27'yi de kapsar): kurulum şeridinin en alttaki düğmeleri örtmesi; her sekmenin kendi geri geçmişi; "Oku" sekmesinin adı "Kıraat"; 42 Tarzı'nda ders ve konu seçimi Temrin'deki seçim ekranıyla; Hesap ekranında kutular arası boşluk; Elektrik 13–15. Teslim edildi, GitHub'a yüklendiği teyit edilmedi. `programcilik-son.zip`'in üstüne yüklenir; 26 ve 27'yi ayrıca yüklemeye gerek yok.
 - guncelleme-24'te eski ikonlar silindi: depoda `uygulama/ikon-*.png` ve `uygulama/apple-touch-icon.png` kaldıysa `git rm` ile silinir.
 
 ## 4. 🔶 Açık kalanlar
@@ -66,7 +66,7 @@ icerik/
   dersler/<ders>/    NN-ad.md (not) + NN-ad.json (kavram, soru, kart) + gorseller/
   envanter/<ders>.md slayt slayt döküm, sorunlar tablosu ve kararlar (uygulamaya gitmez)
 supabase/01-sema.sql tekrar çalıştırılabilir tam şema
-uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v15), manifest,
+uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v16), manifest,
                      supabase.js, ikonlar kostu-192/512.png, kostu-maskable-512.png, kostu-apple-180.png
 test/tarayici/       Playwright testleri (test-son.zip'te), test/gercek/sahte_supa.py
 KURULUM.md           kurulum ve günlük kullanım
@@ -83,7 +83,7 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 | veritabani | 14 | 252 | 100 | tamam (konu 14'te hocaya soru) |
 | donanim | 7 | 99 | 36 | 1. not tamam (guncelleme-25) |
 | aglar | 3 | 47 | 18 | 1. not tamam (aglar-ders-1) |
-| elektrik | 12 yayında | 210 | 95 | konu 13–15 yazıldı, denetlenmedi; 16–23 kalan |
+| elektrik | 15 | 254 | 112 | 01–15 tamam; 16–23 kalan |
 | ekoloji | 4 | 64 | 30 | tamam |
 | born2beroot (hususi) | 17 | 64 | 20 | tamam |
 
@@ -112,12 +112,10 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 
 ## 7. Elektrik dersi (Temel Elektrik ve Elektronik): sürüyor, "devam" bekleniyor
 
-- Kaynak `temel_elektrik_elektronik_st_1.pdf` (206 slayt). 14 parça (P01–P14), 23 konu. Her parça ayrı yazılır, ayrı denetlenir (K12).
-- Yayında: P01–P07 (slayt 1–107), konu 01–12.
-- **P08** (slayt 108–120: 13 pil-akü, 14 renk kodları, 15 topraklama): yazıldı, **denetlenmedi**. Dosyaları ve 7 SVG'si (`pil-seri-baglanti`, `pil-paralel-baglanti`, `renk-tablosu`, `renk-4-halka`, `renk-4-ornek`, `renk-5-halka`, `renk-5-ornek`) `elektrik-devam.zip`'te; `programcilik-son.zip`'e konmadı.
-- `araclar/sekiller/elektrik.py` P08 şekillerini de üretir: 13–15 yayına girene kadar betik çalıştırılırsa bu 7 SVG `gorseller/`'den silinmeli (yoksa aktarıcı "hiçbir konuda kullanılmıyor" der).
-- Kalan: P08 denetimi; P09 (121–137: 16 direnç çeşitleri) yarım; P10–P14 (138–206: kondansatör, bobin, yarı iletken, diyot, alternatif akım, şebeke-trafo, enerji-Joule) başlanmadı.
-- Çalışma düzeni `elektrik-devam.zip`: `PLAN.md`, `YAZICI.md`, `DENETCI.md`, parça envanterleri, raporlar, şekil parçaları, `sekiller/yap.sh`, P08 dosyaları. Birleştirme: envanter parçaları `icerik/envanter/elektrik.md`'ye, şekil parçaları `araclar/sekiller/elektrik.py`'ye.
+- Kaynak `temel_elektrik_elektronik_st_1.pdf` (206 slayt; Hamza'nın bilgisayarında `~/İndirilenler/`). 14 parça (P01–P14), 23 konu. Her parça ayrı yazılır, ayrı denetlenir (K12).
+- Yayında: P01–P08 (slayt 1–120), konu 01–15. P08'in bağımsız denetimi yapıldı (0 KRİTİK, 4 ORTA, 8 DÜŞÜK); ORTA'ların hepsi ve DÜŞÜK 1, 3, 4, 7, 8 kapatıldı; DÜŞÜK 2, 5, 6 bilerek bırakıldı (`elektrik-is/denetim/p08-denetim.md`).
+- Kalan: P09 (121–137: 16 direnç çeşitleri), P10 (138–149: 17 kondansatör), P11 (150–158: 18 bobin), P12 (159–177: 19 yarı iletkenler, 20 diyot), P13 (178–192: 21 alternatif akım), P14 (193–206: 22 şebeke-alternatör-trafo, 23 enerji-Joule). Hiçbirinin dosyası yok; P09'dan başlanır.
+- Çalışma düzeni `elektrik-devam.zip` (`elektrik-is/`): `PLAN.md`, `YAZICI.md`, `DENETCI.md`, parça envanterleri, raporlar, denetimler, şekil parçaları, `sekiller/yap.sh`. Birleştirme: envanter parçaları ders bitince `icerik/envanter/elektrik.md`'ye; şekil parçaları `yap.sh` ile `araclar/sekiller/elektrik.py`'ye. Denetçinin beklediği slayt düzeni: `/home/claude/kaynak/elektrik/` (PDF, `sayfa/s-NNN.png` 110 dpi ve `s-NNN.txt`).
 
 ## 8. Uygulamanın mimarisi (uygulama/index.html)
 
@@ -138,11 +136,11 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 - **Süre ölçümü:** 5 sn'lik tik, `calisma/"GG|YAZICI"`; bir konuda günde 3 dakikadan azsa süre sayılmaz.
 - **Görseller:** `gorselHtml` (tek görsel ya da dizi), `galeriGuncelle` (sayaç/nokta/ok), `buyutecAc`, `soruGorselleri` (soru kutusunda).
 - **Alt çubuk:** Kıraat (iç adı `oku`, `#sayfaOku`), Ara, Temrin (`calis`), 42 Tarzı (`kart`). Görünen ad yalnızca `SEKMELER`'deki `etiket`tir; kimlikler değişmez.
-- **Geri tuşu:** `derinlesGit(islev, gecis)` / `geriDon`, kökte bekçi adımı. Sekme geçişleri yığında `gecis` diye işaretlenir. Sayfa içi geri düğmeleri (`geriDon`) bulunulan sekmenin en yakın kendi adımına döner (`sekmeAdimi`); aradaki sekme geçişleri ve başka sekmelerin adımları geçmişten birlikte geri sarılır. Bu sekmeye ait adım yoksa sekmenin kökü çizilir. Telefonun geri tuşu geçmişi olduğu gibi izler (önceki sekmeye dönebilir).
+- **Geri tuşu (her sekmenin kendi geçmişi):** `SEKME_GECMISI` (oku, ara, calis, kart) sekme başına geri adımlarını tutar; `derinlesGit(islev)` bulunulan sekmeye ekler. Telefonun geri tuşu ve sayfa içi geri düğmeleri (`geriDon`) aynı `geriAdimi`'ni çalıştırır: sekmenin yığını → yığın boşsa bir üst ekran (Kıraat'te konu → ders → kök; ötekilerde kök) → sekmenin kökündeyse Kıraat → Kıraat'in kökünde çıkış uyarısı (`cikisUyarisi`, ikinci basış çıkarır). Tarayıcı geçmişi yalnızca yer tutucudur (`{k, y}`, `gecmisKonumu`); yer tutucular kullanıcı dokunuşlarıyla eklenir (derinleşme, sekme değiştirme); tabanda bekçi (`bekciKur`). Sekmeler arası atlama (aramadan ya da sorudan "konuda oku") `donusIslevi` ile işaretlenir: geri → gelinen yer, Kıraat önceki konusuna döner; atlamadan sonra kullanıcı başka sekmeye geçerse dönüş adımları silinir ve açılan konu Kıraat'in olur. Etkin sekmeye yeniden dokunmak o sekmenin geçmişini siler.
 - **Seçim ekranı (kapsam):** `kapsamCiz(alan)` / `dersKapsamiCiz(ders, alan)` Temrin (`calis`, bütün konular) ve 42 Tarzı (`kart`, yalnızca kartlı konular) için ortaktır; ayarları `KAPSAM_ALANLARI`'nda. Seçimler ayrı tutulur.
 - **42 Tarzı:** ana ekranda "Ders ve konular" düğmesi, iki anahtar (mühim yerler, bilemediklerim), "N kartla çalış" ve "Kartları liste hâlinde oku" (`kartListesiCiz`, ayrı ekran). Seçim yoksa yalnızca "Ders ve konu seç".
 - **Yüzen şeritler:** kurulum şeridi (`.kurulum`) ve okuma çubuğu (`.oynatma`) alt çubuğun üstünde sabit durur. `altBosluguAyarla` (MutationObserver + ResizeObserver) görünür şeridin yüksekliğini `--serit-alt` değişkenine yazar; `body`'nin alt boşluğu buna göre büyür ki en alttaki düğmeler (konu seçimindeki "Tamam" gibi) şeridin altında kalmasın. Yeni bir sabit alt şerit eklenirse `YUZEN_SERITLER` seçicisine eklenir.
-- **Service worker:** önbellek `programcilik-v15`; index.html değişince `sw.js`'teki sürüm bir artırılır.
+- **Service worker:** önbellek `programcilik-v16`; index.html değişince `sw.js`'teki sürüm bir artırılır.
 
 ## 9. Test düzeneği (test-son.zip)
 

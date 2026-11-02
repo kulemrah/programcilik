@@ -1,0 +1,245 @@
+{
+  "id": "el-topraklama",
+  "baslik": "Topraklama",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 117–120",
+  "kavramlar": [
+    {
+      "terim": "Topraklama",
+      "izah": "Elektrikle çalışan alet, makine ve cihazların gövdelerinin bir hatla topraklama levhalarına bağlanması.",
+      "yer": "Topraklama"
+    },
+    {
+      "terim": "Topraklama levhası",
+      "izah": "Yaklaşık 1 ila 2 metre arasında toprağın altına gömülen, 50 x 100 cm ölçülerinde, bakır veya paslanmaz çelik saçtan yapılan metal levha; toprak ile iyi temas sağlamak ve şebeke topraklaması ile arasındaki direnci en aza indirmek için kullanılır.",
+      "yer": "Topraklama levhası"
+    },
+    {
+      "terim": "Koruma topraklaması",
+      "izah": "İnsanları ve canlıları tehlikeli dokunma gerilimine karşı korumak için cihazların gerilim altında olmayan metal kısımlarının topraklaması.",
+      "yer": "Koruma topraklaması"
+    },
+    {
+      "terim": "İşletme topraklaması",
+      "izah": "Bir işyeri veya fabrikanın enerjisini sağlamak için çalışan trafonun veya alternatörün yıldız noktalarının topraklanması.",
+      "yer": "İşletme topraklaması"
+    },
+    {
+      "terim": "Fonksiyon topraklaması",
+      "izah": "Bir işletim tesisinin veya bir işletme elemanının istenen fonksiyonu yerine getirmesi için yapılan topraklama; örneğin zayıf akım cihazlarının topraklaması.",
+      "yer": "Fonksiyon topraklaması"
+    },
+    {
+      "terim": "Yıldırıma karşı topraklama (paratoner)",
+      "izah": "Yıldırım düşmesi sonucunda işletme gereği gerilim altında bulunan iletkenlere atlamaları geniş ölçüde önlemek için işletme akım devresine ilişkin olmayan iletken bölümlerin topraklanması. Yıldırım topraklaması sistemine paratoner de denir.",
+      "yer": "Yıldırıma karşı topraklama (paratoner)"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-topraklama.s1",
+      "tip": "secme",
+      "yer": "Topraklama",
+      "soru": "Hocanın **topraklama** tanımı hangisidir?",
+      "secenekler": [
+        "Alet, makine ve cihazların gövdelerinin bir hatla topraklama levhalarına bağlanması",
+        "Toprağın 1 ila 2 metre altına gömülen, bakır veya paslanmaz çelik saçtan yapılan levha",
+        "Toprak ile iyi temas sağlayıp şebeke topraklamasıyla direnci en aza indiren eleman",
+        "Kaynakların birinin (−) ucu diğerinin (+) ucuna gelecek şekilde arka arkaya bağlanması"
+      ],
+      "dogru": 0,
+      "izah": "Elektrikle çalışan alet, makine ve cihazların gövdelerinin bir hatla topraklama levhalarına bağlanmasına topraklama denir. Gömülen bakır veya paslanmaz çelik levha ile toprakla iyi temas sağlayan eleman topraklama levhasının tanımıdır; (−) ucun (+) uca geldiği arka arkaya bağlama kaynakların seri bağlanmasıdır."
+    },
+    {
+      "id": "el-topraklama.s2",
+      "tip": "secme",
+      "yer": "Topraklama levhası",
+      "soru": "Topraklama levhası yaklaşık hangi derinlikte toprağın altına gömülür?",
+      "secenekler": [
+        "1 ila 2 metre arasında",
+        "50 ila 100 cm arasında",
+        "10 ila 20 cm arasında",
+        "5 ila 10 metre arasında"
+      ],
+      "dogru": 0,
+      "izah": "Topraklama levhası yaklaşık 1 ila 2 metre arasında toprağın altına gömülür. 50 x 100 cm ise levhanın ölçüleridir, derinliği değil."
+    },
+    {
+      "id": "el-topraklama.s3",
+      "tip": "secme",
+      "yer": "Topraklama levhası",
+      "soru": "Hocaya göre topraklama levhası hangi ölçülerde ve neyden yapılır?",
+      "secenekler": [
+        "50 x 100 cm, bakır veya paslanmaz çelik saçtan",
+        "1 x 2 m, alüminyum veya bakır saçtan",
+        "50 x 100 cm, alüminyum veya pirinç saçtan",
+        "10 x 20 cm, bakır veya paslanmaz çelik saçtan"
+      ],
+      "dogru": 0,
+      "izah": "Topraklama levhası 50 x 100 cm ölçülerinde bakır veya paslanmaz çelik saçtan yapılan metal levhadır; yaklaşık 1 ila 2 metre arasında toprağın altına gömülür."
+    },
+    {
+      "id": "el-topraklama.s4",
+      "tip": "bosluk",
+      "yer": "Topraklama levhası",
+      "metin": "Topraklama levhası toprak ile iyi ___ sağlamak ve şebeke topraklaması ile arasındaki direnci en aza indirmek için kullanılan elemandır.",
+      "cevaplar": [
+        [
+          "temas"
+        ]
+      ],
+      "izah": "Hocanın cümlesi: Topraklama levhası toprak ile iyi temas sağlamak ve şebeke topraklaması ile arasındaki direnci en aza indirmek için kullanılan elemandır."
+    },
+    {
+      "id": "el-topraklama.s5",
+      "tip": "dy",
+      "yer": "Topraklama levhası",
+      "ifade": "Topraklama levhaları ile şebeke topraklaması arasındaki direnç ne kadar az olursa kaçak akımların toprağa ve oradan şebeke topraklamasına gitmesi o kadar kolay olur.",
+      "dogru": true,
+      "izah": "Slayttaki cümledir. Levhanın görevlerinden biri de bu direnci en aza indirmektir."
+    },
+    {
+      "id": "el-topraklama.s6",
+      "tip": "esles",
+      "yer": "Topraklama çeşitleri",
+      "soru": "Topraklama çeşitlerini tanımlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Koruma topraklaması",
+          "Cihazların gerilim altında olmayan metal kısımlarının topraklaması"
+        ],
+        [
+          "İşletme topraklaması",
+          "Trafonun veya alternatörün yıldız noktalarının topraklanması"
+        ],
+        [
+          "Fonksiyon topraklaması",
+          "Tesisin ya da elemanın istenen fonksiyonu için yapılan topraklama"
+        ],
+        [
+          "Yıldırıma karşı topraklama",
+          "İşletme akım devresine ilişkin olmayan iletken bölümlerin topraklanması"
+        ]
+      ],
+      "izah": "Koruma: insanları ve canlıları tehlikeli dokunma gerilimine karşı korur. İşletme: işyeri veya fabrikanın enerjisini sağlayan trafo ya da alternatörün yıldız noktaları. Fonksiyon: istenen fonksiyonun yerine getirilmesi. Yıldırıma karşı: iletkenlere atlamaları önlemek için."
+    },
+    {
+      "id": "el-topraklama.s7",
+      "tip": "secme",
+      "yer": "Koruma topraklaması",
+      "soru": "İnsanları ve canlıları **tehlikeli dokunma gerilimine** karşı korumak için yapılan topraklama hangisidir?",
+      "secenekler": [
+        "Koruma topraklaması",
+        "İşletme topraklaması",
+        "Fonksiyon topraklaması",
+        "Yıldırıma karşı topraklama"
+      ],
+      "dogru": 0,
+      "izah": "Koruma topraklaması: insanları ve canlıları tehlikeli dokunma gerilimine karşı korumak için cihazların gerilim altında olmayan metal kısımlarının topraklamasıdır."
+    },
+    {
+      "id": "el-topraklama.s8",
+      "tip": "dy",
+      "yer": "Koruma topraklaması",
+      "ifade": "Koruma topraklaması, cihazların gerilim altında olan metal kısımlarının topraklamasıdır.",
+      "dogru": false,
+      "izah": "Koruma topraklamasında cihazların gerilim altında **olmayan** metal kısımları topraklanır."
+    },
+    {
+      "id": "el-topraklama.s9",
+      "tip": "secme",
+      "yer": "İşletme topraklaması",
+      "soru": "Bir fabrikanın enerjisini sağlayan **trafonun veya alternatörün yıldız noktalarının** topraklanmasına ne ad verilir?",
+      "secenekler": [
+        "İşletme topraklaması",
+        "Koruma topraklaması",
+        "Fonksiyon topraklaması",
+        "Yıldırıma karşı topraklama"
+      ],
+      "dogru": 0,
+      "izah": "İşletme topraklaması: bir işyeri veya fabrikanın enerjisini sağlamak için çalışan trafonun veya alternatörün yıldız noktalarının topraklanmasıdır."
+    },
+    {
+      "id": "el-topraklama.s10",
+      "tip": "secme",
+      "yer": "Fonksiyon topraklaması",
+      "soru": "Hocaya göre **zayıf akım cihazlarının topraklaması** hangi topraklama çeşidine örnektir?",
+      "secenekler": [
+        "Fonksiyon topraklaması",
+        "İşletme topraklaması",
+        "Koruma topraklaması",
+        "Yıldırıma karşı topraklama"
+      ],
+      "dogru": 0,
+      "izah": "Fonksiyon topraklaması, bir işletim tesisinin veya bir işletme elemanının istenen fonksiyonu yerine getirmesi için yapılan topraklamadır; hoca zayıf akım cihazlarının topraklamasını örnek verir."
+    },
+    {
+      "id": "el-topraklama.s11",
+      "tip": "bosluk",
+      "yer": "Yıldırıma karşı topraklama (paratoner)",
+      "metin": "Yıldırım topraklaması sistemine ___ de denilmektedir.",
+      "cevaplar": [
+        [
+          "paratoner"
+        ]
+      ],
+      "izah": "Paratoner sisteminde yakalama çubuğu vardır; çubuk binaların en üst noktasına monte edilir."
+    },
+    {
+      "id": "el-topraklama.s12",
+      "tip": "dizme",
+      "yer": "Yıldırıma karşı topraklama (paratoner)",
+      "soru": "Paratoner sisteminin kuruluşunu hocanın anlattığı sırayla dizin.",
+      "parcalar": [
+        "Yakalama çubuğu binanın en üst noktasına monte edilir",
+        "Çubuğa toprak iletkeni bağlanır",
+        "İletken toprak içindeki elektroda tutturulur"
+      ],
+      "izah": "Paratoner sisteminde yakalama çubuğu vardır ve bu çubuk binaların en üst noktasına monte edilir, bu çubuğa toprak iletkeni bağlanır ve bağlanan iletken toprak içindeki elektroda tutturulur."
+    },
+    {
+      "id": "el-topraklama.s13",
+      "tip": "klasik",
+      "yer": "Topraklama çeşitleri",
+      "soru": "Hocanın saydığı dört topraklama çeşidini yazın.",
+      "cevap": "1. Koruma topraklaması\n2. İşletme topraklaması\n3. Fonksiyon topraklaması\n4. Yıldırıma karşı topraklama (paratoner)",
+      "anahtarlar": [
+        "koruma",
+        "işletme",
+        "fonksiyon",
+        "yıldırım"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-topraklama.k1",
+      "yer": "Topraklama",
+      "on": "Topraklama nedir?",
+      "arka": "Elektrikle çalışan alet, makine ve cihazların gövdelerinin bir hatla topraklama levhalarına bağlanmasına topraklama denir."
+    },
+    {
+      "id": "el-topraklama.k2",
+      "yer": "Topraklama levhası",
+      "on": "Topraklama levhasını anlatın: nereye gömülür, ölçüleri ve malzemesi nedir, ne işe yarar?",
+      "arka": "- Yaklaşık 1 ila 2 metre arasında toprağın altına gömülür.\n- 50 x 100 cm ölçülerinde, bakır veya paslanmaz çelik saçtan yapılır.\n- Toprak ile iyi temas sağlar ve şebeke topraklaması ile arasındaki direnci en aza indirir.\n- Bu direnç ne kadar az olursa kaçak akımların toprağa ve oradan şebeke topraklamasına gitmesi o kadar kolay olur."
+    },
+    {
+      "id": "el-topraklama.k3",
+      "yer": "Topraklama çeşitleri",
+      "on": "Topraklama çeşitlerini sayın ve her birini kısaca tanımlayın.",
+      "arka": "- Koruma topraklaması: cihazların gerilim altında olmayan metal kısımları (insanları ve canlıları tehlikeli dokunma gerilimine karşı korur).\n- İşletme topraklaması: işyeri veya fabrikanın enerjisini sağlayan trafonun veya alternatörün yıldız noktaları.\n- Fonksiyon topraklaması: tesisin ya da elemanın istenen fonksiyonu için (ör. zayıf akım cihazları).\n- Yıldırıma karşı topraklama: işletme akım devresine ilişkin olmayan iletken bölümler (paratoner)."
+    },
+    {
+      "id": "el-topraklama.k4",
+      "yer": "Yıldırıma karşı topraklama (paratoner)",
+      "on": "Paratoner nedir? Sistem nasıl kurulur?",
+      "arka": "Yıldırım topraklaması sistemine paratoner de denir. Yıldırıma karşı topraklama, yıldırım düşmesi sonucunda gerilim altındaki iletkenlere atlamaları geniş ölçüde önlemek içindir.\n1. Yakalama çubuğu binaların en üst noktasına monte edilir.\n2. Çubuğa toprak iletkeni bağlanır.\n3. İletken toprak içindeki elektroda tutturulur."
+    },
+    {
+      "id": "el-topraklama.k5",
+      "yer": "Koruma topraklaması",
+      "on": "Koruma topraklaması ile işletme topraklamasının farkı nedir?",
+      "arka": "Koruma topraklaması insanları ve canlıları tehlikeli dokunma gerilimine karşı korumak için cihazların gerilim altında olmayan metal kısımlarının topraklamasıdır. İşletme topraklaması ise bir işyeri veya fabrikanın enerjisini sağlayan trafonun veya alternatörün yıldız noktalarının topraklanmasıdır."
+    }
+  ]
+}
