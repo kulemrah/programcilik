@@ -29,7 +29,7 @@
   if (!(o >= 0.7 && o <= 1.5)) o = 1;
   o = Math.round(o * 100) / 100;
   if (o > 1) o = Math.min(o, Math.max(1, Math.floor((window.innerWidth || 400) / 320 * 100) / 100));
-  if (o !== 1) { document.documentElement.style.zoom = String(o); document.documentElement.style.setProperty("--zoom-olcek", String(o)); }
+  if (o !== 1) { var hs = document.documentElement.style; hs.zoom = String(o); hs.setProperty("--zoom-olcek", String(o)); hs.setProperty("--zoom-ters", String(1 / o)); }
 })();
 /* Kurulum olayı sayfa yüklenirken çok erken tetiklenebiliyor; buradan
    yakalanmazsa kimse dinlemediği için kayboluyor ve düğme hiç çıkmıyor. */
@@ -168,7 +168,7 @@ body{
   -webkit-font-smoothing:antialiased;
   /* --serit-alt: alt çubuğun üstünde yüzen şerit (kurulum, okuma çubuğu) varken
      sayfanın sonu onun da üstüne kayabilsin diye eklenen boşluk (altBosluguAyarla) */
-  padding-bottom:calc(64px + env(safe-area-inset-bottom) + var(--serit-alt, 0px));
+  padding-bottom:calc((64px + env(safe-area-inset-bottom)) / var(--zoom-olcek) + var(--serit-alt, 0px));
 }
 button,input{font:inherit;color:inherit}
 button{background:none;border:0;cursor:pointer}
@@ -613,6 +613,14 @@ html[data-mod="pembe"] .okuma mark{background:rgba(176,48,110,.13)}
 .not-madde strong{display:block;font-size:14.5px;margin-bottom:3px}
 .not-madde p{margin:0;font-size:13.5px;line-height:1.55;color:var(--sonuk)}
 .not-kutu .eylem{margin-top:14px}
+.yama-ust{margin:0 0 4px}
+.yama-ust .not-surum{display:block;margin-top:2px}
+.not-govde .yama-ust{margin-top:18px;padding-top:12px;border-top:2px solid var(--cizgi)}
+.yama-ust h4{margin:0;flex:1;font-size:15.5px;font-weight:700}
+.yama-baslik{margin:4px 2px 12px;font-size:19px;font-weight:700}
+.giris-bag.yama-don{display:block;margin:0 auto 6px 2px;text-align:left;font-size:14px}
+.yama-notlari .yama-don:last-child{margin-top:8px}
+.ist-kart.yama-not .not-madde:last-child{border-bottom:0;padding-bottom:0}
 
 /* ---- Sesli okuma ---- */
 .dinle-dugme{width:auto;padding:0 12px;font-size:12px}
@@ -622,7 +630,7 @@ html[data-mod="pembe"] .okuma mark{background:rgba(176,48,110,.13)}
 }
 .oynatma{
   position:fixed;left:10px;right:10px;z-index:55;
-  bottom:calc(72px + env(safe-area-inset-bottom));
+  bottom:calc((72px + env(safe-area-inset-bottom)) / var(--zoom-olcek));
   display:flex;flex-direction:column;gap:8px;
   padding:10px 12px;border-radius:12px;
   background:var(--yuzey);border:1px solid var(--vurgu);
@@ -684,7 +692,7 @@ body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .okuma button{-webkit-user-select:none;user-select:none}
 .secim-cubugu{
   position:fixed;left:10px;right:10px;z-index:60;
-  bottom:calc(72px + env(safe-area-inset-bottom));
+  bottom:calc((72px + env(safe-area-inset-bottom)) / var(--zoom-olcek));
   background:var(--yuzey);border:1px solid var(--vurgu);border-radius:12px;
   padding:10px 12px;box-shadow:0 6px 22px rgba(0,0,0,.3);
 }
@@ -750,7 +758,7 @@ html[data-mod="gece"] .uyari-kutu,html[data-mod="siyah"] .uyari-kutu{background:
 /* ---- Kısa bildirim ---- */
 .kisa-bildirim{
   position:fixed;left:50%;transform:translateX(-50%);z-index:80;
-  bottom:calc(84px + env(safe-area-inset-bottom));
+  bottom:calc((84px + env(safe-area-inset-bottom)) / var(--zoom-olcek));
   background:var(--yuzey);border:1px solid var(--vurgu);color:var(--yazi);
   padding:10px 14px;border-radius:10px;font-size:13.5px;
   box-shadow:0 6px 20px rgba(0,0,0,.3);max-width:80%;text-align:center;
@@ -759,7 +767,7 @@ html[data-mod="gece"] .uyari-kutu,html[data-mod="siyah"] .uyari-kutu{background:
 /* ---- Kurulum şeridi ---- */
 .kurulum{
   position:fixed;left:10px;right:10px;z-index:50;
-  bottom:calc(72px + env(safe-area-inset-bottom));
+  bottom:calc((72px + env(safe-area-inset-bottom)) / var(--zoom-olcek));
   background:var(--yuzey);border:1px solid var(--vurgu);border-radius:14px;
   padding:14px;box-shadow:0 8px 28px rgba(0,0,0,.28);
 }
@@ -1475,7 +1483,7 @@ h1,h2,h3,.giris-baslik,.grup-baslik,.ders-basligi{letter-spacing:-.02em}
 
 /* ---- Üst çubuk ---- */
 .ust{gap:8px;border-bottom:1px solid var(--ayrac);padding-top:calc(8px + env(safe-area-inset-top));padding-bottom:8px}
-.ust h1{font-size:clamp(14px, calc(4.3vw / var(--zoom-olcek)), 19px);font-weight:700}
+.ust h1{font-size:clamp(14px, 4.3vw, 19px);font-weight:700}
 .mod-dugme,.hesap-dugme{
   width:36px;height:36px;border:0;border-radius:50%;background:var(--dolgu);box-shadow:none;color:var(--vurgu);
 }
@@ -1758,7 +1766,7 @@ html[data-goz="3"] .goz-filtre{opacity:.36}
 /* ---- Sağ kenar tutamağı: boydan boya ince çizgi; sola çekince menü açılır ---- */
 .kenar-tutamak{
   position:fixed;right:0;z-index:35;width:18px;touch-action:none;cursor:w-resize;
-  top:calc(58px + env(safe-area-inset-top));bottom:calc(60px + env(safe-area-inset-bottom));
+  top:calc((58px + env(safe-area-inset-top)) / var(--zoom-olcek));bottom:calc((60px + env(safe-area-inset-bottom)) / var(--zoom-olcek));
 }
 .kenar-tutamak::after{
   content:"";position:absolute;right:3px;top:6px;bottom:6px;width:3px;border-radius:2px;
@@ -1958,6 +1966,10 @@ html[data-mod="pembe"]{--saat-yuz:#FBF2F6}
 /* ---- Kaydırarak sekme değiştirme ---- */
 /* Alt çubukta yatay kaydırma tarayıcıya bırakılmaz (pointercancel olmasın) */
 .alt-cubuk{touch-action:none}
+/* Ölçek üst çubuğu ve alt çubuğu etkilemez: html'deki zoom bunlarda geri alınır
+   (--zoom-ters = 1 / ölçek). Alt çubuğa göre konan şerit, + düğmesi, bildirim
+   ve sayfa sonu boşluğu da bu yüzden ölçeğe bölünür. */
+header.ust,.alt-cubuk{zoom:var(--zoom-ters, 1)}
 /* Çekmecenin kaydırılan gövdesi ayrı bir kaydırma alanıdır: .cekmece'nin
    pan-y'si içine işlemez; yatay hareket tarayıcıya geçip iptal edilmesin */
 .cekmece .hesap-govde{touch-action:pan-y pinch-zoom}
@@ -2033,7 +2045,7 @@ html[data-mod="pembe"]{--saat-yuz:#FBF2F6}
 .kaynak-is.hata{color:var(--yanlis)}
 
 /* + düğmesi ve seçenekleri */
-.kaynak-fab{position:fixed;right:calc(16px + env(safe-area-inset-right));bottom:calc(76px + env(safe-area-inset-bottom) + var(--serit-alt, 0px));z-index:45;
+.kaynak-fab{position:fixed;right:calc(16px + env(safe-area-inset-right));bottom:calc((76px + env(safe-area-inset-bottom)) / var(--zoom-olcek) + var(--serit-alt, 0px));z-index:45;
   display:flex;flex-direction:column;align-items:flex-end;gap:12px;transition:transform .2s ease}
 html.geri-al-var .kaynak-fab{transform:translateY(-58px)}
 .kaynak-fab-ana{width:58px;height:58px;border-radius:50%;background:var(--vurgu);color:var(--vurgu-yazi);display:flex;align-items:center;justify-content:center;
@@ -2052,7 +2064,7 @@ html.geri-al-var .kaynak-fab{transform:translateY(-58px)}
 .kaynak-fab-secenek .simge svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 
 /* "… silindi · Geri al (5)" */
-.geri-al{position:fixed;left:12px;right:12px;bottom:calc(80px + env(safe-area-inset-bottom) + var(--serit-alt, 0px));z-index:85;
+.geri-al{position:fixed;left:12px;right:12px;bottom:calc((80px + env(safe-area-inset-bottom)) / var(--zoom-olcek) + var(--serit-alt, 0px));z-index:85;
   max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px;background:var(--yazi);color:var(--zemin);
   border-radius:12px;padding:8px 8px 8px 16px;box-shadow:0 8px 26px rgba(0,0,0,.35);animation:geri-al-gel .18s ease-out}
 @keyframes geri-al-gel{from{opacity:0;transform:translateY(10px)}}
@@ -2245,8 +2257,8 @@ function gecerliOlcek() {
 }
 function olcekUygula() {
   const o = gecerliOlcek(), h = document.documentElement;
-  if (o === 1) { h.style.removeProperty("zoom"); h.style.removeProperty("--zoom-olcek"); }
-  else { h.style.zoom = String(o); h.style.setProperty("--zoom-olcek", String(o)); }
+  if (o === 1) { h.style.removeProperty("zoom"); h.style.removeProperty("--zoom-olcek"); h.style.removeProperty("--zoom-ters"); }
+  else { h.style.zoom = String(o); h.style.setProperty("--zoom-olcek", String(o)); h.style.setProperty("--zoom-ters", String(1 / o)); }
 }
 /* Ekran pikselinin CSS pikseline oranı. Tarayıcıların zoom'u koordinatlara
    yansıtması aynı olmadığından ölçülür; ölçüm yuvarlamasından kaynaklanan
@@ -5773,7 +5785,8 @@ function hesapSayfasiAc(secenek) {
     sekmeler.appendChild(b);
   });
   /* Kaydırarak bölüm değiştirme: yon -1 soldaki, +1 sağdaki bölüm (uçlarda döner);
-     giris: yeni bölümün hangi yandan gireceği (parmağın gittiği yönün tersi) */
+     giris: yeni bölümün hangi yandan gireceği (parmağın gittiği yönün tersi;
+     parmak sola gidince sağdaki bölüm sağdan gelir) */
   const bolumKaydir = (yon, giris) => {
     const n = CEKMECE_EKRANLARI.length;
     const i = CEKMECE_EKRANLARI.findIndex(x => x[0] === ekran);
@@ -5951,7 +5964,7 @@ function hesapSayfasiAc(secenek) {
     const a1 = olustur("p", "hesap-durum cihaz-aciklama");
     a1.textContent = (cihazTuruSecili() ? "" : "Bu cihaza göre kendiliğinden seçildi. ") + (tur === "bilgisayar"
       ? "Alt tuşunu basılı tutun: ekranda tıklanabilecek her yerin kısayol harfi görünür; Alt'ı bırakmadan o harfe basınca oraya tıklanır."
-      : "Alttaki sekme çubuğunda parmağınızı sağa ya da sola kaydırarak sekmeler arasında geçebilirsiniz; bu menüde de ekranın herhangi bir yerinde kaydırmak öbür bölüme geçirir.");
+      : "Alttaki sekme çubuğunda parmağınızı sağa ya da sola kaydırarak sekmeler arasında geçebilirsiniz; bu menüde de ekranın herhangi bir yerinde yana kaydırınca sayfa çevirir gibi öbür bölüme geçilir.");
     kart.appendChild(a1);
 
     const secili = olcekSecimi(), gecerli = gecerliOlcek(), sinir = olcekSiniri();
@@ -5984,10 +5997,52 @@ function hesapSayfasiAc(secenek) {
     }
     kart.appendChild(s2);
     const a2 = olustur("p", "hesap-durum cihaz-aciklama");
-    a2.textContent = "Bütün ekranı büyütür ya da küçültür. Bu ayarlar yalnızca bu cihazda tutulur; telefonunuz, tabletiniz ve bilgisayarınız ayrı ayrı ayarlanır." +
+    a2.textContent = "Üst başlık ve alttaki sekme çubuğu dışında ekranı büyütür ya da küçültür. Bu ayarlar yalnızca bu cihazda tutulur; telefonunuz, tabletiniz ve bilgisayarınız ayrı ayrı ayarlanır." +
       (secili > gecerli + 1e-6 ? " Bu ekran genişliğinde en çok %" + Math.round(sinir * 100) + " olabiliyor; seçtiğiniz %" + Math.round(secili * 100) + " geniş ekranda geçerli olur." : "");
     kart.appendChild(a2);
     return kart;
+  }
+
+  /* Hesap › Yama Notları: bütün güncelleme notları, yeniden eskiye */
+  function yamaNotlariBolumu() {
+    const kart = olustur("section", "ist-kart");
+    const h = olustur("h3", "ist-baslik");
+    h.textContent = "Yama Notları";
+    kart.appendChild(h);
+    const kutu = olustur("button", "kaynak-resim-kutusu yama-kutusu");
+    kutu.type = "button";
+    const simge = olustur("span", "simge");
+    simge.innerHTML = '<svg viewBox="0 0 24 24"><path d="M14.5 3.5h-8a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-10Z"/><path d="M14.5 3.5v5h5"/><path d="M8 13h8M8 16.5h5"/></svg>';
+    const yazi = olustur("span", "yazi");
+    const ad = olustur("span", "ad");
+    ad.textContent = "Güncelleme notları";
+    const alt = olustur("span", "alt");
+    alt.textContent = "Son sürüm s" + GUNCELLEME.surum + (GUNCELLEME.tarih ? " · " + GUNCELLEME.tarih : "") + " · " + GUNCELLEMELER.length + " not";
+    yazi.append(ad, alt);
+    const ok = olustur("span", "ok");
+    ok.textContent = "›";
+    kutu.append(simge, yazi, ok);
+    kutu.addEventListener("click", yamaNotlariniGoster);
+    kart.appendChild(kutu);
+    return kart;
+  }
+  function yamaNotlariniGoster() {
+    govde.innerHTML = "";
+    const ic = olustur("div", "hesap-ic yama-notlari");
+    ic.dataset.ekran = ekran;
+    const don = () => { const d = olustur("button", "giris-bag yama-don"); d.type = "button"; d.textContent = "‹ Hesaba dön"; d.addEventListener("click", ciz); return d; };
+    ic.appendChild(don());
+    const hh = olustur("h3", "yama-baslik");
+    hh.textContent = "Yama Notları";
+    ic.appendChild(hh);
+    GUNCELLEMELER.forEach(n => {
+      const k = olustur("section", "ist-kart yama-not");
+      notMaddeleriniYaz(k, n, true);
+      ic.appendChild(k);
+    });
+    ic.appendChild(don());
+    govde.appendChild(ic);
+    govde.scrollTop = 0;
   }
 
   function hesapBilgiBolumu() {
@@ -6112,6 +6167,7 @@ function hesapSayfasiAc(secenek) {
       ic.appendChild(cihazBolumu());
       ic.appendChild(hesapBilgiBolumu());
       ic.appendChild(kaynakHesapBolumu());
+      ic.appendChild(yamaNotlariBolumu());
     }
     govde.scrollTop = kaydirma;
   }
@@ -6183,8 +6239,8 @@ function perdeKapatmayiKur(sayfa, perde) {
      hareket parmağı izler, bırakınca üçte birden fazla çekildiyse ya da
      hızlı atıldıysa kapanır.
    - Başka her yerde sağa ya da sola kaydırmak öbür bölüme geçirir (Hedef,
-     İstatistik, Takvim, Hesap; uçlarda başa döner). Yön alt çubuktakiyle
-     aynıdır: parmak sola giderse soldaki bölüme geçilir.
+     İstatistik, Takvim, Hesap; uçlarda başa döner). Yön sayfa çevirir
+     gibidir, alt çubuğun tersi: parmak sola giderse sağdaki bölüme geçilir.
    Dikey hareket sayfayı kaydırır; girdiler, çip satırları ve kendi içinde
    yana kayan alanlar sürüklemeye dönmez. Grafiklerin (halka, takvim)
    üstünden de kaydırılabilir: ipucu dokunuşla açılır, sürüklemeyle
@@ -6255,7 +6311,7 @@ function cekmeceSurukleKur(sayfa, panel, perde, govde, bolumKaydir) {
     }
     const gec = e.type === "pointerup" && (Math.abs(dx) > 60 || (Math.abs(hiz) > 0.4 && Math.abs(dx) > 25));
     const ic = icerik();
-    if (gec) { bolumKaydir(dx < 0 ? -1 : 1, dx < 0 ? "sagdan" : "soldan"); return; }
+    if (gec) { bolumKaydir(dx < 0 ? 1 : -1, dx < 0 ? "sagdan" : "soldan"); return; }
     if (ic) {
       ic.classList.remove("kayiyor"); ic.classList.add("geri-yay");
       void ic.offsetWidth;
@@ -9920,9 +9976,28 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
 }
 
 /* ==========================================================================
-   Güncelleme notu — her sürümde bir kere görünür
+   Güncelleme notları (yama notları)
+   GUNCELLEMELER yeniden eskiye sıralıdır; yeni sürümde başa bir not eklenir.
+   Uygulama açılınca bu cihazda görülmemiş notlar bir kere gösterilir
+   (eskiden yeniye); bu cihazda hiç not görülmediyse hepsi (hoş geldiniz ve
+   yenilikler). Hepsi Hesap › Yama Notları'nda durur. Görülen son sürüm
+   pg.notSurumu'nda.
    ========================================================================== */
-const GUNCELLEME = {
+const GUNCELLEMELER = [{
+  surum: "2.1",
+  tarih: "Kasım 2026",
+  baslik: "Yenilikler: Notlar ve kaydırma",
+  maddeler: [
+    ["Notlar sekmesi", "Alttaki son sekme sizin defteriniz. Tasnifler açıp (iç içe en çok üç kademe) içlerine not yazar, derste çektiğiniz resimleri koyarsınız. Sağ alttaki + düğmesiyle not, resim ya da alt tasnif eklersiniz. Notlarınızı yalnızca siz görürsünüz."],
+    ["Biçimli not", "Not yazarken klavyenin üstündeki çubukla kalın, italik, altı çizili ve renkli yazı, madde ve numaralı liste, ara başlık yapar, metnin arasına resim koyarsınız. Satır başında \u201c- \u201d yazınca madde, \u201c1. \u201d yazınca numaralı liste başlar. Not yazdıkça kendiliğinden kaydedilir; başlık ve tarihler kutucukta görünür."],
+    ["İnternetsiz de olur", "Bağlantı yokken de not yazabilir, resim ekleyebilir, silebilirsiniz. Hepsi cihazda bekler, bağlanınca hesabınıza gider."],
+    ["Silmeyi geri alma", "Bir not, resim ya da tasnif silince altta 5 saniyelik \u201cGeri al\u201d çıkar; süre dolmadan dokunursanız silinmez."],
+    ["Kaydırarak sekme değiştirme", "Alttaki sekme çubuğunda parmağınızı sola kaydırınca soldaki, sağa kaydırınca sağdaki sekmeye geçersiniz. Uçlarda öbür uca döner: Kıraat'te sola kaydırınca Notlar açılır."],
+    ["Menüde sayfa çevirir gibi", "Sağ üstteki menüde (Hedef, İstatistik, Takvim, Hesap) ekranın herhangi bir yerinde yana kaydırarak bölümler arasında geçersiniz: parmak sola giderse sağdaki bölüm gelir. Menüyü kaydırarak kapatmak için en üstteki başlık satırını sağa çekin."],
+    ["Bu cihaz", "Menüdeki Hesap bölümünde ekranı büyütüp küçültebilir (Ölçek) ve cihaz türünü seçebilirsiniz. Bilgisayar modunda Alt tuşunu basılı tutunca her düğmenin kısayol harfi görünür; Alt'ı bırakmadan o harfe basınca oraya tıklanır. Bu ayarlar yalnızca o cihazda geçerlidir."],
+    ["Yama notları", "Bu ve önceki güncelleme notları menüde Hesap › Yama Notları'nda durur."]
+  ]
+}, {
   surum: "2.0",
   baslik: "Kostü - Ders'e hoş geldiniz",
   maddeler: [
@@ -9934,7 +10009,36 @@ const GUNCELLEME = {
     ["Hedef, istatistik ve takvim", "Sağ üstteki menü düğmesinden ya da ekranın sağ kenarından sola çekerek açılan menüde günlük çalışma hedefinizi koyar, serinizi ve dondurma hakkınızı, hangi derse ne kadar zaman ayırdığınızı, temrin ve kart başarınızı ve çalışma takviminizi görürsünüz. Adınızı da oradaki Hesap ekranından eklersiniz."],
     ["Her şey hesabınızda", "Okuduğunuz konular, kırmızıya boyadığınız yerler, yıldızlarınız ve yanlışlarınız okul hesabınızda tutulur. Hesap aynı anda bir cihazda açık olur; başka cihaza geçtiğinizde e-postanıza gelen kodla devralırsınız ve ilerlemeniz oraya gelir."]
   ]
-};
+}];
+const GUNCELLEME = GUNCELLEMELER[0];
+
+/* Bu cihazda görülmemiş notlar, eskiden yeniye */
+function gorulmemisNotlar() {
+  const gorulen = depo.oku("pg.notSurumu", null);
+  const i = GUNCELLEMELER.findIndex(n => n.surum === gorulen);
+  return GUNCELLEMELER.slice(0, i === -1 ? GUNCELLEMELER.length : i).reverse();
+}
+/* Bir notun maddeleri (başlık satırı istenirse sürüm ve tarihle) */
+function notMaddeleriniYaz(kap, not, baslikli) {
+  if (baslikli) {
+    const ust = olustur("div", "yama-ust");
+    const h = olustur("h4");
+    h.textContent = not.baslik;
+    const s = olustur("span", "not-surum");
+    s.textContent = "s" + not.surum + (not.tarih ? " · " + not.tarih : "");
+    ust.append(h, s);
+    kap.appendChild(ust);
+  }
+  not.maddeler.forEach(([ad, izah]) => {
+    const madde = olustur("div", "not-madde");
+    const b = olustur("strong");
+    b.textContent = ad;
+    const p = olustur("p");
+    p.textContent = izah;
+    madde.append(b, p);
+    kap.appendChild(madde);
+  });
+}
 
 let guncellemeNotuAcik = false;
 
@@ -9949,28 +10053,23 @@ function guncellemeNotuKapat() {
 }
 
 function guncellemeNotuGoster() {
-  if (depo.oku("pg.notSurumu", null) === GUNCELLEME.surum) return;
+  const notlar = gorulmemisNotlar();
+  if (!notlar.length) return;
   const perde = olustur("div", "not-perde");
   const kutu = olustur("div", "not-kutu");
 
+  /* Tek not: kendi başlığı. Birden çok (hiç görülmemiş cihaz ya da araya
+     atlanmış sürümler): en eskinin başlığı üstte, her not kendi başlığıyla */
   const ust = olustur("div", "not-ust");
   const baslik = olustur("h3");
-  baslik.textContent = GUNCELLEME.baslik;
+  baslik.textContent = notlar[0].baslik;
   const surum = olustur("span", "not-surum");
   surum.textContent = "s" + GUNCELLEME.surum;
   ust.append(baslik, surum);
   kutu.appendChild(ust);
 
   const govde = olustur("div", "not-govde");
-  GUNCELLEME.maddeler.forEach(([ad, izah]) => {
-    const madde = olustur("div", "not-madde");
-    const b = olustur("strong");
-    b.textContent = ad;
-    const p = olustur("p");
-    p.textContent = izah;
-    madde.append(b, p);
-    govde.appendChild(madde);
-  });
+  notlar.forEach((n, i) => notMaddeleriniYaz(govde, n, notlar.length > 1 && i > 0));
   kutu.appendChild(govde);
 
   const eylem = olustur("div", "eylem");
