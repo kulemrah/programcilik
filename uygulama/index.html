@@ -23,6 +23,13 @@
   var g = 0;
   try { g = JSON.parse(localStorage.getItem("pg.gozFiltre") || "0"); } catch (e) {}
   if (g === 1 || g === 2 || g === 3) document.documentElement.setAttribute("data-goz", String(g));
+  /* Ölçek (Hesap › Bu cihaz) ilk boyamadan önce; kuralı olcekUygula() ile aynı */
+  var o = 1;
+  try { o = Number(JSON.parse(localStorage.getItem("pg.olcek") || "1")); } catch (e) {}
+  if (!(o >= 0.7 && o <= 1.5)) o = 1;
+  o = Math.round(o * 100) / 100;
+  if (o > 1) o = Math.min(o, Math.max(1, Math.floor((window.innerWidth || 400) / 320 * 100) / 100));
+  if (o !== 1) { document.documentElement.style.zoom = String(o); document.documentElement.style.setProperty("--zoom-olcek", String(o)); }
 })();
 /* Kurulum olayı sayfa yüklenirken çok erken tetiklenebiliyor; buradan
    yakalanmazsa kimse dinlemediği için kayboluyor ve düğme hiç çıkmıyor. */
@@ -47,6 +54,7 @@ window.addEventListener("appinstalled", function () {
    --ayrac: liste satırları arasındaki ince çizgi
    --ok: satır sonundaki ›  */
 :root{
+  --zoom-olcek:1;
   --zemin:#121214;
   --yuzey:#1E1E21;
   --yuzey2:#2A2A2E;
@@ -592,7 +600,7 @@ html[data-mod="pembe"] .okuma mark{background:rgba(176,48,110,.13)}
   background:rgba(0,0,0,.6);padding:16px;
 }
 .not-kutu{
-  width:100%;max-width:520px;max-height:84vh;display:flex;flex-direction:column;
+  width:100%;max-width:520px;max-height:calc(84vh / var(--zoom-olcek));display:flex;flex-direction:column;
   background:var(--zemin);border:1px solid var(--vurgu);border-radius:16px;
   padding:18px;box-shadow:0 12px 40px rgba(0,0,0,.45);
 }
@@ -697,7 +705,7 @@ body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   background:rgba(0,0,0,.55);padding:0;
 }
 .panel{
-  width:100%;max-width:640px;max-height:82vh;display:flex;flex-direction:column;
+  width:100%;max-width:640px;max-height:calc(82vh / var(--zoom-olcek));display:flex;flex-direction:column;
   background:var(--zemin);border:1px solid var(--cizgi);
   border-radius:16px 16px 0 0;box-shadow:0 -10px 34px rgba(0,0,0,.4);
   padding:14px 16px calc(16px + env(safe-area-inset-bottom));
@@ -888,7 +896,7 @@ html[data-mod="gece"] .uyari-kutu,html[data-mod="siyah"] .uyari-kutu{background:
 .galeri figcaption,.soru figcaption{font-size:13px;color:var(--sonuk);margin-top:6px}
 /* Dikey, uzun görseller (yakın çekimler) ekranı kaplamasın: en çok ekranın %60'ı;
    genişlik orantılı küçülür. Ayrıntı için büyüteç tam boy açar. */
-.galeri figure img,.soru figure img,.okuma figure img{max-height:60vh;width:auto;object-fit:contain}
+.galeri figure img,.soru figure img,.okuma figure img{max-height:calc(60vh / var(--zoom-olcek));width:auto;object-fit:contain}
 .soru > figure{margin:10px 0 14px;text-align:center}
 .soru .galeri{margin:10px 0 14px}
 .galeri-sayac{
@@ -1337,7 +1345,10 @@ html.hesap-acik,html.hesap-acik body{overflow:hidden}
 
 /* Özet kutuları */
 .ist-kutular{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:4px 0 12px}
-@media (min-width:640px){.ist-kutular{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* Genişlik ekranın değil, kutuların durduğu alanın genişliğidir: çekmece geniş
+   ekranda da dardır (kapsayıcı sorgusu; .hesap-ic) */
+.hesap-ic{container-type:inline-size}
+@container (min-width:600px){.ist-kutular{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .ist-kutu{
   padding:14px;border-radius:var(--r-buyuk);background:var(--yuzey);border:1px solid var(--cizgi);
   box-shadow:var(--golge);min-width:0;
@@ -1373,7 +1384,7 @@ html.hesap-acik,html.hesap-acik body{overflow:hidden}
 .halka-duzen{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
 .halka-liste{min-width:0}
 .halka-cizim{position:relative;max-width:320px;width:100%;margin:0 auto;order:-1}
-@media (min-width:640px){
+@container (min-width:600px){
   .halka-duzen{grid-template-columns:minmax(0,1fr) 300px;align-items:start}
   .halka-cizim{order:0}
 }
@@ -1404,7 +1415,7 @@ html.hesap-acik,html.hesap-acik body{overflow:hidden}
 /* Günlük çubuklar ve takvim: geniş ekranda yan yana, yazılar büyümesin */
 .ist-ikili{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:0 0 12px}
 .ist-ikili .ist-kart{margin:0}
-@media (min-width:760px){.ist-ikili{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (min-width:760px){.ist-ikili{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .cubuk-cizim,.takvim-cizim{max-width:460px}
 .cubuk-cizim,.takvim-cizim{position:relative}
 .cubuk-svg,.takvim-svg{display:block;width:100%;height:auto;overflow:visible}
@@ -1464,7 +1475,7 @@ h1,h2,h3,.giris-baslik,.grup-baslik,.ders-basligi{letter-spacing:-.02em}
 
 /* ---- Üst çubuk ---- */
 .ust{gap:8px;border-bottom:1px solid var(--ayrac);padding-top:calc(8px + env(safe-area-inset-top));padding-bottom:8px}
-.ust h1{font-size:clamp(14px, 4.3vw, 19px);font-weight:700}
+.ust h1{font-size:clamp(14px, calc(4.3vw / var(--zoom-olcek)), 19px);font-weight:700}
 .mod-dugme,.hesap-dugme{
   width:36px;height:36px;border:0;border-radius:50%;background:var(--dolgu);box-shadow:none;color:var(--vurgu);
 }
@@ -1827,7 +1838,7 @@ html[data-mod="gece"] .hedef-kutu,html[data-mod="siyah"] .hedef-kutu{background:
 .saat-satiri{display:flex;align-items:flex-start;justify-content:center;gap:5px;margin:8px 0 6px}
 .saat-hane{display:flex;flex-direction:column;align-items:center;gap:6px}
 .saat-birim{font-size:11.5px;color:var(--sonuk);font-weight:550;letter-spacing:.02em}
-.saat-satiri{--h:min(66px, 14vw)}
+.saat-satiri{--h:min(66px, calc(14vw / var(--zoom-olcek)))}
 .saat-ayrac{font-size:calc(var(--h) * .45);font-weight:700;line-height:var(--h);color:var(--sonuk);padding:0 1px}
 /* Kart boyu ekrana göre küçülür (dar telefonda taşmasın); 3 haneli saat de sığar */
 .saat-kart{
@@ -1927,6 +1938,48 @@ html[data-mod="pembe"]{--saat-yuz:#FBF2F6}
   .mod-dugme,.hesap-dugme,.goz-dugme{width:34px;height:34px}
 }
 
+/* ---- Hesap › Bu cihaz: cihaz türü ve ölçek ---- */
+.cihaz-satir{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin:8px 0 2px}
+.cihaz-etiket{font-size:14px;font-weight:600;min-width:52px}
+.cihaz-turleri{
+  flex:1;min-width:220px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;
+  padding:2px;border-radius:10px;background:var(--dolgu);
+}
+.cihaz-turu{padding:7px 4px;border-radius:8px;font-size:13px;font-weight:550;color:var(--yazi);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background-color .2s ease}
+.cihaz-turu.secili{background:var(--segment-secili);font-weight:650;box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 1px rgba(0,0,0,.04)}
+.cihaz-aciklama{font-size:12.5px;margin:6px 0 10px}
+.olcek-adim{display:flex;align-items:center;gap:2px;padding:2px;border-radius:10px;background:var(--dolgu)}
+.olcek-dugme{width:40px;height:32px;border-radius:8px;font-size:19px;font-weight:600;color:var(--yazi);display:grid;place-items:center}
+.olcek-dugme:not(:disabled):hover{background:var(--segment-secili)}
+.olcek-dugme:disabled{color:var(--sonuk);opacity:.45}
+.olcek-deger{min-width:52px;text-align:center;font-size:14px;font-weight:650;font-variant-numeric:tabular-nums}
+.olcek-sifirla{margin:0;font-size:13.5px}
+
+/* ---- Kaydırarak sekme değiştirme ---- */
+/* Alt çubukta yatay kaydırma tarayıcıya bırakılmaz (pointercancel olmasın) */
+.alt-cubuk{touch-action:none}
+/* Çekmecenin kaydırılan gövdesi ayrı bir kaydırma alanıdır: .cekmece'nin
+   pan-y'si içine işlemez; yatay hareket tarayıcıya geçip iptal edilmesin */
+.cekmece .hesap-govde{touch-action:pan-y pinch-zoom}
+/* Çekmecede parmak yana giderken içerik az biraz eşlik eder; yeni bölüm o yandan girer */
+.cekmece .hesap-ic.kayiyor{transition:none}
+.cekmece .hesap-ic.geri-yay{transition:transform .2s ease,opacity .2s ease}
+@keyframes bolumSagdan{from{transform:translateX(28px);opacity:0}to{transform:none;opacity:1}}
+@keyframes bolumSoldan{from{transform:translateX(-28px);opacity:0}to{transform:none;opacity:1}}
+.cekmece .hesap-ic.sagdan{animation:bolumSagdan .22s ease-out}
+.cekmece .hesap-ic.soldan{animation:bolumSoldan .22s ease-out}
+
+/* ---- Bilgisayar modu: Alt kısayol rozetleri ---- */
+.kisayol-katman{position:fixed;inset:0;z-index:2147483000;pointer-events:none}
+.kisayol-rozet{
+  position:absolute;transform:translate(-4px,-4px);padding:1px 5px;min-width:18px;text-align:center;
+  border-radius:5px;background:#FFD54A;color:#1A1400;border:1px solid rgba(0,0,0,.45);
+  font:700 12px/16px var(--mono, ui-monospace, monospace);letter-spacing:.04em;
+  box-shadow:0 1px 4px rgba(0,0,0,.35);white-space:nowrap;
+}
+.kisayol-rozet .yazilan{opacity:.4}
+.kisayol-rozet.soluk{opacity:.18}
+
 /* ---- Notlar (iç adı kaynak) ---- */
 .kaynak-aciklama{color:var(--sonuk);font-size:14.5px;line-height:1.55;margin:2px 0 14px}
 .kaynak-uyari{background:var(--yuzey);border:1px solid var(--cizgi);border-radius:12px;padding:10px 14px;font-size:14px;color:var(--sonuk);margin:8px 0 12px;line-height:1.5}
@@ -2016,7 +2069,7 @@ html.editor-acik .geri-al{bottom:calc(16px + env(safe-area-inset-bottom))}
 .kaynak-resim-kutusu .ad{font-size:15px;font-weight:600}
 .kaynak-resim-kutusu .alt{font-size:12.5px;color:var(--sonuk)}
 .kaynak-resim-kutusu .ok{flex:none;color:var(--vurgu);font-family:var(--mono)}
-.kaynak-resim-paneli .panel{height:82vh}
+.kaynak-resim-paneli .panel{height:calc(82vh / var(--zoom-olcek))}
 .kaynak-hesap-liste{margin-top:6px}
 .kaynak-hesap-satir{display:flex;align-items:center;gap:12px;padding:8px 0;border-top:1px solid var(--cizgi)}
 .kaynak-hesap-kucuk{flex:none;width:56px;height:56px;border-radius:8px;overflow:hidden;padding:0;background:var(--yuzey2);border:1px solid var(--cizgi)}
@@ -2044,7 +2097,7 @@ html.editor-acik,html.editor-acik body{overflow:hidden}
 .ne-bilgi{display:flex;flex-direction:column;gap:1px;font-size:12.5px;color:var(--sonuk);margin:2px 0 12px;font-variant-numeric:tabular-nums}
 .ne-uyari{font-size:13px;color:var(--sonuk);background:var(--yuzey);border:1px solid var(--cizgi);border-radius:10px;padding:8px 12px;margin:0 0 12px;line-height:1.5}
 .ne-uyari.hata{border-color:var(--yanlis);color:var(--yazi)}
-.ne-metin{position:relative;min-height:50vh;outline:none;font-size:17px;line-height:1.6;color:var(--yazi);overflow-wrap:anywhere;caret-color:var(--vurgu)}
+.ne-metin{position:relative;min-height:calc(50vh / var(--zoom-olcek));outline:none;font-size:17px;line-height:1.6;color:var(--yazi);overflow-wrap:anywhere;caret-color:var(--vurgu)}
 .ne-metin.bos::before{content:attr(data-yer);position:absolute;left:0;top:0;color:var(--sonuk);opacity:.6;pointer-events:none}
 .ne-metin p,.ne-metin h3{margin:0}
 .ne-metin h3{font-size:20px;font-weight:700;line-height:1.4;margin:6px 0 2px}
@@ -2164,6 +2217,277 @@ const depo = (() => {
     }
   };
 })();
+
+/* ---------- Bu cihaz: ölçek ve cihaz türü (Hesap › Bu cihaz) ----------
+   İkisi de yalnızca bu cihazda tutulur, hesaba gitmez: telefonla tabletin
+   ayarları birbirini etkilemez.
+   Ölçek bütün arayüzü CSS zoom ile büyütür ya da küçültür. Zoom varken
+   parmak/fare koordinatları, getBoundingClientRect ve visualViewport ekran
+   pikselidir; style'a yazılan px, offsetWidth ve clientWidth ise
+   büyütülmemiş CSS pikselidir. İkisi arasında ekranOrani() ile çevrilir.
+   vh/vw birimleri de büyüdüğü için CSS'te var(--zoom-olcek)'e bölünür.
+   Büyütme, sayfanın yerleşim genişliği OLCEK_DAR_SINIR'ın altına inmeyecek
+   kadar yapılır (dar telefonda düzen taşmasın); ekran döndürülünce yeniden
+   hesaplanır. Aynı kural <head>'deki ilk boyama betiğinde de var. */
+const OLCEK_EN_AZ = 0.7, OLCEK_EN_COK = 1.5, OLCEK_ADIM = 0.1, OLCEK_DAR_SINIR = 320;
+function olcekSecimi() {
+  let o = Number(depo.oku("pg.olcek", 1));
+  if (!(o >= OLCEK_EN_AZ && o <= OLCEK_EN_COK)) o = 1;
+  return Math.round(o * 100) / 100;
+}
+/* Bu ekran genişliğinde büyütmenin üst sınırı (en az 1) */
+function olcekSiniri() {
+  return Math.max(1, Math.floor((window.innerWidth || 400) / OLCEK_DAR_SINIR * 100) / 100);
+}
+function gecerliOlcek() {
+  const o = olcekSecimi();
+  return o > 1 ? Math.min(o, olcekSiniri()) : o;
+}
+function olcekUygula() {
+  const o = gecerliOlcek(), h = document.documentElement;
+  if (o === 1) { h.style.removeProperty("zoom"); h.style.removeProperty("--zoom-olcek"); }
+  else { h.style.zoom = String(o); h.style.setProperty("--zoom-olcek", String(o)); }
+}
+/* Ekran pikselinin CSS pikseline oranı. Tarayıcıların zoom'u koordinatlara
+   yansıtması aynı olmadığından ölçülür; ölçüm yuvarlamasından kaynaklanan
+   küçük sapma seçili ölçeğe ya da 1'e oturtulur. */
+function ekranOrani() {
+  const b = document.body;
+  if (!b || !b.offsetWidth) return 1;
+  const r = b.getBoundingClientRect().width / b.offsetWidth;
+  if (!(r > 0.3 && r < 4)) return 1;
+  if (Math.abs(r - 1) < 0.01) return 1;
+  const o = gecerliOlcek();
+  return Math.abs(r - o) < 0.01 ? o : r;
+}
+function olcekDegistir(yeni) {
+  yeni = Math.round(Math.max(OLCEK_EN_AZ, Math.min(OLCEK_EN_COK, yeni)) * 100) / 100;
+  if (yeni === 1) depo.sil("pg.olcek"); else depo.yaz("pg.olcek", yeni);
+  olcekUygula();
+}
+olcekUygula();
+window.addEventListener("resize", olcekUygula);
+
+/* Cihaz türü: Bilgisayar modunda Alt kısayolları açılır. Seçilmediyse
+   cihazdan tahmin edilir (fare + üzerine gelme: bilgisayar; dokunmatik
+   ekranın kısa kenarı 600 ve üstü: tablet; değilse telefon). */
+const CIHAZ_TURLERI = [["bilgisayar", "Bilgisayar"], ["tablet", "Tablet"], ["telefon", "Telefon"]];
+function cihazTuruTahmini() {
+  const mm = q => !!(window.matchMedia && window.matchMedia(q).matches);
+  if (mm("(hover: hover) and (pointer: fine)")) return "bilgisayar";
+  const kisa = Math.min((window.screen && screen.width) || 0, (window.screen && screen.height) || 0);
+  return kisa >= 600 ? "tablet" : "telefon";
+}
+function cihazTuruSecili() {
+  const t = depo.oku("pg.cihazTuru", null);
+  return CIHAZ_TURLERI.some(x => x[0] === t) ? t : null;
+}
+function cihazTuru() { return cihazTuruSecili() || cihazTuruTahmini(); }
+function cihazTuruUygula() {
+  document.documentElement.setAttribute("data-cihaz", cihazTuru());
+  if (cihazTuru() !== "bilgisayar") kisayolGizle();
+}
+
+/* ---------- Bilgisayar modu: Alt kısayolları ----------
+   Alt basılı tutulunca ekranda görünen ve tıklanabilen her şeyin üstünde bir
+   harf (çok öğe varsa iki harf) belirir; Alt bırakılmadan o harfe basılınca
+   oraya tıklanır (yazı alanına basılırsa imleç oraya gider). Alt basılı
+   kaldıkça rozetler yeni ekrana göre yenilenir; art arda kullanılabilir.
+   Harfler tuşun yerinden okunur (e.code): Türkçe Q ve F klavyede, Mac'te
+   Option'la da aynı tuş aynı harftir. D, E, F tarayıcının kendi Alt
+   kısayolları olduğu için kullanılmaz. Öğenin adının ilk harfi boştaysa o
+   verilir (Kıraat K, Ara A, Temrin T…). Mac'te yazı alanındayken Option
+   özel karakter yazmaya yaradığı için devreye girmez. Sağ Alt'ın AltGr
+   olduğu klavyelerde (Ctrl+Alt) de devreye girmez. */
+const KISAYOL_HARFLERI = "ABCGHIJKLMNOPQRSTUVWXYZ".split("");
+const KISAYOL_RAKAMLARI = "1234567890".split("");
+const KISAYOL_HEDEFI = 'button, a[href], [role="button"], [role="tab"], [role="link"], [role="radio"], input:not([type="hidden"]), select, textarea, summary, [contenteditable="true"], [contenteditable=""], label';
+/* Harf dağıtılırken önce alt çubuk, sonra üst çubuklar ve sekmeler: bunların harfi her ekranda aynı kalsın */
+const KISAYOL_ONCELIKLI = [".alt-cubuk", ".cekmece-sekmeler, .hesap-ust, .ust, .ne-ust, .ne-arac"];
+let kisayol = null;   /* { katman, liste: [{ el, kod, rozet }], yazilan, cerceve } */
+const macMi = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || "");
+
+function kisayolAcikMi() { return cihazTuru() === "bilgisayar"; }
+function yaziAlaniMi(el) {
+  if (!el || el.nodeType !== 1) return false;
+  if (el.isContentEditable) return true;
+  if (el.tagName === "TEXTAREA" || el.tagName === "SELECT") return true;
+  return el.tagName === "INPUT" && !/^(button|submit|reset|checkbox|radio|range|color|file|image)$/i.test(el.type || "");
+}
+function kisayolAdi(el) {
+  const t = el.getAttribute("aria-label") || el.textContent || el.getAttribute("title") || el.getAttribute("placeholder") || el.value || "";
+  return String(t).toLocaleUpperCase("tr").replace(/[ÇĞİÖŞÜÂÎÛ]/g, c => ({ Ç: "C", Ğ: "G", İ: "I", Ö: "O", Ş: "S", Ü: "U", Â: "A", Î: "I", Û: "U" })[c]);
+}
+function kisayolHedefleri() {
+  const W = window.innerWidth, H = window.innerHeight;
+  const sonuc = [];
+  document.querySelectorAll(KISAYOL_HEDEFI).forEach(el => {
+    if (el.disabled || el.closest(".kisayol-katman, [inert], [hidden]")) return;
+    const ad = el.tagName;
+    if (ad === "LABEL" && !el.querySelector('input[type="checkbox"], input[type="radio"]')) return;
+    if (ad === "INPUT" && /^(checkbox|radio)$/i.test(el.type || "") && el.closest("label")) return;
+    if (el.isContentEditable && el.parentElement && el.parentElement.isContentEditable) return;
+    const r = el.getBoundingClientRect();
+    if (r.width < 4 || r.height < 4 || r.bottom <= 1 || r.right <= 1 || r.top >= H - 1 || r.left >= W - 1) return;
+    /* Üstü kapalı değilse görünürdür: ortasında ya da bir köşesinde öğenin kendisi bulunur */
+    const kx = Math.min(8, r.width / 2), ky = Math.min(8, r.height / 2);
+    const noktalar = [[r.left + r.width / 2, r.top + r.height / 2], [r.left + kx, r.top + ky], [r.right - kx, r.bottom - ky], [r.left + kx, r.bottom - ky], [r.right - kx, r.top + ky]];
+    const gorunur = noktalar.some(([x, y]) => {
+      if (x < 0 || y < 0 || x >= W || y >= H) return false;
+      const u = document.elementFromPoint(x, y);
+      return !!u && (u === el || el.contains(u));
+    });
+    if (!gorunur) return;
+    const o = KISAYOL_ONCELIKLI.findIndex(q => el.closest(q));
+    sonuc.push({ el, r, oncelik: o === -1 ? KISAYOL_ONCELIKLI.length : o });
+  });
+  sonuc.sort((a, b) => a.oncelik - b.oncelik);
+  return sonuc;
+}
+/* Kodlar: öğeler tek harfe sığıyorsa ad harfiyle (yoksa boştaki ilk harf ya da
+   rakam); sığmıyorsa hepsine iki harf (biri öbürünün başı olmasın diye) */
+function kisayolKodlari(hedefler) {
+  const tekler = KISAYOL_HARFLERI.concat(KISAYOL_RAKAMLARI);
+  if (hedefler.length <= tekler.length) {
+    const bos = new Set(tekler), kodlar = new Array(hedefler.length);
+    hedefler.forEach((h, i) => {
+      /* Sıra: ilk kelimenin baş harfi (rakam olabilir: 42 Tarzı), öbür
+         kelimelerin baş harfleri ("ve", "ile" gibi bağlaçlar ve sayılar
+         hariç), ilk kelimenin öbür harfleri, kalan harfler */
+      const kelimeler = kisayolAdi(h.el).split(/[^A-Z0-9]+/).filter(Boolean);
+      const anlamli = kelimeler.filter((k, j) => j === 0 || (/^[A-Z]/.test(k) && !/^(VE|ILE|DA|DE|KI|BU|BIR|ICIN)$/.test(k)));
+      const harfler = kelimeler.join("").replace(/[^A-Z]/g, "");
+      const sira = anlamli.map(k => k[0]).concat((kelimeler[0] || "").slice(1).replace(/[^A-Z]/g, "").split(""), harfler.split(""));
+      const aday = sira.find(c => bos.has(c));
+      if (aday) { kodlar[i] = aday; bos.delete(aday); }
+    });
+    hedefler.forEach((h, i) => {
+      if (kodlar[i]) return;
+      const c = tekler.find(x => bos.has(x));
+      kodlar[i] = c; bos.delete(c);
+    });
+    return kodlar;
+  }
+  const n = KISAYOL_HARFLERI.length;
+  return hedefler.map((h, i) => KISAYOL_HARFLERI[Math.floor(i / n) % n] + KISAYOL_HARFLERI[i % n]);
+}
+function kisayolCiz() {
+  if (!kisayol) return;
+  kisayol.katman.textContent = "";
+  const hedefler = kisayolHedefleri();
+  const kodlar = kisayolKodlari(hedefler);
+  const z = ekranOrani();
+  const genislik = document.documentElement.clientWidth || window.innerWidth;
+  const yukseklik = document.documentElement.clientHeight || window.innerHeight;
+  kisayol.liste = hedefler.map((h, i) => {
+    const rozet = olustur("span", "kisayol-rozet");
+    rozet.textContent = kodlar[i];
+    /* Geniş öğede (alt çubuktaki sekme, ders satırı) rozet köşede kaybolmasın:
+       içindeki ilk görünür parçanın (simge) köşesine konur */
+    let r = h.r;
+    if (r.width > 120) {
+      const ilk = Array.from(h.el.children).map(e => e.getBoundingClientRect()).find(x => x.width > 2 && x.height > 2);
+      if (ilk) r = ilk;
+    }
+    rozet.style.left = Math.max(4, Math.min(r.left / z, genislik - 30)) + "px";
+    rozet.style.top = Math.max(4, Math.min(r.top / z, yukseklik - 22)) + "px";
+    kisayol.katman.appendChild(rozet);
+    return { el: h.el, kod: kodlar[i], rozet };
+  });
+  kisayol.yazilan = "";
+}
+function kisayolGoster() {
+  if (kisayol) return;
+  const katman = olustur("div", "kisayol-katman");
+  katman.setAttribute("aria-hidden", "true");
+  document.body.appendChild(katman);
+  kisayol = { katman, liste: [], yazilan: "", cerceve: 0 };
+  kisayolCiz();
+}
+function kisayolGizle() {
+  if (!kisayol) return;
+  const k = kisayol;
+  kisayol = null;
+  if (k.cerceve) cancelAnimationFrame(k.cerceve);
+  k.katman.remove();
+}
+/* Sayfa kayar ya da boyut değişirse rozetler yerine oturur */
+function kisayolYenile() {
+  if (!kisayol || kisayol.cerceve) return;
+  kisayol.cerceve = requestAnimationFrame(() => { if (kisayol) { kisayol.cerceve = 0; kisayolCiz(); } });
+}
+function kisayolTusu(e) {
+  const c = e.code || "";
+  if (/^Key[A-Z]$/.test(c)) return c.slice(3);
+  if (/^Digit[0-9]$/.test(c)) return c.slice(5);
+  if (/^Numpad[0-9]$/.test(c)) return c.slice(6);
+  return null;
+}
+function kisayolCalistir(el) {
+  if (!el.isConnected) return;
+  if (yaziAlaniMi(el)) {
+    try { el.focus({ preventScroll: true }); } catch (h) { el.focus(); }
+    return;
+  }
+  /* Düğmeye odak verilmez: editörde odak ve seçim metinde kalmalı */
+  el.click();
+}
+function kisayolHarfi(h) {
+  const yazilan = kisayol.yazilan + h;
+  const uyan = kisayol.liste.filter(x => x.kod.startsWith(yazilan));
+  if (!uyan.length) {
+    /* Olmayan harf: yazılan sıfırlanır, rozetler eski hâline döner */
+    kisayol.yazilan = "";
+    kisayol.liste.forEach(x => { x.rozet.classList.remove("soluk"); x.rozet.textContent = x.kod; });
+    return;
+  }
+  const tam = uyan.find(x => x.kod === yazilan);
+  if (tam) {
+    kisayol.yazilan = "";
+    kisayolCalistir(tam.el);
+    /* Ekran değişmiş olabilir: rozetler yeni ekrana göre yeniden dağıtılır */
+    setTimeout(() => { if (kisayol) kisayolCiz(); }, 180);
+    return;
+  }
+  kisayol.yazilan = yazilan;
+  kisayol.liste.forEach(x => {
+    const uyar = x.kod.startsWith(yazilan);
+    x.rozet.classList.toggle("soluk", !uyar);
+    if (uyar) {
+      x.rozet.textContent = "";
+      const y = olustur("span", "yazilan"); y.textContent = yazilan;
+      x.rozet.append(y, document.createTextNode(x.kod.slice(yazilan.length)));
+    }
+  });
+}
+window.addEventListener("keydown", e => {
+  if (e.key === "Alt") {
+    if (!kisayolAcikMi() || e.ctrlKey || e.metaKey || e.shiftKey) { kisayolGizle(); return; }
+    if (macMi && yaziAlaniMi(document.activeElement)) return;
+    /* Tarayıcının Alt'la menüye odaklanması engellenir */
+    e.preventDefault();
+    if (!kisayol) kisayolGoster();
+    return;
+  }
+  if (!kisayol) return;
+  if (!e.altKey || e.ctrlKey || e.metaKey) { kisayolGizle(); return; }
+  const h = kisayolTusu(e);
+  if (!h) return;
+  e.preventDefault();
+  e.stopPropagation();
+  if (e.repeat) return;
+  kisayolHarfi(h);
+}, true);
+window.addEventListener("keyup", e => {
+  if (e.key === "Alt" && kisayol) { e.preventDefault(); kisayolGizle(); }
+}, true);
+window.addEventListener("blur", kisayolGizle);
+document.addEventListener("visibilitychange", () => { if (document.hidden) kisayolGizle(); });
+window.addEventListener("pointerdown", kisayolGizle, true);
+window.addEventListener("scroll", kisayolYenile, true);
+window.addEventListener("resize", kisayolYenile);
+
+cihazTuruUygula();
 
 /* ---------- Tema: açık (öntanımlı), pembe, koyu, simsiyah ---------- */
 const TEMALAR = {
@@ -4516,7 +4840,13 @@ function ipucuGoster(kap, x, y, satirlar) {
     ip.appendChild(el);
   });
   ip.hidden = false;
-  const kr = kap.getBoundingClientRect();
+  /* İmleç ve getBoundingClientRect ekran pikselidir; ölçek (zoom) varken
+     kutunun yeri CSS pikseliyle yazıldığı için hepsi ölçeğe bölünür */
+  const z = ekranOrani();
+  const kr0 = kap.getBoundingClientRect();
+  const kr = { left: kr0.left / z, top: kr0.top / z, width: kr0.width / z };
+  x /= z; y /= z;
+  const genislik = document.documentElement.clientWidth || innerWidth;
   const w = ip.offsetWidth, h = ip.offsetHeight;
   /* Parmakla dokununca kutu parmağın altında kalmasın: daha yukarıda durur.
      Yer yoksa çizimin üstüne taşabilir (üst çubuğun altında kalmak şartıyla);
@@ -4532,7 +4862,7 @@ function ipucuGoster(kap, x, y, satirlar) {
       /* Parmağın yanına: parmak hangi yarıdaysa öbür yana; alt kenarı parmağın biraz üstünde */
       const yanUst = Math.max(enUst, y - kr.top - h - 6);
       const solaSigar = x - kr.left - 34 - w >= -kr.left + 4;
-      const sagaSigar = x - kr.left + 34 + w <= innerWidth - kr.left - 4;
+      const sagaSigar = x - kr.left + 34 + w <= genislik - kr.left - 4;
       if (x - kr.left > kr.width / 2 && solaSigar) { sol = x - kr.left - 34 - w; ust = yanUst; }
       else if (sagaSigar) { sol = x - kr.left + 34; ust = yanUst; }
       else ust = y - kr.top + 80;
@@ -4794,7 +5124,7 @@ function gunlukBolumu(ist) {
    (telefonda 12–15, bilgisayarda 22'ye kadar). Günlük ve haftalık aynı. */
 let TAKVIM_HAFTA = 18;
 function takvimHaftasiniAyarla() {
-  const en = Math.min(window.innerWidth - 36, 480) - 64;
+  const en = Math.min((document.documentElement.clientWidth || window.innerWidth) - 36, 480) - 64;
   TAKVIM_HAFTA = Math.max(12, Math.min(22, Math.floor((en - 24) / 17.5)));
 }
 function hedefKademesi(sn, hedef) {
@@ -5442,7 +5772,20 @@ function hesapSayfasiAc(secenek) {
     });
     sekmeler.appendChild(b);
   });
-  cekmeceSurukleKur(sayfa, panel, perde, govde);
+  /* Kaydırarak bölüm değiştirme: yon -1 soldaki, +1 sağdaki bölüm (uçlarda döner);
+     giris: yeni bölümün hangi yandan gireceği (parmağın gittiği yönün tersi) */
+  const bolumKaydir = (yon, giris) => {
+    const n = CEKMECE_EKRANLARI.length;
+    const i = CEKMECE_EKRANLARI.findIndex(x => x[0] === ekran);
+    ekran = CEKMECE_EKRANLARI[((i + yon) % n + n) % n][0];
+    depo.yaz("pg.cekmeceEkrani", ekran);
+    kimlikDuzenle = false;
+    govde.scrollTop = 0;
+    ciz();
+    const ic = govde.querySelector(".hesap-ic");
+    if (ic && giris && !hareketAz()) ic.classList.add(giris);
+  };
+  cekmeceSurukleKur(sayfa, panel, perde, govde, bolumKaydir);
 
   let donem = depo.oku("pg.istDonem", "7");
   if (["1", "7", "30", "hepsi"].indexOf(donem) === -1) donem = "7";
@@ -5575,6 +5918,78 @@ function hesapSayfasiAc(secenek) {
     return satir;
   }
 
+  /* Bu cihaz: cihaz türü ve ölçek; ikisi de yalnızca bu cihazda tutulur */
+  function cihazBolumu() {
+    const kart = olustur("section", "ist-kart cihaz-kart");
+    const h = olustur("h3", "ist-baslik");
+    h.textContent = "Bu cihaz";
+    kart.appendChild(h);
+
+    const tur = cihazTuru();
+    const s1 = olustur("div", "cihaz-satir");
+    const e1 = olustur("span", "cihaz-etiket"); e1.textContent = "Cihaz"; e1.id = "cihazTuruEtiket";
+    const secici = olustur("div", "cihaz-turleri");
+    secici.setAttribute("role", "radiogroup");
+    secici.setAttribute("aria-labelledby", "cihazTuruEtiket");
+    CIHAZ_TURLERI.forEach(([ad, etiket]) => {
+      const b = olustur("button", "cihaz-turu" + (tur === ad ? " secili" : ""));
+      b.type = "button";
+      b.dataset.tur = ad;
+      b.textContent = etiket;
+      b.setAttribute("role", "radio");
+      b.setAttribute("aria-checked", tur === ad ? "true" : "false");
+      b.addEventListener("click", () => {
+        if (cihazTuru() === ad && cihazTuruSecili()) return;
+        depo.yaz("pg.cihazTuru", ad);
+        cihazTuruUygula();
+        ciz();
+      });
+      secici.appendChild(b);
+    });
+    s1.append(e1, secici);
+    kart.appendChild(s1);
+    const a1 = olustur("p", "hesap-durum cihaz-aciklama");
+    a1.textContent = (cihazTuruSecili() ? "" : "Bu cihaza göre kendiliğinden seçildi. ") + (tur === "bilgisayar"
+      ? "Alt tuşunu basılı tutun: ekranda tıklanabilecek her yerin kısayol harfi görünür; Alt'ı bırakmadan o harfe basınca oraya tıklanır."
+      : "Alttaki sekme çubuğunda parmağınızı sağa ya da sola kaydırarak sekmeler arasında geçebilirsiniz; bu menüde de ekranın herhangi bir yerinde kaydırmak öbür bölüme geçirir.");
+    kart.appendChild(a1);
+
+    const secili = olcekSecimi(), gecerli = gecerliOlcek(), sinir = olcekSiniri();
+    const s2 = olustur("div", "cihaz-satir");
+    const e2 = olustur("span", "cihaz-etiket"); e2.textContent = "Ölçek";
+    const adim = olustur("div", "olcek-adim");
+    const azalt = olustur("button", "olcek-dugme");
+    azalt.type = "button";
+    azalt.textContent = "−";
+    azalt.setAttribute("aria-label", "Küçült");
+    azalt.disabled = gecerli <= OLCEK_EN_AZ + 1e-6;
+    const deger = olustur("span", "olcek-deger");
+    deger.textContent = "%" + Math.round(gecerli * 100);
+    deger.setAttribute("aria-live", "polite");
+    const artir = olustur("button", "olcek-dugme");
+    artir.type = "button";
+    artir.textContent = "+";
+    artir.setAttribute("aria-label", "Büyüt");
+    artir.disabled = gecerli + OLCEK_ADIM > Math.min(OLCEK_EN_COK, sinir) + 1e-6;
+    azalt.addEventListener("click", () => { olcekDegistir(gecerliOlcek() - OLCEK_ADIM); ciz(); });
+    artir.addEventListener("click", () => { olcekDegistir(gecerliOlcek() + OLCEK_ADIM); ciz(); });
+    adim.append(azalt, deger, artir);
+    s2.append(e2, adim);
+    if (secili !== 1) {
+      const sifirla = olustur("button", "giris-bag olcek-sifirla");
+      sifirla.type = "button";
+      sifirla.textContent = "%100'e dön";
+      sifirla.addEventListener("click", () => { olcekDegistir(1); ciz(); });
+      s2.appendChild(sifirla);
+    }
+    kart.appendChild(s2);
+    const a2 = olustur("p", "hesap-durum cihaz-aciklama");
+    a2.textContent = "Bütün ekranı büyütür ya da küçültür. Bu ayarlar yalnızca bu cihazda tutulur; telefonunuz, tabletiniz ve bilgisayarınız ayrı ayrı ayarlanır." +
+      (secili > gecerli + 1e-6 ? " Bu ekran genişliğinde en çok %" + Math.round(sinir * 100) + " olabiliyor; seçtiğiniz %" + Math.round(secili * 100) + " geniş ekranda geçerli olur." : "");
+    kart.appendChild(a2);
+    return kart;
+  }
+
   function hesapBilgiBolumu() {
     const kart = olustur("section", "ist-kart");
     const h = olustur("h3", "ist-baslik");
@@ -5694,6 +6109,7 @@ function hesapSayfasiAc(secenek) {
       ic.appendChild(haftaTakvimiBolumu(tumu));
     } else {
       ic.appendChild(kimlikBolumu());
+      ic.appendChild(cihazBolumu());
       ic.appendChild(hesapBilgiBolumu());
       ic.appendChild(kaynakHesapBolumu());
     }
@@ -5762,40 +6178,90 @@ function perdeKapatmayiKur(sayfa, perde) {
   perde.addEventListener("click", () => cekmeceyiKapat(sayfa));
 }
 
-/* Çekmeceyi sağa çekip kapatma: yatay hareket parmağı izler, bırakınca
-   üçte birden fazla çekildiyse ya da hızlı atıldıysa kapanır. Dikey hareket
-   sayfayı kaydırır; grafiklere ve çiplere dokunuş sürüklemeye dönmez. */
-function cekmeceSurukleKur(sayfa, panel, perde, govde) {
-  let bas = null, yatay = false;
+/* Çekmecede yatay kaydırma.
+   - Başlık satırında (başlık ve ×) sağa çekmek çekmeceyi kapatır: yatay
+     hareket parmağı izler, bırakınca üçte birden fazla çekildiyse ya da
+     hızlı atıldıysa kapanır.
+   - Başka her yerde sağa ya da sola kaydırmak öbür bölüme geçirir (Hedef,
+     İstatistik, Takvim, Hesap; uçlarda başa döner). Yön alt çubuktakiyle
+     aynıdır: parmak sola giderse soldaki bölüme geçilir.
+   Dikey hareket sayfayı kaydırır; girdiler, çip satırları ve kendi içinde
+   yana kayan alanlar sürüklemeye dönmez. Grafiklerin (halka, takvim)
+   üstünden de kaydırılabilir: ipucu dokunuşla açılır, sürüklemeyle
+   çalışmaz; kaydırmanın ardından gelen tıklama yutulur. */
+function cekmeceSurukleKur(sayfa, panel, perde, govde, bolumKaydir) {
+  let bas = null, tur = null;
+  const yanaKayar = el => {
+    for (let e = el; e && e !== panel; e = e.parentElement) {
+      if (e.scrollWidth > e.clientWidth + 2) {
+        const ox = getComputedStyle(e).overflowX;
+        if (ox === "auto" || ox === "scroll") return true;
+      }
+    }
+    return false;
+  };
+  const icerik = () => govde.querySelector(".hesap-ic");
   panel.addEventListener("pointerdown", e => {
-    if (e.pointerType === "mouse" || e.target.closest("input, textarea, select, .cip-satiri, svg")) return;
-    bas = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId }; yatay = false;
+    if (e.pointerType === "mouse" || e.target.closest("input, textarea, select, .cip-satiri")) return;
+    bas = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId, z: ekranOrani(),
+            ust: !!e.target.closest(".hesap-ust"), kayar: yanaKayar(e.target) };
+    tur = null;
   });
   panel.addEventListener("pointermove", e => {
     if (!bas || e.pointerId !== bas.id) return;
     const dx = e.clientX - bas.x, dy = e.clientY - bas.y;
-    if (!yatay) {
+    if (!tur) {
       if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
-      if (dx <= 0 || Math.abs(dy) * 1.2 > Math.abs(dx)) { bas = null; return; }
-      yatay = true;
+      if (Math.abs(dy) * 1.2 > Math.abs(dx)) { bas = null; return; }
+      if (bas.ust) {
+        if (dx <= 0) { bas = null; return; }
+        tur = "kapat";
+        sayfa.classList.add("surukleniyor");
+      } else {
+        if (bas.kayar || !bolumKaydir) { bas = null; return; }
+        tur = "bolum";
+        const ic = icerik();
+        if (ic) { ic.classList.remove("sagdan", "soldan", "geri-yay"); ic.classList.add("kayiyor"); }
+      }
       try { panel.setPointerCapture(e.pointerId); } catch (h) {}
-      sayfa.classList.add("surukleniyor");
     }
-    const w = panel.offsetWidth || 1;
-    const oran = Math.max(0, Math.min(1, dx / w));
-    panel.style.transform = "translateX(" + (oran * 100) + "%)";
-    perde.style.opacity = String(1 - oran);
+    if (tur === "kapat") {
+      const w = panel.getBoundingClientRect().width || 1;
+      const oran = Math.max(0, Math.min(1, dx / w));
+      panel.style.transform = "translateX(" + (oran * 100) + "%)";
+      perde.style.opacity = String(1 - oran);
+    } else {
+      const ic = icerik();
+      if (ic) {
+        const w = panel.getBoundingClientRect().width || 1;
+        ic.style.transform = "translateX(" + (dx * 0.35 / bas.z) + "px)";
+        ic.style.opacity = String(1 - Math.min(0.5, Math.abs(dx) / w));
+      }
+    }
   });
   const birak = e => {
     if (!bas || e.pointerId !== bas.id) return;
     const dx = e.clientX - bas.x, hiz = dx / Math.max(1, performance.now() - bas.t);
-    const ok = yatay;
-    bas = null; yatay = false;
-    if (!ok) return;
-    sayfa.classList.remove("surukleniyor");
-    void panel.offsetWidth;
-    panel.style.transform = ""; perde.style.opacity = "";
-    if (e.type === "pointerup" && (dx > panel.offsetWidth * 0.33 || hiz > 0.5)) geriDon();
+    const t = tur;
+    bas = null; tur = null;
+    if (!t) return;
+    sonrakiTiklamayiYut(e.clientX, e.clientY);
+    if (t === "kapat") {
+      sayfa.classList.remove("surukleniyor");
+      void panel.offsetWidth;
+      panel.style.transform = ""; perde.style.opacity = "";
+      if (e.type === "pointerup" && (dx > panel.getBoundingClientRect().width * 0.33 || hiz > 0.5)) geriDon();
+      return;
+    }
+    const gec = e.type === "pointerup" && (Math.abs(dx) > 60 || (Math.abs(hiz) > 0.4 && Math.abs(dx) > 25));
+    const ic = icerik();
+    if (gec) { bolumKaydir(dx < 0 ? -1 : 1, dx < 0 ? "sagdan" : "soldan"); return; }
+    if (ic) {
+      ic.classList.remove("kayiyor"); ic.classList.add("geri-yay");
+      void ic.offsetWidth;
+      ic.style.transform = ""; ic.style.opacity = "";
+      setTimeout(() => ic.classList.remove("geri-yay"), 220);
+    }
   };
   panel.addEventListener("pointerup", birak);
   panel.addEventListener("pointercancel", birak);
@@ -5821,7 +6287,7 @@ function cekmeceSurukleKur(sayfa, panel, perde, govde) {
       if (!acildi) { bas = null; return; }
     }
     const p = parcalar(); if (!p) return;
-    const oran = Math.max(0, Math.min(1, dx / (p.panel.offsetWidth || 1)));
+    const oran = Math.max(0, Math.min(1, dx / (p.panel.getBoundingClientRect().width || 1)));
     p.panel.style.transform = "translateX(" + ((1 - oran) * 100) + "%)";
     p.perde.style.opacity = String(oran);
   });
@@ -5834,7 +6300,7 @@ function cekmeceSurukleKur(sayfa, panel, perde, govde) {
     const p = parcalar(); if (!p) return;
     p.sayfa.classList.remove("surukleniyor");
     void p.panel.offsetWidth;
-    const ac = e.type === "pointerup" && (dx > p.panel.offsetWidth * 0.3 || hiz > 0.4);
+    const ac = e.type === "pointerup" && (dx > p.panel.getBoundingClientRect().width * 0.3 || hiz > 0.4);
     p.panel.style.transform = ""; p.perde.style.opacity = "";
     if (ac) p.sayfa.classList.add("acik"); else geriDon();
   };
@@ -6002,6 +6468,42 @@ function altCubukCiz() {
     cubuk.appendChild(d);
   });
 }
+
+/* Alt çubukta parmakla yana kaydırma sekme değiştirir: parmak sola giderse
+   soldaki sekmeye, sağa giderse sağdakine geçilir; uçlarda öbür uca döner
+   (Kıraat'te sola kaydırınca Notlar). Bir kaydırma bir sekme. Fareyle
+   sürükleme sayılmaz. Kaydırmanın ardından gelen tıklama yutulur ki
+   parmağın kalktığı sekme ayrıca açılmasın. */
+(function altCubukKaydirmaKur() {
+  const cubuk = document.getElementById("altCubuk");
+  let bas = null;
+  cubuk.addEventListener("pointerdown", e => {
+    if (e.pointerType === "mouse" || !e.isPrimary) { bas = null; return; }
+    bas = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId, tut: false };
+  });
+  /* Yana hareket başlayınca parmak çubuğun dışına çıksa da bırakış buraya gelsin
+     (dokunuşta yakalanmaz: yoksa tıklama düğmeye değil çubuğa giderdi) */
+  cubuk.addEventListener("pointermove", e => {
+    if (!bas || e.pointerId !== bas.id || bas.tut) return;
+    if (Math.abs(e.clientX - bas.x) > 12) { bas.tut = true; try { cubuk.setPointerCapture(e.pointerId); } catch (h) {} }
+  });
+  const birak = e => {
+    const b = bas;
+    if (!b || e.pointerId !== b.id) return;
+    bas = null;
+    if (e.type !== "pointerup" || !uygulamaAcik) return;
+    const dx = e.clientX - b.x, dy = e.clientY - b.y;
+    const hiz = Math.abs(dx) / Math.max(1, performance.now() - b.t);
+    if (Math.abs(dx) < Math.abs(dy) * 1.4) return;
+    if (!(Math.abs(dx) >= 36 || (Math.abs(dx) >= 20 && hiz > 0.35))) return;
+    sonrakiTiklamayiYut(e.clientX, e.clientY);
+    const n = SEKMELER.length;
+    const i = Math.max(0, SEKMELER.findIndex(x => x.ad === aktifSekme));
+    sekmeAc(SEKMELER[((i + (dx < 0 ? -1 : 1)) % n + n) % n].ad);
+  };
+  cubuk.addEventListener("pointerup", birak);
+  cubuk.addEventListener("pointercancel", birak);
+})();
 
 function sekmeAc(ad, gecmiseEkle) {
   menuyuKapat();
@@ -9165,7 +9667,7 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
     };
     const yuzler = yer.querySelectorAll(".kart-yuz");
     const istenen = Math.max(220, ...Array.from(yuzler).map(olc));
-    const sinir = Math.max(240, Math.round(window.innerHeight * 0.5));
+    const sinir = Math.max(240, Math.round((document.documentElement.clientHeight || window.innerHeight) * 0.5));
     deste.style.height = Math.min(istenen, sinir) + "px";
   }
 
@@ -9266,9 +9768,9 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
       yer.style.opacity = "0";
       return Promise.resolve(yigin);
     }
-    const d = deste.getBoundingClientRect(), y = yigin.getBoundingClientRect();
-    const tx = (y.left + y.width / 2) - (d.left + d.width / 2);
-    const ty = (y.top + y.height / 2) - (d.top + d.height / 2);
+    const d = deste.getBoundingClientRect(), y = yigin.getBoundingClientRect(), z = ekranOrani();
+    const tx = ((y.left + y.width / 2) - (d.left + d.width / 2)) / z;
+    const ty = ((y.top + y.height / 2) - (d.top + d.height / 2)) / z;
     const bas = yer.style.transform || "translate(0px, 0px)";
     yer.classList.remove("surukleniyor", "geri-yay");
     yer.style.transition = "none";
@@ -9319,7 +9821,7 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
 
   /* ---- Sürükleme ---- */
   function surukleKur(yer) {
-    let basX = 0, basY = 0, dx = 0, dy = 0, zaman = 0, aktif = false, yatay = false, iskaretci = null, esikGecildi = false;
+    let basX = 0, basY = 0, dx = 0, dy = 0, zaman = 0, aktif = false, yatay = false, iskaretci = null, esikGecildi = false, olcekZ = 1;
     let sonX = 0, sonZaman = 0, hiz = 0;
     const damgaBildim = yer.querySelector(".damga.bildim");
     const damgaBilemedim = yer.querySelector(".damga.bilemedim");
@@ -9334,11 +9836,11 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
          karar ilk harekete bırakılır */
       aktif = true; yatay = false; dx = 0; dy = 0; esikGecildi = false; hiz = 0;
       basX = sonX = e.clientX; basY = e.clientY; zaman = sonZaman = performance.now();
-      iskaretci = e.pointerId;
+      iskaretci = e.pointerId; olcekZ = ekranOrani();
     });
     yer.addEventListener("pointermove", e => {
       if (!aktif || e.pointerId !== iskaretci) return;
-      const x = e.clientX - basX, y = e.clientY - basY;
+      const x = (e.clientX - basX) / olcekZ, y = (e.clientY - basY) / olcekZ;
       if (!yatay) {
         if (Math.abs(x) < 8 && Math.abs(y) < 8) return;
         if (Math.abs(y) > Math.abs(x)) { aktif = false; return; }   /* dikey: sayfa kaysın */
@@ -9349,7 +9851,7 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
       }
       /* Son anlardaki hız: bırakınca fırlatma mı, yavaş bırakma mı ayırt edilir */
       const simdi = performance.now();
-      if (simdi > sonZaman) { hiz = 0.7 * ((e.clientX - sonX) / (simdi - sonZaman)) + 0.3 * hiz; }
+      if (simdi > sonZaman) { hiz = 0.7 * ((e.clientX - sonX) / olcekZ / (simdi - sonZaman)) + 0.3 * hiz; }
       sonX = e.clientX; sonZaman = simdi;
       /* Ön yüzdeyken karar verilemez: kart direnir */
       dx = cevrik ? x : x * 0.3;
@@ -11351,9 +11853,9 @@ async function kaynakNotAc(tasnifId, notId) {
     const img = e.target && e.target.closest ? e.target.closest("img") : null;
     if (!img || !metin.contains(img)) { resimAraciniKapat(); return; }
     seciliResim = img;
-    const g = govde.getBoundingClientRect(), b = img.getBoundingClientRect();
-    resimAraci.style.top = Math.max(0, b.top - g.top + govde.scrollTop + 8) + "px";
-    resimAraci.style.right = Math.max(8, g.right - b.right + 8) + "px";
+    const g = govde.getBoundingClientRect(), b = img.getBoundingClientRect(), z = ekranOrani();
+    resimAraci.style.top = Math.max(0, (b.top - g.top) / z + govde.scrollTop + 8) + "px";
+    resimAraci.style.right = Math.max(8, (g.right - b.right) / z + 8) + "px";
     resimAraci.hidden = false;
   });
 
@@ -11476,8 +11978,10 @@ async function kaynakNotAc(tasnifId, notId) {
   const vv = window.visualViewport;
   const sigdir = () => {
     if (!vv) return;
-    kap.style.height = vv.height + "px";
-    kap.style.transform = "translateY(" + vv.offsetTop + "px)";
+    /* visualViewport ekran pikselidir; ölçek (zoom) varken CSS pikseline çevrilir */
+    const z = ekranOrani();
+    kap.style.height = (vv.height / z) + "px";
+    kap.style.transform = "translateY(" + (vv.offsetTop / z) + "px)";
   };
   if (vv) { vv.addEventListener("resize", sigdir); vv.addEventListener("scroll", sigdir); }
   sigdir();
