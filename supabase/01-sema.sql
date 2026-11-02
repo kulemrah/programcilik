@@ -118,7 +118,7 @@ returns text
 language sql
 immutable
 set search_path = ''
-as $$ select '1'::text $$;
+as $$ select '2'::text $$;
 
 create table if not exists public.profiller (
   kullanici          uuid primary key default auth.uid() references auth.users(id) on delete cascade,
@@ -621,7 +621,9 @@ grant select on public.agac, public.konular to authenticated;
 grant all    on public.agac, public.konular to service_role;
 
 -- --------------------------------------------------------------------------
--- 6) Kullanıcı kayıtları: okundu, boya, yıldız, yanlış, kart, ayar, yer, mühim
+-- 6) Kullanıcı kayıtları: okundu, boya, yıldız, yanlış, kart, ayar, yer, mühim, çalışma
+--    ayar/kimlik: isteğe bağlı ad ve soyad. calisma/"GG|cihaz": o cihazın o günkü
+--    çalışma süreleri ve sonuç sayıları (her cihaz kendi satırını yazar).
 -- --------------------------------------------------------------------------
 -- Her kayıt (tür, anahtar) çiftiyle tekildir. Silme yoktur; "silindi"
 -- işaretlenir ki öteki cihaz da silindiğini öğrensin.
@@ -646,7 +648,7 @@ create index if not exists kayitlar_cekme on public.kayitlar (kullanici, sunucud
 -- tablo içinde adsız tanımlıydı; Postgres ona kayitlar_tur_check adını verir.
 alter table public.kayitlar drop constraint if exists kayitlar_tur_check;
 alter table public.kayitlar add constraint kayitlar_tur_check
-  check (tur in ('okundu','boya','yildiz','yanlis','kart','ayar','yer','muhim'));
+  check (tur in ('okundu','boya','yildiz','yanlis','kart','ayar','yer','muhim','calisma'));
 
 -- Eski bir yazım yenisinin üstüne yazamaz. Gelecek zaman sunucu saatine
 -- çekilir (pay bırakılmaz): saati ileride olan cihaz, sonraki gerçek
@@ -730,3 +732,368 @@ drop policy if exists "okul uyesi gorsel okur" on storage.objects;
 create policy "okul uyesi gorsel okur" on storage.objects
   for select to authenticated
   using (bucket_id = 'gorseller' and public.gorsel_okunabilir(name));
+
+-- --------------------------------------------------------------------------
+-- 8) Kaynak: öğrencinin kendi ders resimleri ve notları
+-- --------------------------------------------------------------------------
+-- Her öğrenci kendi tasniflerini (en çok üç kademe iç içe) açar; içlerine
+-- resim ve not koyar. Hepsini yalnızca sahibi görür. Resimlerin kendisi
+-- Cloudflare R2'dedir (anahtar "<kullanici>/<oge id>.webp"); buradaki satır
+-- yalnızca bilgisidir. Resim satırlarını yalnızca R2'ye yükleyen ve R2'den
+-- silen Worker (gizli anahtarla) yazar; böylece kota aşılamaz ve R2 ile
+-- tablo ayrışmaz. Notları ve tasnifleri uygulama doğrudan yazar.
+
+-- Kişi başı izin. Satır, öğrenci Kaynak'ı ilk açtığında kendiliğinden açılır.
+-- Hakkı artırmak (KURULUM.md, "Kaynak hakkı"):
+--   update public.kaynak_kota set azami_mb = 300 where eposta = 'ad.soyad@kocaelisaglik.edu.tr';
+create table if not exists public.kaynak_kota (
+  kullanici uuid primary key references auth.users(id) on delete cascade,
+  eposta    text,
+  azami_mb  integer not null default 100 check (azami_mb between 0 and 10240),
+  olusma    timestamptz not null default now()
+);
+
+create table if not exists public.kaynak_tasnif (
+  id          uuid primary key default gen_random_uuid(),
+  kullanici   uuid not null default auth.uid() references auth.users(id) on delete cascade,
+  ust         uuid references public.kaynak_tasnif(id) on delete cascade,
+  ad          text not null check (char_length(btrim(ad)) between 1 and 80),
+  derinlik    smallint not null default 1 check (derinlik between 1 and 3),
+  olusma      timestamptz not null default now(),
+  guncellendi timestamptz not null default now()
+);
+create index if not exists kaynak_tasnif_ust on public.kaynak_tasnif (kullanici, ust);
+
+-- Kademe sunucuda hesaplanır: üst tasnif aynı kişinin olmalı, kademe 3'ü
+-- geçemez. Oluştuktan sonra yalnızca adı değişir (yeri ve sahibi değişmez).
+create or replace function public.kaynak_tasnif_denetle()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  ust_kademe smallint;
+begin
+  if tg_op = 'UPDATE' then
+    new.kullanici := old.kullanici;
+    new.ust := old.ust;
+    new.derinlik := old.derinlik;
+    new.olusma := old.olusma;
+    new.guncellendi := now();
+    return new;
+  end if;
+  /* Kişi başı en çok 300 tasnif (veritabanı doldurulamasın). Aynı kişinin
+     eşzamanlı eklemeleri sıraya girer. */
+  perform pg_advisory_xact_lock(hashtext('kaynak:' || new.kullanici::text));
+  if (select count(*) from public.kaynak_tasnif where kullanici = new.kullanici) >= 300 then
+    raise exception 'Tasnif sınırına (300) ulaşıldı.' using errcode = 'P0001';
+  end if;
+  if new.ust is null then
+    new.derinlik := 1;
+  else
+    select t.derinlik into ust_kademe from public.kaynak_tasnif t
+    where t.id = new.ust and t.kullanici = new.kullanici;
+    if ust_kademe is null then
+      raise exception 'Üst tasnif bulunamadı.' using errcode = 'P0001';
+    end if;
+    if ust_kademe >= 3 then
+      raise exception 'Tasnifler en çok üç kademe iç içe olabilir.' using errcode = 'P0001';
+    end if;
+    new.derinlik := ust_kademe + 1;
+  end if;
+  new.olusma := now();
+  new.guncellendi := now();
+  return new;
+end;
+$$;
+
+drop trigger if exists kaynak_tasnif_denetle on public.kaynak_tasnif;
+create trigger kaynak_tasnif_denetle
+  before insert or update on public.kaynak_tasnif
+  for each row execute function public.kaynak_tasnif_denetle();
+
+-- Tasnifin içindekiler: not (metin) ya da resim (R2'deki dosyanın bilgisi).
+-- Tasnif silinirken içinde öğe varsa silinmez (on delete restrict): resimler
+-- önce R2'den silinmeli. Silme kaynak_tasnif_sil (yalnız notlu) ya da Worker
+-- (resimli) üzerinden yapılır.
+create table if not exists public.kaynak_oge (
+  id          uuid primary key default gen_random_uuid(),
+  kullanici   uuid not null default auth.uid() references auth.users(id) on delete cascade,
+  tasnif      uuid not null references public.kaynak_tasnif(id) on delete restrict,
+  tur         text not null check (tur in ('not', 'resim')),
+  metin       text check (metin is null or char_length(metin) <= 20000),
+  bayt        integer check (bayt is null or bayt > 0),
+  en          integer,
+  boy         integer,
+  olusma      timestamptz not null default now(),
+  guncellendi timestamptz not null default now(),
+  constraint kaynak_oge_turu check (
+    (tur = 'not' and metin is not null and bayt is null) or
+    (tur = 'resim' and bayt is not null))
+);
+create index if not exists kaynak_oge_tasnif on public.kaynak_oge (kullanici, tasnif);
+
+-- Uygulama yalnızca not ekler ve notun metnini değiştirir; satırın sahibi,
+-- tasnifi, türü ve oluşma anı sonradan değişmez.
+create or replace function public.kaynak_oge_denetle()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  /* Notlar kişi başı en çok 3000 adet ve toplam 2 MB metin (yaklaşık bin
+     sayfa): resimler kotaya sayılır, notlar bu sınırla veritabanını
+     dolduramaz. Aynı kişinin eşzamanlı yazımları sıraya girer. */
+  if (tg_op = 'INSERT' and new.tur = 'not') or (tg_op = 'UPDATE' and old.tur = 'not') then
+    perform pg_advisory_xact_lock(hashtext('kaynak:' || coalesce(old.kullanici, new.kullanici)::text));
+    if tg_op = 'INSERT' and (select count(*) from public.kaynak_oge where kullanici = new.kullanici and tur = 'not') >= 3000 then
+      raise exception 'Not sınırına (3000) ulaşıldı.' using errcode = 'P0001';
+    end if;
+    if (select coalesce(sum(octet_length(o.metin)), 0) from public.kaynak_oge o
+        where o.kullanici = coalesce(old.kullanici, new.kullanici) and o.tur = 'not'
+          and (tg_op = 'INSERT' or o.id <> old.id)) + octet_length(new.metin) > 2097152 then
+      raise exception 'Notların toplam sınırına (2 MB) ulaşıldı.' using errcode = 'P0001';
+    end if;
+  end if;
+  if tg_op = 'UPDATE' then
+    new.kullanici := old.kullanici;
+    new.tasnif := old.tasnif;
+    new.tur := old.tur;
+    new.bayt := old.bayt;
+    new.en := old.en;
+    new.boy := old.boy;
+    new.olusma := old.olusma;
+    new.guncellendi := now();
+    return new;
+  end if;
+  if not exists (select 1 from public.kaynak_tasnif t where t.id = new.tasnif and t.kullanici = new.kullanici) then
+    raise exception 'Tasnif bulunamadı.' using errcode = 'P0001';
+  end if;
+  new.olusma := now();
+  new.guncellendi := now();
+  return new;
+end;
+$$;
+
+drop trigger if exists kaynak_oge_denetle on public.kaynak_oge;
+create trigger kaynak_oge_denetle
+  before insert or update on public.kaynak_oge
+  for each row execute function public.kaynak_oge_denetle();
+
+alter table public.kaynak_kota   enable row level security;
+alter table public.kaynak_tasnif enable row level security;
+alter table public.kaynak_oge    enable row level security;
+
+drop policy if exists "kendi tasnifini okur" on public.kaynak_tasnif;
+create policy "kendi tasnifini okur" on public.kaynak_tasnif
+  for select to authenticated
+  using (kullanici = (select auth.uid()) and (select public.uye()));
+drop policy if exists "kendi tasnifini ekler" on public.kaynak_tasnif;
+create policy "kendi tasnifini ekler" on public.kaynak_tasnif
+  for insert to authenticated
+  with check (kullanici = (select auth.uid()) and (select public.uye()));
+drop policy if exists "kendi tasnifini gunceller" on public.kaynak_tasnif;
+create policy "kendi tasnifini gunceller" on public.kaynak_tasnif
+  for update to authenticated
+  using (kullanici = (select auth.uid()) and (select public.uye()))
+  with check (kullanici = (select auth.uid()));
+
+drop policy if exists "kendi ogesini okur" on public.kaynak_oge;
+create policy "kendi ogesini okur" on public.kaynak_oge
+  for select to authenticated
+  using (kullanici = (select auth.uid()) and (select public.uye()));
+drop policy if exists "kendi notunu ekler" on public.kaynak_oge;
+create policy "kendi notunu ekler" on public.kaynak_oge
+  for insert to authenticated
+  with check (kullanici = (select auth.uid()) and tur = 'not' and (select public.uye()));
+drop policy if exists "kendi notunu gunceller" on public.kaynak_oge;
+create policy "kendi notunu gunceller" on public.kaynak_oge
+  for update to authenticated
+  using (kullanici = (select auth.uid()) and tur = 'not' and (select public.uye()))
+  with check (kullanici = (select auth.uid()) and tur = 'not');
+drop policy if exists "kendi notunu siler" on public.kaynak_oge;
+create policy "kendi notunu siler" on public.kaynak_oge
+  for delete to authenticated
+  using (kullanici = (select auth.uid()) and tur = 'not' and (select public.uye()));
+
+revoke all on public.kaynak_kota, public.kaynak_tasnif, public.kaynak_oge from anon, authenticated;
+grant select, insert on public.kaynak_tasnif to authenticated;
+grant update (ad) on public.kaynak_tasnif to authenticated;
+grant select, insert, delete on public.kaynak_oge to authenticated;
+grant update (metin) on public.kaynak_oge to authenticated;
+grant all on public.kaynak_kota, public.kaynak_tasnif, public.kaynak_oge to service_role;
+
+-- Kaynak durumu: kim, izni var mı, hakkı ve kullandığı. Kota satırı yoksa
+-- açılır. Uygulama kota çubuğu için, Worker da her istekte belirteci
+-- doğrulamak için çağırır (geçersiz belirteçle PostgREST 401 verir).
+create or replace function public.kaynak_durum()
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  ben uuid := auth.uid();
+  hak integer;
+  kullanilan bigint;
+begin
+  if ben is null or not public.uye() then
+    return jsonb_build_object('izin', false);
+  end if;
+  insert into public.kaynak_kota (kullanici, eposta)
+  select ben, lower(u.email) from auth.users u where u.id = ben
+  on conflict (kullanici) do nothing;
+  select k.azami_mb into hak from public.kaynak_kota k where k.kullanici = ben;
+  select coalesce(sum(o.bayt), 0) into kullanilan from public.kaynak_oge o
+  where o.kullanici = ben and o.tur = 'resim';
+  return jsonb_build_object('izin', true, 'kullanici', ben,
+    'azami_bayt', hak::bigint * 1048576, 'kullanilan_bayt', kullanilan);
+end;
+$$;
+
+-- Yalnızca not içeren (resimsiz) bir tasnifi alt tasnifleriyle siler.
+-- İçinde resim varsa silmez: resimli tasnifi Worker siler (önce R2'den).
+create or replace function public.kaynak_tasnif_sil(tasnif_id uuid)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  ben uuid := auth.uid();
+begin
+  if ben is null or not public.uye() then
+    raise exception 'Yetki yok.' using errcode = '42501';
+  end if;
+  if not exists (select 1 from public.kaynak_tasnif where id = tasnif_id and kullanici = ben) then
+    raise exception 'Tasnif bulunamadı.' using errcode = 'P0001';
+  end if;
+  if exists (
+    with recursive alt as (
+      select id from public.kaynak_tasnif where id = tasnif_id and kullanici = ben
+      union all
+      select t.id from public.kaynak_tasnif t join alt on t.ust = alt.id
+    )
+    select 1 from public.kaynak_oge o join alt on o.tasnif = alt.id where o.tur = 'resim'
+  ) then
+    raise exception 'Tasnifte resim var.' using errcode = 'P0001';
+  end if;
+  perform public.kaynak_tasnif_icini_sil(ben, tasnif_id);
+end;
+$$;
+
+-- ---- Yalnızca Worker'ın (gizli anahtar, service_role) çağırdığı işlevler ----
+
+-- Tasnifin ve alt tasniflerinin içindeki resimler (Worker önce bunları R2'den siler)
+create or replace function public.kaynak_tasnif_resimleri(sahip uuid, tasnif_id uuid)
+returns setof uuid
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  with recursive alt as (
+    select id from public.kaynak_tasnif where id = tasnif_id and kullanici = sahip
+    union all
+    select t.id from public.kaynak_tasnif t join alt on t.ust = alt.id
+  )
+  select o.id from public.kaynak_oge o join alt on o.tasnif = alt.id where o.tur = 'resim';
+$$;
+
+-- Tasnifi bütün içiyle siler ve silinen resimlerin kimliklerini döndürür
+-- (Worker onları R2'den siler). Kişinin kota satırı kilitlenir: aynı anda
+-- süren bir yükleme (kaynak_resim_ekle de kilitler) araya giremez; silmeden
+-- önce eklenen resim de silinenler arasında döner, R2'de artık kalmaz.
+drop function if exists public.kaynak_tasnif_icini_sil(uuid, uuid);
+create function public.kaynak_tasnif_icini_sil(sahip uuid, tasnif_id uuid)
+returns setof uuid
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  perform 1 from public.kaynak_kota where kullanici = sahip for update;
+  return query
+    with recursive alt as (
+      select id from public.kaynak_tasnif where id = tasnif_id and kullanici = sahip
+      union all
+      select t.id from public.kaynak_tasnif t join alt on t.ust = alt.id
+    )
+    , silinen as (
+      delete from public.kaynak_oge o using alt
+      where o.tasnif = alt.id and o.kullanici = sahip
+      returning o.id, o.tur
+    )
+    select silinen.id from silinen where silinen.tur = 'resim';
+  delete from public.kaynak_tasnif where id = tasnif_id and kullanici = sahip;
+end;
+$$;
+
+-- R2'ye yüklenen resmin satırını açar. Kota burada, kişinin satırı
+-- kilitlenerek denetlenir (aynı anda iki yükleme sınırı aşamasın).
+create or replace function public.kaynak_resim_ekle(sahip uuid, oge_id uuid, tasnif_id uuid, boyut integer, genislik integer, yukseklik integer)
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  hak integer;
+  kullanilan bigint;
+  satir public.kaynak_oge;
+begin
+  select k.azami_mb into hak from public.kaynak_kota k where k.kullanici = sahip for update;
+  if hak is null then
+    raise exception 'Kota satırı yok.' using errcode = 'P0001';
+  end if;
+  select coalesce(sum(o.bayt), 0) into kullanilan from public.kaynak_oge o
+  where o.kullanici = sahip and o.tur = 'resim';
+  if kullanilan + boyut > hak::bigint * 1048576 then
+    raise exception 'kota' using errcode = 'P0001';
+  end if;
+  insert into public.kaynak_oge (id, kullanici, tasnif, tur, bayt, en, boy)
+  values (oge_id, sahip, tasnif_id, 'resim', boyut, genislik, yukseklik)
+  returning * into satir;
+  return to_jsonb(satir);
+end;
+$$;
+
+-- Resmin satırını siler; silindiyse true (Worker sonra R2'den siler)
+drop function if exists public.kaynak_resim_sil(uuid, uuid);
+create function public.kaynak_resim_sil(sahip uuid, oge_id uuid)
+returns boolean
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  perform 1 from public.kaynak_kota where kullanici = sahip for update;
+  delete from public.kaynak_oge where id = oge_id and kullanici = sahip and tur = 'resim';
+  return found;
+end;
+$$;
+
+-- Resmin satırı var mı: Worker resmi yalnızca kaydı olan ve sahibine ait
+-- olan için verir (R2'de artık kalmış bir dosya okunamaz)
+create or replace function public.kaynak_resim_var(sahip uuid, oge_id uuid)
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select exists (select 1 from public.kaynak_oge where id = oge_id and kullanici = sahip and tur = 'resim');
+$$;
+
+revoke execute on function public.kaynak_durum(), public.kaynak_tasnif_sil(uuid),
+  public.kaynak_tasnif_resimleri(uuid, uuid), public.kaynak_tasnif_icini_sil(uuid, uuid),
+  public.kaynak_resim_ekle(uuid, uuid, uuid, integer, integer, integer), public.kaynak_resim_sil(uuid, uuid),
+  public.kaynak_resim_var(uuid, uuid), public.kaynak_tasnif_denetle(), public.kaynak_oge_denetle()
+  from public, anon, authenticated;
+grant execute on function public.kaynak_durum(), public.kaynak_tasnif_sil(uuid) to authenticated;
+grant execute on function public.kaynak_tasnif_resimleri(uuid, uuid), public.kaynak_tasnif_icini_sil(uuid, uuid),
+  public.kaynak_resim_ekle(uuid, uuid, uuid, integer, integer, integer), public.kaynak_resim_sil(uuid, uuid),
+  public.kaynak_resim_var(uuid, uuid)
+  to service_role;

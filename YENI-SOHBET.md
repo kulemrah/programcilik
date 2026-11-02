@@ -35,7 +35,8 @@ programcilik/
 │   ├── icerik-aktar.mjs     ← doğrula (--kuru) / yükle
 │   ├── icerik-denetle.py    ← kalite denetimi
 │   └── sekiller/<ders>.py   ← şekil/görsel üreticiler (donanim-kaynak/ = fotoğraf kaynakları)
-├── uygulama/index.html      ← tek dosya uygulama (sw.js önbellek: programcilik-v16)
+├── uygulama/index.html      ← tek dosya uygulama (sw.js önbellek: programcilik-v18)
+├── kaynak-worker/           ← Kaynak resimleri için Cloudflare Worker (R2, kota)
 ├── supabase/01-sema.sql
 └── test/tarayici/*_sina.py  ← Playwright testleri; yardim/hepsi.sh hepsini çalıştırır
 ```
@@ -63,6 +64,7 @@ programcilik/
   - Veritabanı konu 14 (iç içe SELECT)
   - Ağlar: A sınıfı 0–126 / 1–126; ODTÜ/IANA ifadesi
   - Donanım: numaralı resimde 3; arka panelde 4 ve 6
+- **Kaynak (R2):** kod hazır, kurulum bekliyor (KURULUM.md "Kaynak (R2)": şema, Cloudflare hesabı, kova, Worker, `AYAR.KAYNAK_URL`).
 - **Teyit bekleyen:**
   - GitHub'a yükleme: `programcilik-son.zip` bütün paketleri kapsar.
   - Supabase e-posta gönderen adı ve şablonları.

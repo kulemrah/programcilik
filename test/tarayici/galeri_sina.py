@@ -38,7 +38,7 @@ with sync_playwright() as p:
     g = s.locator(".okuma .galeri >> nth=2")   # 6 görselli yuva dizisi
     g.scroll_into_view_if_needed()
     n = g.locator("figure").count()
-    kontrol("başta sayaç 1 / %d, geri oku gizli" % n, g.locator(".galeri-sayac").inner_text() == "1 / %d" % n and g.locator(".galeri-ok.geri").is_disabled())
+    kontrol("başta sayaç 1 / %d, geri oku gizli" % n, g.locator(".galeri-sayac").inner_text() == "1 / %d" % n and g.locator(".galeri-ok.onceki").is_disabled())
     kontrol("görsel ekran genişliğinde (taşma yok)", s.evaluate("() => document.documentElement.scrollWidth <= innerWidth"))
     g.locator(".galeri-ok.ileri").click(); s.wait_for_timeout(700)
     kontrol("ileri okla 2 / %d" % n, g.locator(".galeri-sayac").inner_text() == "2 / %d" % n, g.locator(".galeri-sayac").inner_text())
@@ -47,6 +47,26 @@ with sync_playwright() as p:
     g.locator(".galeri-serit").evaluate("e => e.scrollTo({ left: (e.clientWidth + 10) * (e.children.length - 1) })"); s.wait_for_timeout(500)
     kontrol("sona kaydırınca %d / %d ve ileri oku gizli" % (n, n), g.locator(".galeri-sayac").inner_text() == "%d / %d" % (n, n) and g.locator(".galeri-ok.ileri").is_disabled())
     kontrol("açıklama yazısı görünen görselin altında", g.locator("figure >> nth=%d" % (n - 1)).locator("figcaption").count() == 1)
+    # Yükseklik görünen görsele uyar (en uzun görsele değil)
+    YUK_JS = """g => { const s = g.querySelector('.galeri-serit'); const i = Math.round(s.scrollLeft / (s.clientWidth + 10));
+        const h = [...s.children].map(f => f.offsetHeight); return [s.offsetHeight, h[i], Math.max(...h), Math.min(...h)]; }"""
+    y = g.evaluate(YUK_JS)
+    kontrol("dizi yüksekliği görünen görselinki (%s)" % y, abs(y[0] - y[1]) <= 1, y)
+    dz = s.locator(".okuma .galeri").evaluate_all("gs => gs.map(g => { const h = [...g.querySelectorAll('figure')].map(f => f.offsetHeight); return Math.max(...h) - Math.min(...h); })")
+    gi = max(range(len(dz)), key=lambda i: dz[i])
+    g2 = s.locator(".okuma .galeri >> nth=%d" % gi)
+    g2.scroll_into_view_if_needed()
+    olcum = []
+    for k in range(g2.locator("figure").count()):
+        g2.locator(".galeri-serit").evaluate("(e, k) => e.scrollTo({ left: (e.clientWidth + 10) * k })", k); s.wait_for_timeout(250)
+        olcum.append(g2.evaluate(YUK_JS))
+    kontrol("yükseklikleri farklı dizide her görselde yükseklik o görselinki (fark %d px)" % dz[gi],
+            all(abs(o[0] - o[1]) <= 1 for o in olcum) and len(set(o[0] for o in olcum)) > 1, olcum)
+    g2.locator(".galeri-serit").evaluate("e => e.scrollTo({ left: 0 })"); s.wait_for_timeout(250)
+    # Sol ok sağdakiyle aynı yuvarlak gri zeminde
+    g.locator(".galeri-serit").evaluate("e => e.scrollTo({ left: (e.clientWidth + 10) * 2 })"); s.wait_for_timeout(300)
+    zemin = g.evaluate("g => ['.galeri-ok.onceki', '.galeri-ok.ileri'].map(k => { const c = getComputedStyle(g.querySelector(k)); return [c.backgroundColor, c.borderRadius, c.width]; })")
+    kontrol("sol okun zemini sağdakiyle aynı (yuvarlak gri)", zemin[0] == zemin[1] and zemin[0][0] not in ("rgba(0, 0, 0, 0)", "transparent"), zemin)
     s.screenshot(path="galeri-not.png")
 
     # ---------- 2) Büyüteç ----------
@@ -65,6 +85,30 @@ with sync_playwright() as p:
     s.locator(".okuma > figure img >> nth=0").click(); s.wait_for_selector(".buyutec")
     s.click(".buyutec-ust button"); s.wait_for_timeout(500)
     kontrol("Kapat düğmesi kapattı", s.locator(".buyutec").count() == 0 and s.evaluate("sekmeGecmisi('oku').length") == yigin)
+
+    # Büyüteçte dizinin görselleri arasında geçiş
+    g.locator(".galeri-serit").evaluate("e => e.scrollTo({ left: 0 })"); s.wait_for_timeout(300)
+    srcler = g.evaluate("g => [...g.querySelectorAll('figure img')].map(i => i.src)")
+    g.locator("figure >> nth=0").locator("img").click(); s.wait_for_selector(".buyutec")
+    BSRC = "() => document.querySelector('.buyutec-alan img').src"
+    kontrol("büyüteçte sayaç 1 / %d ve oklar (sol gizli)" % n, s.inner_text(".buyutec-ust span").startswith("1 / %d" % n)
+            and s.locator(".buyutec-ok.onceki").is_disabled() and not s.locator(".buyutec-ok.ileri").is_disabled(), s.inner_text(".buyutec-ust span"))
+    s.click(".buyutec-ok.ileri"); s.wait_for_timeout(200)
+    kontrol("ileri okla 2. görsel", s.evaluate(BSRC) == srcler[1] and s.inner_text(".buyutec-ust span").startswith("2 / %d" % n))
+    s.keyboard.press("ArrowRight"); s.wait_for_timeout(200)
+    kontrol("klavye okuyla 3. görsel", s.evaluate(BSRC) == srcler[2])
+    k = s.locator(".buyutec-alan").bounding_box()
+    s.mouse.move(k["x"] + k["width"] * 0.8, k["y"] + k["height"] / 2); s.mouse.down()
+    s.mouse.move(k["x"] + k["width"] * 0.2, k["y"] + k["height"] / 2, steps=6); s.mouse.up(); s.wait_for_timeout(300)
+    kontrol("parmakla sola kaydırınca 4. görsel (yakınlaşmadan)", s.evaluate(BSRC) == srcler[3]
+            and not s.evaluate("() => document.querySelector('.buyutec-alan img').classList.contains('yakin')"), s.inner_text(".buyutec-ust span"))
+    s.locator(".buyutec-alan img").click(position={"x": 20, "y": 20}); s.wait_for_timeout(200)
+    kontrol("dokununca yakınlaşır; yakınken oklar yine çalışır", s.evaluate("() => document.querySelector('.buyutec-alan img').classList.contains('yakin')"))
+    s.click(".buyutec-ok.onceki"); s.wait_for_timeout(200)
+    kontrol("önceki okla 3. görsel, sığdırılmış hâlde", s.evaluate(BSRC) == srcler[2] and not s.evaluate("() => document.querySelector('.buyutec-alan img').classList.contains('yakin')"))
+    s.screenshot(path="galeri-buyutec-dizi.png")
+    s.go_back(); s.wait_for_timeout(400)
+    kontrol("kapanınca dizi son bakılan görselde (3 / %d)" % n, s.locator(".buyutec").count() == 0 and g.locator(".galeri-sayac").inner_text() == "3 / %d" % n, g.locator(".galeri-sayac").inner_text())
 
     # ---------- 3) Görselli sorular ----------
     s.click(".alt-cubuk button:has-text('Temrin')")

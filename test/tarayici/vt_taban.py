@@ -116,6 +116,11 @@ def isle(route, request):
         return route.fulfill(status=204, headers=baslik, body="")
     sid = istek_oturumu(request)
     D["gunluk"].append(yontem + " " + yol + ("?" + url.query if url.query else ""))
+    # Kaynak: bu düzenekte boş (Kaynak'ın kendi testi kaynak_sina.py gerçekçi sunucuya aktarır)
+    if yol in ("/rest/v1/kaynak_tasnif", "/rest/v1/kaynak_oge") and yontem == "GET":
+        return cevap([])
+    if yol == "/rest/v1/rpc/kaynak_durum":
+        return cevap({"izin": True, "azami_bayt": 104857600, "kullanilan_bayt": 0})
     govde = request.post_data
     tek = "vnd.pgrst.object" in (request.headers.get("accept") or "")
 

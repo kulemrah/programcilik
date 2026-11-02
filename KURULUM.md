@@ -186,6 +186,72 @@ Sıra önemli: dosyaları depoya **yüklemeden önce** `01-sema.sql`'i çalışt
 - Sözleşme metnini değiştirirsen `SOZLESME.surum` (index.html) ve `public.sozlesme_surumu()` (SQL) birlikte artırılır; herkes yeni metni yeniden onaylar.
 - Yeni bir bölüm (program) eklemek: `public.programlar` tablosuna satır ekle. Birden fazla program olunca uygulama girişte bölüm sorar.
 
+## Kaynak (R2)
+
+Kaynak sekmesinde her öğrenci kendi tasniflerini (en çok üç kademe iç içe) açar, içine derste çektiği resimleri ve notlarını koyar; hepsini yalnızca kendisi görür. Tasnifler ve notlar Supabase'dedir; resimler Cloudflare R2'dedir. Uygulama R2'ye doğrudan erişemez (anahtar uygulamaya yazılamaz): yükleme, okuma, silme ve kota denetimi `kaynak-worker/` klasöründeki küçük Cloudflare Worker'ı üzerinden yapılır. Worker her istekte öğrencinin oturumunu Supabase'e sorar; öğrenci okul üyesi değilse, sözleşmeyi onaylamamışsa ya da hesabın aktif cihazında değilse reddeder.
+
+Resimler yüklenmeden önce telefonda küçültülür: uzun kenar en çok 2048 px, WebP %80 kalite. Bir telefon fotoğrafı 3–5 MB'tan yaklaşık 0,25–0,4 MB'a iner; 100 MB'lık hak kabaca 250–400 fotoğraf eder.
+
+Kurulum bir kez yapılır; sıra önemlidir.
+
+1. **Supabase:** **SQL Editor**'de `supabase/01-sema.sql`'in tamamını yeniden çalıştırın (8. bölüm "Kaynak" eklendi; tekrar çalıştırmak güvenlidir).
+2. **Cloudflare hesabı:** `birkulemrah@gmail.com` ile yeni bir Cloudflare hesabı açın. Sol menüde **R2 Object Storage**'ı açın. R2 ilk açılışta bir ödeme yöntemi isteyebilir; ücretsiz sınırın altında ücret çıkmaz (ayda 10 GB depolama, 1 milyon yazma, 10 milyon okuma; dışarıya veri çıkışı ücretsiz).
+3. **Kova:** **R2 › Create bucket**, adı `kostu-kaynak`, konum *Automatic*. Kova herkese açık yapılmaz (Public access kapalı kalır).
+4. **Worker'ı yayımlama.** Depo klasöründe:
+   ```bash
+   cd kaynak-worker
+   npx wrangler login
+   npx wrangler deploy
+   npx wrangler secret put SUPABASE_GIZLI_ANAHTAR
+   ```
+   - `cd kaynak-worker`: Worker'ın klasörüne geçer.
+   - `npx wrangler login`: `npx`, Cloudflare'in komut satırı aracı Wrangler'ı kurmadan indirip çalıştırır (ilk seferde "Ok to proceed?" sorarsa `y`). `login` tarayıcıda Cloudflare'e giriş sayfası açar; `birkulemrah` hesabıyla girip izin verin. Beklenen çıktı: "Successfully logged in."
+   - `npx wrangler deploy`: `wrangler.toml`'daki ayarlarla (ad `kostu-kaynak`, kova bağlantısı `KAYNAK`, Supabase adresi ve publishable anahtar) Worker'ı yayımlar. İlk seferde workers.dev için bir alt alan adı seçmenizi isteyebilir. Beklenen çıktının sonunda Worker'ın adresi yazar: `https://kostu-kaynak.<alt-alan-adınız>.workers.dev`. Bu adresi not edin.
+   - `npx wrangler secret put SUPABASE_GIZLI_ANAHTAR`: Supabase **secret key**'ini (`sb_secret_…`) Worker'a sır olarak ekler. Komut değeri sorar; yapıştırıp Enter'a basın. Değer ekranda görünmez, hiçbir dosyaya yazılmaz. Beklenen çıktı: "Success! Uploaded secret SUPABASE_GIZLI_ANAHTAR". Anahtar sohbete ya da depoya yazılmaz.
+5. **Uygulama:** `uygulama/index.html` içindeki `AYAR.KAYNAK_URL`'ye 4. adımdaki adresi yazın (`KAYNAK_URL: "https://kostu-kaynak.<alt-alan-adınız>.workers.dev"`), `uygulama/sw.js`'teki önbellek sürümünü bir artırın ve depoya gönderin. `KAYNAK_URL` boşken Kaynak sekmesi "Kaynak henüz kurulmadı" der.
+6. **Deneme:** Uygulamada Kaynak › Yeni tasnif › Resim ekle. Cloudflare panelinde **R2 › kostu-kaynak** içinde `<kullanıcı kimliği>/<resim kimliği>.webp` adlı bir dosya görünmeli.
+
+Site adresi değişirse (ör. GitHub Pages'ten başka bir alan adına taşınırsa) `kaynak-worker/wrangler.toml`'daki `IZINLI_KOKENLER` satırına yeni adres eklenip `npx wrangler deploy` yeniden çalıştırılır; Worker başka adresten gelen isteği reddeder.
+
+### Kaynak hakkı
+
+Her öğrencinin hakkı `public.kaynak_kota` tablosundadır (`azami_mb`, öntanımlı 100). Satır, öğrenci Kaynak'ı ilk açtığında kendiliğinden açılır. **Table Editor › kaynak_kota**'da `eposta` ile bulup `azami_mb`'yi değiştirebilir ya da SQL Editor'de şunu çalıştırabilirsiniz:
+
+```sql
+update public.kaynak_kota set azami_mb = 300 where eposta = 'ad.soyad@kocaelisaglik.edu.tr';
+```
+
+Değer anında geçerli olur. Öğrenci Kaynak'ı hiç açmadıysa (satırı yoksa) satırı siz açarsınız:
+
+```sql
+insert into public.kaynak_kota (kullanici, eposta, azami_mb)
+select id, lower(email), 300 from auth.users where lower(email) = 'ad.soyad@kocaelisaglik.edu.tr'
+on conflict (kullanici) do update set azami_mb = excluded.azami_mb;
+```
+
+Herkesin öntanımlı hakkını değiştirmek (ör. 150 MB; yalnızca hâlâ 100'de olanlar değişir):
+
+```sql
+alter table public.kaynak_kota alter column azami_mb set default 150;
+update public.kaynak_kota set azami_mb = 150 where azami_mb = 100;
+```
+
+Kim ne kadar kullanıyor:
+
+```sql
+select k.eposta, k.azami_mb, round(coalesce(sum(o.bayt), 0) / 1048576.0, 1) as kullanilan_mb, count(o.id) as resim
+from public.kaynak_kota k
+left join public.kaynak_oge o on o.kullanici = k.kullanici and o.tur = 'resim'
+group by k.eposta, k.azami_mb
+order by kullanilan_mb desc;
+```
+
+Notlar kotaya sayılmaz; veritabanı dolmasın diye kişi başı sınırları vardır: en çok 300 tasnif, 3000 not, notların toplamı 2 MB metin (yaklaşık bin sayfa). Bu sınırlar `01-sema.sql`'deki `kaynak_tasnif_denetle` ve `kaynak_oge_denetle` işlevlerindedir.
+
+Bir öğrencinin hesabını Supabase'den silerseniz tasnifleri ve notları da silinir, ama R2'deki resimleri kalır: Cloudflare panelinde **R2 › kostu-kaynak** içinde öğrencinin kullanıcı kimliğiyle başlayan klasörü (`<kullanıcı kimliği>/`) elle silin. Kullanıcı kimliği Supabase'de **Authentication › Users**'tadır.
+
+Hak düşürülürse var olan resimler silinmez; öğrenci yalnızca yeni resim ekleyemez. Öğrenciler resimlerini Kaynak sekmesinde ya da **menü › Hesap › Kaynak resimleri**'nde görür ve siler; silinen resim R2'den de silinir.
+
 ## Yedek
 
-Supabase'in ücretsiz planında otomatik yedek yok. Defter için kurduğun gecelik şifreli R2 yedeğinin aynısını bu proje için de (yeni adresle açılacak Cloudflare hesabında) kurmak, öğrencilerin ilerlemesini (kayitlar ve profiller tabloları) ve cihaz kayıtlarını (hesap_cihazlari, cihaz_gecmisi) güvenceye alır. Notların asıl kopyası zaten bu depodadır.
+Supabase'in ücretsiz planında otomatik yedek yok. Kaynak resimlerinin tek kopyası R2'dedir (öğrencinin cihazındaki önbellek dışında); Kaynak tasnifleri ve notları Supabase'dedir (`kaynak_*` tabloları). Defter için kurduğun gecelik şifreli R2 yedeğinin aynısını bu proje için de (yeni adresle açılacak Cloudflare hesabında) kurmak, öğrencilerin ilerlemesini (kayitlar ve profiller tabloları) ve cihaz kayıtlarını (hesap_cihazlari, cihaz_gecmisi) güvenceye alır. Notların asıl kopyası zaten bu depodadır.

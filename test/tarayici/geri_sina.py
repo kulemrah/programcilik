@@ -96,7 +96,7 @@ with sync_playwright() as p:
 
     # 6) Alt çubuk: Oku sekmesinin adı Kıraat
     etiketler = s.locator(".alt-cubuk button span").all_inner_texts()
-    kontrol("alt çubuk: Kıraat, Ara, Temrin, 42 Tarzı", etiketler == ["Kıraat", "Ara", "Temrin", "42 Tarzı"], etiketler)
+    kontrol("alt çubuk: Kıraat, Ara, Temrin, 42 Tarzı, Kaynak", etiketler == ["Kıraat", "Ara", "Temrin", "42 Tarzı", "Kaynak"], etiketler)
 
     # 7) 42 Tarzı'nın eski çip seçimi bir kez yeni seçime taşınır
     tasi = """([ders, konular]) => { depo.sil('pg.kartKapsam'); depo.yaz('pg.kartDers', ders);

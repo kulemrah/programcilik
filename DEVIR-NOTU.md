@@ -28,13 +28,14 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
 | OTP | 6 hane, 900 sn; iki kod arası 60 sn |
 | Tashih adresi | birkulemrah@gmail.com |
 | Uygulama adı | Ana ekranda **Kostü - Ders**; uygulama içi başlık **Bilgisayar Programcılığı** |
-| Şema | `supabase/01-sema.sql` (sözleşme sürümü 2, kayıt türü `calisma`); yeni özellikler `kayitlar` tablosundaki `ayar` kayıtlarını kullanır, yeni SQL gerekmez |
+| Şema | `supabase/01-sema.sql` (sözleşme sürümü 2, kayıt türü `calisma`; 8. bölüm Kaynak: `kaynak_kota`, `kaynak_tasnif`, `kaynak_oge`) |
+| Kaynak (R2) | **Henüz kurulmadı** (KURULUM.md "Kaynak (R2)"). Cloudflare hesabı birkulemrah@gmail.com (açılacak), kova `kostu-kaynak`, Worker `kostu-kaynak` (`kaynak-worker/`), Worker sırrı `SUPABASE_GIZLI_ANAHTAR`. Kurulunca adres `AYAR.KAYNAK_URL`'ye yazılır; boşken sekme "henüz kurulmadı" der. Kişi başı hak `kaynak_kota.azami_mb` (öntanımlı 100) |
 
 ## 3. Teslim durumu
 
-- Çalışma kopyasının son hâli: `programcilik-son.zip` + üstüne guncelleme-28 (guncelleme-26 ve 27'yi kapsar). GitHub'daki deponun bu hâle getirilmesi gerekir.
+- Çalışma kopyasının son hâli: `programcilik-son.zip` + üstüne guncelleme-30 (26–29'u kapsar). GitHub'daki deponun bu hâle getirilmesi gerekir.
 - Teslim edilen ama GitHub'a yüklendiği **teyit edilmeyen** paketler: guncelleme-20, 21, 22, 23, 24, aglar-ders-1, guncelleme-25. `programcilik-son.zip` bunların hepsini kapsar; tek tek yüklemeye gerek yok.
-- guncelleme-28 (26 ve 27'yi de kapsar): kurulum şeridinin en alttaki düğmeleri örtmesi; her sekmenin kendi geri geçmişi; "Oku" sekmesinin adı "Kıraat"; 42 Tarzı'nda ders ve konu seçimi Temrin'deki seçim ekranıyla; Hesap ekranında kutular arası boşluk; Elektrik 13–15. Teslim edildi, GitHub'a yüklendiği teyit edilmedi. `programcilik-son.zip`'in üstüne yüklenir; 26 ve 27'yi ayrıca yüklemeye gerek yok.
+- guncelleme-30 (26–29'u da kapsar): görsel dizilerinin yüksekliği görünen görsele uyar (en çok 60vh), sol ok düzeldi, büyüteçte dizinin görselleri arasında geçiş. Önceki 29: Kaynak sekmesi (tasnifler, resimler, notlar; Hesap'ta Kaynak resimleri), `kaynak-worker/`, şema 8. bölüm; pencerede metin alanı; soru penceresi açıkken geri tuşu yalnızca pencereyi kapatır; ayrıca 28'deki her şey (her sekmenin kendi geri geçmişi, Kıraat, 42 Tarzı seçimi, Hesap boşluğu, Elektrik 13–15, kurulum şeridi). Teslim edildi, GitHub'a yüklendiği teyit edilmedi. `programcilik-son.zip`'in üstüne yüklenir.
 - guncelleme-24'te eski ikonlar silindi: depoda `uygulama/ikon-*.png` ve `uygulama/apple-touch-icon.png` kaldıysa `git rm` ile silinir.
 
 ## 4. 🔶 Açık kalanlar
@@ -47,8 +48,9 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
    - Donanım: numaralı resimde 3 numara (resimde PCI Express x16, bağlantısı AGP slaytına); arka panel resminde 4 ve 6.
 4. **Kararı bekleyen:** Donanım'daki ASUS A8N-SLI resminin üç etiketi resmin üzerinde düzeltildi (bkz. 6.3); Hamza özgünü isterse geri alınır.
 5. **Bekleyen eski kararlar:** dondurma birikmesine üst sınır (şimdi yok), koyu temada beyaz saat kartları, iPhone'da yeni ikon için uygulamanın ana ekrana yeniden eklenmesi.
-6. İsteğe bağlı: R2 yedeği kurulmadı (KURULUM.md "Yedek").
-7. Gerçek cihazda denenmedi: Android/iPhone'da menü kapanması, Brave'de oturum, yana kaydırılan resimler ve büyüteç.
+6. **Kaynak'ın kurulumu:** şemanın yeniden çalıştırılması, Cloudflare hesabı, `kostu-kaynak` kovası, Worker'ın yayımlanması ve `AYAR.KAYNAK_URL` (KURULUM.md "Kaynak (R2)"). Yapılmadan Kaynak sekmesi çalışmaz.
+7. İsteğe bağlı: Supabase'in R2 yedeği kurulmadı (KURULUM.md "Yedek"); Kaynak resimlerinin tek kopyası R2'dedir.
+8. Gerçek cihazda denenmedi: Android/iPhone'da menü kapanması, Brave'de oturum, yana kaydırılan resimler ve büyüteç; her sekmenin kendi geri geçmişi (özellikle Kıraat kökündeki çıkış uyarısı); Kaynak'ta iPhone'dan resim ekleme (WebAssembly kodlayıcı).
 
 ## 5. Depo düzeni
 
@@ -65,10 +67,14 @@ icerik/
   agac.json          sınıf/dönem/ders ağacı
   dersler/<ders>/    NN-ad.md (not) + NN-ad.json (kavram, soru, kart) + gorseller/
   envanter/<ders>.md slayt slayt döküm, sorunlar tablosu ve kararlar (uygulamaya gitmez)
-supabase/01-sema.sql tekrar çalıştırılabilir tam şema
-uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v16), manifest,
+supabase/01-sema.sql tekrar çalıştırılabilir tam şema (8. bölüm Kaynak)
+kaynak-worker/       worker.js (R2 + kota, Cloudflare Worker), wrangler.toml, package.json
+uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v18), manifest,
                      supabase.js, ikonlar kostu-192/512.png, kostu-maskable-512.png, kostu-apple-180.png
-test/tarayici/       Playwright testleri (test-son.zip'te), test/gercek/sahte_supa.py
+test/tarayici/       Playwright testleri, test/gercek/sahte_supa.py
+test/sql/            şemanın yerel PostgreSQL denemesi (Supabase taklidi + Kaynak denemesi)
+test/kaynak/         Kaynak taklit sunucusu (PostgREST parçası + worker.js + bellekte R2), Worker denemesi
+uygulama/webp/       iPhone için WebP kodlayıcı (@jsquash/webp 1.4.0, Apache-2.0)
 KURULUM.md           kurulum ve günlük kullanım
 DEVIR-NOTU.md, YENI-SOHBET.md
 ```
@@ -134,13 +140,15 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 - **Dondurma:** ilk hedefin ayından itibaren her ay 3 hak, kullanılmayan birikir (`kalanDondurma`, `dondurmaYeterMi`).
 - **Seri:** günlük hedefe ulaşılan ardışık günler; dondurulan gün köprüdür.
 - **Süre ölçümü:** 5 sn'lik tik, `calisma/"GG|YAZICI"`; bir konuda günde 3 dakikadan azsa süre sayılmaz.
-- **Görseller:** `gorselHtml` (tek görsel ya da dizi), `galeriGuncelle` (sayaç/nokta/ok), `buyutecAc`, `soruGorselleri` (soru kutusunda).
+- **Görseller:** `gorselHtml` (tek görsel ya da dizi), `galeriGuncelle` (sayaç/nokta/ok; oklar `.galeri-ok.onceki` / `.ileri`, genel `.geri` sınıfı kullanılmaz), `galeriYuksekligi` (dizinin yüksekliği görünen görsele uyar, kaydırırken ikisi arasında geçer; görseller en çok 60vh), `buyutecAc` (dizideki ya da Kaynak ızgarasındaki öbür görsellere oklar, yana kaydırma ve klavye oklarıyla geçilir; kapanınca dizi son bakılan görselde durur), `soruGorselleri` (soru kutusunda).
 - **Alt çubuk:** Kıraat (iç adı `oku`, `#sayfaOku`), Ara, Temrin (`calis`), 42 Tarzı (`kart`). Görünen ad yalnızca `SEKMELER`'deki `etiket`tir; kimlikler değişmez.
 - **Geri tuşu (her sekmenin kendi geçmişi):** `SEKME_GECMISI` (oku, ara, calis, kart) sekme başına geri adımlarını tutar; `derinlesGit(islev)` bulunulan sekmeye ekler. Telefonun geri tuşu ve sayfa içi geri düğmeleri (`geriDon`) aynı `geriAdimi`'ni çalıştırır: sekmenin yığını → yığın boşsa bir üst ekran (Kıraat'te konu → ders → kök; ötekilerde kök) → sekmenin kökündeyse Kıraat → Kıraat'in kökünde çıkış uyarısı (`cikisUyarisi`, ikinci basış çıkarır). Tarayıcı geçmişi yalnızca yer tutucudur (`{k, y}`, `gecmisKonumu`); yer tutucular kullanıcı dokunuşlarıyla eklenir (derinleşme, sekme değiştirme); tabanda bekçi (`bekciKur`). Sekmeler arası atlama (aramadan ya da sorudan "konuda oku") `donusIslevi` ile işaretlenir: geri → gelinen yer, Kıraat önceki konusuna döner; atlamadan sonra kullanıcı başka sekmeye geçerse dönüş adımları silinir ve açılan konu Kıraat'in olur. Etkin sekmeye yeniden dokunmak o sekmenin geçmişini siler.
+- **Kaynak sekmesi (5. sekme, `kaynak`, `#sayfaKaynak`):** öğrencinin kendi tasnifleri (en çok 3 kademe, kademe sunucuda hesaplanır), resimleri ve notları; yalnızca sahibi görür (RLS + `uye()`). Tasnif ve notları uygulama Supabase'e doğrudan yazar; resimler Worker üzerinden R2'ye (`<kullanıcı>/<öğe>.webp`). Resim satırlarını ve kotayı yalnızca Worker (service_role işlevleri `kaynak_resim_ekle`, `kaynak_resim_sil`, `kaynak_tasnif_resimleri`, `kaynak_tasnif_icini_sil`) yazar; resimsiz tasnifi uygulama `kaynak_tasnif_sil` ile siler, resimliyi Worker (`DELETE /tasnif/<id>`). Resim hazırlama (`kaynakResmiHazirla`): uzun kenar 2048 px, WebP %80; canvas WebP vermezse (Safari) `uygulama/webp/kodla.js` (WebAssembly) dinamik olarak yüklenir. Liste ve resimler IndexedDB'de (`vt` sürüm 2, `kaynak` deposu: `liste` ve `r/<id>`); bağlantı yokken görüntülenir, değişiklik yapılamaz. Geri: açık tasnif `kaynakAcik`; yığın boşsa üst tasnife çıkılır. Hesap ekranında "Kaynak resimleri" (`kaynakHesapBolumu`): kota, liste, silme. Sınırlar: kota yalnızca resimleri sayar; kişi başı en çok 300 tasnif, 3000 not, notların toplamı 2 MB. Worker resmi yalnızca tabloda kaydı varsa verir (`kaynak_resim_var`); tasnif silmede satırları önce siler, dönen resim kimliklerini sonra R2'den siler; yazmada kimliği her istekte doğrular. Güvenlik denetimi yapıldı (0 KRİTİK; 2 ORTA ve düşüklerin çoğu kapatıldı).
+- **Pencere (`pencereAc`):** `girdi: { deger, yer, azami, cok }` ile metin ister (Tamam yazılanı, Vazgeç `null` döner). Pencere açıkken telefonun geri tuşu yalnızca pencereyi kapatır.
 - **Seçim ekranı (kapsam):** `kapsamCiz(alan)` / `dersKapsamiCiz(ders, alan)` Temrin (`calis`, bütün konular) ve 42 Tarzı (`kart`, yalnızca kartlı konular) için ortaktır; ayarları `KAPSAM_ALANLARI`'nda. Seçimler ayrı tutulur.
 - **42 Tarzı:** ana ekranda "Ders ve konular" düğmesi, iki anahtar (mühim yerler, bilemediklerim), "N kartla çalış" ve "Kartları liste hâlinde oku" (`kartListesiCiz`, ayrı ekran). Seçim yoksa yalnızca "Ders ve konu seç".
 - **Yüzen şeritler:** kurulum şeridi (`.kurulum`) ve okuma çubuğu (`.oynatma`) alt çubuğun üstünde sabit durur. `altBosluguAyarla` (MutationObserver + ResizeObserver) görünür şeridin yüksekliğini `--serit-alt` değişkenine yazar; `body`'nin alt boşluğu buna göre büyür ki en alttaki düğmeler (konu seçimindeki "Tamam" gibi) şeridin altında kalmasın. Yeni bir sabit alt şerit eklenirse `YUZEN_SERITLER` seçicisine eklenir.
-- **Service worker:** önbellek `programcilik-v16`; index.html değişince `sw.js`'teki sürüm bir artırılır.
+- **Service worker:** önbellek `programcilik-v18`; index.html değişince `sw.js`'teki sürüm bir artırılır.
 
 ## 9. Test düzeneği (test-son.zip)
 
@@ -154,7 +162,15 @@ Proje `/home/claude/programcilik`, testler `test/tarayici` ve `test/gercek` alt�
    ```
    Not: `pkill -f sahte_supa` komutun kendisini de öldürür; `fuser -k 8799/tcp` kullanın.
 2. `cd test/tarayici && sh kur.sh` (uygulama/ → site/, test ayarlarıyla).
-3. `sh yardim/sunucu.sh` test sitesini 8765'te açar; `sh yardim/hepsi.sh` bütün testleri sırayla çalıştırır (yaklaşık 40 dakika; arka planda çalıştırın).
+3. `sh yardim/sunucu.sh` test sitesini 8765'te açar; `sh yardim/hepsi.sh` bütün testleri sırayla çalıştırır (yaklaşık 45 dakika; arka planda çalıştırın).
+   `kaynak_sina.py` için önce PostgreSQL açılır (konteynerde PostgreSQL 16 kurulu; root iken ayrı bir kullanıcıyla):
+   ```
+   useradd -m pgk; mkdir -p /home/claude/pgdeneme && chown pgk /home/claude/pgdeneme
+   su pgk -c "/usr/lib/postgresql/16/bin/initdb -D /home/claude/pgdeneme/veri -U postgres -A trust"
+   su pgk -c "/usr/lib/postgresql/16/bin/pg_ctl -D /home/claude/pgdeneme/veri -o '-p 5499 -k /tmp' -l /home/claude/pgdeneme/log start"
+   cd test/kaynak && npm i      # taklit sunucunun PostgreSQL istemcisi (pg)
+   ```
+   `sh test/sql/calistir.sh` şemayı Supabase taklidiyle iki kez kurar ve Kaynak SQL denemesini yapar ("KAYNAK SQL: TAMAM"); `node test/kaynak/worker_deneme.mjs` Worker'ı dener (23 kontrol). `kaynak_sina.py` ikisini de kendisi kurar, taklit sunucuyu 8796'da açar.
 4. Testler (hepsi son durumda geçiyor):
    - `sina.py` (99)
    - dersler: `alg_sina.py`, `vt_sina.py`, `eko_sina.py`, `el_sina.py`, `ag_sina.py`, `dn_sina.py`
@@ -166,6 +182,7 @@ Proje `/home/claude/programcilik`, testler `test/tarayici` ve `test/gercek` alt�
    - `istatistik_sina.py`, `kalicilik_sina.py`, `devam_sina.py`, `aralik_sina.py`, `baslik_sina.py`
    - `geri_sina.py` (sekme değişince sayfa içi geri düğmeleri, Kıraat etiketi, 42 Tarzı eski seçiminin taşınması)
    - Ders testlerinin 42 Tarzı bölümü ortak `kart_kapsam_sina` (vt_taban.py) ile yapılır.
+   - `kaynak_sina.py` (Kaynak uçtan uca: tasnif, 3 kademe, resim küçültme ve WebP, Safari yolu, not, geri, Hesap'tan silme, internetsiz, kota, tasnif silme, 358 px)
    - `serit_sina.py` (kurulum şeridi açıkken en alttaki düğmeler dokunulabilir mi; konu seçimi → Tamam → temrin yolları)
    - Ortak düzenek `vt_taban.py`: Supabase taklidi; görselleri uzantısına göre doğru türle verir. `akis-1.svg` (test görseli) `test/tarayici/` içinde durur.
    - Testlerin çoğu gerçek ilk kullanımı taklit etmez: `cihaz_ac` kurulum şeridini öntanımlı olarak gizler, test hesabına hedef önceden konur. Şerit `serit_sina.py`'de, hedef sorusu `hedef_sina.py`'de denenir; ilk kullanıma dokunan bir değişiklikte bu ikisi mutlaka çalıştırılır.
