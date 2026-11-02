@@ -1,137 +1,169 @@
-# Devir notu — "Kostü - Ders" (Bilgisayar Programcılığı ders notları PWA'sı)
+# Devir notu: "Kostü - Ders" (Bilgisayar Programcılığı ders notları PWA'sı)
 
-Bu not yeni sohbete geçiş içindir. Yanındaki `programcilik.zip` projenin son hâlidir (GitHub'daki depo ile aynı olmalı), `test.zip` tarayıcı testleridir.
+Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); bu not ayrıntıdır.
 
-## Kullanıcı ve çalışma biçimi
+## 1. Kullanıcı ve çalışma biçimi
 
-- Hamza; KOSTÜ (Kocaeli Sağlık ve Teknoloji Üniversitesi) Bilgisayar Programcılığı 1. sınıf ve 42 öğrencisi. Her şey Türkçe.
-- **Hata payı yok:** okul sınav konuları ve soruları. İçerikte uydurma yok, hocanın ifadesi korunur.
-- Uygulama öğrenciye **"siz"** diye hitap eder. Hamza'ya da "siz" denir.
-- Hamza'nın karar vermesi gerekenler **🔶 Sizin karar vermeniz gerekenler** başlığıyla belirgin işaretlenir.
-- Güncellemede **yalnızca değişen dosyalar** verilir (tam zip yalnızca gerektiğinde).
+- Hamza; KOSTÜ (Kocaeli Sağlık ve Teknoloji Üniversitesi) Bilgisayar Programcılığı 1. sınıf ve 42 öğrencisi. Her şey Türkçe. Hamza'ya ve uygulamada öğrenciye **"siz"** diye hitap edilir.
+- **Hata payı yok:** okul sınav konuları. İçerikte uydurma yok, hocanın ifadesi korunur; slayttaki hata Dikkat kutusunda düzeltilir, dayanaksız bilgi Ek kutusuna gider.
+- Hamza'nın vermesi gereken kararlar **🔶 Sizin karar vermeniz gerekenler** başlığıyla ayrı ve belirgin yazılır.
+- Güncellemede **yalnızca değişen dosyalar** verilir (zip içinde depodaki yollarıyla).
 - Verilen her komut açıklanır: ne yapar, bayrakları ve işaretleri (`|` gibi) ne demek, beklenen çıktı ne.
-- Plan ve rehber belgelerinde yalnızca son durum yazılır; "önce şöyleydi" bölümleri olmaz.
-- Sırlar (secret key, Resend anahtarı, erişim anahtarları) asla sohbete yazdırılmaz. Ekrana basılan komutlar anahtarı kesecek biçimde verilir.
+- Plan ve rehber belgelerinde yalnızca son durum yazılır.
+- Sırlar (secret key, Resend anahtarı) asla sohbete yazdırılmaz.
+- Limit tasarrufu önemli: gereksiz ekran görüntüsü, tekrar okuma ve uzun döküm yapılmaz.
+- Elektrik dersinin kalanı (aşağıda 7) yalnızca Hamza "devam" deyince yapılır.
 
-## Canlı kurulum (yapıldı)
+## 2. Canlı kurulum
 
 | Parça | Değer |
-|---|---|
+| --- | --- |
 | Site | `https://kulemrah.github.io/programcilik/` (GitHub Pages, iş akışıyla) |
-| Depo | `kulemrah/programcilik`: **herkese açık** (bilinçli karar; Pro gelince private yapılacak, adres değişmez) |
+| Depo | `kulemrah/programcilik`, herkese açık (GitHub Pro gelince private; adres değişmez) |
 | Git | SSH anahtarı `~/.ssh/id_ed25519_kulemrah`, depo içi `core.sshCommand`; yazar `kulemrah` + noreply e-posta |
 | Supabase | Proje `nzhruevikugpmyoozpyc` (Free, org `yuksek_okul`, hesap birkulemrah@gmail.com) |
-| GitHub sır/değişken | `SUPABASE_URL` (Variables), `SUPABASE_GIZLI_ANAHTAR` (Secrets; yenilenmiş `new_secret_key`) |
+| GitHub sır/değişken | `SUPABASE_URL` (Variables), `SUPABASE_GIZLI_ANAHTAR` (Secrets) |
 | Kanca | Before User Created → `public.kayit_kapisi` (yalnız @kocaelisaglik.edu.tr) |
-| E-posta | Resend, alan `posta.eskimezyazi.app` (Verified; DNS eski Cloudflare hesabındaki `eskimezyazi.app` bölgesinde, CNAME'ler DNS only). Gönderen `giris@posta.eskimezyazi.app`. Bölge Tokyo seçilmiş (çalışıyor). |
-| OTP | 6 hane, 900 sn; iki kod arası 60 sn (öntanımlı, değiştirilmeyecek) |
+| E-posta | Resend, alan `posta.eskimezyazi.app` (Verified). Gönderen `giris@posta.eskimezyazi.app` |
+| OTP | 6 hane, 900 sn; iki kod arası 60 sn |
 | Tashih adresi | birkulemrah@gmail.com |
-| Uygulama adı | Ana ekranda/sekmede **Kostü - Ders**; uygulama içi başlık **Bilgisayar Programcılığı** |
-| Şema | `supabase/01-sema.sql` son hâli çalıştırıldı (sözleşme sürümü 2, kayıt türü `calisma`) |
+| Uygulama adı | Ana ekranda **Kostü - Ders**; uygulama içi başlık **Bilgisayar Programcılığı** |
+| Şema | `supabase/01-sema.sql` (sözleşme sürümü 2, kayıt türü `calisma`); yeni özellikler `kayitlar` tablosundaki `ayar` kayıtlarını kullanır, yeni SQL gerekmez |
 
-## 🔶 Açık kalanlar
+## 3. Teslim durumu
 
-1. **Kod e-postası paneli:** gönderen adı `Kostü - Ders` (karar verildi). Supabase SMTP **Sender name** ve iki şablon (Confirm sign up, Magic link or OTP) KURULUM.md bölüm 2'deki metne göre panelde güncellenecek; yapıldığı teyit edilmedi.
-2. **guncelleme-20** (`KOD_ARALIGI = 60`, KURULUM.md bölüm 2), **guncelleme-21** (Elektrik konu 01–12) **guncelleme-22** (iPhone tarzı görünüm, kart kaydırma/dönme, yazı seçimi) **guncelleme-23** (hedef, seri, dondurma, çekmece, takvimler, göz koruyucu, turuncu vurgu; 22'deki dosyaları da kapsar) ve **guncelleme-24** (biriken dondurma hakkı, internetsiz görseller, yeni ikon, perdeye tek dokunuşla kapanma, saat ve takvim çizgileri; önbellek `programcilik-v12`; eski 4 ikon dosyası `git rm` ile silinir) teslim edildi. GitHub'a yüklenip yüklenmedikleri teyit edilmedi. Sonra **aglar-ders-1** (Bilgisayar Ağları 1. not, yalnızca içerik) ve **guncelleme-25** (Bilgisayar Donanımı 1. not; uygulamada yana kaydırılan görsel dizileri, soru görselleri (`gorseller` alanı), dokununca büyüten görsel; aktarıcı soru görsellerini denetler ve yükler; önbellek `programcilik-v13`) teslim edildi.
-3. **GitHub Pro:** öğrenci başvurusu bekleniyor. Gelince depo private yapılacak.
-4. **Hocaya sorulacak:** Veritabanı dersindeki iç içe SELECT sorusu (veritabanı konu 14; envanter K5 slayt 10). Veritabanı dersinde sonraki çalışmada hatırlatılmalı.
-5. İsteğe bağlı: R2 yedeği (Cloudflare, yeni hesapla) henüz kurulmadı; KURULUM.md "Yedek" bölümü.
+- Bu sohbetteki çalışma kopyasının son hâli `programcilik-son.zip`'tedir (Elektrik 13–15 hariç, bkz. 7). GitHub'daki deponun bu hâle getirilmesi gerekir.
+- Teslim edilen ama GitHub'a yüklendiği **teyit edilmeyen** paketler: guncelleme-20, 21, 22, 23, 24, aglar-ders-1, guncelleme-25. `programcilik-son.zip` bunların hepsini kapsar; tek tek yüklemeye gerek yok.
+- guncelleme-26 (kurulum şeridinin konu seçimindeki "Tamam"ı örtmesi düzeltildi; `index.html`, `sw.js` v14, `serit_sina.py`): teslim edildi, GitHub'a yüklendiği teyit edilmedi. `programcilik-son.zip`'in üstüne yüklenir.
+- guncelleme-24'te eski ikonlar silindi: depoda `uygulama/ikon-*.png` ve `uygulama/apple-touch-icon.png` kaldıysa `git rm` ile silinir.
 
-## Depo düzeni
+## 4. 🔶 Açık kalanlar
+
+1. **Kod e-postası paneli:** Supabase SMTP **Sender name** `Kostü - Ders` ve iki şablon (Confirm sign up, Magic link or OTP) KURULUM.md bölüm 2'ye göre güncellenecek; yapıldığı teyit edilmedi.
+2. **GitHub Pro:** öğrenci başvurusu bekleniyor; gelince depo private yapılacak.
+3. **Hocaya sorulacaklar:**
+   - Veritabanı konu 14, iç içe SELECT sorusu (envanter K5 slayt 10).
+   - Ağlar: A sınıfı ilk oktet "0–126" mı "1–126" mı (notta 1–126 + Dikkat); slayt 17'deki ODTÜ/IANA ifadesi.
+   - Donanım: numaralı resimde 3 numara (resimde PCI Express x16, bağlantısı AGP slaytına); arka panel resminde 4 ve 6.
+4. **Kararı bekleyen:** Donanım'daki ASUS A8N-SLI resminin üç etiketi resmin üzerinde düzeltildi (bkz. 6.3); Hamza özgünü isterse geri alınır.
+5. **Bekleyen eski kararlar:** dondurma birikmesine üst sınır (şimdi yok), koyu temada beyaz saat kartları, iPhone'da yeni ikon için uygulamanın ana ekrana yeniden eklenmesi.
+6. İsteğe bağlı: R2 yedeği kurulmadı (KURULUM.md "Yedek").
+7. Gerçek cihazda denenmedi: Android/iPhone'da menü kapanması, Brave'de oturum, yana kaydırılan resimler ve büyüteç.
+
+## 5. Depo düzeni
 
 ```
-.github/workflows/  icerik.yml (doğrula + Supabase'e aktar), yayimla.yml (uygulama/ → Pages)
-araclar/            icerik-aktar.mjs (--kuru: yalnız doğrula), icerik-denetle.py (kalite uyarıları), şekil üreticiler
-icerik/             ISLEME.md (PDF → not/temrin/kart işleme kuralları), BICIM.md, agac.json,
-                    dersler/<ders>/NN-ad.md + .json, envanter/<ders>.md (kaynak slayt dökümü ve kararlar)
-supabase/01-sema.sql  tekrar çalıştırılabilir tam şema
-uygulama/           index.html (tek dosya PWA), sw.js, manifest.webmanifest, supabase.js,
-                    ikonlar: kostu-192/512.png (saydam, "any"), kostu-maskable-512.png (Android, içerik güvenli dairede),
-                    kostu-apple-180.png (iOS, köşeleri dolu kare; iOS kendisi yuvarlar)
-KURULUM.md          kurulumun ve günlük kullanımın son hâli
+.github/workflows/   icerik.yml (doğrula + Supabase'e aktar), yayimla.yml (uygulama/ → Pages)
+araclar/
+  icerik-aktar.mjs   içeriği doğrular ve yükler (--kuru: yalnız doğrula)
+  icerik-denetle.py  kalite uyarıları (en uzun doğru şık, D/Y dengesi, sınav tahmini...)
+  sekiller/<ders>.py SVG/görsel üreticiler: algoritma, veritabani, ekoloji, elektrik, aglar, donanim
+  sekiller/donanim-kaynak/  Donanım fotoğraflarının kaynakları (slaytlardan + Hamza'nın 2 resmi)
+icerik/
+  ISLEME.md          PDF → not/temrin/kart işleme kademeleri K0–K13 (kurallar burada)
+  BICIM.md           dosya biçimi (Markdown kuralları, soru türleri, görseller, soru görselleri)
+  agac.json          sınıf/dönem/ders ağacı
+  dersler/<ders>/    NN-ad.md (not) + NN-ad.json (kavram, soru, kart) + gorseller/
+  envanter/<ders>.md slayt slayt döküm, sorunlar tablosu ve kararlar (uygulamaya gitmez)
+supabase/01-sema.sql tekrar çalıştırılabilir tam şema
+uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v14), manifest,
+                     supabase.js, ikonlar kostu-192/512.png, kostu-maskable-512.png, kostu-apple-180.png
+test/tarayici/       Playwright testleri (test-son.zip'te), test/gercek/sahte_supa.py
+KURULUM.md           kurulum ve günlük kullanım
+DEVIR-NOTU.md, YENI-SOHBET.md
 ```
 
-İçerik: 7 ders (5'inde içerik var: algoritma, veritabanı, ekoloji, born2beroot, elektrik), 57 konu (17 hususi), 762 soru, 313 kart, 91 görsel. Doğrulama: `node araclar/icerik-aktar.mjs --kuru`; kalite: `python3 araclar/icerik-denetle.py icerik/dersler/<ders>` (5 derste 0 uyarı).
+## 6. İçerik
 
-İçerik kuralları (ayrıntı ISLEME.md / BICIM.md):
-- `yer` bir ### ya da #### başlığıyla birebir aynı olur; kimlikler `<konu>.sN` / `.kN` biçiminde.
-- Tablo hücresinde `|` olmaz.
-- Doğru şık en uzun yanlış şıkkın 1,25 katını geçmez.
-- Ek'ten ya da tartışmalı slayt değerinden soru çıkarılmaz.
-- Sınav tahmini cümlesi yazılmaz.
-- Hocanın algoritma adımları ("Sonucu yaz") olduğu gibi kalır.
-- Soru türleri: secme, dy, bosluk, dizme, esles, izleme, hesap, klasik.
+Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik, Ekoloji. 42 (hususi): Born2beRoot.
 
-## Uygulamanın mimarisi (index.html)
+| Ders (id) | Konu | Soru | Kart | Durum |
+| --- | --- | --- | --- | --- |
+| algoritma | 10 | 172 | 68 | tamam |
+| veritabani | 14 | 252 | 100 | tamam (konu 14'te hocaya soru) |
+| donanim | 7 | 99 | 36 | 1. not tamam (guncelleme-25) |
+| aglar | 3 | 47 | 18 | 1. not tamam (aglar-ders-1) |
+| elektrik | 12 yayında | 210 | 95 | konu 13–15 yazıldı, denetlenmedi; 16–23 kalan |
+| ekoloji | 4 | 64 | 30 | tamam |
+| born2beroot (hususi) | 17 | 64 | 20 | tamam |
 
-- **Giriş:** okul adresine OTP kodu. Kanca okul dışı adrese hesap açtırmaz; parola tetikle engellenir. Sözleşme **sürüm 2** (madde 7: ad-soyad ve çalışma süreleri de tutulur). Sürüm değişirse `SOZLESME.surum` ve SQL'deki `sozlesme_surumu()` birlikte artırılır.
-- **iPhone/iPad:** Safari'de giriş ekranı önce "ana ekrana ekle" adımlarını gösterir (••• › Paylaş › Ana Ekrana Ekle; iOS 26). Altındaki bağlantıyla Safari'de devam edilebilir (karar: kalsın). Safari ile ana ekran uygulamasının depoları ayrıdır; aynı cihazı tanımak mümkün değil.
-- **Cihaz sınırı:** öntanımlı 1. Doluysa e-postaya ikinci kodla devralma; mantığı SQL'de (`cihaz_yokla`, `devralma_iste`, `cihazi_sahiplen`). `KOD_ARALIGI = 60` (index.html, Supabase'in öntanımlı aralığıyla aynı); sunucu daha uzun bekletirse sayaç ona uyar.
-- **Veri:** içerik `konular`/`agac` tablolarından gelir, IndexedDB'de (`vt`) internetsiz durur. Notlardaki bütün görseller de her başarılı eşitlemeden sonra arka planda cihaza iner (`gorselleriOnceIndir`); konu internetsiz ilk kez açılsa da şekiller görünür.
-- **İnternetsiz kullanım:** giriş yapılmış cihazda uygulama internetsiz sıfırdan açılır (service worker kabuğu, IndexedDB içerik ve görseller); oturum süresi dolmuş olsa da kapatılmaz. Okuma, temrin, 42 Tarzı ve menü çalışır; yapılanlar cihazda bekler, internet gelince gönderilir (`cevrimdisi_sina.py`). Kullanıcı kayıtları `kayitlar` tablosunda (tür + anahtar, son yazan kazanır, silme yerine `silindi`). Türler: okundu, boya, yildiz, yanlis, kart, ayar, yer, muhim, calisma.
-- **Üst çubuk:** başlık, göz koruyucu (3 kademe sıcak renk süzgeci, 4. dokunuş kapatır; `pg.gozFiltre`, `data-goz`), tema, menü (≡). Başlık ekran genişliğiyle küçülür, 330 px altında iki satıra iner.
-- **Çekmece (hesap alanı):** menü düğmesi ya da sağ kenardaki boydan boya ince çizgiden (`#kenarTutamak`) sola çekince sağdan açılır; sağa çekince, ×, perde ya da geri tuşuyla kapanır. Perde (dışarısı) `click` beklemez, parmak kalkınca kapatır ve ardından gelen tıklamayı yutar (alttaki ekrana geçmesin); geri gidiş olmazsa `cekmeceyiKapat` 450 ms sonra doğrudan kapatıp yığını düzeltir. Telefonda kenardan çekip açınca dışarıya ilk dokunuşun boşa gittiği bildirildi; bilgisayarda yeniden üretilemedi, bu yolla giderildi. Son açılan ekran hatırlanır (`pg.cekmeceEkrani`). Dört ekran:
-  - **Hedef ve seri:** günlük ve haftalık hedefe kalan süre (yapraklı geri sayan saat, ortada çizgi yok; açılınca hedefin tamamından kalana iner, o gün hiç çalışılmadıysa sıfırdan hedefe çıkar, böylece her açılışta döner; cihazda animasyonlar kapalıyken de döner), seri ve bu haftanın günleri, dondurma hakkı, hedefi değiştirme.
-  - **İstatistikler:** dönem (Bugün/7/30/Tümü), 4 özet kutusu (süre, seri, temrin %, 42 Tarzı %), çalışma türleri, halka çizelgesi + liste (iç halka ders, dış halka konu), son 14 gün çubukları, derslere göre ilerleme.
-  - **Çalışma takvimi:** günlük ve haftalık (hafta sayısı ekran genişliğine göre 12–26).
-  - **Hesap:** isteğe bağlı ad-soyad (`ayar/kimlik`), eşitleme bilgisi, çıkış, tashih adresi, sözleşme.
-- **Hedef:** `ayar/hedef` = `{ gecmis: [{ g, gun, hafta }] }` (saniye; g'den itibaren geçerli). Hedef yoksa ilk eşitlemeden sonra sorulur (`hedefSorusunuAc`). Saat ve dakika (5'er) seçilir; günlük değişince haftalık 7 katı olur, artırılabilir, azaltılırsa uyarı çıkar. Değişiklik bugünden geçerli; geçmiş günler kendi hedefiyle, ilk hedeften önceki günler ilk hedefle (yeşil kenarsız) değerlendirilir.
-- **Seri:** günlük hedefe ulaşılan ardışık günler; dondurulan gün köprüdür (bozmaz, uzatmaz). Bugün henüz tamamlanmadıysa dünden sayılır.
-- **Dondurma:** `ayar/dondurma` = `{ gunler: [...] }`. İlk hedefin ayından başlayarak her ay 3 hak eklenir, kullanılmayanlar birikir (üst sınır yok). Bir gün ancak o günün ayına kadar kazanılmış haklarla dondurulabilir (`dondurmaYeterMi`: en eski adayın ayından bu aya her ay sonunda bakiye ≥ 0). 8'e kadar hak buz buz, fazlası "❄ × N" gösterilir. Seri koptuysa (dünden geriye hedefsiz ve dondurulmamış günler, öncesinde en az bir tamam gün) açılışta sorulur; aynı kopukluk için cihaz başına bir kez (`pg.dondurmaSoruldu`). Hak yetmezse yalnızca bilgi verilir. Haftalık hedeften dondurulan her gün için o günün günlük hedefi düşülür.
-- **Takvim:** kademe gün süresinin günlük hedefe oranıyla: 1 <½, 2 ½–1, 3 1–1,5 (hedefte, yeşil kenar), 4 1,5–2, 5 ≥2. Dondurulan gün buz işaretli. Ay sınırları ince çizgi (1 px, `vector-effect:non-scaling-stroke`; SVG büyüyünce kalınlaşmaz); ay adı ayın 1'ini içeren sütunda. Takvim tarih tablosu gömülü değil, her açılışta cihazın saatinden hesaplanır; 2 yıl boyunca her gün için (artık yıl, yılbaşı, yaz saati olan saat dilimi) `takvim_gelecek_sina.py` ile denendi. Fareyle üstüne gelince yüzen kutu; tıklayınca/dokununca bilgi takvimin altındaki satırda kalır (parmak örtmez). Haftalık takvimde hedef dondurmalara göre düşülmüş haftalık hedeftir.
-- **İpuçları (`ipucuBagla`):** fareyle üstüne gelince gösterir; tıklama ya da dokunuşla sabitlenir, başka yere dokununca kapanır. Parmakla dokununca yüzen kutu parmağın 64 px üstünde, yer yoksa yanında durur.
-- **Soru ve uyarı penceresi:** `soruSor` / `uyariGoster` (tarayıcının confirm/alert'i kullanılmaz; "bu sayfanın pencere açmasını engelle" seçilince confirm sessizce hayır dönüyordu).
-- **Süre ölçümü:**
-  - 5 sn'lik tik. Konu/soru/kart ekrandayken sayar; 3 dk (kart 2 dk) dokunulmazsa durur; sesli okumada sayar.
-  - Dakikada bir ve arka plana geçerken `calisma/"GG|YAZICI"` kaydına sessizce yazılır (hemen ağa çıkmaz).
-  - Değer: `o/t/k` saniye, `d/y` temrin doğru/yanlış, `b/n` bildim/bilemedim; konu kimliğine göre.
-  - **YAZICI** kimliği IndexedDB'de durur, kayıtlarla birlikte doğar ve silinir; tarayıcı kilidiyle (Web Locks) tek sekmede tutulur. Böylece hiçbir satır, onu tamamen bilmeyen bir yazıcı tarafından ezilmez.
-  - Kaldırılmış konunun süresi "Öbür konular"da sayılır.
-  - **3 dk kuralı:** bir konuda bir günde (bütün cihazlar toplamı) 3 dakikadan az kalındıysa o günkü süresi hiçbir yerde sayılmaz (`istatistikTopla`); doğru/yanlış ve bildim/bilemedim sayıları kalır.
-  - Klasik soruda "Kısmen" yanlış sayılır.
-- **Yarım oturum:** temrin ve deste, sekmeye dokunma, geri, uygulama kapanması sonrası **Devam et** kartıyla sürer. Cihazda `pg.yarimCalis` / `pg.yarimKart` anahtarlarında durur, hesaba gitmez, çıkışta silinir.
-- **Geri tuşu:** her derin ekran geçmişe adım ekler (`derinlesGit`). Kökte "bekçi" adımı var: ilk geri uyarı verir, 2,5 sn içinde ikincisi çıkar. Adımlar yükleme kimliğiyle (`y`) işaretli; yenilemeden kalan eski adımlar sessizce atlanır.
-- **Görünüm (iPhone tarzı):** gri zemin üstünde kenarsız gruplu yüzeyler; ardışık satırlar (ders, konu, kapsam, yıldız, arama sonucu) tek yuvarlak kutuda birleşir, aralarında ince çizgi (`:has()` ile). Her dersin renkli kare simgesi var (`DERS_SIMGELERI`, renk `dersRengi`; tanınmayan derste kitap). Sistem yazı tipi; daktilo yazı yalnızca kodda. Vurgu turuncu (pembe temada mürdüm), anahtar düğmeleri yeşil; istatistikteki büyüklük ölçekleri mavi. CSS'te "iPhone tarzı görünüm" bölümü üstteki kuralların üstüne yazar.
-- **Dokunma:** basılı tutunca yazı seçilmez; yalnızca okuma metni (`.okuma`) ve yazı alanları seçilir. 42 Tarzı kartı yazısının üstünden de kaydırılır (`.deste *{touch-action:pan-y}`; kartın yazı alanı kendi kaydırma kutusu olduğu için gerekli). Cihazda animasyonlar kapalıyken geçişler kapanır ama kartın dönmesi, yaylanması ve yığına uçması kalır.
-- **Temalar:** açık (öntanımlı), pembe, koyu, simsiyah. `data-mod` = gunduz/pembe/gece/siyah, `pg.mod`'da hatırlanır, `<head>`'de ilk boyamadan önce kurulur. Ders renkleri doğrulanmış 8'li kategorik palet (açık/koyu ayrı tonlar). Pembe temada büyüklük ölçeği pembe tonları.
-- **Service worker** önbelleği `programcilik-v13`. index.html değişince `sw.js`'teki sürüm bir artırılır.
+### 6.1 İçerik kuralları (özet; ayrıntı ISLEME.md, BICIM.md)
 
-## Test düzeneği (test.zip)
+- Konu başına 5–15 başlık (### / ####), 10–18 soru, 4–9 kart. `yer` bir başlıkla harfi harfine aynı. Kimlik `<konu-id>.sN` / `.kN`, yayımlandıktan sonra değişmez.
+- Soru türleri: secme, dy, bosluk, dizme, esles, izleme, hesap, klasik. Doğru şık en uzun olmaz; "hepsi/hiçbiri" yok; Ek'ten ya da slaytlar arası çelişkili değerden soru yok; sınav tahmini cümlesi yok.
+- Her ders: envanter (K0) → plan → not → şekil (358 px'te bakılır) → soru/kart → `node araclar/icerik-aktar.mjs --kuru` + `python3 araclar/icerik-denetle.py icerik/dersler/<ders>` → uçtan uca test → **bağımsız denetim ajanı** (KRİTİK/ORTA/DÜŞÜK) → teslim raporu + 🔶.
 
-Kurulum (yeni ortamda): `test/tarayici` ve `test/gercek` klasörleri, proje `/home/claude/programcilik` altında varsayılır (yollar gerekirse düzeltilir).
+### 6.2 Görseller
 
-1. İçeriği taklit sunucuya aktar (bir kez):
-   `cd test/gercek && rm -rf cikti && python3 sahte_supa.py cikti 8799 &`, ardından proje kökünde
-   `SUPABASE_URL=http://127.0.0.1:8799 SUPABASE_GIZLI_ANAHTAR=x node araclar/icerik-aktar.mjs`
-   Bu `test/gercek/cikti/yuklenen.json` ve görselleri üretir.
-2. `cd test/tarayici && sh kur.sh`: `uygulama/`'yı test ayarlarıyla `site/`'a kopyalar.
-3. `python3 -m http.server 8765 --directory <tam yol>/test/tarayici/site` sunucusu arka planda çalışır.
-4. Testler (Playwright, Supabase istekleri taklit):
-   - `sina.py` (99, iki cihaz/giriş/eşitleme)
-   - `alg_sina.py` (51), `eko_sina.py` (33), `vt_sina.py` (63)
-   - `buda_sina.py`, `tum_sorular_sina.py` (552 sorunun hepsi)
-   - `tasma_sina.py` (`GENISLIK=358` ve `320`)
-   - `tema_sina.py`, `ios_sina.py`, `aralik_sina.py`
-   - `dokunus_sina.py` (gerçek dokunuşla kart kaydırma, animasyonlar kapalıyken dönme, yazı seçilmemesi)
-   - `hedef_sina.py` (hedef sorusu, haftalık azaltma uyarısı, 3 dk kuralı, seri, dondurma, takvim kademeleri, çekmece ve kenardan çekme, göz koruyucu, çıkış penceresi)
-   - `saat_cekmece_sina.py` (animasyonlar kapalıyken saatin dönmesi, kenardan açılan menünün tek dokunuşla kapanması; tıklama gelmezse/geri gidilmezse de; takvim çizgi kalınlıkları)
-   - `cevrimdisi_sina.py` (giriş → tarayıcı kapanır → internetsiz, oturumu dolmuş sıfırdan açılış → internet gelince gönderim)
-   - `takvim_gelecek_sina.py` (2 yıl her gün; `TZ_ADI=Europe/Berlin` ile yaz saati)
-   - Taklit sunucuda oturum yenileme (`refresh_token`) gerçekteki gibi aynı oturum kimliğini sürdürür.
-   - Test hesaplarında hedef önceden konmuştur (`vt_taban.py`/`sina.py` içinde `hazir_kayit`); çekmece için `cekmece(s, ekran)`, soru penceresi için `onayla(s)`.
-   - `istatistik_sina.py` (`GENISLIK=320/390/900`), `kalicilik_sina.py`, `devam_sina.py`
-   - Son durumda hepsi eksiksiz geçiyor.
-5. Görsel kontrol: `goruntu_sina.py`, `derin_goruntu.py` ve `yeni_goruntu.py` (hedef, takvim, çekmece) (soru türleri, kart, arama, kapsam; `TEMALAR=gunduz,pembe,gece,siyah`), `pafta.py`.
+- Not içinde `![açıklama](gorseller/ad.ext)`; boş satırsız art arda görsel satırları **yana kaydırılan dizi** olur.
+- Sorularda isteğe bağlı `gorseller: ["a.webp", ...]` (1–8): soru metninin altında çizilir, açıklama yazısı gösterilmez.
+- Her görsele dokununca **büyüteç** açılır (dokunulan yer 2,5 kat büyür; geri tuşu/Kapat kapatır).
+- Görsel en az bir notta ya da bir sorunun `gorseller`'inde kullanılmalı; yoksa aktarıcı hata verir.
 
-## Elektrik dersi (Temel Elektrik ve Elektronik): sürüyor
+### 6.3 Donanım'a özgü
 
-- Kaynak: `temel_elektrik_elektronik_st_1.pdf` (206 slayt, 2022–2023 Güz). 14 parçaya (P01–P14), 23 konuya bölündü. Her parça ayrı oturumda yazılır, ayrı bir oturumda bağımsız denetlenir (K12), bulgular kapanır.
-- **Yayında (guncelleme-21):** P01–P07 = slayt 1–107, konu 01–12 (210 soru, 95 kart, 141 kavram, 32 görsel). Uçtan uca test (`el_sina.py` 55/55, `tasma_sina.py` 358 ve 320 px 117/117) geçti.
-- **Kalan:** P08 (slayt 108–120: 13 pil-akü, 14 renk kodları, 15 topraklama) yazıldı, denetlenmedi. P09 (121–137: 16 direnç çeşitleri) yarım. P10–P14 (138–206: kondansatör, bobin, yarı iletken, diyot, alternatif akım, şebeke-trafo, enerji-Joule) başlanmadı.
-- Çalışma düzeni ve yarım işler `elektrik-devam.zip`'te: `PLAN.md` (konu planı, uzlaşımlar), `YAZICI.md` ve `DENETCI.md` (oturum görev tanımları), parça envanterleri, raporlar ve şekil parçaları, `sekiller/yap.sh`, P08 konu dosyaları, test (`el_sina.py`). Birleştirme: envanter parçaları `icerik/envanter/elektrik.md`'ye, şekil parçaları (`00-ortak.py` + `01-devre.py` + `pNN.py`) `araclar/sekiller/elektrik.py`'ye eklenir.
-- Hamza'ya sorulan kararlar parça raporlarının 4. bölümündedir; cevaplar gelince ilgili konular düzeltilir.
+- `python3 araclar/sekiller/donanim.py icerik/dersler/donanim/gorseller` bütün görselleri üretir:
+  - slayt fotoğraflarını yeniden adlandırır;
+  - 2. slayttaki Gigabyte GA-8I945P-G anakartında 12 elemanı kırmızı-beyaz çerçeveyle işaretler (`anakart-isaret-<eleman>.webp` ve `-yakin.webp`);
+  - Hamza'nın verdiği iki etiketli resmi işler: X58 (hocanın 3. slaytındaki resmin büyüğü → `anakart-etiketli.jpg`) ve ASUS A8N-SLI (`anakart-etiketli-2.jpg`; üç etiket düzeltildi: "Güney Köprüsü" → "Güç devresi soğutucusu", "Kuzey Köprüsü" → "Yonga seti (nForce4)", "Sulotları" → "DDR RAM yuvaları");
+  - iki etiketli karttan etiket yazısı içermeyen yakın görünümler (`anakart-asus-*.webp`, `anakart-x58-*.webp`).
+- 24 resimli soru; her eleman sorusunda dizi: hocanın kartı (tam + yakın) + ASUS + X58.
+- Slayt 13/14 menü bağlantıları ve çelişkiler `icerik/envanter/donanim.md`'de.
 
-## Teslim geçmişinin son hâli
+## 7. Elektrik dersi (Temel Elektrik ve Elektronik): sürüyor, "devam" bekleniyor
 
-- Projenin son hâli: `programcilik.zip` (guncelleme-19'a kadar) + üstüne guncelleme-20 + guncelleme-21 (Elektrik konu 01–12) + guncelleme-22 (görünüm ve dokunma) + guncelleme-23 (hedef, seri, çekmece) + guncelleme-24 (dondurma birikmesi, internetsiz görseller, ikon).
-- Önceki küçük paketler (guncelleme-12…19) artık gereksiz.
+- Kaynak `temel_elektrik_elektronik_st_1.pdf` (206 slayt). 14 parça (P01–P14), 23 konu. Her parça ayrı yazılır, ayrı denetlenir (K12).
+- Yayında: P01–P07 (slayt 1–107), konu 01–12.
+- **P08** (slayt 108–120: 13 pil-akü, 14 renk kodları, 15 topraklama): yazıldı, **denetlenmedi**. Dosyaları ve 7 SVG'si (`pil-seri-baglanti`, `pil-paralel-baglanti`, `renk-tablosu`, `renk-4-halka`, `renk-4-ornek`, `renk-5-halka`, `renk-5-ornek`) `elektrik-devam.zip`'te; `programcilik-son.zip`'e konmadı.
+- `araclar/sekiller/elektrik.py` P08 şekillerini de üretir: 13–15 yayına girene kadar betik çalıştırılırsa bu 7 SVG `gorseller/`'den silinmeli (yoksa aktarıcı "hiçbir konuda kullanılmıyor" der).
+- Kalan: P08 denetimi; P09 (121–137: 16 direnç çeşitleri) yarım; P10–P14 (138–206: kondansatör, bobin, yarı iletken, diyot, alternatif akım, şebeke-trafo, enerji-Joule) başlanmadı.
+- Çalışma düzeni `elektrik-devam.zip`: `PLAN.md`, `YAZICI.md`, `DENETCI.md`, parça envanterleri, raporlar, şekil parçaları, `sekiller/yap.sh`, P08 dosyaları. Birleştirme: envanter parçaları `icerik/envanter/elektrik.md`'ye, şekil parçaları `araclar/sekiller/elektrik.py`'ye.
+
+## 8. Uygulamanın mimarisi (uygulama/index.html)
+
+- **Giriş:** okul adresine OTP. Sözleşme sürüm 2 (`SOZLESME.surum` ile SQL'deki `sozlesme_surumu()` birlikte artırılır). iPhone Safari'de önce "ana ekrana ekle" adımları.
+- **Cihaz sınırı:** 1; doluysa e-postaya ikinci kodla devralma (`cihaz_yokla`, `devralma_iste`, `cihazi_sahiplen`). `KOD_ARALIGI = 60`.
+- **Veri:** içerik `konular`/`agac` tablolarından, IndexedDB'de (`vt`) internetsiz durur. Notlardaki ve sorulardaki bütün görseller eşitlemeden sonra arka planda iner (`gorselleriOnceIndir`, `konuGorselYollari`); kullanılmayanlar budanır (`gorselleriBuda`).
+- **İnternetsiz:** giriş yapılmış cihaz internetsiz açılır; oturum süresi dolsa da kapatılmaz; yapılanlar bekler, internet gelince gider.
+- **Kayıtlar** (`kayitlar`, tür + anahtar, son yazan kazanır, silme `silindi`): okundu, boya, yildiz, yanlis, kart, ayar, yer, muhim, calisma. `ayar/hedef` = `{gecmis:[{g,gun,hafta}]}`, `ayar/dondurma` = `{gunler:[...]}`, `ayar/kimlik`.
+- **Cihazda kalanlar (localStorage):** `pg.mod` (tema), `pg.gozFiltre`, `pg.cekmeceEkrani`, `pg.dondurmaSoruldu`, `pg.yarimCalis`, `pg.yarimKart`, `pg.kartKonular`.
+- **Üst çubuk:** başlık, göz koruyucu (3 kademe), tema (açık, pembe, koyu, simsiyah), menü (≡).
+- **Çekmece:** menü düğmesi ya da sağ kenardan çekme (`#kenarTutamak`). Dışarıya tek dokunuşla kapanır (`perdeKapatmayiKur`, `cekmeceyiKapat`). Dört ekran:
+  - **Hedef ve seri:** yapraklı geri sayan saat (`saatKarti`, `geriSayimSaati`; animasyonlar kapalıyken de döner).
+  - **İstatistikler.**
+  - **Çalışma takvimi:** günlük/haftalık; tarih her açılışta hesaplanır; ince çizgiler `vector-effect:non-scaling-stroke`.
+  - **Hesap.**
+- **Dondurma:** ilk hedefin ayından itibaren her ay 3 hak, kullanılmayan birikir (`kalanDondurma`, `dondurmaYeterMi`).
+- **Seri:** günlük hedefe ulaşılan ardışık günler; dondurulan gün köprüdür.
+- **Süre ölçümü:** 5 sn'lik tik, `calisma/"GG|YAZICI"`; bir konuda günde 3 dakikadan azsa süre sayılmaz.
+- **Görseller:** `gorselHtml` (tek görsel ya da dizi), `galeriGuncelle` (sayaç/nokta/ok), `buyutecAc`, `soruGorselleri` (soru kutusunda).
+- **Geri tuşu:** `derinlesGit` / `geriDon`, kökte bekçi adımı.
+- **Yüzen şeritler:** kurulum şeridi (`.kurulum`) ve okuma çubuğu (`.oynatma`) alt çubuğun üstünde sabit durur. `altBosluguAyarla` (MutationObserver + ResizeObserver) görünür şeridin yüksekliğini `--serit-alt` değişkenine yazar; `body`'nin alt boşluğu buna göre büyür ki en alttaki düğmeler (konu seçimindeki "Tamam" gibi) şeridin altında kalmasın. Yeni bir sabit alt şerit eklenirse `YUZEN_SERITLER` seçicisine eklenir.
+- **Service worker:** önbellek `programcilik-v14`; index.html değişince `sw.js`'teki sürüm bir artırılır.
+
+## 9. Test düzeneği (test-son.zip)
+
+Proje `/home/claude/programcilik`, testler `test/tarayici` ve `test/gercek` altında varsayılır.
+
+1. İçeriği taklit sunucuya yükle:
+   ```
+   cd test/gercek && rm -rf cikti && (setsid python3 sahte_supa.py cikti 8799 >/dev/null 2>&1 &)
+   cd ../.. && SUPABASE_URL=http://127.0.0.1:8799 SUPABASE_GIZLI_ANAHTAR=x node araclar/icerik-aktar.mjs
+   fuser -k 8799/tcp
+   ```
+   Not: `pkill -f sahte_supa` komutun kendisini de öldürür; `fuser -k 8799/tcp` kullanın.
+2. `cd test/tarayici && sh kur.sh` (uygulama/ → site/, test ayarlarıyla).
+3. `sh yardim/sunucu.sh` test sitesini 8765'te açar; `sh yardim/hepsi.sh` bütün testleri sırayla çalıştırır (yaklaşık 40 dakika; arka planda çalıştırın).
+4. Testler (hepsi son durumda geçiyor):
+   - `sina.py` (99)
+   - dersler: `alg_sina.py`, `vt_sina.py`, `eko_sina.py`, `el_sina.py`, `ag_sina.py`, `dn_sina.py`
+   - `tum_sorular_sina.py` (bütün soruların doğru cevapla doğru sayılması)
+   - `galeri_sina.py` (dizi, büyüteç, soru görselleri)
+   - `cevrimdisi_sina.py`, `buda_sina.py`
+   - `hedef_sina.py`, `saat_cekmece_sina.py`, `takvim_gelecek_sina.py`
+   - `tasma_sina.py`, `tema_sina.py`, `ios_sina.py`, `dokunus_sina.py`
+   - `istatistik_sina.py`, `kalicilik_sina.py`, `devam_sina.py`, `aralik_sina.py`, `baslik_sina.py`
+   - `serit_sina.py` (kurulum şeridi açıkken en alttaki düğmeler dokunulabilir mi; konu seçimi → Tamam → temrin yolları)
+   - Ortak düzenek `vt_taban.py`: Supabase taklidi; görselleri uzantısına göre doğru türle verir. `akis-1.svg` (test görseli) `test/tarayici/` içinde durur.
+   - Testlerin çoğu gerçek ilk kullanımı taklit etmez: `cihaz_ac` kurulum şeridini öntanımlı olarak gizler, test hesabına hedef önceden konur. Şerit `serit_sina.py`'de, hedef sorusu `hedef_sina.py`'de denenir; ilk kullanıma dokunan bir değişiklikte bu ikisi mutlaka çalıştırılır.
+5. Yeni ders için test: `ag_sina.py`'yi kopyalayıp ders kimliği ve adlarını değiştirin.

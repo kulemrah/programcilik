@@ -158,7 +158,9 @@ body{
   background:var(--zemin);color:var(--yazi);
   font-family:var(--metin);font-size:16px;line-height:1.6;
   -webkit-font-smoothing:antialiased;
-  padding-bottom:calc(64px + env(safe-area-inset-bottom));
+  /* --serit-alt: alt çubuğun üstünde yüzen şerit (kurulum, okuma çubuğu) varken
+     sayfanın sonu onun da üstüne kayabilsin diye eklenen boşluk (altBosluguAyarla) */
+  padding-bottom:calc(64px + env(safe-area-inset-bottom) + var(--serit-alt, 0px));
 }
 button,input{font:inherit;color:inherit}
 button{background:none;border:0;cursor:pointer}
@@ -9149,6 +9151,34 @@ function kurulumSeridiniGoster() {
   document.body.appendChild(serit);
   kurulumSeridi = serit;
 }
+
+/* ==========================================================================
+   Yüzen şeritlerin altında kalan içerik
+   Kurulum şeridi ve okuma çubuğu alt çubuğun hemen üstünde sabit durur.
+   Sayfanın alt boşluğu yalnızca alt çubuğa göre olursa en alttaki düğmeler
+   (ör. konu seçimindeki "Tamam") şeridin altında kalır ve dokunulamaz.
+   Şerit görünürken yüksekliği kadar boşluk eklenir; şerit büyüyüp
+   küçüldükçe (kurulum adımları açılınca) ya da kalkınca boşluk da değişir.
+   ========================================================================== */
+const YUZEN_SERITLER = ".kurulum, .oynatma";
+const seritOlcer = typeof ResizeObserver === "function" ? new ResizeObserver(() => altBosluguAyarla()) : null;
+let olculenSeritler = [];
+function altBosluguAyarla() {
+  const seritler = Array.from(document.querySelectorAll(YUZEN_SERITLER));
+  if (seritOlcer) {
+    olculenSeritler.forEach(e => { if (seritler.indexOf(e) === -1) seritOlcer.unobserve(e); });
+    seritler.forEach(e => { if (olculenSeritler.indexOf(e) === -1) seritOlcer.observe(e); });
+  }
+  olculenSeritler = seritler;
+  /* Şerit, alt çubuk boşluğunun 8 px üstünden başlar; üstünde de 8 px nefes payı kalır */
+  const ek = seritler.reduce((en, e) => Math.max(en, e.offsetHeight ? e.offsetHeight + 16 : 0), 0);
+  const deger = ek ? ek + "px" : "";
+  if (document.documentElement.style.getPropertyValue("--serit-alt") !== deger) {
+    if (deger) document.documentElement.style.setProperty("--serit-alt", deger);
+    else document.documentElement.style.removeProperty("--serit-alt");
+  }
+}
+new MutationObserver(altBosluguAyarla).observe(document.body, { childList: true });
 
 window.addEventListener("kurulum-hazir", kurulumSeridiniGoster);
 window.addEventListener("kurulum-bitti", () => kurulumSeridiniKapat(true));
