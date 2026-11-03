@@ -14,8 +14,8 @@ def z(gun, saat, dk=0):
 # Gerçek aktarıcının yüklediği sınavlar (icerik/agac.json)
 genel = next(r for r in YUK["agac"] if r["id"] == 1)
 gercek = genel["veri"].get("sinavlar", [])
-kontrol("aktarıcı sınavları genel ağaca yazdı (2 sınav, zamana göre)",
-        [(x["ders"], x["zaman"]) for x in gercek] == [("veritabani", "2026-11-06T20:30+03:00"), ("aglar", "2026-11-06T21:30+03:00")], gercek)
+kontrol("aktarıcı sınavları genel ağaca yazdı (3 sınav, zamana göre)",
+        [(x["ders"], x["zaman"]) for x in gercek] == [("veritabani", "2026-11-06T20:30+03:00"), ("aglar", "2026-11-06T21:30+03:00"), ("ekoloji", "2026-11-10T19:00+03:00")], gercek)
 kontrol("hususi ağaçta sınav alanı yok (42 sınavı yok)", "sinavlar" not in next(r for r in YUK["agac"] if r["id"] == 2)["veri"])
 
 # Deneme verisi: bugüne göre kurulur; sıra karışık verilir (uygulama sıralamalı)
