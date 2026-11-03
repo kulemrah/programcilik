@@ -31,5 +31,9 @@
         { "id": "born2beroot", "ad": "Born2beRoot" }
       ]
     }
+  ],
+  "sinavlar": [
+    { "ders": "veritabani", "ad": "1. Kısa Sınav", "zaman": "2026-11-06T20:30+03:00", "lms": true },
+    { "ders": "aglar", "ad": "1. Kısa Sınav", "zaman": "2026-11-06T21:30+03:00", "lms": true }
   ]
 }

@@ -49,6 +49,24 @@ icerik/
 - Kimlikler (`id`) küçük harf, rakam ve tireden oluşur; ağaçta tekildir.
 - Notu olmayan ders ağaçta durabilir; uygulamada "yakında" görünür.
 
+### Sınav takvimi
+
+`agac.json` isteğe bağlı bir `sinavlar` listesi de taşır. Sınavlar uygulamada menünün Takvim bölümünün altında yakından uzağa gösterilir; aynı günün sınavları tek kutuda alt alta durur, günü geçen sınavlar gösterilmez.
+
+```json
+"sinavlar": [
+  { "ders": "veritabani", "ad": "1. Kısa Sınav", "zaman": "2026-11-06T20:30+03:00", "lms": true },
+  { "ders": "ekoloji", "ad": "Vize", "zaman": "2026-11-12T10:00+03:00", "yer": "B-201", "not": "Hesap makinesi getirilecek." }
+]
+```
+
+- `ders`: ağaçtaki bir ders kimliği; uygulamada dersin tam adı yazılır. Hususi bir dersin sınavı yalnızca hususi hesaplara gider.
+- `ad`: sınavın adı (1. Kısa Sınav, Vize, Final…).
+- `zaman`: Türkiye saatiyle, saat dilimi yazılarak: `YYYY-AA-GGTSS:DD+03:00`.
+- `lms`: `true` ise "Sınav LMS üzerinden çevrimiçi olacak." yazar.
+- `yer`, `not`: isteğe bağlı; yazılırsa gösterilir.
+- Geçmiş sınavlar listeden silinmeyebilir; uygulama onları zaten göstermez.
+
 ## Konu metni (.md)
 
 Her boş olmayan satır ayrı bir paragraftır; satırlar birleştirilmez. Konu başlığı `.json` dosyasındadır, metne yazılmaz.

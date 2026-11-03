@@ -72,7 +72,7 @@ function agaciDogrula() {
   const agac = jsonOku(join(ICERIK, "agac.json"), yer);
   const dersler = new Map();
   if (!agac) return { agac: null, dersler };
-  bilinmeyenAlanlar(yer, agac, ["gruplar"]);
+  bilinmeyenAlanlar(yer, agac, ["gruplar", "sinavlar"]);
   if (!Array.isArray(agac.gruplar) || !agac.gruplar.length) { hata(yer, "'gruplar' boş olmayan bir dizi olmalı"); return { agac, dersler }; }
   const kimlikler = new Set();
   const kimlikKaydet = (y, id) => {
@@ -114,7 +114,37 @@ function agaciDogrula() {
       dersleriOku(dny, dn.dersler, g.id, dn.id, hususi);
     });
   });
+  sinavlariDogrula(yer, agac.sinavlar, dersler);
   return { agac, dersler };
+}
+
+/* Sınav takvimi (isteğe bağlı): { ders, ad, zaman, lms?, yer?, not? }.
+   zaman Türkiye saatiyle ve saat dilimi yazılı: "2026-11-06T20:30+03:00".
+   Uygulamada menü › Takvim'in altında gün gün gösterilir; geçmiş günler gizlenir. */
+const SINAV_ZAMANI = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::00)?\+03:00$/;
+function sinavlariDogrula(yer, sinavlar, dersler) {
+  if (sinavlar === undefined) return;
+  if (!Array.isArray(sinavlar)) { hata(yer, "'sinavlar' bir dizi olmalı"); return; }
+  const gorulen = new Set();
+  sinavlar.forEach((s, i) => {
+    const sy = yer + " > sinavlar[" + i + "]";
+    if (!s || typeof s !== "object") { hata(sy, "nesne olmalı"); return; }
+    bilinmeyenAlanlar(sy, s, ["ders", "ad", "zaman", "lms", "yer", "not"]);
+    if (!dersler.has(s.ders)) hata(sy, "ders '" + s.ders + "' agac.json'da tanımlı değil");
+    temizMetin(sy, "ad", s.ad);
+    temizMetin(sy, "yer", s.yer, false);
+    temizMetin(sy, "not", s.not, false);
+    if (s.lms !== undefined && typeof s.lms !== "boolean") hata(sy, "'lms' true ya da false olmalı");
+    const m = typeof s.zaman === "string" ? s.zaman.match(SINAV_ZAMANI) : null;
+    if (!m) { hata(sy, "'zaman' \"YYYY-AA-GGTSS:DD+03:00\" biçiminde olmalı (ör. 2026-11-06T20:30+03:00)"); return; }
+    const [ , y, a, g, sa, dk] = m.map(Number);
+    const t = new Date(Date.UTC(y, a - 1, g, sa - 3, dk));
+    if (t.getUTCFullYear() !== y || t.getUTCMonth() !== a - 1 || sa > 23 || dk > 59 ||
+        new Date(Date.UTC(y, a - 1, g)).getUTCDate() !== g) hata(sy, "'zaman' geçerli bir tarih ve saat değil");
+    const anahtar = s.ders + "|" + s.ad + "|" + s.zaman;
+    if (gorulen.has(anahtar)) hata(sy, "aynı sınav iki kez yazılmış");
+    gorulen.add(anahtar);
+  });
 }
 
 /* ---------- 2) Markdown ---------- */
@@ -493,9 +523,18 @@ async function yukle(agac, konular, gorseller) {
   /* Ağaç iki satıra bölünür: 1 herkesin gördüğü gruplar, 2 hususi gruplar.
      Konular (hususi işaretiyle) ağaçtan önce yüklendiği için, hususiye
      alınan bir grup hiçbir an yetkisiz hesaba açık kalmaz. */
+  const hususiDers = new Set(agac.gruplar.filter(g => g.hususi === true)
+    .flatMap(g => (g.dersler || []).concat(...(g.donemler || []).map(d => d.dersler || []))).map(d => d.id));
+  const sinavlar = (agac.sinavlar || []).slice().sort((a, b) => a.zaman < b.zaman ? -1 : a.zaman > b.zaman ? 1 : 0);
+  const satirVerisi = hususi => {
+    const v = { gruplar: agac.gruplar.filter(g => (g.hususi === true) === hususi) };
+    const s = sinavlar.filter(x => hususiDers.has(x.ders) === hususi);
+    if (s.length) v.sinavlar = s;   /* sınav yoksa alan yazılmaz: eski özet değişmesin */
+    return v;
+  };
   const agacSatirlari = [
-    { id: 1, veri: { gruplar: agac.gruplar.filter(g => g.hususi !== true) } },
-    { id: 2, veri: { gruplar: agac.gruplar.filter(g => g.hususi === true) } }
+    { id: 1, veri: satirVerisi(false) },
+    { id: 2, veri: satirVerisi(true) }
   ].filter(r => r.id === 1 || r.veri.gruplar.length);
   const uzakAgac = new Map((await istek("/rest/v1/agac?select=id,ozet", { method: "GET" })).map(r => [r.id, r.ozet]));
   const degisenAgac = agacSatirlari
@@ -538,7 +577,8 @@ const soruSayisi = konular.reduce((t, k) => t + k.sorular.length, 0);
 const kartSayisi = konular.reduce((t, k) => t + k.kartlar.length, 0);
 const hususiSayisi = konular.filter(k => k.hususi).length;
 console.log("Doğrulama tamam: " + dersler.size + " ders, " + konular.length + " konu" + (hususiSayisi ? " (" + hususiSayisi + " hususi)" : "") + ", " +
-  soruSayisi + " soru, " + kartSayisi + " kart, " + gorseller.length + " görsel");
+  soruSayisi + " soru, " + kartSayisi + " kart, " + gorseller.length + " görsel" +
+  (agac && agac.sinavlar && agac.sinavlar.length ? ", " + agac.sinavlar.length + " sınav" : ""));
 
 if (!KURU) {
   try { await yukle(agac, konular, gorseller); }

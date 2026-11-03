@@ -1946,6 +1946,25 @@ html[data-mod="pembe"]{--saat-yuz:#FBF2F6}
   .mod-dugme,.hesap-dugme,.goz-dugme{width:34px;height:34px}
 }
 
+/* ---- Menü › Takvim › Sınavlar ---- */
+.sinav-gun{margin:12px 0 0}
+.sinav-gun:first-of-type{margin-top:2px}
+.sinav-gun-ust{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 2px 6px}
+.sinav-gun-ust .tarih{font-size:14px;font-weight:650}
+.sinav-gun-ust .kalan{flex:none;font-size:12.5px;color:var(--sonuk);font-variant-numeric:tabular-nums}
+.sinav-gun-ust .kalan.yakin{color:var(--vurgu);font-weight:650}
+/* Aynı günün sınavları tek kutuda, aralarında ince çizgi */
+.sinav-kutu{border-radius:12px;background:var(--yuzey2);border:1px solid var(--cizgi);overflow:hidden}
+.sinav-satir{display:flex;gap:12px;padding:12px 14px 12px 12px;border-left:4px solid var(--ders-renk, var(--vurgu))}
+.sinav-satir + .sinav-satir{border-top:1px solid var(--cizgi)}
+.sinav-satir .saat{flex:none;min-width:48px;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.3}
+.sinav-satir .bilgi{flex:1;min-width:0}
+.sinav-satir .ders{font-size:14.5px;font-weight:650;line-height:1.35;overflow-wrap:anywhere}
+.sinav-satir .ad{font-size:13.5px;color:var(--sonuk);margin-top:1px}
+.sinav-satir p{margin:5px 0 0;font-size:12.5px;line-height:1.45;color:var(--yazi)}
+.sinav-satir p.lms{color:var(--vurgu);font-weight:550}
+.sinav-satir.gecti{opacity:.55}
+
 /* ---- Hesap › Bu cihaz: cihaz türü ve ölçek ---- */
 .cihaz-satir{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin:8px 0 2px}
 .cihaz-etiket{font-size:14px;font-weight:600;min-width:52px}
@@ -3384,8 +3403,12 @@ async function icerikEsitle(nesil) {
      Her iki durumda da cihazdaki notlar silinmez. */
   if (!a.data || !a.data.length) { erisimYok = true; return false; }
   erisimYok = false;
-  const agacVerisi = { gruplar: [] };
-  a.data.forEach(r => { if (r.veri && Array.isArray(r.veri.gruplar)) r.veri.gruplar.forEach(g => agacVerisi.gruplar.push(g)); });
+  const agacVerisi = { gruplar: [], sinavlar: [] };
+  a.data.forEach(r => {
+    if (r.veri && Array.isArray(r.veri.gruplar)) r.veri.gruplar.forEach(g => agacVerisi.gruplar.push(g));
+    /* Sınav takvimi (menü › Takvim): ağaçla birlikte gelir, ağacın özetine dahildir */
+    if (r.veri && Array.isArray(r.veri.sinavlar)) r.veri.sinavlar.forEach(x => agacVerisi.sinavlar.push(x));
+  });
   const agacOzeti = a.data.map(r => r.id + ":" + r.ozet).join("|");
   /* Sunucu tek seferde en çok 1000 satır verir; liste sayfa sayfa alınır.
      Eksik liste, cihazdaki konuları "silinmiş" sanıp sildirirdi. */
@@ -5190,6 +5213,73 @@ function ayEtiketleriniCiz(svg, ilk, sutunX, sonX, haftalik) {
     svg.appendChild(t);
   });
 }
+/* ---------- Sınav takvimi (menü › Takvim'in altı) ----------
+   Sınavlar içerikten gelir (icerik/agac.json › sinavlar; ağaçla birlikte
+   iner, bağlantısızken de görünür). Türkiye saatiyle yazılır ve gösterilir.
+   Yakından uzağa sıralanır; aynı günün sınavları tek kutuda alt alta durur.
+   Günü geçmiş sınavlar gösterilmez; saati geçmiş ama günü bitmemiş sınav
+   sönük durur. */
+const TR_SAAT = 3 * 3600 * 1000;   /* Türkiye yıl boyu UTC+3 */
+function trGunu(ms) { return new Date(ms + TR_SAAT).toISOString().slice(0, 10); }
+function sinavListesi() {
+  const liste = AGAC && Array.isArray(AGAC.sinavlar) ? AGAC.sinavlar : [];
+  return liste
+    .map(x => ({ ...x, t: Date.parse(x.zaman) }))
+    .filter(x => x && typeof x.ad === "string" && !isNaN(x.t))
+    .sort((a, b) => a.t - b.t || String(a.ders).localeCompare(String(b.ders)));
+}
+function sinavBolumu() {
+  const kart = olustur("section", "ist-kart sinav-kart");
+  const h = olustur("h3", "ist-baslik");
+  h.textContent = "Sınavlar";
+  kart.appendChild(h);
+  const simdi = Date.now(), bugun = trGunu(simdi);
+  const yakin = sinavListesi().filter(x => trGunu(x.t) >= bugun);
+  if (!yakin.length) {
+    const p = olustur("p", "ist-bos");
+    p.textContent = "Yaklaşan sınav yok.";
+    kart.appendChild(p);
+    return kart;
+  }
+  const gunler = new Map();
+  yakin.forEach(x => { const g = trGunu(x.t); if (!gunler.has(g)) gunler.set(g, []); gunler.get(g).push(x); });
+  const gunFarki = g => Math.round((Date.parse(g + "T00:00:00Z") - Date.parse(bugun + "T00:00:00Z")) / 86400000);
+  gunler.forEach((liste, g) => {
+    const gun = olustur("div", "sinav-gun");
+    gun.dataset.gun = g;
+    const ust = olustur("div", "sinav-gun-ust");
+    const tarih = olustur("span", "tarih");
+    tarih.textContent = new Date(liste[0].t).toLocaleDateString("tr-TR", { timeZone: "Europe/Istanbul", day: "numeric", month: "long", year: "numeric", weekday: "long" });
+    const kalan = olustur("span", "kalan");
+    const f = gunFarki(g);
+    kalan.textContent = f === 0 ? "Bugün" : f === 1 ? "Yarın" : f + " gün sonra";
+    if (f <= 1) kalan.classList.add("yakin");
+    ust.append(tarih, kalan);
+    const kutu = olustur("div", "sinav-kutu");
+    liste.forEach(x => {
+      const satir = olustur("div", "sinav-satir" + (x.t < simdi ? " gecti" : ""));
+      satir.style.setProperty("--ders-renk", DERSLER.has(x.ders) ? dersRengi(x.ders) : "var(--vurgu)");
+      const saat = olustur("div", "saat");
+      saat.textContent = new Date(x.t).toLocaleTimeString("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit" });
+      const bilgi = olustur("div", "bilgi");
+      const ders = olustur("div", "ders");
+      ders.textContent = DERSLER.has(x.ders) ? DERSLER.get(x.ders).ad : String(x.ders);
+      const ad = olustur("div", "ad");
+      ad.textContent = x.ad + (x.t < simdi ? " · saati geçti" : "");
+      bilgi.append(ders, ad);
+      const ek = (metin, sinif) => { const p = olustur("p", sinif); p.textContent = metin; bilgi.appendChild(p); };
+      if (x.lms === true) ek("Sınav LMS üzerinden çevrimiçi olacak.", "lms");
+      if (typeof x.yer === "string" && x.yer) ek("Yer: " + x.yer, "yer");
+      if (typeof x.not === "string" && x.not) ek(x.not, "not");
+      satir.append(saat, bilgi);
+      kutu.appendChild(satir);
+    });
+    gun.append(ust, kutu);
+    kart.appendChild(gun);
+  });
+  return kart;
+}
+
 function takvimBolumu(ist) {
   takvimHaftasiniAyarla();
   const kart = olustur("section", "ist-kart takvim-kart");
@@ -6162,6 +6252,7 @@ function hesapSayfasiAc(secenek) {
     } else if (ekran === "takvim") {
       ic.appendChild(takvimBolumu(tumu));
       ic.appendChild(haftaTakvimiBolumu(tumu));
+      ic.appendChild(sinavBolumu());
     } else {
       ic.appendChild(kimlikBolumu());
       ic.appendChild(cihazBolumu());
@@ -9984,6 +10075,13 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
    pg.notSurumu'nda.
    ========================================================================== */
 const GUNCELLEMELER = [{
+  surum: "2.2",
+  tarih: "Kasım 2026",
+  baslik: "Yenilik: sınav takvimi",
+  maddeler: [
+    ["Sınavlar", "Sağ üstteki menüde Takvim bölümünün altında yaklaşan sınavlar yakından uzağa sıralanır: dersin adı, sınavın adı, tarihi ve saati. LMS üzerinden çevrimiçi yapılacak sınavlarda bu da yazar. Aynı gündeki sınavlar tek bir kutuda alt alta durur; günü geçen sınavlar listeden kalkar."]
+  ]
+}, {
   surum: "2.1",
   tarih: "Kasım 2026",
   baslik: "Yenilikler: Notlar ve kaydırma",
