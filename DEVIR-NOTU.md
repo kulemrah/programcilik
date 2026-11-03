@@ -36,6 +36,7 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
 - Çalışma kopyasının son hâli: `programcilik-son.zip` + guncelleme-30 + `KAYNAK_URL`'li `index.html`/`sw.js` (v19) + guncelleme-31 + guncelleme-32. GitHub'daki deponun bu hâle getirilmesi gerekir.
 - guncelleme-31: Kaynak → **Notlar**; bağlantısız çalışma (gönderilecekler sırası, her iş ayrı kayıt), 5 sn geri alınabilir silme, iki sütunlu kutucuklar (başlık, ön izleme, tarih), sağ altta + (simgeli seçenekler), biçimli not editörü (B/I/U/S, renk, madde, numaralı, ara başlık, metnin arasında resim, "- " ve "1. " kısayolları, geri al/yinele, otomatik kayıt), MB yalnızca Notlar kökünde ve Hesap'ta, Hesap › Notlar › Resimler paneli. Şema (01-sema.sql) ve Worker değişti: önce SQL, sonra `npx wrangler deploy`, sonra uygulama. Teslim edildi; yüklendiği teyit edilmedi.
 - guncelleme-32: Hesap › Bu cihaz (cihaz türü Bilgisayar/Tablet/Telefon ve ölçek; yalnızca cihazda), alt çubukta ve çekmecede kaydırarak sekme değiştirme (uçlarda döner), Bilgisayar modunda Alt kısayolları, geniş ekranda "Derslere göre süre" listesinin daralması düzeldi (kapsayıcı sorgusu). Ardından: ölçek üst başlık ve alt çubuğu etkilemez; menüde kaydırma yönü sayfa çevirir gibi (alt çubuğun tersi); güncelleme notu s2.1 ve Hesap › Yama Notları. Yalnızca uygulama değişti (SQL/Worker yok); sw v21. Hamza telefonda denedi: alt çubuk kaydırması ve kurulu uygulamada Alt sorunsuz.
+- algoritma-hafta-5: Algoritma 5. hafta (KDV ve denklem, sayaç, sayaçlı döngü örnekleri; konu 11–13; ISO 5807 sembolleriyle Ek akış şemaları). Yalnızca içerik; yükleme `node araclar/icerik-aktar.mjs`. Teslim edildi; yüklendiği teyit edilmedi.
 - Teslim edilen ama GitHub'a yüklendiği **teyit edilmeyen** paketler: guncelleme-20, 21, 22, 23, 24, aglar-ders-1, guncelleme-25. `programcilik-son.zip` bunların hepsini kapsar; tek tek yüklemeye gerek yok.
 - guncelleme-30 (26–29'u da kapsar): görsel dizilerinin yüksekliği görünen görsele uyar (en çok 60vh), sol ok düzeldi, büyüteçte dizinin görselleri arasında geçiş. Önceki 29: Kaynak sekmesi (tasnifler, resimler, notlar; Hesap'ta Kaynak resimleri), `kaynak-worker/`, şema 8. bölüm; pencerede metin alanı; soru penceresi açıkken geri tuşu yalnızca pencereyi kapatır; ayrıca 28'deki her şey (her sekmenin kendi geri geçmişi, Kıraat, 42 Tarzı seçimi, Hesap boşluğu, Elektrik 13–15, kurulum şeridi). Teslim edildi, GitHub'a yüklendiği teyit edilmedi. `programcilik-son.zip`'in üstüne yüklenir.
 - guncelleme-24'te eski ikonlar silindi: depoda `uygulama/ikon-*.png` ve `uygulama/apple-touch-icon.png` kaldıysa `git rm` ile silinir.
@@ -87,7 +88,7 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 
 | Ders (id) | Konu | Soru | Kart | Durum |
 | --- | --- | --- | --- | --- |
-| algoritma | 10 | 172 | 68 | tamam |
+| algoritma | 13 | 213 | 88 | 1–5. hafta tamam (algoritma-hafta-5) |
 | veritabani | 14 | 252 | 100 | tamam (konu 14'te hocaya soru) |
 | donanim | 7 | 99 | 36 | 1. not tamam (guncelleme-25) |
 | aglar | 3 | 47 | 18 | 1. not tamam (aglar-ders-1) |

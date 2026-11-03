@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="560" viewBox="0 0 400 560" role="img">
+<title>İkinci dereceden denklemin kökleri: akış şeması</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="55.0" y="7.0" width="110" height="34" rx="17" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="110.0" y="29.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">Başla</text>
+<line x1="110.0" y1="41.0" x2="110.0" y2="62.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="110.0,62.0 106.5,53.7 113.5,53.7" fill="#4A5568"/>
+<polygon points="47.0,63.0 197.0,63.0 173.0,97.0 23.0,97.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="110.0" y="85.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">Oku a, b, c</text>
+<line x1="110.0" y1="97.0" x2="110.0" y2="116.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="110.0,116.0 106.5,107.7 113.5,107.7" fill="#4A5568"/>
+<rect x="12.0" y="117.0" width="196" height="34" rx="3" fill="#F7FAFC" stroke="#4A5568" stroke-width="1.6"/>
+<text x="110.0" y="139.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">delta=(b^2)-(4*a*c)</text>
+<line x1="110.0" y1="151.0" x2="110.0" y2="172.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="110.0,172.0 106.5,163.7 113.5,163.7" fill="#4A5568"/>
+<polygon points="110.0,174.0 176.0,206.0 110.0,238.0 44.0,206.0" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="110.0" y="211.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">delta&gt;0</text>
+<line x1="176.0" y1="206.0" x2="290.0" y2="206.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="290.0" y1="206.0" x2="290.0" y2="224.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="290.0,224.0 286.5,215.7 293.5,215.7" fill="#4A5568"/>
+<text x="226.0" y="198.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2F855A" font-weight="600" text-anchor="middle">doğru</text>
+<rect x="194.0" y="227.0" width="192" height="50" rx="3" fill="#F7FAFC" stroke="#4A5568" stroke-width="1.6"/>
+<text x="290.0" y="248.5" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">x1=(-b-√delta)/(2*a)</text>
+<text x="290.0" y="265.5" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">x2=(-b+√delta)/(2*a)</text>
+<line x1="290.0" y1="277.0" x2="290.0" y2="296.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="290.0,296.0 286.5,287.7 293.5,287.7" fill="#4A5568"/>
+<polygon points="232.0,296.0 372.0,296.0 348.0,330.0 208.0,330.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="290.0" y="318.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">Yaz x1, x2</text>
+<line x1="110.0" y1="238.0" x2="110.0" y2="300.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="110.0,300.0 106.5,291.7 113.5,291.7" fill="#4A5568"/>
+<text x="130.0" y="274.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#C53030" font-weight="600" text-anchor="middle">yanlış</text>
+<polygon points="110.0,302.0 180.0,334.0 110.0,366.0 40.0,334.0" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="110.0" y="339.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">delta==0</text>
+<line x1="180.0" y1="334.0" x2="204.0" y2="334.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="204.0" y1="334.0" x2="204.0" y2="372.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="204.0" y1="372.0" x2="290.0" y2="372.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="290.0" y1="372.0" x2="290.0" y2="384.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="290.0,384.0 286.5,375.7 293.5,375.7" fill="#4A5568"/>
+<text x="236.0" y="364.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2F855A" font-weight="600" text-anchor="middle">doğru</text>
+<rect x="210.0" y="382.0" width="160" height="44" rx="3" fill="#F7FAFC" stroke="#4A5568" stroke-width="1.6"/>
+<text x="290.0" y="400.5" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">x1=-b/(2*a)</text>
+<text x="290.0" y="417.5" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">x2=-b/(2*a)</text>
+<line x1="290.0" y1="426.0" x2="290.0" y2="444.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="290.0,444.0 286.5,435.7 293.5,435.7" fill="#4A5568"/>
+<polygon points="232.0,444.0 372.0,444.0 348.0,478.0 208.0,478.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="290.0" y="466.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">Yaz x1, x2</text>
+<line x1="110.0" y1="366.0" x2="110.0" y2="444.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="110.0,444.0 106.5,435.7 113.5,435.7" fill="#4A5568"/>
+<text x="132.0" y="404.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#C53030" font-weight="600" text-anchor="middle">yanlış</text>
+<polygon points="34.0,444.0 218.0,444.0 194.0,478.0 10.0,478.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="114.0" y="466.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">Yaz "reel kök yoktur"</text>
+<line x1="360.0" y1="313.0" x2="390.0" y2="313.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="390.0" y1="313.0" x2="390.0" y2="500.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="390.0" y1="500.0" x2="200.0" y2="500.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="290.0" y1="478.0" x2="290.0" y2="500.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="110.0" y1="478.0" x2="110.0" y2="500.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="110.0" y1="500.0" x2="200.0" y2="500.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="200.0" y1="500.0" x2="200.0" y2="518.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="200.0,518.0 196.5,509.7 203.5,509.7" fill="#4A5568"/>
+<rect x="145.0" y="519.0" width="110" height="34" rx="17" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="200.0" y="541.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">Bitir</text>
+</svg>

@@ -1,6 +1,6 @@
 # Kaynak envanteri: Algoritma
 
-Her slaytın hangi konuya ve başlığa işlendiği. Tablolardaki K1, K2, K3 kısaltmaları aşağıdaki kaynak numaralarıdır. Kapsama denetimi bu tabloyla yapılır: boş satır kalmaz. Bu klasör uygulamaya gitmez.
+Her slaytın hangi konuya ve başlığa işlendiği. Tablolardaki K1–K5 kısaltmaları aşağıdaki kaynak numaralarıdır. Kapsama denetimi bu tabloyla yapılır: boş satır kalmaz. Bu klasör uygulamaya gitmez.
 
 ## Kaynak 1: "ALGORİTMA VE PROGRAMLAMA TEMELLERİ" (hafta 1–2)
 
@@ -108,6 +108,40 @@ Dosya: `algoritma_ve_programlama_temelleri_4__hafta_2.pdf`, 13 slayt. Öğr. Gö
 | 12 | Örnek 8: yaş grubu (Çocuk, Genç, Yetişkin, Yaşlı aralıkları) | alg-karar-ornekleri › Örnek 8: yaş grubu |
 | 13 | Örnek 9: geçme notu 50 ve üzeri | alg-karar-ornekleri › Örnek 9: geçme notu |
 
+## Kaynak 4: 5. hafta soruları
+
+Dosya: `algoritma_ve_programlama_temelleri_5_hafta_1.pdf`, 10 slayt. Öğr. Gör. Nilay Akyıl (slayt 1–2'nin altında). Kapak slaytı yok; PDF'in iç başlığında "2021/2022 Öğretim Yılı Bahar Yarıyılı" yazar. Kaynakça yok. Slaytlar yalnızca metinden oluşur; şekil yok (yalnızca logo ve filigran). Slayt 3–5 kavram ve çözümlü örnek, öbürleri çözümsüz sorulardır; çözümler Kaynak 5'tedir.
+
+| Slayt | İçerik | Konu › Başlık |
+| --- | --- | --- |
+| 1 | Örnek 1: KDV (%18) ekleyerek fiyat | alg-kdv-denklem › Örnek 1: KDV ekleyerek fiyat |
+| 2 | Örnek 2: 2. dereceden denklemin kökleri; akış diyagramı istenir | alg-kdv-denklem › Örnek 2: ikinci dereceden denklemin kökleri |
+| 3 | Sayaç kavramının tanımı | alg-sayac › Sayaç kavramı |
+| 4 | Kullanım alanları: döngüler, koşul kontrolü, sıralama ve gruplama | alg-sayac › Sayaçların kullanım alanları |
+| 5 | Örnek: ekrana 5 defa "merhaba" (köşeli parantezli açıklamalarla çözümlü) | alg-sayac › Örnek: ekrana 5 defa merhaba |
+| 6 | Örnek 1: 10 sayının toplamı | alg-sayac-ornekleri › Örnek 1: 10 sayının toplamı |
+| 7 | Örnek 2: 10 sayıdan çift olanların karesi | alg-sayac-ornekleri › Örnek 2: çift sayıların karesi |
+| 8 | Örnek 3: 10 sayıdan en büyüğü | alg-sayac-ornekleri › Örnek 3: en büyük sayı |
+| 9 | Örnek 4: 5'ten 20'ye 3'er 3'er; akış şeması istenir | alg-sayac-ornekleri › Örnek 4: 5'ten 20'ye 3'er 3'er |
+| 10 | Örnek 5: N'nin faktöriyeli; akış şeması istenir | alg-sayac-ornekleri › Örnek 5: faktöriyel |
+
+## Kaynak 5: 5. hafta çözümleri
+
+Dosya: `bp_5_hafta.pdf`, 4 sayfa, Word belgesi (yazar bilgisi "laboratuvar"). Kaynak 4'teki soruların hocanın çözümleri; ayrıca "SAYAÇ MANTIĞI" başlığıyla slaytta olmayan iki çözümlü soru (sayaçsız 5 kez merhaba, girilen 10 sayıyı yazma) ve bir soru daha (1'den 100'e) var. Akış şeması çizilmemiş. Sayfa sırası: Örnek 1 (KDV), Örnek 2 (denklem), Sayaç mantığı, 10 sayıyı yazma, Örnek 1–3 (toplam, çift kare, en büyük), 1'den 100'e, Örnek 4–5.
+
+| Sayfa | İçerik | Konu › Başlık |
+| --- | --- | --- |
+| 1 | Örnek 1 çözümü (KDV) | alg-kdv-denklem › Örnek 1: KDV ekleyerek fiyat; KDV'li fiyatın hesaplanması |
+| 1 | Örnek 2 çözümü (delta, kökler, "reel kök yoktur") | alg-kdv-denklem › Örnek 2: ikinci dereceden denklemin kökleri; Delta ve köklerin durumu; Kök formülünün yazımı; Adım 10 ve 11: Değilse hangi Eğer'e bağlı |
+| 1 | "SAYAÇ MANTIĞI": ekrana 5 kez merhaba, sayaçsız (5 ayrı YAZ) | alg-sayac › Sayaç mantığı: sayaçsız çözüm |
+| 2 | Soru: girilen 10 sayıyı ekrana yazma (çözümlü) | alg-sayac › Soru: girilen 10 sayıyı ekrana yazma |
+| 2 | Örnek 1 çözümü (toplam) | alg-sayac-ornekleri › Örnek 1: 10 sayının toplamı |
+| 2 | Örnek 2 çözümü (çift sayıların karesi) | alg-sayac-ornekleri › Örnek 2: çift sayıların karesi |
+| 3 | Örnek 3 çözümü (en büyük; `yenienbuyuk`) | alg-sayac-ornekleri › Örnek 3: en büyük sayı; Hocanın çözümündeki hata ve düzeltmesi |
+| 3 | Soru: 1'den 100'e kadar tam sayılar (çözümlü) | alg-sayac › Soru: 1'den 100'e kadar tam sayılar; Sayacın ilk değeri ve koşul |
+| 3 | Örnek 4 çözümü (3'er 3'er) | alg-sayac-ornekleri › Örnek 4: 5'ten 20'ye 3'er 3'er |
+| 3–4 | Örnek 5 çözümü (faktöriyel); "Örnek" sözcüğü 3. sayfada, numara ve soru 4. sayfada | alg-sayac-ornekleri › Örnek 5: faktöriyel |
+
 ## Kaynakta görülen sorunlar ve verilen karar
 
 | Yer | Sorun | Karar |
@@ -165,6 +199,23 @@ Dosya: `algoritma_ve_programlama_temelleri_4__hafta_2.pdf`, 13 slayt. Öğr. Gö
 | K3 slayt 10 | "Örnek6" | "Örnek 6" diye düzeltildi |
 | K3 slayt 11 | Aralıklar tam sayılarla verilmiş (89 ile 90 arası küsuratlı notlar tanımsız) | Tablo aynen verildi; sorular yalnızca tam sayı notlarla; "Ek" çözüm alt sınırları (>=) yokladığı için küsuratlı notları da kapsar |
 | K3 slayt 13 | Ekrana yazılacak mesajlar verilmemiş | "Ek" çözümde "Geçti" ve "Kaldı" kullanıldı ve mesajların slaytta olmadığı yazıldı |
+| K4 PDF bilgisi | Kapak yok; iç başlıkta "2021/2022 Bahar Yarıyılı"; dosya adının sonunda "_1" | Ders ağaçta Güz döneminde; içerik olduğu gibi işlendi. 🔶 Hamza'ya soruldu: eksik slayt (kapak, akış şeması sembolleri) var mı |
+| K5 genel | Çözümler ayrı bir Word belgesinde, yazarı "laboratuvar"; hocanın adı yok | Aynı soruların çözümü olduğu için hocanın çözümü sayıldı ("Hocanın çözümü"); 🔶 Hamza'ya soruldu |
+| K4 slayt 2, 9, 10 | Akış diyagramı/şeması isteniyor; ne slaytta ne çözüm belgesinde çizilmiş, semboller slaytlarda hiç anlatılmadı | ISO 5807 temel sembolleriyle "Ek" akış şemaları çizildi (denklem: düzeltilmiş hâl; Örnek 4 ve 5: hocanın çözümü); sembol şekli "Ek"; hocanın sembollerinin farklı olabileceği yazıldı; akış şemalarından soru yok. 🔶 Hamza'ya soruldu |
+| K4 slayt 1 | KDV oranı %18 | Hocanın oranı korundu (sorunun verisi); güncel oranla ilgili bir şey yazılmadı |
+| K5 s1 | Tırnaklar kıvrık (“ ”) | Düz çift tırnakla yazıldı (bütün çözümlerde) |
+| K5 s1 Örnek 2 | `delta^1/2` (hocanın işlem önceliğine göre delta/2, karekök değil) ve `/2*a` (2'ye böl, a ile çarp; 2a'ya bölme değil) | Hocanın yazımı aynen verildi; doğru yazım (`delta^(1/2)`, `/(2*a)`) ve iki yazımın farklı sonuçları "Dikkat" kutusunda; iki yazım C++'ta (1,-5,6) ve (2,4,2) ile denendi. Sorular yalnızca düzeltilmiş yazım ve işlem önceliği üzerinden; hocanın yazımı "doğru" diye sorulmaz |
+| K5 s1 Örnek 2 | 9. ve 10. adım ayrı "Eğer", 11. adımda tek "Değilse": delta>0 iken kökler yazıldıktan sonra "reel kök yoktur" da yazılır | Hocanın adımları aynen verildi; sorun "Dikkat" kutusunda (K1 slayt 44'teki suyun durumuyla aynı); iki düzeltme yolu ("değilse eğer" ya da `Eğer (delta<0)`) K3 slayt 3 kararıyla uyumlu olarak "Ek" kutusunda; C++'ta denendi. Düzeltme yollarından soru yok; sorun hakkında soru var (alg-kdv-denklem.s12) |
+| K5 s1 Örnek 2 | `X2` (büyük harf), aynı adımda `Yaz x1, x2` | `x2` yazıldı; büyük-küçük harf farkı "Dikkat" kutusunda |
+| K5 s1 Örnek 2 | Köşeli parantez işlem parantezi olarak; "x^2 li", "x li" | Köşeli parantez korundu, C++'ta işlem parantezi olmadığı "Dikkat" kutusunda; mesajlar aynen |
+| K5 s1–3 | "Yaz” biri sayı giriniz:”" (üç çözümde) | "bir sayı" diye düzeltildi |
+| K5 s1 Sayaç mantığı | Soru "Ekrana 5 kez merhaba yazan algoritmayı yazalım"; çözüm sayaçsız | "Sayaç mantığı: sayaçsız çözüm" başlığı; sayaçsız ve sayaçlı çözümün karşılaştırması "Ek" |
+| K4 slayt 5 | `Yaz: "Merhaba“` tırnağı karışık; 5. adımda `Sayac`, öbür adımlarda `SAYAC`; açıklamalar Her Kelimesi Büyük Harfle; "Hala", "Yukardan", "Arttırılır" | Tırnak düzeltildi; `SAYAC` diye birleştirildi ve "Dikkat" kutusunda söylendi; açıklamalar düz cümle olarak, "hâlâ", "yukarıdan", "artırılır" diye yazıldı |
+| K5 s2 Örnek 2 | Karenin iki yazımı: `sayi*sayi` ve `(yaz sayi^2)` | İkisi de verildi; C++'ta `^`'nin üs olmadığı "Dikkat" kutusunda (K2 ile aynı) |
+| K5 s3 Örnek 3 | 8. adım büyük sayıyı `yenienbuyuk`'a yazıyor, `enbuyuk` hiç güncellenmiyor: sonuç ilk sayıdan büyük olan son sayı olur; ilk sayı en büyükse `yenienbuyuk` hiç atanmaz | Hocanın çözümü aynen verildi; hata, örnekleri ve düzeltmesi (`enbuyuk=sayi2`, `yaz enbuyuk`) ayrı başlıkta ve şekilde; iki hâl C++'ta beş girişle denendi. Sorular hatanın sonucu ve düzeltmesi üzerinden |
+| K5 s3 | "tamsayıları sayıları"; "1 den 100 e" | "1'den 100'e kadar olan tam sayıları" diye yazıldı |
+| K5 s4 Örnek 5 | 7. adımda "ise" eksik ("eğer sayac<=sayi 5. Adıma dön") | "ise" eklendi ve "Dikkat" kutusunda söylendi |
+| K5 s4 Örnek 5 | Faktöriyelin tanımı yok; 0 ve negatif giriş söylenmiyor | Tanım ve 0! = 1 "Ek" kutusunda; 0, 1, 3, 5, 10 için C++'ta denendi; negatif girişten soru yok |
 
 ## Slayt satırı olmayan başlıklar
 
@@ -173,3 +224,10 @@ Dosya: `algoritma_ve_programlama_temelleri_4__hafta_2.pdf`, 13 slayt. Öğr. Gö
 | alg-algoritma › Çay yapma çözümü (Ek) | Slaytta çözüm yok; makarna algoritmasının kalıbıyla yazıldı |
 | alg-yazim › Örnek 2 çözümü (Ek), Örnek 3 çözümü (Ek) | Slaytta çözüm yok; Örnek 1'in kalıbıyla yazıldı |
 | alg-karar › C++ karşılığı (Ek) | Slaytta yok; hocanın çözümünün bu dersin dili C++'taki karşılığı, g++ ile derlenip üç girişle denendi |
+| alg-kdv-denklem › KDV'li fiyatın hesaplanması | K5 sayfa 1'deki çözümün 4. adımının açıklaması |
+| alg-kdv-denklem › C++ karşılığı: KDV (Ek), C++ karşılığı: denklemin kökleri (Ek) | Slaytta yok; hocanın çözümünün (denklemde düzeltilmiş hâlinin) C++ karşılığı, g++ ile denendi |
+| alg-kdv-denklem › Akış diyagramı: denklemin kökleri (Ek) | Hoca akış diyagramı istiyor ama çizmemiş; ISO 5807 sembolleriyle |
+| alg-sayac › Adım adım izleme: 5 defa merhaba (Ek) | Slayt 5'teki çözümün izleme tablosu |
+| alg-sayac › Sayacın ilk değeri ve koşul | Slayt 5 ile K5'teki iki sorunun karşılaştırması |
+| alg-sayac › C++ karşılığı: for döngüsü (Ek) | Slayt 4'teki "for döngülerinde sıklıkla kullanılır" ifadesinin örneği, g++ ile denendi |
+| alg-sayac-ornekleri › Akış şeması: 3'er 3'er sayılar (Ek), Akış şeması: faktöriyel (Ek) | Hoca akış şeması istiyor ama çizmemiş; ISO 5807 sembolleriyle |

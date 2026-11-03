@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="236" viewBox="0 0 400 236" role="img">
+<title>Akış şemasının temel sembolleri</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="30.0" y="14.0" width="96" height="32" rx="16" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="78.0" y="35.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">Başla</text>
+<text x="160.0" y="28.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13.5" fill="#1A202C" font-weight="600" text-anchor="start">Başla / Bitir</text>
+<text x="160.0" y="45.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">algoritmanın başı ve sonu</text>
+<polygon points="31.0,70.0 149.0,70.0 125.0,102.0 7.0,102.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="78.0" y="91.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">Oku sayi</text>
+<text x="160.0" y="84.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13.5" fill="#1A202C" font-weight="600" text-anchor="start">Giriş / çıkış</text>
+<text x="160.0" y="101.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">Oku ve Yaz adımları</text>
+<rect x="19.0" y="126.0" width="118" height="32" rx="3" fill="#F7FAFC" stroke="#4A5568" stroke-width="1.6"/>
+<text x="78.0" y="147.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">toplam=0</text>
+<text x="160.0" y="140.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13.5" fill="#1A202C" font-weight="600" text-anchor="start">İşlem</text>
+<text x="160.0" y="157.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">atama ve hesaplama</text>
+<polygon points="78.0,175.0 143.0,198.0 78.0,221.0 13.0,198.0" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="78.0" y="203.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="middle">sayac&lt;10</text>
+<text x="160.0" y="196.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13.5" fill="#1A202C" font-weight="600" text-anchor="start">Karar</text>
+<text x="160.0" y="213.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">koşul; doğru ve yanlış iki çıkış</text>
+</svg>

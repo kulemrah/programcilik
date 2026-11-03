@@ -1,0 +1,250 @@
+{
+  "id": "alg-sayac-ornekleri",
+  "baslik": "Sayaçlı Döngü Örnekleri",
+  "kaynak": "algoritma_ve_programlama_temelleri_5_hafta_1.pdf, slayt 6–10; bp_5_hafta.pdf, sayfa 2–4",
+  "kavramlar": [
+    {
+      "terim": "Toplam değişkeni (Örnek 1)",
+      "izah": "Hocanın çözümünde toplam=toplam+sayi ile okunan sayılar biriktirilir; ilk değeri 0'dır. Sayaç ise her turda 1 artar.",
+      "yer": "Örnek 1: 10 sayının toplamı"
+    },
+    {
+      "terim": "Faktöriyel (Örnek 5)",
+      "izah": "Slaytta tanımı yok: 1'den sayıya kadar olan tam sayıların çarpımı (4! = 24). Hocanın çözümünde fakto=fakto*sayac ile bulunur; fakto'nun ilk değeri 1'dir.",
+      "yer": "Örnek 5: faktöriyel"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-sayac-ornekleri.s1",
+      "tip": "izleme",
+      "yer": "Örnek 1: 10 sayının toplamı",
+      "soru": "Hocanın aşağıdaki algoritmasına on kez 5 girilirse ekrana yazılan toplam kaç olur?",
+      "kod": "1. Başla\n2. sayac=0, toplam=0\n3. Yaz \"bir sayı giriniz:\"\n4. Oku sayi\n5. toplam=toplam+sayi\n6. sayac=sayac+1\n7. eğer sayac<10 ise 3.adıma dön\n8. yaz \"girilen sayıların toplamı:\" toplam\n9. bitir.",
+      "secenekler": [
+        "50",
+        "5",
+        "10",
+        "55"
+      ],
+      "dogru": 0,
+      "izah": "Her turda toplam 5 artar ve döngü 10 kez döner: 10·5 = 50. 10 yalnızca okunan sayı adedidir (sayac)."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s2",
+      "tip": "secme",
+      "yer": "Örnek 1: 10 sayının toplamı",
+      "soru": "Hocanın Örnek 1 çözümünde toplam ekrana hangi adımda ve kaç kez yazılır?",
+      "secenekler": [
+        "Döngü bittikten sonra 8. adımda bir kez",
+        "Her turda 5. adımda toplam güncellenince",
+        "Her turda 7. adımdaki koşuldan hemen önce",
+        "Döngü başlamadan önce 2. adımda bir kez"
+      ],
+      "dogru": 0,
+      "izah": "Döngü 3. ile 7. adımlar arasındadır; 8. adım döngünün dışındadır ve sayac 10 olduktan sonra bir kez çalışır. 5. adımda toplam ekrana yazılmaz, yalnızca güncellenir."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s3",
+      "tip": "dy",
+      "yer": "Örnek 1: 10 sayının toplamı",
+      "ifade": "Hocanın Örnek 1 çözümünde `sayac` değişkeni her turda okunan sayı kadar artar.",
+      "dogru": false,
+      "izah": "Okunan sayı kadar artan `toplam`'dır (`toplam=toplam+sayi`). `sayac` her turda 1 artar (`sayac=sayac+1`) ve okunan sayı adedini sayar."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s4",
+      "tip": "secme",
+      "yer": "Örnek 2: çift sayıların karesi",
+      "soru": "Hocanın Örnek 2 çözümünde sayının çift olduğu hangi koşulla yoklanır?",
+      "secenekler": [
+        "`sayi%2==0`",
+        "`sayi/2==0`",
+        "`sayi%2==1`",
+        "`sayi*2==0`"
+      ],
+      "dogru": 0,
+      "izah": "Çift sayının 2'ye bölümünden kalan 0'dır; kalanı mod alma (`%`) verir. `sayi%2==1` tek sayıları yoklar; `/` bölümü verir, kalanı değil."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s5",
+      "tip": "izleme",
+      "yer": "Örnek 2: çift sayıların karesi",
+      "soru": "Hocanın aşağıdaki algoritmasına sırayla 3, 4, 7, 10, 1, 1, 1, 1, 1, 6 girilirse ekrana neler yazılır?",
+      "kod": "1. Başla\n2. Sayac=0\n3. Yaz \"bir sayı giriniz:\"\n4. Oku sayi\n5. Eğer sayi%2==0 ise yaz sayi*sayi\n6. Sayac=Sayac+1\n7. Eğer Sayac<10 ise 3. Adıma dön\n8. Bitir.",
+      "secenekler": [
+        "16 100 36",
+        "4 10 6",
+        "9 16 49 100 36",
+        "16 100"
+      ],
+      "dogru": 0,
+      "izah": "Yalnızca çift sayıların (4, 10, 6) karesi yazılır: 16, 100, 36. Tek sayılarda Eğer koşulu yanlış döner ve bir şey yazılmaz; sayaç yine artar ve onuncu sayı (6) da okunur."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s6",
+      "tip": "dy",
+      "yer": "Örnek 2: çift sayıların karesi",
+      "ifade": "Hocanın Örnek 2 çözümünde sayaç, girilen sayı tek de olsa çift de olsa her turda artar.",
+      "dogru": true,
+      "izah": "6. adım (`Sayac=Sayac+1`) Eğer'in içinde değildir; her turda çalışır. Sayaç çift sayıları değil okunan sayıları sayar, döngü 10 sayı okur."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s7",
+      "tip": "hesap",
+      "yer": "Hocanın çözümündeki hata ve düzeltmesi",
+      "soru": "Hocanın Örnek 3 çözümü yazıldığı gibi işletilir ve sırayla 3, 9, 2, 7, 1, 1, 1, 1, 1, 1 girilirse 11. adımda ekrana hangi sayı yazılır?",
+      "cevap": 7,
+      "izah": "8. adım büyük sayıyı `yenienbuyuk`'a yazar, `enbuyuk` hep ilk sayıda (3) kalır. 9 ve 7, 3'ten büyük olduğu için sırayla `yenienbuyuk`'a yazılır; son yazılan 7'dir. En büyük sayı 9 olduğu hâlde 7 yazılır."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s8",
+      "tip": "secme",
+      "yer": "Hocanın çözümündeki hata ve düzeltmesi",
+      "soru": "Hocanın Örnek 3 çözümünün en büyük sayıyı doğru bulması için (11. adım da `yaz enbuyuk` yapılarak) 8. adım nasıl yazılmalıdır?",
+      "secenekler": [
+        "`eğer sayi2>enbuyuk ise enbuyuk=sayi2`",
+        "`eğer sayi2<enbuyuk ise enbuyuk=sayi2`",
+        "`eğer sayi2>enbuyuk ise sayi2=enbuyuk`",
+        "`eğer sayi>enbuyuk ise yenienbuyuk=sayi`"
+      ],
+      "dogru": 0,
+      "izah": "Her yeni sayı o ana kadarki en büyükle karşılaştırılmalı ve daha büyükse **enbuyuk**'un yerine geçmelidir. `<` en küçüğü bulur; `sayi2=enbuyuk` atamanın yönü terstir."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s9",
+      "tip": "secme",
+      "yer": "Örnek 3: en büyük sayı",
+      "soru": "Hocanın Örnek 3 çözümünde `sayac` neden 1'den başlar?",
+      "secenekler": [
+        "İlk sayı döngüden önce okunduğu için",
+        "enbuyuk'un ilk değeri 1 olduğu için",
+        "Koşul `<=` ile yazıldığı için",
+        "Girilen sayılar 1'den büyük olduğu için"
+      ],
+      "dogru": 0,
+      "izah": "İlk sayı 3.–5. adımlarda döngüden önce okunur ve en büyük kabul edilir; bir sayı okunmuş olduğu için sayaç 1'den başlar. Döngü 9 sayı daha okur, toplam 10 olur. Koşul `sayac<10`'dur."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s10",
+      "tip": "secme",
+      "yer": "Örnek 4: 5'ten 20'ye 3'er 3'er",
+      "soru": "Hocanın Örnek 4 çözümü (`Sayac=5`, `Sayac=Sayac+3`, `Sayac<=20`) ekrana hangi sayıları yazar?",
+      "secenekler": [
+        "5 8 11 14 17 20",
+        "5 8 11 14 17",
+        "8 11 14 17 20",
+        "5 8 11 14 17 20 23"
+      ],
+      "dogru": 0,
+      "izah": "Önce 5 yazılır, sonra sayaç 3 artar. 20 yazıldıktan sonra sayaç 23 olur ve `23<=20` yanlış döner. Koşul `<=` olduğu için 20 de yazılır; 23 yazılmaz."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s11",
+      "tip": "hesap",
+      "yer": "Örnek 4: 5'ten 20'ye 3'er 3'er",
+      "soru": "Hocanın Örnek 4 çözümü bittiğinde Sayac değişkeninin değeri kaçtır?",
+      "cevap": 23,
+      "izah": "Sayaç 5, 8, 11, 14, 17, 20 değerlerini alır ve her biri yazılır; 20'den sonra 23 olur, `23<=20` yanlış döner ve algoritma biter."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s12",
+      "tip": "hesap",
+      "yer": "Örnek 5: faktöriyel",
+      "soru": "Hocanın Örnek 5 (faktöriyel) çözümüne sayı olarak 5 girilirse ekrana kaç yazılır?",
+      "cevap": 120,
+      "izah": "fakto sırayla 1·1 = 1, ·2 = 2, ·3 = 6, ·4 = 24, ·5 = 120 olur; sayac 6 olunca `6<=5` yanlış döner ve 120 yazılır."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s13",
+      "tip": "secme",
+      "yer": "Örnek 5: faktöriyel",
+      "soru": "Hocanın Örnek 5 çözümünde `fakto` değişkeninin ilk değeri neden 1'dir?",
+      "secenekler": [
+        "Değerler çarpılarak biriktirilir; 0 ile başlansa sonuç hep 0 olurdu",
+        "Değerler toplanarak biriktirilir; 1 ile başlansa sonuç 1 eksik olurdu",
+        "Sayaç 1'den başladığı için iki değişkenin ilk değeri aynı olmalıdır",
+        "Faktöriyel yalnızca 1'den büyük sayılar için hesaplanabilir"
+      ],
+      "dogru": 0,
+      "izah": "5. adım `fakto=fakto*sayac` bir çarpmadır; 0 ile çarpılan her şey 0 olur. Toplamada ilk değer 0 verilir (Örnek 1); çarpmada 1."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s14",
+      "tip": "hesap",
+      "yer": "Örnek 5: faktöriyel",
+      "soru": "Hocanın Örnek 5 çözümünde 7. adım `eğer sayac<sayi ise 5. Adıma dön` diye yazılsaydı, 4 girilince ekrana kaç yazılırdı?",
+      "cevap": 6,
+      "izah": "`<` eşitliği kapsamaz: fakto 1·1 = 1, ·2 = 2, ·3 = 6 olur; sayac 4 olunca `4<4` yanlış döner ve 4 ile çarpılmadan 6 yazılır. Doğrusu `<=` ile 24'tür."
+    },
+    {
+      "id": "alg-sayac-ornekleri.s15",
+      "tip": "esles",
+      "yer": "Örnek 1: 10 sayının toplamı",
+      "soru": "Hocanın örneklerindeki değişkenleri gördükleri işle eşleştirin.",
+      "ciftler": [
+        [
+          "`toplam` (Örnek 1)",
+          "Okunan sayıları toplayarak biriktirir"
+        ],
+        [
+          "`fakto` (Örnek 5)",
+          "Sayıları çarparak biriktirir"
+        ],
+        [
+          "`enbuyuk` (Örnek 3)",
+          "İlk okunan sayıyı alır, sonrakilerle karşılaştırılır"
+        ],
+        [
+          "`sayac` (Örnek 1)",
+          "Okunan sayıların adedini sayar"
+        ]
+      ],
+      "izah": "`toplam=toplam+sayi` toplar, `fakto=fakto*sayac` çarpar, `sayac=sayac+1` adet sayar. `enbuyuk` 5. adımda ilk sayıyı alır ve 8. adımda karşılaştırılır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-sayac-ornekleri.k1",
+      "yer": "Örnek 1: 10 sayının toplamı",
+      "on": "Hocanın Örnek 1'i: girilen 10 sayının toplamını yazan algoritmayı anlatın.",
+      "arka": "1. Başla\n2. sayac=0, toplam=0\n3. Yaz \"bir sayı giriniz:\"\n4. Oku sayi\n5. toplam=toplam+sayi\n6. sayac=sayac+1\n7. eğer sayac<10 ise 3.adıma dön\n8. yaz \"girilen sayıların toplamı:\" toplam\n9. bitir."
+    },
+    {
+      "id": "alg-sayac-ornekleri.k2",
+      "yer": "Örnek 1: 10 sayının toplamı",
+      "on": "Örnek 1'de `sayac` ile `toplam`'ın farkı nedir? İlk değerleri neden 0?",
+      "arka": "sayac her turda 1 artar, okunan sayı adedini sayar. toplam her turda okunan sayı kadar artar, sayıları biriktirir.\nİkisinin de ilk değeri 0: toplam 0 olmalı ki ilk sayı eklenince toplam o sayıya eşit olsun.\nToplam döngü bittikten sonra bir kez yazılır."
+    },
+    {
+      "id": "alg-sayac-ornekleri.k3",
+      "yer": "Örnek 2: çift sayıların karesi",
+      "on": "Hocanın Örnek 2'si (çift sayıların karesi) nasıl çalışır?",
+      "arka": "Her turda sayı okunur; Eğer sayi%2==0 ise sayi*sayi yazılır (tek sayıda bir şey yazılmaz).\nSayaç Eğer'in dışındadır, her turda artar: döngü 10 sayı okur.\nHoca kareyi sayi^2 diye de yazıyor; C++'ta ^ üs değildir."
+    },
+    {
+      "id": "alg-sayac-ornekleri.k4",
+      "yer": "Hocanın çözümündeki hata ve düzeltmesi",
+      "on": "Hocanın Örnek 3 (en büyük sayı) çözümünde ne hata var? Nasıl düzeltilir?",
+      "arka": "8. adım büyük sayıyı yenienbuyuk'a yazıyor; enbuyuk hep ilk sayıda kalır. Sonuç ilk sayıdan büyük olan son sayıdır (3, 9, 2, 7, ... → 7); ilk sayı en büyükse yenienbuyuk'a hiç değer atanmaz.\nDüzeltme: eğer sayi2>enbuyuk ise enbuyuk=sayi2; 11. adımda yaz enbuyuk."
+    },
+    {
+      "id": "alg-sayac-ornekleri.k5",
+      "yer": "Örnek 4: 5'ten 20'ye 3'er 3'er",
+      "on": "Hocanın Örnek 4'ü: 5'ten 20'ye 3'er 3'er sayıları yazan algoritma ve çıktısı.",
+      "arka": "Sayac=5; Yaz Sayac; Sayac=Sayac+3; Eğer Sayac<=20 ise 3. Adıma dön; Bitir.\nEkrana: 5 8 11 14 17 20. Bitince Sayac 23.\nSayaç 3 artar; <= olduğu için 20 de yazılır."
+    },
+    {
+      "id": "alg-sayac-ornekleri.k6",
+      "yer": "Örnek 5: faktöriyel",
+      "on": "Hocanın Örnek 5'i: girilen sayının faktöriyelini hesaplayan algoritmayı anlatın.",
+      "arka": "Yaz \"bir sayı giriniz:\"; Oku sayi; sayac=1, fakto=1; fakto=fakto*sayac; sayac=sayac+1; eğer sayac<=sayi ise 5. Adıma dön; yaz fakto.\nfakto'nun ilk değeri 1'dir (çarpma). Koşul <=: sayı ile de çarpılır. 5 → 120."
+    },
+    {
+      "id": "alg-sayac-ornekleri.k7",
+      "yer": "Akış şeması: 3'er 3'er sayılar (Ek)",
+      "on": "Sayaçlı bir döngü akış şemasında nasıl gösterilir?",
+      "arka": "Slaytlarda akış şeması çizilmedi; hoca Örnek 4 ve 5'te çizilmesini istiyor.\nEk: Karar sembolündeki koşulun doğru çıkışından tekrar edilecek adıma geri giden bir ok çizilir (\"3. Adıma dön\"); yanlış çıkışı sonraki adıma (Bitir ya da Yaz) gider. İlk değer verme döngünün dışında, geri dönüş okunun üstünde kalır."
+    }
+  ]
+}

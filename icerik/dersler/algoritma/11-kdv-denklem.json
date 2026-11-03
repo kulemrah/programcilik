@@ -1,0 +1,201 @@
+{
+  "id": "alg-kdv-denklem",
+  "baslik": "Algoritma Örnekleri: KDV ve Denklem Kökleri",
+  "kaynak": "algoritma_ve_programlama_temelleri_5_hafta_1.pdf, slayt 1–2; bp_5_hafta.pdf, sayfa 1",
+  "kavramlar": [
+    {
+      "terim": "KDV'li fiyat (Örnek 1)",
+      "izah": "Hocanın çözümünde yeni_fiyat=fiyat+((fiyat*18)/100): fiyatın %18'i (KDV tutarı) bulunur ve fiyata eklenir.",
+      "yer": "KDV'li fiyatın hesaplanması"
+    },
+    {
+      "terim": "Delta (Örnek 2)",
+      "izah": "Hocanın çözümünde delta=(b^2)-(4*a*c). Amaçlanan: delta>0 ise iki kök hesaplanır, delta==0 ise iki kök aynı değerdir, sıfırdan küçükse \"reel kök yoktur\" yazılır.",
+      "yer": "Delta ve köklerin durumu"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-kdv-denklem.s1",
+      "tip": "hesap",
+      "yer": "KDV'li fiyatın hesaplanması",
+      "soru": "Hocanın Örnek 1 çözümüne fiyat olarak 200 girilirse ekrana yazılan `yeni_fiyat` kaç olur?",
+      "cevap": 236,
+      "izah": "KDV tutarı (200*18)/100 = 36'dır; yeni_fiyat = 200+36 = 236."
+    },
+    {
+      "id": "alg-kdv-denklem.s2",
+      "tip": "secme",
+      "yer": "KDV'li fiyatın hesaplanması",
+      "soru": "Hocanın Örnek 1 çözümündeki 4. adımda `(fiyat*18)/100` kısmı neyi hesaplar?",
+      "secenekler": [
+        "Fiyatın %18'ini, yani KDV tutarını",
+        "KDV eklenmiş yeni fiyatın tamamını",
+        "Fiyatın 18'e bölümünden kalan değeri",
+        "Fiyatın 100'e bölümünü, yani yüzde birini"
+      ],
+      "dogru": 0,
+      "izah": "Fiyat 18 ile çarpılıp 100'e bölünür: bu, fiyatın %18'idir (KDV tutarı). KDV'li fiyat, bu tutar fiyata eklenince bulunur; bölümden kalan ise mod alma (`%`) işleciyle bulunurdu."
+    },
+    {
+      "id": "alg-kdv-denklem.s3",
+      "tip": "dy",
+      "yer": "KDV'li fiyatın hesaplanması",
+      "ifade": "Örnek 1'deki \"KDV (%18)\" ifadesindeki yüzde, algoritmada mod alma işleci `%` ile hesaplanır.",
+      "dogru": false,
+      "izah": "%18 \"yüzde on sekiz\" demektir; hoca bunu `(fiyat*18)/100` ile hesaplar. `%` işleci mod almadır, bölümden kalanı verir."
+    },
+    {
+      "id": "alg-kdv-denklem.s4",
+      "tip": "izleme",
+      "yer": "Örnek 1: KDV ekleyerek fiyat",
+      "soru": "Hocanın Örnek 1 çözümüne fiyat olarak 50 girilirse ekrana hangi değer yazılır?",
+      "kod": "1. Başla\n2. Yaz \"fiyatı giriniz:\"\n3. Oku fiyat\n4. yeni_fiyat=fiyat+((fiyat*18)/100)\n5. yaz yeni_fiyat\n6. bitir.",
+      "secenekler": [
+        "59",
+        "68",
+        "50",
+        "9"
+      ],
+      "dogru": 0,
+      "izah": "(50*18)/100 = 9 KDV tutarıdır; yeni_fiyat = 50+9 = 59. 9 yalnızca KDV tutarıdır, 50 ise fiyatın KDV'siz hâlidir."
+    },
+    {
+      "id": "alg-kdv-denklem.s5",
+      "tip": "bosluk",
+      "yer": "Örnek 1: KDV ekleyerek fiyat",
+      "metin": "Hocanın Örnek 1 çözümünde KDV'li fiyat `yeni_fiyat=fiyat+((fiyat*___)/100)` diye hesaplanır.",
+      "cevaplar": [
+        [
+          "18"
+        ]
+      ],
+      "izah": "KDV oranı %18'dir: fiyat 18 ile çarpılıp 100'e bölünür."
+    },
+    {
+      "id": "alg-kdv-denklem.s6",
+      "tip": "secme",
+      "yer": "Örnek 2: ikinci dereceden denklemin kökleri",
+      "soru": "Hocanın Örnek 2 çözümünde delta hangi ifadeyle hesaplanır?",
+      "secenekler": [
+        "`delta=(b^2)-(4*a*c)`",
+        "`delta=(b^2)+(4*a*c)`",
+        "`delta=(b*2)-(4*a*c)`",
+        "`delta=(a^2)-(4*b*c)`"
+      ],
+      "dogru": 0,
+      "izah": "8. adımda `delta=(b^2)-(4*a*c)` yazılır: b'nin karesinden 4·a·c çıkarılır. `b*2` kare değil, 2 ile çarpmadır."
+    },
+    {
+      "id": "alg-kdv-denklem.s7",
+      "tip": "esles",
+      "yer": "Delta ve köklerin durumu",
+      "soru": "Hocanın Örnek 2 çözümünde delta'nın durumunu, yazılması amaçlanan sonuçla eşleştirin.",
+      "ciftler": [
+        [
+          "`delta>0`",
+          "x1 ve x2 iki kök olarak yazılır"
+        ],
+        [
+          "`delta==0`",
+          "x1 ve x2 aynı değer olarak yazılır"
+        ],
+        [
+          "Sıfırdan küçük (11. adım)",
+          "\"reel kök yoktur\" yazılır"
+        ]
+      ],
+      "izah": "9. adım delta>0, 10. adım delta==0 durumudur; 11. adımda (Değilse) \"reel kök yoktur\" yazılması amaçlanır. Hocanın yazdığı hâliyle bu Değilse delta>0 iken de çalışır (\"Adım 10 ve 11\" başlığı)."
+    },
+    {
+      "id": "alg-kdv-denklem.s8",
+      "tip": "hesap",
+      "yer": "Delta ve köklerin durumu",
+      "soru": "Örnek 2'deki algoritmaya a=1, b=-5, c=6 girilirse 8. adımda delta kaç olur?",
+      "cevap": 1,
+      "izah": "delta = (b^2)-(4*a*c) = (-5)^2 - 4·1·6 = 25-24 = 1."
+    },
+    {
+      "id": "alg-kdv-denklem.s9",
+      "tip": "hesap",
+      "yer": "Delta ve köklerin durumu",
+      "soru": "Örnek 2'deki algoritmaya a=2, b=4, c=2 girilirse 8. adımda delta kaç olur?",
+      "cevap": 0,
+      "izah": "delta = 4^2 - 4·2·2 = 16-16 = 0. Bu durumda 10. adımdaki `delta==0` kısmı çalışır."
+    },
+    {
+      "id": "alg-kdv-denklem.s10",
+      "tip": "secme",
+      "yer": "Kök formülünün yazımı",
+      "soru": "Hocanın işlem önceliği kuralı uygulanırsa (parantez, üs, çarpma ve bölme, toplama ve çıkarma) `delta^1/2` neyi verir?",
+      "secenekler": [
+        "delta'nın yarısını",
+        "delta'nın karekökünü",
+        "delta'nın karesinin yarısını",
+        "delta'nın 2 ile çarpımını"
+      ],
+      "dogru": 0,
+      "izah": "Üs alma bölmeden önce yapılır: önce `delta^1` (yani delta), sonra 2'ye bölme. Sonuç delta'nın yarısıdır. Karekök için üs parantez içine alınır: `delta^(1/2)`."
+    },
+    {
+      "id": "alg-kdv-denklem.s11",
+      "tip": "secme",
+      "yer": "Kök formülünün yazımı",
+      "soru": "Kök formülünde bir ifadeyi **2a'ya bölmek** için hangi yazım doğrudur?",
+      "secenekler": [
+        "`/(2*a)`",
+        "`/2*a`",
+        "`*2/a`",
+        "`/2+a`"
+      ],
+      "dogru": 0,
+      "izah": "Çarpma ve bölme aynı önceliktedir ve soldan sağa yapılır: `/2*a` önce 2'ye böler, sonra a ile çarpar. 2a'ya bölmek için parantez gerekir: `/(2*a)`."
+    },
+    {
+      "id": "alg-kdv-denklem.s12",
+      "tip": "dy",
+      "yer": "Adım 10 ve 11: Değilse hangi Eğer'e bağlı",
+      "ifade": "Hocanın Örnek 2 çözümü yazıldığı gibi işletilirse, delta sıfırdan büyükken kökler yazıldıktan sonra ekrana \"reel kök yoktur\" da yazılır.",
+      "dogru": true,
+      "izah": "9. ve 10. adım ayrı iki Eğer'dir; 11. adımdaki Değilse yalnızca 10. adıma (delta==0) bağlıdır. Delta>0 iken bu koşul yanlış döner ve Değilse kısmı da çalışır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-kdv-denklem.k1",
+      "yer": "Örnek 1: KDV ekleyerek fiyat",
+      "on": "Hocanın Örnek 1'i: klavyeden girilen fiyata %18 KDV ekleyip yazan algoritmayı anlatın.",
+      "arka": "1. Başla\n2. Yaz \"fiyatı giriniz:\"\n3. Oku fiyat\n4. yeni_fiyat=fiyat+((fiyat*18)/100)\n5. yaz yeni_fiyat\n6. bitir.\nEk: 100 girilirse 118."
+    },
+    {
+      "id": "alg-kdv-denklem.k2",
+      "yer": "KDV'li fiyatın hesaplanması",
+      "on": "KDV'li fiyat nasıl hesaplanır? Sorudaki %18 ile algoritmadaki `%` işleci aynı şey mi?",
+      "arka": "(fiyat*18)/100 KDV tutarıdır; fiyata eklenince KDV'li fiyat bulunur.\nHayır: %18 yüzde on sekizdir; `%` işleci mod almadır (bölümden kalan)."
+    },
+    {
+      "id": "alg-kdv-denklem.k3",
+      "yer": "Delta ve köklerin durumu",
+      "on": "Hocanın Örnek 2'si (ikinci dereceden denklemin kökleri): algoritma köklerin durumunu nasıl ayırır?",
+      "arka": "a, b, c okunur; delta=(b^2)-(4*a*c) hesaplanır.\ndelta>0: x1 ve x2 hesaplanıp yazılır.\ndelta==0: x1 ve x2 aynı değerdir, yazılır.\nDeğilse (amaçlanan: delta sıfırdan küçük): \"reel kök yoktur\" yazılır."
+    },
+    {
+      "id": "alg-kdv-denklem.k4",
+      "yer": "Kök formülünün yazımı",
+      "on": "Hocanın kök formülündeki `delta^1/2` ve `/2*a` yazımları işlem önceliğine göre ne verir? Doğrusu nedir?",
+      "arka": "`delta^1/2`: önce üs, sonra bölme → delta'nın yarısı. Karekök için `delta^(1/2)`.\n`/2*a`: soldan sağa → 2'ye böl, a ile çarp. 2a'ya bölmek için `/(2*a)`."
+    },
+    {
+      "id": "alg-kdv-denklem.k5",
+      "yer": "Adım 10 ve 11: Değilse hangi Eğer'e bağlı",
+      "on": "Örnek 2'de 10. adım ayrı bir Eğer olarak yazılınca ne olur? Nasıl düzeltilir?",
+      "arka": "11. adımdaki Değilse yalnızca 10. adıma (delta==0) bağlanır: delta>0 iken kökler yazıldıktan sonra \"reel kök yoktur\" da yazılır.\nEk: İki düzeltme yolu var: 10. adımı `Değilse eğer (delta==0) ise ...` diye yazmak ya da 11. adımı `Eğer (delta<0) ise yaz \"reel kök yoktur\"` yapmak. Hocanın hangisini beklediği kaynakta yazmıyor."
+    },
+    {
+      "id": "alg-kdv-denklem.k6",
+      "yer": "Akış diyagramı: denklemin kökleri (Ek)",
+      "on": "Akış diyagramının (akış şemasının) temel sembolleri nelerdir?",
+      "arka": "Slaytlarda semboller anlatılmadı; hoca akış diyagramı çizilmesini istiyor.\nEk: ISO 5807'ye göre Başla/Bitir yuvarlak uçlu kutu, Oku/Yaz paralelkenar, işlem (atama, hesap) dikdörtgen, karar (koşul) eşkenar dörtgen; kararın doğru ve yanlış iki çıkışı vardır."
+    }
+  ]
+}
