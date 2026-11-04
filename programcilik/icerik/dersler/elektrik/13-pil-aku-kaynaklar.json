@@ -1,0 +1,246 @@
+{
+  "id": "el-pil-aku",
+  "baslik": "Pil, Akü ve Kaynakların Bağlanması",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 108–112",
+  "kavramlar": [
+    {
+      "terim": "Amper-saat (Ah)",
+      "izah": "Bir pil veya akümülatörün belirli bir miktardaki akımı, sistemdeki yüke kaç saat boyunca sağlayabileceğini belirler. Hocanın örneği: 80 Ah'lik akü 1 A çeken yükü 80 saat, 4 A çeken yükü 20 saat, 8 A çeken yükü 10 saat besler.",
+      "yer": "Pil ve akümülatörde amper-saat oranı"
+    },
+    {
+      "terim": "DC kaynakların seri bağlanması",
+      "izah": "Daha fazla gerilim verebilen bir kaynak elde etmek için kaynakların, birinin (−) ucu diğerinin (+) ucuna gelecek şekilde arka arkaya bağlanması. Eeş = E₁ + E₂ + E₃.",
+      "yer": "Doğru gerilim (DC) kaynaklarının seri bağlanması"
+    },
+    {
+      "terim": "Seri bağlantıda aynı işaretli uçlar",
+      "izah": "Hoca bu duruma ad vermez; NOT olarak anlatır. Seri bağlantıda kaynakların (−) ucu (−) ucuna veya (+) ucu (+) ucuna gelecek şekilde bağlanması; iki güç kaynağının gerilim değerlerinin farkı alınır.",
+      "yer": "Seri bağlantıda aynı işaretli uçların birleşmesi"
+    },
+    {
+      "terim": "DC kaynakların paralel bağlanması",
+      "izah": "Daha fazla akım verebilen bir kaynak elde etmek için yapılan bağlantı. Şartları: tüm kaynakların elektromotor kuvveti (EMK) ve iç dirençleri eşit olmalıdır. Eeş = E₁ = E₂ = E₃, Ieş = I₁ + I₂ + I₃.",
+      "yer": "Doğru gerilim (DC) kaynaklarının paralel bağlanması"
+    },
+    {
+      "terim": "İç direnç (Ri)",
+      "izah": "Slaytta tanımı yok; paralel bağlantının ikinci şartında geçer (tüm kaynakların iç dirençleri eşit olmalıdır). Şekilde her kaynağın koluna seri çizilir: Ri₁, Ri₂, Ri₃; eşdeğeri 1 / Rieş = 1 / Ri₁ + 1 / Ri₂ + 1 / Ri₃.",
+      "yer": "Paralel bağlantının formülleri"
+    },
+    {
+      "terim": "Eşdeğer kaynak (Eeş)",
+      "izah": "Slaytta tanımı yok; şekillerde '≡' işaretinin sağında çizilen tek kaynaktır. Seride Eeş = E₁ + E₂ + E₃, paralelde Eeş = E₁ = E₂ = E₃.",
+      "yer": "Kaynakların seri ve paralel bağlanmasının karşılaştırması"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-pil-aku.s1",
+      "tip": "secme",
+      "yer": "Pil ve akümülatörde amper-saat oranı",
+      "soru": "Hocanın tanımına göre **amper-saat** neyi belirler?",
+      "secenekler": [
+        "Pil ya da akünün belli bir akımı yüke kaç saat sağlayabileceğini",
+        "Pil ya da akünün uçları arasında kaç volt gerilim oluşturduğunu",
+        "Pil ya da akünün kendi içindeki direncin kaç ohm olduğunu",
+        "Pil ya da akünün bir saniyede kaç joule iş yapabildiğini"
+      ],
+      "dogru": 0,
+      "izah": "Amper-Saat: bir pil veya akümülatörün belirli bir miktardaki akımı, sistemdeki yüke kaç saat boyunca sağlayabileceğini belirler. Gerilim volt, iç direnç ohm ile verilir; amper-saat bir süreyi belirler."
+    },
+    {
+      "id": "el-pil-aku.s2",
+      "tip": "bosluk",
+      "yer": "Pil ve akümülatörde amper-saat oranı",
+      "metin": "Piller ve aküler ___ enerjiyi elektrik enerjisine dönüştürürler.",
+      "cevaplar": [
+        [
+          "kimyasal"
+        ]
+      ],
+      "izah": "Piller ve akülerin kimyasal enerjisi sınırlı olduğu için ürettikleri güç ancak belli bir süre yüke aktarılabilir."
+    },
+    {
+      "id": "el-pil-aku.s3",
+      "tip": "dy",
+      "yer": "Pil ve akümülatörde amper-saat oranı",
+      "ifade": "Piller ve akülerin kimyasal enerjisi sınırlı olduğu için ürettikleri güç ancak belli bir süre yüke aktarılabilir.",
+      "dogru": true,
+      "izah": "Slayttaki ilk maddenin ikinci cümlesidir. Bu yüzden pil ve aküler için amper-saat ile verilen bir tanım kullanılır."
+    },
+    {
+      "id": "el-pil-aku.s4",
+      "tip": "hesap",
+      "yer": "Örnek 1: 24 V'luk akü",
+      "soru": "Hocanın örneğindeki 24 V'luk akünün kapasitesi 80 Ah'dir. Bu akü **8 A** çeken bir yükü kaç saat besleyebilir?",
+      "cevap": 10,
+      "birim": "saat",
+      "izah": "Hocanın örneği: 80 Ah'lik akü 1 A çeken yükü 80 saat, 4 A çeken yükü 20 saat, 8 A çeken yükü 10 saat besler.\n80 / 8 = 10 saat. Akünün gerilimi (24 V) bu hesaba girmez."
+    },
+    {
+      "id": "el-pil-aku.s5",
+      "tip": "hesap",
+      "yer": "Örnek 2: 1,25 V'luk pil",
+      "soru": "Hocanın örneğindeki 1,25 V'luk pilin kapasitesi **2500 mAh**'dir. Bu pil **1 A** çeken bir yükü kaç saat besleyebilir?",
+      "cevap": 2.5,
+      "tolerans": 0.01,
+      "birim": "saat",
+      "izah": "Kapasite miliamper-saat ile verilmiştir: 2500 mAh = 2,5 Ah.\n2,5 / 1 = 2,5 saat (hocanın örneğindeki sonuç)."
+    },
+    {
+      "id": "el-pil-aku.s6",
+      "tip": "hesap",
+      "yer": "Örnek 1: 24 V'luk akü",
+      "soru": "Kapasitesi **45 Ah** olan 12 V'luk bir akü, **3 A** çeken bir yükü hocanın örneklerindeki gibi hesaplanırsa kaç saat besleyebilir?",
+      "cevap": 15,
+      "birim": "saat",
+      "izah": "Hocanın örneklerinde süre, kapasitenin yükün çektiği akıma bölünmesiyle çıkar (80 / 4 = 20 saat gibi).\n45 / 3 = 15 saat. Akünün gerilimi (12 V) hesaba girmez."
+    },
+    {
+      "id": "el-pil-aku.s7",
+      "tip": "esles",
+      "yer": "Kaynakların seri ve paralel bağlanmasının karşılaştırması",
+      "soru": "Kaynakların bağlanma şeklini amacı ya da eşdeğer kaynağıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Seri bağlantının amacı",
+          "Daha fazla gerilim verebilen bir kaynak"
+        ],
+        [
+          "Paralel bağlantının amacı",
+          "Daha fazla akım verebilen bir kaynak"
+        ],
+        [
+          "Seri bağlantıda eşdeğer kaynak",
+          "Eeş = E₁ + E₂ + E₃"
+        ],
+        [
+          "Paralel bağlantıda eşdeğer kaynak",
+          "Eeş = E₁ = E₂ = E₃"
+        ]
+      ],
+      "izah": "Seri bağlantıda amaç daha fazla gerilim, paralel bağlantıda daha fazla akım verebilen bir kaynak elde etmektir. Seride gerilimler toplanır; paralelde bütün kaynakların EMK'sı eşittir ve eşdeğer kaynağın EMK'sı da aynıdır."
+    },
+    {
+      "id": "el-pil-aku.s8",
+      "tip": "secme",
+      "yer": "Doğru gerilim (DC) kaynaklarının seri bağlanması",
+      "soru": "Seri bağlantının amacı olan **daha fazla gerilimi** elde etmek için doğru gerilim kaynakları nasıl bağlanır?",
+      "secenekler": [
+        "Birinin (−) ucu diğerinin (+) ucuna gelecek şekilde arka arkaya",
+        "Birinin (−) ucu diğerinin (−) ucuna gelecek şekilde arka arkaya",
+        "Birinin (+) ucu diğerinin (+) ucuna gelecek şekilde arka arkaya",
+        "Bütün (+) uçlar bir tele, bütün (−) uçlar öteki tele gelecek şekilde"
+      ],
+      "dogru": 0,
+      "izah": "Seri bağlantıda kaynaklar; birinin (−) ucu diğerinin (+) ucuna gelecek şekilde arka arkaya bağlanır. (−) ucun (−) uca ya da (+) ucun (+) uca gelmesi hocanın NOT'undaki durumdur; o zaman gerilimlerin farkı alınır, gerilim artmaz. (+) uçların bir tarafta, (−) uçların öbür tarafta birleşmesi paralel bağlantı şeklindeki düzendir."
+    },
+    {
+      "id": "el-pil-aku.s9",
+      "tip": "hesap",
+      "yer": "Doğru gerilim (DC) kaynaklarının seri bağlanması",
+      "soru": "E₁ = 12 V, E₂ = 6 V ve E₃ = 4,5 V'luk üç doğru gerilim kaynağı birinin (−) ucu diğerinin (+) ucuna gelecek şekilde **seri** bağlanmıştır. Eşdeğer kaynağın gerilimi (Eeş) kaç volttur?",
+      "cevap": 22.5,
+      "tolerans": 0.01,
+      "birim": "V",
+      "izah": "Eeş = E₁ + E₂ + E₃ = 12 + 6 + 4,5 = 22,5 V."
+    },
+    {
+      "id": "el-pil-aku.s10",
+      "tip": "hesap",
+      "yer": "Seri bağlantıda aynı işaretli uçların birleşmesi",
+      "soru": "24 V'luk ve 9 V'luk iki güç kaynağı, birinin (+) ucu diğerinin (+) ucuna gelecek şekilde arka arkaya bağlanmıştır. Hocanın NOT'una göre elde edilen gerilim kaç volttur?",
+      "cevap": 15,
+      "birim": "V",
+      "izah": "NOT: seri bağlantıda kaynaklar (−) ucu (−) ucuna veya (+) ucu (+) ucuna gelecek şekilde bağlanırsa iki güç kaynağının gerilim değerlerinin farkı alınır.\n24 − 9 = 15 V. (Doğru bağlansalardı 24 + 9 = 33 V olurdu.)"
+    },
+    {
+      "id": "el-pil-aku.s11",
+      "tip": "dy",
+      "yer": "Seri bağlantıda aynı işaretli uçların birleşmesi",
+      "ifade": "Seri bağlantıda iki kaynağın (−) uçları birbirine gelecek şekilde bağlanırsa iki kaynağın gerilim değerlerinin farkı alınır.",
+      "dogru": true,
+      "izah": "Hocanın NOT'u: kaynaklar birinin (−) ucu diğerinin (−) veya birinin (+) ucu diğerinin (+) ucuna gelecek şekilde arka arkaya bağlanırsa iki güç kaynağının gerilim değerlerinin farkı alınır."
+    },
+    {
+      "id": "el-pil-aku.s12",
+      "tip": "klasik",
+      "yer": "Doğru gerilim (DC) kaynaklarının paralel bağlanması",
+      "soru": "Doğru gerilim kaynaklarının **paralel** bağlanması için gerekli iki şartı yazın.",
+      "cevap": "1. Tüm kaynakların elektromotor kuvveti (emk) eşit olmalıdır.\n2. Tüm kaynakların iç dirençleri eşit olmalıdır.",
+      "anahtarlar": [
+        "emk",
+        "iç direnç",
+        "eşit"
+      ]
+    },
+    {
+      "id": "el-pil-aku.s13",
+      "tip": "dy",
+      "yer": "Doğru gerilim (DC) kaynaklarının paralel bağlanması",
+      "ifade": "Kaynakların paralel bağlanabilmesi için iç dirençlerinin birbirinden farklı olması gerekir.",
+      "dogru": false,
+      "izah": "Paralel bağlantının ikinci şartı: tüm kaynakların iç dirençleri **eşit** olmalıdır (Ri₁ = Ri₂ = Ri₃). Birinci şart da EMK'ların eşit olmasıdır."
+    },
+    {
+      "id": "el-pil-aku.s14",
+      "tip": "dy",
+      "yer": "Paralel bağlantının formülleri",
+      "ifade": "Paralel bağlanan kaynaklarda eşdeğer kaynağın EMK'sı, kaynakların EMK'larının toplamıdır (Eeş = E₁ + E₂ + E₃).",
+      "dogru": false,
+      "izah": "Paralel bağlantıda **Eeş = E₁ = E₂ = E₃**; toplanan akımlardır: Ieş = I₁ + I₂ + I₃. Eeş = E₁ + E₂ + E₃ seri bağlantının formülüdür."
+    },
+    {
+      "id": "el-pil-aku.s15",
+      "tip": "hesap",
+      "yer": "Paralel bağlantının formülleri",
+      "soru": "EMK'ları ve iç dirençleri eşit üç kaynak paralel bağlanmıştır; kaynakların her biri **4 A** akım vermektedir (I₁ = I₂ = I₃ = 4 A). Eşdeğer kaynağın verdiği akım (Ieş) kaç amperdir?",
+      "cevap": 12,
+      "birim": "A",
+      "izah": "Ieş = I₁ + I₂ + I₃ = 4 + 4 + 4 = 12 A. Paralel bağlantıda amaç daha fazla akım verebilen bir kaynak elde etmektir."
+    },
+    {
+      "id": "el-pil-aku.s16",
+      "tip": "hesap",
+      "yer": "Paralel bağlantının formülleri",
+      "soru": "İç dirençlerinin her biri **0,6 Ω** olan üç kaynak paralel bağlanmıştır (Ri₁ = Ri₂ = Ri₃ = 0,6 Ω). Eşdeğer iç direnç (Rieş) kaç ohmdur?",
+      "cevap": 0.2,
+      "tolerans": 0.001,
+      "birim": "Ω",
+      "izah": "1 / Rieş = 1 / Ri₁ + 1 / Ri₂ + 1 / Ri₃ = 1 / 0,6 + 1 / 0,6 + 1 / 0,6 = 3 / 0,6 = 5\nRieş = 1 / 5 = 0,2 Ω."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-pil-aku.k1",
+      "yer": "Pil ve akümülatörde amper-saat oranı",
+      "on": "Amper-saat nedir? Hocanın iki örneğini anlatın.",
+      "arka": "Amper-Saat: bir pil veya akümülatörün belirli bir miktardaki akımı, sistemdeki yüke kaç saat boyunca sağlayabileceğini belirler.\n- Örnek 1: 24 V'luk, 80 Ah'lik akü 1 A çeken yükü 80 saat, 4 A çeken yükü 20 saat, 8 A çeken yükü 10 saat besleyebilir.\n- Örnek 2: 1,25 V'luk, 2500 mAh'lik pil 1 A çeken yükü 2,5 saat besleyebilir.\nEk: süre = kapasite / akım; gerilim hesaba girmez."
+    },
+    {
+      "id": "el-pil-aku.k2",
+      "yer": "Pil ve akümülatörde amper-saat oranı",
+      "on": "Pil ve aküler için neden amper-saat ile verilen bir tanım kullanılır?",
+      "arka": "Piller ve aküler kimyasal enerjiyi elektrik enerjisine dönüştürürler. Kimyasal enerjileri sınırlı olduğu için ürettikleri güç ancak belli bir süre yüke aktarılabilir; bu süre amper-saat ile belirlenir."
+    },
+    {
+      "id": "el-pil-aku.k3",
+      "yer": "Doğru gerilim (DC) kaynaklarının seri bağlanması",
+      "on": "Doğru gerilim kaynaklarının seri bağlanmasını anlatın (amaç, bağlama şekli, formül, NOT).",
+      "arka": "- Amaç: daha fazla gerilim verebilen bir kaynak elde etmek.\n- Kaynaklar birinin (−) ucu diğerinin (+) ucuna gelecek şekilde arka arkaya bağlanır.\n- Eeş = E₁ + E₂ + E₃.\n- NOT: (−) uç (−) uca ya da (+) uç (+) uca gelirse iki güç kaynağının gerilim değerlerinin farkı alınır.\nEk: slayttaki fotoğrafta iki 24 V'luk akü seri bağlanarak 48 V elde edilmiş."
+    },
+    {
+      "id": "el-pil-aku.k4",
+      "yer": "Doğru gerilim (DC) kaynaklarının paralel bağlanması",
+      "on": "Doğru gerilim kaynaklarının paralel bağlanmasını anlatın (amaç, şartlar, formüller).",
+      "arka": "- Amaç: daha fazla akım verebilen bir kaynak elde etmek.\n- Şartlar: tüm kaynakların elektromotor kuvveti (emk) eşit olmalı; tüm kaynakların iç dirençleri eşit olmalı.\n- E₁ = E₂ = E₃, Ri₁ = Ri₂ = Ri₃\n- Eeş = E₁ = E₂ = E₃\n- Ieş = I₁ + I₂ + I₃\n- 1 / Rieş = 1 / Ri₁ + 1 / Ri₂ + 1 / Ri₃"
+    },
+    {
+      "id": "el-pil-aku.k5",
+      "yer": "Kaynakların seri ve paralel bağlanmasının karşılaştırması",
+      "on": "Kaynakların seri ve paralel bağlanması arasındaki farkları söyleyin.",
+      "arka": "- Amaç: seride daha fazla gerilim, paralelde daha fazla akım.\n- Eşdeğer kaynak: seride Eeş = E₁ + E₂ + E₃; paralelde Eeş = E₁ = E₂ = E₃.\n- Akım: paralelde Ieş = I₁ + I₂ + I₃.\n- Şart: paralel bağlantıda EMK'lar ve iç dirençler eşit olmalıdır.\n- Seride aynı işaretli uçlar birbirine gelirse gerilimlerin farkı alınır."
+    }
+  ]
+}

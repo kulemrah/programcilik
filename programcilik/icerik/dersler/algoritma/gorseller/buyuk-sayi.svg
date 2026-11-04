@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="352" viewBox="0 0 400 352" role="img">
+<title>Hocanın örneği üç farklı girişle</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="8" y="8" width="384" height="104" rx="10" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="22.0" y="28.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">1.Başla</text>
+<text x="22.0" y="47.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">2.Oku : A, B</text>
+<text x="22.0" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">3.</text>
+<text x="37.6" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="start">EĞER</text>
+<text x="68.8" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start"> </text>
+<text x="76.6" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">A&gt;B</text>
+<text x="100.0" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start"> </text>
+<text x="107.8" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="start">İSE</text>
+<text x="131.2" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">  </text>
+<text x="146.8" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">Yaz: A</text>
+<text x="22.0" y="85.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">  </text>
+<text x="37.6" y="85.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="start">DEĞİL İSE</text>
+<text x="107.8" y="85.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">  </text>
+<text x="123.4" y="85.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">Yaz: B</text>
+<text x="22.0" y="104.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">4.Bitir.</text>
+<text x="16.0" y="138.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" font-weight="600" text-anchor="start">A, B</text>
+<text x="112.0" y="138.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" font-weight="600" text-anchor="start">A&gt;B</text>
+<text x="186.0" y="138.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" font-weight="600" text-anchor="start">gerçekleşen kısım</text>
+<text x="362.0" y="138.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" font-weight="600" text-anchor="middle">ekran</text>
+<rect x="6" y="150" width="388" height="56" rx="8" fill="#F7FAFC"/>
+<text x="16.0" y="184.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" font-weight="600" text-anchor="start">8, 3</text>
+<text x="112.0" y="174.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">8&gt;3</text>
+<text x="112.0" y="192.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2F855A" font-weight="600" text-anchor="start">doğru</text>
+<rect x="184" y="158" width="140" height="40" rx="8" fill="#FFF4E5" stroke="#C05621" stroke-width="1.6"/>
+<text x="254.0" y="175.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#C05621" font-weight="600" text-anchor="middle">EĞER İSE</text>
+<text x="254.0" y="191.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="middle">Yaz: A</text>
+<rect x="336" y="158" width="52" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.4"/>
+<text x="362.0" y="184.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" fill="#1A202C" font-weight="600" text-anchor="middle">8</text>
+<text x="16.0" y="246.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" font-weight="600" text-anchor="start">4, 9</text>
+<text x="112.0" y="236.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">4&gt;9</text>
+<text x="112.0" y="254.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#C53030" font-weight="600" text-anchor="start">yanlış</text>
+<rect x="184" y="220" width="140" height="40" rx="8" fill="#FFF4E5" stroke="#C05621" stroke-width="1.6"/>
+<text x="254.0" y="237.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#C05621" font-weight="600" text-anchor="middle">DEĞİL İSE</text>
+<text x="254.0" y="253.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="middle">Yaz: B</text>
+<rect x="336" y="220" width="52" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.4"/>
+<text x="362.0" y="246.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" fill="#1A202C" font-weight="600" text-anchor="middle">9</text>
+<rect x="6" y="274" width="388" height="56" rx="8" fill="#F7FAFC"/>
+<text x="16.0" y="308.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" font-weight="600" text-anchor="start">7, 7</text>
+<text x="112.0" y="298.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="start">7&gt;7</text>
+<text x="112.0" y="316.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#C53030" font-weight="600" text-anchor="start">yanlış</text>
+<rect x="184" y="282" width="140" height="40" rx="8" fill="#FFF4E5" stroke="#C05621" stroke-width="1.6"/>
+<text x="254.0" y="299.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#C05621" font-weight="600" text-anchor="middle">DEĞİL İSE</text>
+<text x="254.0" y="315.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="middle">Yaz: B</text>
+<rect x="336" y="282" width="52" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.4"/>
+<text x="362.0" y="308.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" fill="#1A202C" font-weight="600" text-anchor="middle">7</text>
+<text x="200.0" y="342.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">7, 7: 7&gt;7 yanlış → DEĞİL İSE, B yazılır</text>
+</svg>

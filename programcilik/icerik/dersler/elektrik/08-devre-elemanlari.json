@@ -1,0 +1,370 @@
+{
+  "id": "el-devre-elemanlari",
+  "baslik": "Elektrik Devresi ve Devre Elemanları",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 68–73",
+  "kavramlar": [
+    {
+      "terim": "Elektrik devresi",
+      "izah": "Üreteç, sigorta, anahtar, alıcı (yük) ve iletkenden oluşan akımın geçtiği yol; üreteçten çıkan akımın bu elemanlardan geçerek tekrar üretece gelmesi için izlediği yol.",
+      "yer": "Elektrik devresinin tanımı"
+    },
+    {
+      "terim": "Üreteç (batarya, kaynak)",
+      "izah": "Elektrik devresindeki alıcıların çalışabilmesi için gerekli olan elektrik enerjisini üreten eleman.",
+      "yer": "Üreteç"
+    },
+    {
+      "terim": "Doğru akım kaynakları",
+      "izah": "Hocanın üreteç çeşitlerinden biri: pil, akümülatör, dinamo, güneş pili.",
+      "yer": "Üreteç"
+    },
+    {
+      "terim": "Alternatif akım kaynakları",
+      "izah": "Hocanın üreteç çeşitlerinden biri; örneği alternatör.",
+      "yer": "Üreteç"
+    },
+    {
+      "terim": "Doğru gerilim",
+      "izah": "Pozitif yükler bir kutupta ve negatif yükler bir kutupta sürekli kalıyorsa üretilen gerilim.",
+      "yer": "Doğru gerilim ve alternatif gerilim"
+    },
+    {
+      "terim": "Alternatif gerilim",
+      "izah": "Kutupların yük cinsleri (polaritesi) sürekli değişiyorsa üretilen gerilim.",
+      "yer": "Doğru gerilim ve alternatif gerilim"
+    },
+    {
+      "terim": "Alıcı (yük)",
+      "izah": "Elektrik enerjisini başka enerjilere çeviren eleman; ör. ütü ve lamba (R yükü), motor (RL yükü).",
+      "yer": "Alıcı (yük)"
+    },
+    {
+      "terim": "İletken",
+      "izah": "Kaynak ve yük arasında elektrik akımının dolaşımını sağlamak için bakır, alüminyum gibi metallerden yapılan eleman.",
+      "yer": "İletken"
+    },
+    {
+      "terim": "Özgül direnç (ρ)",
+      "izah": "R = ρ · L / A formülünde iletkenin özgül direnci; okunuşu \"ro\".",
+      "yer": "Bir iletkenin direncinin bulunması"
+    },
+    {
+      "terim": "ℵ (Alef)",
+      "izah": "1 / ρ; özgül direnç çok küçük olduğundan hesaplamalarda hata yapmamak amacıyla kullanılır: R = L / (ℵ · A). Bakır için 56.",
+      "yer": "Bir iletkenin direncinin bulunması"
+    },
+    {
+      "terim": "α ve β",
+      "izah": "Malzemenin ısıl katsayıları; R₂ = R₁ · [1 + α · (t₂ − t₁) + β · (t₂ − t₁)²] formülünde kullanılır. 1000 °C'nin altında β ihmal edilir.",
+      "yer": "Direncin ısıya göre değişmesi"
+    },
+    {
+      "terim": "Anahtar",
+      "izah": "Elektrik devresini açıp kapamaya yarayan araç (yardımcı devre elemanı). Anahtar açıldığında alıcıya giden akım kesilir ve alıcının çalışması durur.",
+      "yer": "Anahtar"
+    },
+    {
+      "terim": "Sigorta",
+      "izah": "Elektrik devresini, üreteci ve alıcıyı aşırı akım geçişlerine karşı korumaya yarayan eleman (yardımcı devre elemanı); buşonlu, otomatik, bıçaklı ve benzeri çeşitleri vardır.",
+      "yer": "Sigorta"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-devre-elemanlari.s1",
+      "tip": "bosluk",
+      "yer": "Elektrik devresinin tanımı",
+      "metin": "Üreteçten çıkan akımın; sigorta, anahtar, alıcı (yük) ve iletkenden geçerek tekrar ___ gelmesi için izlediği yola elektrik devresi denir.",
+      "cevaplar": [
+        [
+          "üretece"
+        ]
+      ],
+      "izah": "Hocanın ikinci tanımı: akım üreteçten çıkar, sigorta, anahtar, alıcı ve iletkenden geçip tekrar üretece gelir."
+    },
+    {
+      "id": "el-devre-elemanlari.s2",
+      "tip": "esles",
+      "yer": "Devre elemanları ve yardımcı devre elemanları",
+      "soru": "Devre elemanlarını hocanın verdiği görevleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Üreteç",
+          "Alıcıların çalışması için gerekli elektrik enerjisini üretir"
+        ],
+        [
+          "Alıcı",
+          "Elektrik enerjisini başka enerjilere çevirir"
+        ],
+        [
+          "İletken",
+          "Kaynak ve yük arasında akımın dolaşımını sağlar"
+        ],
+        [
+          "Anahtar",
+          "Elektrik devresini açıp kapamaya yarar"
+        ],
+        [
+          "Sigorta",
+          "Devreyi aşırı akım geçişlerine karşı korur"
+        ]
+      ],
+      "izah": "Üreteç, alıcı ve iletken devre elemanlarıdır; anahtar ve sigorta yardımcı devre elemanlarıdır. Sigorta devreyi, üreteci ve alıcıyı aşırı akım geçişlerine karşı korur."
+    },
+    {
+      "id": "el-devre-elemanlari.s3",
+      "tip": "secme",
+      "yer": "Üreteç",
+      "soru": "Hocanın üreteç çeşitlerine göre aşağıdakilerden hangisi bir **doğru akım kaynağı değildir**?",
+      "secenekler": [
+        "Alternatör",
+        "Dinamo",
+        "Akümülatör",
+        "Güneş pili"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın doğru akım kaynakları pil, akümülatör, dinamo ve güneş pilidir. Alternatör, alternatif akım kaynağıdır."
+    },
+    {
+      "id": "el-devre-elemanlari.s4",
+      "tip": "esles",
+      "yer": "Gerilim üretme yöntemleri",
+      "soru": "Gerilim üretme yöntemlerini hocanın örnekleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "İndüksiyon (manyetik alan) yoluyla",
+          "Dinamo ve alternatör"
+        ],
+        [
+          "Kimyasal etki yoluyla",
+          "Pil, batarya, akü"
+        ],
+        [
+          "Işık yoluyla",
+          "Güneş pili"
+        ],
+        [
+          "Isı yoluyla",
+          "Termo kupl (termo eleman)"
+        ],
+        [
+          "Sürtünme yoluyla",
+          "Statik elektrik deneyi"
+        ]
+      ],
+      "izah": "İndüksiyon: dinamo ve alternatör (barajlarda). Kimyasal etki: pil, batarya, akü. Işık: güneş pili. Isı: termo kupl = termo eleman. Sürtünme: statik elektrik deneyi."
+    },
+    {
+      "id": "el-devre-elemanlari.s5",
+      "tip": "dy",
+      "yer": "Doğru gerilim ve alternatif gerilim",
+      "ifade": "Hocaya göre kutupların yük cinsleri (polaritesi) sürekli değişiyorsa doğru gerilim üretiliyor demektir.",
+      "dogru": false,
+      "izah": "Yanlış. Kutupların yük cinsleri sürekli değişiyorsa **alternatif gerilim** üretilir. Pozitif yükler bir kutupta, negatif yükler öteki kutupta sürekli kalıyorsa doğru gerilim üretilir."
+    },
+    {
+      "id": "el-devre-elemanlari.s6",
+      "tip": "secme",
+      "yer": "Alıcı (yük)",
+      "soru": "Hocanın alıcı örneklerinden hangisi **RL yükü** olarak gösterilmiştir?",
+      "secenekler": [
+        "Motor",
+        "Ütü",
+        "Lamba"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın örneklerinde motor akımı hareket enerjisine çevirir ve RL yüküdür. Ütü (akımı ısıya çevirir) ve lamba (akımı ışığa çevirir) R yüküdür."
+    },
+    {
+      "id": "el-devre-elemanlari.s7",
+      "tip": "bosluk",
+      "yer": "İletken",
+      "metin": "Konutlardaki priz sortilerinin beslenmesinde en az ___ mm² kesitinde yalıtkanlı bakır iletkenler kullanılır.",
+      "cevaplar": [
+        [
+          "2,5",
+          "2.5"
+        ]
+      ],
+      "izah": "Priz sortileri için en az 2,5 mm², lamba sortileri için en az 1,5 mm² kesitinde yalıtkanlı bakır iletken kullanılır."
+    },
+    {
+      "id": "el-devre-elemanlari.s8",
+      "tip": "secme",
+      "yer": "İletken kesitleri tablosu",
+      "soru": "Hocanın iletken kesitleri tablosuna göre **2,5 mm²** kesitli kablo emniyetle kaç amper akım taşıyabilir?",
+      "secenekler": [
+        "15 A",
+        "10 A",
+        "20 A",
+        "25 A"
+      ],
+      "dogru": 0,
+      "izah": "Tabloda 2,5 mm² kablonun emniyetle taşıyabileceği akım 15 A'dir. 1,5 mm² kablo 10 A, 4 mm² kablo 20 A, 6 mm² kablo 25 A taşır."
+    },
+    {
+      "id": "el-devre-elemanlari.s9",
+      "tip": "dy",
+      "yer": "İletken kesitleri tablosu",
+      "ifade": "Hocanın iletken kesitleri tablosuna göre 0,75 mm² kesitli kablolar marş kablolarında kullanılır.",
+      "dogru": false,
+      "izah": "Yanlış. Tabloda 0,75 mm² kablolar (4 A) gösterge devrelerinde kullanılır. Marş kabloları 35–150 mm² kesitlidir (125–325 A)."
+    },
+    {
+      "id": "el-devre-elemanlari.s10",
+      "tip": "secme",
+      "yer": "Bir iletkenin direncinin bulunması",
+      "soru": "R = ρ · L / A formülünde **ρ** neyi gösterir?",
+      "secenekler": [
+        "İletkenin özgül direncini",
+        "İletkenin kesitini",
+        "İletkenin boyunu",
+        "Malzemenin ısıl katsayısını"
+      ],
+      "dogru": 0,
+      "izah": "ρ (okunuşu \"ro\") iletkenin özgül direncidir. L iletkenin boyu (metre), A kesitidir (mm²). Isıl katsayılar α ve β'dır."
+    },
+    {
+      "id": "el-devre-elemanlari.s11",
+      "tip": "secme",
+      "yer": "Bir iletkenin direncinin bulunması",
+      "soru": "R = ρ · L / A = L / (ℵ · A) formülündeki **ℵ** (Alef) için hocanın açıklaması hangisidir?",
+      "secenekler": [
+        "1 / ρ; özgül direnç çok küçük olduğundan kullanılır",
+        "İletkenin özgül direnci; okunuşu ro olarak verilir",
+        "Malzemenin ısıl katsayısı; 1000 °C altında ihmal edilir",
+        "İletkenin kesiti; formülde birimi mm² olarak alınır"
+      ],
+      "dogru": 0,
+      "izah": "ℵ = 1 / ρ; özgül direnç çok küçük olduğundan hesaplamalarda hata yapmamak amacıyla kullanılır. Öteki açıklamalar formüldeki başka harflere aittir: ρ (ro) iletkenin özgül direnci, A iletkenin kesiti (mm²); 1000 °C'nin altında ihmal edilen ısıl katsayı ise β'dır."
+    },
+    {
+      "id": "el-devre-elemanlari.s12",
+      "tip": "hesap",
+      "yer": "Bir iletkenin direncinin bulunması",
+      "soru": "112 m uzunluğundaki bakır bir telin kesiti 2,5 mm²'dir (ℵ = 56). Telin direnci kaç ohmdur?",
+      "cevap": 0.8,
+      "birim": "Ω",
+      "tolerans": 0.01,
+      "izah": "R = L / (ℵ · A)\nℵ · A = 56 · 2,5 = 140\nR = 112 / 140 = 0,8 Ω"
+    },
+    {
+      "id": "el-devre-elemanlari.s13",
+      "tip": "hesap",
+      "yer": "Bir iletkenin direncinin bulunması",
+      "soru": "700 m uzunluğundaki alüminyum bir telin kesiti 10 mm²'dir (ℵ = 35). Telin direnci kaç ohmdur?",
+      "cevap": 2,
+      "birim": "Ω",
+      "tolerans": 0.01,
+      "izah": "R = L / (ℵ · A)\nℵ · A = 35 · 10 = 350\nR = 700 / 350 = 2 Ω"
+    },
+    {
+      "id": "el-devre-elemanlari.s14",
+      "tip": "hesap",
+      "yer": "Örnek 1: bakır telin direnci",
+      "soru": "1,4 km uzunluğundaki bakır bir telin kesiti 25 mm²'dir (ℵ = 56). Telin direnci kaç ohmdur?",
+      "cevap": 1,
+      "birim": "Ω",
+      "tolerans": 0.01,
+      "izah": "Formülde L metre alınır: L = 1,4 km = 1400 m.\nℵ · A = 56 · 25 = 1400\nR = L / (ℵ · A) = 1400 / 1400 = 1 Ω"
+    },
+    {
+      "id": "el-devre-elemanlari.s15",
+      "tip": "hesap",
+      "yer": "Direncin ısıya göre değişmesi",
+      "soru": "15 °C'de direnci 25 Ω olan bir iletkenin sıcaklığı 65 °C'ye çıkıyor. α = 42 · 10⁻⁴ °C⁻¹ ve β ihmal edildiğine göre iletkenin 65 °C'deki direnci kaç ohmdur?",
+      "cevap": 30.25,
+      "birim": "Ω",
+      "tolerans": 0.01,
+      "izah": "β ihmal edilince R₂ = R₁ · [1 + α · (t₂ − t₁)].\nt₂ − t₁ = 65 − 15 = 50 °C\nα · (t₂ − t₁) = 42 · 10⁻⁴ · 50 = 0,21\nR₂ = 25 · 1,21 = 30,25 Ω"
+    },
+    {
+      "id": "el-devre-elemanlari.s16",
+      "tip": "hesap",
+      "yer": "Örnek 2: ısınan sargıdan geçen akım",
+      "soru": "20 °C'deki bir sargıya 240 V uygulandığında 12 A akım geçiyor. Gerilim aynı kalırken sargının sıcaklığı 70 °C'ye yükseliyor. α = 40 · 10⁻⁴ °C⁻¹ ve β ihmal edildiğine göre son durumda sargıdan geçen akım kaç amperdir?",
+      "cevap": 10,
+      "birim": "A",
+      "tolerans": 0.01,
+      "izah": "Hocanın Örnek 2'deki yolu:\nR₁ = 240 / 12 = 20 Ω\nR₂ = R₁ · [1 + α · (t₂ − t₁)] = 20 · [1 + 40 · 10⁻⁴ · (70 − 20)] = 20 · 1,2 = 24 Ω\nI₂ = 240 / 24 = 10 A"
+    },
+    {
+      "id": "el-devre-elemanlari.s17",
+      "tip": "dy",
+      "yer": "Direncin ısıya göre değişmesi",
+      "ifade": "Hocaya göre direncin ısıya göre değişmesi formülünde 1000 °C'nin altında β ihmal edilir.",
+      "dogru": true,
+      "izah": "Doğru. α ve β malzemenin ısıl katsayılarıdır; 1000 °C'nin altında β ihmal edilir ve formül R₂ = R₁ · [1 + α · (t₂ − t₁)] olur."
+    },
+    {
+      "id": "el-devre-elemanlari.s18",
+      "tip": "secme",
+      "yer": "Sigorta",
+      "soru": "Hocaya göre **sigortanın** görevi nedir?",
+      "secenekler": [
+        "Devreyi, üreteci ve alıcıyı aşırı akıma karşı korumak",
+        "Elektrik devresini isteğe göre açıp kapamak ve akımı kesmek",
+        "Elektrik enerjisini başka enerjilere çevirmek",
+        "Kaynak ile yük arasında akımın dolaşımını sağlamak"
+      ],
+      "dogru": 0,
+      "izah": "Sigorta, elektrik devresini, üreteci ve alıcıyı aşırı akım geçişlerine karşı korur. Devreyi açıp kapamak (açıldığında akım kesilir) anahtarın, enerjiyi başka enerjilere çevirmek alıcının, akımın dolaşımını sağlamak iletkenin görevidir."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-devre-elemanlari.k1",
+      "yer": "Elektrik devresinin tanımı",
+      "on": "Elektrik devresinin hocanın verdiği iki tanımını söyleyin.",
+      "arka": "Tanım 1: Üreteç, sigorta, anahtar, alıcı (yük) ve iletkenden oluşan akımın geçtiği yola elektrik devresi denir.\nTanım 2: Üreteçten çıkan akımın; sigorta, anahtar, alıcı (yük) ve iletkenden geçerek tekrar üretece gelmesi için izlediği yola elektrik devresi denir."
+    },
+    {
+      "id": "el-devre-elemanlari.k2",
+      "yer": "Üreteç",
+      "on": "Üreteç nedir? Hocanın saydığı üreteç çeşitlerini söyleyin.",
+      "arka": "Üreteç (batarya, kaynak), devredeki alıcıların çalışabilmesi için gerekli elektrik enerjisini üreten elemandır.\n- Doğru akım kaynakları: pil, akümülatör, dinamo, güneş pili\n- Alternatif akım kaynakları: alternatör"
+    },
+    {
+      "id": "el-devre-elemanlari.k3",
+      "yer": "Gerilim üretme yöntemleri",
+      "on": "Gerilim üretme yöntemlerini örnekleriyle sayın.",
+      "arka": "1. İndüksiyon (manyetik alan) yoluyla: dinamo ve alternatör (barajlarda)\n2. Kimyasal etki yoluyla: pil, batarya, akü\n3. Işık yoluyla: güneş pili\n4. Isı yoluyla: termo kupl = termo eleman\n5. Sürtünme yoluyla: statik elektrik deneyi"
+    },
+    {
+      "id": "el-devre-elemanlari.k4",
+      "yer": "Doğru gerilim ve alternatif gerilim",
+      "on": "Doğru gerilim ile alternatif gerilim arasındaki fark nedir?",
+      "arka": "Pozitif yükler bir kutupta ve negatif yükler bir kutupta sürekli kalıyorsa doğru gerilim; kutupların yük cinsleri (polaritesi) sürekli değişiyorsa alternatif gerilim üretiliyor demektir."
+    },
+    {
+      "id": "el-devre-elemanlari.k5",
+      "yer": "Alıcı (yük)",
+      "on": "Alıcı (yük) nedir? Hocanın örneklerini söyleyin.",
+      "arka": "Elektrik enerjisini başka enerjilere çeviren elemanlara alıcı denir.\n- Ütü akımı ısıya çevirir (R yükü)\n- Lamba akımı ışığa çevirir (R yükü)\n- Motor akımı hareket enerjisine çevirir (RL yükü)"
+    },
+    {
+      "id": "el-devre-elemanlari.k6",
+      "yer": "İletken",
+      "on": "İletken nedir? Konutlarda priz ve lamba sortileri için hangi iletkenler kullanılır?",
+      "arka": "Kaynak ve yük arasında elektrik akımının dolaşımını sağlamak için bakır, alüminyum gibi metallerden yapılan elemandır. İletkenler rastgele seçilmez: konutlarda priz sortileri için en az 2,5 mm², lamba sortileri için en az 1,5 mm² kesitinde yalıtkanlı bakır iletken kullanılır."
+    },
+    {
+      "id": "el-devre-elemanlari.k7",
+      "yer": "Bir iletkenin direncinin bulunması",
+      "on": "Bir iletkenin direnci nasıl hesaplanır? Formüldeki harfleri ve birimlerini söyleyin.",
+      "arka": "R = ρ · L / A = L / (ℵ · A)\n- L: iletkenin boyu, metre\n- A: kesiti, mm²\n- ρ (ro): iletkenin özgül direnci\n- ℵ (Alef) = 1 / ρ; özgül direnç çok küçük olduğundan hesaplamalarda hata yapmamak için kullanılır (bakır için 56)\nEk: Slaytta \"özgül ağırlık\" yazılmıştır; doğrusu özgül dirençtir."
+    },
+    {
+      "id": "el-devre-elemanlari.k8",
+      "yer": "Direncin ısıya göre değişmesi",
+      "on": "Direncin ısıya göre değişmesi formülünü yazın ve hocanın Örnek 2'sini anlatın.",
+      "arka": "R₂ = R₁ · [1 + α · (t₂ − t₁) + β · (t₂ − t₁)²]; R₁ t₁'deki, R₂ t₂'deki direnç; α ve β malzemenin ısıl katsayıları; 1000 °C'nin altında β ihmal edilir.\nÖrnek 2: 15 °C'de 220 V'ta 10 A geçen sargı: R₁ = 22 Ω. 40 °C'de (α = 42 · 10⁻⁴ °C⁻¹): R₂ = 22 · [1 + 42 · 10⁻⁴ · 25] = 24,31 Ω; I₂ = 220 / 24,31 ≈ 9,05 A (slaytta 9,049 A)."
+    },
+    {
+      "id": "el-devre-elemanlari.k9",
+      "yer": "Devre elemanları ve yardımcı devre elemanları",
+      "on": "Yardımcı devre elemanları nelerdir? Görevlerini söyleyin.",
+      "arka": "- Anahtar: elektrik devresini açıp kapamaya yarar; anahtar açıldığında alıcıya giden akım kesilir ve alıcının çalışması durur.\n- Sigorta: elektrik devresini, üreteci ve alıcıyı aşırı akım geçişlerine karşı korur; buşonlu, otomatik, bıçaklı ve benzeri sigortalar kullanılır."
+    }
+  ]
+}

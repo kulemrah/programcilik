@@ -33,13 +33,14 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
 
 ## 3. Teslim durumu
 
-- **Çalışma kopyasının son hâli `programcilik-son.zip`'tedir** (4 Kasım 2026; guncelleme-36'ya kadar her şey). GitHub'daki depo bu hâle getirilmelidir; aradaki paketlerin hiçbirinin yüklendiği teyit edilmedi. Paket, test ekran görüntülerini (`test/tarayici/*.png`), test sitesini (`site/`), aktarıcı çıktısını (`test/gercek/cikti/`) ve `node_modules`'ü içermez; bunlar testlerde yeniden üretilir.
+- **Çalışma kopyasının son hâli `programcilik-son.zip`'tedir** (4 Kasım 2026; guncelleme-36 ve algoritma-hafta-6'ya kadar her şey). GitHub'daki depo bu hâle getirilmelidir; aradaki paketlerin hiçbirinin yüklendiği teyit edilmedi. Paket, test ekran görüntülerini (`test/tarayici/*.png`), test sitesini (`site/`), aktarıcı çıktısını (`test/gercek/cikti/`) ve `node_modules`'ü içermez; bunlar testlerde yeniden üretilir.
 - Paketlerin sırası (hepsi teslim edildi; yüklendiği teyit edilmedi):
   - guncelleme-31: Kaynak → **Notlar**; bağlantısız sıra, 5 sn geri al, iki sütunlu kutucuklar, + menüsü, biçimli not editörü, Hesap › Notlar › Resimler. **Şema ve Worker değişti:** önce SQL Editor'de `01-sema.sql`, sonra `kaynak-worker`'da `npx wrangler deploy`, sonra uygulama.
   - guncelleme-32/33: Hesap › Bu cihaz (Bilgisayar/Tablet/Telefon, ölçek), alt çubukta ve çekmecede kaydırarak geçiş, Alt kısayolları, geniş ekranda "Derslere göre süre" düzeltmesi; ölçek üst başlık ve alt çubuğu etkilemez; çekmecede ters yön; yama notu s2.1 ve Hesap › Yama Notları. Hamza telefonda denedi: alt çubuk kaydırması ve Alt sorunsuz.
   - algoritma-hafta-5: Algoritma konu 11–13 (KDV ve denklem, sayaç, sayaç örnekleri; Ek akış şemaları); bütün Algoritma notlarından C++ ekleri kaldırıldı. Yalnızca içerik.
   - guncelleme-34: sınav takvimi (menü › Takvim'in altı; `agac.json › sinavlar`), yama notu s2.2, sw v22.
   - guncelleme-35: Ekoloji 1. Kısa Sınav eklendi (yalnızca `agac.json` + `sinav_sina.py`).
+  - algoritma-hafta-6: Algoritma konu 14–15 (Akış Diyagramları, Akış Diyagramı Örnekleri; hocanın sembolleri ve 9 akış diyagramı); 5. haftanın 3 Ek akış şeması hocanın sembolleriyle yeniden çizildi (ISO sembol şekli kaldırıldı); 02, 04, 07, 09, 10, 11, 12, 13. konularda 6. haftaya göre düzeltmeler (çok durumlu kararda hocanın "adıma git" yolu, Örnek 2 ve 4'ün hocanın çözümü). Yalnızca içerik.
   - guncelleme-36: Temrin'de "Bilmiyorum" (klasik ve kavram kartları hariç her tür; yanlış sayılır, doğrusu gösterilir), yazım hoşgörüsü (`cevapTutar`, `metindeGeciyor`: büyük/küçük, ı/i ve Türkçe harf farkı; 5–7 harfte 1, 8+ harfte 2 harf hatası; ilk harf, rakam ve işaretler tam tutmalı; 4 harf ve altı tam), ilerleme çubuğu düzeltmesi (`.dolu` satır içi olduğu için genişlik almıyordu), notta ilgili bölümün yanıp sönmesi (`bolumuYak`) ve başlığın üst çubuğun altında kalmaması; yama notu s2.3, sw v23.
 - Depoda `uygulama/ikon-*.png` ya da `uygulama/apple-touch-icon.png` kaldıysa `git rm` ile silinir (guncelleme-24'te kaldırıldılar).
 - Sınav listesi şu an: Veritabanı 1. Kısa Sınav 6 Kasım 20:30, Ağlar 1. Kısa Sınav 6 Kasım 21:30, Ekoloji 1. Kısa Sınav 10 Kasım 19:00 (10 soru, 10 dk, 19:00–20:00 açık); üçü de LMS.
@@ -55,11 +56,10 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
    - Akşam otomatik açılma.
    Hiçbiri yapılmadı.
 2. **Sınav listesi:** (a) günü geçen sınav şimdi gizleniyor; gri hâlde kalsın mı? (b) hocanın adı da yazsın mı?
-3. **Algoritma 5. hafta:**
-   - Sınıfta çizilen akış şeması sembolleri notlardaki ISO 5807 sembollerinden farklıysa Hamza fotoğraf gönderecek.
-   - Çözüm belgesinin (`bp_5_hafta.pdf`) yazarı "laboratuvar" mı, hoca mı? Notta "hocanın çözümü" yazıyor.
-   - 5. hafta slaytlarının "_2" kısmı gelmedi; varsa işlenecek.
-   - Hocaya sorulacaklar: KDV/denklem çözümünde `delta^1/2` ve `/2*a` yazımı (işlem önceliği), en büyük sayı çözümündeki `yenienbuyuk` hatası (notta Dikkat ile düzeltildi, hocanınki korundu).
+3. **Algoritma 5. ve 6. hafta:**
+   - Çözüm belgelerinin (`bp_5_hafta.pdf`, `6_hafta_blp.pdf`) yazarı "laboratuvar" mı, hoca mı? Notta "hocanın çözümü" yazıyor.
+   - 5. hafta slaytlarının "_2" kısmı gelmedi; 6. hafta dosyası "_3" ile bitiyor. Eksik parça varsa işlenecek.
+   - Hocaya sorulacaklar: KDV/denklem çözümünde `delta^1/2` ve `/2*a` yazımı (işlem önceliği), en büyük sayı çözümündeki `yenienbuyuk` hatası, üçgen çözümünde metin (iki ayrı Eğer) ile akış diyagramının 3, 3, 3 girişinde farklı sonuç vermesi (notlarda Dikkat ile açıklandı, hocanınki korundu).
 4. **Algoritma konu 02:** hocanın kendi slaytlarındaki C++ bölümleri (dil seviyeleri, "Neden C++") şimdilik duruyor; Hamza kaldırılmasını isterse kaldırılır.
 5. **Bu cihaz:** Tablet ve Telefon modlarının ayrı davranışı henüz yok (yalnızca Bilgisayar'da Alt kısayolları); ne farklı olsun?
 6. **guncelleme-31'den:** Notlar'da sıralama (şimdi en son değişen üstte), içi dolu tasnif silme onayı, öntanımlı kota (100 MB), + menüsünün etiketleri; Hamza denedikten sonra değiştirmek isterse.
@@ -112,7 +112,7 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 
 | Ders (id) | Konu | Soru | Kart | Durum |
 | --- | --- | --- | --- | --- |
-| algoritma | 13 | 213 | 87 | 1–5. hafta tamam (algoritma-hafta-5); C++ ekleri kaldırıldı |
+| algoritma | 15 | 248 | 99 | 1–6. hafta tamam (algoritma-hafta-6); C++ ekleri kaldırıldı |
 | veritabani | 14 | 252 | 100 | tamam (konu 14'te hocaya soru) |
 | donanim | 7 | 99 | 36 | 1. not tamam (guncelleme-25) |
 | aglar | 3 | 47 | 18 | 1. not tamam (aglar-ders-1) |
@@ -125,6 +125,7 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 - Konu başına 5–15 başlık (### / ####), 10–18 soru, 4–9 kart. `yer` bir başlıkla harfi harfine aynı. Kimlik `<konu-id>.sN` / `.kN`, yayımlandıktan sonra değişmez.
 - Soru türleri: secme, dy, bosluk, dizme, esles, izleme, hesap, klasik. Doğru şık en uzun olmaz; "hepsi/hiçbiri" yok; Ek'ten ya da slaytlar arası çelişkili değerden soru yok; sınav tahmini cümlesi yok.
 - **Algoritma'da C++ yok (Hamza):** derste henüz C++'a girilmedi; notlara, sorulara, kartlara C++ karşılığı ya da dile özgü (C++, C, Python) bilgi yazılmaz. Hocanın kendi slaytlarındaki C++ (dil seviyeleri, "Neden C++") kalır. Algoritmalar doğrulama için yine C++'ta çalıştırılabilir; bu yalnızca envantere yazılır.
+- **Algoritma akış diyagramları:** hocanın 6. hafta sembolleriyle çizilir (`araclar/sekiller/algoritma.py`, `a_uc`/`a_oku`/`a_yaz`/`a_islem`/`a_karar`): BAŞLA/BİTİR elips, OKU klavyeden giriş sembolü (üst kenarı eğik dörtgen), YAZ paralelkenar, hesaplama dikdörtgen, karar eşkenar dörtgen; çıkışlar slaytlardaki gibi Evet/Hayır, çözüm belgesindekiler gibi E/H. Hocanın çizmediği diyagramlar "Ek"tir.
 - Her ders: envanter (K0) → plan → not → şekil (358 px'te bakılır) → soru/kart → `node araclar/icerik-aktar.mjs --kuru` + `python3 araclar/icerik-denetle.py icerik/dersler/<ders>` → uçtan uca test → **bağımsız denetim ajanı** (KRİTİK/ORTA/DÜŞÜK) → teslim raporu + 🔶.
 
 ### 6.2 Görseller

@@ -1,0 +1,232 @@
+{
+  "id": "ag-tukenme",
+  "baslik": "Özel IP, Adres Tükenmesi, NAT ve IPv6",
+  "kaynak": "ip-kavrami-ve-ip-adresleme.pdf, slayt 15, 17–20",
+  "kavramlar": [
+    {
+      "terim": "Genel IP adresi",
+      "izah": "İnternette benzersiz olan IP adresi.",
+      "yer": "Özel ve genel IP adresleri (RFC 1918)"
+    },
+    {
+      "terim": "Özel IP adresi (RFC 1918)",
+      "izah": "Lisans gerektirmeyen, yerel ağlarda tekrar kullanılabilen bloklar: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.",
+      "yer": "Özel ve genel IP adresleri (RFC 1918)"
+    },
+    {
+      "terim": "NAT (Ağ Adresi Dönüştürme)",
+      "izah": "Dinamik port eşlemesiyle tek genel IP'yi çok sayıda yerel cihaza paylaştıran yöntem; yerelde RFC 1918 özel adresleri kullanılır, internete çıkarken tek IP'ye çevrilir.",
+      "yer": "İç ağda tasarruf"
+    },
+    {
+      "terim": "IPv6",
+      "izah": "128 bitlik yeni nesil protokol; yaklaşık 3,4×10³⁸ adres sunar, onaltılık ve 8 grup hâlinde yazılır, NAT gereksinimini kaldırır.",
+      "yer": "Adres kapasitesi"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "ag-tukenme.s1",
+      "tip": "esles",
+      "yer": "Özel ve genel IP adresleri (RFC 1918)",
+      "soru": "RFC 1918 özel bloklarını, hocanın verdiği kullanım alanlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "10.0.0.0/8",
+          "Büyük kurumlar ve veri merkezleri"
+        ],
+        [
+          "172.16.0.0/12",
+          "Orta ölçekli kampüs ağları"
+        ],
+        [
+          "192.168.0.0/16",
+          "Ev ve küçük ofis modemleri"
+        ]
+      ],
+      "izah": "En geniş blok (/8) büyük kurumlara, orta büyüklükteki (/12) kampüslere, en dar (/16) ev ve küçük ofislere uygun düşer."
+    },
+    {
+      "id": "ag-tukenme.s2",
+      "tip": "secme",
+      "yer": "Özel ve genel IP adresleri (RFC 1918)",
+      "soru": "Hangisi RFC 1918'e göre **özel** bir IP adresidir?",
+      "secenekler": [
+        "172.20.10.5",
+        "172.40.10.5",
+        "193.168.1.10",
+        "11.0.0.1"
+      ],
+      "dogru": 0,
+      "izah": "172.16.0.0/12 bloğu 172.16.0.0–172.31.255.255 aralığıdır; 172.20 bu aralıktadır. 172.40 aralığın dışında, 193.168 ve 11 ise hiçbir özel blokta değildir."
+    },
+    {
+      "id": "ag-tukenme.s3",
+      "tip": "dy",
+      "yer": "Özel ve genel IP adresleri (RFC 1918)",
+      "ifade": "Genel IP adresi internette benzersizdir; özel bloklar ise yerel ağlarda tekrar kullanılabilir.",
+      "dogru": true,
+      "izah": "Hocanın tanımı budur: genel IP internette benzersizdir, lisans gerektirmeyen özel bloklar yerel ağlarda tekrar kullanılabilir."
+    },
+    {
+      "id": "ag-tukenme.s4",
+      "tip": "dy",
+      "yer": "Özel ve genel IP adresleri (RFC 1918)",
+      "ifade": "172.16.0.0/12 özel bloğu, 172.16.0.0 ile 172.16.255.255 arasındaki adreslerden oluşur.",
+      "dogru": false,
+      "izah": "Hocanın slaytına göre blok 172.16.0.0–**172.31.255.255** aralığıdır; ikinci oktet 16'dan 31'e kadar gider."
+    },
+    {
+      "id": "ag-tukenme.s5",
+      "tip": "hesap",
+      "yer": "IPv4 adreslerinin tükenmesi",
+      "soru": "32 bitlik IPv4 adres uzayı, 2³² formülüyle yaklaşık kaç **milyar** adres sunar? (İki ondalık basamakla yazın.)",
+      "cevap": 4.29,
+      "tolerans": 0.01,
+      "birim": "milyar",
+      "izah": "2³² = 4.294.967.296, yani yaklaşık 4,29 milyar adres."
+    },
+    {
+      "id": "ag-tukenme.s6",
+      "tip": "secme",
+      "yer": "Çözüm 1: NAT",
+      "soru": "Hocaya göre **NAT** ne yapar?",
+      "secenekler": [
+        "Tek genel IP'yi port eşlemesiyle yerel cihazlara paylaştırır",
+        "Her yerel cihaza internette benzersiz bir genel IP atar",
+        "32 bitlik adresleri 128 bitlik adreslere çevirerek iletir",
+        "Host bitleri 1 olan adresle bütün cihazlara duyuru yapar"
+      ],
+      "dogru": 0,
+      "izah": "NAT, dinamik port eşlemesiyle tek genel IP'yi yerel cihazlara paylaştırır. Her cihaza benzersiz genel IP NAT'ın tersidir; 128 bit IPv6'dır; tüm cihazlara duyuru yayın adresinin işidir."
+    },
+    {
+      "id": "ag-tukenme.s7",
+      "tip": "bosluk",
+      "yer": "Çözüm 2: IPv6",
+      "metin": "IPv6, ___ bitlik yeni nesil protokoldür.",
+      "cevaplar": [
+        [
+          "128"
+        ]
+      ],
+      "izah": "IPv6 adresi 128 bittir; IPv4 ise 32 bittir."
+    },
+    {
+      "id": "ag-tukenme.s8",
+      "tip": "dy",
+      "yer": "Çözüm 2: IPv6",
+      "ifade": "Hocaya göre IPv6, NAT gereksinimini kaldırır ve uçtan uca doğrudan bağlantıyı geri getirir.",
+      "dogru": true,
+      "izah": "Hoca IPv6'yı \"kalıcı ve nihai gelecek\" diye anar: NAT gereksinimini kaldırır, uçtan uca doğrudan bağlantı geri döner."
+    },
+    {
+      "id": "ag-tukenme.s9",
+      "tip": "dy",
+      "yer": "Yapı ve örnek",
+      "ifade": "IPv6 adresleri, IPv4'teki gibi dört oktet hâlinde noktalı ondalık gösterimle yazılır.",
+      "dogru": false,
+      "izah": "IPv6 adresi 128 bitlik **onaltılık (hexadecimal)** sayılarla, **8 grup** hâlinde yazılır. Ör. 2001:0db8:85a3::8a2e:0370:7334."
+    },
+    {
+      "id": "ag-tukenme.s10",
+      "tip": "secme",
+      "yer": "IPv4 adreslerinin tükenmesi",
+      "soru": "Hocaya göre IPv4'te pratikte kullanılabilir adres sayısının 4,29 milyardan çok daha az olmasının nedeni nedir?",
+      "secenekler": [
+        "Adreslerin verimsiz dağıtılması",
+        "Özel blokların tekrar kullanılması",
+        "NAT'ın tek IP'yi paylaştırması",
+        "IPv6'nın onaltılık yazılması"
+      ],
+      "dogru": 0,
+      "izah": "Hoca: verimsiz dağıtım nedeniyle pratikte kullanılabilir sayı çok daha azdır. Özel blokların tekrar kullanılması ve NAT ise tükenmeyi hafifleten yollardır."
+    },
+    {
+      "id": "ag-tukenme.s11",
+      "tip": "secme",
+      "yer": "IPv4 adreslerinin tükenmesi",
+      "soru": "Hocanın **verimsiz dağıtım** örneği hangisidir?",
+      "secenekler": [
+        "IBM gibi devlerin A sınıfı bloklarının çok azını kullanması",
+        "Ev modemlerinin aynı 192.168.0.0/16 bloğunu ortak olarak kullanması",
+        "Kampüs ağlarının 172.16.0.0/12 bloğundan iç adresler vermesi",
+        "Veri merkezlerinin 10.0.0.0/8 bloğunu iç adres alanı yapması"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın örneği: IBM gibi devler erken dönemde kendilerine ayrılan A sınıfı blokların çok küçük bir bölümünü fiilen kullanmıştır. Diğerleri özel blokların olağan kullanımıdır."
+    },
+    {
+      "id": "ag-tukenme.s12",
+      "tip": "hesap",
+      "yer": "Yapı ve örnek",
+      "soru": "Hocaya göre bir IPv6 adresi kaç grup hâlinde yazılır?",
+      "cevap": 8,
+      "izah": "128 bitlik IPv6 adresi onaltılık sayılarla 8 grup hâlinde yazılır."
+    },
+    {
+      "id": "ag-tukenme.s13",
+      "tip": "dizme",
+      "yer": "Çözüm 2: IPv6",
+      "soru": "Hocanın IPv4 adres darboğazını anlatırken izlediği sırayı dizin.",
+      "parcalar": [
+        "32 bitlik adres uzayı verimsiz dağıtılır ve tükenir",
+        "Geçici çözüm NAT, tek genel IP'yi yerel cihazlara paylaştırır",
+        "Kalıcı çözüm IPv6, 128 bitle adres kıtlığını kaldırır"
+      ],
+      "izah": "Hoca önce darboğazı (2³² adres, verimsiz dağıtım), sonra geçici cankurtaran NAT'ı, en son kalıcı ve nihai gelecek olarak IPv6'yı anlatır."
+    },
+    {
+      "id": "ag-tukenme.s14",
+      "tip": "klasik",
+      "yer": "Çözüm 1: NAT",
+      "soru": "IPv4 adreslerinin tükenmesine karşı hocanın anlattığı iki çözümü açıklayın.",
+      "cevap": "NAT (Ağ Adresi Dönüştürme): dinamik port eşlemesiyle tek genel IP'yi yerel cihazlara paylaştırır; yerel ağda RFC 1918 özel adresleri kullanılır, internete çıkarken tek IP'ye çevrilir. Geçici çözümdür.\nIPv6: 128 bitlik yeni nesil protokoldür; yaklaşık 3,4×10³⁸ adres sunar ve NAT gereksinimini kaldırır. Kalıcı çözümdür.",
+      "anahtarlar": [
+        "NAT",
+        "genel IP",
+        "özel",
+        "IPv6",
+        "128 bit"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "ag-tukenme.k1",
+      "yer": "Özel ve genel IP adresleri (RFC 1918)",
+      "on": "Genel IP ile özel IP'nin farkı nedir? RFC 1918 bloklarını sayın.",
+      "arka": "Genel IP internette benzersizdir. Özel bloklar lisans gerektirmez ve yerel ağlarda tekrar kullanılabilir:\n- 10.0.0.0/8: büyük kurumlar, veri merkezleri\n- 172.16.0.0/12 (172.16.0.0–172.31.255.255): orta ölçekli kampüs ağları\n- 192.168.0.0/16: ev ve küçük ofis modemleri"
+    },
+    {
+      "id": "ag-tukenme.k2",
+      "yer": "Adresleri kim dağıtır",
+      "on": "IP adresleri neden rastgele seçilemez?",
+      "arka": "Küresel ve yerel kayıt otoritelerinin hiyerarşik denetimindedir. Küresel düzeyde RIPE NCC gibi kıtasal kayıt kuruluşları blokları bölüştürür.\nEk: Blokları kıtasal kuruluşlara en üstte IANA verir; Türkiye RIPE NCC'nin hizmet bölgesindedir."
+    },
+    {
+      "id": "ag-tukenme.k3",
+      "yer": "IPv4 adreslerinin tükenmesi",
+      "on": "IPv4 adresleri neden tükeniyor?",
+      "arka": "32 bitlik adres uzayı 2³² ile yaklaşık 4,29 milyar adres sunar; ama verimsiz dağıtım yüzünden pratikte kullanılabilir sayı çok daha azdır.\nHocanın örneği: IBM gibi devler kendilerine ayrılan A sınıfı blokların çok küçük bir bölümünü kullanmıştır."
+    },
+    {
+      "id": "ag-tukenme.k4",
+      "yer": "Çözüm 1: NAT",
+      "on": "NAT nedir, adres tasarrufunu nasıl sağlar?",
+      "arka": "Ağ Adresi Dönüştürme: dinamik port eşlemesiyle tek genel IP'yi çok sayıda yerel cihaza paylaştırır. Yerel ağda RFC 1918 özel adresleri kullanılır, internete çıkarken tek IP'ye çevrilir.\nHoca NAT'ı \"geçici cankurtaran\" diye anar."
+    },
+    {
+      "id": "ag-tukenme.k5",
+      "yer": "Ömrü uzatan bariyer",
+      "on": "Hocaya göre NAT'ın IPv6'ya geçişe etkisi konusunda hangi görüşler var?",
+      "arka": "Bazılarına göre NAT, IPv6'ya geçişi gereksiz kılar; bazı uzmanlara göre ise IPv6 ihtiyacını onlarca yıl ertelemiştir. Hoca NAT'ı \"ömrü uzatan bariyer\" ve \"geçici cankurtaran\" diye anar."
+    },
+    {
+      "id": "ag-tukenme.k6",
+      "yer": "Çözüm 2: IPv6",
+      "on": "IPv6 nedir? IPv4'ten farkları nelerdir?",
+      "arka": "128 bitlik yeni nesil protokoldür (IPv4 32 bit). Yaklaşık 3,4×10³⁸ adres sunar.\nOnaltılık sayılarla, 8 grup hâlinde yazılır: 2001:0db8:85a3::8a2e:0370:7334.\nNAT gereksinimini kaldırır; uçtan uca doğrudan bağlantı geri döner."
+    }
+  ]
+}

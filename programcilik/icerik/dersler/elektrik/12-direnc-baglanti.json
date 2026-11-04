@@ -1,0 +1,301 @@
+{
+  "id": "el-direnc-baglanti",
+  "baslik": "Dirençlerin Bağlantı Şekilleri",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 99–106, 130–134",
+  "kavramlar": [
+    {
+      "terim": "Dirençlerin bağlantı şekilleri",
+      "izah": "Dirençler devrelerde seri, paralel ve seri-paralel şeklinde bağlanır.",
+      "yer": "Bağlantı şekilleri"
+    },
+    {
+      "terim": "Seri devre",
+      "izah": "İçlerinden aynı akım geçecek şekilde dirençlerin birbiri ardına eklendiği devre. Toplam direnç artar; dirençler üzerindeki gerilimler farklı, akımlar aynıdır. RT = R₁ + R₂ + R₃ + … + Rn.",
+      "yer": "Dirençlerin seri bağlanması"
+    },
+    {
+      "terim": "Kirşof'un Gerilimler Kanunu",
+      "izah": "Devreye uygulanan gerilim, dirençler üzerinde düşen gerilimlerin toplamına eşittir: U = U₁ + U₂ + U₃.",
+      "yer": "Kirşof'un gerilimler kanunu"
+    },
+    {
+      "terim": "Eşdeğer direnç (Reş)",
+      "izah": "Slaytta tanımı yok; hocanın şeklinde \"≡\" işaretiyle gösterilen eşdeğer devrede dirençlerin yerine konan tek direnç. Seride Reş = R₁ + R₂ + R₃; paralelde 1 / Reş = 1 / R₁ + 1 / R₂ + 1 / R₃.",
+      "yer": "Seri devrede eşdeğer direnç"
+    },
+    {
+      "terim": "Toplam güç (PT)",
+      "izah": "Seri ve paralel devrede her bir direnç üzerinde harcanan güçlerin toplamı: PT = P₁ + P₂ + P₃ + … + Pn. Seride PT = U · I = I² · Reş = U² / Reş; paralelde PT = U · IT = IT² · Reş = U² / Reş.",
+      "yer": "Seri devrede güç"
+    },
+    {
+      "terim": "Üretilen ve harcanan güç",
+      "izah": "Üretilen güç (−), harcanan güç (+) işaretlidir. Bir devreye ilişkin toplam güç her an için sıfıra eşittir.",
+      "yer": "Üretilen ve harcanan güç"
+    },
+    {
+      "terim": "Paralel bağlantı",
+      "izah": "Dirençlerin karşılıklı uçlarının bağlanması ile oluşan devre. Toplam direnç azalır; dirençler üzerindeki gerilimler eşit, akımlar farklıdır.",
+      "yer": "Dirençlerin paralel bağlanması"
+    },
+    {
+      "terim": "Kirşof'un Akımlar Kanunu",
+      "izah": "Devrede bir düğüm noktasına gelen akımların toplamı, o düğüm noktasını terk eden akımların toplamına eşittir: I = I₁ + I₂ + I₃.",
+      "yer": "Kirşof'un akımlar kanunu"
+    },
+    {
+      "terim": "I₁ = IT · Reş / R₁",
+      "izah": "Paralel devrede bir koldan geçen akımın toplam akımdan bulunuşu: U = U₁ olduğundan IT · Reş = I₁ · R₁; buradan I₁ = IT · Reş / R₁ (I₂ ve I₃ için de aynı biçimde).",
+      "yer": "Paralel devrede kol akımlarının bulunması"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-direnc-baglanti.s1",
+      "tip": "secme",
+      "yer": "Dirençlerin seri bağlanması",
+      "soru": "İçlerinden **aynı akım** geçecek şekilde dirençlerin **birbiri ardına** eklenmesiyle oluşan devreye ne denir?",
+      "secenekler": [
+        "Seri devre",
+        "Paralel devre",
+        "Seri-paralel devre",
+        "Kısa devre"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki tanım: \"İçlerinden aynı akım geçecek şekilde dirençler birbiri ardına eklenirse bu devreye seri devre denir.\" Dirençlerin karşılıklı uçlarının bağlanmasıyla oluşan devre ise paralel bağlantıdır."
+    },
+    {
+      "id": "el-direnc-baglanti.s2",
+      "tip": "secme",
+      "yer": "Dirençlerin paralel bağlanması",
+      "soru": "Hocaya göre **paralel bağlantı** nasıl oluşur?",
+      "secenekler": [
+        "Dirençlerin karşılıklı uçlarının bağlanması ile",
+        "Dirençlerin birbiri ardına eklenmesi ile",
+        "İçlerinden aynı akım geçecek şekilde bağlanması ile",
+        "Seri ve paralel bağlantının bir arada kullanılması ile"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki tanım: \"Dirençlerin karşılıklı uçlarının bağlanması ile oluşan devreye paralel bağlantı denir.\" İçlerinden aynı akım geçecek şekilde dirençlerin birbiri ardına eklenmesi seri devredir; paralel bağlantıda dirençlerden geçen akımlar farklıdır. Seri ve paralel bağlantının bir arada bulunması hocanın andığı seri-paralel bağlantıdır."
+    },
+    {
+      "id": "el-direnc-baglanti.s3",
+      "tip": "dy",
+      "yer": "Dirençlerin seri bağlanması",
+      "ifade": "Seri bağlantıda toplam direnç azalır.",
+      "dogru": false,
+      "izah": "Seri bağlantıda toplam direnç **artar** (RT = R₁ + R₂ + R₃ + … + Rn). Toplam direncin azaldığı bağlantı paralel bağlantıdır."
+    },
+    {
+      "id": "el-direnc-baglanti.s4",
+      "tip": "dy",
+      "yer": "Dirençlerin paralel bağlanması",
+      "ifade": "Paralel bağlantıda dirençler üzerindeki gerilimler eşit, üzerinden geçen akımlar farklıdır.",
+      "dogru": true,
+      "izah": "Slayttaki cümle budur. Seri bağlantıda ise tersine gerilimler farklı, akımlar aynıdır."
+    },
+    {
+      "id": "el-direnc-baglanti.s5",
+      "tip": "esles",
+      "yer": "Seri ve paralel bağlantının karşılaştırması",
+      "soru": "Kanunları ve bağlantıları, hocanın slaytlarındaki karşılıklarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Kirşof'un Gerilimler Kanunu",
+          "Uygulanan gerilim, düşen gerilimlerin toplamıdır"
+        ],
+        [
+          "Kirşof'un Akımlar Kanunu",
+          "Düğüme gelen akımlar, terk edenlerin toplamıdır"
+        ],
+        [
+          "Seri devre",
+          "I = I₁ = I₂ = I₃"
+        ],
+        [
+          "Paralel devre",
+          "U = U₁ = U₂ = U₃"
+        ]
+      ],
+      "izah": "Kirşof'un Gerilimler Kanunu: devreye uygulanan gerilim, dirençler üzerinde düşen gerilimlerin toplamına eşittir. Kirşof'un Akımlar Kanunu: bir düğüm noktasına gelen akımların toplamı, o noktayı terk eden akımların toplamına eşittir. Seri devrede akımlar, paralel devrede gerilimler aynıdır."
+    },
+    {
+      "id": "el-direnc-baglanti.s6",
+      "tip": "bosluk",
+      "yer": "Kirşof'un gerilimler kanunu",
+      "metin": "Kirşof'un ___ Kanunu: \"Devreye uygulanan gerilim; dirençler üzerinde düşen gerilimlerin toplamına eşittir.\"",
+      "cevaplar": [
+        [
+          "Gerilimler",
+          "Gerilim"
+        ]
+      ],
+      "izah": "Bu, Kirşof'un Gerilimler Kanunudur (seri devre). Kirşof'un Akımlar Kanunu düğüm noktasındaki akımlarla ilgilidir."
+    },
+    {
+      "id": "el-direnc-baglanti.s7",
+      "tip": "hesap",
+      "yer": "Seri devrede eşdeğer direnç",
+      "soru": "12 Ω, 18 Ω ve 30 Ω'luk üç direnç **seri** bağlanıyor. Eşdeğer direnç (Reş) kaç ohmdur?",
+      "cevap": 60,
+      "birim": "Ω",
+      "izah": "Seri devrede Reş = R₁ + R₂ + R₃\nReş = 12 + 18 + 30 = 60 Ω."
+    },
+    {
+      "id": "el-direnc-baglanti.s9",
+      "tip": "hesap",
+      "yer": "Seri devrede eşdeğer direnç",
+      "soru": "36 V'luk bir kaynağa R₁ = 2 Ω, R₂ = 4 Ω ve R₃ = 6 Ω **seri** bağlanıyor. R₂ direnci üzerinde düşen gerilim (U₂) kaç volttur?",
+      "cevap": 12,
+      "birim": "V",
+      "izah": "Reş = 2 + 4 + 6 = 12 Ω.\nI = U / Reş = 36 / 12 = 3 A (seri devrede akımlar aynıdır).\nU₂ = I · R₂ = 3 · 4 = 12 V.\nDenetim: U₁ = 6 V, U₃ = 18 V; Kirşof'un Gerilimler Kanunundan 6 + 12 + 18 = 36 V."
+    },
+    {
+      "id": "el-direnc-baglanti.s11",
+      "tip": "hesap",
+      "yer": "Seri devrede güç",
+      "soru": "4 Ω ve 2 Ω'luk iki direnç **seri** bağlanıp 12 V'luk bir kaynağa bağlanıyor. Devrede harcanan toplam güç (PT) kaç watttır?",
+      "cevap": 24,
+      "birim": "W",
+      "izah": "Reş = 4 + 2 = 6 Ω.\nPT = U² / Reş = 12² / 6 = 144 / 6 = 24 W.\n(Aynı sonuç: I = 12 / 6 = 2 A; PT = U · I = 12 · 2 = 24 W; PT = I² · Reş = 2² · 6 = 24 W.)"
+    },
+    {
+      "id": "el-direnc-baglanti.s12",
+      "tip": "dy",
+      "yer": "Üretilen ve harcanan güç",
+      "ifade": "Hocanın notuna göre bir devreye ilişkin toplam güç her an için sıfıra eşittir.",
+      "dogru": true,
+      "izah": "Seri devrede güç slaytındaki NOT: \"Üretilen güç (−) ve harcanan güç (+) işaretlidir. Bir devreye ilişkin toplam güç her an için sıfıra eşittir.\" Aynı slayttaki PT ise her bir direnç üzerinde harcanan güçlerin toplamıdır (PT = P₁ + P₂ + … + Pn); iki ifadeyi karıştırmayın."
+    },
+    {
+      "id": "el-direnc-baglanti.s13",
+      "tip": "dy",
+      "yer": "Üretilen ve harcanan güç",
+      "ifade": "Hocanın notuna göre üretilen güç (+), harcanan güç (−) işaretlidir.",
+      "dogru": false,
+      "izah": "İşaretler tersidir: **üretilen güç (−)**, **harcanan güç (+)** işaretlidir."
+    },
+    {
+      "id": "el-direnc-baglanti.s14",
+      "tip": "secme",
+      "yer": "Paralel devrede eşdeğer direnç",
+      "soru": "Üç direnç **paralel** bağlıysa eşdeğer direnç hangi bağıntıyla bulunur?",
+      "secenekler": [
+        "1 / Reş = 1 / R₁ + 1 / R₂ + 1 / R₃",
+        "Reş = R₁ + R₂ + R₃",
+        "Reş = 1 / R₁ + 1 / R₂ + 1 / R₃",
+        "1 / Reş = R₁ + R₂ + R₃"
+      ],
+      "dogru": 0,
+      "izah": "Paralel devrede gerilimler aynıdır (U = U₁ = U₂ = U₃) ve Kirşof'un Akımlar Kanunundan I = I₁ + I₂ + I₃ yazılır; U / Reş = U / R₁ + U / R₂ + U / R₃'ten 1 / Reş = 1 / R₁ + 1 / R₂ + 1 / R₃ bulunur. Reş = R₁ + R₂ + R₃ seri devrenin formülüdür. Toplamın sonucu 1 / Reş'tir; Reş'i bulmak için tersi alınır."
+    },
+    {
+      "id": "el-direnc-baglanti.s15",
+      "tip": "hesap",
+      "yer": "Paralel devrede eşdeğer direnç",
+      "soru": "20 Ω, 30 Ω ve 60 Ω'luk üç direnç **paralel** bağlanıyor. Eşdeğer direnç (Reş) kaç ohmdur?",
+      "cevap": 10,
+      "birim": "Ω",
+      "izah": "1 / Reş = 1 / R₁ + 1 / R₂ + 1 / R₃\n1 / Reş = 1 / 20 + 1 / 30 + 1 / 60 = 3 / 60 + 2 / 60 + 1 / 60 = 6 / 60 = 1 / 10\nReş = 10 Ω.\n(Toplam direnç azalmıştır: en küçük direnç olan 20 Ω'dan da küçüktür.)"
+    },
+    {
+      "id": "el-direnc-baglanti.s16",
+      "tip": "hesap",
+      "yer": "Kirşof'un akımlar kanunu",
+      "soru": "Bir düğüm noktasına 10 A'lik akım geliyor. Bu noktayı terk eden üç iletkenden ikisinde 3 A ve 5 A akım var. Üçüncü iletkendeki akım kaç amperdir?",
+      "cevap": 2,
+      "birim": "A",
+      "izah": "Kirşof'un Akımlar Kanunu: düğüm noktasına gelen akımların toplamı, terk eden akımların toplamına eşittir.\n10 = 3 + 5 + I₃\nI₃ = 10 − 3 − 5 = 2 A."
+    },
+    {
+      "id": "el-direnc-baglanti.s17",
+      "tip": "hesap",
+      "yer": "Paralel devrede kol akımlarının bulunması",
+      "soru": "R₁ = 4 Ω ve R₂ = 12 Ω **paralel** bağlıdır; kaynaktan çekilen toplam akım IT = 8 A'dir. Hocanın I₁ = IT · Reş / R₁ formülüyle R₁ kolundan geçen akımı (I₁) bulun. I₁ kaç amperdir?",
+      "cevap": 6,
+      "birim": "A",
+      "izah": "Önce eşdeğer direnç: 1 / Reş = 1 / 4 + 1 / 12 = 3 / 12 + 1 / 12 = 4 / 12 = 1 / 3, yani Reş = 3 Ω.\nI₁ = IT · Reş / R₁ = 8 · 3 / 4 = 24 / 4 = 6 A.\nDenetim: I₂ = 8 · 3 / 12 = 2 A; Kirşof'un Akımlar Kanunundan 6 + 2 = 8 A."
+    },
+    {
+      "id": "el-direnc-baglanti.s18",
+      "tip": "hesap",
+      "yer": "Paralel devrede güç",
+      "soru": "Paralel bağlı dirençlerden oluşan bir devrenin eşdeğer direnci Reş = 2 Ω, kaynaktan çekilen toplam akım IT = 5 A'dir. Devrede harcanan toplam güç (PT) kaç watttır?",
+      "cevap": 50,
+      "birim": "W",
+      "izah": "PT = IT² · Reş = 5² · 2 = 25 · 2 = 50 W.\n(Aynı sonuç: U = IT · Reş = 10 V; PT = U · IT = 10 · 5 = 50 W.)"
+    },
+    {
+      "id": "el-direnc-baglanti.s19",
+      "tip": "dizme",
+      "yer": "Seri devrede eşdeğer direnç",
+      "soru": "Hocanın seri devrede eşdeğer direnci bulduğu adımları, slayttaki sırasıyla dizin.",
+      "parcalar": [
+        "Seri devrede akımlar aynıdır: I = I₁ = I₂ = I₃",
+        "U₁ = I · R₁, U₂ = I · R₂, U₃ = I · R₃",
+        "Kirşof'un Gerilimler Kanunundan: U = U₁ + U₂ + U₃",
+        "I · Reş = I · R₁ + I · R₂ + I · R₃",
+        "Reş = R₁ + R₂ + R₃"
+      ],
+      "izah": "Hoca önce seri devrede akımların aynı olduğunu yazar; her direncin gerilimini bu ortak akımla (U₁ = I · R₁ …) bulur; Kirşof'un Gerilimler Kanunuyla gerilimleri toplar; gerilimlerin yerine I · R'leri koyar ve ortak I'yı sadeleştirerek Reş = R₁ + R₂ + R₃'e ulaşır."
+    },
+    {
+      "id": "el-direnc-baglanti.s20",
+      "tip": "secme",
+      "yer": "Bağlantı şekilleri",
+      "soru": "Hocaya göre dirençler devrelerde **hangi şekillerde** bağlanabilir?",
+      "secenekler": [
+        "Seri, paralel ve seri-paralel",
+        "Açık, kapalı ve kısa devre",
+        "Düzgün, değişken ve alternatif",
+        "Sabit ve değişken değerli"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki cümle: \"Dirençler seri, paralel ve seri-paralel şeklinde devrelerde bağlantı şekillerini görebiliriz.\" Açık, kapalı ve kısa devre elektrik devre türleridir; düzgün ve değişken doğru akım ile alternatif akım akım çeşitleridir; sabit ve değişken değerli, dirençlerin yapıldığı iki tiptir."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-direnc-baglanti.k1",
+      "yer": "Dirençlerin seri bağlanması",
+      "on": "Seri bağlantı nedir? Özelliklerini ve toplam direnç formülünü söyleyin.",
+      "arka": "İçlerinden aynı akım geçecek şekilde dirençler birbiri ardına eklenirse bu devreye seri devre denir.\n- Toplam direnç artar.\n- Dirençler üzerindeki gerilimler farklı, üzerinden geçen akımlar aynıdır (I = I₁ = I₂ = I₃).\n- RT = R₁ + R₂ + R₃ + … + Rn; Reş = R₁ + R₂ + R₃."
+    },
+    {
+      "id": "el-direnc-baglanti.k2",
+      "yer": "Seri devrede eşdeğer direnç",
+      "on": "Hocanın seri devrede Reş = R₁ + R₂ + R₃ formülünü çıkarışını anlatın.",
+      "arka": "1. Seri devrede akımlar aynıdır: I = I₁ = I₂ = I₃.\n2. U₁ = I · R₁, U₂ = I · R₂, U₃ = I · R₃.\n3. Kirşof'un Gerilimler Kanunundan: U = U₁ + U₂ + U₃.\n4. I · Reş = I · R₁ + I · R₂ + I · R₃.\n5. Reş = R₁ + R₂ + R₃."
+    },
+    {
+      "id": "el-direnc-baglanti.k3",
+      "yer": "Dirençlerin paralel bağlanması",
+      "on": "Paralel bağlantı nedir? Özelliklerini ve eşdeğer direnç formülünü söyleyin.",
+      "arka": "Dirençlerin karşılıklı uçlarının bağlanması ile oluşan devreye paralel bağlantı denir.\n- Toplam direnç azalır.\n- Dirençler üzerindeki gerilimler eşit (U = U₁ = U₂ = U₃), üzerinden geçen akımlar farklıdır (I₁ = U / R₁ …).\n- Kirşof'un Akımlar Kanunundan I = I₁ + I₂ + I₃; buradan 1 / Reş = 1 / R₁ + 1 / R₂ + 1 / R₃."
+    },
+    {
+      "id": "el-direnc-baglanti.k4",
+      "yer": "Seri ve paralel bağlantının karşılaştırması",
+      "on": "Kirşof'un gerilimler ve akımlar kanunlarını söyleyin. Hoca hangisini hangi bağlantıda kullanır?",
+      "arka": "Gerilimler Kanunu: devreye uygulanan gerilim, dirençler üzerinde düşen gerilimlerin toplamına eşittir (U = U₁ + U₂ + U₃). Hoca seri bağlantıda kullanır.\nAkımlar Kanunu: devrede bir düğüm noktasına gelen akımların toplamı, o düğüm noktasını terk eden akımların toplamına eşittir (I = I₁ + I₂ + I₃). Hoca paralel bağlantıda kullanır."
+    },
+    {
+      "id": "el-direnc-baglanti.k5",
+      "yer": "Seri devrede güç",
+      "on": "Seri devrede toplam güç nasıl bulunur? Hocanın güç slaytındaki NOT nedir?",
+      "arka": "Seri bir devrede toplam güç, her bir direnç üzerinde harcanan güçlerin toplamına eşittir:\nPT = P₁ + P₂ + P₃ + … + Pn\nPT = U · I = I² · Reş = U² / Reş\nNOT: Üretilen güç (−) ve harcanan güç (+) işaretlidir. Bir devreye ilişkin toplam güç her an için sıfıra eşittir."
+    },
+    {
+      "id": "el-direnc-baglanti.k6",
+      "yer": "Paralel devrede kol akımlarının bulunması",
+      "on": "Paralel devrede toplam güç ve kol akımları nasıl bulunur?",
+      "arka": "Seri devrede olduğu gibi, toplam güç her bir direnç üzerinde harcanan güçlerin toplamına eşittir:\nPT = P₁ + P₂ + P₃ + … + Pn = U · IT = IT² · Reş = U² / Reş\nKol akımları: U = U₁ = U₂ = U₃'den hareketle IT · Reş = I₁ · R₁, buradan I₁ = IT · Reş / R₁, I₂ = IT · Reş / R₂, I₃ = IT · Reş / R₃."
+    },
+    {
+      "id": "el-direnc-baglanti.k7",
+      "yer": "Seri ve paralel bağlantının karşılaştırması",
+      "on": "Seri ve paralel bağlantı arasındaki farkları sayın.",
+      "arka": "- Seri: dirençler birbiri ardına eklenir; paralel: karşılıklı uçları bağlanır.\n- Toplam direnç: seride artar, paralelde azalır.\n- Gerilimler: seride farklı (U = U₁ + U₂ + U₃), paralelde eşit.\n- Akımlar: seride aynı, paralelde farklı (I = I₁ + I₂ + I₃).\n- Eşdeğer direnç: seride Reş = R₁ + R₂ + R₃, paralelde 1 / Reş = 1 / R₁ + 1 / R₂ + 1 / R₃.\n- Toplam güç ikisinde de dirençlerde harcanan güçlerin toplamıdır."
+    }
+  ]
+}

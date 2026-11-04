@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="292" viewBox="0 0 400 292" role="img">
+<title>DML, DDL ve DCL komutları</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="8" y="8" width="124" height="276" rx="10" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.8"/>
+<rect x="8" y="8" width="124" height="66" rx="10" fill="#2B6CB0"/>
+<rect x="8" y="62" width="124" height="12" fill="#2B6CB0"/>
+<text x="70.0" y="34.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="17" fill="#FFFFFF" font-weight="600" text-anchor="middle">DML</text>
+<text x="70.0" y="52.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">Veri İşleme Dili</text>
+<text x="70.0" y="68.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">veriler üzerinde</text>
+<text x="20.0" y="102.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">SELECT</text>
+<text x="20.0" y="130.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">INSERT</text>
+<text x="20.0" y="158.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">UPDATE</text>
+<text x="20.0" y="186.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">DELETE</text>
+<rect x="138" y="8" width="124" height="276" rx="10" fill="#FFFFFF" stroke="#6B46C1" stroke-width="1.8"/>
+<rect x="138" y="8" width="124" height="66" rx="10" fill="#6B46C1"/>
+<rect x="138" y="62" width="124" height="12" fill="#6B46C1"/>
+<text x="200.0" y="34.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="17" fill="#FFFFFF" font-weight="600" text-anchor="middle">DDL</text>
+<text x="200.0" y="52.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">Veri Tanımlama Dili</text>
+<text x="200.0" y="68.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">tablo, indeks… yapısı</text>
+<text x="150.0" y="102.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">CREATE TABLE</text>
+<text x="150.0" y="130.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">DROP TABLE</text>
+<text x="150.0" y="158.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">ALTER TABLE</text>
+<text x="150.0" y="186.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">CREATE INDEX</text>
+<text x="150.0" y="214.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">DROP INDEX</text>
+<text x="150.0" y="242.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">ALTER VIEW</text>
+<rect x="268" y="8" width="124" height="276" rx="10" fill="#FFFFFF" stroke="#2F855A" stroke-width="1.8"/>
+<rect x="268" y="8" width="124" height="66" rx="10" fill="#2F855A"/>
+<rect x="268" y="62" width="124" height="12" fill="#2F855A"/>
+<text x="330.0" y="34.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="17" fill="#FFFFFF" font-weight="600" text-anchor="middle">DCL</text>
+<text x="330.0" y="52.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">Veri Kontrol Dili</text>
+<text x="330.0" y="68.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">kullanıcı ve haklar</text>
+<text x="280.0" y="102.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">CREATE USER</text>
+<text x="280.0" y="130.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">DROP USER</text>
+<text x="280.0" y="158.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">ALTER USER</text>
+<text x="280.0" y="186.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">GRANT</text>
+<text x="280.0" y="214.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="start">REVOKE</text>
+</svg>

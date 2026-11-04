@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="150" viewBox="0 0 360 150" role="img">
+<title>Hocanın 4 renkli örneği: kırmızı, kahverengi, kırmızı, gümüş; 2100 Ohm ± %10</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<line x1="30.0" y1="70.0" x2="90.0" y2="70.0" stroke="#1A202C" stroke-width="3"/>
+<line x1="270.0" y1="70.0" x2="330.0" y2="70.0" stroke="#1A202C" stroke-width="3"/>
+<rect x="90.0" y="42.0" width="180.0" height="56.0" fill="#FFFFFF" stroke="#1A202C" stroke-width="2.4"/>
+<rect x="113.0" y="43.2" width="10.0" height="53.6" fill="#E01B1B" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="141.0" y="43.2" width="10.0" height="53.6" fill="#7B3F14" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="169.0" y="43.2" width="10.0" height="53.6" fill="#E01B1B" stroke="#4A5568" stroke-width="0.8"/>
+<rect x="197.0" y="43.2" width="10.0" height="53.6" fill="#C8C8C8" stroke="#4A5568" stroke-width="0.8"/>
+<text x="118.0" y="32.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#4A5568" font-weight="600" text-anchor="middle">1</text>
+<text x="146.0" y="32.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#4A5568" font-weight="600" text-anchor="middle">2</text>
+<text x="174.0" y="32.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#4A5568" font-weight="600" text-anchor="middle">3</text>
+<text x="202.0" y="32.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#4A5568" font-weight="600" text-anchor="middle">4</text>
+<text x="180.0" y="130.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#2B6CB0" font-weight="600" text-anchor="middle">Direnç Değeri: 2100 Ohm ± % 10</text>
+</svg>

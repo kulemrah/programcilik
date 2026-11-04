@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220" role="img">
+<title>LIKE ile başlayan ve biten</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="10" y="10" width="184" height="200" rx="10" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.4"/>
+<text x="22.0" y="36.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#2B6CB0" font-weight="600" text-anchor="start">ad LIKE </text>
+<text x="82.0" y="36.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#C53030" font-weight="600" text-anchor="start">'S*'</text>
+<text x="22.0" y="56.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">S ile başlayan</text>
+<circle cx="34.0" cy="82.0" r="9" fill="#2F855A"/>
+<path d="M 29.0 82.0 l 3.5 3.5 l 6 -7" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+<text x="52.0" y="86.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">Sema (2 kayıt)</text>
+<circle cx="34.0" cy="116.0" r="9" fill="#2F855A"/>
+<path d="M 29.0 116.0 l 3.5 3.5 l 6 -7" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+<text x="52.0" y="120.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">Serdar</text>
+<circle cx="34.0" cy="150.0" r="9" fill="#EDF2F7" stroke="#CBD5E0"/>
+<path d="M 30.5 146.5 l 7 7 M 37.5 146.5 l -7 7" fill="none" stroke="#A0AEC0" stroke-width="2"/>
+<text x="52.0" y="154.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#4A5568" text-anchor="start">Ayşe</text>
+<circle cx="34.0" cy="184.0" r="9" fill="#EDF2F7" stroke="#CBD5E0"/>
+<path d="M 30.5 180.5 l 7 7 M 37.5 180.5 l -7 7" fill="none" stroke="#A0AEC0" stroke-width="2"/>
+<text x="52.0" y="188.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#4A5568" text-anchor="start">Mehmet</text>
+<rect x="206" y="10" width="184" height="200" rx="10" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.4"/>
+<text x="218.0" y="36.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#2B6CB0" font-weight="600" text-anchor="start">soyad LIKE </text>
+<text x="300.5" y="36.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#C53030" font-weight="600" text-anchor="start">'*k'</text>
+<text x="218.0" y="56.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">k ile biten</text>
+<circle cx="230.0" cy="82.0" r="9" fill="#2F855A"/>
+<path d="M 225.0 82.0 l 3.5 3.5 l 6 -7" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+<text x="248.0" y="86.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">Öztürk (2 kayıt)</text>
+<circle cx="230.0" cy="116.0" r="9" fill="#EDF2F7" stroke="#CBD5E0"/>
+<path d="M 226.5 112.5 l 7 7 M 233.5 112.5 l -7 7" fill="none" stroke="#A0AEC0" stroke-width="2"/>
+<text x="248.0" y="120.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#4A5568" text-anchor="start">Efe</text>
+<circle cx="230.0" cy="150.0" r="9" fill="#EDF2F7" stroke="#CBD5E0"/>
+<path d="M 226.5 146.5 l 7 7 M 233.5 146.5 l -7 7" fill="none" stroke="#A0AEC0" stroke-width="2"/>
+<text x="248.0" y="154.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#4A5568" text-anchor="start">Kubalı</text>
+<circle cx="230.0" cy="184.0" r="9" fill="#EDF2F7" stroke="#CBD5E0"/>
+<path d="M 226.5 180.5 l 7 7 M 233.5 180.5 l -7 7" fill="none" stroke="#A0AEC0" stroke-width="2"/>
+<text x="248.0" y="188.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#4A5568" text-anchor="start">Polat</text>
+</svg>

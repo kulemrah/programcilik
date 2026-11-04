@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="250" viewBox="0 0 360 250" role="img">
+<title>Cırcır anahtarda gevşetme ve sıkma: kilitli ve serbest yönler</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<path d="M 68.0 112 L 82.0 206 L 98.0 206 L 112.0 112 Z" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.8"/>
+<circle cx="90.0" cy="88" r="36" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.8"/>
+<circle cx="90.0" cy="80" r="16" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.6"/>
+<circle cx="66.0" cy="102" r="5" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.2"/>
+<circle cx="114.0" cy="102" r="5" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.2"/>
+<line x1="96.0" y1="104" x2="81.0" y2="122" stroke="#2D3748" stroke-width="9" stroke-linecap="round"/>
+<line x1="96.0" y1="104" x2="81.0" y2="122" stroke="#BEE3F8" stroke-width="6" stroke-linecap="round"/>
+<circle cx="96.0" cy="104" r="2.5" fill="#2D3748"/>
+<path d="M 62.0 182.0 Q 26.0 182.0 14.0 128.0" fill="none" stroke="#2D3748" stroke-width="11" stroke-linecap="butt"/>
+<path d="M 62.0 182.0 Q 26.0 182.0 14.0 128.0" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="butt"/>
+<polygon points="11.2,115.3 23.8,125.8 4.2,130.2" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.6" stroke-linejoin="round"/>
+<text x="28.0" y="102.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2D3748" text-anchor="middle">Serbest</text>
+<path d="M 118.0 182.0 Q 154.0 182.0 166.0 128.0" fill="none" stroke="#2D3748" stroke-width="11" stroke-linecap="butt"/>
+<path d="M 118.0 182.0 Q 154.0 182.0 166.0 128.0" fill="none" stroke="#BEE3F8" stroke-width="7" stroke-linecap="butt"/>
+<polygon points="168.8,115.3 175.8,130.2 156.2,125.8" fill="#BEE3F8" stroke="#2D3748" stroke-width="1.6" stroke-linejoin="round"/>
+<text x="152.0" y="102.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2D3748" text-anchor="middle">Kilitli</text>
+<text x="90.0" y="236.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2D3748" font-weight="600" text-anchor="middle">GEVŞETME</text>
+<path d="M 248.0 112 L 262.0 206 L 278.0 206 L 292.0 112 Z" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.8"/>
+<circle cx="270.0" cy="88" r="36" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.8"/>
+<circle cx="270.0" cy="80" r="16" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.6"/>
+<circle cx="246.0" cy="102" r="5" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.2"/>
+<circle cx="294.0" cy="102" r="5" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.2"/>
+<line x1="264.0" y1="104" x2="279.0" y2="122" stroke="#2D3748" stroke-width="9" stroke-linecap="round"/>
+<line x1="264.0" y1="104" x2="279.0" y2="122" stroke="#BEE3F8" stroke-width="6" stroke-linecap="round"/>
+<circle cx="264.0" cy="104" r="2.5" fill="#2D3748"/>
+<path d="M 242.0 182.0 Q 206.0 182.0 194.0 128.0" fill="none" stroke="#2D3748" stroke-width="11" stroke-linecap="butt"/>
+<path d="M 242.0 182.0 Q 206.0 182.0 194.0 128.0" fill="none" stroke="#BEE3F8" stroke-width="7" stroke-linecap="butt"/>
+<polygon points="191.2,115.3 203.8,125.8 184.2,130.2" fill="#BEE3F8" stroke="#2D3748" stroke-width="1.6" stroke-linejoin="round"/>
+<text x="208.0" y="102.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2D3748" text-anchor="middle">Kilitli</text>
+<path d="M 298.0 182.0 Q 334.0 182.0 346.0 128.0" fill="none" stroke="#2D3748" stroke-width="11" stroke-linecap="butt"/>
+<path d="M 298.0 182.0 Q 334.0 182.0 346.0 128.0" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="butt"/>
+<polygon points="348.8,115.3 355.8,130.2 336.2,125.8" fill="#FFFFFF" stroke="#2D3748" stroke-width="1.6" stroke-linejoin="round"/>
+<text x="332.0" y="102.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2D3748" text-anchor="middle">Serbest</text>
+<text x="270.0" y="236.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2D3748" font-weight="600" text-anchor="middle">SIKMA</text>
+<line x1="180.0" y1="20.0" x2="180.0" y2="228.0" stroke="#CBD5E0" stroke-width="1" stroke-dasharray="5 4"/>
+</svg>

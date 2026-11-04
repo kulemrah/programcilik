@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="330" viewBox="0 0 360 330" role="img">
+<title>Atomun yapısı: çekirdekte proton ve nötron, çekirdeğin etrafındaki yörüngelerde elektronlar</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="180.0" y="24.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" font-weight="600" text-anchor="middle">ATOM</text>
+<circle cx="180.0" cy="165.0" r="40.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="180.0" cy="165.0" r="75.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="180.0" cy="165.0" r="108.0" fill="none" stroke="#A0AEC0" stroke-width="1.2"/>
+<circle cx="200.0" cy="130.4" r="4.5" fill="#2B6CB0"/>
+<circle cx="160.0" cy="199.6" r="4.5" fill="#2B6CB0"/>
+<circle cx="205.7" cy="94.5" r="4.5" fill="#2B6CB0"/>
+<circle cx="248.0" cy="133.3" r="4.5" fill="#2B6CB0"/>
+<circle cx="250.5" cy="190.7" r="4.5" fill="#2B6CB0"/>
+<circle cx="211.7" cy="233.0" r="4.5" fill="#2B6CB0"/>
+<circle cx="154.3" cy="235.5" r="4.5" fill="#2B6CB0"/>
+<circle cx="112.0" cy="196.7" r="4.5" fill="#2B6CB0"/>
+<circle cx="109.5" cy="139.3" r="4.5" fill="#2B6CB0"/>
+<circle cx="148.3" cy="97.0" r="4.5" fill="#2B6CB0"/>
+<circle cx="273.5" cy="111.0" r="4.5" fill="#2B6CB0"/>
+<circle cx="284.3" cy="193.0" r="4.5" fill="#2B6CB0"/>
+<circle cx="234.0" cy="258.5" r="4.5" fill="#2B6CB0"/>
+<circle cx="152.0" cy="269.3" r="4.5" fill="#2B6CB0"/>
+<circle cx="86.5" cy="219.0" r="4.5" fill="#2B6CB0"/>
+<circle cx="75.7" cy="137.0" r="4.5" fill="#2B6CB0"/>
+<circle cx="126.0" cy="71.5" r="4.5" fill="#2B6CB0"/>
+<circle cx="208.0" cy="60.7" r="4.5" fill="#2B6CB0"/>
+<circle cx="171" cy="160" r="13" fill="#BEE3F8" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="171.0" y="165.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2B6CB0" font-weight="600" text-anchor="middle">p⁺</text>
+<circle cx="190" cy="174" r="13" fill="#E6F4EA" stroke="#276749" stroke-width="1.4"/>
+<text x="190.0" y="179.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#276749" font-weight="600" text-anchor="middle">n</text>
+<line x1="64.0" y1="62.0" x2="160.0" y2="152.0" stroke="#4A5568" stroke-width="1"/>
+<text x="14.0" y="58.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Proton</text>
+<line x1="64.0" y1="196.0" x2="159.0" y2="168.0" stroke="#4A5568" stroke-width="1"/>
+<text x="14.0" y="200.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Çekirdek</text>
+<line x1="78.0" y1="262.0" x2="173.1" y2="204.4" stroke="#4A5568" stroke-width="1"/>
+<line x1="78.0" y1="262.0" x2="131.8" y2="222.5" stroke="#4A5568" stroke-width="1"/>
+<line x1="78.0" y1="262.0" x2="118.1" y2="253.5" stroke="#4A5568" stroke-width="1"/>
+<text x="14.0" y="276.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Yörüngeler</text>
+<line x1="300.0" y1="64.0" x2="288.3" y2="190.0" stroke="#4A5568" stroke-width="1"/>
+<line x1="300.0" y1="64.0" x2="251.0" y2="130.3" stroke="#4A5568" stroke-width="1"/>
+<text x="346.0" y="58.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="end">Elektronlar (e⁻)</text>
+<line x1="296.0" y1="214.0" x2="203.0" y2="177.0" stroke="#4A5568" stroke-width="1"/>
+<text x="346.0" y="228.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="end">Nötron</text>
+<text x="180.0" y="306.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Atomu oluşturan temel tanecikler:</text>
+<text x="180.0" y="322.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">nötron, proton ve elektronlardır.</text>
+</svg>

@@ -1,0 +1,385 @@
+{
+  "id": "alg-bilgisayar",
+  "baslik": "Bilgisayar, Donanım ve Yazılım",
+  "kaynak": "1-2._hafta_algoritma_ve_programlama_temelleri_dersi_ders_slayt_.pdf, slayt 1–19",
+  "kavramlar": [
+    {
+      "terim": "Bilgisayar",
+      "izah": "Verileri işleyerek özet bilgiler şekline sokabilen, bu veri ve bilgileri yüksek kapasitelerde saklayıp başka ortamlara iletebilen elektronik cihaz. İşlemleri donanım yapsa da asıl iş yazılımlar tarafından gerçekleştirilir.",
+      "yer": "Bilgisayar nedir"
+    },
+    {
+      "terim": "Bilgisayarın birimleri",
+      "izah": "Giriş birimi (veri ve komutları bilgisayara yollar), bellek birimi (veri, komut ve programları saklar), aritmetik-mantık birimi, denetim birimi (tüm işlemleri yapan ana birim), çıkış birimi (verileri dış ortama verir).",
+      "yer": "Bilgisayar organizasyonu"
+    },
+    {
+      "terim": "Donanım ve yazılım",
+      "izah": "Donanım (hardware): bilgisayarın fiziksel parçaları (yazıcı, monitör, klavye, anakart). Yazılım (software): bilgisayarın kullandığı programlar (Word, Excel, Turbo Pascal).",
+      "yer": "Donanım ve yazılım"
+    },
+    {
+      "terim": "CPU",
+      "izah": "Merkezi işlem birimi (işlemci); bilgisayarın beyni olarak bilinir. Aritmetiksel ve mantıksal işlemleri yapar, birimlerin çalışmasını ve aralarındaki veri akışını kontrol eder.",
+      "yer": "CPU"
+    },
+    {
+      "terim": "CU (kontrol birimi)",
+      "izah": "CPU'da komutların gerçekleştirilme sırasını kontrol eden birim.",
+      "yer": "CPU'nun parçaları"
+    },
+    {
+      "terim": "ALU (aritmetik lojik birim)",
+      "izah": "Bilgisayarda aritmetik ve mantıksal işlemlerin yapıldığı birim.",
+      "yer": "CPU'nun parçaları"
+    },
+    {
+      "terim": "Registers (saklayıcılar)",
+      "izah": "İşlemci üzerinde bulunan, hesaplamalarda geçici depo görevi gören yüksek hızlı hafıza birimleri.",
+      "yer": "CPU'nun parçaları"
+    },
+    {
+      "terim": "RAM (birincil hafıza)",
+      "izah": "Rastgele erişilebilir bellek; işlemcinin program çalıştırırken verileri geçici olarak sakladığı alan. Diske göre hızlı ve pahalıdır; elektrik kesilince içindekiler kaybolur. Her hücresinin sayısal bir adresi vardır.",
+      "yer": "Birincil hafıza (RAM)"
+    },
+    {
+      "terim": "Bit ve byte",
+      "izah": "Bit, 1 ya da 0 bilgisini saklayan en küçük hafıza birimidir. Byte bellek ölçü birimidir ve 8 bitten oluşur.",
+      "yer": "Birincil hafıza (RAM)"
+    },
+    {
+      "terim": "İkincil hafıza (sabit disk)",
+      "izah": "Verilerin uzun ömürlü saklandığı depolama aygıtı; işletim sistemi ve sürekli çalışan yazılımlar burada tutulur. Kapasite ve devir sayısı (RPM, dakikadaki dönüş sayısı) ile anılır.",
+      "yer": "İkincil hafıza (sabit disk)"
+    },
+    {
+      "terim": "Yazılım",
+      "izah": "Donanım birimlerini istenen işleme yöneltip verimli kullanılmasını sağlayan bir dizi komut, prosedür gibi sanal tanımlar.",
+      "yer": "Yazılım"
+    },
+    {
+      "terim": "Sistem ve uygulama yazılımları",
+      "izah": "Sistem yazılımları: işletim sistemi, bellek ve disk hizmet yazılımları, derleyiciler, veritabanı yönetim, iletişim ve ağ yönetim yazılımları. Uygulama yazılımları: ticari paket, ofis otomasyonu ve diğer yazılımlar.",
+      "yer": "Yazılım türleri"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-bilgisayar.s1",
+      "tip": "dy",
+      "yer": "Genel programlama bilgisi",
+      "ifade": "Hocaya göre programlama, programın yazılıp bitmesiyle sona erer.",
+      "dogru": false,
+      "izah": "Hocanın ifadesi: programlama bir süreçtir; programın yazılıp bitmesiyle bitmez, çoğunlukla programın yaşadığı süre içinde değişik şekillerde devam eder."
+    },
+    {
+      "id": "alg-bilgisayar.s2",
+      "tip": "dy",
+      "yer": "Programlama mantığı",
+      "ifade": "Hocaya göre programlama bilgisi bir programlama diline bağlı tutulmamalıdır.",
+      "dogru": true,
+      "izah": "Hocaya göre diller zamanla değişir, kaybolur ya da yenileri çıkar; önemli olan programlama mantığıdır. Programlama dilinin alternatifi vardır, programlamanın alternatifi yoktur."
+    },
+    {
+      "id": "alg-bilgisayar.s3",
+      "tip": "secme",
+      "yer": "Bilgisayar nedir",
+      "soru": "Hocaya göre bilgisayardaki işlemleri donanım yapsa da asıl işi ne gerçekleştirir?",
+      "secenekler": [
+        "Yazılımlar",
+        "Giriş birimleri",
+        "Bellek birimi",
+        "Çıkış birimleri"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın ifadesi: tek başına bir bilgisayar donanımı bu işleri gerçekleştirecek durumda değildir; işlemler donanım tarafından yapılsa da asıl iş yazılımlar tarafından gerçekleştirilir."
+    },
+    {
+      "id": "alg-bilgisayar.s4",
+      "tip": "esles",
+      "yer": "Bilgisayar organizasyonu",
+      "soru": "Birimleri hocanın verdiği görevlerle eşleştirin.",
+      "ciftler": [
+        [
+          "Giriş birimi",
+          "Veri ve komutların bilgisayara yollanmasını sağlar"
+        ],
+        [
+          "Bellek birimi",
+          "Veri, komut ve programların saklandığı donanımlar"
+        ],
+        [
+          "Aritmetik-mantık birimi",
+          "Tüm aritmetik ve mantıksal işlemlerin yapıldığı birim"
+        ],
+        [
+          "Denetim birimi",
+          "Tüm işlemleri yapan ana birim; programın çalışmasını denetler"
+        ],
+        [
+          "Çıkış birimi",
+          "Oluşan verilerin dış ortama verilmesini sağlar"
+        ]
+      ],
+      "izah": "Hocanın bilgisayar organizasyonundaki beş birim ve görevleri."
+    },
+    {
+      "id": "alg-bilgisayar.s5",
+      "tip": "secme",
+      "yer": "Bilgisayar organizasyonu",
+      "soru": "Hocaya göre bilgisayarın beynini oluşturan iki birim hangisidir?",
+      "secenekler": [
+        "Aritmetik-mantık birimi ve denetim birimi",
+        "Bellek birimi ve aritmetik-mantık birimi",
+        "Giriş birimi ve denetim birimi",
+        "Bellek birimi ve çıkış birimi"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre özellikle aritmetik-mantık birimi ve denetim birimi bilgisayarın beynini oluşturur; programcı bunların nasıl davrandığını iyi bilmek zorundadır."
+    },
+    {
+      "id": "alg-bilgisayar.s6",
+      "tip": "dy",
+      "yer": "Bilgisayar organizasyonu",
+      "ifade": "Hocaya göre yazıcı bir giriş birimidir.",
+      "dogru": false,
+      "izah": "Yazıcı ve ekran hocanın çıkış birimi örnekleridir. Giriş birimi örnekleri klavye, fare, mikrofon ve kameradır."
+    },
+    {
+      "id": "alg-bilgisayar.s7",
+      "tip": "secme",
+      "yer": "CPU",
+      "soru": "Hocaya göre aşağıdakilerden hangisi CPU'nun yaptığı **mantıksal** işlemlere örnektir?",
+      "secenekler": [
+        "Büyüklük, küçüklük ve eşitlik tespiti",
+        "Toplama ve çıkarma işlemleri",
+        "Çarpma ve bölme işlemleri",
+        "Verilerin sabit diske yazılması"
+      ],
+      "dogru": 0,
+      "izah": "Hoca mantıksal işlemleri büyüklük, küçüklük, eşitlik tespiti gibi karşılaştırma işlemleri olarak tanımlıyor. Toplama, çıkarma, çarpma ve bölme aritmetiksel işlemlerdir."
+    },
+    {
+      "id": "alg-bilgisayar.s8",
+      "tip": "secme",
+      "yer": "Yazılım",
+      "soru": "Donanım birimlerini istenen işleme yöneltip verimli bir çalışma içinde kullanımını sağlayan bir dizi komut, prosedür gibi sanal tanımlara ne denir?",
+      "secenekler": [
+        "Yazılım",
+        "Donanım",
+        "Bellek birimi",
+        "Saklayıcılar"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın yazılım tanımı budur. Donanım bilgisayarın fiziksel parçalarıdır."
+    },
+    {
+      "id": "alg-bilgisayar.s9",
+      "tip": "esles",
+      "yer": "CPU'nun parçaları",
+      "soru": "CPU'nun parçalarını görevleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "CU",
+          "Komutların gerçekleştirilme sırasını kontrol eder"
+        ],
+        [
+          "ALU",
+          "Aritmetik ve mantıksal işlemleri yapar"
+        ],
+        [
+          "Registers",
+          "Hesaplamalarda geçici depo olan yüksek hızlı hafıza"
+        ]
+      ],
+      "izah": "Hocanın CPU parçaları: CU (kontrol birimi), ALU (aritmetik lojik birim), registers (saklayıcılar)."
+    },
+    {
+      "id": "alg-bilgisayar.s10",
+      "tip": "secme",
+      "yer": "CPU'nun parçaları",
+      "soru": "İşlemci üzerinde bulunan ve hesaplamalarda geçici depo görevi gören yüksek hızlı hafıza birimleri hangisidir?",
+      "secenekler": [
+        "Registers (saklayıcılar)",
+        "RAM (birincil hafıza)",
+        "Sabit disk (ikincil hafıza)",
+        "ALU (aritmetik lojik birim)"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın tanımı: saklayıcılar (registers) işlemci üzerinde bulunan, hesaplamalarda geçici depo görevi gören yüksek hızlı hafıza birimleridir. RAM ise birincil hafızadır (ana bellek)."
+    },
+    {
+      "id": "alg-bilgisayar.s11",
+      "tip": "hesap",
+      "yer": "Bellek",
+      "soru": "Hocaya göre kaç tip hafıza vardır?",
+      "cevap": 2,
+      "izah": "Hocaya göre 2 tip hafıza vardır: birincil hafıza (RAM) ve ikincil hafıza (sabit disk)."
+    },
+    {
+      "id": "alg-bilgisayar.s12",
+      "tip": "dy",
+      "yer": "Birincil hafıza (RAM)",
+      "ifade": "RAM'deki bilgiler elektrik kesilince kaybolur.",
+      "dogru": true,
+      "izah": "Hocaya göre RAM'in içindeki bilgiler elektrik kesilmesi sonucu kaybolur; bu yüzden ikincil hafızaya (sabit disk) her zaman ihtiyaç vardır."
+    },
+    {
+      "id": "alg-bilgisayar.s13",
+      "tip": "dy",
+      "yer": "Birincil hafıza (RAM)",
+      "ifade": "Hocaya göre RAM, harddiske göre daha yavaş ve daha ucuzdur.",
+      "dogru": false,
+      "izah": "Hocaya göre RAM harddisklere göre daha hızlı ve dolayısıyla daha pahalıdır."
+    },
+    {
+      "id": "alg-bilgisayar.s14",
+      "tip": "secme",
+      "yer": "Birincil hafıza (RAM)",
+      "soru": "Hocaya göre \"rastgele erişimli bellek\" adı nereden gelir?",
+      "secenekler": [
+        "Her hücreye diğerlerinden bağımsız, anında erişilebildiği için",
+        "Verileri her seferinde rastgele bir sırayla sakladığı için",
+        "İçindeki bilgiler rastgele zamanlarda silindiği için",
+        "Hücre adresleri her açılışta rastgele değiştiği için"
+      ],
+      "dogru": 0,
+      "izah": "RAM birbirinden bağımsız hücrelerden oluşur ve her hücrenin sayısal bir adresi vardır; herhangi bir hücreye istenildiği anda, diğerlerinden bağımsız erişilebilir. Ad buradan gelir."
+    },
+    {
+      "id": "alg-bilgisayar.s15",
+      "tip": "hesap",
+      "yer": "Birincil hafıza (RAM)",
+      "soru": "Hocaya göre 1 byte kaç bitten oluşur?",
+      "cevap": 8,
+      "birim": "bit",
+      "izah": "Byte bellek ölçü birimidir ve 8 bitten oluşur."
+    },
+    {
+      "id": "alg-bilgisayar.s16",
+      "tip": "secme",
+      "yer": "Birincil hafıza (RAM)",
+      "soru": "\"1\" ya da \"0\" sayısal bilgisini saklayan en küçük hafıza birimi hangisidir?",
+      "secenekler": [
+        "Bit",
+        "Byte",
+        "Register",
+        "RPM"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın tanımı: bit, 1 ya da 0 sayısal bilgisini saklayan en küçük hafıza birimidir. Byte 8 bitten oluşur."
+    },
+    {
+      "id": "alg-bilgisayar.s17",
+      "tip": "bosluk",
+      "yer": "İkincil hafıza (sabit disk)",
+      "metin": "RPM, sabit disk plakalarının ___ dönüş sayısını belirtir.",
+      "cevaplar": [
+        [
+          "dakikadaki",
+          "dakika başına"
+        ]
+      ],
+      "izah": "RPM (Rotation Per Minute): dakika başına dönüş sayısı."
+    },
+    {
+      "id": "alg-bilgisayar.s18",
+      "tip": "secme",
+      "yer": "İkincil hafıza (sabit disk)",
+      "soru": "Hocaya göre işletim sistemi nereye kurulur?",
+      "secenekler": [
+        "Sabit diske (ikincil hafıza)",
+        "RAM'e (birincil hafıza)",
+        "Registers'a (saklayıcılar)",
+        "ALU'ya (aritmetik lojik birim)"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre bilgisayarın çevre birimleriyle uyumlu çalışması için gerekli işletim sistemi sabit disk üzerine kurulur; sürekli çalışması gereken yazılımlar da sabit diskte tutulur."
+    },
+    {
+      "id": "alg-bilgisayar.s19",
+      "tip": "secme",
+      "yer": "Yazılım türleri",
+      "soru": "Aşağıdakilerden hangisi hocanın listesinde **uygulama** yazılımları arasındadır?",
+      "secenekler": [
+        "Ofis otomasyonu yazılımları",
+        "Derleyiciler",
+        "Veritabanı yönetim yazılımları",
+        "Ağ yönetim yazılımları"
+      ],
+      "dogru": 0,
+      "izah": "Uygulama yazılımları: ticari paket, ofis otomasyonu ve diğer özel ve genel yazılımlar. Derleyiciler, veritabanı yönetim ve ağ yönetim yazılımları sistem yazılımlarıdır."
+    },
+    {
+      "id": "alg-bilgisayar.s20",
+      "tip": "secme",
+      "yer": "Yazılım türleri",
+      "soru": "Hocaya göre en önemli yazılım hangisidir ve neden?",
+      "secenekler": [
+        "İşletim sistemi; o olmadan bilgisayar açılamaz",
+        "Derleyici; o olmadan program yazılamaz",
+        "Ofis yazılımları; en çok onlar kullanılır",
+        "Veritabanı yazılımı; veriler onda saklanır"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın ifadesi: en önemli yazılım işletim sistemidir, çünkü bu yazılım olmadan bilgisayar açılamaz."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-bilgisayar.k1",
+      "yer": "Genel programlama bilgisi",
+      "on": "Hocaya göre program yazmadan önce ne yapılmalı? Programlama mantığı neden önemli?",
+      "arka": "Programlama bir süreçtir, program yazılınca bitmez. Önce adımlar sağlam atılmalı, raporlarla belgelenmeli ve ön çalışmalar kâğıt üzerinde yapılmalıdır.\nProgramlama bilgisi bir dile bağlı tutulmamalı: diller değişir, önemli olan programlama mantığıdır. Dilin alternatifi vardır, programlamanın alternatifi yoktur."
+    },
+    {
+      "id": "alg-bilgisayar.k2",
+      "yer": "Bilgisayar nedir",
+      "on": "Bilgisayar nedir?",
+      "arka": "Verileri işleyerek özet bilgiler şekline sokabilen, bu veri ve bilgileri yüksek kapasitelerde saklayıp başka ortamlara iletebilen elektronik cihaz. Yüksek hızda ve tekrarlı çalışır. İşlemleri donanım yapsa da asıl iş yazılımlarındır."
+    },
+    {
+      "id": "alg-bilgisayar.k3",
+      "yer": "Bilgisayar organizasyonu",
+      "on": "Bilgisayar organizasyonundaki birimleri sayın.",
+      "arka": "- Giriş birimi: veri ve komutları bilgisayara yollar (klavye, fare, mikrofon, kamera).\n- Bellek birimi: veri, komut ve programları saklar.\n- Aritmetik-mantık birimi: aritmetik ve mantıksal işlemler.\n- Denetim birimi: tüm işlemleri yapan ana birim; programı denetler, hangi işin yapılacağına karar verir.\n- Çıkış birimi: verileri dış ortama verir (ekran, yazıcı).\nBeyin: aritmetik-mantık ve denetim birimi."
+    },
+    {
+      "id": "alg-bilgisayar.k4",
+      "yer": "Donanımın dört bölümü",
+      "on": "Hocaya göre bir bilgisayar sisteminin 4 önemli bölümü nedir?",
+      "arka": "1. Giriş aygıtları (klavye, fare)\n2. Çıkış aygıtları (monitör, yazıcı)\n3. CPU\n4. Bellek\nEk: organizasyondaki aritmetik-mantık ve denetim birimleri CPU'nun içindedir; bu yüzden bir sayımda beş, ötekinde dört parça var."
+    },
+    {
+      "id": "alg-bilgisayar.k5",
+      "yer": "CPU'nun parçaları",
+      "on": "CPU nedir? Hangi parçalardan oluşur?",
+      "arka": "Merkezi işlem birimi; bilgisayarın beyni. Aritmetiksel ve mantıksal işlemleri yapar, birimler arasındaki veri akışını kontrol eder.\n- CU: komutların gerçekleştirilme sırasını kontrol eder.\n- ALU: aritmetik ve mantıksal işlemler.\n- Registers: işlemcideki hızlı, geçici depolar."
+    },
+    {
+      "id": "alg-bilgisayar.k6",
+      "yer": "Birincil hafıza (RAM)",
+      "on": "RAM'in özellikleri nelerdir?",
+      "arka": "Rastgele erişilebilir bellek; işlemcinin çalışırken verileri geçici sakladığı alan. Diske göre hızlı ve pahalı; elektrik kesilince içindekiler kaybolur. Bağımsız hücrelerden oluşur, her hücrenin adresi vardır ve her hücreye anında erişilir."
+    },
+    {
+      "id": "alg-bilgisayar.k7",
+      "yer": "İkincil hafıza (sabit disk)",
+      "on": "İkincil hafıza nedir? Nasıl anılır?",
+      "arka": "Sabit disk; verilerin uzun ömürlü saklandığı aygıt. İşletim sistemi ve sürekli çalışan yazılımlar buraya kurulur. Kapasite (byte'ın katları) ve devir sayısıyla (RPM, dakikadaki dönüş) anılır."
+    },
+    {
+      "id": "alg-bilgisayar.k8",
+      "yer": "Birincil hafıza (RAM)",
+      "on": "Bit ve byte nedir?",
+      "arka": "Bit: 1 ya da 0 bilgisini saklayan en küçük hafıza birimi.\nByte: bellek ölçü birimi, 8 bit."
+    },
+    {
+      "id": "alg-bilgisayar.k9",
+      "yer": "Yazılım türleri",
+      "on": "Yazılım nedir? Türleri nelerdir?",
+      "arka": "Donanımı istenen işleme yöneltip verimli kullanılmasını sağlayan komut ve prosedürler.\n- Sistem yazılımları: işletim sistemi, bellek ve disk hizmet yazılımları, derleyiciler, veritabanı yönetim, iletişim, ağ yönetim.\n- Uygulama yazılımları: ticari paket, ofis otomasyonu, diğer.\nEn önemlisi işletim sistemidir: o olmadan bilgisayar açılamaz."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Kostü - Ders",
+  "short_name": "Kostü - Ders",
+  "description": "Ders notları, temrinler ve 42 Tarzı kartlar",
+  "lang": "tr",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F2F2F7",
+  "theme_color": "#F2F2F7",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "kostu-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "kostu-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "kostu-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

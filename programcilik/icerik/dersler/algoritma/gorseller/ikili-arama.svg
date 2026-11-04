@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="266" viewBox="0 0 400 266" role="img">
+<title>İkili arama: arama alanı her adımda yarıya iner</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="14.0" y="22.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">sıralı dizi, aranan: 50</text>
+<rect x="18" y="40" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="36.0" y="61.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">4</text>
+<rect x="58" y="40" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="76.0" y="61.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">8</text>
+<rect x="98" y="40" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="116.0" y="61.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">15</text>
+<rect x="138" y="40" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="156.0" y="61.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">16</text>
+<rect x="178" y="40" width="36" height="32" rx="5" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="196.0" y="61.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">23</text>
+<rect x="218" y="40" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="236.0" y="61.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">31</text>
+<rect x="258" y="40" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="276.0" y="61.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">42</text>
+<rect x="298" y="40" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="316.0" y="61.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">50</text>
+<rect x="338" y="40" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="356.0" y="61.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">61</text>
+<text x="18.0" y="92.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">1. adım: orta 23 &lt; 50 → sağ yarıda ara</text>
+<rect x="18" y="118" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="36.0" y="139.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">4</text>
+<rect x="58" y="118" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="76.0" y="139.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">8</text>
+<rect x="98" y="118" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="116.0" y="139.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">15</text>
+<rect x="138" y="118" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="156.0" y="139.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">16</text>
+<rect x="178" y="118" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="196.0" y="139.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">23</text>
+<rect x="218" y="118" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="236.0" y="139.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">31</text>
+<rect x="258" y="118" width="36" height="32" rx="5" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="276.0" y="139.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">42</text>
+<rect x="298" y="118" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="316.0" y="139.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">50</text>
+<rect x="338" y="118" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="356.0" y="139.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">61</text>
+<text x="18.0" y="170.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">2. adım: orta 42 &lt; 50 → sağ yarıda ara</text>
+<rect x="18" y="196" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="36.0" y="217.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">4</text>
+<rect x="58" y="196" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="76.0" y="217.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">8</text>
+<rect x="98" y="196" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="116.0" y="217.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">15</text>
+<rect x="138" y="196" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="156.0" y="217.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">16</text>
+<rect x="178" y="196" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="196.0" y="217.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">23</text>
+<rect x="218" y="196" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="236.0" y="217.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">31</text>
+<rect x="258" y="196" width="36" height="32" rx="5" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="276.0" y="217.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#A0AEC0" text-anchor="middle">42</text>
+<rect x="298" y="196" width="36" height="32" rx="5" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="316.0" y="217.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">50</text>
+<rect x="338" y="196" width="36" height="32" rx="5" fill="#EBF4FF" stroke="#90CDF4" stroke-width="1.2"/>
+<text x="356.0" y="217.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" text-anchor="middle">61</text>
+<text x="18.0" y="248.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2F855A" font-weight="600" text-anchor="start">3. adım: orta 50 = 50 → bulundu</text>
+</svg>

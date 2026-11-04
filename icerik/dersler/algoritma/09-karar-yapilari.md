@@ -13,22 +13,20 @@ Kullanım şekli:
 - **EĞER (koşul) İSE**: koşuldan dönen değer **doğru** ise burada belirtilen işlemleri gerçekleştir.
 - **DEĞİL İSE**: koşuldan dönen değer **yanlış** ise burada belirtilen işlemleri gerçekleştir.
 
-> **Ek:** Bu dersin dili C++'ta EĞER (koşul) İSE `if (koşul)`, DEĞİL İSE `else` diye yazılır (bu konudaki "C++ karşılığı (Ek)" başlığı).
-
 ### DEĞİL İSE kısmında koşul kullanılmaz
 
 Burada **DEĞİL İSE** kısmında **başka bir koşul ifadesi kullanılmaz.**
 
 > **Dikkat:** Koşul yalnızca EĞER (koşul) İSE kısmında yazılır; DEĞİL İSE kısmının kendine ait bir koşulu yoktur. EĞER kısmındaki koşulun yanlış çıkması, DEĞİL İSE kısmındaki işlemlerin gerçekleştirilmesi için yeterlidir (bir sonraki başlık).
 
-> **Ek:** Slaytta üç ya da daha çok durumun nasıl yazılacağı gösterilmiyor ("Karar Yapıları: Örnekler" konusundaki Örnek 2, 7 ve 8 böyledir). İki yol vardır. Birincisi, her durum için art arda **ayrı bir EĞER yapısı** yazmak ve aralığı koşulda tam vermektir: `EĞER SAYI==0 İSE Yaz: "Sıfıra eşit"`, `EĞER SAYI>0 İSE Yaz: "Sıfırdan büyük"`, `EĞER SAYI<0 İSE Yaz: "Sıfırdan küçük"`; burada DEĞİL İSE kısmında hiç koşul geçmez. İkincisi, DEĞİL İSE kısmında gerçekleştirilecek işlem olarak **yeni bir EĞER yapısı** yazmaktır: `EĞER SAYI==0 İSE Yaz: "Sıfıra eşit"`, `DEĞİL İSE EĞER SAYI>0 İSE Yaz: "Sıfırdan büyük"`, `DEĞİL İSE Yaz: "Sıfırdan küçük"`; buradaki ikinci koşul DEĞİL İSE kısmının değil, içindeki yeni EĞER yapısının koşuludur (C++'ta `else if`). Hocanın hangisini beklediği slaytta yazmıyor. İki yol da C++'ta -3, 0 ve 5 ile denendi, aynı sonucu verdi. "Algoritma İfade Şekilleri: Metin ve Sözde Kod" konusundaki "Örnek: suyun durumu" başlığının Dikkat kutusunda önerilen "değilse eğer" düzeltmesi ikinci yoldur; hocanın o örneğinde ayrı "Eğer"ler vardır.
+> **Ek:** Slaytta üç ya da daha çok durumun nasıl yazılacağı gösterilmiyor ("Karar Yapıları: Örnekler" konusundaki Örnek 2, 7 ve 8 böyledir). İki yol vardır. Birincisi, her durum için art arda **ayrı bir EĞER yapısı** yazmak ve aralığı koşulda tam vermektir: `EĞER SAYI==0 İSE Yaz: "Sıfıra eşit"`, `EĞER SAYI>0 İSE Yaz: "Sıfırdan büyük"`, `EĞER SAYI<0 İSE Yaz: "Sıfırdan küçük"`; burada DEĞİL İSE kısmında hiç koşul geçmez. İkincisi, DEĞİL İSE kısmında gerçekleştirilecek işlem olarak **yeni bir EĞER yapısı** yazmaktır: `EĞER SAYI==0 İSE Yaz: "Sıfıra eşit"`, `DEĞİL İSE EĞER SAYI>0 İSE Yaz: "Sıfırdan büyük"`, `DEĞİL İSE Yaz: "Sıfırdan küçük"`; buradaki ikinci koşul DEĞİL İSE kısmının değil, içindeki yeni EĞER yapısının koşuludur. 6. haftada hoca üç durumlu bir örneği (sayının sıfıra göre durumu) kendisi çözdü: ilk EĞER'in sonuna "5.adıma git" yazdı, ikinci koşulu ayrı bir EĞER ile ve onun DEĞİL İSE kısmıyla yazdı; akış diyagramında ikinci karar, birinci kararın Hayır çıkışına bağlıdır ("Akış Diyagramları (Akış Çizgeleri)" konusundaki "Adıma git ve art arda kararlar" başlığı). Bu, "değilse eğer" yoluyla (DEĞİL İSE kısmında yeni bir EĞER yapısı) aynı sonucu verir. Üç yazım da -3, 0 ve 5 için aynı sonucu verir. "Algoritma İfade Şekilleri: Metin ve Sözde Kod" konusundaki "Örnek: suyun durumu" başlığının Dikkat kutusunda önerilen "değilse eğer" düzeltmesi, DEĞİL İSE kısmında yeni bir EĞER yapısı yazmaktır; hocanın o örneğinde ayrı "Eğer"ler vardır.
 
 ### Koşul yanlış ya da doğru olduğunda
 
 - EĞER (koşul) İSE kısmındaki koşuldan **yanlış** değeri geri dönerse buradaki işlemler **gerçekleştirilmez** ve DEĞİL İSE kısmındaki işlemler **başka bir koşula bakılmadan** gerçekleştirilir.
 - EĞER (koşul) İSE kısmındaki koşuldan **doğru** değeri geri dönerse burada belirtilen işlemler gerçekleştirilir ve bu durumda DEĞİL İSE kısmındaki işlemler **gerçekleştirilmez**.
 
-![Karar yapısı: koşuldan dönen değere göre iki kısımdan yalnızca biri gerçekleştirilir (Ek: slaytta şekil yok)](gorseller/karar-yapisi.svg)
+![Karar yapısı: koşuldan dönen değere göre iki kısımdan yalnızca biri gerçekleştirilir (Ek: slaytta şekil yok; bu bir akış diyagramı değildir, akış diyagramında karar eşkenar dörtgenle çizilir)](gorseller/karar-yapisi.svg)
 
 > **Dikkat:** Bir karar yapısında iki kısımdan **yalnızca biri** gerçekleştirilir: koşul doğruysa EĞER İSE kısmı, yanlışsa DEĞİL İSE kısmı. İkisi birden gerçekleştirilmez, ikisi birden atlanmaz.
 
@@ -54,23 +52,4 @@ Hocanın açıklamaları:
 
 ![Hocanın örneği üç farklı girişle (Ek: örnek değerler)](gorseller/buyuk-sayi.svg)
 
-> **Ek:** Şekildeki giriş değerleri örnek olarak seçildi; slaytta giriş değeri verilmemiştir.
-
-#### C++ karşılığı (Ek)
-
-Hocanın çözümü bu dersin dili C++'ta şöyle yazılabilir. g++ ile derlenip denendi: 8 ve 3 girilince 8, 4 ve 9 girilince 9, 7 ve 7 girilince 7 yazar.
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main() {
-    int A, B;
-    cin >> A >> B;        // 2.Oku : A, B
-    if (A > B)            // 3.EĞER A>B İSE
-        cout << A;        //   Yaz: A
-    else                  // DEĞİL İSE
-        cout << B;        //   Yaz: B
-    return 0;             // 4.Bitir.
-}
-```
+> **Ek:** Şekildeki giriş değerleri örnek olarak seçildi; slaytta giriş değeri verilmemiştir. Bu örneğin hocanın akış diyagramı: "Akış Diyagramları (Akış Çizgeleri)" konusundaki "Örnek: iki sayıdan büyük olanı" başlığı.

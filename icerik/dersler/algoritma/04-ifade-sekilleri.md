@@ -23,6 +23,8 @@ Hocanın problemi: **Klavyeden girilen sayının karesini hesaplayarak ekrana ya
 
 > **Dikkat:** Kuralda bitiş adımı "son" diye geçiyor, örnekte ise "Dur" yazılmış; ikisi de aynı işi görür. Bitiş için BİTİR, SON ya da DUR yazılabildiği "Algoritma Yazımı: Örnekler" konusunda da geçer.
 
+> **Ek:** Hoca 6. haftada benzer bir problemi (girilen sayının karesini ekrana yazan program) `KARESI=A^2` ile çözüp akış diyagramını çizdi: "Akış Diyagramları (Akış Çizgeleri)" konusundaki "Örnek: sayının karesi" başlığı.
+
 ### Sözde kod (pseudo code)
 
 **Sözde programlar**, doğrudan konuşma dilinde ve programlama mantığı altında, **"eğer", "iken"** gibi koşul kelimeleri ve **`>`, `=`, `<`** gibi ifadelerle birlikte yazılır. İyi bir biçimde yazılmış sözde koddan programlama diline **kolaylıkla** geçilebilir.

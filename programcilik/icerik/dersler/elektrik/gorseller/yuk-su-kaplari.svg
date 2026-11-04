@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="214" viewBox="0 0 360 214" role="img">
+<title>Su kapları: vana kapalıyken A dolu, B boş; yükseklikleri eşit sıvılar</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="66" y="141" width="44" height="7" fill="#A0AEC0" stroke="#2D3748" stroke-width="1.2"/>
+<rect x="12.0" y="46.0" width="56" height="106.0" fill="#C3DAFE"/>
+<ellipse cx="40.0" cy="46.0" rx="28.0" ry="6" fill="#A3BFFA" stroke="#5A67D8" stroke-width="1"/>
+<path d="M 12.0 40.0 L 12.0 152.0 A 28.0 6 0 0 0 68.0 152.0 L 68.0 40.0" fill="none" stroke="#2D3748" stroke-width="1.6"/>
+<ellipse cx="40.0" cy="40.0" rx="28.0" ry="6" fill="none" stroke="#2D3748" stroke-width="1.6"/>
+<path d="M 110.0 40.0 L 110.0 152.0 A 28.0 6 0 0 0 166.0 152.0 L 166.0 40.0" fill="none" stroke="#2D3748" stroke-width="1.6"/>
+<ellipse cx="138.0" cy="40.0" rx="28.0" ry="6" fill="none" stroke="#2D3748" stroke-width="1.6"/>
+<polygon points="81.0,138.0 95.0,150.0 95.0,138.0 81.0,150.0" fill="#718096" stroke="#2D3748" stroke-width="1.2"/>
+<line x1="88.0" y1="144.0" x2="88.0" y2="131.0" stroke="#2D3748" stroke-width="1.6"/>
+<line x1="83.0" y1="131.0" x2="93.0" y2="131.0" stroke="#2D3748" stroke-width="2.2"/>
+<text x="40.0" y="26.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">A</text>
+<text x="138.0" y="26.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">B</text>
+<text x="89.0" y="182.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">Vana kapalı iken dolu ve</text>
+<text x="89.0" y="198.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">boş kapların durumu</text>
+<rect x="248" y="141" width="44" height="7" fill="#A0AEC0" stroke="#2D3748" stroke-width="1.2"/>
+<rect x="194.0" y="100.0" width="56" height="52.0" fill="#C3DAFE"/>
+<ellipse cx="222.0" cy="100.0" rx="28.0" ry="6" fill="#A3BFFA" stroke="#5A67D8" stroke-width="1"/>
+<path d="M 194.0 40.0 L 194.0 152.0 A 28.0 6 0 0 0 250.0 152.0 L 250.0 40.0" fill="none" stroke="#2D3748" stroke-width="1.6"/>
+<ellipse cx="222.0" cy="40.0" rx="28.0" ry="6" fill="none" stroke="#2D3748" stroke-width="1.6"/>
+<rect x="292.0" y="100.0" width="56" height="52.0" fill="#C3DAFE"/>
+<ellipse cx="320.0" cy="100.0" rx="28.0" ry="6" fill="#A3BFFA" stroke="#5A67D8" stroke-width="1"/>
+<path d="M 292.0 40.0 L 292.0 152.0 A 28.0 6 0 0 0 348.0 152.0 L 348.0 40.0" fill="none" stroke="#2D3748" stroke-width="1.6"/>
+<ellipse cx="320.0" cy="40.0" rx="28.0" ry="6" fill="none" stroke="#2D3748" stroke-width="1.6"/>
+<polygon points="263.0,138.0 277.0,150.0 277.0,138.0 263.0,150.0" fill="#718096" stroke="#2D3748" stroke-width="1.2"/>
+<line x1="270.0" y1="144.0" x2="270.0" y2="131.0" stroke="#2D3748" stroke-width="1.6"/>
+<line x1="265.0" y1="131.0" x2="275.0" y2="131.0" stroke="#2D3748" stroke-width="2.2"/>
+<text x="222.0" y="26.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">A</text>
+<text x="320.0" y="26.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">B</text>
+<text x="271.0" y="182.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">Yükseklikleri eşit sıvılar</text>
+<line x1="180.0" y1="20.0" x2="180.0" y2="200.0" stroke="#CBD5E0" stroke-width="1" stroke-dasharray="5 4"/>
+</svg>

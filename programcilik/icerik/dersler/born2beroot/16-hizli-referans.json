@@ -1,0 +1,47 @@
+{
+  "id": "b2r-referans",
+  "baslik": "Hızlı Referans",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "LVM",
+      "izah": "Esnek disk/partition yönetim katmanı (PV → VG → LV)",
+      "yer": "Sık karışan terimlerin tek satırlık tanımları"
+    },
+    {
+      "terim": "LUKS",
+      "izah": "Linux disk şifreleme standardı",
+      "yer": "Sık karışan terimlerin tek satırlık tanımları"
+    },
+    {
+      "terim": "PAM",
+      "izah": "Eklenti tabanlı kimlik doğrulama çerçevesi",
+      "yer": "Sık karışan terimlerin tek satırlık tanımları"
+    },
+    {
+      "terim": "MAC",
+      "izah": "Mandatory Access Control — sistem çapında zorunlu erişim kısıtı",
+      "yer": "Sık karışan terimlerin tek satırlık tanımları"
+    },
+    {
+      "terim": "DAC",
+      "izah": "Discretionary Access Control — klasik sahip/izin sistemi",
+      "yer": "Sık karışan terimlerin tek satırlık tanımları"
+    },
+    {
+      "terim": "TTY",
+      "izah": "Gerçek bir terminal oturumu",
+      "yer": "Sık karışan terimlerin tek satırlık tanımları"
+    },
+    {
+      "terim": "cron",
+      "izah": "Zamanlanmış görev çalıştırıcı",
+      "yer": "Sık karışan terimlerin tek satırlık tanımları"
+    },
+    {
+      "terim": "systemd",
+      "izah": "Modern Linux servis/başlatma yöneticisi (systemctl ile kontrol edilir)",
+      "yer": "Sık karışan terimlerin tek satırlık tanımları"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Kostü - Ders · Kaynak Worker'ı. Kurulum: KURULUM.md, "Kaynak (R2)".
+name = "kostu-kaynak"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+[[r2_buckets]]
+binding = "KAYNAK"
+bucket_name = "kostu-kaynak"
+
+[vars]
+SUPABASE_URL = "https://nzhruevikugpmyoozpyc.supabase.co"
+SUPABASE_ANAHTAR = "sb_publishable_8yAdesejTig4okfBJWGczQ__w_SWUj-"
+IZINLI_KOKENLER = "https://kulemrah.github.io"
+
+# SUPABASE_GIZLI_ANAHTAR buraya YAZILMAZ; sır olarak eklenir:
+#   npx wrangler secret put SUPABASE_GIZLI_ANAHTAR

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" role="img">
+<title>INNER JOIN yalnızca eşleşen kayıtları getirir</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="14.0" y="20.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="start">tartisma_sorular</text>
+<rect x="14.0" y="28.0" width="34.0" height="28" fill="#E2ECF7" stroke="#FFFFFF" stroke-width="1"/>
+<text x="31.0" y="46.3" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">id</text>
+<rect x="48.0" y="28.0" width="120.0" height="28" fill="#E2ECF7" stroke="#FFFFFF" stroke-width="1"/>
+<text x="108.0" y="46.3" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">soru</text>
+<text x="234.0" y="20.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="start">tartisma_cevaplar</text>
+<rect x="234.0" y="28.0" width="56.0" height="28" fill="#E2ECF7" stroke="#FFFFFF" stroke-width="1"/>
+<text x="262.0" y="46.3" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">soruno</text>
+<rect x="290.0" y="28.0" width="100.0" height="28" fill="#E2ECF7" stroke="#FFFFFF" stroke-width="1"/>
+<text x="340.0" y="46.3" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">cevap</text>
+<text x="31.0" y="74.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">1</text>
+<text x="108.0" y="74.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">SQL nedir?</text>
+<text x="31.0" y="104.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">2</text>
+<text x="108.0" y="104.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">DISTINCT…?</text>
+<text x="31.0" y="134.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#A0AEC0" text-anchor="middle">3</text>
+<text x="108.0" y="134.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#A0AEC0" text-anchor="middle">JOIN türleri?</text>
+<text x="262.0" y="74.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">1</text>
+<text x="340.0" y="74.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Yapısal…</text>
+<text x="262.0" y="104.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">1</text>
+<text x="340.0" y="104.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Veritabanı…</text>
+<text x="262.0" y="134.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">2</text>
+<text x="340.0" y="134.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Tekrarları…</text>
+<line x1="170.0" y1="70.0" x2="232.0" y2="70.0" stroke="#2F855A" stroke-width="1.6"/>
+<line x1="170.0" y1="70.0" x2="232.0" y2="100.0" stroke="#2F855A" stroke-width="1.6"/>
+<line x1="170.0" y1="100.0" x2="232.0" y2="130.0" stroke="#2F855A" stroke-width="1.6"/>
+<text x="14.0" y="178.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#A0AEC0" text-anchor="start">id 3 için eşleşen cevap yok: sonuca girmez</text>
+<text x="14.0" y="204.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#2F855A" font-weight="600" text-anchor="start">Sonuç (ON tartisma_sorular.id = tartisma_cevaplar.soruno):</text>
+<text x="20.0" y="226.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">SQL nedir?</text>
+<text x="200.0" y="226.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Yapısal sorgulama dili</text>
+<text x="20.0" y="248.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">SQL nedir?</text>
+<text x="200.0" y="248.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Veritabanı sorgu dili</text>
+<text x="20.0" y="270.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">DISTINCT ne işe yarar?</text>
+<text x="200.0" y="270.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="start">Tekrarları bir kez getirir</text>
+</svg>

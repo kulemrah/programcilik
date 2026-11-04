@@ -1,0 +1,331 @@
+{
+  "id": "alg-akis",
+  "baslik": "Akış Diyagramları (Akış Çizgeleri)",
+  "kaynak": "algoritma_ve_programlama_temelleri_6__hafta_3.pdf, slayt 2–10",
+  "kavramlar": [
+    {
+      "terim": "Akış çizgesi (akış diyagramı)",
+      "izah": "Bir algoritmanın şekillerle görsel gösterimidir. Her şekil standart bir anlam taşır, her ifade için ayrı bir sembol kullanılır.",
+      "yer": "Akış çizgeleri (diyagramları)"
+    },
+    {
+      "terim": "Klavye aracılığı ile giriş sembolü",
+      "izah": "Klavye aracılığı ile giriş ya da okuma yapılacağını gösterir (üst kenarı eğik dörtgen). Hocanın örneklerinde OKU adımları bu sembolle çizilir.",
+      "yer": "Giriş ve çıkış sembolleri"
+    },
+    {
+      "terim": "Araç belirtmeden giriş/çıkış sembolü",
+      "izah": "Araç belirtmeden giriş ya da çıkış yapılacağını gösterir (paralelkenar). Hocanın örneklerinde YAZ adımları bu sembolle çizilir.",
+      "yer": "Giriş ve çıkış sembolleri"
+    },
+    {
+      "terim": "Karar sembolü",
+      "izah": "Aritmetik ve mantıksal ifadeler için karar verme ya da karşılaştırma durumunu gösterir (eşkenar dörtgen); Evet ve Hayır diye iki çıkışı vardır.",
+      "yer": "İşlem, karar ve döngü sembolleri"
+    },
+    {
+      "terim": "Döngü sembolü",
+      "izah": "Yapılacak işler birden fazla sayıda yinelenecek ise, yani iş akışında çevrim (döngü) var ise kullanılır (altıgen). Hocanın örneklerinde döngü karar sembolü ve geri dönen okla çizilmiştir.",
+      "yer": "İşlem, karar ve döngü sembolleri"
+    },
+    {
+      "terim": "Hesaplama sembolü",
+      "izah": "Hesaplama ya da değerlerin değişkenlere aktarımını gösterir (dikdörtgen): TOPLAM = A + B, SAYAC = 0.",
+      "yer": "İşlem, karar ve döngü sembolleri"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-akis.s1",
+      "tip": "secme",
+      "yer": "Akış çizgeleri (diyagramları)",
+      "soru": "Hocaya göre **akış çizgesi (akış diyagramı)** nedir?",
+      "secenekler": [
+        "Bir algoritmanın şekillerle görsel gösterimidir",
+        "Algoritmanın sözde kod biçiminde yazılmış hâlidir",
+        "Algoritmanın dilin sentaksına göre yazılmış hâlidir",
+        "Algoritmanın numaralı adımlarla doğal dilde yazımıdır"
+      ],
+      "dogru": 0,
+      "izah": "Hoca akış çizgesini bir algoritmanın şekillerle görsel gösterimi diye tanımlar. Sözde kod ve numaralı adımlarla doğal dilde yazım algoritmanın yazıyla ifade şekilleridir; dilin sentaksına göre yazılan kaynak koddur. Akış çizgesi yazıyla değil şekillerle gösterilir."
+    },
+    {
+      "id": "alg-akis.s2",
+      "tip": "dy",
+      "yer": "Akış çizgeleri (diyagramları)",
+      "ifade": "Hocaya göre akış çizgelerinde her şekil standart bir anlam taşıdığı için akış çizgesi farklı yorumlanamaz.",
+      "dogru": true,
+      "izah": "Doğru. Doğal dille yazılan algoritma herkes tarafından anlaşılamayabilir; akış çizgesinde ise her şeklin standart bir anlamı vardır."
+    },
+    {
+      "id": "alg-akis.s3",
+      "tip": "dy",
+      "yer": "Başla ve bitir sembolü",
+      "ifade": "Hocanın sembol listesinde yuvarlak köşeli kutu olarak çizilen başla/bitir sembolü, örneklerde elips olarak da çizilmiştir; ikisi de algoritmanın başını ya da sonunu gösterir.",
+      "dogru": true,
+      "izah": "Doğru. Sembol listesinde yuvarlak köşeli kutu, kare, büyük sayı, tek-çift, sıfır ve merhaba örneklerinde elips (iki sayının toplamında uçları yuvarlak kutu) çizilmiştir; anlamları aynıdır."
+    },
+    {
+      "id": "alg-akis.s4",
+      "tip": "esles",
+      "yer": "Akış diyagramı sembolleri",
+      "soru": "Hocanın sembol listesindeki şekilleri anlamlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Üst kenarı eğik dörtgen",
+          "Klavye aracılığı ile giriş ya da okuma"
+        ],
+        [
+          "Paralelkenar",
+          "Araç belirtmeden giriş ya da çıkış"
+        ],
+        [
+          "Eşkenar dörtgen",
+          "Karar verme ya da karşılaştırma"
+        ],
+        [
+          "Altıgen",
+          "Döngü (çevrim)"
+        ],
+        [
+          "Silindir",
+          "Diskten okuma veya diskete yazma"
+        ],
+        [
+          "Alt kenarı dalgalı kutu",
+          "Yazıcı aracılığı ile çıkış"
+        ]
+      ],
+      "izah": "Klavyeden okuma üst kenarı eğik dörtgen, araç belirtmeden giriş-çıkış paralelkenar, karar eşkenar dörtgen, döngü altıgen, disk silindir, yazıcıdan çıkış alt kenarı dalgalı kutudur."
+    },
+    {
+      "id": "alg-akis.s5",
+      "tip": "secme",
+      "yer": "Giriş ve çıkış sembolleri",
+      "gorseller": [
+        "akis-sembol-oku.svg"
+      ],
+      "soru": "Hocanın sembol listesine göre görseldeki sembol neyi gösterir?",
+      "secenekler": [
+        "Klavye aracılığı ile giriş ya da okuma yapılacağını",
+        "Araç belirtmeden giriş ya da çıkış yapılacağını",
+        "Yazıcı aracılığı ile çıkış yapılacağını",
+        "Kart okuyucu aracılığıyla giriş yapılacağını"
+      ],
+      "dogru": 0,
+      "izah": "Üst kenarı eğik dörtgen klavyeden giriş (okuma) sembolüdür; hocanın örneklerinde OKU adımları bununla çizilir. Araç belirtmeden giriş-çıkış paralelkenar, yazıcıdan çıkış alt kenarı dalgalı kutudur."
+    },
+    {
+      "id": "alg-akis.s6",
+      "tip": "secme",
+      "yer": "İşlem, karar ve döngü sembolleri",
+      "gorseller": [
+        "akis-sembol-altigen.svg"
+      ],
+      "soru": "Hocanın sembol listesine göre görseldeki sembol ne zaman kullanılır?",
+      "secenekler": [
+        "Yapılacak işler birden fazla sayıda yinelenecekse",
+        "Aritmetik ya da mantıksal bir karşılaştırma yapılacaksa",
+        "Bir hesaplamanın sonucu değişkene aktarılacaksa",
+        "Algoritmanın başı ya da sonu belirtilecekse"
+      ],
+      "dogru": 0,
+      "izah": "Altıgen döngü (çevrim) sembolüdür: yapılacak işler birden fazla sayıda yinelenecekse kullanılır. Karşılaştırma eşkenar dörtgen, hesaplama dikdörtgen, başla ve bitir elips ya da yuvarlak köşeli kutudur."
+    },
+    {
+      "id": "alg-akis.s7",
+      "tip": "secme",
+      "yer": "İşlem, karar ve döngü sembolleri",
+      "soru": "Hocanın \"iki sayının toplamı\" diyagramında hangi adım **hesaplama ya da değerlerin değişkenlere aktarımı** sembolüyle çizilmiştir?",
+      "secenekler": [
+        "`TOPLAM = A + B`",
+        "`OKU: A` ve `OKU: B`",
+        "`YAZ: TOPLAM`",
+        "`BAŞLA` ve `BİTİR`"
+      ],
+      "dogru": 0,
+      "izah": "TOPLAM = A + B bir hesaplama ve atamadır: dikdörtgenle çizilir. OKU: A klavyeden giriş, YAZ: TOPLAM araç belirtmeden çıkış, BAŞLA başla/bitir sembolüyle çizilir."
+    },
+    {
+      "id": "alg-akis.s8",
+      "tip": "secme",
+      "yer": "Giriş ve çıkış sembolleri",
+      "soru": "Hocanın örneklerindeki akış diyagramlarında **OKU** ve **YAZ** adımları hangi sembollerle çizilmiştir?",
+      "secenekler": [
+        "OKU klavyeden giriş sembolüyle, YAZ araç belirtmeden giriş-çıkış sembolüyle",
+        "OKU araç belirtmeden giriş-çıkış sembolüyle, YAZ yazıcıdan çıkış sembolüyle",
+        "OKU ve YAZ ikisi de araç belirtmeden giriş-çıkış sembolüyle",
+        "OKU kart okuyucudan giriş sembolüyle, YAZ yazıcıdan çıkış sembolüyle"
+      ],
+      "dogru": 0,
+      "izah": "Örneklerde OKU adımları üst kenarı eğik dörtgenle (klavyeden giriş), YAZ adımları paralelkenarla (araç belirtmeden giriş-çıkış) çizilir. Yazıcıdan çıkış ve kart okuyucu sembolleri örneklerde kullanılmamıştır."
+    },
+    {
+      "id": "alg-akis.s9",
+      "tip": "dy",
+      "yer": "Giriş ve çıkış sembolleri",
+      "ifade": "Hocanın örneklerinde ekrana yazdıran YAZ adımları yazıcı aracılığı ile çıkış sembolüyle çizilmiştir.",
+      "dogru": false,
+      "izah": "Yanlış. YAZ adımları paralelkenarla, yani araç belirtmeden giriş ya da çıkış sembolüyle çizilmiştir; yazıcıdan çıkış sembolü (alt kenarı dalgalı) örneklerde kullanılmamıştır."
+    },
+    {
+      "id": "alg-akis.s10",
+      "tip": "dizme",
+      "yer": "İzlenecek adımlar",
+      "soru": "Hocanın \"İzlenecek Adımlar\" listesini doğru sıraya dizin.",
+      "parcalar": [
+        "Problem iyice anlaşılır",
+        "Algoritma kurulur",
+        "Hangi dilin kullanılacağı belirlenir",
+        "Kaynak kodları yazılır",
+        "Derleyici kullanılır",
+        "Çalıştırılabilir dosya oluşturulur",
+        "Program çalıştırılır"
+      ],
+      "izah": "Önce problem anlaşılır ve algoritma kurulur; sonra dil belirlenir, o dilin sentaksına uygun kaynak kod yazılır, derleyici kaynak kodu makine diline çevirir, çalıştırılabilir dosya oluşturulur ve program çalıştırılır."
+    },
+    {
+      "id": "alg-akis.s11",
+      "tip": "dy",
+      "yer": "Örnek: iki sayının toplamı",
+      "ifade": "Hocanın \"iki sayının toplamı\" akış diyagramında A ve B tek bir OKU sembolünde okunur.",
+      "dogru": false,
+      "izah": "Yanlış. Algoritmadaki gibi iki ayrı okuma sembolü vardır: OKU: A ve OKU: B. (\"İki sayıdan büyük olanı\" örneğinde ise tek sembolde OKU: A, B yazılır.)"
+    },
+    {
+      "id": "alg-akis.s12",
+      "tip": "secme",
+      "yer": "Örnek: sayının karesi",
+      "soru": "Hocanın \"sayının karesi\" akış diyagramında hesaplama sembolüne (dikdörtgen) ne yazılmıştır?",
+      "secenekler": [
+        "`KARESI = A ^ 2`",
+        "`KARESI = A * 2`",
+        "`A = KARESI ^ 2`",
+        "`YAZ: KARESI`"
+      ],
+      "dogru": 0,
+      "izah": "Hesaplama ve atama dikdörtgenle çizilir: KARESI = A ^ 2 (A'nın karesi KARESI'ne atanır). A * 2 sayıyı 2 ile çarpar; A = KARESI ^ 2 atamayı ters yapar; YAZ: KARESI paralelkenar sembolündedir."
+    },
+    {
+      "id": "alg-akis.s13",
+      "tip": "secme",
+      "yer": "Örnek: iki sayıdan büyük olanı",
+      "soru": "Hocanın \"iki sayıdan büyük olanı\" akış diyagramına A=4, B=9 girilirse karar sembolünün hangi çıkışından gidilir ve ekrana ne yazılır?",
+      "secenekler": [
+        "Hayır çıkışından; ekrana 9 yazılır",
+        "Evet çıkışından; ekrana 9 yazılır",
+        "Hayır çıkışından; ekrana 4 yazılır",
+        "Evet çıkışından; ekrana 4 yazılır"
+      ],
+      "dogru": 0,
+      "izah": "Karar sembolündeki koşul A > B'dir: 4 > 9 yanlıştır, Hayır çıkışından YAZ: B'ye gidilir ve 9 yazılır."
+    },
+    {
+      "id": "alg-akis.s14",
+      "tip": "bosluk",
+      "yer": "Örnek: tek mi çift mi",
+      "metin": "Hocanın \"tek mi çift mi\" diyagramında karar sembolündeki koşul `A % 2 == ___` olup Evet çıkışından \"Girilen sayı çifttir\" yazılır.",
+      "cevaplar": [
+        [
+          "0"
+        ]
+      ],
+      "izah": "A'nın 2'ye bölümünden kalan 0 ise sayı çifttir: A % 2 == 0."
+    },
+    {
+      "id": "alg-akis.s15",
+      "tip": "izleme",
+      "yer": "Adıma git ve art arda kararlar",
+      "soru": "Hocanın algoritmasının 3. adımındaki \"5.adıma git\" sözü silinirse A=7 girildiğinde ekrana ne yazılır?",
+      "kod": "1.BAŞLA\n2.OKU:A\n3.EĞER A>0 İSE YAZ:\"A sıfırdan büyüktür\"\n4.EĞER A<0 İSE YAZ:\"A sıfırdan küçüktür\"\n  DEĞİL İSE YAZ:\"A sıfıra eşittir\"\n5.BİTİR",
+      "secenekler": [
+        "\"A sıfırdan büyüktür\" ve ardından \"A sıfıra eşittir\"",
+        "Yalnızca \"A sıfırdan büyüktür\"",
+        "\"A sıfırdan büyüktür\" ve ardından \"A sıfırdan küçüktür\"",
+        "Yalnızca \"A sıfıra eşittir\""
+      ],
+      "dogru": 0,
+      "izah": "3. adımda 7>0 doğrudur, \"A sıfırdan büyüktür\" yazılır; 5. adıma gidilmediği için 4. adıma geçilir. 7<0 yanlıştır, DEĞİL İSE kısmı çalışır ve \"A sıfıra eşittir\" de yazılır. Hocanın çözümündeki \"5.adıma git\" bunu önler."
+    },
+    {
+      "id": "alg-akis.s16",
+      "tip": "secme",
+      "yer": "Örnek: sayının sıfıra göre durumu",
+      "soru": "Hocanın \"sayının sıfıra göre durumu\" akış diyagramına A=0 girilirse hangi yoldan gidilir?",
+      "secenekler": [
+        "A > 0 kararından Hayır, A < 0 kararından Hayır; \"A sıfıra eşittir\" yazılır",
+        "A > 0 kararından Evet; \"A sıfırdan büyüktür\" yazılır",
+        "A > 0 kararından Hayır, A < 0 kararından Evet; \"A sıfırdan küçüktür\" yazılır",
+        "A > 0 kararından Hayır; doğrudan BİTİR'e gidilir"
+      ],
+      "dogru": 0,
+      "izah": "0 > 0 yanlıştır: Hayır çıkışından ikinci karara gidilir. 0 < 0 da yanlıştır: Hayır çıkışından \"A sıfıra eşittir\" yazılır, sonra BİTİR."
+    },
+    {
+      "id": "alg-akis.s17",
+      "tip": "dy",
+      "yer": "Adıma git ve art arda kararlar",
+      "ifade": "Hocanın \"sayının sıfıra göre durumu\" akış diyagramında ikinci karar (A < 0), birinci kararın (A > 0) Hayır çıkışına bağlıdır.",
+      "dogru": true,
+      "izah": "Doğru. Birinci kararın Evet çıkışından \"A sıfırdan büyüktür\" yazılıp BİTİR'e gidilir; Hayır çıkışı ikinci karara gider."
+    },
+    {
+      "id": "alg-akis.s18",
+      "tip": "secme",
+      "yer": "Örnek: ekrana 5 defa merhaba",
+      "soru": "Hocanın \"ekrana 5 defa merhaba\" akış diyagramında \"3.Adıma Dön\" nasıl gösterilmiştir?",
+      "secenekler": [
+        "SAYAC < 5 kararının Evet çıkışından YAZ: \"Merhaba\" sembolüne geri giden okla",
+        "SAYAC < 5 kararının Hayır çıkışından YAZ: \"Merhaba\" sembolüne geri giden okla",
+        "SAYAC < 5 kararının Evet çıkışından SAYAC = 0 kutusuna geri giden okla",
+        "YAZ: \"Merhaba\" adımının döngü (altıgen) sembolüyle çizilmesiyle"
+      ],
+      "dogru": 0,
+      "izah": "Koşul doğruyken (SAYAC 5'ten küçükken) 3. adıma, yani YAZ: \"Merhaba\" sembolüne dönülür: Evet çıkışından geri giden ok. Hayır çıkışı BİTİR'e gider. Ok SAYAC = 0'a dönseydi sayaç her turda sıfırlanırdı. Hoca bu örnekte altıgen sembolünü kullanmamıştır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-akis.k1",
+      "yer": "Akış çizgeleri (diyagramları)",
+      "on": "Akış çizgesi (akış diyagramı) nedir? Neden kullanılır?",
+      "arka": "Bir algoritmanın şekillerle görsel gösterimidir.\nAlgoritma doğal dille yazıldığı için herkes tarafından anlaşılamayabilir; akış çizgesinde her şekil standart bir anlam taşıdığı için farklı yorumlanamaz. Her ifade için ayrı bir sembol kullanılır.\nÇizmek için çevrimiçi draw.io kullanılabilir."
+    },
+    {
+      "id": "alg-akis.k2",
+      "yer": "Akış diyagramı sembolleri",
+      "on": "Hocanın akış diyagramı sembollerini anlamlarıyla sayın.",
+      "arka": "- Başla/bitir: yuvarlak köşeli kutu (örneklerde elips)\n- Klavyeden giriş (okuma): üst kenarı eğik dörtgen\n- Yazıcıdan çıkış: alt kenarı dalgalı kutu\n- Kart okuyucudan giriş: slaytta dikdörtgen\n- Döngü (çevrim): altıgen\n- Oklar: işin akış yönü\n- Araç belirtmeden giriş/çıkış: paralelkenar\n- Hesaplama ya da değerlerin değişkenlere aktarımı: dikdörtgen\n- Karar verme ya da karşılaştırma: eşkenar dörtgen\n- Diskten okuma, diskete yazma: silindir\n- Bağ: elips\nÖrneklerdeki başla/bitir elipsi bağ sembolüyle aynı şekildedir; içindeki yazıdan (BAŞLA/BİTİR) ayırt edilir."
+    },
+    {
+      "id": "alg-akis.k3",
+      "yer": "Giriş ve çıkış sembolleri",
+      "on": "Hocanın örneklerinde OKU ve YAZ adımları hangi sembollerle çizilir?",
+      "arka": "OKU: klavye aracılığı ile giriş sembolü (üst kenarı eğik dörtgen), ör. OKU: A, B.\nYAZ: araç belirtmeden giriş ya da çıkış sembolü (paralelkenar), ör. YAZ: TOPLAM.\nYazıcıdan çıkış sembolü ekrana yazmak için kullanılmamıştır."
+    },
+    {
+      "id": "alg-akis.k4",
+      "yer": "İşlem, karar ve döngü sembolleri",
+      "on": "Karar sembolü nasıl çizilir ve kullanılır?",
+      "arka": "Eşkenar dörtgendir; içine koşul yazılır (A > B, A % 2 == 0).\nİki çıkışı vardır: koşul doğruysa Evet, yanlışsa Hayır çıkışından devam edilir (çözüm belgesinde E ve H).\nEk: Evet çıkışı EĞER İSE kısmına, Hayır çıkışı DEĞİL İSE kısmına karşılık gelir."
+    },
+    {
+      "id": "alg-akis.k5",
+      "yer": "Örnek: ekrana 5 defa merhaba",
+      "on": "Hocanın \"ekrana 5 defa merhaba\" akış diyagramını anlatın.",
+      "arka": "BAŞLA → SAYAC = 0 → YAZ: \"Merhaba\" → SAYAC = SAYAC + 1 → karar SAYAC < 5.\nEvet çıkışı geri, YAZ: \"Merhaba\" sembolüne döner (3.Adıma Dön); Hayır çıkışı BİTİR'e gider.\nSAYAC = 0 döngünün dışındadır; döngü altıgenle değil, karar ve geri dönen okla çizilir."
+    },
+    {
+      "id": "alg-akis.k6",
+      "yer": "Adıma git ve art arda kararlar",
+      "on": "Hoca üç durumlu \"sayının sıfıra göre durumu\" örneğini nasıl çözüyor?",
+      "arka": "3.EĞER A>0 İSE YAZ:\"A sıfırdan büyüktür\", 5.adıma git\n4.EĞER A<0 İSE YAZ:\"A sıfırdan küçüktür\" DEĞİL İSE YAZ:\"A sıfıra eşittir\"\n\"5.adıma git\" 4. adımı atlatır; yazılmasaydı pozitif sayıda \"A sıfıra eşittir\" de yazılırdı.\nDiyagramda ikinci karar birinci kararın Hayır çıkışına bağlıdır."
+    },
+    {
+      "id": "alg-akis.k7",
+      "yer": "İzlenecek adımlar",
+      "on": "Hocanın \"İzlenecek Adımlar\" listesini sayın.",
+      "arka": "1. Problem iyice anlaşılır.\n2. Öncelikle algoritma kurulur.\n3. Problemin hangi dil kullanılarak çözüleceği belirlenir.\n4. Belirlenen dilin sentaksına uygun şekilde kaynak kodları yazılır.\n5. Kaynak kodlarını makine diline çevirecek olan derleyici kullanılır.\n6. Çalıştırılabilir dosya oluşturulur.\n7. Program çalıştırılır."
+    }
+  ]
+}

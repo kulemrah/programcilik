@@ -10,7 +10,9 @@ Hocanın sorusu: **Klavyeden girilen yaş değerine göre ekrana "Reşitsiniz" y
 
 Hocanın sorusu: **Klavyeden girilen bir sayının sıfıra eşit, sıfırdan büyük ya da sıfırdan küçük olma durumunu bulup ekrana yazan programın algoritmasını yazınız.**
 
-> **Ek:** Slaytta çözüm yok. Burada üç durum var; bir EĞER İSE ve DEĞİL İSE yapısı iki kısımlıdır, bu yüzden DEĞİL İSE kısmına yeni bir EĞER yapısı yazılır ("Karar Yapıları" konusundaki "DEĞİL İSE kısmında koşul kullanılmaz" başlığı). Hocanın örneğinin kalıbıyla: `1.Başla`, `2.Oku: SAYI`, `3.EĞER SAYI==0 İSE Yaz: "Sıfıra eşit"`, `DEĞİL İSE EĞER SAYI>0 İSE Yaz: "Sıfırdan büyük"`, `DEĞİL İSE Yaz: "Sıfırdan küçük"`, `4.Bitir.` Art arda ayrı EĞER yapılarıyla da yazılabilir: `EĞER SAYI==0 İSE Yaz: "Sıfıra eşit"`, `EĞER SAYI>0 İSE Yaz: "Sıfırdan büyük"`, `EĞER SAYI<0 İSE Yaz: "Sıfırdan küçük"`. İki yazım da C++'ta -3, 0 ve 5 ile denendi.
+Hocanın çözümü 6. haftada akış diyagramıyla birlikte verildi ("Akış Diyagramları (Akış Çizgeleri)" konusundaki "Örnek: sayının sıfıra göre durumu" başlığı): `1.BAŞLA`, `2.OKU:A`, `3.EĞER A>0 İSE YAZ:"A sıfırdan büyüktür", 5.adıma git`, `4.EĞER A<0 İSE YAZ:"A sıfırdan küçüktür"`, `DEĞİL İSE YAZ:"A sıfıra eşittir"`, `5.BİTİR`.
+
+> **Ek:** Bu slaytta çözüm yok; yukarıdaki çözüm 6. hafta slaytlarındadır. Üç durum olduğu ve bir EĞER İSE ve DEĞİL İSE yapısı iki kısımlı olduğu için başka iki yolla da yazılabilir ("Karar Yapıları" konusundaki "DEĞİL İSE kısmında koşul kullanılmaz" başlığı). DEĞİL İSE kısmına yeni bir EĞER yapısı yazılarak: `1.Başla`, `2.Oku: SAYI`, `3.EĞER SAYI==0 İSE Yaz: "Sıfıra eşit"`, `DEĞİL İSE EĞER SAYI>0 İSE Yaz: "Sıfırdan büyük"`, `DEĞİL İSE Yaz: "Sıfırdan küçük"`, `4.Bitir.` Art arda ayrı EĞER yapılarıyla da yazılabilir: `EĞER SAYI==0 İSE Yaz: "Sıfıra eşit"`, `EĞER SAYI>0 İSE Yaz: "Sıfırdan büyük"`, `EĞER SAYI<0 İSE Yaz: "Sıfırdan küçük"`.
 
 ### Örnek 3: 50'den büyük iki sayı
 
@@ -28,7 +30,7 @@ Hocanın sorusu: **Klavyeden girilen sayının tek sayı mı çift sayı mı old
 
 > **Dikkat:** Teklik ve çiftlik, sayının 2'ye bölümünden **kalana** bakılarak bulunur; kalanı veren işleç mod alma (`%`) işlecidir, bölme (`/`) değil ("Temel Öğeler, Aritmetik İşlemler ve Atama" konusundaki "Aritmetik işlemler" başlığı). Hoca `5%2==1` ve `2%2==1` ifadelerini "Karşılaştırma ve Mantıksal Operatörler" konusundaki "Örnekler: A=5, B=18" başlığında kullanıyor: 5 tek olduğu için kalan 1, 2 çift olduğu için kalan 0'dır.
 
-> **Ek:** Slaytta çözüm yok. Bir çözüm: `1.Başla`, `2.Oku: SAYI`, `3.EĞER SAYI%2==0 İSE Yaz: "Çift"`, `DEĞİL İSE Yaz: "Tek"`, `4.Bitir.` C++'ta negatif tek sayının 2'ye göre kalanı -1 çıkar (g++ ile denendi: `-3%2` sonucu -1). Bu yüzden koşulu çift için `SAYI%2==0` diye yazmak negatif sayılarda da doğru sonuç verir; tek için `SAYI%2==1` diye yazmak vermez.
+Hocanın çözümü 6. haftada akış diyagramıyla birlikte verildi ("Akış Diyagramları (Akış Çizgeleri)" konusundaki "Örnek: tek mi çift mi" başlığı): `1.BAŞLA`, `2.OKU:A`, `3.EĞER A%2==0 İSE YAZ: "Girilen sayı çifttir"`, `DEĞİL İSE YAZ: "Girilen sayı tektir"`, `4.BİTİR`.
 
 ### Örnek 5: GEÇERLİ ya da GEÇERSİZ
 
@@ -42,7 +44,7 @@ Hocanın sorusu: **Kullanıcının klavyeden girdiği sayı 0-100 arasında ise 
 
 Hocanın sorusu: **Klavyeden girilen iki sayının büyük olanından küçük olanını çıkarıp bulunan sonucu ekrana yazan programın algoritmasını yazınız.**
 
-> **Ek:** Slaytta çözüm yok. "Karar Yapıları" konusundaki "Örnek: iki sayıdan büyük olanı" başlığındaki hocanın çözümüne benzer: `1.Başla`, `2.Oku: A, B`, `3.EĞER A>B İSE SONUC=A-B`, `DEĞİL İSE SONUC=B-A`, `4.Yaz: SONUC`, `5.Bitir.` Sayılar eşitse DEĞİL İSE kısmı gerçekleştirilir ve sonuç 0 olur. C++'ta denendi: 4 ve 15 de, 15 ve 4 de 11 verir.
+> **Ek:** Slaytta çözüm yok. "Karar Yapıları" konusundaki "Örnek: iki sayıdan büyük olanı" başlığındaki hocanın çözümüne benzer: `1.Başla`, `2.Oku: A, B`, `3.EĞER A>B İSE SONUC=A-B`, `DEĞİL İSE SONUC=B-A`, `4.Yaz: SONUC`, `5.Bitir.` Sayılar eşitse DEĞİL İSE kısmı gerçekleştirilir ve sonuç 0 olur. 4 ve 15 de, 15 ve 4 de 11 verir.
 
 ### Örnek 7: harf notu
 
@@ -60,7 +62,7 @@ Hocanın sorusu: **Bir öğrencinin notunu alarak, yüzlük notun harf notunu be
 
 > **Dikkat:** Sınır değerler: 90 A'dır ("90 ve üzeri" 90'ı kapsar), 89 B'dir; 60 D'dir, 59 F'dir ("60 altı" 60'ı kapsamaz).
 
-> **Ek:** Slaytta çözüm yok. Beş durum olduğu için DEĞİL İSE kısımlarına yeni EĞER yapıları yazılır: `1.Başla`, `2.Oku: NOT`, `3.EĞER NOT>=90 İSE Yaz: "A"`, `DEĞİL İSE EĞER NOT>=80 İSE Yaz: "B"`, `DEĞİL İSE EĞER NOT>=70 İSE Yaz: "C"`, `DEĞİL İSE EĞER NOT>=60 İSE Yaz: "D"`, `DEĞİL İSE Yaz: "F"`, `4.Bitir.` Bir koşul doğru çıkınca onun DEĞİL İSE kısmı gerçekleştirilmez; bu yüzden ikinci koşula ayrıca `NOT<90` yazmaya gerek yoktur (art arda ayrı EĞER'lerle yazılırsa gerekir): oraya yalnızca `NOT>=90` yanlışsa gelinir. Art arda ayrı EĞER yapılarıyla yazılırsa her aralığın üst sınırı da koşulda verilir: `EĞER NOT>=90 İSE Yaz: "A"`, `EĞER NOT>=80 VE NOT<90 İSE Yaz: "B"`, `EĞER NOT>=70 VE NOT<80 İSE Yaz: "C"`, `EĞER NOT>=60 VE NOT<70 İSE Yaz: "D"`, `EĞER NOT<60 İSE Yaz: "F"`; üst sınır yazılmazsa 90 alan öğrenci için A, B, C ve D'nin hepsi yazılır. İki yazım da C++'ta 100'den 0'a sınır değerlerle denendi.
+> **Ek:** Slaytta çözüm yok. Beş durum olduğu için DEĞİL İSE kısımlarına yeni EĞER yapıları yazılır: `1.Başla`, `2.Oku: NOT`, `3.EĞER NOT>=90 İSE Yaz: "A"`, `DEĞİL İSE EĞER NOT>=80 İSE Yaz: "B"`, `DEĞİL İSE EĞER NOT>=70 İSE Yaz: "C"`, `DEĞİL İSE EĞER NOT>=60 İSE Yaz: "D"`, `DEĞİL İSE Yaz: "F"`, `4.Bitir.` Bir koşul doğru çıkınca onun DEĞİL İSE kısmı gerçekleştirilmez; bu yüzden ikinci koşula ayrıca `NOT<90` yazmaya gerek yoktur (art arda ayrı EĞER'lerle yazılırsa gerekir): oraya yalnızca `NOT>=90` yanlışsa gelinir. Art arda ayrı EĞER yapılarıyla yazılırsa her aralığın üst sınırı da koşulda verilir: `EĞER NOT>=90 İSE Yaz: "A"`, `EĞER NOT>=80 VE NOT<90 İSE Yaz: "B"`, `EĞER NOT>=70 VE NOT<80 İSE Yaz: "C"`, `EĞER NOT>=60 VE NOT<70 İSE Yaz: "D"`, `EĞER NOT<60 İSE Yaz: "F"`; üst sınır yazılmazsa 90 alan öğrenci için A, B, C ve D'nin hepsi yazılır.
 
 ### Örnek 8: yaş grubu
 
@@ -77,7 +79,7 @@ Hocanın sorusu: **Bir kişinin yaşını alarak, bu kişinin hangi yaş grubuna
 
 > **Dikkat:** Aralıklar sınırlarıyla birlikte verilmiştir: 12 Çocuk, 13 Genç; 19 Genç, 20 Yetişkin; 64 Yetişkin, 65 Yaşlı.
 
-> **Ek:** Slaytta çözüm yok. Bir çözüm: `1.Başla`, `2.Oku: YAS`, `3.EĞER YAS<=12 İSE Yaz: "Çocuk"`, `DEĞİL İSE EĞER YAS<=19 İSE Yaz: "Genç"`, `DEĞİL İSE EĞER YAS<=64 İSE Yaz: "Yetişkin"`, `DEĞİL İSE Yaz: "Yaşlı"`, `4.Bitir.` Art arda ayrı EĞER yapılarıyla da yazılabilir: `EĞER YAS<=12 İSE Yaz: "Çocuk"`, `EĞER YAS>=13 VE YAS<=19 İSE Yaz: "Genç"`, `EĞER YAS>=20 VE YAS<=64 İSE Yaz: "Yetişkin"`, `EĞER YAS>=65 İSE Yaz: "Yaşlı"`. İki yazım da C++'ta bütün sınır değerlerle denendi.
+> **Ek:** Slaytta çözüm yok. Bir çözüm: `1.Başla`, `2.Oku: YAS`, `3.EĞER YAS<=12 İSE Yaz: "Çocuk"`, `DEĞİL İSE EĞER YAS<=19 İSE Yaz: "Genç"`, `DEĞİL İSE EĞER YAS<=64 İSE Yaz: "Yetişkin"`, `DEĞİL İSE Yaz: "Yaşlı"`, `4.Bitir.` Art arda ayrı EĞER yapılarıyla da yazılabilir: `EĞER YAS<=12 İSE Yaz: "Çocuk"`, `EĞER YAS>=13 VE YAS<=19 İSE Yaz: "Genç"`, `EĞER YAS>=20 VE YAS<=64 İSE Yaz: "Yetişkin"`, `EĞER YAS>=65 İSE Yaz: "Yaşlı"`.
 
 ### Örnek 9: geçme notu
 

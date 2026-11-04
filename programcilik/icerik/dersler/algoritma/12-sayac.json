@@ -1,0 +1,235 @@
+{
+  "id": "alg-sayac",
+  "baslik": "Sayaç",
+  "kaynak": "algoritma_ve_programlama_temelleri_5_hafta_1.pdf, slayt 3–5; bp_5_hafta.pdf, sayfa 1–3",
+  "kavramlar": [
+    {
+      "terim": "Sayaç",
+      "izah": "Genellikle bir döngü veya işlem sayısını takip etmek için kullanılan bir değişken. Belirli bir işlemin kaç kez tekrarlandığını ya da bir koşulun ne kadar süreyle sağlandığını belirlemek amacıyla kullanılır.",
+      "yer": "Sayaç kavramı"
+    },
+    {
+      "terim": "Döngü",
+      "izah": "Slaytta tanımı yok. Hocanın örneğinde \"Eğer SAYAC<5 İse 3.Adıma Dön\" ile adımlar tekrar edilir; koşul doğru sonucunu döndürmeyince döngü sona erer.",
+      "yer": "Örnek: ekrana 5 defa merhaba"
+    },
+    {
+      "terim": "Sayacın artırılması",
+      "izah": "SAYAC=SAYAC+1: SAYAC değerine 1 eklenir ve bulunan yeni sonuç yine SAYAC değişkeninde saklanır.",
+      "yer": "Örnek: ekrana 5 defa merhaba"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-sayac.s1",
+      "tip": "secme",
+      "yer": "Sayaç kavramı",
+      "soru": "Hocanın tanımına göre algoritmada **sayaç** nedir?",
+      "secenekler": [
+        "Bir döngü veya işlem sayısını takip etmek için kullanılan değişken",
+        "Programın akışı içinde değeri hiç değişmeyen tanımlı bilgi",
+        "Karşılaştırma operatörü içeren ve doğru ya da yanlış döndüren ifade",
+        "Bir problemi çözmek için izlenecek adımların sıralı listesi"
+      ],
+      "dogru": 0,
+      "izah": "Sayaç, bir döngü veya işlem sayısını takip etmek için kullanılan bir değişkendir. Değeri değişmeyen bilgi sabittir, karşılaştırma operatörü içeren ifade koşuldur, adımların sıralı listesi algoritmadır."
+    },
+    {
+      "id": "alg-sayac.s2",
+      "tip": "bosluk",
+      "yer": "Sayaç kavramı",
+      "metin": "Sayaçlar, belirli bir işlemin kaç kez ___ ya da bir koşulun ne kadar süreyle sağlandığını belirlemek amacıyla kullanılır.",
+      "cevaplar": [
+        [
+          "tekrarlandığını",
+          "tekrarlandigini",
+          "tekrar edildiğini"
+        ]
+      ],
+      "izah": "Hocanın tanımı: sayaçlar bir işlemin kaç kez tekrarlandığını ya da bir koşulun ne kadar süreyle sağlandığını belirlemek için kullanılır."
+    },
+    {
+      "id": "alg-sayac.s3",
+      "tip": "esles",
+      "yer": "Sayaçların kullanım alanları",
+      "soru": "Sayaçların kullanım alanlarını hocanın örnekleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Döngüler",
+          "Bir dizinin elemanlarını gezip her elemanın indeksine erişmek"
+        ],
+        [
+          "Koşul kontrolü",
+          "Bir olayın kaç kez gerçekleştiğini saymak"
+        ],
+        [
+          "Sıralama ve gruplama",
+          "Veri yapılarında elemanları saymak veya gruplamak"
+        ]
+      ],
+      "izah": "Hoca üç kullanım alanı sayar: döngüler (for döngüsü ve dizi indeksi), koşul kontrolü (bir olayın kaç kez gerçekleştiği), sıralama ve gruplama (veri yapılarında elemanları saymak veya gruplamak)."
+    },
+    {
+      "id": "alg-sayac.s4",
+      "tip": "dy",
+      "yer": "Sayaçların kullanım alanları",
+      "ifade": "Hocaya göre sayaçlar for döngülerinde sıklıkla kullanılır.",
+      "dogru": true,
+      "izah": "Kullanım alanlarının ilki döngülerdir: \"Sayaçlar, for döngülerinde sıklıkla kullanılır.\""
+    },
+    {
+      "id": "alg-sayac.s5",
+      "tip": "izleme",
+      "yer": "Örnek: ekrana 5 defa merhaba",
+      "soru": "Hocanın aşağıdaki algoritması çalışınca ekrana kaç kez \"Merhaba\" yazılır?",
+      "kod": "1.Başla\n2.SAYAC=0\n3.Yaz: \"Merhaba\"\n4.SAYAC=SAYAC+1\n5.Eğer SAYAC<5 İse 3.Adıma Dön\n6.Bitir",
+      "secenekler": [
+        "5",
+        "4",
+        "6",
+        "1"
+      ],
+      "dogru": 0,
+      "izah": "Merhaba SAYAC 0, 1, 2, 3 ve 4 iken yazılır. Beşinci yazıştan sonra SAYAC 5 olur, `5<5` yanlış döner ve döngü biter: 5 kez."
+    },
+    {
+      "id": "alg-sayac.s6",
+      "tip": "hesap",
+      "yer": "Örnek: ekrana 5 defa merhaba",
+      "soru": "Hocanın \"ekrana 5 defa merhaba\" algoritması bittiğinde SAYAC değişkeninin değeri kaçtır?",
+      "cevap": 5,
+      "izah": "Her yazıştan sonra SAYAC 1 artar: 0 → 1 → 2 → 3 → 4 → 5. SAYAC 5'e eşit olduğunda `SAYAC<5` doğru döndürmez ve döngü sona erer."
+    },
+    {
+      "id": "alg-sayac.s7",
+      "tip": "hesap",
+      "yer": "Sayacın ilk değeri ve koşul",
+      "soru": "Hocanın \"ekrana 5 defa merhaba\" algoritmasında 5. adım `Eğer SAYAC<=5 İse 3.Adıma Dön` diye yazılsaydı Merhaba kaç kez yazılırdı?",
+      "cevap": 6,
+      "izah": "`<=` eşitliği de kapsar: Merhaba SAYAC 0, 1, 2, 3, 4 ve 5 iken yazılır; SAYAC 6 olunca `6<=5` yanlış döner. 6 kez."
+    },
+    {
+      "id": "alg-sayac.s8",
+      "tip": "dizme",
+      "yer": "Örnek: ekrana 5 defa merhaba",
+      "soru": "Hocanın \"ekrana 5 defa merhaba\" algoritmasının adımlarını doğru sıraya dizin.",
+      "parcalar": [
+        "Başla",
+        "SAYAC=0",
+        "Yaz: \"Merhaba\"",
+        "SAYAC=SAYAC+1",
+        "Eğer SAYAC<5 İse 3.Adıma Dön",
+        "Bitir"
+      ],
+      "izah": "Önce sayaca ilk değer verilir, sonra istenen işlem yapılır, sayaç artırılır ve koşul yoklanır; koşul doğruysa 3. adıma dönülür, yanlışsa Bitir'e geçilir."
+    },
+    {
+      "id": "alg-sayac.s9",
+      "tip": "secme",
+      "yer": "Örnek: ekrana 5 defa merhaba",
+      "soru": "Hocanın açıklamasına göre `SAYAC=SAYAC+1` adımında ne yapılır?",
+      "secenekler": [
+        "SAYAC değerine 1 eklenir ve yeni sonuç yine SAYAC'ta saklanır",
+        "SAYAC'ın 1 artırılmış değerine eşit olup olmadığı yoklanır",
+        "SAYAC değişkenine yeni bir ilk değer olarak 1 atanır",
+        "SAYAC ile 1 toplanır ve sonuç ekrana yazdırılır"
+      ],
+      "dogru": 0,
+      "izah": "Bu bir atamadır: sağ taraf hesaplanır (SAYAC+1) ve sonuç yine SAYAC'a yazılır. Karşılaştırma `==` ile yapılır; ilk değer 2. adımda verilir; ekrana yazdırma ayrı bir Yaz adımıdır."
+    },
+    {
+      "id": "alg-sayac.s10",
+      "tip": "dy",
+      "yer": "Örnek: ekrana 5 defa merhaba",
+      "ifade": "Hocanın \"ekrana 5 defa merhaba\" algoritmasında 5. adımdaki koşul yanlış dönünce 3. adıma geri dönülür.",
+      "dogru": false,
+      "izah": "Koşul doğruysa 3. adıma dönülür. Yanlış dönünce döngü sona erer ve sıradaki adıma (6.Bitir) geçilir."
+    },
+    {
+      "id": "alg-sayac.s11",
+      "tip": "hesap",
+      "yer": "Soru: 1'den 100'e kadar tam sayılar",
+      "soru": "Hocanın \"1'den 100'e kadar tam sayılar\" algoritması bittiğinde Sayac değişkeninin değeri kaçtır?",
+      "cevap": 101,
+      "izah": "100 yazıldıktan sonra Sayac 101 olur; `101<=100` yanlış döner ve algoritma biter. Ekrana 1'den 100'e kadar 100 sayı yazılmıştır."
+    },
+    {
+      "id": "alg-sayac.s12",
+      "tip": "secme",
+      "yer": "Sayacın ilk değeri ve koşul",
+      "soru": "Hocanın \"1'den 100'e kadar tam sayılar\" algoritmasında 5. adım `Eğer Sayac<100 ise 3. Adıma dön` diye yazılsaydı ne olurdu?",
+      "secenekler": [
+        "100 sayısı ekrana yazılmazdı",
+        "1 sayısı ekrana yazılmazdı",
+        "101 sayısı da ekrana yazılırdı",
+        "Döngü hiç tekrar edilmezdi"
+      ],
+      "dogru": 0,
+      "izah": "Sayac 99 yazıldıktan sonra 100 olur ve `100<100` yanlış döner; 100 yazılmadan algoritma biter. 1 ilk turda yazılır; `<=` ile de 101 yazılmaz."
+    },
+    {
+      "id": "alg-sayac.s13",
+      "tip": "hesap",
+      "yer": "Soru: girilen 10 sayıyı ekrana yazma",
+      "soru": "Hocanın \"girilen 10 sayıyı ekrana yazma\" algoritmasında 2. adım `Sayac=0` yerine `Sayac=4` yazılsaydı kaç sayı okunurdu?",
+      "cevap": 6,
+      "izah": "Koşul `Sayac<10`'dur. Sayac 4, 5, 6, 7, 8 ve 9 iken birer sayı okunur; 10 olunca döngü biter: 6 sayı."
+    },
+    {
+      "id": "alg-sayac.s14",
+      "tip": "klasik",
+      "yer": "Sayaçların kullanım alanları",
+      "soru": "Hocanın saydığı üç kullanım alanıyla sayaçların nerelerde kullanıldığını yazın.",
+      "cevap": "Döngüler: for döngülerinde, örneğin bir dizinin elemanlarına indeksle erişmek için.\nKoşul kontrolü: bir olayın kaç kez gerçekleştiğini saymak için.\nSıralama ve gruplama: veri yapılarında elemanları saymak veya gruplamak için.",
+      "anahtarlar": [
+        "Döngüler",
+        "Koşul kontrolü",
+        "Sıralama ve gruplama"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-sayac.k1",
+      "yer": "Sayaç kavramı",
+      "on": "Sayaç nedir? Ne amaçla kullanılır?",
+      "arka": "Genellikle bir döngü veya işlem sayısını takip etmek için kullanılan bir değişkendir.\nBir işlemin kaç kez tekrarlandığını ya da bir koşulun ne kadar süreyle sağlandığını belirlemek için kullanılır."
+    },
+    {
+      "id": "alg-sayac.k2",
+      "yer": "Sayaçların kullanım alanları",
+      "on": "Sayaçların kullanım alanlarını sayın.",
+      "arka": "1. Döngüler: for döngülerinde; dizi elemanlarına indeksle erişmek.\n2. Koşul kontrolü: bir olayın kaç kez gerçekleştiğini saymak.\n3. Sıralama ve gruplama: veri yapılarında elemanları saymak veya gruplamak."
+    },
+    {
+      "id": "alg-sayac.k3",
+      "yer": "Örnek: ekrana 5 defa merhaba",
+      "on": "Hocanın \"ekrana 5 defa merhaba\" algoritmasını adım adım anlatın.",
+      "arka": "1.Başla\n2.SAYAC=0 (ilk değer)\n3.Yaz: \"Merhaba\" (istenen işlem)\n4.SAYAC=SAYAC+1 (sayaç artırılır)\n5.Eğer SAYAC<5 İse 3.Adıma Dön\n6.Bitir\nSAYAC 5 olunca koşul doğru döndürmez, döngü sona erer."
+    },
+    {
+      "id": "alg-sayac.k4",
+      "yer": "Örnek: ekrana 5 defa merhaba",
+      "on": "Sayaçlı döngü nasıl sona erer?",
+      "arka": "Sayaç her turda artırılır ve koşul yoklanır. Koşul doğruysa geri dönülür; doğru sonucunu döndürmediğinde (ör. SAYAC 5'e eşit olduğunda SAYAC<5 yanlış) geri dönülmez, sıradaki adıma geçilir ve döngü sona erer."
+    },
+    {
+      "id": "alg-sayac.k5",
+      "yer": "Sayaç mantığı: sayaçsız çözüm",
+      "on": "Ekrana 5 kez merhaba yazmanın sayaçsız ve sayaçlı çözümü nasıldır?",
+      "arka": "Sayaçsız (hocanın sayaç mantığı girişi): BAŞLA, beş ayrı YAZ \"MERHABA\" adımı, BİTİR.\nSayaçlı: SAYAC=0; Yaz; SAYAC=SAYAC+1; Eğer SAYAC<5 İse 3.Adıma Dön.\nEk: Sayaçlı çözümde tekrar sayısı artsa da adım sayısı değişmez, yalnızca koşuldaki sayı değişir."
+    },
+    {
+      "id": "alg-sayac.k6",
+      "yer": "Sayacın ilk değeri ve koşul",
+      "on": "Hocanın örneklerinde sayacın ilk değeri ve koşul tur sayısını nasıl etkiler? `<` ile `<=` farkı nedir?",
+      "arka": "0'dan başlayıp SAYAC<5: 5 tur. SAYAC<=5 yazılsa 6 tur.\n1'den başlayıp Sayac<=100: 100 tur; Sayac<100 yazılsa 100 yazılmaz.\nEk: Tur sayısını sayacın ilk değeri, artış miktarı ve koşul birlikte belirler."
+    },
+    {
+      "id": "alg-sayac.k7",
+      "yer": "Soru: 1'den 100'e kadar tam sayılar",
+      "on": "Hocanın \"1'den 100'e kadar tam sayılar\" çözümünde sayacın görevi nedir?",
+      "arka": "Sayaç hem tur sayar hem ekrana yazılan sayının kendisidir: Sayac=1; Yaz Sayac; Sayac=Sayac+1; Eğer Sayac<=100 ise 3. Adıma dön.\nBu yüzden ilk değer 1, koşul <= (100 de yazılsın). Bitince Sayac 101'dir."
+    }
+  ]
+}

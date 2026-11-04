@@ -1,0 +1,254 @@
+{
+  "id": "alg-akis-ornekleri",
+  "baslik": "Akış Diyagramı Örnekleri",
+  "kaynak": "algoritma_ve_programlama_temelleri_6__hafta_3.pdf, slayt 11–13; 6_hafta_blp.pdf, sayfa 1–3",
+  "kavramlar": [
+    {
+      "terim": "Ders ortalaması (Örnek 1)",
+      "izah": "Hocanın çözümünde ortalama=(vizenot*0.4)+(finalnot*0.6) ile hesaplanır; ortalama>=60 ise \"GEÇTİNİZ\", değilse \"KALDINIZ\" yazılır.",
+      "yer": "Örnek 1: ders ortalaması ve geçme"
+    },
+    {
+      "terim": "Üçgenin çeşidi (Örnek 2)",
+      "izah": "Üç kenar eşitse (karşılaştırmalar && ile) eşkenar, herhangi iki kenar eşitse (karşılaştırmalar || ile) ikizkenar, hiçbiri eşit değilse çeşitkenar üçgen.",
+      "yer": "Örnek 2: üçgenin çeşidi"
+    },
+    {
+      "terim": "Faktöriyel döngüsü (Örnek 3)",
+      "izah": "sayac=1 ve fakto=1 ilk değerleriyle fakto=fakto*sayac ve sayac=sayac+1 tekrarlanır; sayac<=N oldukça 5. adıma dönülür, sonra fakto yazılır.",
+      "yer": "Örnek 3: faktöriyel"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-akis-ornekleri.s1",
+      "tip": "hesap",
+      "yer": "Örnek 1: ders ortalaması ve geçme",
+      "soru": "Hocanın Örnek 1 algoritmasına vize notu 50, final notu 70 girilirse ortalama kaç olur?",
+      "cevap": 62,
+      "izah": "ortalama=(vizenot*0.4)+(finalnot*0.6) = 50·0,4 + 70·0,6 = 20 + 42 = 62. 62>=60 olduğu için \"GEÇTİNİZ\" yazılır."
+    },
+    {
+      "id": "alg-akis-ornekleri.s2",
+      "tip": "hesap",
+      "yer": "Örnek 1: ders ortalaması ve geçme",
+      "soru": "Hocanın Örnek 1 algoritmasına vize notu 70, final notu 50 girilirse ortalama kaç olur?",
+      "cevap": 58,
+      "izah": "70·0,4 + 50·0,6 = 28 + 30 = 58. 58>=60 yanlış olduğu için \"KALDINIZ\" yazılır; final notunun katsayısı daha büyük olduğu için notlar yer değiştirince sonuç değişir."
+    },
+    {
+      "id": "alg-akis-ornekleri.s3",
+      "tip": "secme",
+      "yer": "Örnek 1: ders ortalaması ve geçme",
+      "soru": "Örnek 1'de vize katsayısı %40, final katsayısı %60'tır. Ortalamayı hangi ifade hesaplar?",
+      "secenekler": [
+        "`(vizenot*0.4)+(finalnot*0.6)`",
+        "`(vizenot*0.6)+(finalnot*0.4)`",
+        "`(vizenot*40)+(finalnot*60)`",
+        "`(vizenot+finalnot)/2`"
+      ],
+      "dogru": 0,
+      "izah": "Yüzdeler ondalık sayıyla yazılır: %40 = 0.4 vizeyle, %60 = 0.6 finalle çarpılır. 40 ve 60 ile çarpmak sonucu 100 kat büyütür; /2 iki notu eşit ağırlıkla toplar."
+    },
+    {
+      "id": "alg-akis-ornekleri.s4",
+      "tip": "secme",
+      "yer": "Örnek 1: ders ortalaması ve geçme",
+      "soru": "Hocanın Örnek 1 algoritmasında ortalaması tam **60** olan öğrenci için ekrana ne yazılır?",
+      "secenekler": [
+        "\"GEÇTİNİZ\", çünkü koşul ortalama>=60 ve 60'ı kapsar",
+        "\"KALDINIZ\", çünkü koşul ortalama>60 ve 60'ı kapsamaz",
+        "\"GEÇTİNİZ\" ve ardından \"KALDINIZ\"",
+        "Hiçbir mesaj yazılmaz, çünkü 60 sınır değerdir"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın 7. adımındaki koşul ortalama>=60'tır; >= eşitliği de kapsar, 60 için doğru döner ve \"GEÇTİNİZ\" yazılır. Tek bir Eğer ve Değilse olduğu için yalnızca bir mesaj yazılır."
+    },
+    {
+      "id": "alg-akis-ornekleri.s5",
+      "tip": "dy",
+      "yer": "Örnek 1 akış diyagramı",
+      "ifade": "Hocanın Örnek 1 akış diyagramında iki mesaj tek bir giriş-çıkış sembolünde, iki not da tek bir klavyeden giriş sembolünde verilmiştir.",
+      "dogru": true,
+      "izah": "Doğru. Algoritmada 2–5. adımlar ayrıdır; diyagramda \"vize notunu ve final notunu giriniz\" tek paralelkenarda, vizenot ve finalnot tek okuma sembolündedir."
+    },
+    {
+      "id": "alg-akis-ornekleri.s6",
+      "tip": "izleme",
+      "yer": "Ayrı Eğer'ler ve akış diyagramı",
+      "soru": "Hocanın Örnek 2 metin algoritması adım adım izlenirse a=3, b=3, c=3 girildiğinde ekrana ne yazılır?",
+      "kod": "1. Başla\n2. Yaz \"üçgenin üç kenar uzunluğunu giriniz:\"\n3. Oku a, b, c\n4. Eğer a==b && b==c && a==c ise yaz \"eşkenar üçgen\"\n5. Eğer a==b || a==c || b==c ise yaz \"ikizkenar üçgen\"\n6. Değilse yaz \"çeşitkenar üçgen\"\n7. Bitir.",
+      "secenekler": [
+        "\"eşkenar üçgen\" ve ardından \"ikizkenar üçgen\"",
+        "Yalnızca \"eşkenar üçgen\"",
+        "\"eşkenar üçgen\" ve ardından \"çeşitkenar üçgen\"",
+        "Yalnızca \"ikizkenar üçgen\""
+      ],
+      "dogru": 0,
+      "izah": "4. adımın koşulu doğrudur, \"eşkenar üçgen\" yazılır. 5. adım ayrı bir Eğer'dir: a==b doğru olduğu için \"ikizkenar üçgen\" de yazılır. 6. adımdaki Değilse 5. adıma bağlıdır ve çalışmaz."
+    },
+    {
+      "id": "alg-akis-ornekleri.s7",
+      "tip": "secme",
+      "yer": "Ayrı Eğer'ler ve akış diyagramı",
+      "soru": "Hocanın Örnek 2 **akış diyagramında** a=3, b=3, c=3 için ekrana ne yazılır?",
+      "secenekler": [
+        "Yalnızca \"eşkenar üçgen\"",
+        "\"eşkenar üçgen\" ve ardından \"ikizkenar üçgen\"",
+        "Yalnızca \"ikizkenar üçgen\"",
+        "Yalnızca \"çeşitkenar üçgen\""
+      ],
+      "dogru": 0,
+      "izah": "Diyagramda birinci kararın E çıkışından \"eşkenar üçgen\" yazılıp doğrudan BİTİR'e gidilir; ikinci karara yalnızca H çıkışından gelinir. Metin algoritmasında ise iki Eğer ayrı olduğu için bir de \"ikizkenar üçgen\" yazılır."
+    },
+    {
+      "id": "alg-akis-ornekleri.s8",
+      "tip": "secme",
+      "yer": "Örnek 2 akış diyagramı",
+      "soru": "Hocanın Örnek 2 akış diyagramına 5, 5, 8 girilirse hangi yoldan gidilir?",
+      "secenekler": [
+        "Birinci karar H, ikinci karar E; \"ikizkenar üçgen\" yazılır",
+        "Birinci karar E; \"eşkenar üçgen\" yazılır",
+        "Birinci karar H, ikinci karar H; \"çeşitkenar üçgen\" yazılır",
+        "Birinci karar E, ikinci karar E; iki mesaj yazılır"
+      ],
+      "dogru": 0,
+      "izah": "b==c (5==8) yanlış olduğu için birinci koşul (&& ile bağlı) yanlıştır: H. İkinci koşulda a==b (5==5) doğrudur ve || ile bağlı olduğu için koşul doğrudur: E, \"ikizkenar üçgen\"."
+    },
+    {
+      "id": "alg-akis-ornekleri.s9",
+      "tip": "secme",
+      "yer": "Örnek 2 akış diyagramı",
+      "soru": "Hocanın Örnek 2 akış diyagramına 3, 4, 5 girilirse ekrana ne yazılır?",
+      "secenekler": [
+        "\"çeşitkenar üçgen\"",
+        "\"ikizkenar üçgen\"",
+        "\"eşkenar üçgen\"",
+        "Hiçbir mesaj yazılmaz"
+      ],
+      "dogru": 0,
+      "izah": "Hiçbir kenar eşit değildir: iki karar da H çıkışından gider ve \"çeşitkenar üçgen\" yazılır."
+    },
+    {
+      "id": "alg-akis-ornekleri.s10",
+      "tip": "dy",
+      "yer": "Örnek 2: üçgenin çeşidi",
+      "ifade": "Örnek 2'de ikizkenar üçgen için herhangi iki kenarın eşit olması yeterlidir; bu yüzden karşılaştırmalar VEYA (||) ile bağlanmıştır.",
+      "dogru": true,
+      "izah": "Doğru. a==b || a==c || b==c koşulu, karşılaştırmalardan biri doğruysa doğru döner."
+    },
+    {
+      "id": "alg-akis-ornekleri.s11",
+      "tip": "dy",
+      "yer": "Örnek 2: üçgenin çeşidi",
+      "ifade": "Örnek 2'de eşkenar üçgen koşulundaki karşılaştırmalar VEYA (||) ile bağlanmıştır.",
+      "dogru": false,
+      "izah": "Yanlış. Eşkenar üçgende üç kenar da eşit olmalıdır; karşılaştırmalar VE (&&) ile bağlanır: a==b && b==c && a==c. VEYA ile bağlansaydı iki kenarı eşit her üçgen eşkenar sayılırdı."
+    },
+    {
+      "id": "alg-akis-ornekleri.s12",
+      "tip": "izleme",
+      "yer": "Örnek 3: faktöriyel",
+      "soru": "Hocanın Örnek 3 algoritmasına N=5 girilirse ekrana ne yazılır?",
+      "kod": "1. Başla\n2. sayac=1 fakto=1\n3. yaz \"N sayısını giriniz:\"\n4. oku N\n5. fakto=fakto*sayac\n6. sayac=sayac+1\n7. eğer sayac<=N ise 5. Adıma dön\n8. yaz fakto\n9. bitir.",
+      "secenekler": [
+        "120",
+        "24",
+        "15",
+        "720"
+      ],
+      "dogru": 0,
+      "izah": "fakto turdan tura 1, 2, 6, 24 ve 120 olur; sayac 6 olunca 6<=5 yanlış döner ve 120 yazılır. 24 4!'dir, 15 1'den 5'e kadar sayıların toplamıdır, 720 6!'dir."
+    },
+    {
+      "id": "alg-akis-ornekleri.s13",
+      "tip": "hesap",
+      "yer": "Örnek 3: faktöriyel",
+      "soru": "Hocanın Örnek 3 algoritmasına N=4 girilirse 5. adım (`fakto=fakto*sayac`) toplam kaç kez yapılır?",
+      "cevap": 4,
+      "izah": "sayac 1, 2, 3 ve 4 iken 5. adım yapılır (4 kez). Dördüncü turdan sonra sayac 5 olur, 5<=4 yanlış döner ve fakto (24) yazılır."
+    },
+    {
+      "id": "alg-akis-ornekleri.s14",
+      "tip": "secme",
+      "yer": "Örnek 3 akış diyagramı",
+      "soru": "Hocanın Örnek 3 akış diyagramında `sayac<=N` kararının **E** çıkışı nereye gider?",
+      "secenekler": [
+        "fakto=fakto*sayac ve sayac=sayac+1 sembolüne geri",
+        "sayac=1 fakto=1 ilk değerlerinin bulunduğu sembole geri",
+        "fakto'yu ekrana yazan paralelkenar sembolüne",
+        "Başka bir sembole uğramadan doğrudan BİTİR'e"
+      ],
+      "dogru": 0,
+      "izah": "Koşul doğruyken 5. adıma dönülür: E çıkışı iki işlemin bulunduğu sembole geri gider. H çıkışından fakto yazılır ve BİTİR'e gidilir. Ok ilk değerlere dönseydi sayac ve fakto her turda yeniden 1 olurdu."
+    },
+    {
+      "id": "alg-akis-ornekleri.s15",
+      "tip": "dy",
+      "yer": "Örnek 3 akış diyagramı",
+      "ifade": "Hocanın Örnek 3 akış diyagramında fakto=fakto*sayac ve sayac=sayac+1 işlemleri iki ayrı hesaplama sembolünde çizilmiştir.",
+      "dogru": false,
+      "izah": "Yanlış. İki işlem tek bir hesaplama sembolünde (dikdörtgen) alt alta yazılmıştır; metin algoritmasında ise 5. ve 6. adım ayrıdır."
+    },
+    {
+      "id": "alg-akis-ornekleri.s16",
+      "tip": "secme",
+      "yer": "Döngü ve ilk değerler",
+      "soru": "Hocanın Örnek 3 metninde `sayac=1 fakto=1` 2. adımda (okumadan önce), akış diyagramında ise N okunduktan sonra gelir. Bu fark sonucu nasıl etkiler?",
+      "secenekler": [
+        "Etkilemez; ilk değerler döngüye girmeden bir kez verilir",
+        "Diyagramdaki sıra fakto'yu her turda yeniden 1 yapar",
+        "Metindeki sıra N okunmadan hesap yapılmasına yol açar",
+        "Diyagramdaki sıra son çarpımın yapılmasını engeller"
+      ],
+      "dogru": 0,
+      "izah": "İlk değerler iki sırada da döngünün dışındadır ve yalnızca bir kez verilir; geri dönüş oku ilk değerlere değil, fakto=fakto*sayac sembolüne gider. Bu yüzden iki sıra aynı sonucu verir."
+    },
+    {
+      "id": "alg-akis-ornekleri.s17",
+      "tip": "klasik",
+      "yer": "Örnek 1: ders ortalaması ve geçme",
+      "soru": "Hocanın Örnek 1'ini (vize %40, final %60, geçme notu 60) adım adım algoritma olarak yazın.",
+      "cevap": "1. Başla\n2. Yaz \"vize notunu giriniz:\"\n3. Oku vizenot\n4. Yaz \"final notunu giriniz:\"\n5. Oku finalnot\n6. ortalama=(vizenot*0.4)+(finalnot*0.6)\n7. Eğer ortalama>=60 ise yaz \"GEÇTİNİZ\"\n8. Değilse yaz \"KALDINIZ\"\n9. Bitir.",
+      "anahtarlar": [
+        "vizenot*0.4",
+        "finalnot*0.6",
+        "ortalama>=60",
+        "GEÇTİNİZ",
+        "KALDINIZ"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-akis-ornekleri.k1",
+      "yer": "Örnek 1: ders ortalaması ve geçme",
+      "on": "Hocanın Örnek 1'ini (vize ve final ortalaması) anlatın.",
+      "arka": "Vize ve final notu okunur; ortalama=(vizenot*0.4)+(finalnot*0.6) hesaplanır.\nEğer ortalama>=60 ise \"GEÇTİNİZ\", değilse \"KALDINIZ\" yazılır. 60 alan geçer.\nAkış diyagramında iki mesaj tek paralelkenarda, iki not tek klavyeden giriş sembolünde; kararın E çıkışı GEÇTİNİZ, H çıkışı KALDINIZ."
+    },
+    {
+      "id": "alg-akis-ornekleri.k2",
+      "yer": "Örnek 2: üçgenin çeşidi",
+      "on": "Örnek 2'de üçgenin çeşidi hangi koşullarla bulunur?",
+      "arka": "Eşkenar: a==b && b==c && a==c (üç kenar eşit; VE).\nİkizkenar: a==b || a==c || b==c (herhangi iki kenar eşit; VEYA).\nÇeşitkenar: hiçbiri değilse (Değilse kısmı).\nDiyagramda birinci kararın H çıkışı ikinci karara gider."
+    },
+    {
+      "id": "alg-akis-ornekleri.k3",
+      "yer": "Ayrı Eğer'ler ve akış diyagramı",
+      "on": "Örnek 2'de hocanın metni ile akış diyagramı hangi girişte farklı sonuç verir? Neden?",
+      "arka": "3, 3, 3 gibi eşkenar bir üçgende.\nMetinde 4. ve 5. adım ayrı iki Eğer'dir: önce \"eşkenar üçgen\", sonra a==b doğru olduğu için \"ikizkenar üçgen\" de yazılır.\nDiyagramda birinci kararın E yolu \"eşkenar üçgen\" yazıldıktan sonra doğrudan BİTİR'e gider: yalnızca \"eşkenar üçgen\" yazılır.\nEk: metne \"7. adıma git\" eklenirse ikisi aynı olur (hocanın sıfıra göre durum örneğindeki yol)."
+    },
+    {
+      "id": "alg-akis-ornekleri.k4",
+      "yer": "Örnek 3 akış diyagramı",
+      "on": "Hocanın faktöriyel (Örnek 3) akış diyagramını anlatın.",
+      "arka": "Başla → \"N sayısını giriniz:\" (paralelkenar) → N (klavyeden giriş) → sayac=1 fakto=1 → [fakto=fakto*sayac, sayac=sayac+1] tek kutuda → karar sayac<=N.\nE çıkışı iki işlemin kutusuna geri döner; H çıkışından fakto yazılır, BİTİR.\nİlk değerler döngünün dışındadır; fakto 1 ile başlar."
+    },
+    {
+      "id": "alg-akis-ornekleri.k5",
+      "yer": "Örnek 1 akış diyagramı",
+      "on": "Hocanın çözüm belgesindeki akış diyagramlarında E, H ve sembollerin içindeki yazılar ne anlama gelir?",
+      "arka": "E: Evet (koşul doğru), H: Hayır (koşul yanlış).\nSembollerin içine \"Yaz\" ve \"Oku\" yazılmamış, yalnızca mesaj ya da değişken yazılmıştır: paralelkenar mesajı ya da değişkenin değerini (ör. fakto) yazar, üst kenarı eğik dörtgen değişkeni klavyeden okur."
+    }
+  ]
+}

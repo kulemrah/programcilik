@@ -1,0 +1,106 @@
+{
+  "id": "b2r-sanallastirma",
+  "baslik": "Sanallaştırma Temelleri: VirtualBox ve UTM",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "NAT / port yönlendirme",
+      "izah": "VirtualBox'ın varsayılan ağ modu; dışarıdan erişim için port yönlendirme ya da köprülenmiş mod gerekir.",
+      "yer": "Ağ modu ve port yönlendirme: SSH'a dışarıdan nasıl ulaşılır"
+    },
+    {
+      "terim": "VirtualBox",
+      "izah": "Oracle'ın ücretsiz hypervisor'ü. Subject kullanımını zorunlu tutuyor; kullanamıyorsanız UTM'ye izin veriyor.",
+      "yer": "UTM ne zaman kullanılır (Apple Silicon durumu)"
+    },
+    {
+      "terim": "UTM",
+      "izah": "QEMU tabanlı hypervisor. Subject VirtualBox'ı ister; VirtualBox'ı kullanamıyorsanız UTM'ye izin verir. Apple Silicon Mac'lerde yaygın tercihtir. Disk dosyası .qcow2 uzantılıdır.",
+      "yer": "UTM ne zaman kullanılır (Apple Silicon durumu)"
+    },
+    {
+      "terim": "ISO",
+      "izah": "Kurulum imajı: Debian'ı kurmak için indirilen tek dosya, VirtualBox'ta sanal CD sürücüsüne bağlanır. netinstall imajı küçüktür, paketleri kurulum sırasında internetten çeker.",
+      "yer": "VirtualBox'ta yeni VM oluşturma adımları (RAM, sanal disk, ISO bağlama)"
+    },
+    {
+      "terim": "VDI",
+      "izah": "VirtualBox'ın sanal disk dosyası biçimi. Kurduğunuz sistemin tamamı bu dosyanın içindedir; signature.txt'ye yazılan sha1 özeti bundan alınır.",
+      "yer": ".vdi / .qcow2 disk dosyaları: ne işe yarar, nerede saklanır"
+    },
+    {
+      "terim": "qcow2",
+      "izah": "UTM/QEMU'nun sanal disk biçimi; VirtualBox'taki .vdi'nin karşılığıdır. UTM kullanılan Mac'te imza bu dosyadan alınır.",
+      "yer": ".vdi / .qcow2 disk dosyaları: ne işe yarar, nerede saklanır"
+    },
+    {
+      "terim": "köprülenmiş adaptör (bridged)",
+      "izah": "VM'i ana makineyle aynı ağa doğrudan bağlayan mod: VM ağda ayrı bir cihaz gibi görünür ve kendi IP adresini alır. Port yönlendirmeye gerek kalmadan dışarıdan 4242'ye ulaşılır; savunmalarda NAT'tan genelde daha sorunsuzdur.",
+      "yer": "Ağ modu ve port yönlendirme: SSH'a dışarıdan nasıl ulaşılır"
+    },
+    {
+      "terim": "misafir sistem",
+      "izah": "VM'in içinde çalışan işletim sistemi; bu projede Debian. Onu çalıştıran gerçek bilgisayara ana makine (host) denir.",
+      "yer": "Sanal makine (VM) ve hypervisor kavramı"
+    },
+    {
+      "terim": "sanallaştırma",
+      "izah": "Tek bir fiziksel bilgisayarın kaynaklarını bölerek üzerinde bağımsız sanal makineler çalıştırma tekniği; bu işi yapan yazılıma hypervisor denir.",
+      "yer": "Sanal makine (VM) ve hypervisor kavramı"
+    },
+    {
+      "terim": "RAM",
+      "izah": "Çalışan programların tutulduğu geçici bellek. Bu projede VM'e 1-2 GB yeterlidir; grafik arayüz olmadığı için fazlasına gerek yoktur ve ayrılan miktar ana makineden düşülür.",
+      "yer": "VirtualBox'ta yeni VM oluşturma adımları (RAM, sanal disk, ISO bağlama)"
+    },
+    {
+      "terim": "host (ana makine)",
+      "izah": "VM'i çalıştıran gerçek bilgisayar. Onunla VM arasında pano paylaşımı olmadığı için projenin çoğu, host terminalinden SSH ile bağlanılarak yapılır.",
+      "yer": "Sanal makine (VM) ve hypervisor kavramı"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-sanallastirma.s1",
+      "tip": "secme",
+      "yer": "Sanal makine (VM) ve hypervisor kavramı",
+      "soru": "Hypervisor nedir?",
+      "secenekler": [
+        "Sanal makine oluşturup yöneten yazılım",
+        "Linux çekirdeğinin erişim denetim modülü",
+        "Diskleri bölümleyip şifreleyen araç",
+        "Paketleri kurup güncelleyen program"
+      ],
+      "dogru": 0,
+      "izah": "VirtualBox ve UTM birer hypervisor'dür; normal işletim sisteminin üzerinde uygulama gibi çalışırlar (Tip-2)."
+    },
+    {
+      "id": "b2r-sanallastirma.s2",
+      "tip": "secme",
+      "yer": "Ağ modu ve port yönlendirme: SSH'a dışarıdan nasıl ulaşılır",
+      "soru": "VirtualBox varsayılan NAT modunda. Host'tan VM'in 4242 portuna bağlanamıyorsunuz. Sebep nedir?",
+      "secenekler": [
+        "SSH servisi NAT arkasında çalışamaz; yalnızca köprülenmiş modda port dinleyebilir",
+        "NAT'ta dışarıdan VM'e doğrudan erişilemez; port yönlendirme ya da köprülenmiş mod gerekir",
+        "UFW, NAT modunda dışarıdan gelen bütün bağlantıları ağ arayüzü düzeyinde engeller",
+        "NAT modunda VM'e IP atanmaz; ağ ancak DHCP sunucusu açıldıktan sonra çalışmaya başlar"
+      ],
+      "dogru": 1,
+      "izah": "NAT'ta VM dışarı çıkabilir ama dışarıdan doğrudan ulaşılamaz. Ya port yönlendirme kuralı eklenir ya da ağ modu Köprülenmiş (Bridged) yapılır."
+    },
+    {
+      "id": "b2r-sanallastirma.s3",
+      "tip": "secme",
+      "yer": "UTM ne zaman kullanılır (Apple Silicon durumu)",
+      "soru": "UTM'yi hangi durumda kullanırsınız?",
+      "secenekler": [
+        "Debian yerine Rocky Linux kurmaya karar verdiğinde",
+        "VirtualBox'ı kullanamadığınız bir bilgisayarda çalışıyorsanız",
+        "Disk şifrelemesi gerektiğinde; VirtualBox LUKS desteklemez",
+        "Bonus kısmını yapacağında; ek servisler UTM ister"
+      ],
+      "dogru": 1,
+      "izah": "Subject VirtualBox'ı ister, kullanamıyorsanız UTM'ye izin verir. VirtualBox Apple Silicon desteğini ancak 7.1 sürümüyle getirdiği için bu Mac'lerde UTM yaygın tercihtir. UTM'de disk dosyası .qcow2 uzantılıdır."
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "id": "b2r-ssh",
+  "baslik": "SSH Servisi ve Uzaktan Erişim Güvenliği",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "SSH",
+      "izah": "Ağ üzerinden şifreli uzaktan komut satırı erişimi sağlayan servis; bu projede 4242 portunda çalışır.",
+      "yer": "SSH'ın çalışma mantığı (kısaca)"
+    },
+    {
+      "terim": "sshd_config",
+      "izah": "SSH sunucusunun ayar dosyası (/etc/ssh/sshd_config); port ve PermitRootLogin buradan değişir.",
+      "yer": "sshd_config üzerinden port değişikliği (22 → 4242)"
+    },
+    {
+      "terim": "PermitRootLogin",
+      "izah": "sshd_config ayarı; 'no' yapılınca root doğrudan SSH ile giriş yapamaz.",
+      "yer": "Root ile SSH girişinin kapatılması (PermitRootLogin no)"
+    },
+    {
+      "terim": "servis",
+      "izah": "Arka planda sürekli çalışan program (sshd, ufw gibi); systemd tarafından başlatılır ve yönetilir.",
+      "yer": "Servisi yeniden başlatma ve port dinlediğini doğrulama (ss -tunlp)"
+    },
+    {
+      "terim": "daemon",
+      "izah": "Arka planda çalışan servis programı; adları genelde 'd' ile biter (sshd, firewalld).",
+      "yer": "SSH'ın çalışma mantığı (kısaca)"
+    },
+    {
+      "terim": "4242",
+      "izah": "Subject'in zorunlu tuttuğu SSH portu; UFW'de açık olan tek port budur.",
+      "yer": "sshd_config üzerinden port değişikliği (22 → 4242)"
+    },
+    {
+      "terim": "port",
+      "izah": "Bir makinedeki servisleri birbirinden ayıran numara. SSH varsayılan 22 yerine bu projede 4242'yi dinler ve UFW'de açık olan tek port odur.",
+      "yer": "sshd_config üzerinden port değişikliği (22 → 4242)"
+    },
+    {
+      "terim": "sshd",
+      "izah": "SSH sunucu servisi (daemon): portu dinleyen ve gelen bağlantıları kabul eden programdır. Ayarı /etc/ssh/sshd_config'tedir; değişiklik sonrası yeniden başlatılır.",
+      "yer": "SSH'ın çalışma mantığı (kısaca)"
+    },
+    {
+      "terim": "ss",
+      "izah": "Açık portları ve kurulu bağlantıları listeleyen komut. `ss -tunlp` hangi portun hangi servis tarafından dinlendiğini gösterir; 4242'yi doğrulamanın yolu budur.",
+      "yer": "Servisi yeniden başlatma ve port dinlediğini doğrulama (ss -tunlp)"
+    },
+    {
+      "terim": "localhost",
+      "izah": "Makinenin kendisini gösteren ad; 127.0.0.1 adresine karşılık gelir.",
+      "yer": "Önce SSH'ı ayarlayın, gerisini host'tan bağlanarak yapın"
+    },
+    {
+      "terim": "127.0.0.1",
+      "izah": "Döngü adresi (localhost). NAT + port yönlendirme kuruluysa ana makineden VM'e bu adresle bağlanılır.",
+      "yer": "Önce SSH'ı ayarlayın, gerisini host'tan bağlanarak yapın"
+    },
+    {
+      "terim": "/etc/ssh/sshd_config",
+      "izah": "SSH sunucusunun ayar dosyası; Port ve PermitRootLogin satırları buraya yazılır. Değişiklik sonrası servis yeniden başlatılmalı.",
+      "yer": "sshd_config üzerinden port değişikliği (22 → 4242)"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-ssh.s1",
+      "tip": "dizme",
+      "yer": "Servisi yeniden başlatma ve port dinlediğini doğrulama (ss -tunlp)",
+      "soru": "sshd ayarlarını değiştirdikten sonra servisi yeniden başlatan komutu dizin:",
+      "parcalar": [
+        "sudo",
+        "systemctl",
+        "restart",
+        "sshd"
+      ],
+      "komut": true,
+      "izah": "Ayar dosyasını (/etc/ssh/sshd_config) değiştirmek tek başına yetmez; servis yeniden başlatılmalıdır."
+    },
+    {
+      "id": "b2r-ssh.s2",
+      "tip": "secme",
+      "yer": "sshd_config üzerinden port değişikliği (22 → 4242)",
+      "soru": "SSH portunu ve root girişini hangi dosyadan ayarlarsınız?",
+      "secenekler": [
+        "/etc/ssh/ssh_config",
+        "/etc/ssh/sshd_config",
+        "/etc/sshd.conf",
+        "/etc/default/ssh"
+      ],
+      "dogru": 1,
+      "izah": "Sunucu tarafının ayar dosyası sshd_config'tir; `Port 4242` ve `PermitRootLogin no` satırları buraya yazılır."
+    },
+    {
+      "id": "b2r-ssh.s3",
+      "tip": "secme",
+      "yer": "Root ile SSH girişinin kapatılması (PermitRootLogin no)",
+      "soru": "`PermitRootLogin no` neden şart?",
+      "secenekler": [
+        "Root hesabının parolası olmadığı için SSH bu hesabı zaten kabul etmez",
+        "Root'a her zaman normal kullanıcı + sudo üzerinden erişilmeli, doğrudan değil",
+        "SSH protokolü root girişini sürüm 2'den beri kendiliğinden reddeder",
+        "UFW, root olarak açılan bağlantıları arayüz düzeyinde zaten engeller"
+      ],
+      "dogru": 1,
+      "izah": "Doğrudan root girişi kapatılınca saldırgan önce normal bir hesabı kırmak zorunda kalır; ayrıca her yetkili işlem sudo ile loglanır."
+    },
+    {
+      "id": "b2r-ssh.s4",
+      "tip": "secme",
+      "yer": "Servisi yeniden başlatma ve port dinlediğini doğrulama (ss -tunlp)",
+      "soru": "4242 portunun gerçekten dinlendiğini nasıl doğrularsınız?",
+      "secenekler": [
+        "`ping -c 3 4242`",
+        "`sudo ss -tunlp | grep 4242`",
+        "`sudo ufw show 4242`",
+        "`systemctl list-ports 4242`"
+      ],
+      "dogru": 1,
+      "izah": "Çıktıda portun LISTEN durumda ve sshd'ye ait olduğunu görmelisiniz; süreç adının görünmesi için komut sudo ile çalıştırılır."
+    },
+    {
+      "id": "b2r-ssh.s5",
+      "tip": "secme",
+      "yer": "Önce SSH'ı ayarlayın, gerisini host'tan bağlanarak yapın",
+      "soru": "Uzun `secure_path` satırını VM konsolunda harf harf yazmak hem yorucu hem hataya açık. En doğru yaklaşım nedir?",
+      "secenekler": [
+        "Satırı kısaltıp yalnızca gerekli dizinleri bırakmak, yazım yükünü azaltmak",
+        "Önce SSH'ı bitirip projenin geri kalanını ana makineden bağlanarak yapmak",
+        "VirtualBox misafir eklentilerini kurup pano paylaşımını açmak",
+        "Dosyayı host'ta yazıp paylaşılan klasör üzerinden VM'e taşımak"
+      ],
+      "dogru": 1,
+      "izah": "VirtualBox penceresiyle host arasında pano paylaşımı yoktur. SSH çalışır çalışmaz host terminalinden bağlanırsınız: kopyala-yapıştır kazanırsınız ve SSH'ın dışarıdan çalıştığını her gün doğrulamış olursunuz. Misafir eklentileri GUI paketleri getirebileceği için risklidir."
+    },
+    {
+      "id": "b2r-ssh.s6",
+      "tip": "dizme",
+      "yer": "Önce SSH'ı ayarlayın, gerisini host'tan bağlanarak yapın",
+      "soru": "Ana makineden VM'e bağlanan komutu dizin (port yönlendirme kuruluyken):",
+      "parcalar": [
+        "ssh",
+        "login@127.0.0.1",
+        "-p 4242"
+      ],
+      "komut": true,
+      "izah": "Köprülenmiş ağ modu kullanıyorsanız 127.0.0.1 yerine VM'in kendi IP adresini yazarsınız."
+    }
+  ]
+}

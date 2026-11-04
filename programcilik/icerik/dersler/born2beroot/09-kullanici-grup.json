@@ -1,0 +1,97 @@
+{
+  "id": "b2r-kullanici",
+  "baslik": "Kullanıcı ve Grup Yönetimi",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "usermod -aG",
+      "izah": "Kullanıcıyı var olan gruplarını silmeden yeni bir gruba ekleyen komut; -a olmadan gruplar silinir.",
+      "yer": "user42 ve sudo gruplarına ekleme (usermod -aG)"
+    },
+    {
+      "terim": "adduser",
+      "izah": "Debian'a özgü, etkileşimli kullanıcı oluşturma komutu.",
+      "yer": "root dışında kendi login'inizle kullanıcı açma"
+    },
+    {
+      "terim": "root",
+      "izah": "Sistemdeki tam yetkili kullanıcı (UID 0). Bu projede root ile SSH girişi kapalıdır; root'a kendi hesabından `su -` ya da sudo ile geçilir.",
+      "yer": "root dışında kendi login'inizle kullanıcı açma"
+    },
+    {
+      "terim": "kullanıcı",
+      "izah": "Sistemde hesabı olan kimlik. Bu projede root'un yanında kendi login'inizle bir kullanıcı bulunmak ve o kullanıcının sudo ile user42 gruplarında olması zorunlu.",
+      "yer": "root dışında kendi login'inizle kullanıcı açma"
+    },
+    {
+      "terim": "grup",
+      "izah": "Kullanıcıları ortak yetkiler altında toplayan yapı. Bu projede kendi kullanıcının hem sudo hem user42 grubunda olması şart.",
+      "yer": "user42 ve sudo gruplarına ekleme (usermod -aG)"
+    },
+    {
+      "terim": "user42",
+      "izah": "Subject'in zorunlu tuttuğu grup adı; kendi kullanıcınız bu gruba ve sudo grubuna üye olmalı.",
+      "yer": "user42 ve sudo gruplarına ekleme (usermod -aG)"
+    },
+    {
+      "terim": "UID",
+      "izah": "Kullanıcı kimlik numarası; root'un UID'si 0'dır. `id` komutu gösterir.",
+      "yer": "groups, id komutlarıyla doğrulama"
+    },
+    {
+      "terim": "GID",
+      "izah": "Grup kimlik numarası; `id` komutu kullanıcının birincil ve ikincil gruplarıyla birlikte gösterir.",
+      "yer": "groups, id komutlarıyla doğrulama"
+    },
+    {
+      "terim": "useradd",
+      "izah": "Kullanıcı oluşturan alt seviye komut; ev dizini ve parola için ek bayrak ister. Debian'da etkileşimli `adduser` tercih edilir.",
+      "yer": "root dışında kendi login'inizle kullanıcı açma"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-kullanici.s1",
+      "tip": "secme",
+      "yer": "user42 ve sudo gruplarına ekleme (usermod -aG)",
+      "soru": "Bir peer şu komutu yazdı: `sudo usermod -G sudo hamza`. Bu komutun sorunu ne?",
+      "secenekler": [
+        "Kullanıcı adı grup adından önce yazılmalıydı; komut ters sırada verildiği için hata verir",
+        "-a olmadığı için kullanıcının var olan tüm ikincil grupları silinip yerine sudo yazılır",
+        "usermod var olmayan bir kullanıcıyı gruba ekleyemez; önce adduser çalıştırılmalıydı",
+        "Sorun yok; -a yalnızca aynı anda birden fazla gruba eklerken gereken bir bayraktır"
+      ],
+      "dogru": 1,
+      "izah": "Doğrusu `sudo usermod -aG sudo hamza`. -a (append) unutulursa kullanıcı user42 gibi diğer gruplardan düşer — tipik ve ciddi bir tuzak."
+    },
+    {
+      "id": "b2r-kullanici.s2",
+      "tip": "dizme",
+      "yer": "user42 ve sudo gruplarına ekleme (usermod -aG)",
+      "soru": "Kullanıcıyı user42 grubuna, var olan gruplarını bozmadan ekleyen komutu dizin:",
+      "parcalar": [
+        "sudo",
+        "usermod",
+        "-aG",
+        "user42",
+        "login"
+      ],
+      "komut": true,
+      "izah": "-a append (ekle), -G ikincil grup demektir; var olan gruplarını bozmadan eklemek için ikisi birlikte kullanılır."
+    },
+    {
+      "id": "b2r-kullanici.s3",
+      "tip": "secme",
+      "yer": "groups, id komutlarıyla doğrulama",
+      "soru": "Kullanıcının gerçekten user42 ve sudo gruplarında olduğunu nasıl doğrularsınız?",
+      "secenekler": [
+        "`cat /etc/passwd` ya da `cat /etc/shadow`",
+        "`groups login` ya da `id login`",
+        "`usermod -l login` ya da `chage -l login`",
+        "`who login` ya da `last login`"
+      ],
+      "dogru": 1,
+      "izah": "groups üyesi olunan grupları listeler; id ayrıca UID/GID bilgisini de gösterir. /etc/passwd yalnızca birincil grubun GID'ini tutar, ikincil grupları göstermez; /etc/shadow parola özetlerini tutar."
+    }
+  ]
+}

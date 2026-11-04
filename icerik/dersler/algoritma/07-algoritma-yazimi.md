@@ -13,7 +13,7 @@ Hocanın çözümü:
 
 ![Örnek 1'in adımları ve değişkenler (Ek: 4 ve 7 girildiğinde)](gorseller/ornek1-izleme.svg)
 
-> **Ek:** Şekildeki 4 ve 7 değerleri örnek olarak seçildi; slaytta giriş değeri verilmemiştir.
+> **Ek:** Şekildeki 4 ve 7 değerleri örnek olarak seçildi; slaytta giriş değeri verilmemiştir. Bu örneğin hocanın akış diyagramı: "Akış Diyagramları (Akış Çizgeleri)" konusundaki "Örnek: iki sayının toplamı" başlığı.
 
 #### Adımların kısa yazılışı
 

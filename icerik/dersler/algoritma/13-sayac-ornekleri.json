@@ -220,7 +220,7 @@
       "id": "alg-sayac-ornekleri.k3",
       "yer": "Örnek 2: çift sayıların karesi",
       "on": "Hocanın Örnek 2'si (çift sayıların karesi) nasıl çalışır?",
-      "arka": "Her turda sayı okunur; Eğer sayi%2==0 ise sayi*sayi yazılır (tek sayıda bir şey yazılmaz).\nSayaç Eğer'in dışındadır, her turda artar: döngü 10 sayı okur.\nHoca kareyi sayi^2 diye de yazıyor; C++'ta ^ üs değildir."
+      "arka": "Her turda sayı okunur; Eğer sayi%2==0 ise sayi*sayi yazılır (tek sayıda bir şey yazılmaz).\nSayaç Eğer'in dışındadır, her turda artar: döngü 10 sayı okur.\nHoca kareyi sayi^2 diye de yazıyor; algoritmada ^ üs almadır."
     },
     {
       "id": "alg-sayac-ornekleri.k4",
@@ -243,8 +243,8 @@
     {
       "id": "alg-sayac-ornekleri.k7",
       "yer": "Akış şeması: 3'er 3'er sayılar (Ek)",
-      "on": "Sayaçlı bir döngü akış şemasında nasıl gösterilir?",
-      "arka": "Slaytlarda akış şeması çizilmedi; hoca Örnek 4 ve 5'te çizilmesini istiyor.\nEk: Karar sembolündeki koşulun doğru çıkışından tekrar edilecek adıma geri giden bir ok çizilir (\"3. Adıma dön\"); yanlış çıkışı sonraki adıma (Bitir ya da Yaz) gider. İlk değer verme döngünün dışında, geri dönüş okunun üstünde kalır."
+      "on": "Hocanın akış diyagramlarında sayaçlı bir döngü nasıl gösterilir?",
+      "arka": "Karar sembolündeki koşulun Evet çıkışından tekrar edilecek adıma geri giden bir ok çizilir (\"3. Adıma dön\"); Hayır çıkışı sonraki adıma (BİTİR ya da YAZ) gider. İlk değer verme döngünün dışında, geri dönüş okunun üstünde kalır (hocanın \"5 defa merhaba\" ve faktöriyel diyagramları).\nEk: Örnek 4'ün diyagramı hocanın belgesinde çizilmedi; nottaki şema hocanın sembolleriyle çizildi."
     }
   ]
 }

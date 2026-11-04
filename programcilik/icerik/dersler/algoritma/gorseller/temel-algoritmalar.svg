@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="452" viewBox="0 0 400 452" role="img">
+<title>Hocanın verdiği temel algoritma grupları</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="8" y="10" width="384" height="104" rx="10" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.6"/>
+<rect x="8" y="10" width="6" height="104" rx="3" fill="#2B6CB0"/>
+<text x="22.0" y="34.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#2B6CB0" font-weight="600" text-anchor="start">1. Sıralama</text>
+<text x="16.0" y="64.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">basit:</text>
+<rect x="65.2" y="46" width="63.2" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="96.8" y="63.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Bubble</text>
+<rect x="134.4" y="46" width="84.8" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="176.8" y="63.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Selection</text>
+<rect x="225.2" y="46" width="84.8" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="267.6" y="63.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Insertion</text>
+<text x="16.0" y="96.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">gelişmiş:</text>
+<rect x="86.8" y="78" width="56.0" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="114.8" y="95.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Quick</text>
+<rect x="148.8" y="78" width="56.0" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="176.8" y="95.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Merge</text>
+<rect x="8" y="124" width="384" height="72" rx="10" fill="#FFFFFF" stroke="#2C7A7B" stroke-width="1.6"/>
+<rect x="8" y="124" width="6" height="72" rx="3" fill="#2C7A7B"/>
+<text x="22.0" y="148.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#2C7A7B" font-weight="600" text-anchor="start">2. Arama</text>
+<rect x="16.0" y="160" width="63.2" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="47.6" y="177.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Linear</text>
+<rect x="85.2" y="160" width="63.2" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="116.8" y="177.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Binary</text>
+<rect x="8" y="206" width="384" height="72" rx="10" fill="#FFFFFF" stroke="#6B46C1" stroke-width="1.6"/>
+<rect x="8" y="206" width="6" height="72" rx="3" fill="#6B46C1"/>
+<text x="22.0" y="230.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#6B46C1" font-weight="600" text-anchor="start">3. Graf</text>
+<rect x="16.0" y="242" width="41.6" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="36.8" y="259.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">BFS</text>
+<rect x="63.6" y="242" width="41.6" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="84.4" y="259.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">DFS</text>
+<rect x="111.2" y="242" width="77.6" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="150.0" y="259.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Dijkstra</text>
+<rect x="194.8" y="242" width="120.8" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="255.2" y="259.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Floyd-Warshall</text>
+<rect x="8" y="288" width="384" height="72" rx="10" fill="#FFFFFF" stroke="#2F855A" stroke-width="1.6"/>
+<rect x="8" y="288" width="6" height="72" rx="3" fill="#2F855A"/>
+<text x="22.0" y="312.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#2F855A" font-weight="600" text-anchor="start">4. Dinamik programlama</text>
+<rect x="16.0" y="324" width="84.8" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="58.4" y="341.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Fibonacci</text>
+<rect x="106.8" y="324" width="77.6" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="145.6" y="341.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Knapsack</text>
+<rect x="8" y="370" width="384" height="72" rx="10" fill="#FFFFFF" stroke="#C05621" stroke-width="1.6"/>
+<rect x="8" y="370" width="6" height="72" rx="3" fill="#C05621"/>
+<text x="22.0" y="394.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#C05621" font-weight="600" text-anchor="start">5. Karmaşık sınıflar</text>
+<rect x="16.0" y="406" width="63.2" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="47.6" y="423.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Greedy</text>
+<rect x="85.2" y="406" width="70.4" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="120.4" y="423.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Hashing</text>
+<rect x="161.6" y="406" width="84.8" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="204.0" y="423.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Şifreleme</text>
+<rect x="252.4" y="406" width="128.0" height="26" rx="13" fill="#F7FAFC" stroke="#CBD5E0"/>
+<text x="316.4" y="423.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Makine öğrenimi</text>
+</svg>

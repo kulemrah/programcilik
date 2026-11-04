@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="470" viewBox="0 0 400 470" role="img">
+<title>En büyük sayı: hocanın çözümü ve düzeltilmiş hâli</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="200.0" y="20.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="middle">giriş: 3, 9, 2, 7, 1, 1, 1, 1, 1, 1</text>
+<rect x="122" y="32" width="152" height="40" rx="8" fill="#FFF5F5"/>
+<rect x="282" y="32" width="112" height="40" rx="8" fill="#F0FFF4"/>
+<text x="198.0" y="48.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#C53030" font-weight="600" text-anchor="middle">hocanın çözümü</text>
+<text x="338.0" y="48.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2F855A" font-weight="600" text-anchor="middle">düzeltilmiş</text>
+<text x="160.0" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#4A5568" text-anchor="middle">enbuyuk</text>
+<text x="236.0" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#4A5568" text-anchor="middle">yenienbuyuk</text>
+<text x="338.0" y="66.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#4A5568" text-anchor="middle">enbuyuk</text>
+<text x="16.0" y="66.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" font-weight="600" text-anchor="start">okunan</text>
+<rect x="6" y="78" width="388" height="46" rx="8" fill="#F7FAFC"/>
+<text x="14.0" y="106.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#1A202C" text-anchor="start">sayi=3</text>
+<rect x="132" y="85" width="56" height="32" rx="6" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="160.0" y="107.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#C05621" font-weight="600" text-anchor="middle">3</text>
+<rect x="208" y="85" width="56" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="236.0" y="107.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#A0AEC0" text-anchor="middle">–</text>
+<rect x="310" y="85" width="56" height="32" rx="6" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="338.0" y="107.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#C05621" font-weight="600" text-anchor="middle">3</text>
+<text x="14.0" y="156.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#1A202C" text-anchor="start">sayi2=9</text>
+<rect x="132" y="135" width="56" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="160.0" y="157.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" text-anchor="middle">3</text>
+<rect x="208" y="135" width="56" height="32" rx="6" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="236.0" y="157.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#C05621" font-weight="600" text-anchor="middle">9</text>
+<rect x="310" y="135" width="56" height="32" rx="6" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="338.0" y="157.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#C05621" font-weight="600" text-anchor="middle">9</text>
+<rect x="6" y="178" width="388" height="46" rx="8" fill="#F7FAFC"/>
+<text x="14.0" y="206.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#1A202C" text-anchor="start">sayi2=2</text>
+<rect x="132" y="185" width="56" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="160.0" y="207.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" text-anchor="middle">3</text>
+<rect x="208" y="185" width="56" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="236.0" y="207.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" text-anchor="middle">9</text>
+<rect x="310" y="185" width="56" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="338.0" y="207.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" text-anchor="middle">9</text>
+<text x="14.0" y="256.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#1A202C" text-anchor="start">sayi2=7</text>
+<rect x="132" y="235" width="56" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="160.0" y="257.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" text-anchor="middle">3</text>
+<rect x="208" y="235" width="56" height="32" rx="6" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="236.0" y="257.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#C05621" font-weight="600" text-anchor="middle">7</text>
+<rect x="310" y="235" width="56" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="338.0" y="257.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" text-anchor="middle">9</text>
+<rect x="6" y="278" width="388" height="46" rx="8" fill="#F7FAFC"/>
+<text x="14.0" y="306.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#1A202C" text-anchor="start">sayi2=1 (6 kez)</text>
+<rect x="132" y="285" width="56" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="160.0" y="307.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" text-anchor="middle">3</text>
+<rect x="208" y="285" width="56" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="236.0" y="307.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" text-anchor="middle">7</text>
+<rect x="310" y="285" width="56" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="338.0" y="307.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#1A202C" text-anchor="middle">9</text>
+<line x1="10.0" y1="334.0" x2="390.0" y2="334.0" stroke="#CBD5E0" stroke-width="1.2"/>
+<text x="16.0" y="364.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" font-weight="600" text-anchor="start">ekrana</text>
+<rect x="200" y="344" width="72" height="34" rx="6" fill="#FFF5F5" stroke="#C53030" stroke-width="1.8"/>
+<text x="236.0" y="367.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" fill="#C53030" font-weight="600" text-anchor="middle">7</text>
+<rect x="302" y="344" width="72" height="34" rx="6" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.8"/>
+<text x="338.0" y="367.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" fill="#2F855A" font-weight="600" text-anchor="middle">9</text>
+<text x="200.0" y="406.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">enbuyuk ilk sayıda (3) kalır; yenienbuyuk 3'ten büyük</text>
+<text x="200.0" y="422.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">son sayıyı tutar. Doğrusu: enbuyuk=sayi2.</text>
+</svg>

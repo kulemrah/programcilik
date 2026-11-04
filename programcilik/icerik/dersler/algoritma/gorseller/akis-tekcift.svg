@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="348" viewBox="0 0 400 348" role="img">
+<title>Tek mi çift mi: hocanın akış diyagramı</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<ellipse cx="200.0" cy="24.0" rx="65.0" ry="18.0" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="200.0" y="28.7" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">BAŞLA</text>
+<line x1="200.0" y1="42.0" x2="200.0" y2="62.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="200.0,62.0 196.5,53.7 203.5,53.7" fill="#4A5568"/>
+<polygon points="135.0,83.0 265.0,69.0 265.0,105.0 135.0,105.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="200.0" y="96.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">OKU: A</text>
+<line x1="200.0" y1="112.0" x2="200.0" y2="134.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="200.0,134.0 196.5,125.7 203.5,125.7" fill="#4A5568"/>
+<polygon points="200.0,134.0 264.0,170.0 200.0,206.0 136.0,170.0" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="200.0" y="174.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">A % 2 == 0</text>
+<line x1="136.0" y1="170.0" x2="100.0" y2="170.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="100.0" y1="170.0" x2="100.0" y2="202.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="100.0,202.0 96.5,193.7 103.5,193.7" fill="#4A5568"/>
+<text x="120.0" y="162.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">Hayır</text>
+<line x1="264.0" y1="170.0" x2="300.0" y2="170.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="300.0" y1="170.0" x2="300.0" y2="202.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="300.0,202.0 296.5,193.7 303.5,193.7" fill="#4A5568"/>
+<text x="280.0" y="162.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">Evet</text>
+<polygon points="32.0,203.0 192.0,203.0 168.0,249.0 8.0,249.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="100.0" y="222.8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">YAZ:</text>
+<text x="100.0" y="238.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">"Girilen sayı tektir"</text>
+<polygon points="232.0,203.0 392.0,203.0 368.0,249.0 208.0,249.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="300.0" y="222.8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">YAZ:</text>
+<text x="300.0" y="238.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">"Girilen sayı çifttir"</text>
+<line x1="100.0" y1="249.0" x2="100.0" y2="306.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="100.0" y1="306.0" x2="134.0" y2="306.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="134.0,306.0 125.7,309.5 125.7,302.5" fill="#4A5568"/>
+<line x1="300.0" y1="249.0" x2="300.0" y2="306.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="300.0" y1="306.0" x2="266.0" y2="306.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="266.0,306.0 274.3,302.5 274.3,309.5" fill="#4A5568"/>
+<ellipse cx="200.0" cy="306.0" rx="65.0" ry="18.0" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="200.0" y="310.7" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">BİTİR</text>
+</svg>

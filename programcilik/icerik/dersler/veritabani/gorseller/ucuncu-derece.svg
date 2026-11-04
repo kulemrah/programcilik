@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="326" viewBox="0 0 420 326" role="img">
+<title>Üçüncü dereceden bağıntı: proje, sağlar, üretici, malzeme</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<line x1="108.0" y1="120.0" x2="162.0" y2="120.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="258.0" y1="120.0" x2="312.0" y2="120.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="210.0" y1="144.0" x2="210.0" y2="214.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<rect x="14.0" y="102.0" width="94.0" height="36.0" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="61.0" y="124.9" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="middle">proje</text>
+<rect x="312.0" y="102.0" width="94.0" height="36.0" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="359.0" y="124.9" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="middle">üretici</text>
+<rect x="162.0" y="214.0" width="96.0" height="36.0" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="210.0" y="236.9" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="middle">malzeme</text>
+<polygon points="210.0,96.0 258.0,120.0 210.0,144.0 162.0,120.0" fill="#FFF1DC" stroke="#B7791F" stroke-width="1.6"/>
+<text x="210.0" y="124.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">sağlar</text>
+<line x1="122.0" y1="120.0" x2="108.0" y2="112.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="122.0" y1="120.0" x2="108.0" y2="120.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="122.0" y1="120.0" x2="108.0" y2="128.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<circle cx="130.0" cy="120.0" r="4.5" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.5"/>
+<line x1="298.0" y1="120.0" x2="312.0" y2="128.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="298.0" y1="120.0" x2="312.0" y2="120.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="298.0" y1="120.0" x2="312.0" y2="112.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="292.0" y1="127.0" x2="292.0" y2="113.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="210.0" y1="200.0" x2="202.0" y2="214.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="210.0" y1="200.0" x2="210.0" y2="214.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="210.0" y1="200.0" x2="218.0" y2="214.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="203.0" y1="194.0" x2="217.0" y2="194.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="61.0" y1="102.0" x2="36.0" y2="54.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<ellipse cx="36.0" cy="54.0" rx="30.0" ry="14.0" fill="#EEF6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="36.0" y="58.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle" text-decoration="underline">kod</text>
+<line x1="61.0" y1="102.0" x2="128.0" y2="50.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<ellipse cx="128.0" cy="50.0" rx="47.6" ry="14.0" fill="#EEF6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="128.0" y="54.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">açıklama</text>
+<line x1="61.0" y1="138.0" x2="30.0" y2="178.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<ellipse cx="30.0" cy="178.0" rx="30.0" ry="14.0" fill="#EEF6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="30.0" y="182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">ad</text>
+<line x1="359.0" y1="102.0" x2="306.0" y2="54.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<ellipse cx="306.0" cy="54.0" rx="35.0" ry="14.0" fill="#EEF6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="306.0" y="58.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle" text-decoration="underline">sicil</text>
+<line x1="359.0" y1="102.0" x2="382.0" y2="54.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<ellipse cx="382.0" cy="54.0" rx="35.0" ry="14.0" fill="#EEF6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="382.0" y="58.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">adres</text>
+<line x1="359.0" y1="138.0" x2="370.0" y2="178.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<ellipse cx="370.0" cy="178.0" rx="30.0" ry="14.0" fill="#EEF6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="370.0" y="182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">ad</text>
+<line x1="359.0" y1="138.0" x2="300.0" y2="178.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<ellipse cx="300.0" cy="178.0" rx="30.0" ry="14.0" fill="#EEF6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="300.0" y="182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">tel</text>
+<line x1="210.0" y1="250.0" x2="152.0" y2="296.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<ellipse cx="152.0" cy="296.0" rx="30.0" ry="14.0" fill="#EEF6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="152.0" y="300.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle" text-decoration="underline">kod</text>
+<line x1="162.0" y1="232.0" x2="92.0" y2="260.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<ellipse cx="92.0" cy="260.0" rx="30.0" ry="14.0" fill="#EEF6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="92.0" y="264.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">ad</text>
+<line x1="210.0" y1="250.0" x2="268.0" y2="296.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<ellipse cx="268.0" cy="296.0" rx="47.6" ry="14.0" fill="#EEF6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+<text x="268.0" y="300.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">açıklama</text>
+<rect x="14.0" y="102.0" width="94.0" height="36.0" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="61.0" y="124.9" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="middle">proje</text>
+<rect x="312.0" y="102.0" width="94.0" height="36.0" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="359.0" y="124.9" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="middle">üretici</text>
+<rect x="162.0" y="214.0" width="96.0" height="36.0" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="210.0" y="236.9" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="middle">malzeme</text>
+<line x1="122.0" y1="120.0" x2="108.0" y2="112.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="122.0" y1="120.0" x2="108.0" y2="120.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="122.0" y1="120.0" x2="108.0" y2="128.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<circle cx="130.0" cy="120.0" r="4.5" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.5"/>
+<line x1="298.0" y1="120.0" x2="312.0" y2="128.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="298.0" y1="120.0" x2="312.0" y2="120.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="298.0" y1="120.0" x2="312.0" y2="112.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="292.0" y1="127.0" x2="292.0" y2="113.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="210.0" y1="200.0" x2="202.0" y2="214.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="210.0" y1="200.0" x2="210.0" y2="214.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="210.0" y1="200.0" x2="218.0" y2="214.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="203.0" y1="194.0" x2="217.0" y2="194.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="210.0" y="20.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#C05621" font-weight="600" text-anchor="middle">Hangi firma, hangi projedeki hangi malzemeyi sağladı?</text>
+</svg>

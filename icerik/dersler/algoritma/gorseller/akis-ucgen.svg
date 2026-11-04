@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="620" viewBox="0 0 400 620" role="img">
+<title>Üçgenin çeşidi: hocanın akış diyagramı</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<ellipse cx="230.0" cy="24.0" rx="60.0" ry="18.0" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="230.0" y="28.7" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">Başla</text>
+<line x1="230.0" y1="42.0" x2="230.0" y2="62.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="230.0,62.0 226.5,53.7 233.5,53.7" fill="#4A5568"/>
+<polygon points="152.0,62.0 332.0,62.0 308.0,106.0 128.0,106.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="230.0" y="80.8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">üçgenin üç kenar</text>
+<text x="230.0" y="96.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">uzunluğunu giriniz</text>
+<line x1="230.0" y1="106.0" x2="230.0" y2="128.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="230.0,128.0 226.5,119.7 233.5,119.7" fill="#4A5568"/>
+<polygon points="165.0,145.0 295.0,131.0 295.0,167.0 165.0,167.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="230.0" y="158.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">a, b, c</text>
+<line x1="230.0" y1="172.0" x2="230.0" y2="196.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="230.0,196.0 226.5,187.7 233.5,187.7" fill="#4A5568"/>
+<polygon points="230.0,196.0 325.0,240.0 230.0,284.0 135.0,240.0" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="230.0" y="236.8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">a==b &amp;&amp; b==c</text>
+<text x="230.0" y="252.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">&amp;&amp; a==c</text>
+<line x1="135.0" y1="240.0" x2="70.0" y2="240.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="70.0" y1="240.0" x2="70.0" y2="290.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="70.0,290.0 66.5,281.7 73.5,281.7" fill="#4A5568"/>
+<text x="108.0" y="232.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">E</text>
+<polygon points="27.0,289.0 137.0,289.0 113.0,331.0 3.0,331.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="70.0" y="306.8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">eşkenar</text>
+<text x="70.0" y="322.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">üçgen</text>
+<line x1="230.0" y1="284.0" x2="230.0" y2="318.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="230.0,318.0 226.5,309.7 233.5,309.7" fill="#4A5568"/>
+<text x="248.0" y="304.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">H</text>
+<polygon points="230.0,318.0 325.0,362.0 230.0,406.0 135.0,362.0" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="230.0" y="358.8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">a==b</text>
+<text x="230.0" y="374.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">|| a==c || b==c</text>
+<line x1="230.0" y1="406.0" x2="230.0" y2="440.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="230.0,440.0 226.5,431.7 233.5,431.7" fill="#4A5568"/>
+<text x="248.0" y="426.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">E</text>
+<polygon points="162.0,441.0 322.0,441.0 298.0,479.0 138.0,479.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="230.0" y="464.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">ikizkenar üçgen</text>
+<line x1="325.0" y1="362.0" x2="326.0" y2="362.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="326.0" y1="362.0" x2="326.0" y2="508.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="326.0,508.0 322.5,499.7 329.5,499.7" fill="#4A5568"/>
+<text x="338.0" y="352.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">H</text>
+<polygon points="283.0,507.0 393.0,507.0 369.0,549.0 259.0,549.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="326.0" y="524.8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">çeşitkenar</text>
+<text x="326.0" y="540.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">üçgen</text>
+<ellipse cx="230.0" cy="590.0" rx="60.0" ry="18.0" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="230.0" y="594.7" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">BİTİR</text>
+<line x1="70.0" y1="331.0" x2="70.0" y2="590.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="70.0" y1="590.0" x2="169.0" y2="590.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="169.0,590.0 160.7,593.5 160.7,586.5" fill="#4A5568"/>
+<line x1="230.0" y1="479.0" x2="230.0" y2="572.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="230.0,572.0 226.5,563.7 233.5,563.7" fill="#4A5568"/>
+<line x1="326.0" y1="549.0" x2="326.0" y2="590.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="326.0" y1="590.0" x2="291.0" y2="590.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="291.0,590.0 299.3,586.5 299.3,593.5" fill="#4A5568"/>
+</svg>

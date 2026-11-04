@@ -1,0 +1,404 @@
+{
+  "id": "vt-veri-tipleri",
+  "baslik": "SQL Veri Tipleri, NULL ve IDENTITY",
+  "kaynak": "normalizasyon_1.pdf, slayt 20–39",
+  "kavramlar": [
+    {
+      "terim": "Bit",
+      "izah": "1 ya da 0 değerini saklar; Evet/Hayır gibi mantıksal bilgiler için kullanılır (ör. burs alıyor mu). 1 byte.",
+      "yer": "Tamsayı veri tipleri"
+    },
+    {
+      "terim": "Tinyint, Smallint, Int, Bigint",
+      "izah": "Tamsayı tipleri; sırasıyla 1, 2, 4 ve 8 byte. Tinyint 0 ile 255 arasındadır, negatif sayı tutmaz.",
+      "yer": "Tamsayı veri tipleri"
+    },
+    {
+      "terim": "Kesin ondalık sayı veri tipleri",
+      "izah": "Ondalık sayıların hem tamsayı hem ondalık bölümlerini tam olarak saklayan tipler: smallmoney, money, numeric, decimal.",
+      "yer": "Kesin ondalık sayı veri tipleri"
+    },
+    {
+      "terim": "Numeric / Decimal",
+      "izah": "Tam ve ondalık basamak sayıları belirtilerek tanımlanan tip; en çok 38 basamak, boyutu basamak sayısına göre 5–17 byte. Decimal, numeric ile eşdeğerdir.",
+      "yer": "Kesin ondalık sayı veri tipleri"
+    },
+    {
+      "terim": "Float",
+      "izah": "Çok büyük ve çok küçük kesirli sayılar için kullanılır; boyutu 4 ile 8 byte arasındadır. Hocaya göre real da float ile aynı özelliklere sahiptir (Microsoft belgesine göre real = float(24), 4 byte).",
+      "yer": "Float ve real"
+    },
+    {
+      "terim": "ANSI ve Unicode",
+      "izah": "ANSI karakter 1 byte, Unicode karakter 2 byte yer kaplar. Nchar(n) ve nvarchar(n) Unicode karakter saklar; bu yüzden en çok 4000 karakter tutarlar.",
+      "yer": "Metinsel veri tipleri"
+    },
+    {
+      "terim": "Char ile varchar",
+      "izah": "char(n) sabit uzunlukludur, her zaman n byte; varchar(n) veriye göre yer kaplar (\"ali\" 3 byte).",
+      "yer": "Char ile varchar farkı"
+    },
+    {
+      "terim": "NULL / NOT NULL",
+      "izah": "NULL alana veri girilmeden satır oluşturulabilir (ör. 2. isim); NOT NULL alan boş bırakılamaz (ör. TC kimlik numarası).",
+      "yer": "NULL ve NOT NULL"
+    },
+    {
+      "terim": "IDENTITY",
+      "izah": "Alanın değerinin ardışık sayılarla otomatik artmasını sağlar; identity alanlar güncellenemez, boş bırakılamaz, genelde primary key olur.",
+      "yer": "IDENTITY (otomatik artan sayı)"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-veri-tipleri.s1",
+      "tip": "secme",
+      "yer": "Tamsayı veri tipleri",
+      "soru": "Hocanın notlarına göre **tinyint** hangi aralıktaki sayıları tutar?",
+      "secenekler": [
+        "0 ile 255 arası",
+        "-32.768 ile 32.767 arası",
+        "0 ile 65.535 arası",
+        "-255 ile 255 arası"
+      ],
+      "dogru": 0,
+      "izah": "Tinyint 0 ile 255 arasındaki sayıları tutar ve 1 byte yer kaplar. -32.768 ile 32.767 smallint'in aralığıdır."
+    },
+    {
+      "id": "vt-veri-tipleri.s2",
+      "tip": "esles",
+      "yer": "Tamsayı veri tipleri",
+      "soru": "Tamsayı tiplerini kapladıkları yerle eşleştirin.",
+      "ciftler": [
+        [
+          "Tinyint",
+          "1 byte"
+        ],
+        [
+          "Smallint",
+          "2 byte"
+        ],
+        [
+          "Int",
+          "4 byte"
+        ],
+        [
+          "Bigint",
+          "8 byte"
+        ]
+      ],
+      "izah": "Boyutlar her adımda iki katına çıkar: 1, 2, 4, 8 byte."
+    },
+    {
+      "id": "vt-veri-tipleri.s3",
+      "tip": "secme",
+      "yer": "Tamsayı veri tipleri",
+      "soru": "Bir öğrencinin burs alıp almadığı bilgisini (alıyorsa 1, almıyorsa 0) tutmak için hocanın örnek verdiği tip hangisidir?",
+      "secenekler": [
+        "Bit",
+        "Tinyint",
+        "Char(n)",
+        "Money"
+      ],
+      "dogru": 0,
+      "izah": "Bit, 1 ya da 0 değerini saklar; Evet/Hayır şeklindeki mantıksal bilgiler için kullanılır. Hocanın örneği burs bilgisidir."
+    },
+    {
+      "id": "vt-veri-tipleri.s4",
+      "tip": "dy",
+      "yer": "Sayısal veri tipleri",
+      "ifade": "Tamsayı veri tiplerinde sayıların ondalık kısımları girilemez.",
+      "dogru": true,
+      "izah": "Sayısal tipler tamsayı ve ondalıklı olarak ikiye ayrılır; tamsayı tiplerinde ondalık kısım girilemez."
+    },
+    {
+      "id": "vt-veri-tipleri.s5",
+      "tip": "secme",
+      "yer": "Sayısal veri tipleri",
+      "soru": "Aşağıdaki tiplerden hangisi bir sayının ondalık kısmını **saklayamaz**?",
+      "secenekler": [
+        "Int",
+        "Numeric",
+        "Money",
+        "Decimal"
+      ],
+      "dogru": 0,
+      "izah": "Int bir tamsayı tipidir. Numeric, decimal ve money ondalık kısmı da saklar."
+    },
+    {
+      "id": "vt-veri-tipleri.s6",
+      "tip": "esles",
+      "yer": "Kesin ondalık sayı veri tipleri",
+      "soru": "Tipleri kapladıkları yerle eşleştirin.",
+      "ciftler": [
+        [
+          "Smallmoney",
+          "4 byte"
+        ],
+        [
+          "Money",
+          "8 byte"
+        ],
+        [
+          "Smallint",
+          "2 byte"
+        ],
+        [
+          "Tinyint",
+          "1 byte"
+        ]
+      ],
+      "izah": "Smallmoney 4, money 8 byte'tır. Smallint 2, tinyint 1 byte'tır."
+    },
+    {
+      "id": "vt-veri-tipleri.s7",
+      "tip": "hesap",
+      "yer": "Kesin ondalık sayı veri tipleri",
+      "soru": "Money ve smallmoney veri tipleri ondalık tarafında kaç hane saklayabilir?",
+      "cevap": 4,
+      "izah": "Hocaya göre ikisi de ondalık tarafında 4 hane saklar (ör. 214.748,3647)."
+    },
+    {
+      "id": "vt-veri-tipleri.s8",
+      "tip": "hesap",
+      "yer": "Kesin ondalık sayı veri tipleri",
+      "soru": "Toplam 15 basamaklı sayılar için tanımlanan bir numeric alan kaç byte yer kaplar?",
+      "cevap": 9,
+      "birim": "byte",
+      "izah": "Hocanın tablosunda 10–19 basamak 9 byte'tır (1–9: 5, 10–19: 9, 20–28: 13, 29–38: 17)."
+    },
+    {
+      "id": "vt-veri-tipleri.s9",
+      "tip": "hesap",
+      "yer": "Kesin ondalık sayı veri tipleri",
+      "soru": "Numeric veri tipi en çok kaç basamaklı sayı saklayabilir?",
+      "cevap": 38,
+      "izah": "Hocaya göre numeric, hem negatif hem pozitif 38 basamağa kadar sayı saklayabilir."
+    },
+    {
+      "id": "vt-veri-tipleri.s10",
+      "tip": "secme",
+      "yer": "Kesin ondalık sayı veri tipleri",
+      "soru": "Decimal ile numeric arasındaki ilişki için hangisi doğrudur?",
+      "secenekler": [
+        "Eşdeğerdir; aynı amaçla kullanılırlar, yalnızca isimleri farklıdır",
+        "Decimal yalnızca tamsayı, numeric ise ondalıklı sayı saklar",
+        "Decimal her zaman 4 byte, numeric ise her zaman 8 byte yer kaplar",
+        "Decimal en çok 9, numeric en çok 38 basamak saklayabilir"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre decimal veri tipi numeric ile eşdeğerdir; aynı amaçla kullanılırlar fakat isimleri farklıdır."
+    },
+    {
+      "id": "vt-veri-tipleri.s11",
+      "tip": "secme",
+      "yer": "Float ve real",
+      "soru": "Çok büyük ve çok küçük kesirli sayılar için kullanılan, boyutu 4 ile 8 byte arasında olan veri tipi hangisidir?",
+      "secenekler": [
+        "Float",
+        "Bigint",
+        "Smallmoney",
+        "Bit"
+      ],
+      "dogru": 0,
+      "izah": "Float, çok büyük ve çok küçük kesirli sayılar için kullanılır; boyutu 4 ile 8 byte arasındadır. Bigint tamsayıdır, ondalık tutmaz."
+    },
+    {
+      "id": "vt-veri-tipleri.s12",
+      "tip": "hesap",
+      "yer": "Metinsel veri tipleri",
+      "soru": "Hocaya göre bir Unicode karakter hafızada kaç byte yer kaplar?",
+      "cevap": 2,
+      "birim": "byte",
+      "izah": "ANSI karakter 1 byte, Unicode karakter 2 byte yer kaplar."
+    },
+    {
+      "id": "vt-veri-tipleri.s13",
+      "tip": "secme",
+      "yer": "Metinsel veri tipleri",
+      "soru": "Hocaya göre ç, ğ, ş, ö gibi harfler ANSI standartlarında yer almaz. Aşağıdaki tiplerden hangisinde her karakter 2 byte yer kaplar?",
+      "secenekler": [
+        "Nvarchar(n)",
+        "Varchar(n)",
+        "Char(n)"
+      ],
+      "dogru": 0,
+      "izah": "Nvarchar(n) Unicode karakter saklar; her karakter 2 byte'tır (bu yüzden boyutu 2'den başlar, en çok 4000 karakter tutar). Varchar(n) ve char(n)'de bir karakter 1 byte'tır (en çok 8000 karakter)."
+    },
+    {
+      "id": "vt-veri-tipleri.s14",
+      "tip": "secme",
+      "yer": "Metinsel veri tipleri",
+      "soru": "Nvarchar(n) en çok kaç karakter tutar?",
+      "secenekler": [
+        "4000 karakter",
+        "8000 karakter",
+        "255 karakter",
+        "2000 karakter"
+      ],
+      "dogru": 0,
+      "izah": "Nvarchar(n)'nin boyutu 2 ile 8000 byte arasındadır; her karakter 2 byte olduğu için en çok 4000 karakter tutar. 8000 karakter varchar(n) ve char(n)'nin sınırıdır."
+    },
+    {
+      "id": "vt-veri-tipleri.s15",
+      "tip": "hesap",
+      "yer": "Char ile varchar farkı",
+      "soru": "`char(10)` olarak tanımlanan bir alana \"mehmet\" yazılırsa kaç byte yer kaplar?",
+      "cevap": 10,
+      "birim": "byte",
+      "izah": "Char sabit uzunlukludur: \"ali\" de yazılsa \"mehmet\" de yazılsa 10 byte yer kaplar."
+    },
+    {
+      "id": "vt-veri-tipleri.s16",
+      "tip": "hesap",
+      "yer": "Char ile varchar farkı",
+      "soru": "`varchar(10)` olarak tanımlanan bir alana \"mehmet\" yazılırsa hocaya göre kaç byte yer kaplar?",
+      "cevap": 6,
+      "birim": "byte",
+      "izah": "Varchar'da kaplanan alan veriye göre değişir: \"mehmet\" 6 karakter, 6 byte (\"ali\" 3 byte)."
+    },
+    {
+      "id": "vt-veri-tipleri.s17",
+      "tip": "hesap",
+      "yer": "Nvarchar sorusu",
+      "soru": "`nvarchar(10)` olarak tanımlanan bir alana \"mehmet\" yazılırsa hocanın kuralına göre kaç byte yer kaplar?",
+      "cevap": 12,
+      "birim": "byte",
+      "izah": "Nvarchar değişken uzunlukludur ve Unicode'dur: 6 karakter × 2 byte = 12 byte. (\"ali\": 3 × 2 = 6 byte.)"
+    },
+    {
+      "id": "vt-veri-tipleri.s18",
+      "tip": "secme",
+      "yer": "Char ile varchar farkı",
+      "soru": "Char ile varchar arasındaki fark nedir?",
+      "secenekler": [
+        "Char sabit uzunlukludur; varchar'da kaplanan alan veriye göre değişir",
+        "Char Unicode karakter saklar; varchar ise yalnızca ANSI karakter saklar",
+        "Char en çok 4000, varchar ise en çok 8000 karakter tutabilir",
+        "Char yalnızca harf saklar; varchar ise harf ve rakam birlikte saklar"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın örneği: char(10) her zaman 10 byte; varchar(10)'a \"ali\" yazılırsa 3, \"mehmet\" yazılırsa 6 byte. İkisi de ANSI'dir ve en çok 8000 karakter tutar."
+    },
+    {
+      "id": "vt-veri-tipleri.s19",
+      "tip": "secme",
+      "yer": "NULL ve NOT NULL",
+      "soru": "Bir alanın NULL olarak tanımlanması ne demektir?",
+      "secenekler": [
+        "O alana veri girilmeden yeni bir satır oluşturulabilir",
+        "O alana yalnızca 0 değeri girilebilir",
+        "O alan tabloda yer kaplamaz ve sorgularda görünmez",
+        "O alanın değeri her yeni kayıtta otomatik olarak artar"
+      ],
+      "dogru": 0,
+      "izah": "NULL, alana veri girilmeden satır oluşturulabileceği anlamına gelir. Değerin otomatik artması IDENTITY özelliğidir."
+    },
+    {
+      "id": "vt-veri-tipleri.s20",
+      "tip": "secme",
+      "yer": "NULL ve NOT NULL",
+      "soru": "Hocanın örneklerine göre aşağıdaki alanlardan hangisi kesinlikle NOT NULL olmalıdır?",
+      "secenekler": [
+        "TC kimlik numarası",
+        "İkinci isim",
+        "Ev telefonu numarası",
+        "Faks numarası"
+      ],
+      "dogru": 0,
+      "izah": "TC kimlik numarası her insanda olmak zorundadır; boş bırakılamaz. Hocanın NULL örneği ikinci isimdir: herkesin ikinci ismi yoktur."
+    },
+    {
+      "id": "vt-veri-tipleri.s21",
+      "tip": "dy",
+      "yer": "IDENTITY (otomatik artan sayı)",
+      "ifade": "Identity alanlar güncellenebilir ama boş bırakılamaz.",
+      "dogru": false,
+      "izah": "Identity alanlar güncellenemez ve boş bırakılamaz."
+    },
+    {
+      "id": "vt-veri-tipleri.s22",
+      "tip": "secme",
+      "yer": "IDENTITY (otomatik artan sayı)",
+      "soru": "Identity özelliği ne işe yarar?",
+      "secenekler": [
+        "Kayıt eklendikçe alanın değerini ardışık sayılarla otomatik artırır",
+        "Alana değer verilmezse günün tarihini kendiliğinden yazar",
+        "Alana girilen değerin başka bir tablodan gelmesini denetler",
+        "Alana girilen değerin belli bir aralıkta olmasını denetler"
+      ],
+      "dogru": 0,
+      "izah": "Identity, verilerin ardışık sayılardan oluşmasını sağlar; ID kendiliğinden artar. Değer verilmeyince günün tarihini yazmak default, değerin başka tablodan gelmesini denetlemek foreign key, değerin aralığını denetlemek check kısıtlayıcısının işidir."
+    },
+    {
+      "id": "vt-veri-tipleri.s23",
+      "tip": "bosluk",
+      "yer": "IDENTITY (otomatik artan sayı)",
+      "metin": "Identity alanlar genelde ___ olarak kullanılır.",
+      "cevaplar": [
+        [
+          "primary key",
+          "birincil anahtar"
+        ]
+      ],
+      "izah": "Hocaya göre identity alanlar genelde primary key (birincil anahtar) olarak kullanılır."
+    },
+    {
+      "id": "vt-veri-tipleri.s24",
+      "tip": "bosluk",
+      "yer": "Kesin ondalık sayı veri tipleri",
+      "metin": "Kesin ondalık sayı veri tipleri, ondalık sayıların hem tamsayı bölümlerini hem ondalık bölümlerini ___ olarak saklar.",
+      "cevaplar": [
+        [
+          "tam",
+          "kesin"
+        ]
+      ],
+      "izah": "Hocanın tanımı: ondalık sayıların hem tamsayı hem ondalık bölümlerini tam olarak saklayan veri tipleri (smallmoney, money, numeric, decimal)."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-veri-tipleri.k1",
+      "yer": "SQL veri tipleri",
+      "on": "Tablo oluştururken neden veri tipi belirtilir?",
+      "arka": "Alanların saklayacağı verinin tipi tablo oluşturulurken belirtilmelidir; girilecek veri metin, tam sayı, ondalıklı sayı ya da tarih olabilir."
+    },
+    {
+      "id": "vt-veri-tipleri.k2",
+      "yer": "Tamsayı veri tipleri",
+      "on": "Tamsayı veri tiplerini aralıkları ve boyutlarıyla sayın.",
+      "arka": "- Bit: 1 ya da 0, 1 byte\n- Tinyint: 0–255, 1 byte\n- Smallint: -32.768 – 32.767, 2 byte\n- Int: yaklaşık ±2,1 milyar, 4 byte\n- Bigint: yaklaşık ±9,2 × 10¹⁸, 8 byte"
+    },
+    {
+      "id": "vt-veri-tipleri.k3",
+      "yer": "Kesin ondalık sayı veri tipleri",
+      "on": "Kesin ondalık sayı veri tipleri nelerdir?",
+      "arka": "Ondalık sayının hem tam hem ondalık kısmını tam olarak saklayan tipler:\n- Smallmoney (4 byte) ve money (8 byte): ondalıkta 4 hane.\n- Numeric: basamak sayısı belirtilir, en çok 38 basamak, 5–17 byte.\n- Decimal: numeric ile eşdeğer, yalnızca adı farklı."
+    },
+    {
+      "id": "vt-veri-tipleri.k4",
+      "yer": "Metinsel veri tipleri",
+      "on": "ANSI ile Unicode arasındaki fark nedir? Hangi tipler Unicode'dur?",
+      "arka": "ANSI karakter 1 byte, Unicode karakter 2 byte yer kaplar; Unicode farklı dillere özgü karakterleri içerir. Nchar(n) ve nvarchar(n) Unicode'dur; bu yüzden en çok 4000 karakter tutarlar (char(n) ve varchar(n) 8000). Nvarchar(MAX), text ve ntext için sınır en çok 2 gigabyte'tır."
+    },
+    {
+      "id": "vt-veri-tipleri.k5",
+      "yer": "Char ile varchar farkı",
+      "on": "char(10), varchar(10) ve nvarchar(10) alanlarına \"ali\" yazılırsa kaç byte yer kaplar?",
+      "arka": "- char(10): 10 byte (sabit uzunluk)\n- varchar(10): 3 byte (veriye göre)\n- nvarchar(10): 6 byte (veriye göre, karakter başına 2 byte)"
+    },
+    {
+      "id": "vt-veri-tipleri.k6",
+      "yer": "NULL ve NOT NULL",
+      "on": "NULL ile NOT NULL arasındaki fark nedir? Örnek verin.",
+      "arka": "NULL alana veri girilmeden satır oluşturulabilir: ikinci isim gibi herkeste olmayan bilgiler. NOT NULL alan boş bırakılamaz: TC kimlik numarası gibi herkeste olması gereken bilgiler."
+    },
+    {
+      "id": "vt-veri-tipleri.k7",
+      "yer": "IDENTITY (otomatik artan sayı)",
+      "on": "IDENTITY nedir? Özellikleri neler?",
+      "arka": "Alanın değerinin ardışık sayılarla otomatik artmasını sağlar; kayıt eklenince ID kendiliğinden artar. Identity alanlar güncellenemez, boş bırakılamaz ve genelde primary key olarak kullanılır."
+    }
+  ]
+}

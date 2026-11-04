@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="262" viewBox="0 0 400 262" role="img">
+<title>char(10), varchar(10) ve nvarchar(10) alanlarında “ali”</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="14.0" y="28.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">char(10)</text>
+<rect x="14" y="36" width="24" height="26" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="26.0" y="54.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">a</text>
+<rect x="39" y="36" width="24" height="26" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="51.0" y="54.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">l</text>
+<rect x="64" y="36" width="24" height="26" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="76.0" y="54.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">i</text>
+<rect x="89" y="36" width="24" height="26" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="114" y="36" width="24" height="26" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="139" y="36" width="24" height="26" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="164" y="36" width="24" height="26" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="189" y="36" width="24" height="26" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="214" y="36" width="24" height="26" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="239" y="36" width="24" height="26" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="386.0" y="54.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="end">10 byte</text>
+<rect x="89" y="36" width="174" height="26" fill="#90CDF4" opacity="0.55"/>
+<text x="176.0" y="80.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="middle">kalan 7 byte da ayrılır: toplam 10 byte</text>
+<text x="14.0" y="110.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">varchar(10)</text>
+<rect x="14" y="118" width="24" height="26" fill="#2F855A" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="26.0" y="136.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">a</text>
+<rect x="39" y="118" width="24" height="26" fill="#2F855A" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="51.0" y="136.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">l</text>
+<rect x="64" y="118" width="24" height="26" fill="#2F855A" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="76.0" y="136.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">i</text>
+<text x="386.0" y="136.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2F855A" font-weight="600" text-anchor="end">3 byte</text>
+<text x="14.0" y="164.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="start">“mehmet” yazılırsa 6 byte</text>
+<text x="14.0" y="198.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#1A202C" font-weight="600" text-anchor="start">nvarchar(10)</text>
+<rect x="14" y="206" width="24" height="26" fill="#C53030" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="26.0" y="224.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">a</text>
+<rect x="39" y="206" width="24" height="26" fill="#C53030" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="64" y="206" width="24" height="26" fill="#C53030" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="76.0" y="224.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">l</text>
+<rect x="89" y="206" width="24" height="26" fill="#C53030" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="114" y="206" width="24" height="26" fill="#C53030" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="126.0" y="224.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">i</text>
+<rect x="139" y="206" width="24" height="26" fill="#C53030" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="386.0" y="224.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#C53030" font-weight="600" text-anchor="end">6 byte</text>
+<text x="14.0" y="252.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="start">her karakter 2 byte (Unicode); “mehmet”: 12 byte</text>
+</svg>

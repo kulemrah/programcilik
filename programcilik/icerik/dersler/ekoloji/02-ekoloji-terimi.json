@@ -1,0 +1,258 @@
+{
+  "id": "eko-terim-tarihce",
+  "baslik": "Ekoloji Teriminin Kökeni ve Tarihsel Gelişimi",
+  "kaynak": "Ekoloji_Bilgisi_2026-2027_GÜZ-1._HAFTA.pdf, slayt 7–9, 14",
+  "kavramlar": [
+    {
+      "terim": "Oikos",
+      "izah": "Eski Yunanca'da «ev, eve ait»; burada ev ile kastedilen yaşanılan yer, çevredir.",
+      "yer": "Oikos ve logos"
+    },
+    {
+      "terim": "Logos",
+      "izah": "«Bilim, çalışma, araştırma» anlamına gelir.",
+      "yer": "Oikos ve logos"
+    },
+    {
+      "terim": "Ekoloji",
+      "izah": "Canlıların birbirleriyle ve çevreleri ile uyum içinde yaşamlarını sürdürmelerini inceleyen bilim dalı. Terimi ilk kez Ernst Haeckel kullanmıştır.",
+      "yer": "Ekolojinin tanımı"
+    },
+    {
+      "terim": "Ekonomi",
+      "izah": "Oikos ve nomicus (yönetim) kelimelerinden oluşur: \"yaşanılan yerin işlerinin yönetilmesi\". Ekoloji ile aynı dilsel kökene sahip, onu destekleyen bilim dalı.",
+      "yer": "Ekonomi ile bağı"
+    },
+    {
+      "terim": "Ekosistem",
+      "izah": "1935'ten itibaren canlı toplulukları ve cansız çevrelerini ifade etmek için kullanılan terim.",
+      "yer": "Türlerin işlevi ve ekosistem"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "eko-terim-tarihce.s1",
+      "tip": "secme",
+      "yer": "Oikos ve logos",
+      "soru": "Hocaya göre **oikos** sözcüğü ne anlama gelir?",
+      "secenekler": [
+        "«Ev, eve ait»",
+        "«Bilim, çalışma, araştırma»",
+        "«Yönetim, düzenleme»",
+        "«Canlı, yaşayan varlık»"
+      ],
+      "dogru": 0,
+      "izah": "Oikos «ev, eve ait» demektir; burada ev ile kastedilen yaşanılan yer, çevredir. «Bilim, çalışma, araştırma» logos'un anlamıdır."
+    },
+    {
+      "id": "eko-terim-tarihce.s2",
+      "tip": "secme",
+      "yer": "Oikos ve logos",
+      "soru": "Hocaya göre **logos** sözcüğü ne anlama gelir?",
+      "secenekler": [
+        "«Bilim, çalışma, araştırma»",
+        "«Ev, eve ait»",
+        "«Yönetim, düzenleme»",
+        "«Canlı, yaşayan varlık»"
+      ],
+      "dogru": 0,
+      "izah": "Logos «bilim, çalışma, araştırma» anlamına gelir. «Ev, eve ait» oikos'un anlamıdır."
+    },
+    {
+      "id": "eko-terim-tarihce.s3",
+      "tip": "dy",
+      "yer": "Oikos ve logos",
+      "ifade": "Hocaya göre oikos sözcüğünde ev ile kastedilen yaşanılan yer, yani çevredir.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi: \"Burada ev ile kastedilen yaşanılan yer, çevredir.\""
+    },
+    {
+      "id": "eko-terim-tarihce.s4",
+      "tip": "secme",
+      "yer": "Ekolojinin tanımı",
+      "soru": "Hocanın tanımına göre **ekoloji** nedir?",
+      "secenekler": [
+        "Canlıların birbirleriyle ve çevreleri ile uyum içinde yaşamlarını sürdürmelerini inceleyen bilim dalı",
+        "Yaşanılan yerin işlerinin yönetilmesini ve kaynakların paylaşılmasını inceleyen bilim dalı",
+        "Canlıların yeryüzündeki coğrafi dağılışını ve bunu belirleyen etkenleri inceleyen bilim dalı",
+        "Canlıların vücut yapısını, organlarını ve bunların görevlerini ayrıntılı olarak inceleyen bilim dalı"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın tanımı: ekoloji, canlıların birbirleriyle ve çevreleri ile **uyum içinde** yaşamlarını sürdürmelerini inceleyen bilim dalıdır. \"Yaşanılan yerin işlerinin yönetilmesi\" ekonominin anlamıdır."
+    },
+    {
+      "id": "eko-terim-tarihce.s5",
+      "tip": "secme",
+      "yer": "Terimin doğuşu: Ernst Haeckel",
+      "soru": "Ekoloji terimini ilk kez kim kullanmıştır?",
+      "secenekler": [
+        "Ernst Haeckel",
+        "Alexander von Humboldt",
+        "Charles Darwin",
+        "Charles Elton"
+      ],
+      "dogru": 0,
+      "izah": "Ekoloji terimini ilk kez **Ernst Haeckel** kullanmıştır. Humboldt Bitki Coğrafyası ile, Elton 20. yüzyıl ekoloji kitaplarıyla anılır."
+    },
+    {
+      "id": "eko-terim-tarihce.s6",
+      "tip": "secme",
+      "yer": "Ekonomi ile bağı",
+      "soru": "Hocaya göre **ekonomi** terimi hangi anlama gelir?",
+      "secenekler": [
+        "Yaşanılan yerin işlerinin yönetilmesi",
+        "Yaşanılan yer ile ilgili bilim",
+        "Canlıların birbirleriyle uyumu",
+        "Doğal kaynakların paraya çevrilmesi"
+      ],
+      "dogru": 0,
+      "izah": "Ekonomi terimi oikos ve yönetim anlamındaki ikinci parçadan oluşur; yani **\"yaşanılan yerin işlerinin yönetilmesi\"** anlamındadır."
+    },
+    {
+      "id": "eko-terim-tarihce.s7",
+      "tip": "dy",
+      "yer": "İki bilimin ilişkisi",
+      "ifade": "Hocaya göre ekoloji ve ekonomi hem aynı dilsel kökene sahiptir hem de birbirini destekleyen iki bilim dalıdır.",
+      "dogru": true,
+      "izah": "Hocanın \"iki bilimin ilişkisi\" maddesidir."
+    },
+    {
+      "id": "eko-terim-tarihce.s8",
+      "tip": "esles",
+      "yer": "İlk bilimsel çalışmalar",
+      "soru": "Hocanın saydığı ilk bilimsel çalışmaları yazarlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Von Humboldt",
+          "Bitki Coğrafyası"
+        ],
+        [
+          "Liebig",
+          "Bitki Gelişimini Sınırlayıcı Faktörler"
+        ],
+        [
+          "E. Forbes",
+          "Ege Denizi Hayvan Toplulukları"
+        ]
+      ],
+      "izah": "Hocaya göre bu üç çalışma ekolojinin ilk bilimsel adımlarıdır."
+    },
+    {
+      "id": "eko-terim-tarihce.s9",
+      "tip": "dizme",
+      "yer": "İlk bilimsel çalışmalar",
+      "soru": "Aşağıdaki gelişmeleri slayttaki yıllara göre eskiden yeniye sıralayın.",
+      "parcalar": [
+        "Von Humboldt'un \"Bitki Coğrafyası\"",
+        "Liebig'in \"Bitki Gelişimini Sınırlayıcı Faktörler\"",
+        "Hesse'nin ekoloji kitabı",
+        "C. Elton'un ekoloji kitabı",
+        "\"Ekosistem\" teriminin kullanılmaya başlanması",
+        "Allee'nin ekoloji kitabı"
+      ],
+      "izah": "Sıra: Humboldt (1807), Liebig (1840), Hesse (1924), C. Elton (1927), ekosistem terimi (1935), Allee (1949)."
+    },
+    {
+      "id": "eko-terim-tarihce.s10",
+      "tip": "secme",
+      "yer": "20. yüzyıl literatürü",
+      "soru": "Aşağıdakilerden hangisi hocanın **20. yüzyılda** ekoloji üzerine temel kitap yazanlar listesinde yer almaz?",
+      "secenekler": [
+        "Humboldt",
+        "Hesse",
+        "C. Elton",
+        "Ekman"
+      ],
+      "dogru": 0,
+      "izah": "Hesse, C. Elton, Allee ve Ekman 20. yüzyıl literatüründedir. Von Humboldt'un Bitki Coğrafyası (1807) ise ilk bilimsel çalışmalar arasındadır."
+    },
+    {
+      "id": "eko-terim-tarihce.s11",
+      "tip": "dy",
+      "yer": "20. yüzyıl literatürü",
+      "ifade": "Hocaya göre Liebig'in çalışması, ekoloji üzerine yazılmış 20. yüzyıl temel kitaplarındandır.",
+      "dogru": false,
+      "izah": "Liebig'in \"Bitki Gelişimini Sınırlayıcı Faktörler\" çalışması (1840) hocaya göre **ilk bilimsel adımlar** arasındadır. 20. yüzyıl literatürü Hesse, C. Elton, Allee ve Ekman'dır."
+    },
+    {
+      "id": "eko-terim-tarihce.s12",
+      "tip": "secme",
+      "yer": "Türlerin işlevi ve ekosistem",
+      "soru": "Hocaya göre 1935'ten itibaren canlı toplulukları ve cansız çevrelerini ifade etmek için hangi terim kullanılmaya başlanmıştır?",
+      "secenekler": [
+        "Ekosistem",
+        "Ekoloji",
+        "Derin ekoloji",
+        "Biyolojik çeşitlilik"
+      ],
+      "dogru": 0,
+      "izah": "1935'ten itibaren canlı toplulukları ve cansız çevrelerini ifade etmek için **\"ekosistem\"** terimi kullanılmaya başlanmıştır."
+    },
+    {
+      "id": "eko-terim-tarihce.s13",
+      "tip": "dy",
+      "yer": "Türlerin işlevi ve ekosistem",
+      "ifade": "Hocaya göre canlı türlerinin bir topluluk oluşturduğu ve her türün bir vazifesi olduğu 1900'lerin ortalarında anlaşılmıştır.",
+      "dogru": false,
+      "izah": "Hocaya göre bu, **1800'lerin sonlarında** anlaşılmıştır. 1935 ise \"ekosistem\" teriminin kullanılmaya başladığı yıldır."
+    },
+    {
+      "id": "eko-terim-tarihce.s14",
+      "tip": "klasik",
+      "yer": "Ekonomi ile bağı",
+      "soru": "Ekoloji ve ekonomi terimlerinin kökenini ve iki bilimin ilişkisini hocanın anlattığı gibi açıklayın.",
+      "cevap": "Ekoloji oikos (ev, yaşanılan yer) ve logos (bilim, araştırma) sözcüklerinden türetilmiştir. Ekonomi de oikos ve yönetim anlamına gelen ikinci bir kelimeden oluşur; yani yaşanılan yerin işlerinin yönetilmesi anlamındadır. İki bilim aynı dilsel kökene sahiptir ve birbirini destekleyen iki bilim dalıdır.",
+      "anahtarlar": [
+        "oikos",
+        "logos",
+        "yönetim",
+        "aynı dilsel kök",
+        "birbirini destekleyen"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "eko-terim-tarihce.k1",
+      "yer": "Oikos ve logos",
+      "on": "Ekoloji sözcüğü hangi sözcüklerden türemiştir? Hocanın ekoloji tanımı nedir?",
+      "arka": "Oikos (eski Yunanca «ev, eve ait»; burada ev ile kastedilen yaşanılan yer, çevre) ve logos («bilim, çalışma, araştırma»).\nEkoloji: canlıların birbirleriyle ve çevreleri ile uyum içinde yaşamlarını sürdürmelerini inceleyen bilim dalıdır.\nEk: Slaytın birinde \"Latince\" yazsa da iki sözcük de Yunancadır."
+    },
+    {
+      "id": "eko-terim-tarihce.k2",
+      "yer": "Terimin doğuşu: Ernst Haeckel",
+      "on": "Ekoloji terimini ilk kez kim kullanmıştır?",
+      "arka": "Ernst Haeckel. Slaytta yıl 1869 diye verilir.\nEk: Haeckel terimi ilk kez 1866'da \"Generelle Morphologie der Organismen\" kitabında kullanmıştır; 1869, ekolojiyi daha ayrıntılı tanımladığı Jena konuşmasının yılıdır."
+    },
+    {
+      "id": "eko-terim-tarihce.k3",
+      "yer": "Ekonomi ile bağı",
+      "on": "Ekoloji ile ekonominin bağı nedir?",
+      "arka": "Ekonomi de oikos ve nomicus (yönetim) kelimelerinden oluşur: \"yaşanılan yerin işlerinin yönetilmesi\". Ekoloji ve ekonomi hem aynı dilsel kökene sahiptir hem de birbirini destekleyen iki bilim dalıdır.\nEk: Yunanca kökte ikinci parça nomos'tur."
+    },
+    {
+      "id": "eko-terim-tarihce.k4",
+      "yer": "İlk bilimsel çalışmalar",
+      "on": "Hocaya göre ekolojinin ilk bilimsel adımları hangi çalışmalardır?",
+      "arka": "- Von Humboldt, \"Bitki Coğrafyası\" (1807)\n- Liebig, \"Bitki Gelişimini Sınırlayıcı Faktörler\" (1840)\n- E. Forbes, \"Ege Denizi Hayvan Toplulukları\" (slaytta 1849)\nEk: Forbes'un Ege raporu 1843'te sunulmuş, 1844'te basılmıştır."
+    },
+    {
+      "id": "eko-terim-tarihce.k5",
+      "yer": "20. yüzyıl literatürü",
+      "on": "20. yüzyılda ekoloji üzerine temel kitap yazanlar kimlerdir?",
+      "arka": "Hesse (1924), C. Elton (1927), Allee (1949) ve Ekman (1953).\nEk: Slaytta \"Alle\" diye yazılmıştır; doğrusu Allee. Ekman'ın kitabının 1953 tarihi İngilizce baskısıdır, Almancası 1935'te çıkmıştır."
+    },
+    {
+      "id": "eko-terim-tarihce.k6",
+      "yer": "Türlerin işlevi ve ekosistem",
+      "on": "Türlerin işlevi ve ekosistem kavramı ne zaman ortaya çıktı?",
+      "arka": "1800'lerin sonlarında canlı türlerinin bir topluluk oluşturduğu ve her türün bir vazifesi olduğu anlaşıldı. 1935'ten itibaren canlı toplulukları ve cansız çevrelerini ifade etmek için \"ekosistem\" terimi kullanılmaya başlandı.\nEk: Terimi Arthur Tansley ortaya atmıştır; adı slayttaki görselde geçer."
+    },
+    {
+      "id": "eko-terim-tarihce.k7",
+      "yer": "Mikroskoptan ekolojiye (slayt görseli)",
+      "on": "\"Mikroskoptan Ekolojiye\" görselinde Leeuwenhoek ve Haeckel neyle anılır?",
+      "arka": "Görselde Leeuwenhoek mikro besin zinciri ve popülasyon büyümesinin sınırlanmasıyla; Haeckel ise ekoloji teriminin doğuşu ve \"canlıların birbirleriyle ve yaşadıkları ortamla olan organik-inorganik tüm ilişkileri dahil, doğal çevrenin bütüncül olarak çalışılması\" tanımıyla anılır.\nEk: Bu bilgiler yalnızca slayttaki görseldedir. Leeuwenhoek mikroskobu icat etmemiş, güçlü tek mercekli mikroskoplar yapmıştır; besin zincirini inceleyen en erken araştırmacılardan biridir."
+    }
+  ]
+}

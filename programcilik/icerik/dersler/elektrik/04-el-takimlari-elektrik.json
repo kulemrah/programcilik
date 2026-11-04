@@ -1,0 +1,398 @@
+{
+  "id": "el-takim-elektrik",
+  "baslik": "El Takımları: Elektrik Alanında",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 34–41",
+  "kavramlar": [
+    {
+      "terim": "Yan keski",
+      "izah": "Tel ve benzeri malzemeleri kesmeye yarayan alet; penseye benzer, kullanım yerlerine göre çeşitli ebatlarda imal edilir.",
+      "yer": "Yan keski"
+    },
+    {
+      "terim": "Pense",
+      "izah": "Tutma, sıkma, bükme ve kesme işleri yapmaya yarayan el aleti; kullanım alanı çok geniştir, sap kısımları izole edilmiştir.",
+      "yer": "Pense"
+    },
+    {
+      "terim": "Kargaburun",
+      "izah": "Ağız kısmı penseye göre daha ince ve uzun olduğu için pensenin sığamayacağı yerlerde tutma ve küçük ölçüde bükme, kıvırma, şekillendirme işlerinde kullanılan alet; düz ve eğri ağızlı çeşitleri vardır.",
+      "yer": "Kargaburun"
+    },
+    {
+      "terim": "Maket bıçağı",
+      "izah": "Çakıya göre daha keskin olan bıçak; uç kısmı kesmediği zaman kırılarak hep keskin tutulur, bıçakları değiştirilebildiği için bileme problemi yoktur.",
+      "yer": "Maket bıçağı"
+    },
+    {
+      "terim": "Kontrol kalemi",
+      "izah": "Devrede enerji veya kaçak olup olmadığı ve cihaz kontrolü gibi işlemler için kullanılan alet; uçları hassas olduğundan tornavida yerine kullanılmaz. Lambalı ve dijital olarak iki grupta incelenir.",
+      "yer": "Kontrol kalemi"
+    },
+    {
+      "terim": "Çekiç",
+      "izah": "Ağırlıkları 100 ila 1500 gram arasında değişen, kullanım amacına göre lastik, plastik, pirinç, kurşun, demir gibi malzemelerden ve değişik şekillerde yapılan alet.",
+      "yer": "Çekiç"
+    },
+    {
+      "terim": "Havya",
+      "izah": "Elektrik devrelerinde iletkenleri birbirine, kablo pabuçlarına ve terminallere lehimlemekte; elektronikte elemanların baskı devre üzerine montajı ve sökümünde kullanılan alet.",
+      "yer": "Havya"
+    },
+    {
+      "terim": "Tornavida",
+      "izah": "Vidaların sökülmesinde ve sıkıştırılmasında kullanılan alet; bozuk uçlu tornavida vida başlarını bozar.",
+      "yer": "Tornavidalar"
+    },
+    {
+      "terim": "Düz uçlu tornavida",
+      "izah": "Düz başlı vidaların sıkılmasında ve sökülmesinde kullanılan tornavida; dar ve geniş uçlu çeşitleri vardır.",
+      "yer": "Düz ve yıldız uçlu tornavidalar"
+    },
+    {
+      "terim": "Yıldız uçlu tornavida",
+      "izah": "Yıldız başlı diye adlandırılan vidalar için kullanılan tornavida; küçük ve büyük uçluları vardır.",
+      "yer": "Düz ve yıldız uçlu tornavidalar"
+    },
+    {
+      "terim": "Torx tornavida",
+      "izah": "Uç yapısı yıldız ve düz başlı tornavidalardan farklı olan, özel vidalar için kullanılan tornavida.",
+      "yer": "Torx tornavidalar"
+    },
+    {
+      "terim": "Saatçi tornavida",
+      "izah": "Bilgisayar, oyuncak ve saat gibi eşyaların tamir ve bakımında kullanılan, çeşitli uçlardan oluşan tornavida takımı.",
+      "yer": "Saatçi tornavidalar"
+    },
+    {
+      "terim": "Çok uçlu tornavida",
+      "izah": "Çok çeşitli amaçlar için imal edilmiş tornavida; uçları değişebilenleri de vardır.",
+      "yer": "Çok uçlu ve şarjlı tornavidalar"
+    },
+    {
+      "terim": "Şarjlı tornavida",
+      "izah": "Otomatik sıkma ve açma işlemi yapan, uçları değiştirilebilen, şarjlı pillerle çalışan özel tornavida çeşidi.",
+      "yer": "Çok uçlu ve şarjlı tornavidalar"
+    },
+    {
+      "terim": "Alyen anahtarı",
+      "izah": "Cıvatanın bulunduğu yer başına anahtar sığmayacak kadar dar olduğunda, cıvata başına açılan altıgen veya yıldız oyukla çalışan anahtar.",
+      "yer": "Alyen anahtarları"
+    },
+    {
+      "terim": "El breyzi",
+      "izah": "Delik delme ve havşa açma işlemleri için kullanılan el aleti; halk arasında matkap da denir.",
+      "yer": "El breyzi"
+    },
+    {
+      "terim": "Matkap",
+      "izah": "Hocaya göre el breyzine bağlanan kesici ve delici uç.",
+      "yer": "El breyzi"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-takim-elektrik.s1",
+      "tip": "esles",
+      "yer": "Kesme ve tutma aletleri",
+      "soru": "Aletleri hocanın verdiği özellikleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Yan keski",
+          "Penseye benzer; tel ve benzeri malzemeleri keser"
+        ],
+        [
+          "Pense",
+          "Tutma, sıkma, bükme ve kesme işleri yapar"
+        ],
+        [
+          "Kargaburun",
+          "Pensenin sığamayacağı yerlerde parçaları tutar"
+        ],
+        [
+          "Maket bıçağı",
+          "Uç kısmı kırılarak hep keskin tutulur"
+        ]
+      ],
+      "izah": "Yan keski kesmeye yarar ve penseye benzer. Pense tutma, sıkma, bükme ve kesme işlerinin hepsini yapar. Kargaburunun ağzı ince ve uzun olduğu için pensenin sığamayacağı yerlerde kullanılır. Maket bıçağının ucu kesmediğinde kırılır."
+    },
+    {
+      "id": "el-takim-elektrik.s2",
+      "tip": "secme",
+      "yer": "Kargaburun",
+      "soru": "Hocaya göre kargaburunun **pensenin sığamayacağı yerlerde** kullanılabilmesinin nedeni nedir?",
+      "secenekler": [
+        "Ağız kısmının penseye göre daha ince ve uzun olması",
+        "Ağızlarının birbirine paralel hareket edip ayarlanması",
+        "Parça üzerinde kilitlenerek devamlı sıkma yapması",
+        "Sap kısımlarının izole edilmiş olması"
+      ],
+      "dogru": 0,
+      "izah": "Kargaburunun ağız kısmı penseye göre daha ince ve uzundur; bu yüzden pensenin sığamayacağı yerlerdeki parçaları tutar. Ağzı paralel hareket edip ayarlanan kurbağacık, kilitlenerek sıkan ayarlı pensedir; sapın izole edilmesi pense için söylenir ve kargaburunun dar yere girmesiyle ilgisi yoktur."
+    },
+    {
+      "id": "el-takim-elektrik.s3",
+      "tip": "dy",
+      "yer": "Maket bıçağı",
+      "ifade": "Hocaya göre maket bıçağının bıçakları değiştirilebildiği için bileme gibi bir problemi yoktur.",
+      "dogru": true,
+      "izah": "Slayttaki cümle: bıçaklarını değiştirilebilme özelliğinden dolayı bileme gibi bir problemi yoktur."
+    },
+    {
+      "id": "el-takim-elektrik.s4",
+      "tip": "dy",
+      "yer": "Maket bıçağı",
+      "ifade": "Maket bıçağı çakıya göre daha az keskindir.",
+      "dogru": false,
+      "izah": "Hocaya göre maket bıçağı çakıya göre **daha keskindir**; ucu kesmediği zaman kırılarak her zaman keskin hâlde tutulur."
+    },
+    {
+      "id": "el-takim-elektrik.s5",
+      "tip": "secme",
+      "yer": "Kontrol kalemi",
+      "soru": "Hocaya göre kontrol kaleminin **tornavida yerine** kullanılması neden doğru değildir?",
+      "secenekler": [
+        "Uçları hassas olduğu için",
+        "Sap kısmı izole olmadığı için",
+        "Vida kanalına oturmadığı için",
+        "Devrede kaçak yaratacağı için"
+      ],
+      "dogru": 0,
+      "izah": "Slaytta vurgulanan cümle: kontrol kalemlerinin uçları hassas olduğundan tornavida yerine kullanılması doğru değildir."
+    },
+    {
+      "id": "el-takim-elektrik.s6",
+      "tip": "bosluk",
+      "yer": "Kontrol kalemi",
+      "metin": "Kontrol kalemlerini lambalı kontrol kalemleri ve ___ kontrol kalemleri olarak iki grupta incelemek mümkündür.",
+      "cevaplar": [
+        [
+          "dijital"
+        ]
+      ],
+      "izah": "Hoca kontrol kalemlerini lambalı ve dijital diye iki gruba ayırır."
+    },
+    {
+      "id": "el-takim-elektrik.s7",
+      "tip": "bosluk",
+      "yer": "Çekiç",
+      "metin": "Çekiçlerin ağırlıkları 100 ila ___ gram arasında değişir.",
+      "cevaplar": [
+        [
+          "1500"
+        ]
+      ],
+      "izah": "Hocaya göre çekiçlerin ağırlıkları 100 ila 1500 gram arasında değişir."
+    },
+    {
+      "id": "el-takim-elektrik.s8",
+      "tip": "secme",
+      "yer": "Havya",
+      "soru": "Hocaya göre **ısısı ayarlanabilen elektronik havyalar** nerede kullanılır?",
+      "secenekler": [
+        "Bazı eleman ve entegrelerin montajında ve demontajında",
+        "Devrede enerji veya kaçak olup olmadığının denetlenmesinde ve cihaz kontrolünde",
+        "Cıvata başına anahtar sığmayacak kadar dar yerlerdeki cıvataların sökülmesinde",
+        "Bilgisayar, oyuncak ve saat gibi eşyaların içindeki küçük vidaların sökülmesinde"
+      ],
+      "dogru": 0,
+      "izah": "Isısı ayarlanabilen elektronik havyalar, yüksek ısının zarar verebileceği bazı eleman ve entegrelerin montaj ve demontajında kullanılır. Enerji ve kaçak denetimi kontrol kaleminin, dar yerdeki cıvatalar alyen anahtarının, küçük eşyaların vidaları saatçi tornavidasının işidir."
+    },
+    {
+      "id": "el-takim-elektrik.s9",
+      "tip": "esles",
+      "yer": "Tornavidalar",
+      "soru": "Tornavidaları hocanın verdiği kullanım yerleri ya da özellikleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Düz uçlu tornavida",
+          "Düz başlı vidalar"
+        ],
+        [
+          "Yıldız uçlu tornavida",
+          "Yıldız başlı vidalar"
+        ],
+        [
+          "Torx tornavida",
+          "Uç yapısı düz ve yıldızdan farklı"
+        ],
+        [
+          "Saatçi tornavida",
+          "Saat, oyuncak, bilgisayar tamiri"
+        ],
+        [
+          "Şarjlı tornavida",
+          "Otomatik sıkma ve açma; şarjlı pil"
+        ]
+      ],
+      "izah": "Düz uçlu tornavida düz başlı, yıldız uçlu tornavida yıldız başlı vidalar içindir. Torx tornavidanın uç yapısı bu ikisinden farklıdır ve özel vidalar için kullanılır. Saatçi tornavidalar bilgisayar, oyuncak ve saat gibi eşyaların tamir ve bakımında; şarjlı tornavidalar otomatik sıkma ve açmada kullanılır ve şarjlı pillerle çalışır."
+    },
+    {
+      "id": "el-takim-elektrik.s10",
+      "tip": "secme",
+      "yer": "Torx tornavidalar",
+      "soru": "Hocaya göre **torx tornavidayı** düz ve yıldız uçlu tornavidalardan ayıran özellik nedir?",
+      "secenekler": [
+        "Uç yapısının farklı olması ve özel vidalar için kullanılması",
+        "Uçlarının hassas olması ve tornavida yerine kullanılmaması",
+        "Otomatik sıkma ve açma yapması ve şarjlı pillerle çalışması",
+        "Çok çeşitli amaçlar için imal edilmesi ve uçlarının değişmesi"
+      ],
+      "dogru": 0,
+      "izah": "Torx tornavidaların uç yapısı yıldız ve düz başlı tornavidalardan farklıdır; özel vidalar için kullanılırlar ve özellikleri bu farklı uç yapısından kaynaklanır. Ucu hassas olan kontrol kalemi, otomatik çalışan şarjlı tornavida, çok amaçlı olan çok uçlu tornavidadır."
+    },
+    {
+      "id": "el-takim-elektrik.s11",
+      "tip": "secme",
+      "yer": "Tornavidalar",
+      "soru": "Aşağıdakilerden hangisi hocanın slayttaki **\"Tornavida çeşitleri\"** listesinde yer almaz?",
+      "secenekler": [
+        "Lokmalı tornavida",
+        "Saatçi tornavidası takımı",
+        "Çok uçlu tornavida",
+        "Düz uçlu tornavida"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın listesi: düz uçlu, yıldız uçlu, saatçi tornavidası takımı, çok uçlu ve şarjlı tornavidalar. Lokmalı tornavida mekanik alanındaki el takımları arasında anlatılır."
+    },
+    {
+      "id": "el-takim-elektrik.s12",
+      "tip": "klasik",
+      "yer": "Tornavidalar",
+      "soru": "Hocanın \"Tornavida çeşitleri\" listesinde saydığı tornavidaları yazın.",
+      "cevap": "1. Düz uçlu tornavida (düz başlı vidalar için)\n2. Yıldız uçlu tornavida (yıldız başlı vidalar için)\n3. Saatçi tornavidası takımı\n4. Çok uçlu tornavida\n5. Şarjlı tornavidalar\nListede olmayan torx tornavidalar sonraki slaytta ayrıca anlatılır.",
+      "anahtarlar": [
+        "düz uçlu",
+        "yıldız uçlu",
+        "saatçi",
+        "çok uçlu",
+        "şarjlı"
+      ]
+    },
+    {
+      "id": "el-takim-elektrik.s13",
+      "tip": "dy",
+      "yer": "Çok uçlu ve şarjlı tornavidalar",
+      "ifade": "Şarjlı tornavidaların uçları değiştirilemez; bu tornavidalar yalnızca yıldız uçla kullanılır.",
+      "dogru": false,
+      "izah": "Şarjlı tornavidaların uçları **değiştirilebilir** yapıdadır; yıldız, düz, torx ve diğer ağız yapısında uçlar takılıp kullanılır."
+    },
+    {
+      "id": "el-takim-elektrik.s14",
+      "tip": "secme",
+      "yer": "Alyen anahtarları",
+      "soru": "Hocaya göre **alyen anahtarlarıyla** çalışma hangi durumda yapılır?",
+      "secenekler": [
+        "Cıvatanın bulunduğu yer, başına anahtar sığmayacak kadar dar olduğunda",
+        "Anahtar ağzı bozulmuş rekor ve benzeri parçaların sökülmesi gerektiğinde",
+        "Büyük çaplı özel cıvata ve somunların sökülüp takılması gerektiğinde",
+        "Cıvata ve somunların istenilen değerde sıkılması gerektiği durumlarda"
+      ],
+      "dogru": 0,
+      "izah": "Bazı cıvataların bulunduğu yer, başına anahtar sığmayacak kadar dar olabilir; bu durumda cıvata başına altıgen veya yıldız oyuklar açılır ve alyen anahtarlarla çalışılır. Ağzı bozulmuş rekor papağan pensenin, büyük çaplı özel cıvata kanca anahtarın, istenilen değerde sıkma torkmetrenin işidir."
+    },
+    {
+      "id": "el-takim-elektrik.s15",
+      "tip": "secme",
+      "yer": "El breyzi",
+      "soru": "Hocaya göre **matkap** nedir?",
+      "secenekler": [
+        "El breyzine bağlanan kesici ve delici uç",
+        "Delik delme ve havşa açma işlerinde kullanılan el aleti",
+        "Otomatik sıkma ve açma yapan, şarjlı pille çalışan alet",
+        "Lokma takımının uçlarının tornavida şeklindeki el aleti"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre delik delme ve havşa açma işleri için kullanılan el aletine el breyzi denir; halk arasında bu alete matkap dense de matkap, el breyzine bağlanan kesici ve delici uçtur. Şarjlı pille çalışan şarjlı tornavida, lokma uçlu olan lokmalı tornavidadır."
+    },
+    {
+      "id": "el-takim-elektrik.s16",
+      "tip": "bosluk",
+      "yer": "El breyzi",
+      "metin": "Delik delme ve ___ açma işlemleri için kullanılan el aletlerine el breyzi denir.",
+      "cevaplar": [
+        [
+          "havşa"
+        ]
+      ],
+      "izah": "El breyzi delik delme ve havşa açma işlemleri için kullanılır."
+    },
+    {
+      "id": "el-takim-elektrik.s17",
+      "tip": "dy",
+      "yer": "Kargaburun",
+      "ifade": "Hocaya göre kargaburunun düz ve eğri ağızlı olmak üzere çeşitleri vardır.",
+      "dogru": true,
+      "izah": "Slayttaki cümle: düz ve eğri ağızlı olmak üzere çeşitleri vardır."
+    },
+    {
+      "id": "el-takim-elektrik.s18",
+      "tip": "secme",
+      "yer": "Pense",
+      "soru": "Hocaya göre **pense** hangi işleri yapmaya yarar?",
+      "secenekler": [
+        "Tutma, sıkma, bükme ve kesme işleri",
+        "Yalnızca tel ve benzeri malzemeleri kesme",
+        "Delik delme ve havşa açma işleri",
+        "Lehimleme, montaj ve söküm işleri"
+      ],
+      "dogru": 0,
+      "izah": "Pense; tutma, sıkma, bükme ve kesme işleri yapmaya yarayan el aletidir. Tel ve benzeri malzemeleri kesmeye yarayan yan keski, delik delen el breyzi, lehimleme yapan havyadır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-takim-elektrik.k1",
+      "yer": "Kesme ve tutma aletleri",
+      "on": "Yan keski, pense ve kargaburun arasındaki farkları anlatın.",
+      "arka": "- Yan keski: tel ve benzeri malzemeleri **kesmeye** yarar; penseye benzer; çeşitli ebatlarda yapılır.\n- Pense: **tutma, sıkma, bükme ve kesme** işleri yapar; kullanım alanı çok geniştir; sap kısımları izole edilmiştir.\n- Kargaburun: ağzı penseye göre **ince ve uzundur**; pensenin sığamayacağı yerlerde tutma ve küçük ölçüde bükme, kıvırma, şekillendirme yapar; düz ve eğri ağızlı çeşitleri vardır."
+    },
+    {
+      "id": "el-takim-elektrik.k2",
+      "yer": "Maket bıçağı",
+      "on": "Maket bıçağının avantajları nelerdir?",
+      "arka": "Çakıya göre daha keskindir. Uç kısmı kesmediği zaman kırılarak her zaman keskin hâlde bulundurulur. Bıçakları değiştirilebildiği için bileme gibi bir problemi yoktur."
+    },
+    {
+      "id": "el-takim-elektrik.k3",
+      "yer": "Kontrol kalemi",
+      "on": "Kontrol kalemi ne için kullanılır, nelere dikkat edilir, çeşitleri nelerdir?",
+      "arka": "Devrede enerji veya kaçak olup olmadığı ve cihaz kontrolü gibi işlemler için kullanılır. Uçları hassas olduğundan **tornavida yerine kullanılmaz**. İki grupta incelenir: lambalı ve dijital kontrol kalemleri."
+    },
+    {
+      "id": "el-takim-elektrik.k4",
+      "yer": "Çekiç",
+      "on": "Çekiçlerin ağırlıkları ve yapıldıkları malzemeler hakkında hoca ne söyler?",
+      "arka": "Ağırlıkları 100 ila 1500 gram arasında değişir. Kullanım amacına göre çeşitli malzemelerden (lastik, plastik, pirinç, kurşun, demir vb.) ve değişik şekillerde yapılır."
+    },
+    {
+      "id": "el-takim-elektrik.k5",
+      "yer": "Havya",
+      "on": "Havya nerelerde kullanılır?",
+      "arka": "- Elektrik devrelerinde iletkenleri birbirine, kablo pabuçlarına ve terminallere lehimlemekte.\n- Elektronikte elemanların baskı devre üzerine montajı ve sökümünde.\n- Isısı ayarlanabilen elektronik havyalar, yüksek ısının zarar verebileceği eleman ve entegrelerin montaj ve demontajında."
+    },
+    {
+      "id": "el-takim-elektrik.k6",
+      "yer": "Tornavidalar",
+      "on": "Tornavida çeşitlerini ve kullanım yerlerini anlatın.",
+      "arka": "- Düz uçlu: düz başlı vidalar; dar ve geniş uçlu çeşitleri var; uç kanala tam oturtulur, kaydırılmaz.\n- Yıldız uçlu: yıldız başlı vidalar; küçük ve büyük uçluları var.\n- Torx: uç yapısı farklı; özel vidalar için.\n- Saatçi: bilgisayar, oyuncak, saat gibi eşyaların tamir ve bakımı.\n- Çok uçlu: çok çeşitli amaçlar; uçları değişebilenleri var.\n- Şarjlı: otomatik sıkma ve açma; uçları değiştirilebilir; şarjlı pillerle çalışır.\nBozuk uçlu tornavida kullanılmaz: vida başlarını bozar."
+    },
+    {
+      "id": "el-takim-elektrik.k7",
+      "yer": "Torx tornavidalar",
+      "on": "Torx tornavidanın düz ve yıldız uçlu tornavidadan farkı nedir?",
+      "arka": "Düz uçlu tornavida düz başlı, yıldız uçlu tornavida yıldız başlı vidalar içindir. Torx tornavidanın **uç yapısı** bu ikisinden **farklıdır**; özel vidalar için kullanılır ve özellikleri bu uç yapısından kaynaklanır. Hocaya göre 4-6-8'gen köşeli vidaları açmak için kullanılır.\nEk: torx uç başka kaynaklarda altı köşeli yıldız biçiminde anlatılır."
+    },
+    {
+      "id": "el-takim-elektrik.k8",
+      "yer": "Alyen anahtarları",
+      "on": "Alyen anahtarı hangi durumda kullanılır?",
+      "arka": "Bazı cıvataların bulunduğu yer, cıvatanın başına anahtar sığmayacak kadar dar olabilir. Bu durumda cıvata başına **altıgen veya yıldız oyuklar** açılır ve altıgen veya yıldız alyen anahtarlarla çalışılır."
+    },
+    {
+      "id": "el-takim-elektrik.k9",
+      "yer": "El breyzi",
+      "on": "El breyzi ile matkap arasındaki fark nedir?",
+      "arka": "El breyzi, delik delme ve havşa açma işlemleri için kullanılan el aletidir. Halk arasında bu alete matkap denir; ama hocaya göre **matkap**, el breyzine bağlanan **kesici ve delici uçtur**."
+    }
+  ]
+}

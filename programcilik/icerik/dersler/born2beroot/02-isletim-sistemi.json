@@ -1,0 +1,126 @@
+{
+  "id": "b2r-isletim-sistemi",
+  "baslik": "İşletim Sistemi Seçimi: Debian vs Rocky Linux",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "Debian",
+      "izah": "Bağımsız, topluluk odaklı Linux dağıtımı; Ubuntu dahil pek çok dağıtımın atası. .deb paketlerini apt ile yönetir, varsayılan MAC aracı AppArmor'dur. Bu projede seçilen sistem.",
+      "yer": "Debian ailesi ile Rocky/RHEL ailesi arasındaki köken farkı"
+    },
+    {
+      "terim": "Rocky",
+      "izah": "CentOS'un yerini almak için kurulan, RHEL ile ikili uyumlu kurumsal dağıtım. .rpm paketlerini dnf ile yönetir; SELinux ve firewalld kullanır.",
+      "yer": "Debian ailesi ile Rocky/RHEL ailesi arasındaki köken farkı"
+    },
+    {
+      "terim": "RHEL",
+      "izah": "Red Hat Enterprise Linux: Rocky'nin ikili uyumlu olduğu ticari kurumsal dağıtım.",
+      "yer": "Debian ailesi ile Rocky/RHEL ailesi arasındaki köken farkı"
+    },
+    {
+      "terim": "Ubuntu",
+      "izah": "Debian türevi dağıtım. apt, dpkg, systemd ve AppArmor kullanımı Debian'la neredeyse aynı olduğu için Ubuntu deneyimi bu projeye doğrudan taşınır.",
+      "yer": "Hangi durumda hangisi tercih edilir"
+    },
+    {
+      "terim": "dağıtım",
+      "izah": "Linux çekirdeğini paket yöneticisi, araçlar ve varsayılan ayarlarla bir araya getiren derleme; Debian, Ubuntu ve Rocky birer dağıtımdır.",
+      "yer": "Debian ailesi ile Rocky/RHEL ailesi arasındaki köken farkı"
+    },
+    {
+      "terim": "stable",
+      "izah": "Debian'ın kararlı dalı. Subject yalnızca bunu kabul ediyor; testing ve unstable dalları yasak.",
+      "yer": "Debian ailesi ile Rocky/RHEL ailesi arasındaki köken farkı"
+    },
+    {
+      "terim": "testing",
+      "izah": "Debian'ın henüz kararlı sayılmayan dalı; bu projede kullanılması yasak.",
+      "yer": "Debian ailesi ile Rocky/RHEL ailesi arasındaki köken farkı"
+    },
+    {
+      "terim": "paket",
+      "izah": "Kurulabilir yazılım birimi. Debian ailesinde .deb, Rocky'de .rpm uzantılıdır; bağımlılıklarıyla birlikte paket yöneticisi kurar.",
+      "yer": "Paket yönetimi: apt / aptitude / dpkg ile dnf / rpm karşılaştırması"
+    },
+    {
+      "terim": "depo",
+      "izah": "Paketlerin indirildiği sunucu adresleri (repository). netinstall kurulumu paketleri buradan çeker.",
+      "yer": "Paket yönetimi: apt / aptitude / dpkg ile dnf / rpm karşılaştırması"
+    },
+    {
+      "terim": "apt",
+      "izah": "Debian ailesinin üst seviye paket yöneticisi; bağımlılıkları çözer ve depodan indirir. Alt katmanda dpkg'yi kullanır.",
+      "yer": "Paket yönetimi: apt / aptitude / dpkg ile dnf / rpm karşılaştırması"
+    },
+    {
+      "terim": "aptitude",
+      "izah": "apt'a alternatif ön yüz: farklı bağımlılık çözme stratejisi ve etkileşimli arayüz sunar, o da dpkg'yi kullanır. Savunmada apt ile farkı sorulabilir.",
+      "yer": "Paket yönetimi: apt / aptitude / dpkg ile dnf / rpm karşılaştırması"
+    },
+    {
+      "terim": "dpkg",
+      "izah": "Debian'ın alt seviye paket aracı; tek bir .deb dosyasını kurar ama bağımlılıkları çözmez.",
+      "yer": "Paket yönetimi: apt / aptitude / dpkg ile dnf / rpm karşılaştırması"
+    },
+    {
+      "terim": "dnf",
+      "izah": "Rocky/RHEL ailesinin paket yöneticisi; yum'un yerini almıştır, .rpm paketlerini yönetir.",
+      "yer": "Paket yönetimi: apt / aptitude / dpkg ile dnf / rpm karşılaştırması"
+    },
+    {
+      "terim": "rpm",
+      "izah": "Red Hat ailesinin paket biçimi ve alt seviye aracı; Debian'daki .deb ile dpkg'nin karşılığı.",
+      "yer": "Paket yönetimi: apt / aptitude / dpkg ile dnf / rpm karşılaştırması"
+    },
+    {
+      "terim": "deb",
+      "izah": "Debian ailesinin paket dosyası biçimi.",
+      "yer": "Paket yönetimi: apt / aptitude / dpkg ile dnf / rpm karşılaştırması"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-isletim-sistemi.s1",
+      "tip": "secme",
+      "yer": "Paket yönetimi: apt / aptitude / dpkg ile dnf / rpm karşılaştırması",
+      "soru": "apt ile aptitude arasındaki fark nedir?",
+      "secenekler": [
+        "aptitude .rpm, apt ise .deb paketleriyle çalışır; ikisi farklı ailelere aittir",
+        "İkisi de dpkg'yi kullanır; aptitude farklı bağımlılık çözümü ve interaktif arayüz sunar",
+        "apt yalnızca kurulum, aptitude yalnızca kaldırma işlemleri için kullanılır",
+        "Aralarında fark yoktur; aptitude, apt'ın eski sürümlerdeki adıdır"
+      ],
+      "dogru": 1,
+      "izah": "Savunmada açıkça sorulabileceği subject'te yazıyor: ikisi de dpkg üzerine kurulu ön yüzlerdir, fark bağımlılık çözme stratejisi ve arayüzdedir."
+    },
+    {
+      "id": "b2r-isletim-sistemi.s2",
+      "tip": "secme",
+      "yer": "Debian ailesi ile Rocky/RHEL ailesi arasındaki köken farkı",
+      "soru": "Rocky Linux nedir?",
+      "secenekler": [
+        "Debian'ın kurumsal destekli, uzun ömürlü sunucu sürümü olan dağıtım",
+        "CentOS'un yerini almak için kurulan, RHEL ile ikili uyumlu dağıtım",
+        "Ubuntu tabanlı, apt kullanan ve topluluk desteğiyle süren sunucu dağıtımı",
+        "Yalnızca sanal makinelerde çalışan, hafif ve deneme amaçlı bir dağıtım"
+      ],
+      "dogru": 1,
+      "izah": "Rocky, Red Hat Enterprise Linux ile binary compatible kurumsal bir dağıtımdır; .rpm paketlerini dnf ile yönetir."
+    },
+    {
+      "id": "b2r-isletim-sistemi.s3",
+      "tip": "secme",
+      "yer": "Hangi durumda hangisi tercih edilir",
+      "soru": "Ubuntu deneyimin bu projede neden işine yarıyor?",
+      "secenekler": [
+        "Ubuntu ile Rocky aynı paket yöneticisini kullanır, Debian ise ayrı bir aile",
+        "Ubuntu Debian türevidir; apt, dpkg, systemd ve AppArmor kullanımı neredeyse aynıdır",
+        "Ubuntu'da LVM ve şifreleme hazır kurulu gelir, aynısı Debian'da da geçerlidir",
+        "Aslında yaramaz; Ubuntu ile Debian birbirinden bağımsız iki ayrı ailedir"
+      ],
+      "dogru": 1,
+      "izah": "Bu yüzden bu projede Debian seçmek, sıfırdan bir aileyi öğrenmekten daha az yük getiriyor."
+    }
+  ]
+}

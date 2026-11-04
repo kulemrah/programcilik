@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="236" viewBox="0 0 420 236" role="img">
+<title>Zorunlu ve kısmen katılım</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<line x1="118.0" y1="112.0" x2="151.0" y2="112.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="269.0" y1="112.0" x2="302.0" y2="112.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<rect x="14.0" y="94.0" width="104.0" height="36.0" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="66.0" y="116.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">sorular</text>
+<rect x="302.0" y="94.0" width="104.0" height="36.0" fill="#DCEBFA" stroke="#2B6CB0" stroke-width="1.6"/>
+<text x="354.0" y="116.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">sınavlar</text>
+<polygon points="210.0,91.0 269.0,112.0 210.0,133.0 151.0,112.0" fill="#FFF1DC" stroke="#B7791F" stroke-width="1.6"/>
+<text x="210.0" y="116.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">sınavSoruları</text>
+<line x1="132.0" y1="112.0" x2="118.0" y2="104.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="132.0" y1="112.0" x2="118.0" y2="112.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="132.0" y1="112.0" x2="118.0" y2="120.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="138.0" y1="105.0" x2="138.0" y2="119.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="288.0" y1="112.0" x2="302.0" y2="120.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="288.0" y1="112.0" x2="302.0" y2="112.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<line x1="288.0" y1="112.0" x2="302.0" y2="104.0" stroke="#2B6CB0" stroke-width="1.6"/>
+<circle cx="280.0" cy="112.0" r="4.5" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.5"/>
+<line x1="70.0" y1="40.0" x2="132.0" y2="102.0" stroke="#C05621" stroke-width="1.6"/>
+<polygon points="132.0,102.0 123.7,98.6 128.6,93.7" fill="#C05621"/>
+<text x="14.0" y="22.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#C05621" font-weight="600" text-anchor="start">Zorunlu katılım: düz çizgi</text>
+<text x="14.0" y="38.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="start">her sınavda en az bir soru olmalı</text>
+<line x1="352.0" y1="186.0" x2="286.0" y2="120.0" stroke="#2C7A7B" stroke-width="1.6"/>
+<polygon points="286.0,120.0 294.3,123.4 289.4,128.3" fill="#2C7A7B"/>
+<text x="406.0" y="202.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2C7A7B" font-weight="600" text-anchor="end">Kısmen katılım: yuvarlak</text>
+<text x="406.0" y="218.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="end">bir soru hiçbir sınavda olmayabilir</text>
+</svg>

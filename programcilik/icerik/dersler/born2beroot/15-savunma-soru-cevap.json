@@ -1,0 +1,134 @@
+{
+  "id": "b2r-savunma",
+  "baslik": "Savunma (Evo) Soru-Cevap Bankası",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "evo",
+      "izah": "Peer review'ın gündelik adı: projeyi anlatıp değerlendiricinin sorularına cevap verdiğiniz savunma oturumu.",
+      "yer": "Teslim / Savunma Mekaniği"
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "b2r-savunma.k1",
+      "yer": "Genel / Kavramsal",
+      "on": "Bu proje ne yapıyor, kısaca anlatır mısınız?",
+      "arka": "VirtualBox'ta minimal, GUI'siz bir Debian sunucusu kurup LVM+şifreleme, AppArmor, sıkı SSH/firewall/parola/sudo kuralları ve bir izleme betiğiyle güvenli hale getirdim."
+    },
+    {
+      "id": "b2r-savunma.k2",
+      "yer": "Genel / Kavramsal",
+      "on": "Neden GUI kurulu değil?",
+      "arka": "Sunucu arka planda hizmet veriyor, önünde oturulmuyor; X.org/Wayland gereksiz kaynak tüketir ve saldırı yüzeyini büyütür — subject bunu 0 puanla cezalandırıyor."
+    },
+    {
+      "id": "b2r-savunma.k3",
+      "yer": "İşletim Sistemi",
+      "on": "Debian mı Rocky mi kullandınız, neden?",
+      "arka": "Debian — sistem yönetimine yeniyim, subject de bunu öneriyor; ayrıca Ubuntu'yla çalışacağım için apt/dpkg/systemd/AppArmor bilgim doğrudan buraya taşınıyor."
+    },
+    {
+      "id": "b2r-savunma.k4",
+      "yer": "İşletim Sistemi",
+      "on": "apt ile aptitude farkı ne?",
+      "arka": "İkisi de dpkg'yi kullanır; apt daha basit/modern bağımlılık çözümü sunar, aptitude farklı bir çözme stratejisi ve interaktif arayüzle gelen alternatif bir ön yüzdür."
+    },
+    {
+      "id": "b2r-savunma.k5",
+      "yer": "Partisyonlama / LVM / Şifreleme",
+      "on": "LVM nedir, neden kullandınız?",
+      "arka": "Disk alanını PV→VG→LV katmanlarıyla esnek yöneten bir yönetim katmanı; `lvextend` ile bir LV, disk yeniden bölümlenmeden büyütülebilir."
+    },
+    {
+      "id": "b2r-savunma.k6",
+      "yer": "Partisyonlama / LVM / Şifreleme",
+      "on": "Şifreleme parolanız ile login parolanız aynı mı?",
+      "arka": "Hayır — biri (LUKS) diski açılışta kilitten çıkarıyor, diğeri sisteme giriş yapıyor; tamamen ayrı iki parola."
+    },
+    {
+      "id": "b2r-savunma.k7",
+      "yer": "Partisyonlama / LVM / Şifreleme",
+      "on": "LVM aktif mi, nasıl gösterirsiniz?",
+      "arka": "`lsblk`, `pvs`, `vgs`, `lvs` — dördü birlikte PV/VG/LV zincirini gösterir."
+    },
+    {
+      "id": "b2r-savunma.k8",
+      "yer": "Güvenlik Çerçevesi",
+      "on": "AppArmor ne işe yarar?",
+      "arka": "Kullanıcı izinlerinin ötesinde, sistem çapında bir programın erişebileceği dosyaları profil bazlı sınırlayan zorunlu bir güvenlik katmanı (MAC); bir servis ele geçirilse bile hasarı sınırlar."
+    },
+    {
+      "id": "b2r-savunma.k9",
+      "yer": "Güvenlik Çerçevesi",
+      "on": "AppArmor açık mı, nasıl kontrol edersiniz?",
+      "arka": "`sudo aa-status` — kaç profilin enforce modda olduğunu gösterir."
+    },
+    {
+      "id": "b2r-savunma.k10",
+      "yer": "SSH",
+      "on": "SSH hangi portta, neden root ile bağlanılamıyor?",
+      "arka": "4242'de; root'a doğrudan SSH girişini kapattım (PermitRootLogin no) çünkü root'a HER ZAMAN normal kullanıcı+sudo üzerinden erişilmeli."
+    },
+    {
+      "id": "b2r-savunma.k11",
+      "yer": "Firewall",
+      "on": "Firewall'da hangi portlar açık?",
+      "arka": "Sadece 4242/tcp — her şey varsayılan kapalı, tek istisna bu."
+    },
+    {
+      "id": "b2r-savunma.k12",
+      "yer": "Hostname",
+      "on": "(canlı) Hostname'i değiştirin.",
+      "arka": "`sudo hostnamectl set-hostname yenisim` — hem dosyayı günceller hem anlık uygular."
+    },
+    {
+      "id": "b2r-savunma.k13",
+      "yer": "Kullanıcı / Grup",
+      "on": "(canlı) Yeni kullanıcı açın, bir gruba atayın.",
+      "arka": "`sudo adduser isim`, sonra `sudo usermod -aG grupadi isim` — `-a` olmadan kullanıcının var olan ikincil grupları silinir; eklemek için `-a` ile `-G` birlikte kullanılır."
+    },
+    {
+      "id": "b2r-savunma.k14",
+      "yer": "Parola Politikası",
+      "on": "Parola politikanız neleri kapsıyor?",
+      "arka": "30 günde zorunlu değişim, değişimler arası min 2 gün, 7 gün önce uyarı, min 10 karakter + büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasak, kullanıcı adı içeremez, root hariç yeni parola eskisinden en az 7 karakter farklı olmalı."
+    },
+    {
+      "id": "b2r-savunma.k15",
+      "yer": "Parola Politikası",
+      "on": "Bu kuralları var olan hesaplara nasıl uyguladınız?",
+      "arka": "login.defs sadece YENİ kullanıcıları etkiler; root ve kendi hesabıma `chage -M 30 -m 2 -W 7` ile elle uyguladım. pwquality kuralları ise bir sonraki parola değişiminde devreye girdiği için politika bitince bütün parolaları (root dahil) `passwd` ile yeniden değiştirdim."
+    },
+    {
+      "id": "b2r-savunma.k16",
+      "yer": "sudo",
+      "on": "sudo loglarını nereden görürsünüz?",
+      "arka": "/var/log/sudo/ altında; log_input/log_output ile hem komut hem çıktı kaydediliyor, sudoreplay ile tekrar oynatılabiliyor."
+    },
+    {
+      "id": "b2r-savunma.k17",
+      "yer": "monitoring.sh",
+      "on": "(canlı) monitoring.sh nasıl çalışıyor, açıklayın.",
+      "arka": "cron ile açılışta bir kez (@reboot) ve her 10 dakikada bir (*/10 * * * *) çalışıyor, wall ile CPU/RAM/disk/LVM/bağlantı/kullanıcı/IP-MAC/sudo sayacını tüm terminallere yayınlıyor."
+    },
+    {
+      "id": "b2r-savunma.k18",
+      "yer": "monitoring.sh",
+      "on": "(canlı) Betiği DEĞİŞTİRMEDEN durdurun.",
+      "arka": "`crontab -e` ile ilgili satırın başına # koyup kaydediyorum — dosyaya dokunmuyorum, sadece zamanlamayı devre dışı bırakıyorum."
+    },
+    {
+      "id": "b2r-savunma.k19",
+      "yer": "Teslim / Savunma Mekaniği",
+      "on": "signature.txt ne işe yarar?",
+      "arka": "VM diskimin sha1 özeti; değerlendirici bunu canlı VM'imle karşılaştırıp gerçekten benim ürettiğim makine olduğunu doğruluyor."
+    },
+    {
+      "id": "b2r-savunma.k20",
+      "yer": "Teslim / Savunma Mekaniği",
+      "on": "Savunma öncesi VM'de snapshot olmalı mı?",
+      "arka": "Hayır, snapshot'sız başlamalı; savunmaya özel snapshot savunma sırasında alınıp sonunda siliniyor."
+    }
+  ]
+}

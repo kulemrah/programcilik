@@ -1,0 +1,57 @@
+"""Tasarım gözden geçirme: ana ekranların her temada ekran görüntüsü."""
+exec(open("vt_taban.py", encoding="utf-8").read())
+import os
+D["hususi"] = True
+TEMALAR = os.environ.get("TEMALAR", "gunduz,gece").split(",")
+G = int(os.environ.get("GENISLIK", "390"))
+CIK = "goruntu/"
+
+def resim(s, ad):
+    for t in TEMALAR:
+        s.evaluate("t => moduUygula(t)", t)
+        s.wait_for_timeout(450)
+        s.screenshot(path=CIK + "%s-%s.png" % (ad, t))
+
+with sync_playwright() as p:
+    c, s = cihaz_ac(p, "T")
+    s.set_viewport_size({"width": G, "height": 800})
+    s.goto(KOK)
+    s.wait_for_selector(".giris-perde")
+    resim(s, "01-giris")
+    s.fill("#girisEposta", EPOSTA)
+    s.click("button:has-text('Kod gönder')")
+    s.wait_for_selector("#girisKod")
+    resim(s, "02-kod")
+    s.fill("#girisKod", "123456")
+    s.click("button:has-text('Giriş yap')")
+    s.wait_for_selector(".sozlesme")
+    resim(s, "03-sozlesme")
+    s.click("text=Okudum, kabul ediyorum")
+    s.click("button:has-text('Kabul et ve devam et')")
+    s.wait_for_selector(".not-perde")
+    resim(s, "04-not")
+    s.click("button:has-text('Anladım')")
+    s.wait_for_selector(".grup-baslik")
+    bekle_ki(s, lambda: s.locator(".ders-satiri .durum >> nth=0").inner_text() != "yakında")
+    resim(s, "05-ana")
+    s.click(".ders-satiri >> nth=0")
+    s.wait_for_selector(".agac .dal")
+    resim(s, "06-ders")
+    s.click(".agac .dal >> nth=1")
+    s.wait_for_selector(".okuma h2")
+    resim(s, "07-okuma")
+    s.evaluate("() => window.scrollTo(0, 900)")
+    resim(s, "08-okuma-alt")
+    s.click(".alt-cubuk button >> nth=2")
+    s.wait_for_timeout(400)
+    resim(s, "09-temrin")
+    s.click(".alt-cubuk button >> nth=3")
+    s.wait_for_timeout(400)
+    resim(s, "10-kart")
+    s.click(".alt-cubuk button >> nth=1")
+    s.wait_for_timeout(300)
+    resim(s, "11-ara")
+    s.click("#hesapDugme") if s.locator("#hesapDugme").count() else None
+    s.wait_for_timeout(400)
+    resim(s, "12-hesap")
+    print("hatalar:", hatalar[:5])

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="340" viewBox="0 0 400 340" role="img">
+<title>Suyun durumu: ayrı Eğer'ler ile değilse eğer zinciri</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="200.0" y="22.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">sıcaklık = -5 girildiğinde</text>
+<rect x="8" y="36" width="188" height="294" rx="12" fill="#FFFFFF" stroke="#C53030" stroke-width="1.8"/>
+<text x="102.0" y="62.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#C53030" font-weight="600" text-anchor="middle">ayrı "Eğer"ler</text>
+<rect x="20" y="84" width="164" height="44" rx="8" fill="#FFF4E5" stroke="#C05621" stroke-width="1.4"/>
+<text x="102.0" y="104.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">Eğer &lt;0 → Buz</text>
+<text x="102.0" y="120.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C05621" text-anchor="middle">çalıştı</text>
+<rect x="20" y="142" width="164" height="44" rx="8" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.4"/>
+<text x="102.0" y="162.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" text-anchor="middle">Eğer &gt;=100 → Buhar</text>
+<text x="102.0" y="178.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="middle">koşul yanlış</text>
+<rect x="20" y="200" width="164" height="44" rx="8" fill="#FFF4E5" stroke="#C05621" stroke-width="1.4"/>
+<text x="102.0" y="220.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">Değilse → Su</text>
+<text x="102.0" y="236.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C05621" text-anchor="middle">çalıştı</text>
+<text x="102.0" y="286.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="middle">Durum =</text>
+<text x="102.0" y="308.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#C53030" font-weight="600" text-anchor="middle">Su (yanlış)</text>
+<rect x="204" y="36" width="188" height="294" rx="12" fill="#FFFFFF" stroke="#2F855A" stroke-width="1.8"/>
+<text x="298.0" y="62.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2F855A" font-weight="600" text-anchor="middle">"değilse eğer" zinciri</text>
+<rect x="216" y="84" width="164" height="44" rx="8" fill="#FFF4E5" stroke="#C05621" stroke-width="1.4"/>
+<text x="298.0" y="104.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">Eğer &lt;0 → Buz</text>
+<text x="298.0" y="120.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#C05621" text-anchor="middle">çalıştı</text>
+<rect x="216" y="142" width="164" height="44" rx="8" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.4"/>
+<text x="298.0" y="162.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#A0AEC0" text-anchor="middle">Değilse eğer &gt;=100</text>
+<text x="298.0" y="178.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="middle">atlandı</text>
+<rect x="216" y="200" width="164" height="44" rx="8" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.4"/>
+<text x="298.0" y="220.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#A0AEC0" text-anchor="middle">Değilse → Su</text>
+<text x="298.0" y="236.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11" fill="#4A5568" text-anchor="middle">atlandı</text>
+<text x="298.0" y="286.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#4A5568" text-anchor="middle">Durum =</text>
+<text x="298.0" y="308.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#2F855A" font-weight="600" text-anchor="middle">Buz (doğru)</text>
+</svg>

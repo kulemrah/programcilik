@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="412" viewBox="0 0 400 412" role="img">
+<title>Ekrana 5 defa merhaba: hocanın akış diyagramı</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<ellipse cx="240.0" cy="24.0" rx="65.0" ry="18.0" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="240.0" y="28.7" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">BAŞLA</text>
+<line x1="240.0" y1="42.0" x2="240.0" y2="62.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,62.0 236.5,53.7 243.5,53.7" fill="#4A5568"/>
+<rect x="170.0" y="63.0" width="140" height="34" fill="#F7FAFC" stroke="#4A5568" stroke-width="1.6"/>
+<text x="240.0" y="84.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">SAYAC = 0</text>
+<line x1="240.0" y1="97.0" x2="240.0" y2="124.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,124.0 236.5,115.7 243.5,115.7" fill="#4A5568"/>
+<polygon points="177.0,124.0 327.0,124.0 303.0,168.0 153.0,168.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="240.0" y="142.8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">YAZ:</text>
+<text x="240.0" y="158.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">"Merhaba"</text>
+<line x1="240.0" y1="168.0" x2="240.0" y2="192.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,192.0 236.5,183.7 243.5,183.7" fill="#4A5568"/>
+<rect x="150.0" y="193.0" width="180" height="34" fill="#F7FAFC" stroke="#4A5568" stroke-width="1.6"/>
+<text x="240.0" y="214.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">SAYAC = SAYAC + 1</text>
+<line x1="240.0" y1="227.0" x2="240.0" y2="252.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,252.0 236.5,243.7 243.5,243.7" fill="#4A5568"/>
+<polygon points="240.0,253.0 306.0,290.0 240.0,327.0 174.0,290.0" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="240.0" y="294.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">SAYAC &lt; 5</text>
+<line x1="174.0" y1="290.0" x2="70.0" y2="290.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="70.0" y1="290.0" x2="70.0" y2="136.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="70.0" y1="136.0" x2="170.0" y2="136.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="170.0,136.0 161.7,139.5 161.7,132.5" fill="#4A5568"/>
+<text x="112.0" y="282.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">Evet</text>
+<line x1="240.0" y1="327.0" x2="240.0" y2="358.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,358.0 236.5,349.7 243.5,349.7" fill="#4A5568"/>
+<text x="270.0" y="346.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">Hayır</text>
+<ellipse cx="240.0" cy="376.0" rx="65.0" ry="18.0" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="240.0" y="380.7" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">BİTİR</text>
+</svg>

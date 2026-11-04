@@ -1,0 +1,352 @@
+{
+  "id": "el-uretim-kaynaklari",
+  "baslik": "Elektrik Enerjisinin Üretiminde Kullanılan Kaynaklar",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 4, 13–21",
+  "kavramlar": [
+    {
+      "terim": "Elektrik santrali",
+      "izah": "Slaytta tanımı yok; evlerimizde ve iş yerlerimizde kullandığımız elektrik enerjisinin üretildiği yer olarak geçer.",
+      "yer": "Elektrik enerjisinin üretimi ve iletimi"
+    },
+    {
+      "terim": "Transformatör (trafo)",
+      "izah": "Slaytta tanımı yok; bu bölümde geçtiği yer: santrallerde üretilen elektrik gerilimi, enerji kayıplarını azaltmak için transformatörler (trafolar) yardımıyla yükseltilir, ardından dağıtım merkezlerinde kullanım değerlerine düşürülür.",
+      "yer": "Elektrik enerjisinin üretimi ve iletimi"
+    },
+    {
+      "terim": "Termik",
+      "izah": "Isı ya da ısı ile ilgili (ısıl, ısısal) anlamında kullanılan kelime. Termik kaynaklarda kömür, petrol ve ürünleri, doğal gaz gibi fosil yakıtlar yakılarak su yüksek basınçlı buhara çevrilir ve buhar türbini döndürülür.",
+      "yer": "Termik kaynaklar"
+    },
+    {
+      "terim": "Hidroelektrik santral",
+      "izah": "Slaytta tanımı yok; çalışması: gerisindeki barajda depolanan su borularla türbine ulaştırılır, yüksek basınçla vuran su türbini, türbine bağlı alternatör mili de dönerek alternatör elektrik üretir.",
+      "yer": "Hidrolik kaynaklar"
+    },
+    {
+      "terim": "Nükleer kaynak",
+      "izah": "Uranyum, plütonyum gibi elementlerin tepkimeye sokularak ısı üretilmesi prensibine göre çalışan kaynak; ısı, termik santrallerdeki gibi buhar elde etmekte kullanılır.",
+      "yer": "Nükleer kaynaklar"
+    },
+    {
+      "terim": "Güç aktarım kutusu",
+      "izah": "Slaytta tanımı yok; rüzgâr türbininde, kanatların döndürdüğü şaftın dönüş hızının artırılarak ikinci şafta aktarıldığı kısım olarak geçer.",
+      "yer": "Rüzgâr enerjisi"
+    },
+    {
+      "terim": "Foto pil",
+      "izah": "Güneş enerjisinden elektrik elde etmek için kullanılan bazı yarı iletkenler.",
+      "yer": "Güneş enerjisi"
+    },
+    {
+      "terim": "Jeotermal enerji",
+      "izah": "Yer kürenin derinliklerindeki magma ya da bazı kayaçlardaki radyoaktif tepkimeler sonucu oluşan sıcaklık; borularla taşınan suyla yüzeye çıkarılıp elektrik veya ısınma amaçlı kullanılır.",
+      "yer": "Jeotermal enerji"
+    },
+    {
+      "terim": "Gelgit (medcezir)",
+      "izah": "Ay ve güneşin dünya üzerinde oluşturduğu çekim gücüne ve dünyanın kendi ekseni etrafında dönmesine bağlı olarak deniz ve okyanuslardaki su seviyelerinde meydana gelen alçalma ve yükselme hareketleri.",
+      "yer": "Gelgit enerjisi"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-uretim-kaynaklari.s1",
+      "tip": "secme",
+      "yer": "Elektrik enerjisinin üretimi ve iletimi",
+      "soru": "Santrallerde üretilen elektrik gerilimi **neden** transformatörlerle yükseltilir?",
+      "secenekler": [
+        "Enerji kayıplarını azaltmak için",
+        "Evlerin kullandığı değere getirmek için",
+        "Alternatörün sabit hızda dönmesi için",
+        "Akımın yönünü değiştirebilmek için"
+      ],
+      "dogru": 0,
+      "izah": "Gerilim enerji kayıplarını azaltmak için trafolarla yükseltilir. Evlerin ve iş yerlerinin kullandığı değerlere ise dağıtım merkezlerinde düşürülür."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s2",
+      "tip": "dy",
+      "yer": "Elektrik enerjisinin üretimi ve iletimi",
+      "ifade": "Santrallerde üretilen gerilim, dağıtım merkezlerinde evlerin ve iş yerlerinin kullandığı değerlere yükseltilir.",
+      "dogru": false,
+      "izah": "Santrallerde üretilen gerilim önce trafolarla **yükseltilir**; dağıtım merkezlerinde ise evlerin ve iş yerlerinin kullandığı değerlere **düşürülür**."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s3",
+      "tip": "secme",
+      "yer": "Kaynakların sınıflandırılması",
+      "soru": "Aşağıdakilerden hangisi hocanın elektrik enerjisinin üretiminde kullanılan kaynaklar için verdiği dört başlıktan biri **değildir**?",
+      "secenekler": [
+        "Kimyasal kaynaklar",
+        "Termik kaynaklar",
+        "Hidrolik kaynaklar",
+        "Nükleer kaynaklar"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın dört başlığı: termik, hidrolik, nükleer ve diğer kaynaklar (rüzgâr, güneş, jeotermal, gelgit). Kimyasal kaynaklar diye bir başlık yoktur."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s4",
+      "tip": "secme",
+      "yer": "Termik kaynaklar",
+      "soru": "Hocaya göre termik santrallerin hidrolik santrallere göre **üstün** yanı nedir?",
+      "secenekler": [
+        "İlk kurulum masraflarının daha az olması",
+        "Yakıt masraflarının zamanla azalması",
+        "Kullanılan yakıtların çevreye zarar vermemesi",
+        "Türbinlerinin iki yönde dönebilmesi"
+      ],
+      "dogru": 0,
+      "izah": "Termik santrallerin ilk kurulum masrafları hidrolik santrallere göre daha azdır. Ancak yakıt masrafları nedeniyle zaman ilerledikçe pahalı olmaya başlarlar ve kullanılan yakıtlar nedeniyle çevreye zarar verirler. İki yönde dönebilen türbinler gelgit santrallerine aittir."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s5",
+      "tip": "dy",
+      "yer": "Termik kaynaklar",
+      "ifade": "Termik santraller, yakıt masrafları nedeniyle zaman ilerledikçe pahalı olmaya başlar.",
+      "dogru": true,
+      "izah": "Termik santrallerin ilk kurulum masrafı azdır, ama yakıt masrafları nedeniyle zaman ilerledikçe pahalı olmaya başlarlar."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s6",
+      "tip": "secme",
+      "yer": "Hidrolik kaynaklar",
+      "soru": "Hidroelektrik santralde **türbini döndüren** nedir?",
+      "secenekler": [
+        "Borularla getirilip yüksek basınçla türbine vuran su kütlesi",
+        "Fosil yakıtların yakılmasıyla elde edilen yüksek basınçlı buhar",
+        "Elementlerin tepkimesiyle ısıtılan sudan elde edilen buhar",
+        "Güç aktarım kutusunda dönüş hızı artırılmış ikinci şaft"
+      ],
+      "dogru": 0,
+      "izah": "Barajda tutulan su borularla türbine ulaştırılır ve yüksek basınçla türbine vuran su kütlesi türbini döndürür. Fosil yakıtlarla elde edilen buhar termik, elementlerin tepkimesiyle elde edilen buhar nükleer santrale; ikinci şaft rüzgâr türbinine aittir."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s7",
+      "tip": "secme",
+      "yer": "Nükleer kaynaklar",
+      "soru": "Nükleer kaynaklar hangi prensibe göre çalışır?",
+      "secenekler": [
+        "Uranyum, plütonyum gibi elementlerin tepkimeye sokularak ısı üretilmesi",
+        "Kömür, petrol, doğal gaz gibi fosil yakıtların yakılarak ısı üretilmesi",
+        "Yer kürenin derinliklerindeki sıcaklığın suyla yüzeye çıkarılması",
+        "Güneş ışığının belli merkezlerde odaklanıp sıvıların buhara çevrilmesi"
+      ],
+      "dogru": 0,
+      "izah": "Nükleer kaynaklar uranyum, plütonyum gibi elementlerin tepkimeye sokularak ısı üretilmesi prensibine göre çalışır. Fosil yakıtları yakmak termik, derinlerdeki sıcaklığı yüzeye çıkarmak jeotermal, ışığı odaklamak güneş enerjisi yöntemidir."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s8",
+      "tip": "dy",
+      "yer": "Nükleer kaynaklar",
+      "ifade": "Nükleer santralde elde edilen ısı, termik santrallerdeki gibi suyu ısıtıp yüksek basınçlı buhar elde etmekte kullanılır.",
+      "dogru": true,
+      "izah": "Slayttaki ifade: elde edilen ısı, termik santrallerdeki gibi suyun ısıtılması ve yüksek basınçlı buhar elde edilmesinde kullanılır; buhar da buhar türbinini ve alternatörü döndürür."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s9",
+      "tip": "dizme",
+      "yer": "Rüzgâr enerjisi",
+      "soru": "Rüzgâr enerjisinden elektrik elde edilirken gerçekleşen adımları sıraya dizin.",
+      "parcalar": [
+        "Rüzgâr kanatları döndürür",
+        "Kanatlar şaftı döndürür",
+        "Güç aktarım kutusunda dönüş hızı artırılıp ikinci şafta aktarılır",
+        "Yüksek hızlı şaft alternatörün rotorunu döndürür",
+        "Alternatör statorunda elektrik enerjisi elde edilir"
+      ],
+      "izah": "Rüzgâr kanatları, kanatlar da şaftı döndürür; güç aktarım kutusunda dönüş hızı artırılarak ikinci şafta aktarılır; yüksek hızlı bu şaft alternatörün rotorunu döndürerek alternatör statorunda elektrik enerjisi elde edilmesini sağlar."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s10",
+      "tip": "secme",
+      "yer": "Rüzgâr enerjisi",
+      "soru": "Rüzgâr türbininde rüzgâr **çok şiddetli** ise ne olur?",
+      "secenekler": [
+        "Fren sistemi devreye girer, alternatör sabit hızda döner",
+        "Alternatör durdurulur ve elektrik üretimi kesilir",
+        "Kanatlar iki yönde dönerek alternatörün hızını dengeler",
+        "Gerilim transformatörle yükseltilip kayıplar azaltılır"
+      ],
+      "dogru": 0,
+      "izah": "Rüzgâr çok şiddetli ise fren sistemi devreye girer ve alternatörün sabit bir hızda dönmesi sağlanır; yani alternatör durdurulmaz, sabit hızda dönmeye devam eder. İki yönde dönen türbin gelgit santraline, gerilimin trafoyla yükseltilmesi ise santralden sonraki iletime aittir."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s11",
+      "tip": "klasik",
+      "yer": "Güneş enerjisi",
+      "soru": "Güneş enerjisinden elektrik enerjisi elde etmek için yaygın olarak kullanılan iki yöntemi yazın.",
+      "cevap": "1. Güneş ışığını belli merkezlerde odaklayıp bazı sıvıların buhara dönüştürülerek bir alternatörün döndürülmesi yoluyla\n2. Bazı yarı iletkenler (foto piller) vasıtasıyla",
+      "anahtarlar": [
+        "odak",
+        "buhar",
+        "alternatör",
+        "yarı iletken",
+        "foto pil"
+      ]
+    },
+    {
+      "id": "el-uretim-kaynaklari.s12",
+      "tip": "secme",
+      "yer": "Jeotermal enerji",
+      "soru": "Hocaya göre yer kürenin derinliklerindeki, jeotermal enerjide kullanılan sıcaklıklar **neyin sonucu** oluşur?",
+      "secenekler": [
+        "Magma ya da bazı kayaçlarda gerçekleşen radyoaktif tepkimelerin",
+        "Ay ve güneşin dünya üzerinde oluşturduğu çekim gücünün",
+        "Fosil kaynaklı yakıtların yer altında kendiliğinden yanmasının",
+        "Uranyum ve plütonyumun santralde tepkimeye sokulmasının"
+      ],
+      "dogru": 0,
+      "izah": "Yer kürenin derinliklerindeki magma ya da bazı kayaçlarda gerçekleşen radyoaktif tepkimeler sonucu sıcaklıklar oluşur. Ay ve güneşin çekim gücü gelgiti, uranyum ve plütonyumun santralde tepkimesi nükleer kaynağı anlatır."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s13",
+      "tip": "secme",
+      "yer": "Gelgit enerjisi",
+      "soru": "Gelgit enerjisinin elektrik enerjisine dönüştürülmesinde kullanılan **türbinlerin** özelliği nedir?",
+      "secenekler": [
+        "İki yönde dönebilen özel türbinlerdir",
+        "Yalnızca baraj dolarken dönen türbinlerdir",
+        "Yüksek basınçlı buharla dönen türbinlerdir",
+        "Kanatlarına fren sistemi bağlı türbinlerdir"
+      ],
+      "dogru": 0,
+      "izah": "Gelgit enerjisi için su tutan bir baraja, iki yönde dönebilen özel türbinlere ve bu türbinlerle döndürülen alternatörlere ihtiyaç duyulur."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s14",
+      "tip": "dy",
+      "yer": "Gelgit enerjisi",
+      "ifade": "Gelgit santrallerinde türbinler, verimlilik açısından genellikle barajın dolması esnasında devreye sokulur.",
+      "dogru": false,
+      "izah": "Baraj hem dolarken hem boşaltırken elektrik elde edilebilse de türbinler verimlilik açısından genellikle barajın **boşalması** esnasında devreye sokulur."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s15",
+      "tip": "bosluk",
+      "yer": "Gelgit enerjisi",
+      "metin": "Gelgit, diğer bir adıyla ___, deniz ve okyanuslardaki su seviyelerinde meydana gelen alçalma ve yükselme hareketlerine verilen isimdir.",
+      "cevaplar": [
+        [
+          "medcezir",
+          "med cezir",
+          "med-cezir",
+          "meddücezir"
+        ]
+      ],
+      "izah": "Bu hareketler ay ve güneşin dünya üzerinde oluşturduğu çekim gücüne ve dünyanın kendi ekseni etrafında dönmesine bağlıdır."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s16",
+      "tip": "esles",
+      "yer": "Kaynakları karşılaştırma",
+      "soru": "Kaynakları, slayttaki anlatıma göre enerjinin kaynağıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Termik",
+          "Fosil yakıtların yakılması"
+        ],
+        [
+          "Hidrolik",
+          "Barajda depolanıp borularla türbine ulaştırılan su"
+        ],
+        [
+          "Nükleer",
+          "Uranyum, plütonyum gibi elementlerin tepkimesi"
+        ],
+        [
+          "Jeotermal",
+          "Magma ya da kayaçlardaki radyoaktif tepkimelerle oluşan sıcaklık"
+        ],
+        [
+          "Gelgit",
+          "Su seviyelerindeki alçalma ve yükselme"
+        ]
+      ],
+      "izah": "Termik: kömür, petrol ve ürünleri, doğal gaz gibi fosil yakıtlar yakılır. Hidrolik: barajda depolanan su borularla türbine ulaştırılır ve türbine vurur. Nükleer: uranyum, plütonyum gibi elementler tepkimeye sokulur. Jeotermal: yer kürenin derinliklerindeki sıcaklık suyla yüzeye çıkarılır. Gelgit: ay ve güneşin çekim gücü ve dünyanın dönmesiyle su seviyesi alçalıp yükselir."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s17",
+      "tip": "hesap",
+      "yer": "Türkiye'de 2021 yılında elektrik üretimi",
+      "soru": "Hocanın verisine göre 2021 yılında elektrik üretimimizin %30,9'u kömürden, %33,2'si doğal gazdan elde edilmiştir. Bu iki kaynağın toplam payı yüzde kaçtır?",
+      "cevap": 64.1,
+      "tolerans": 0.05,
+      "birim": "%",
+      "izah": "Toplam pay = 30,9 + 33,2 = 64,1. Yani 2021'de elektrik üretimimizin %64,1'i kömür ve doğal gazdan elde edilmiştir."
+    },
+    {
+      "id": "el-uretim-kaynaklari.s18",
+      "tip": "dizme",
+      "yer": "Türkiye'de 2021 yılında elektrik üretimi",
+      "soru": "2021 yılında ülkemizde elektrik üretiminde kullanılan kaynakları payı en büyükten en küçüğe doğru dizin.",
+      "parcalar": [
+        "Doğal gaz",
+        "Kömür",
+        "Hidrolik",
+        "Rüzgâr",
+        "Güneş",
+        "Jeotermal",
+        "Diğer kaynaklar"
+      ],
+      "izah": "Doğal gaz %33,2 > kömür %30,9 > hidrolik %16,7 > rüzgâr %9,4 > güneş %4,2 > jeotermal %3,2 > diğer kaynaklar %2,4."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-uretim-kaynaklari.k1",
+      "yer": "Elektrik enerjisinin üretimi ve iletimi",
+      "on": "Santralde üretilen elektriğin gerilimi evlerimize gelene kadar nasıl değişir?",
+      "arka": "Santrallerde üretilen elektrik gerilimi, **enerji kayıplarını azaltmak** için transformatörler (trafolar) yardımıyla **yükseltilir**; ardından **dağıtım merkezlerinde** evlerin ve iş yerlerinin kullandığı değerlere **düşürülür**."
+    },
+    {
+      "id": "el-uretim-kaynaklari.k2",
+      "yer": "Kaynakların sınıflandırılması",
+      "on": "Elektrik enerjisinin üretiminde kullanılan kaynakları sayın.",
+      "arka": "1. Termik kaynaklar\n2. Hidrolik kaynaklar\n3. Nükleer kaynaklar\n4. Diğer kaynaklar: rüzgâr, güneş, jeotermal ve gelgit enerjisi"
+    },
+    {
+      "id": "el-uretim-kaynaklari.k3",
+      "yer": "Termik kaynaklar",
+      "on": "Termik santral nasıl çalışır? Hidrolik santrale göre artısını ve eksilerini söyleyin.",
+      "arka": "Termik: ısı ya da ısı ile ilgili. Kömür, petrol ve ürünleri, doğal gaz gibi fosil yakıtlar yakılarak tanklarda ısıtılan su yüksek basınçlı buhar hâline getirilir; buhar borularla taşınarak buhar türbinini döndürür.\n- Artı: ilk kurulum masrafları hidrolik santrallere göre daha azdır.\n- Eksi: yakıt masrafları nedeniyle zamanla pahalılaşır; yakıtlar nedeniyle çevreye zarar verir."
+    },
+    {
+      "id": "el-uretim-kaynaklari.k4",
+      "yer": "Hidrolik kaynaklar",
+      "on": "Hidroelektrik santral nasıl elektrik üretir?",
+      "arka": "Santralin gerisindeki barajda su depolanır. Su borular yardımıyla türbine ulaştırılır; yüksek basınçla türbine vuran su kütlesi türbini döndürür. Türbine bağlı alternatör mili de döndüğü için alternatör elektrik enerjisi üretir."
+    },
+    {
+      "id": "el-uretim-kaynaklari.k5",
+      "yer": "Nükleer kaynaklar",
+      "on": "Nükleer santral ile termik santral arasındaki benzerlik ve fark nedir?",
+      "arka": "Benzerlik: ikisinde de ısıyla su yüksek basınçlı buhara çevrilir; buhar buhar türbinini, dolayısıyla alternatörü döndürür.\nFark: ısının kaynağı. Termikte fosil yakıtlar (kömür, petrol ve ürünleri, doğal gaz) yakılır; nükleerde uranyum, plütonyum gibi elementler tepkimeye sokularak ısı üretilir."
+    },
+    {
+      "id": "el-uretim-kaynaklari.k6",
+      "yer": "Rüzgâr enerjisi",
+      "on": "Rüzgâr enerjisinden elektrik nasıl elde edilir? Rüzgâr çok şiddetli olursa ne olur?",
+      "arka": "Rüzgâr kanatları, kanatlar da şaftı döndürür. Güç aktarım kutusunda dönüş hızı artırılarak ikinci şafta aktarılır. Yüksek hızlı bu şaft alternatörün rotorunu döndürür ve alternatör statorunda elektrik enerjisi elde edilir.\nRüzgâr çok şiddetliyse fren sistemi devreye girer ve alternatörün sabit bir hızda dönmesi sağlanır."
+    },
+    {
+      "id": "el-uretim-kaynaklari.k7",
+      "yer": "Jeotermal enerji",
+      "on": "Jeotermal enerji nedir, elektrik enerjisine nasıl dönüştürülür?",
+      "arka": "Yer kürenin derinliklerindeki magma ya da bazı kayaçlarda gerçekleşen radyoaktif tepkimeler sonucu sıcaklıklar oluşur. Bu sıcaklık borularla taşınan suyla yüzeye çıkarılır ve gerekli makinelerle elektrik veya ısınma amaçlı kullanılır."
+    },
+    {
+      "id": "el-uretim-kaynaklari.k8",
+      "yer": "Gelgit enerjisi",
+      "on": "Gelgit nedir? Gelgit enerjisinden elektrik elde etmek için nelere ihtiyaç vardır?",
+      "arka": "Gelgit (medcezir): ay ve güneşin dünya üzerinde oluşturduğu çekim gücüne ve dünyanın kendi ekseni etrafında dönmesine bağlı olarak deniz ve okyanuslardaki su seviyelerinde meydana gelen alçalma ve yükselme hareketleri.\nGerekenler: su tutan bir baraj, iki yönde dönebilen özel türbinler ve bu türbinlerle döndürülen alternatörler. Türbinler verimlilik açısından genellikle barajın boşalması esnasında devreye sokulur."
+    },
+    {
+      "id": "el-uretim-kaynaklari.k9",
+      "yer": "Türkiye'de 2021 yılında elektrik üretimi",
+      "on": "2021 yılında ülkemizde elektrik üretiminin kaynaklara göre dağılımı nasıldır?",
+      "arka": "Kömür %30,9; doğal gaz %33,2; hidrolik %16,7; rüzgâr %9,4; güneş %4,2; jeotermal %3,2; diğer kaynaklar %2,4. En büyük pay doğal gazındır; kömür ve doğal gaz birlikte %64,1 eder."
+    }
+  ]
+}

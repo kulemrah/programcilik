@@ -1,0 +1,466 @@
+{
+  "id": "el-takim-mekanik",
+  "baslik": "El Takımları: Mekanik Alanında",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 42–55",
+  "kavramlar": [
+    {
+      "terim": "Açık ağız anahtarı",
+      "izah": "Dört köşe somun ve cıvataların sıkılıp sökülmesinde kullanılan anahtar; iki ağızlı ve tek ağızlı olarak iki şekildedir.",
+      "yer": "Açık ağız anahtarları"
+    },
+    {
+      "terim": "Yıldız anahtar",
+      "izah": "Sökme ve sıkma işlemlerinde yaygın olarak kullanılan, altıgen ve on iki köşeli olarak yapılan anahtar.",
+      "yer": "Yıldız ve kombine anahtarlar"
+    },
+    {
+      "terim": "Kombine anahtar",
+      "izah": "Sökme takmayı hızlandıran düz yıldız anahtar: boşluk alırken düz kısmı, sıkarken yıldız kısmı kullanılır; iki ağzının ölçüsü aynıdır.",
+      "yer": "Yıldız ve kombine anahtarlar"
+    },
+    {
+      "terim": "Lokma anahtar",
+      "izah": "En çok tercih edilen anahtar çeşidi; takımı lokma anahtarı ve lokma kolundan oluşur. Ağızları on iki köşe yıldız, altıgen ve altı köşe tam yıldız (torks) olarak yapılır.",
+      "yer": "Lokma anahtarlar ve lokmalı tornavidalar"
+    },
+    {
+      "terim": "Lokmalı tornavida",
+      "izah": "Lokma takımının uçlarının tornavida şeklindeki el aleti.",
+      "yer": "Lokma anahtarlar ve lokmalı tornavidalar"
+    },
+    {
+      "terim": "Cırcır anahtar",
+      "izah": "Kolu sadece bir yöne dönerek çalışan, somun veya cıvata kafasından çıkarılmadan çabuk çalışma imkânı veren anahtar; dönme yönü cırcır kilidinden değiştirilir.",
+      "yer": "Cırcır anahtarlar"
+    },
+    {
+      "terim": "Rekor anahtar",
+      "izah": "Rekorlu birleştirme yapılan yerlerde bağlantıların sökülüp takılmasında kullanılan, açık ağız anahtarlara göre daha kuvvetli kavrayan anahtar.",
+      "yer": "Rekor, kanca ve boru anahtarları"
+    },
+    {
+      "terim": "Kanca anahtar",
+      "izah": "Büyük çaplı özel cıvata ve somunların sökülüp takılmasında kullanılan anahtar.",
+      "yer": "Rekor, kanca ve boru anahtarları"
+    },
+    {
+      "terim": "Boru anahtarı",
+      "izah": "Rot ve benzeri parçalar ile anahtar ağzı bozulan cıvata ve somunların sökülmesinde kullanılan anahtar.",
+      "yer": "Rekor, kanca ve boru anahtarları"
+    },
+    {
+      "terim": "Kurbağacık",
+      "izah": "Ağızları birbirine paralel hareket eden ve istenilen ölçüye ayarlanabilen, cıvata ve somunların küçük değerde sıkılması ve sökülmesinde kullanılan anahtar.",
+      "yer": "Kurbağacık"
+    },
+    {
+      "terim": "Buji anahtarı",
+      "izah": "Bujilerin sökülmesinde ve sıkılmasında kullanılan anahtar; buji porseleni kırılmasın diye lokma boyu gereğinden uzun yapılmaz.",
+      "yer": "Buji ve bijon anahtarları"
+    },
+    {
+      "terim": "Bijon anahtarı",
+      "izah": "Tekerlek bijon somunlarının veya cıvatalarının sökülmesinde ve takılmasında kullanılan anahtar.",
+      "yer": "Buji ve bijon anahtarları"
+    },
+    {
+      "terim": "Torkmetre",
+      "izah": "Cıvata ve somunların istenilen değerde sıkılmasını sağlayan, kullanma kolaylığı ve zaman tasarrufu da sağlayan alet; hocanın formülü T = F · X.",
+      "yer": "Torkmetre"
+    },
+    {
+      "terim": "Ayarlı pense",
+      "izah": "Çok güçlü sıkıştırma gerektiren yerlerde, ağzı bozulmuş somunu tutmada veya kırık cıvatayı değiştirmede kullanılan, parça üzerinde kilitlenerek devamlı ve çok güçlü sıkan pense.",
+      "yer": "Penseler"
+    },
+    {
+      "terim": "Papağan (fort) pense",
+      "izah": "Düz penselere göre daha güçlü tutan, anahtar ağzı bozulmuş rekor ve benzeri parçaların sökülmesinde kullanılan pense.",
+      "yer": "Penseler"
+    },
+    {
+      "terim": "Segman pense",
+      "izah": "İç ve dış emniyet segmanlarının sökülmesi ve takılmasında kullanılan pense.",
+      "yer": "Penseler"
+    },
+    {
+      "terim": "Segman kelepçesi ve pensi",
+      "izah": "Pistonların silindire kolayca takılması için segmanları yuvalarında tutmaya yarayan alet.",
+      "yer": "Penseler"
+    },
+    {
+      "terim": "Çektirme",
+      "izah": "Motorlu araçlarda vites kutusu, rot başı, aks mili, amortisör gibi sıkı geçme parçaların sökülmesinde kullanılan alet.",
+      "yer": "Çektirmeler ve presler"
+    },
+    {
+      "terim": "Pres",
+      "izah": "Yerinde sıkı geçme çalışan parçaların sökülmesinde ve takılmasında kullanılan alet; mekanik ve hidrolik presler vardır.",
+      "yer": "Çektirmeler ve presler"
+    },
+    {
+      "terim": "Filtre sökme",
+      "izah": "Araç üzerindeki bazı filtrelerin (ör. motor yağ filtresi) sökülmesinde kullanılan alet; zincirli ve kayışlı iki çeşidi vardır.",
+      "yer": "Filtre sökme ve levyeler"
+    },
+    {
+      "terim": "Levye",
+      "izah": "Lastik sökme takma ve benzeri işlerde kuvvet uygulamak için manivela kolu olarak kullanılan alet.",
+      "yer": "Filtre sökme ve levyeler"
+    },
+    {
+      "terim": "Gres pompası",
+      "izah": "Katı yağ çeşidi olan gres yağıyla yağlamayı kolaylaştıran, gresörlüklere gres yağı doldurmak ve basmak için kullanılan alet.",
+      "yer": "Gres pompası"
+    },
+    {
+      "terim": "Kriko",
+      "izah": "Binek arabalarında tekerlek değiştirmek için kullanılan alet.",
+      "yer": "Krikolar ve araba sehpaları"
+    },
+    {
+      "terim": "Araba sehpası",
+      "izah": "Kriko ile kaldırılan araçların emniyete alınması veya kaldırılmış durumda kalması için kullanılan, aracın ağırlığına uygun seçilen sehpa.",
+      "yer": "Krikolar ve araba sehpaları"
+    },
+    {
+      "terim": "Caraskal",
+      "izah": "Araç üzerinden motorun veya ağır parçaların alınmasında ve montajında kullanılan alet.",
+      "yer": "Caraskallar ve liftler"
+    },
+    {
+      "terim": "Lift",
+      "izah": "Taşıtın yerden istenildiği kadar yukarı kaldırılmasında kullanılan, tamirat işlemlerini kolaylaştıran alet.",
+      "yer": "Caraskallar ve liftler"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-takim-mekanik.s1",
+      "tip": "esles",
+      "yer": "Anahtarlar",
+      "soru": "Anahtarları hocanın verdiği kullanım yerleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Açık ağız anahtarı",
+          "Dört köşe somun ve cıvatalar"
+        ],
+        [
+          "Rekor anahtar",
+          "Rekorlu birleştirmeler"
+        ],
+        [
+          "Kanca anahtar",
+          "Büyük çaplı özel cıvata ve somunlar"
+        ],
+        [
+          "Buji anahtarı",
+          "Bujilerin sökülmesi ve sıkılması"
+        ],
+        [
+          "Bijon anahtarı",
+          "Tekerlek bijon somunları veya cıvataları"
+        ],
+        [
+          "Boru anahtarı",
+          "Rot ve benzeri parçalar"
+        ]
+      ],
+      "izah": "Açık ağız anahtarları dört köşe somun ve cıvatalar, rekor anahtarlar rekorlu birleştirmeler, kanca anahtar büyük çaplı özel cıvata ve somunlar, buji anahtarları bujiler, bijon anahtarları tekerlek bijon somunları veya cıvataları, boru anahtarı rot ve benzeri parçalar ile anahtar ağzı bozulan cıvata ve somunlar içindir."
+    },
+    {
+      "id": "el-takim-mekanik.s2",
+      "tip": "secme",
+      "yer": "Yıldız ve kombine anahtarlar",
+      "soru": "Hocaya göre **kombine anahtarda** hangi kısım ne zaman kullanılır?",
+      "secenekler": [
+        "Boşluk alırken düz kısmı, sıkarken yıldız kısmı",
+        "Boşluk alırken yıldız kısmı, sıkarken düz kısmı",
+        "Küçük somunda düz kısmı, büyük somunda yıldız kısmı",
+        "Sökerken cırcırlı kısmı, takarken açık ağız kısmı"
+      ],
+      "dogru": 0,
+      "izah": "Kombine anahtarda boşluk alırken düz kısım, sıkarken yıldız kısım kullanılır; böylece daha seri ve kolay iş yapılır. Anahtarın iki ağzının ölçüsü aynı olduğu için küçük ve büyük somun ayrımı yapılmaz."
+    },
+    {
+      "id": "el-takim-mekanik.s4",
+      "tip": "secme",
+      "yer": "Yıldız ve kombine anahtarlar",
+      "soru": "Hocaya göre **yıldız anahtarlar** hangi biçimlerde yapılır?",
+      "secenekler": [
+        "Altıgen ve on iki köşeli",
+        "İki ağızlı ve tek ağızlı",
+        "Zincirli ve kayışlı",
+        "Mekanik ve hidrolik"
+      ],
+      "dogru": 0,
+      "izah": "Yıldız anahtarlar altıgen ve on iki köşeli olarak yapılır. İki ağızlı ve tek ağızlı olan açık ağız anahtarları, zincirli ve kayışlı olan filtre sökme aletleri, mekanik ve hidrolik olan preslerdir."
+    },
+    {
+      "id": "el-takim-mekanik.s5",
+      "tip": "secme",
+      "yer": "Lokma anahtarlar ve lokmalı tornavidalar",
+      "soru": "Hocaya göre bir **lokma anahtar takımı** nelerden oluşur?",
+      "secenekler": [
+        "Lokma anahtarı ve lokma kolundan",
+        "Düz kısım ile yıldız kısımdan",
+        "Döner tutamak, skala ve ibreden",
+        "Zincir ile kayıştan"
+      ],
+      "dogru": 0,
+      "izah": "Bir lokma anahtar takımı, lokma anahtarı ve lokma kolundan oluşur. Düz ve yıldız kısımlar kombine anahtarın, döner tutamak, skala ve ibre torkmetrenin parçalarıdır; zincirli ve kayışlı olan filtre sökme aletidir."
+    },
+    {
+      "id": "el-takim-mekanik.s6",
+      "tip": "secme",
+      "yer": "Cırcır anahtarlar",
+      "soru": "Hocaya göre **cırcır anahtarın** sağladığı kolaylık nedir?",
+      "secenekler": [
+        "Somun veya cıvata kafasından çıkarılmadan çok çabuk çalışılır",
+        "Cıvata ve somunlar istenilen değerde sıkılabilir hâle gelir",
+        "Açık ağız anahtarlara göre daha kuvvetli bir kavrama sağlar",
+        "Ağızlar istenilen ölçüye ayarlanarak her somuna uydurulur"
+      ],
+      "dogru": 0,
+      "izah": "Cırcır kol sadece bir yöne dönerek çalışır ve somun veya cıvata kafasından çıkarılmadan çok çabuk çalışma imkânı verir. İstenilen değerde sıkma torkmetrenin, daha kuvvetli kavrama rekor anahtarın, ayarlanabilen ağız kurbağacığın özelliğidir."
+    },
+    {
+      "id": "el-takim-mekanik.s7",
+      "tip": "secme",
+      "yer": "Kurbağacık",
+      "soru": "Ağızları birbirine paralel hareket eden, istenilen ölçüye ayarlanabilen ve cıvata ile somunların **küçük değerde** sıkılmasında kullanılan anahtar hangisidir?",
+      "secenekler": [
+        "Kurbağacık",
+        "Torkmetre",
+        "Kanca anahtar",
+        "Rekor anahtar"
+      ],
+      "dogru": 0,
+      "izah": "Kurbağacığın ağızları birbirine paralel hareket eder ve istenilen ölçüye ayarlanır; cıvata ve somunların küçük değerde sıkılmasında ve sökülmesinde kullanılır. Torkmetre ise istenilen değerde sıkmayı sağlar."
+    },
+    {
+      "id": "el-takim-mekanik.s8",
+      "tip": "secme",
+      "yer": "Torkmetre",
+      "soru": "Hocaya göre **torkmetre** ne sağlar?",
+      "secenekler": [
+        "Cıvata ve somunların istenilen değerde sıkılmasını",
+        "Cıvata ve somunların küçük değerde sıkılmasını",
+        "Sıkı geçme parçaların sökülüp takılmasını",
+        "Rekorlu bağlantıların kuvvetli kavranmasını"
+      ],
+      "dogru": 0,
+      "izah": "Torkmetre cıvata ve somunların istenilen değerde sıkılmasını sağlar; ayrıca kullanma kolaylığı ve zaman tasarrufu sağlar. Küçük değerde sıkma kurbağacığın, sıkı geçme parçalar presin, rekorlu bağlantılar rekor anahtarın işidir."
+    },
+    {
+      "id": "el-takim-mekanik.s10",
+      "tip": "secme",
+      "yer": "Buji ve bijon anahtarları",
+      "soru": "Hocaya göre buji anahtarında **lokma boyu** neden gereğinden uzun yapılmaz?",
+      "secenekler": [
+        "Buji porseleninin kırılmaması için",
+        "Bijon somunlarının bozulmaması için",
+        "Kafadan çıkarmadan çalışabilmek için",
+        "Rekoru daha kuvvetli kavramak için"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki cümle: buji porseleninin kırılmaması için lokma boyu gereğinden uzun yapılmaz."
+    },
+    {
+      "id": "el-takim-mekanik.s11",
+      "tip": "esles",
+      "yer": "Penseler",
+      "soru": "Penseleri ve segman aletlerini hocanın verdiği özellikleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Ayarlı pense",
+          "Kilitlenerek devamlı ve çok güçlü sıkar"
+        ],
+        [
+          "Papağan (fort) pense",
+          "Anahtar ağzı bozulmuş rekoru söker"
+        ],
+        [
+          "Segman pense",
+          "İç ve dış emniyet segmanlarını söker ve takar"
+        ],
+        [
+          "Segman kelepçesi ve pensi",
+          "Segmanları piston takılırken yuvasında tutar"
+        ]
+      ],
+      "izah": "Ayarlı pense parça üzerinde kilitlenerek devamlı ve çok güçlü sıkma yapar. Papağan (fort) pense anahtar ağzı bozulmuş rekor ve benzeri parçaların sökülmesinde kullanılır ve düz penselere göre daha güçlü tutar. Segman pense iç ve dış emniyet segmanlarını söker ve takar. Segman kelepçesi ve pensi, pistonların silindire kolayca takılması için segmanları yuvalarında tutar."
+    },
+    {
+      "id": "el-takim-mekanik.s12",
+      "tip": "dy",
+      "yer": "Penseler",
+      "ifade": "Segman kelepçesi ve pensi, iç ve dış emniyet segmanlarının sökülmesinde ve takılmasında kullanılır.",
+      "dogru": false,
+      "izah": "Bu cümle **segman penseyi** anlatır. Segman kelepçesi ve pensi ise pistonların silindire kolayca takılması için segmanları yuvalarında tutmaya yarar."
+    },
+    {
+      "id": "el-takim-mekanik.s13",
+      "tip": "secme",
+      "yer": "Çektirmeler ve presler",
+      "soru": "Hocaya göre **çektirmeler** ne için kullanılır?",
+      "secenekler": [
+        "Vites kutusu, rot başı, aks mili gibi sıkı geçme parçaları sökmek için",
+        "Lastik sökme takma işlerinde manivela kolu olarak kuvvet uygulamak için",
+        "Araç üzerindeki motor yağ filtresi gibi bazı filtreleri sökmek için",
+        "Araç üzerinden motoru veya ağır parçaları almak ve takmak için"
+      ],
+      "dogru": 0,
+      "izah": "Çektirmeler motorlu araçlarda sıkı geçme parçaların (vites kutuları, rot başları, aks mili, amortisörler) sökülmesinde kullanılır. Manivela kolu levyedir, filtreleri filtre sökme aleti söker, motoru ve ağır parçaları caraskal alır."
+    },
+    {
+      "id": "el-takim-mekanik.s14",
+      "tip": "bosluk",
+      "yer": "Çektirmeler ve presler",
+      "metin": "Yerinde sıkı geçme çalışan parçaların sökülmesinde ve takılmasında kullanılan ___ mekanik ve hidrolik olmak üzere iki çeşittir.",
+      "cevaplar": [
+        [
+          "presler",
+          "pres"
+        ]
+      ],
+      "izah": "Presler sıkı geçme parçaların sökülmesinde ve takılmasında kullanılır; mekanik ve hidrolik presler vardır."
+    },
+    {
+      "id": "el-takim-mekanik.s15",
+      "tip": "secme",
+      "yer": "Filtre sökme ve levyeler",
+      "soru": "Hocaya göre **filtre sökme** aletinin iki çeşidi hangileridir?",
+      "secenekler": [
+        "Zincirli ve kayışlı",
+        "Mekanik ve hidrolik",
+        "Normal ve cırcırlı",
+        "Düz ve eğri ağızlı"
+      ],
+      "dogru": 0,
+      "izah": "Filtre sökme aletinin zincirli ve kayışlı iki çeşidi vardır. Mekanik ve hidrolik presler, normal ve cırcırlı tip kombine anahtarlar, düz ve eğri ağızlı kargaburun çeşitleridir."
+    },
+    {
+      "id": "el-takim-mekanik.s16",
+      "tip": "bosluk",
+      "yer": "Gres pompası",
+      "metin": "Gres pompası, araçların veya yapıların mekanik kısımlarındaki ___ gres yağı doldurmak ve basmak için kullanılır.",
+      "cevaplar": [
+        [
+          "gresörlüklere",
+          "gresörlük"
+        ]
+      ],
+      "izah": "Gres pompası, katı yağ çeşidi olan gres yağıyla yağlamayı kolaylaştırır; gresörlüklere gres yağı doldurmak ve basmak için kullanılır."
+    },
+    {
+      "id": "el-takim-mekanik.s17",
+      "tip": "esles",
+      "yer": "Caraskallar ve liftler",
+      "soru": "Araç kaldırmada ve kaldırılmış araçla çalışmada kullanılan aletleri hocanın verdiği kullanım yerleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Kriko",
+          "Binek arabalarında tekerlek değiştirmek"
+        ],
+        [
+          "Araba sehpası",
+          "Kriko ile kaldırılan aracı emniyete almak"
+        ],
+        [
+          "Caraskal",
+          "Motoru veya ağır parçaları araçtan almak"
+        ],
+        [
+          "Lift",
+          "Taşıtı istenildiği kadar kaldırıp tamiri kolaylaştırmak"
+        ]
+      ],
+      "izah": "Kriko binek arabalarında tekerlek değiştirmek, araba sehpası kriko ile kaldırılan aracı emniyete almak, caraskal araç üzerinden motoru veya ağır parçaları almak ve takmak, lift taşıtı yerden istenildiği kadar yukarı kaldırıp tamiratı kolaylaştırmak için kullanılır."
+    },
+    {
+      "id": "el-takim-mekanik.s18",
+      "tip": "dy",
+      "yer": "Caraskallar ve liftler",
+      "ifade": "Hocaya göre araç lifte alınırken dengeli bağlama yapılmalı, lift ayakları da kayma yapmayacak sağlam bir zemine oturtulmalıdır.",
+      "dogru": true,
+      "izah": "Slayttaki iki uyarı budur: araç lifte alınırken dengeli bağlama yapılmalıdır; lift ayakları kayma yapmayacak sağlam bir zemine oturtulmalıdır."
+    },
+    {
+      "id": "el-takim-mekanik.s19",
+      "tip": "bosluk",
+      "yer": "Torkmetre",
+      "metin": "Hoca torkmetre için T = F · ___ formülünü yazar.",
+      "cevaplar": [
+        [
+          "X"
+        ]
+      ],
+      "izah": "Slayt 48'de torkmetrenin açıklamasının sonunda formül \"(T=F.X)\" diye yazılıdır: T = F · X."
+    },
+    {
+      "id": "el-takim-mekanik.s20",
+      "tip": "dy",
+      "yer": "Filtre sökme ve levyeler",
+      "ifade": "Hocaya göre levyeler, lastik sökme takma ve buna benzer işlerde kuvvet uygulamak için manivela kolu olarak kullanılır.",
+      "dogru": true,
+      "izah": "Slayttaki cümle budur: levyeler lastik sökme takma ve buna benzer işlerde kuvvet uygulama için manivela kolu olarak kullanılır."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-takim-mekanik.k1",
+      "yer": "Anahtarlar",
+      "on": "Açık ağız, yıldız ve kombine anahtarları karşılaştırın.",
+      "arka": "- Açık ağız: dört köşe somun ve cıvataların sıkılıp sökülmesi; iki ağızlı ve tek ağızlı olarak iki şekildedir.\n- Yıldız: sökme ve sıkmada yaygın; altıgen ve on iki köşeli yapılır.\n- Kombine: sökme takmayı hızlandırır; **boşluk alırken düz**, **sıkarken yıldız** kısmı kullanılır; iki ağzın ölçüsü aynıdır."
+    },
+    {
+      "id": "el-takim-mekanik.k2",
+      "yer": "Lokma anahtarlar ve lokmalı tornavidalar",
+      "on": "Lokma anahtar takımı nelerden oluşur? Lokma ağızları kaç çeşittir?",
+      "arka": "En çok tercih edilen anahtar çeşididir. Takım, **lokma anahtarı** ve **lokma kolundan** oluşur. Ağızlar üç çeşittir:\n1. On iki köşe yıldız anahtarlar\n2. Altıgen ağızlı lokma\n3. Altı köşe tam yıldız (torks)\nLokmalı tornavida, lokma takımının uçlarının tornavida şeklindeki el aletidir.\nEk: ilk madde, lokmanın on iki köşe yıldız biçimli ağzı olarak anlaşılır."
+    },
+    {
+      "id": "el-takim-mekanik.k3",
+      "yer": "Cırcır anahtarlar",
+      "on": "Cırcır anahtar nasıl çalışır?",
+      "arka": "Cırcır kol sadece **bir yöne** dönerek çalışır; somun veya cıvata **kafasından çıkarılmadan** çok çabuk çalışma imkânı verir. Dönme yönü **cırcır kilidinden** değiştirilir. Hocanın şeklinde gevşetmede ve sıkmada kilitli ve serbest yönler yer değiştirir."
+    },
+    {
+      "id": "el-takim-mekanik.k4",
+      "yer": "Kurbağacık",
+      "on": "Kurbağacık ile torkmetre arasındaki fark nedir?",
+      "arka": "Kurbağacığın ağızları birbirine paralel hareket eder ve istenilen ölçüye ayarlanır; cıvata ve somunları **küçük değerde** sıkmak ve sökmek için kullanılır. Torkmetre ise cıvata ve somunların **istenilen değerde** sıkılmasını sağlar."
+    },
+    {
+      "id": "el-takim-mekanik.k5",
+      "yer": "Torkmetre",
+      "on": "Torkmetre ne işe yarar? Hocanın formülünü ve şekildeki parçaları söyleyin.",
+      "arka": "Cıvata ve somunların istenilen değerde sıkılmasını sağlar; kullanma kolaylığı ve zaman tasarrufu da sağlar. Formül: T = F · X. Şekildeki parçalar: döner tutamak, skala, ibre, kol, kafa.\nEk: T tork, F kuvvet, X kuvvetin uygulandığı uzaklıktır (kol uzunluğu)."
+    },
+    {
+      "id": "el-takim-mekanik.k6",
+      "yer": "Buji ve bijon anahtarları",
+      "on": "Buji anahtarı ile bijon anahtarını karşılaştırın.",
+      "arka": "- Buji anahtarı: bujilerin sökülmesi ve sıkılması; buji porseleni kırılmasın diye lokma boyu gereğinden uzun yapılmaz (ör. T kollu buji anahtarı).\n- Bijon anahtarı: tekerlek bijon somunlarının veya cıvatalarının sökülmesi ve takılması (ör. altı köşe ağızlı, istavroz tipi)."
+    },
+    {
+      "id": "el-takim-mekanik.k7",
+      "yer": "Rekor, kanca ve boru anahtarları",
+      "on": "Hocanın anlatımında \"ağzı bozulmuş\" ifadesi hangi aletlerde geçer? Her birinin kullanımını söyleyin.",
+      "arka": "- Boru anahtarı: rot ve benzeri parçalar ile anahtar ağzı bozulan cıvata ve somunların sökülmesi.\n- Ayarlı pense: ağzı bozulmuş bir somunun daha kolay tutulması veya kırık bir cıvatanın değiştirilmesi; kilitlenerek çok güçlü sıkar.\n- Papağan (fort) pense: anahtar ağzı bozulmuş rekor ve benzeri parçaların sökülmesi; düz penselere göre daha güçlü tutar."
+    },
+    {
+      "id": "el-takim-mekanik.k8",
+      "yer": "Çektirmeler ve presler",
+      "on": "Çektirme ile pres arasındaki fark nedir? Çektirme çeşitlerini sayın.",
+      "arka": "İkisi de sıkı geçme parçalarla ilgilidir. Çektirmeler sıkı geçme parçaların (vites kutusu, rot başı, aks mili, amortisör) **sökülmesinde**; presler yerinde sıkı geçme çalışan parçaların **sökülmesinde ve takılmasında** kullanılır. Presler mekanik ve hidroliktir.\nÇektirme çeşitleri: kollu, aks, direksiyon, rulman, dişli, rotil çektirmesi (fotoğrafta ayrıca supap çektirmesi)."
+    },
+    {
+      "id": "el-takim-mekanik.k9",
+      "yer": "Caraskallar ve liftler",
+      "on": "Kriko, araba sehpası, caraskal ve lift ne için kullanılır?",
+      "arka": "- Kriko: binek arabalarında tekerlek değiştirmek (mekanik, hidrolik, arabalı).\n- Araba sehpası: kriko ile kaldırılan aracı emniyete almak; aracın ağırlığına uygun olmalı.\n- Caraskal: araç üzerinden motoru veya ağır parçaları almak ve takmak.\n- Lift: taşıtı istenildiği kadar yukarı kaldırıp tamiratı kolaylaştırmak; dengeli bağlama ve sağlam zemin gerekir."
+    }
+  ]
+}

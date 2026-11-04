@@ -109,6 +109,6 @@ Yeni konteynerde PostgreSQL kurulu değilse ya da `pgk` kullanıcısı yoksa: DE
 
 ## 6. Durum (4 Kasım 2026)
 
-- Son teslimler: guncelleme-31…36, algoritma-hafta-5. GitHub'a yüklendiği **teyit edilmedi** (DEVIR-NOTU §3). `programcilik-son.zip` bütün bunları kapsar.
+- Son teslimler: guncelleme-31…36, algoritma-hafta-5, algoritma-hafta-6. GitHub'a yüklendiği **teyit edilmedi** (DEVIR-NOTU §3). `programcilik-son.zip` bütün bunları kapsar.
 - Sınav listesinde: Veritabanı ve Ağlar 1. Kısa Sınav (6 Kasım 20:30 / 21:30), Ekoloji 1. Kısa Sınav (10 Kasım 19:00); üçü de LMS.
 - 🔶 Bekleyen kararlar: DEVIR-NOTU §4 (göz koruyucu yenilemesi, sınav listesi ayrıntıları, Algoritma 5. hafta soruları, hocaya sorulacaklar, eski kararlar).

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="176" viewBox="0 0 400 176" role="img">
+<title>SQUARE, SEQUEL ve SQL</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="10" y="20" width="116" height="104" rx="10" fill="#FFFFFF" stroke="#718096" stroke-width="1.8"/>
+<rect x="10" y="20" width="116" height="34" rx="10" fill="#718096"/>
+<rect x="10" y="44" width="116" height="10" fill="#718096"/>
+<text x="68.0" y="43.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">SQUARE</text>
+<text x="68.0" y="80.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">matematiksel</text>
+<text x="68.0" y="97.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">sözdizimi</text>
+<line x1="127.0" y1="72.0" x2="141.0" y2="72.0" stroke="#4A5568" stroke-width="1.8"/>
+<polygon points="141.0,72.0 132.7,75.5 132.7,68.5" fill="#4A5568"/>
+<rect x="142" y="20" width="116" height="104" rx="10" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="1.8"/>
+<rect x="142" y="20" width="116" height="34" rx="10" fill="#2B6CB0"/>
+<rect x="142" y="44" width="116" height="10" fill="#2B6CB0"/>
+<text x="200.0" y="43.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">SEQUEL</text>
+<text x="200.0" y="80.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">İngilizceye benzer</text>
+<text x="200.0" y="97.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">sözdizimi</text>
+<line x1="259.0" y1="72.0" x2="273.0" y2="72.0" stroke="#4A5568" stroke-width="1.8"/>
+<polygon points="273.0,72.0 264.7,75.5 264.7,68.5" fill="#4A5568"/>
+<rect x="274" y="20" width="116" height="104" rx="10" fill="#FFFFFF" stroke="#2F855A" stroke-width="1.8"/>
+<rect x="274" y="20" width="116" height="34" rx="10" fill="#2F855A"/>
+<rect x="274" y="44" width="116" height="10" fill="#2F855A"/>
+<text x="332.0" y="43.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">SQL</text>
+<text x="332.0" y="80.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Structured</text>
+<text x="332.0" y="97.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">Query Language</text>
+<text x="200.0" y="150.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">SEQUEL = Structured English Query Language</text>
+<text x="200.0" y="168.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="middle">SQL = Yapısal Sorgulama Dili</text>
+</svg>

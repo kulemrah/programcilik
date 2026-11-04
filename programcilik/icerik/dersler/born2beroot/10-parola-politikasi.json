@@ -1,0 +1,246 @@
+{
+  "id": "b2r-parola",
+  "baslik": "Parola Politikası: PAM, login.defs, chage",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "chage",
+      "izah": "Bir kullanıcının parola yaşlanma ayarlarını gösteren/değiştiren komut (-M, -m, -W).",
+      "yer": "Var olan hesaplara login.defs değerlerini chage ile geriye dönük uygulama"
+    },
+    {
+      "terim": "pwquality",
+      "izah": "Parola karmaşıklık kurallarının tutulduğu PAM yapılandırması (/etc/security/pwquality.conf).",
+      "yer": "pam_pwquality ile karmaşıklık: min 10 karakter, büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasağı"
+    },
+    {
+      "terim": "difok",
+      "izah": "Yeni parolanın eskisinden kaç karakter farklı olacağını belirleyen kural; bu projede 7, root hariç.",
+      "yer": "difok kuralı: yeni parolanın eskisinden en az 7 karakter farklı olması (root hariç)"
+    },
+    {
+      "terim": "minlen",
+      "izah": "Parolanın en az kaç karakter olacağını belirleyen kural; bu projede 10.",
+      "yer": "pam_pwquality ile karmaşıklık: min 10 karakter, büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasağı"
+    },
+    {
+      "terim": "maxrepeat",
+      "izah": "Arka arkaya kaç aynı karaktere izin verildiğini belirler; bu projede 3.",
+      "yer": "pam_pwquality ile karmaşıklık: min 10 karakter, büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasağı"
+    },
+    {
+      "terim": "enforce_for_root",
+      "izah": "Parola kurallarının root hesabına da uygulanmasını sağlayan ayar.",
+      "yer": "Kullanıcı adını parolada yasaklama"
+    },
+    {
+      "terim": "login.defs",
+      "izah": "Parola yaşlanma varsayılanlarının tutulduğu dosya; sadece yeni kullanıcıları etkiler.",
+      "yer": "/etc/login.defs: PASS_MAX_DAYS (30), PASS_MIN_DAYS (2), PASS_WARN_AGE (7)"
+    },
+    {
+      "terim": "passwd",
+      "izah": "Bir hesabın parolasını değiştiren komut. Politika yazıldıktan sonra root dahil bütün parolalar bununla yenilenir.",
+      "yer": "Politika sonrası TÜM hesapların (root dahil) parolasının değiştirilmesi"
+    },
+    {
+      "terim": "PASS_MAX_DAYS",
+      "izah": "Parolanın kaç günde bir süresinin dolacağını belirleyen login.defs ayarı; bu projede 30.",
+      "yer": "/etc/login.defs: PASS_MAX_DAYS (30), PASS_MIN_DAYS (2), PASS_WARN_AGE (7)"
+    },
+    {
+      "terim": "PASS_MIN_DAYS",
+      "izah": "İki parola değişikliği arasında beklenmesi gereken en az gün; bu projede 2. Kullanıcının eski parolaya hızla dönmesini engeller.",
+      "yer": "/etc/login.defs: PASS_MAX_DAYS (30), PASS_MIN_DAYS (2), PASS_WARN_AGE (7)"
+    },
+    {
+      "terim": "PASS_WARN_AGE",
+      "izah": "Parolanın süresi dolmadan kaç gün önce uyarı verileceği; bu projede 7.",
+      "yer": "/etc/login.defs: PASS_MAX_DAYS (30), PASS_MIN_DAYS (2), PASS_WARN_AGE (7)"
+    },
+    {
+      "terim": "parola yaşlanma",
+      "izah": "Parolanın belirli sürede geçersiz sayılıp yenilenmesini zorunlu kılan mekanizma. Bir hesabın durumu `chage -l` ile görülür.",
+      "yer": "/etc/login.defs: PASS_MAX_DAYS (30), PASS_MIN_DAYS (2), PASS_WARN_AGE (7)"
+    },
+    {
+      "terim": "ucredit",
+      "izah": "Parolada zorunlu büyük harf sayısını belirleyen pwquality ayarı; -1 değeri 'en az bir tane zorunlu' demektir.",
+      "yer": "pam_pwquality ile karmaşıklık: min 10 karakter, büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasağı"
+    },
+    {
+      "terim": "lcredit",
+      "izah": "Parolada zorunlu küçük harf sayısı; -1 en az bir küçük harf zorunlu demektir.",
+      "yer": "pam_pwquality ile karmaşıklık: min 10 karakter, büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasağı"
+    },
+    {
+      "terim": "dcredit",
+      "izah": "Parolada zorunlu rakam sayısı; -1 en az bir rakam zorunlu demektir.",
+      "yer": "pam_pwquality ile karmaşıklık: min 10 karakter, büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasağı"
+    },
+    {
+      "terim": "usercheck",
+      "izah": "pwquality.conf ayarı: 1 olunca parolanın kullanıcı adını (düz ya da ters) içermesi yasaklanır. Varsayılan değeri 1'dir.",
+      "yer": "Kullanıcı adını parolada yasaklama"
+    },
+    {
+      "terim": "reject_username",
+      "izah": "Eski pam_cracklib modülünün, parolada kullanıcı adını yasaklayan seçeneği. pam_pwquality onu /etc/pam.d/common-password satırında yalnızca uyumluluk için görmezden gelir; pwquality.conf'a yazılmaz. Aynı işi pwquality'de usercheck yapar.",
+      "yer": "Kullanıcı adını parolada yasaklama"
+    },
+    {
+      "terim": "/etc/pam.d/common-password",
+      "izah": "Debian'da parola doğrulama modüllerinin sıralandığı PAM dosyası; pwquality kuralları buraya bağlanır.",
+      "yer": "PAM'in rolü (kısaca)"
+    },
+    {
+      "terim": "/etc/security/pwquality.conf",
+      "izah": "Parola karmaşıklık kurallarının (minlen, difok, maxrepeat, credit ayarları) yazıldığı dosya.",
+      "yer": "pam_pwquality ile karmaşıklık: min 10 karakter, büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasağı"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-parola.s1",
+      "tip": "secme",
+      "yer": "/etc/login.defs: PASS_MAX_DAYS (30), PASS_MIN_DAYS (2), PASS_WARN_AGE (7)",
+      "soru": "Parolanın süresi kaç günde bir dolmalı?",
+      "secenekler": [
+        "7",
+        "14",
+        "30",
+        "90"
+      ],
+      "dogru": 2,
+      "izah": "PASS_MAX_DAYS 30. Var olan hesaplara `chage -M 30` ile ayrıca uygulanmalı."
+    },
+    {
+      "id": "b2r-parola.s2",
+      "tip": "secme",
+      "yer": "/etc/login.defs: PASS_MAX_DAYS (30), PASS_MIN_DAYS (2), PASS_WARN_AGE (7)",
+      "soru": "İki parola değişikliği arasındaki en az gün sayısı kaçtır?",
+      "secenekler": [
+        "0",
+        "2",
+        "7",
+        "10"
+      ],
+      "dogru": 1,
+      "izah": "PASS_MIN_DAYS 2. Kullanıcının parolayı art arda değiştirip eski parolaya dönmesini engeller."
+    },
+    {
+      "id": "b2r-parola.s3",
+      "tip": "secme",
+      "yer": "/etc/login.defs: PASS_MAX_DAYS (30), PASS_MIN_DAYS (2), PASS_WARN_AGE (7)",
+      "soru": "Parolanın süresi dolmadan kaç gün önce uyarı verilir?",
+      "secenekler": [
+        "2",
+        "3",
+        "7",
+        "30"
+      ],
+      "dogru": 2,
+      "izah": "PASS_WARN_AGE 7."
+    },
+    {
+      "id": "b2r-parola.s4",
+      "tip": "secme",
+      "yer": "pam_pwquality ile karmaşıklık: min 10 karakter, büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasağı",
+      "soru": "Parola en az kaç karakter olmalı?",
+      "secenekler": [
+        "8",
+        "10",
+        "12",
+        "16"
+      ],
+      "dogru": 1,
+      "izah": "minlen = 10; ayrıca en az bir büyük harf, bir küçük harf ve bir rakam zorunlu."
+    },
+    {
+      "id": "b2r-parola.s5",
+      "tip": "secme",
+      "yer": "pam_pwquality ile karmaşıklık: min 10 karakter, büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasağı",
+      "soru": "Arka arkaya en fazla kaç aynı karaktere izin var?",
+      "secenekler": [
+        "2",
+        "3",
+        "4",
+        "Sınır yok"
+      ],
+      "dogru": 1,
+      "izah": "maxrepeat = 3; yani 3'ten fazla ardışık aynı karakter yasak."
+    },
+    {
+      "id": "b2r-parola.s6",
+      "tip": "secme",
+      "yer": "difok kuralı: yeni parolanın eskisinden en az 7 karakter farklı olması (root hariç)",
+      "soru": "Yeni parola eskisinden en az kaç karakter farklı olmalı (root hariç)?",
+      "secenekler": [
+        "3",
+        "5",
+        "7",
+        "10"
+      ],
+      "dogru": 2,
+      "izah": "difok = 7. Subject bu kuralın root'a uygulanmadığını açıkça belirtiyor — tek istisna budur."
+    },
+    {
+      "id": "b2r-parola.s7",
+      "tip": "secme",
+      "yer": "pam_pwquality ile karmaşıklık: min 10 karakter, büyük/küçük harf + rakam, 3'ten fazla ardışık aynı karakter yasağı",
+      "soru": "pwquality.conf'ta `ucredit = -1` ne anlama gelir?",
+      "secenekler": [
+        "En fazla 1 büyük harf olabilir",
+        "En az 1 büyük harf zorunludur",
+        "Büyük harf yasaktır",
+        "Büyük harf 1 puan değerindedir"
+      ],
+      "dogru": 1,
+      "izah": "Eksi değer 'zorunlu' demektir — kafa karıştırıcı ama ezberlenmesi gereken bir PAM tuhaflığıdır. lcredit küçük harf, dcredit rakam içindir."
+    },
+    {
+      "id": "b2r-parola.s8",
+      "tip": "secme",
+      "yer": "Kullanıcı adını parolada yasaklama",
+      "soru": "`enforce_for_root` satırını yazmazsanız ne olur?",
+      "secenekler": [
+        "Root parolası hiç değiştirilemez; passwd komutu hata verir",
+        "Parola karmaşıklık kuralları root hesabına uygulanmaz",
+        "Root artık sudo kullanamaz; yalnızca doğrudan giriş yapabilir",
+        "difok kuralı bütün hesaplar için devre dışı kalır"
+      ],
+      "dogru": 1,
+      "izah": "Subject 'root parolası da bu politikaya uymalı' dediği için bu satır gerekir; sıkça unutulur."
+    },
+    {
+      "id": "b2r-parola.s9",
+      "tip": "dizme",
+      "yer": "Var olan hesaplara login.defs değerlerini chage ile geriye dönük uygulama",
+      "soru": "login.defs değerlerini root hesabına geriye dönük uygulayan komutu dizin:",
+      "parcalar": [
+        "sudo",
+        "chage",
+        "-M 30",
+        "-m 2",
+        "-W 7",
+        "root"
+      ],
+      "komut": true,
+      "izah": "login.defs sadece yeni kullanıcıları etkiler; root ve sizin hesabınız zaten vardı, onlara elle uygulanır."
+    },
+    {
+      "id": "b2r-parola.s10",
+      "tip": "secme",
+      "yer": "Var olan hesaplara login.defs değerlerini chage ile geriye dönük uygulama",
+      "soru": "login.defs ve pwquality.conf'u doldurdunuz ama `chage -l root` eski değerleri gösteriyor. Sebep?",
+      "secenekler": [
+        "Dosyaları düzenledikten sonra PAM ayarları yeniden yüklenmedi",
+        "login.defs yalnızca yeni hesaplara uygulanır; var olanlara chage ile verilir",
+        "Değerler ancak sistem yeniden başlatıldıktan sonra okunur hâle gelir",
+        "chage yalnızca kendi hesabını okur; root için ayrıca bir bayrak gerekir"
+      ],
+      "dogru": 1,
+      "izah": "`chage -l` değerleri /etc/shadow'dan okur. login.defs bu değerleri yalnızca yeni hesap açılırken oraya yazar; root ve sizin hesabınız zaten vardı, onlara `chage -M 30 -m 2 -W 7` ile elle verilir. Bu atlanırsa politika sadece kağıt üzerinde kalır; savunmada chage -l ile hemen görülür."
+    }
+  ]
+}

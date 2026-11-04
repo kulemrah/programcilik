@@ -1,0 +1,106 @@
+{
+  "id": "b2r-mac",
+  "baslik": "Zorunlu Erişim Kontrolü: AppArmor vs SELinux",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "AppArmor",
+      "izah": "Debian'ın varsayılan MAC aracı; profil tabanlı, uygulamanın erişebileceği dosyaları sınırlar.",
+      "yer": "AppArmor: profil mantığı, aa-status, Debian'da açılışta aktiflik"
+    },
+    {
+      "terim": "SELinux",
+      "izah": "Rocky'nin varsayılan MAC aracı; dosya yoluna değil context etiketine göre çalışır.",
+      "yer": "SELinux: enforcing/permissive modları, sestatus"
+    },
+    {
+      "terim": "profil (AppArmor)",
+      "izah": "Bir uygulamanın hangi dosyalara nasıl erişebileceğini tanımlayan AppArmor kuralı; /etc/apparmor.d/ altında tutulur.",
+      "yer": "AppArmor: profil mantığı, aa-status, Debian'da açılışta aktiflik"
+    },
+    {
+      "terim": "/etc/apparmor.d/",
+      "izah": "AppArmor profillerinin tutulduğu klasör.",
+      "yer": "AppArmor: profil mantığı, aa-status, Debian'da açılışta aktiflik"
+    },
+    {
+      "terim": "enforce",
+      "izah": "AppArmor'da profilin fiilen uygulandığı mod: ihlal engellenir. Karşıtı complain modudur, orada ihlal yalnızca loglanır.",
+      "yer": "AppArmor: profil mantığı, aa-status, Debian'da açılışta aktiflik"
+    },
+    {
+      "terim": "complain",
+      "izah": "AppArmor'da kuralın zorlanmadığı, ihlalin yalnızca loglandığı mod; karşıtı enforce'tur.",
+      "yer": "AppArmor: profil mantığı, aa-status, Debian'da açılışta aktiflik"
+    },
+    {
+      "terim": "enforcing",
+      "izah": "SELinux'ta kuralların fiilen uygulandığı mod. Subject Rocky için bunu şart koşuyor.",
+      "yer": "SELinux: enforcing/permissive modları, sestatus"
+    },
+    {
+      "terim": "permissive",
+      "izah": "SELinux'ta ihlallerin engellenmeyip yalnızca loglandığı mod; sorun ayıklamak için kullanılır.",
+      "yer": "SELinux: enforcing/permissive modları, sestatus"
+    },
+    {
+      "terim": "context",
+      "izah": "SELinux'un dosya ve süreçlere iliştirdiği güvenlik etiketi. SELinux kararlarını dosya yoluna değil bu etikete göre verir.",
+      "yer": "SELinux: enforcing/permissive modları, sestatus"
+    },
+    {
+      "terim": "semanage",
+      "izah": "SELinux ayarlarını değiştiren komut; Rocky'de SSH portunu 4242'ye taşırken bu portu SELinux'a tanıtmak için kullanılır.",
+      "yer": "Rocky özel durumu: KDump gerekmez, ama SELinux zorunlu"
+    },
+    {
+      "terim": "KDump",
+      "izah": "Çekirdek çöktüğünde bellek dökümü alan araç. Subject Rocky için kurulumunu muaf tutuyor.",
+      "yer": "Rocky özel durumu: KDump gerekmez, ama SELinux zorunlu"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-mac.s1",
+      "tip": "secme",
+      "yer": "DAC ile MAC (Mandatory Access Control) farkı",
+      "soru": "MAC (Mandatory Access Control) ile DAC arasındaki temel fark nedir?",
+      "secenekler": [
+        "DAC ağ trafiğini, MAC ise dosya erişimini kısıtlar; ikisi farklı katmanlarda çalışır",
+        "DAC'ta izinleri dosya sahibi belirler; MAC sistem çapında, değiştirilemez bir kural katmanı dayatır",
+        "MAC yalnızca root hesabına uygulanır; normal kullanıcıların erişimi ise DAC ile yönetilir",
+        "İkisi aynı mekanizmadır; MAC, DAC'ın yeni çekirdek sürümlerinde aldığı addır"
+      ],
+      "dogru": 1,
+      "izah": "MAC sayesinde bir servis ele geçirilse bile saldırganın sistemin geri kalanına sıçraması engellenir."
+    },
+    {
+      "id": "b2r-mac.s2",
+      "tip": "secme",
+      "yer": "AppArmor: profil mantığı, aa-status, Debian'da açılışta aktiflik",
+      "soru": "`sudo aa-status` ne gösterir?",
+      "secenekler": [
+        "Hangi kullanıcının hangi dosyalara erişebildiğini, izin listesi hâlinde",
+        "Kaç AppArmor profilinin enforce, kaçının complain modda olduğunu",
+        "Açık portları ve bu portları dinleyen servislerin profil adlarını",
+        "Son açılıştan bu yana engellenen erişim denemelerinin sayısını"
+      ],
+      "dogru": 1,
+      "izah": "enforce = kural zorlanıyor, complain = ihlal sadece loglanıyor. Savunmada AppArmor'ın aktif olduğunu bu komutla gösterirsiniz."
+    },
+    {
+      "id": "b2r-mac.s3",
+      "tip": "secme",
+      "yer": "SELinux: enforcing/permissive modları, sestatus",
+      "soru": "AppArmor ile SELinux arasındaki yapısal fark nedir?",
+      "secenekler": [
+        "AppArmor dosya yolu üzerinden profil uygular, SELinux context etiketine göre çalışır",
+        "AppArmor yalnızca ağ erişimini, SELinux ise yalnızca dosya erişimini kısıtlar",
+        "SELinux'ta enforcing modu yoktur; ihlaller engellenmez, yalnızca loglanır",
+        "AppArmor bir güvenlik duvarı, SELinux ise bir kimlik doğrulama çerçevesidir"
+      ],
+      "dogru": 0,
+      "izah": "SELinux daha ayrıntılıdır ama kurulumu da karmaşıktır; Debian'ın varsayılanı AppArmor'dur."
+    }
+  ]
+}

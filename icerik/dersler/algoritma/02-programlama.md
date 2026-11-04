@@ -67,7 +67,7 @@ Hocanın problem çözümü adımları:
 
 ![Problem çözümü adımları](gorseller/problem-cozumu.svg)
 
-> **Ek:** Slaytta adımlar madde işaretiyle verilmiş; burada sıralarını göstermek için numaralandı. Akış çizgesi (akış şeması) bu notta yalnızca adı geçen bir kavramdır; nasıl çizildiği slaytlarda henüz anlatılmıyor.
+> **Ek:** Slaytta adımlar madde işaretiyle verilmiş; burada sıralarını göstermek için numaralandı. Akış çizgesi (akış şeması) bu notta yalnızca adı geçen bir kavramdır; sembolleri ve nasıl çizildiği "Akış Diyagramları (Akış Çizgeleri)" konusunda anlatılır.
 
 ### Program ve programlama
 

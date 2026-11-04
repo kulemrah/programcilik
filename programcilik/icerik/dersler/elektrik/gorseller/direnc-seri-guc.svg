@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="210" viewBox="0 0 360 210" role="img">
+<title>Seri devrede güç: R1, R2, R3 ... Rn seri; üstlerinde harcanan güçler P1, P2, P3 ... Pn; U kaynağı ve I akımı</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<polyline points="20.0,170.0 20.0,70.0 28.0,70.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="28.0" y1="70.0" x2="40.0" y2="70.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="80.0" y1="70.0" x2="92.0" y2="70.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="40.0,70.0 43.3,76.0 50.0,64.0 56.7,76.0 63.3,64.0 70.0,76.0 76.7,64.0 80.0,70.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<text x="60.0" y="50.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">P₁</text>
+<text x="60.0" y="100.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">R₁</text>
+<line x1="92.0" y1="70.0" x2="104.0" y2="70.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="144.0" y1="70.0" x2="156.0" y2="70.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="104.0,70.0 107.3,76.0 114.0,64.0 120.7,76.0 127.3,64.0 134.0,76.0 140.7,64.0 144.0,70.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<text x="124.0" y="50.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">P₂</text>
+<text x="124.0" y="100.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">R₂</text>
+<line x1="156.0" y1="70.0" x2="168.0" y2="70.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="208.0" y1="70.0" x2="220.0" y2="70.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="168.0,70.0 171.3,76.0 178.0,64.0 184.7,76.0 191.3,64.0 198.0,76.0 204.7,64.0 208.0,70.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<text x="188.0" y="50.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">P₃</text>
+<text x="188.0" y="100.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">R₃</text>
+<line x1="222" y1="70" x2="254" y2="70" stroke="#1A202C" stroke-width="2.4" stroke-dasharray="2 4" stroke-linecap="round"/>
+<line x1="256.0" y1="70.0" x2="268.0" y2="70.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="308.0" y1="70.0" x2="320.0" y2="70.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="268.0,70.0 271.3,76.0 278.0,64.0 284.7,76.0 291.3,64.0 298.0,76.0 304.7,64.0 308.0,70.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<text x="288.0" y="50.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">Pn</text>
+<text x="288.0" y="100.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">Rn</text>
+<polyline points="320.0,70.0 340.0,70.0 340.0,170.0 190.0,170.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="170.0" y1="170.0" x2="176.5" y2="170.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="183.5" y1="170.0" x2="190.0" y2="170.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="176.5" y1="158.0" x2="176.5" y2="182.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="183.5" y1="164.0" x2="183.5" y2="176.0" stroke="#1A202C" stroke-width="4"/>
+<text x="170.9" y="156.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="middle">+</text>
+<text x="189.1" y="156.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="middle">−</text>
+<polyline points="170.0,170.0 20.0,170.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="180.0" y="202.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">U</text>
+<polygon points="20.0,118.0 24.4,126.0 15.6,126.0" fill="#1A202C"/>
+<text x="32.0" y="130.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="start">I</text>
+</svg>

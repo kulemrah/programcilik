@@ -1,0 +1,92 @@
+{
+  "id": "b2r-giris",
+  "baslik": "Bu Rehber Nasıl Kullanılır",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "VM (Sanal Makine)",
+      "izah": "Fiziksel bilgisayar içinde çalışan, bağımsız bir bilgisayar simülasyonu",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "Hypervisor",
+      "izah": "VM oluşturup yöneten yazılım (VirtualBox, UTM gibi)",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "Partition",
+      "izah": "Bir diskin ayrılmış bölümü",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "Mount point",
+      "izah": "Bir partition'ın dizin ağacında göründüğü yer (/, /boot, /home gibi)",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "sudo",
+      "izah": "Yetkili komutları geçici olarak, iz bırakarak çalıştırma aracı",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "Firewall",
+      "izah": "Ağ trafiğini kurallara göre süzen güvenlik katmanı",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "misafir eklentileri",
+      "izah": "VirtualBox Guest Additions: pano paylaşımı ve ekran uyumu getiren ek paket. Grafik bileşen kurabildiği için bu projede tavsiye edilmez; pano ihtiyacını SSH ile çöz.",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "VT-x",
+      "izah": "İşlemcinin donanım sanallaştırma desteği (AMD tarafında AMD-V). BIOS/UEFI'de kapalıysa 64 bit VM ya hiç açılmaz ya da çok yavaş çalışır.",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "UEFI",
+      "izah": "Modern açılış yazılımı; BIOS'un yerini almıştır. Donanım sanallaştırma desteği ve açılış sırası buradan ayarlanır.",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "BIOS",
+      "izah": "Bilgisayarın açılış yazılımı. VT-x/AMD-V desteği burada açılır; kapalıysa sanal makine çalışmaz.",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "echo",
+      "izah": "Verilen metni ekrana ya da bir dosyaya yazan komut; betiklerde çıktı üretmek için kullanılır.",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "cat",
+      "izah": "Bir dosyanın içeriğini olduğu gibi ekrana basan komut.",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "man",
+      "izah": "Komutların resmî kılavuz sayfalarını açar (`man sudoers` gibi). İnternet olmadığında ilk başvurulacak yer.",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "DHCP",
+      "izah": "Ağdaki cihazlara IP adresini otomatik dağıtan servis; VM varsayılan olarak adresini böyle alır.",
+      "yer": "Hızlı Kavram Sözlüğü — okumaya başlamadan önce göz atın"
+    },
+    {
+      "terim": "subject",
+      "izah": "Projenin resmî yönerge belgesi; zorunlu şartların tamamı orada yazılıdır.",
+      "yer": "Projenin amacı ve değerlendirme mantığı"
+    },
+    {
+      "terim": "mandatory",
+      "izah": "Subject'in zorunlu kısmı. Bonus ancak bu kısım kusursuzsa değerlendirilir.",
+      "yer": "Projenin amacı ve değerlendirme mantığı"
+    },
+    {
+      "terim": "bonus",
+      "izah": "Subject'in isteğe bağlı kısmı (genişletilmiş partisyon şeması, WordPress, ek servis). Yalnızca zorunlu kısım kusursuzsa değerlendirilir; bu projede yapılmıyor.",
+      "yer": "Projenin amacı ve değerlendirme mantığı"
+    }
+  ]
+}

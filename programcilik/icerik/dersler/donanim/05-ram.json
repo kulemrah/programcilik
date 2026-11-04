@@ -1,0 +1,258 @@
+{
+  "id": "dn-ram",
+  "baslik": "RAM Bellekler",
+  "kaynak": "donanim_ders_notlari.pptx, slayt 28–35",
+  "kavramlar": [
+    {
+      "terim": "RAM",
+      "izah": "Random Access Memory (Rastgele Erişimli Bellek). O an çalışan programların bilgilerinin saklandığı geçici bellek; bilgisayar kapanınca bilgiler silinir.",
+      "yer": "RAM nedir"
+    },
+    {
+      "terim": "DDR-SDRAM",
+      "izah": "SDRAM'in sunduğu bant genişliğinin iki katını sunan bellek; 2,5 V ile çalışır.",
+      "yer": "Üzerindeki yongalara göre RAM bellekler"
+    },
+    {
+      "terim": "Pariteli RAM",
+      "izah": "Fazladan bir yonga ikili sayılar üzerinde hesap yapar; toplam yanlış gelirse verinin yeniden gönderilip hesaplanmasını sağlar.",
+      "yer": "Özelliklerine göre RAM bellekler"
+    },
+    {
+      "terim": "Hata düzeltmeli RAM",
+      "izah": "Yanlış bilgiyi anladığında hatanın hangi 0 ya da 1'de olduğunu bulup düzeltir.",
+      "yer": "Özelliklerine göre RAM bellekler"
+    },
+    {
+      "terim": "SPD'li RAM",
+      "izah": "Bellekteki yongayı sorgulayıp hız ve özelliklerini öğrenen; anakart desteklerse komşu RAM'lerle arabuluculuk yapan bellek.",
+      "yer": "Özelliklerine göre RAM bellekler"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "dn-ram.s1",
+      "tip": "secme",
+      "yer": "RAM nedir",
+      "soru": "Hocaya göre **RAM** nedir?",
+      "secenekler": [
+        "Çalışan programların bilgilerini geçici olarak saklayan bellek",
+        "Bilgileri kalıcı olarak saklayan, yalnızca okunan bellek",
+        "Bilgileri uzun süre saklamak için kullanılan sabit disk",
+        "Donanımlar arasındaki veri akışını denetleyen yongalar"
+      ],
+      "dogru": 0,
+      "izah": "RAM, o an çalışan programların bilgilerini saklayan geçici bellektir. Kalıcı ve yalnızca okunan bellek ROM'dur; uzun süreli saklama HDD'dir; veri akışını denetleyen yonga setidir."
+    },
+    {
+      "id": "dn-ram.s2",
+      "tip": "dy",
+      "yer": "RAM nedir",
+      "ifade": "Bilgisayar kapatıldığında RAM'deki bilgiler silinir.",
+      "dogru": true,
+      "izah": "RAM geçici bellektir; bilgisayar kapatılınca bilgiler silinir. Uzun süre saklamak için HDD'ye kaydedilir."
+    },
+    {
+      "id": "dn-ram.s3",
+      "tip": "esles",
+      "yer": "Boyutuna göre RAM bellekler",
+      "soru": "Boyutuna göre RAM çeşitlerini hocanın açıklamalarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "30 pinli SIMM",
+          "Eski bilgisayarlarda kullanılır"
+        ],
+        [
+          "72 pinli SIMM",
+          "Pentium II'lerle birlikte kullanımdan kalktı"
+        ],
+        [
+          "168 pinli DIMM",
+          "Pentium III anakartlarda kullanılır"
+        ],
+        [
+          "184 pinli R-DIMM",
+          "Pentium IV'te DDR-RAM ve RD-RAM'de kullanılır"
+        ]
+      ],
+      "izah": "Hocanın boyutuna göre sınıflaması pin sayısına dayanır: 30 ve 72 pinli SIMM, 168 pinli DIMM, 184 pinli R-DIMM."
+    },
+    {
+      "id": "dn-ram.s4",
+      "tip": "secme",
+      "yer": "Üzerindeki yongalara göre RAM bellekler",
+      "soru": "SDRAM'in sunduğu bant genişliğinin **iki katını** sunan bellek hangisidir?",
+      "secenekler": [
+        "DDR-SDRAM",
+        "EDO-RAM",
+        "Standart RAM",
+        "72 pinli SIMM"
+      ],
+      "dogru": 0,
+      "izah": "Hoca: DDR-SDRAM, SDRAM'in sunduğu bant genişliğinin iki katını sunar."
+    },
+    {
+      "id": "dn-ram.s5",
+      "tip": "hesap",
+      "yer": "DDR2 SDRAM",
+      "soru": "Hocaya göre DDR2 belleklerin hızı en çok kaç MHz'e çıkar?",
+      "cevap": 1066,
+      "birim": "MHz",
+      "izah": "Hoca: DDR2'nin hızları 400 MHz ile 1066 MHz arasında değişir."
+    },
+    {
+      "id": "dn-ram.s6",
+      "tip": "esles",
+      "yer": "DDR2, DDR3 ve DDR4",
+      "soru": "Bellek kuşaklarını çalıştıkları gerilimle eşleştirin.",
+      "ciftler": [
+        [
+          "DDR",
+          "2,5 V"
+        ],
+        [
+          "DDR2",
+          "1,8 V"
+        ],
+        [
+          "DDR3",
+          "1,5 V"
+        ]
+      ],
+      "izah": "Gerilim kuşaktan kuşağa düşer: DDR 2,5 V, DDR2 1,8 V, DDR3 1,5 V. (Slaytta \"akım çeker\" yazıyor; volt gerilimin birimidir.)"
+    },
+    {
+      "id": "dn-ram.s7",
+      "tip": "dy",
+      "yer": "DDR3 SDRAM",
+      "ifade": "DDR3 SDRAM, DDR2 SDRAM'in gelişmiş hâlidir.",
+      "dogru": true,
+      "izah": "Hoca: SDRAM ailesinden gelen DDR3, DDR2'nin gelişmiş hâlidir."
+    },
+    {
+      "id": "dn-ram.s8",
+      "tip": "secme",
+      "yer": "DDR4 SDRAM",
+      "soru": "Hocaya göre DDR4'ün bekleme modunda yaklaşık **%45** güç tasarrufu sağlayan özelliği hangisidir?",
+      "secenekler": [
+        "Deep power-down",
+        "Overclock",
+        "SPD",
+        "Parite denetimi"
+      ],
+      "dogru": 0,
+      "izah": "Deep power-down desteği sayesinde DDR4 kullanan cihazlar bekleme modunda yaklaşık %45 güç tasarrufu sağlar. Overclock hız aşırtmadır."
+    },
+    {
+      "id": "dn-ram.s9",
+      "tip": "hesap",
+      "yer": "DDR4 SDRAM",
+      "soru": "Hocaya göre DDR4 bellekler hız aşırtma (overclock) yapılmadan en çok kaç MHz'e ulaşabilir?",
+      "cevap": 3200,
+      "birim": "MHz",
+      "izah": "DDR4 bellekler 3200 MHz'e kadar ulaşabilir; overclock yapılırsa 4266 MHz'e kadar çıkabilir."
+    },
+    {
+      "id": "dn-ram.s10",
+      "tip": "dy",
+      "yer": "Özelliklerine göre RAM bellekler",
+      "ifade": "Pariteli RAM, hatalı biti bulup kendisi düzeltir.",
+      "dogru": false,
+      "izah": "Hatalı biti bulup düzelten **hata düzeltmeli RAM**'dir. Pariteli RAM hatayı fark edince verinin yeniden gönderilip hesaplanmasını sağlar."
+    },
+    {
+      "id": "dn-ram.s11",
+      "tip": "esles",
+      "yer": "Özelliklerine göre RAM bellekler",
+      "soru": "Özelliklerine göre RAM çeşitlerini hocanın açıklamalarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Pariteli RAM",
+          "Toplam yanlış gelirse verinin yeniden gönderilmesini sağlar"
+        ],
+        [
+          "Hata düzeltmeli RAM",
+          "Hatanın hangi 0 ya da 1'de olduğunu bulup düzeltir"
+        ],
+        [
+          "SPD'li RAM",
+          "Yonganın hız ve özelliklerini sorgulayıp öğrenir"
+        ]
+      ],
+      "izah": "Pariteli RAM hatayı fark edip yeniden gönderir; hata düzeltmeli RAM hatayı kendisi düzeltir; SPD'li RAM yongayı sorgulayıp özelliklerini öğrenir."
+    },
+    {
+      "id": "dn-ram.s12",
+      "tip": "dizme",
+      "yer": "DDR2, DDR3 ve DDR4",
+      "soru": "DDR bellek kuşaklarını eskiden yeniye dizin.",
+      "parcalar": [
+        "DDR",
+        "DDR2",
+        "DDR3",
+        "DDR4"
+      ],
+      "izah": "DDR2 DDR'ın ileri kuşağıdır; DDR3 DDR2'nin gelişmiş hâlidir; DDR4 en yenisidir."
+    },
+    {
+      "id": "dn-ram.s13",
+      "tip": "dy",
+      "yer": "İlk RAM",
+      "ifade": "Manyetik çekirdek hafızada güç kaynağı kapatılsa bile bilgiler hafızada tutuluyordu.",
+      "dogru": true,
+      "izah": "Hoca: bugünün aksine güç kaynağı kapatılsa bile bilgiler hafızada tutuluyordu."
+    },
+    {
+      "id": "dn-ram.s14",
+      "tip": "dy",
+      "yer": "DDR2, DDR3 ve DDR4",
+      "ifade": "DDR2, DDR'a göre daha yüksek gerilimle çalışır.",
+      "dogru": false,
+      "izah": "Tersine: DDR2 1,8 V ile, DDR ise 2,5 V ile çalışır; gerilim yeni kuşaklarda düşer."
+    },
+    {
+      "id": "dn-ram.s15",
+      "tip": "klasik",
+      "yer": "Boyutuna göre RAM bellekler",
+      "soru": "Hocanın RAM'leri sınıflandırdığı üç ölçütü yazın ve her birine bir örnek verin.",
+      "cevap": "Boyutuna göre: ör. 168 pinli DIMM.\nÜzerindeki yongalara göre: ör. SDRAM, DDR-SDRAM.\nÖzelliklerine göre: ör. pariteli RAM, hata düzeltmeli RAM.",
+      "anahtarlar": [
+        "boyutuna",
+        "yongalara",
+        "özelliklerine"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "dn-ram.k1",
+      "yer": "RAM nedir",
+      "on": "RAM nedir? Bilgisayar kapanınca ne olur?",
+      "arka": "Random Access Memory (Rastgele Erişimli Bellek): çalışan programların bilgilerinin saklandığı geçici bellek. Bilgisayar kapanınca bilgiler silinir; kalıcı saklamak için HDD'ye kaydedilir."
+    },
+    {
+      "id": "dn-ram.k2",
+      "yer": "Boyutuna göre RAM bellekler",
+      "on": "Hoca RAM'leri hangi ölçütlere göre sınıflar?",
+      "arka": "1. Boyutuna göre (30/72 pinli SIMM, 168 pinli DIMM, 184 pinli R-DIMM)\n2. Üzerindeki yongalara göre (Standart RAM, EDO-RAM, SDRAM, DDR-SDRAM; DDR2, DDR3, DDR4)\n3. Özelliklerine göre (pariteli, hata düzeltmeli, SPD'li)"
+    },
+    {
+      "id": "dn-ram.k3",
+      "yer": "DDR2, DDR3 ve DDR4",
+      "on": "DDR, DDR2, DDR3 ve DDR4'ü karşılaştırın.",
+      "arka": "- DDR: SDRAM'in iki katı bant genişliği, 2,5 V\n- DDR2: DDR'ın ileri kuşağı, 400–1066 MHz, hızı DDR'ın iki katı, 1,8 V\n- DDR3: DDR2'nin gelişmiş hâli, 1,5 V\n- DDR4: Deep power-down (beklemede ~%45 tasarruf), 3200 MHz'e kadar, overclock ile 4266 MHz"
+    },
+    {
+      "id": "dn-ram.k4",
+      "yer": "Özelliklerine göre RAM bellekler",
+      "on": "Pariteli RAM ile hata düzeltmeli RAM'in farkı nedir?",
+      "arka": "Hocaya göre:\nPariteli RAM: fazladan bir yonga hesap yapar; toplam yanlışsa veriyi geri gönderip yeniden hesaplatır.\nHata düzeltmeli RAM: hatanın hangi 0 ya da 1'de olduğunu bulup kendisi düzeltir."
+    },
+    {
+      "id": "dn-ram.k5",
+      "yer": "İlk RAM",
+      "on": "İlk RAM hangisidir, nasıl çalışıyordu?",
+      "arka": "Manyetik çekirdek hafıza (hocaya göre 1951). Kablolarla sarılı küçük manyetik seramik halkalardaki kutuplaşmayla bilgi kaydederdi; güç kesilse de bilgi kalırdı. Silikon RAM'lerin geldiği 1970'lere kadar kullanıldı."
+    }
+  ]
+}

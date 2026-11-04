@@ -12,7 +12,7 @@ Sayaçlar, belirli bir işlemin **kaç kez tekrarlandığını** ya da bir koşu
 2. **Koşul kontrolü:** Belirli bir koşul sağlandığında bir işlemi gerçekleştirmek için sayaç kullanılabilir. Örneğin, bir olayın kaç kez gerçekleştiğini saymak.
 3. **Sıralama ve gruplama:** Veri yapılarında elemanları saymak veya gruplamak için sayaçlar kullanılabilir.
 
-> **Ek:** Döngü, bir ya da birkaç adımın bir koşul sağlandıkça tekrar tekrar yapılmasıdır. For döngüsü C++'ta bir sayaçla kurulan döngüdür (bu konudaki "C++ karşılığı: for döngüsü (Ek)" başlığı). İndeks, dizideki bir elemanın sıra numarasıdır.
+> **Ek:** Döngü, bir ya da birkaç adımın bir koşul sağlandıkça tekrar tekrar yapılmasıdır. İndeks, dizideki bir elemanın sıra numarasıdır.
 
 ### Sayaç mantığı: sayaçsız çözüm
 
@@ -56,7 +56,7 @@ Hocanın açıklamaları:
 
 ![Ekrana 5 defa merhaba: her turda SAYAC ve koşulun değeri (Ek: izleme tablosu)](gorseller/sayac-merhaba.svg)
 
-> **Ek:** Merhaba, SAYAC 0, 1, 2, 3 ve 4 iken yazılır: **5 kez**. Beşinci yazıştan sonra SAYAC 5 olur, `5<5` yanlış döner ve döngü biter; algoritma bittiğinde SAYAC'ın değeri **5**'tir. Koşul işlemden **sonra** yoklandığı için 3. ve 4. adımlar en az bir kez yapılır.
+> **Ek:** Merhaba, SAYAC 0, 1, 2, 3 ve 4 iken yazılır: **5 kez**. Beşinci yazıştan sonra SAYAC 5 olur, `5<5` yanlış döner ve döngü biter; algoritma bittiğinde SAYAC'ın değeri **5**'tir. Koşul işlemden **sonra** yoklandığı için 3. ve 4. adımlar en az bir kez yapılır. Bu örneğin hocanın akış diyagramı: "Akış Diyagramları (Akış Çizgeleri)" konusundaki "Örnek: ekrana 5 defa merhaba" başlığı.
 
 ### Soru: girilen 10 sayıyı ekrana yazma
 
@@ -88,7 +88,7 @@ Hocanın çözümü:
 5. Eğer `Sayac<=100` ise 3. Adıma dön
 6. Bitir.
 
-> **Dikkat:** Burada sayaç yalnızca tur saymaz, **ekrana yazılan sayının kendisidir**: 3. adım sayacın değerini yazar. Bu yüzden ilk değer 1'dir ve koşul `<=` ile kurulur ki 100 de yazılsın. Ekrana 1, 2, ..., 100 yazılır (100 sayı); algoritma bittiğinde Sayac 101'dir (C++'ta denendi).
+> **Dikkat:** Burada sayaç yalnızca tur saymaz, **ekrana yazılan sayının kendisidir**: 3. adım sayacın değerini yazar. Bu yüzden ilk değer 1'dir ve koşul `<=` ile kurulur ki 100 de yazılsın. Ekrana 1, 2, ..., 100 yazılır (100 sayı); algoritma bittiğinde Sayac 101'dir.
 
 #### Sayacın ilk değeri ve koşul
 
@@ -103,21 +103,3 @@ Hocanın örneklerinde sayacın ilk değeri, artışı, koşulu ve döngünün k
 > **Ek:** Döngünün kaç kez döneceğini sayacın ilk değeri, artış miktarı ve koşul birlikte belirler.
 
 > **Dikkat:** `<` ile `<=` arasındaki fark bir tur demektir. 5 defa merhaba örneğinde koşul `SAYAC<=5` yazılsaydı Merhaba **6 kez** yazılırdı (SAYAC 0, 1, 2, 3, 4 ve 5 iken). 1'den 100'e örneğinde koşul `Sayac<100` yazılsaydı 100 yazılmazdı. Aynı sınır sayısıyla (ör. 5) ilk değer 0 iken `<`, ilk değer 1 iken `<=` kullanılırsa döngü aynı sayıda (5 kez) döner.
-
-#### C++ karşılığı: for döngüsü (Ek)
-
-Hoca sayaçların for döngülerinde sıklıkla kullanıldığını söylüyor. Hocanın "5 defa merhaba" çözümü C++'ta for döngüsüyle şöyle yazılabilir; g++ ile denendi, Merhaba 5 kez yazılır.
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main() {
-    for (int SAYAC = 0; SAYAC < 5; SAYAC = SAYAC + 1) {
-        cout << "Merhaba" << endl;
-    }
-    return 0;
-}
-```
-
-> **Ek:** For satırının üç parçası hocanın adımlarına karşılık gelir: `int SAYAC = 0` ilk değer (2. adım), `SAYAC < 5` koşul (5. adım), `SAYAC = SAYAC + 1` artırma (4. adım; kısaca `SAYAC++` da yazılır). Bir fark vardır: for döngüsü koşulu işlemden **önce** yoklar, hocanın algoritması işlemden **sonra** yoklar. Bu örnekte ikisi de 5 kez yazar; koşul baştan yanlış olsaydı for döngüsü hiç dönmezdi.

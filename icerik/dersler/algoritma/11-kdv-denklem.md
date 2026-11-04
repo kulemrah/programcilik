@@ -23,26 +23,6 @@ Hocanın çözümü:
 
 > **Dikkat:** Soru metnindeki **%18** "yüzde on sekiz" demektir; algoritmadaki `%` işleci (mod alma, bölümden kalan) ile karıştırmayın. Hoca yüzdeyi `*18)/100` ile hesaplıyor; `fiyat%18` yazılsaydı fiyatın 18'e bölümünden kalan bulunurdu.
 
-#### C++ karşılığı: KDV (Ek)
-
-Hocanın çözümü C++'ta şöyle yazılabilir. g++ ile derlenip denendi: 100 girilince 118, 250 girilince 295, 105 girilince 123.9 yazar.
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main() {
-    double fiyat, yeni_fiyat;
-    cout << "fiyatı giriniz:";                 // 2.Yaz
-    cin >> fiyat;                              // 3.Oku fiyat
-    yeni_fiyat = fiyat + ((fiyat * 18) / 100); // 4.
-    cout << yeni_fiyat;                        // 5.yaz yeni_fiyat
-    return 0;                                  // 6.bitir.
-}
-```
-
-> **Ek:** Değişkenler `double` (ondalıklı) tanımlandı. `int` (tam sayı) tanımlansaydı C++ bölmede küsuratı atar: 105 girilince 123.9 yerine 123 çıkar (g++ ile denendi).
-
 ### Örnek 2: ikinci dereceden denklemin kökleri
 
 Hocanın sorusu: **Katsayıları verilen 2. dereceden bir denklemin köklerini hesaplayan programın algoritmasını yazınız ve akış diyagramını çiziniz.**
@@ -63,8 +43,6 @@ Hocanın çözümü (hocanın yazdığı gibi):
 12. Bitir.
 
 > **Dikkat:** Hocanın belgesinde 9. adımın ikinci satırı `X2` diye büyük harfle yazılmış, aynı adımın sonunda `Yaz x1, x2` küçük harfle geçiyor; burada `x2` yazıldı.
-
-> **Ek:** C++ gibi dillerde büyük ve küçük harf farklı ad sayılır (`X2` ile `x2` iki ayrı değişkendir); bu yüzden bir değişkenin adı algoritmanın her yerinde aynı yazılır.
 
 #### Delta ve köklerin durumu
 
@@ -88,56 +66,18 @@ Hocanın 9. adımda yazdığı `delta^1/2` ile amaçlanan, delta'nın **karekök
 
 > **Dikkat:** Düzeltilmiş yazım: `x1=((-b)-(delta^(1/2)))/(2*a)`, `x2=((-b)+(delta^(1/2)))/(2*a)`; delta sıfırken `x1=-b/(2*a)`, `x2=-b/(2*a)`.
 
-> **Dikkat:** Hocanın yazdığı hâliyle a=1, b=-5, c=6 (kökleri 2 ve 3) için x1 2.25, x2 2.75 çıkar; düzeltilmiş yazımla 2 ve 3 çıkar. a=2, b=4, c=2 (delta sıfır, kök -1) için hocanın yazımı -4, düzeltilmiş yazım -1 verir. İki yazım da C++'ta denendi. Notta hocanın çözümü olduğu gibi korundu.
-
-> **Ek:** Köşeli parantez `[ ]` hocanın çözümünde işlem parantezi olarak kullanılmış. C++'ta işlem parantezi yalnızca normal parantezdir `( )`; köşeli parantez orada başka bir iş görür.
-
-> **Ek:** C++'ta `^` üs alma değildir ("Temel Öğeler, Aritmetik İşlemler ve Atama" konusundaki "Aritmetik işlemler" başlığı); karekök `sqrt(delta)`, kare `pow(b,2)` ya da `b*b` diye yazılır (`<cmath>` kütüphanesi).
+> **Dikkat:** Hocanın yazdığı hâliyle a=1, b=-5, c=6 (kökleri 2 ve 3) için x1 2.25, x2 2.75 çıkar; düzeltilmiş yazımla 2 ve 3 çıkar. a=2, b=4, c=2 (delta sıfır, kök -1) için hocanın yazımı -4, düzeltilmiş yazım -1 verir. Notta hocanın çözümü olduğu gibi korundu.
 
 #### Adım 10 ve 11: Değilse hangi Eğer'e bağlı
 
 Hocanın çözümünde 9. ve 10. adım **ayrı iki Eğer** olarak, 11. adım da tek bir "Değilse" olarak yazılmıştır.
 
-> **Dikkat:** Ayrı iki Eğer'den sonra gelen "Değilse" yalnızca 10. adımdaki Eğer'e (`delta==0`) bağlanır. Böyle okunursa delta sıfırdan büyükken önce 9. adımda kökler yazılır, ardından 10. adımdaki `delta==0` koşulu yanlış döndüğü için 11. adımdaki "Değilse" de çalışır ve ekrana ayrıca "reel kök yoktur" yazılır (C++'ta a=1, b=-5, c=6 ile, kök formülü düzeltilmiş hâliyle denendi: önce 2 ve 3, sonra "reel kök yoktur" çıkar). Bu, "Algoritma İfade Şekilleri: Metin ve Sözde Kod" konusundaki "Örnek: suyun durumu" başlığında anlatılan durumun aynısıdır.
+> **Dikkat:** Ayrı iki Eğer'den sonra gelen "Değilse" yalnızca 10. adımdaki Eğer'e (`delta==0`) bağlanır. Böyle okunursa delta sıfırdan büyükken önce 9. adımda kökler yazılır, ardından 10. adımdaki `delta==0` koşulu yanlış döndüğü için 11. adımdaki "Değilse" de çalışır ve ekrana ayrıca "reel kök yoktur" yazılır (a=1, b=-5, c=6 için, kök formülü düzeltilmiş hâliyle: önce 2 ve 3, sonra "reel kök yoktur" yazılır). Bu, "Algoritma İfade Şekilleri: Metin ve Sözde Kod" konusundaki "Örnek: suyun durumu" başlığında anlatılan durumun aynısıdır.
 
-> **Ek:** Düzeltmenin iki yolu vardır ("Karar Yapıları" konusundaki "DEĞİL İSE kısmında koşul kullanılmaz" başlığının Ek kutusu). Birincisi 10. adımı **"Değilse eğer"** diye 9. adıma bağlamaktır: `Eğer (delta>0) ise ...`, `Değilse eğer (delta==0) ise ...`, `Değilse yaz "reel kök yoktur"`. İkincisi her durumu ayrı bir Eğer ile, koşulu tam vererek yazmaktır: 11. adım `Eğer (delta<0) ise yaz "reel kök yoktur"` olur. Hocanın hangisini beklediği kaynakta yazmıyor; şekildeki akış şeması birinci yolla çizildi.
+> **Ek:** Düzeltmenin iki yolu vardır ("Karar Yapıları" konusundaki "DEĞİL İSE kısmında koşul kullanılmaz" başlığının Ek kutusu). Birincisi 10. adımı **"Değilse eğer"** diye 9. adıma bağlamaktır: `Eğer (delta>0) ise ...`, `Değilse eğer (delta==0) ise ...`, `Değilse yaz "reel kök yoktur"`. İkincisi her durumu ayrı bir Eğer ile, koşulu tam vererek yazmaktır: 11. adım `Eğer (delta<0) ise yaz "reel kök yoktur"` olur. 6. haftada hoca benzer üç durumlu bir örnekte (sayının sıfıra göre durumu) ilk Eğer'in sonuna "adıma git" yazdı ve akış diyagramında ikinci kararı birinci kararın Hayır çıkışına bağladı ("Akış Diyagramları (Akış Çizgeleri)" konusundaki "Adıma git ve art arda kararlar" başlığı); bu, "değilse eğer" yoluyla aynı sonucu verir. Şekildeki akış diyagramı da böyle çizildi.
 
 #### Akış diyagramı: denklemin kökleri (Ek)
 
-Hoca bu soruda akış diyagramının çizilmesini de istiyor; ama akış diyagramı hocanın belgesinde çizilmemiş ve sembolleri slaytlarda henüz anlatılmadı. Aşağıdaki şekiller ISO 5807'deki temel sembollerle çizildi. Akış diyagramına akış şeması da denir.
+Hoca bu soruda akış diyagramının çizilmesini de istiyor; ama akış diyagramı hocanın belgesinde çizilmemiş. Aşağıdaki diyagram hocanın 6. haftada gösterdiği sembollerle çizildi ("Akış Diyagramları (Akış Çizgeleri)" konusundaki "Akış diyagramı sembolleri" başlığı): BAŞLA ve BİTİR elips, OKU klavyeden giriş sembolü (üst kenarı eğik dörtgen), YAZ paralelkenar, işlemler dikdörtgen, kararlar eşkenar dörtgen; karar çıkışları Evet ve Hayır. Akış diyagramına akış şeması da denir.
 
-![Akış şemasının temel sembolleri (Ek: slaytlarda sembol yok)](gorseller/akis-semboller.svg)
-
-> **Ek:** ISO 5807'de giriş ve çıkışın ikisi de paralelkenarla gösterilir. Bazı kaynaklar ekrana yazmak için ayrı bir sembol (ekran ya da belge şekli) kullanır; hocanın derste gösterdiği semboller farklıysa hocanınkileri kullanın.
-
-![İkinci dereceden denklemin akış şeması, düzeltilmiş formül ve "değilse eğer" ile (Ek: hocanın belgesinde akış şeması yok; mesajı yazan Yaz adımları gösterilmedi)](gorseller/akis-denklem.svg)
-
-#### C++ karşılığı: denklemin kökleri (Ek)
-
-Düzeltilmiş çözümün C++ karşılığı. g++ ile derlenip denendi: 1 -5 6 girilince 2 3, 2 4 2 girilince -1 -1, 1 2 5 girilince "reel kök yoktur" yazar.
-
-```cpp
-#include <iostream>
-#include <cmath>
-using namespace std;
-
-int main() {
-    double a, b, c, x1, x2, delta;
-    cout << "x^2 li terimin katsayısını giriniz:"; cin >> a;
-    cout << "x li terimin katsayısını giriniz:";   cin >> b;
-    cout << "sabit terimi giriniz:";               cin >> c;
-    delta = pow(b, 2) - (4 * a * c);
-    if (delta > 0) {
-        x1 = ((-b) - sqrt(delta)) / (2 * a);
-        x2 = ((-b) + sqrt(delta)) / (2 * a);
-        cout << x1 << " " << x2;
-    } else if (delta == 0) {
-        x1 = -b / (2 * a);
-        x2 = -b / (2 * a);
-        cout << x1 << " " << x2;
-    } else {
-        cout << "reel kök yoktur";
-    }
-    return 0;
-}
-```
+![İkinci dereceden denklemin akış şeması, düzeltilmiş formül ve "değilse eğer" ile (Ek: hocanın belgesinde akış diyagramı yok; mesajı yazan Yaz adımları gösterilmedi; a, b ve c'yi okuyan üç adım, hocanın Örnek 1 diyagramındaki gibi tek OKU sembolünde)](gorseller/akis-denklem.svg)

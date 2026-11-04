@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="336" viewBox="0 0 400 336" role="img">
+<title>Ham tablodan 1NF, 2NF ve 3NF'ye</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="14" y="12" width="74" height="54" rx="10" fill="#718096"/>
+<text x="51.0" y="45.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#FFFFFF" font-weight="600" text-anchor="middle">Ham tablo</text>
+<line x1="51.0" y1="68.0" x2="51.0" y2="92.0" stroke="#2B6CB0" stroke-width="2"/>
+<polygon points="51.0,92.0 47.5,83.7 54.5,83.7" fill="#2B6CB0"/>
+<rect x="14" y="94" width="74" height="54" rx="10" fill="#2B6CB0"/>
+<text x="51.0" y="127.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">1NF</text>
+<text x="102.0" y="116.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="start">Tekrarlanan sütunlar ve tek alanda</text>
+<text x="102.0" y="133.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="start">birden çok bilgi yeni tabloya</text>
+<line x1="51.0" y1="150.0" x2="51.0" y2="174.0" stroke="#6B46C1" stroke-width="2"/>
+<polygon points="51.0,174.0 47.5,165.7 54.5,165.7" fill="#6B46C1"/>
+<rect x="14" y="176" width="74" height="54" rx="10" fill="#6B46C1"/>
+<text x="51.0" y="209.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">2NF</text>
+<text x="102.0" y="198.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="start">Anahtarın yalnızca bir parçasına</text>
+<text x="102.0" y="215.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="start">bağlı sütunlar ayrı tabloya</text>
+<line x1="51.0" y1="232.0" x2="51.0" y2="256.0" stroke="#2F855A" stroke-width="2"/>
+<polygon points="51.0,256.0 47.5,247.7 54.5,247.7" fill="#2F855A"/>
+<rect x="14" y="258" width="74" height="54" rx="10" fill="#2F855A"/>
+<text x="51.0" y="291.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#FFFFFF" font-weight="600" text-anchor="middle">3NF</text>
+<text x="102.0" y="280.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="start">Anahtar olmayan bir sütuna bağlı</text>
+<text x="102.0" y="297.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="start">sütunlar ayrı tabloya</text>
+</svg>

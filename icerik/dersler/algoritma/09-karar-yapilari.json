@@ -238,7 +238,7 @@
       "id": "alg-karar.k2",
       "yer": "Kullanım şekli: EĞER İSE ve DEĞİL İSE",
       "on": "Karar yapısının kullanım şeklini anlatın.",
-      "arka": "EĞER (koşul) İSE: koşuldan dönen değer doğru ise burada belirtilen işlemler gerçekleştirilir.\nDEĞİL İSE: koşuldan dönen değer yanlış ise burada belirtilen işlemler gerçekleştirilir.\nEk: C++'ta if (koşul) ... else ..."
+      "arka": "EĞER (koşul) İSE: koşuldan dönen değer doğru ise burada belirtilen işlemler gerçekleştirilir.\nDEĞİL İSE: koşuldan dönen değer yanlış ise burada belirtilen işlemler gerçekleştirilir."
     },
     {
       "id": "alg-karar.k3",
@@ -250,7 +250,7 @@
       "id": "alg-karar.k4",
       "yer": "DEĞİL İSE kısmında koşul kullanılmaz",
       "on": "DEĞİL İSE kısmında koşul yazılır mı? Üç durum varsa ne yapılır?",
-      "arka": "Hocaya göre DEĞİL İSE kısmında başka bir koşul ifadesi kullanılmaz: EĞER kısmındaki koşul yanlışsa başka bir koşula bakılmadan gerçekleştirilir.\nEk: üç ya da daha çok durumda ya art arda ayrı EĞER yapıları (aralık koşulda tam verilerek) ya da DEĞİL İSE kısmının işlemi olarak yeni bir EĞER yapısı (değilse eğer; C++'ta else if) yazılır; hocanın hangisini beklediği slaytta yok."
+      "arka": "Hocaya göre DEĞİL İSE kısmında başka bir koşul ifadesi kullanılmaz: EĞER kısmındaki koşul yanlışsa başka bir koşula bakılmadan gerçekleştirilir.\nEk: üç ya da daha çok durumda ya art arda ayrı EĞER yapıları (aralık koşulda tam verilerek) ya da DEĞİL İSE kısmının işlemi olarak yeni bir EĞER yapısı (değilse eğer) yazılır. 6. haftada hoca sıfıra göre durum örneğinde ilk EĞER'in sonuna \"5.adıma git\" yazdı; akış diyagramında ikinci karar birinci kararın Hayır çıkışına bağlıdır."
     },
     {
       "id": "alg-karar.k5",

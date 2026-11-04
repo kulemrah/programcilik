@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="248" viewBox="0 0 400 248" role="img">
+<title>Gereksinim belirlenmesi, kavramsal model, mantıksal model, fiziksel model</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="14" y="14" width="112" height="46" rx="8" fill="#C53030"/>
+<text x="70.0" y="34.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">Gereksinim</text>
+<text x="70.0" y="51.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">belirlenmesi</text>
+<line x1="54.0" y1="60.0" x2="54.0" y2="84.0" stroke="#C53030" stroke-width="2"/>
+<polygon points="54.0,84.0 50.5,75.7 57.5,75.7" fill="#C53030"/>
+<line x1="54.0" y1="84.0" x2="100.0" y2="84.0" stroke="#C53030" stroke-width="2"/>
+<polygon points="100.0,84.0 91.7,87.5 91.7,80.5" fill="#C53030"/>
+<rect x="102" y="72" width="112" height="46" rx="8" fill="#6B46C1"/>
+<text x="158.0" y="92.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">Kavramsal</text>
+<text x="158.0" y="109.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">model</text>
+<line x1="142.0" y1="118.0" x2="142.0" y2="142.0" stroke="#6B46C1" stroke-width="2"/>
+<polygon points="142.0,142.0 138.5,133.7 145.5,133.7" fill="#6B46C1"/>
+<line x1="142.0" y1="142.0" x2="188.0" y2="142.0" stroke="#6B46C1" stroke-width="2"/>
+<polygon points="188.0,142.0 179.7,145.5 179.7,138.5" fill="#6B46C1"/>
+<rect x="190" y="130" width="112" height="46" rx="8" fill="#2C9C8F"/>
+<text x="246.0" y="150.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">Mantıksal</text>
+<text x="246.0" y="167.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">model</text>
+<line x1="230.0" y1="176.0" x2="230.0" y2="200.0" stroke="#2C9C8F" stroke-width="2"/>
+<polygon points="230.0,200.0 226.5,191.7 233.5,191.7" fill="#2C9C8F"/>
+<line x1="230.0" y1="200.0" x2="276.0" y2="200.0" stroke="#2C9C8F" stroke-width="2"/>
+<polygon points="276.0,200.0 267.7,203.5 267.7,196.5" fill="#2C9C8F"/>
+<rect x="278" y="188" width="112" height="46" rx="8" fill="#6E9E2D"/>
+<text x="334.0" y="208.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">Fiziksel</text>
+<text x="334.0" y="225.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle">model</text>
+</svg>

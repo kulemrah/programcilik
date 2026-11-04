@@ -2,6 +2,8 @@
 
 Her slaytın hangi konuya ve başlığa işlendiği. Tablolardaki K1–K5 kısaltmaları aşağıdaki kaynak numaralarıdır. Kapsama denetimi bu tabloyla yapılır: boş satır kalmaz. Bu klasör uygulamaya gitmez.
 
+**C++ kuralı (Hamza, 5. hafta):** Derste henüz C++'a girilmedi; notlarda, sorularda ve kartlarda C++ karşılığı ya da dile özgü (C++, C, Python) bilgi verilmez. Hocanın kendi slaytlarındaki C++ (dil seviyeleri, "Neden C++") olduğu gibi kalır. Aşağıdaki tablolarda geçen "C++'ta denendi" yalnızca doğrulama kaydıdır; notlarda geçmez.
+
 ## Kaynak 1: "ALGORİTMA VE PROGRAMLAMA TEMELLERİ" (hafta 1–2)
 
 Dosya: `1-2._hafta_algoritma_ve_programlama_temelleri_dersi_ders_slayt_.pdf`, 44 slayt. Öğr. Gör. Nilay Akyıl. Kapakta "2023/2024 Öğretim Yılı Güz Yarıyılı" yazar. Kaynakça yok. Slaytlar yalnızca metinden oluşur; şekil yok (yalnızca logo ve filigran). Bu dersin dili olarak C++ bildiriliyor (slayt 22).
@@ -142,6 +144,36 @@ Dosya: `bp_5_hafta.pdf`, 4 sayfa, Word belgesi (yazar bilgisi "laboratuvar"). Ka
 | 3 | Örnek 4 çözümü (3'er 3'er) | alg-sayac-ornekleri › Örnek 4: 5'ten 20'ye 3'er 3'er |
 | 3–4 | Örnek 5 çözümü (faktöriyel); "Örnek" sözcüğü 3. sayfada, numara ve soru 4. sayfada | alg-sayac-ornekleri › Örnek 5: faktöriyel |
 
+## Kaynak 6: "AKIŞ DİYAGRAMLARI (AKIŞ ÇİZGELERİ)" (hafta 6)
+
+Dosya: `algoritma_ve_programlama_temelleri_6__hafta_3.pdf`, 13 slayt. Öğr. Gör. Nilay Akyıl. Kapakta "2026/2027 Öğretim Yılı Güz Yarıyılı" ve "AVRUPA MESLEK YÜKSEKOKULU-GOSB MYO" yazar; PDF iç başlığında "2021/2022 Bahar Yarıyılı". Kaynakça yok. Slayt 3 sembol şekilleri (vektör), slayt 5–10 akış diyagramı resimleri (draw.io görünümünde). Slayt 5–10'daki örneklerin çoğu önceki haftalarda geçti; burada akış diyagramlarıyla birlikte veriliyor. Slayt 11–13 çözümsüz sorular; çözümler Kaynak 7'de.
+
+| Slayt | İçerik | Konu › Başlık |
+| --- | --- | --- |
+| 1 | Kapak: "Akış Diyagramları (Akış Çizgeleri)", hoca, iletişim | — |
+| 2 | Akış çizgesi tanımı; doğal dil herkesçe anlaşılamayabilir, şekillerin standart anlamı; her ifade için ayrı sembol; draw.io | alg-akis › Akış çizgeleri (diyagramları) |
+| 3 | 11 sembol ve anlamları: başla/bitir, klavyeden giriş, yazıcıdan çıkış, kart okuyucu, döngü, oklar, araç belirtmeden giriş/çıkış, hesaplama/atama, bağ, karar, disk | alg-akis › Akış diyagramı sembolleri; Başla ve bitir sembolü; Giriş ve çıkış sembolleri; İşlem, karar ve döngü sembolleri; Oklar ve bağ |
+| 4 | İzlenecek adımlar (7 madde): problemi anlama, algoritma, dil, kaynak kod, derleyici, çalıştırılabilir dosya, çalıştırma | alg-akis › İzlenecek adımlar |
+| 5 | Örnek: iki sayının toplamı, algoritma ve akış diyagramı | alg-akis › Örnek: iki sayının toplamı |
+| 6 | Örnek: sayının karesi (köşeli parantezli açıklamalarla), akış diyagramı | alg-akis › Örnek: sayının karesi |
+| 7 | Örnek: iki sayıdan büyük olanı, akış diyagramı (Hayır solda YAZ: B, Evet sağda YAZ: A) | alg-akis › Örnek: iki sayıdan büyük olanı |
+| 8 | Örnek: tek mi çift mi (A%2==0), akış diyagramı | alg-akis › Örnek: tek mi çift mi |
+| 9 | Örnek: sıfıra göre durum; 3. adımda "5.adıma git"; akış diyagramında art arda iki karar | alg-akis › Örnek: sayının sıfıra göre durumu; Adıma git ve art arda kararlar |
+| 10 | Örnek: ekrana 5 defa "merhaba", akış diyagramı (Evet çıkışı YAZ'a geri döner) | alg-akis › Örnek: ekrana 5 defa merhaba |
+| 11 | Örnek 1: vize %40, final %60, geçme notu 60; algoritma ve akış diyagramı istenir | alg-akis-ornekleri › Örnek 1: ders ortalaması ve geçme |
+| 12 | Örnek 2: üçgenin çeşidi; algoritma ve akış şeması istenir | alg-akis-ornekleri › Örnek 2: üçgenin çeşidi |
+| 13 | Örnek 3: N'nin faktöriyeli; algoritma ve akış şeması istenir | alg-akis-ornekleri › Örnek 3: faktöriyel |
+
+## Kaynak 7: 6. hafta çözümleri
+
+Dosya: `6_hafta_blp.pdf`, 3 sayfa, Word belgesi (yazar bilgisi "laboratuvar", Kaynak 5 ile aynı). Kaynak 6'daki üç sorunun çözümleri ve akış diyagramları (resim). Akış diyagramlarında Evet/Hayır yerine "E" ve "H" yazılmış; giriş-çıkış sembollerine "Yaz"/"Oku" sözcüğü yazılmamış, yalnızca mesaj ya da değişken var.
+
+| Sayfa | İçerik | Konu › Başlık |
+| --- | --- | --- |
+| 1 | Örnek 1 çözümü (9 adım) ve akış diyagramı | alg-akis-ornekleri › Örnek 1: ders ortalaması ve geçme; Örnek 1 akış diyagramı |
+| 2 | Örnek 2 çözümü (7 adım) ve akış diyagramı | alg-akis-ornekleri › Örnek 2: üçgenin çeşidi; Örnek 2 akış diyagramı; Ayrı Eğer'ler ve akış diyagramı |
+| 3 | Örnek 3 çözümü (9 adım) ve akış diyagramı | alg-akis-ornekleri › Örnek 3: faktöriyel; Örnek 3 akış diyagramı; Döngü ve ilk değerler |
+
 ## Kaynakta görülen sorunlar ve verilen karar
 
 | Yer | Sorun | Karar |
@@ -172,11 +204,11 @@ Dosya: `bp_5_hafta.pdf`, 4 sayfa, Word belgesi (yazar bilgisi "laboratuvar"). Ka
 | K2 slayt 3 | `PI=3,14`: ondalık ayırıcı virgül | Hocanın yazımı korundu; programlama dillerinde ondalık ayırıcının nokta olduğu "Dikkat" kutusunda |
 | K2 slayt 3 | `mesaj=‘merhaba’` kıvrık tırnakla | Düz tırnakla yazıldı |
 | K2 slayt 5 | Boşluk kuralının örneği "“ogrencino” değil “ogrenci_no”"; "ogrencino" boşluksuzdur ve kurallara uygundur | Hocanın örneği verildi; kastedilenin boşluklu "ogrenci no" olduğu "Dikkat" kutusunda |
-| K2 slayt 6 | Atama (=) aritmetik işlemler tablosunda; `^` açıklamasında "C sayısına atar" | Tablo aynen verildi; `^`'nin bu dersin dili C++'ta (ve C, Java, Python'da) üs olmadığı "Dikkat" kutusunda (XOR; g++ ve gcc uyarısıyla denendi) |
+| K2 slayt 6 | Atama (=) aritmetik işlemler tablosunda; `^` açıklamasında "C sayısına atar" | Tablo aynen verildi (C++ kuralı gereği `^`'nin dillerdeki anlamı notta yok) |
 | K2 slayt 8 | "SAYI değişkenin içindeki değer" | "değişkeninin" diye düzeltildi |
 | K2 slayt 9 | "kümenizin içindeki matematiksel işaretlerin"; `X=2*3/6+2` örneğinin sonucu verilmemiş | Cümle "bir ifadedeki işaretlerin" diye sadeleştirildi; sonuç (3) C++, C ve Python'da çalıştırılarak verildi |
 | K2 slayt 10–12 | Karşılaştırma operatörleri de "Mantıksal İşlemler" başlığıyla anılmış; slayt 12'de VE/VEYA "Mantıksal Operatörler" | Hocanın adları korundu; iki grubun farkı "Dikkat" kutusunda |
-| K2 slayt 11 | Eşitlik için "A==B ya da A=B", farklılık için "A!=B ya da A<>B" | Tablo aynen verildi; C++'ta (ve C, Python'da) `=`'nin atama olduğu, `<>`'nin bu dillerde olmadığı "Dikkat" kutusunda |
+| K2 slayt 11 | Eşitlik için "A==B ya da A=B", farklılık için "A!=B ya da A<>B" | Tablo aynen verildi; `=`'nin aynı zamanda atama işareti olduğu ve karşılaştırmada `==` yazmanın karışıklığı önlediği "Dikkat" kutusunda |
 | K2 slayt 12 | "Bu gibi durumlarda mantıksal ifadeler kullanılması zorunludur" | "mantıksal ifadeler (mantıksal operatörler)" diye yazıldı; slaytta liste "MANTIKSAL OPERATÖRLER" başlığıyla verilir |
 | K2 slayt 14 | Değil tablosunun başlığı "A^I" (üst simge I); işlemin adı yazılmamış | `A'` diye yazıldı; adının "değil" olduğu ve C'deki karşılığı "Ek" kutusunda; addan soru yok |
 | K2 slayt 15 | "0 sıfır değeri döner" | "0 döner" diye yazıldı |
@@ -189,7 +221,7 @@ Dosya: `bp_5_hafta.pdf`, 4 sayfa, Word belgesi (yazar bilgisi "laboratuvar"). Ka
 | K2 slayt 28 | Hashing'in kullanım alanı "(Şifreleme, veri bütünlüğü kontrolü.)" | Hocanın ifadesi korundu ve Dikkat kutusunda aynen aktarıldı; özetin (hash) geri çevrilemediği, şifrelemeden farkı "Dikkat" kutusunda; bu ifadeden ve hash ile şifreleme farkından soru yok |
 | K3 PDF bilgisi | Dosyanın iç başlığında "2021/2022 Bahar Yarıyılı" yazıyor; kapakta "2026/2027 Güz" | Kapak esas alındı (K2 ile aynı durum) |
 | K3 slayt 3 | "kısmında ki" | "kısmındaki" diye düzeltildi |
-| K3 slayt 3 | "DEĞİL İSE kısmında başka bir koşul ifadesi kullanılmaz" deniyor; üç ve daha çok durumlu örneklerin (slayt 6, 11, 12) nasıl yazılacağı gösterilmiyor; alg-ifade'deki "değilse eğer" düzeltmesiyle ilişkisi açıklanmıyor | Hocanın ifadesi korundu; DEĞİL İSE kısmının kendi koşulu olmadığı "Dikkat" kutusunda; çok durum için iki yol "Ek" kutusunda: art arda ayrı EĞER yapıları (aralık koşulda tam verilerek; hocanın suyun durumu örneğindeki gibi) ve DEĞİL İSE kısmının işlemi olarak yeni bir EĞER yapısı (değilse eğer); hocanın hangisini beklediğinin slaytta yazmadığı belirtildi; iki yol da Örnek 2, 7 ve 8 için g++ ile denendi; bu yazımlardan soru yok, yalnızca klasik sorunun örnek cevabında (çözümün slaytta olmadığı yazılı). Hamza: iki yol da notta aynen kalsın |
+| K3 slayt 3 | "DEĞİL İSE kısmında başka bir koşul ifadesi kullanılmaz" deniyor; üç ve daha çok durumlu örneklerin (slayt 6, 11, 12) nasıl yazılacağı gösterilmiyor; alg-ifade'deki "değilse eğer" düzeltmesiyle ilişkisi açıklanmıyor | Hocanın ifadesi korundu; DEĞİL İSE kısmının kendi koşulu olmadığı "Dikkat" kutusunda; çok durum için iki yol "Ek" kutusunda: art arda ayrı EĞER yapıları (aralık koşulda tam verilerek; hocanın suyun durumu örneğindeki gibi) ve DEĞİL İSE kısmının işlemi olarak yeni bir EĞER yapısı (değilse eğer); 6. haftada hoca kendi yolunu gösterdi (Kaynak 6 slayt 9: ilk EĞER'in sonunda "5.adıma git", akış diyagramında ikinci karar birincinin Hayır çıkışında); notlarda ve kartlarda "hangisini beklediği yazmıyor" ifadeleri buna göre değiştirildi; iki yol da Örnek 2, 7 ve 8 için g++ ile denendi; bu yazımlardan soru yok, yalnızca klasik sorunun örnek cevabında (çözümün slaytta olmadığı yazılı). Hamza: iki yol da notta aynen kalsın |
 | K3 slayt 4 | "DEĞİL İSE Yaz: B" satırı numarasız, 3. adımın altında; "Oku : A, B" iki nokta öncesi boşluklu | 3. adım tek madde olarak yazıldı, DEĞİL İSE'nin 3. adımın parçası olduğu "Dikkat" kutusunda; "Oku : A, B" yazımı korundu |
 | K3 slayt 4 | A ile B eşit olduğunda ne olacağı söylenmiyor | "Dikkat" kutusunda: A>B yanlış, DEĞİL İSE çalışır, B yazılır; g++ ile denendi (7 ve 7 → 7) |
 | K3 slayt 5 | İki mesaj tek tırnak çiftinin içinde (‘Reşitsiniz ya da Reşit değilsiniz’); reşit olma yaşı verilmemiş | Mesajlar ayrı ayrı düz çift tırnakla yazıldı; 18 yaş sınırı yalnızca "Ek" çözümde; yaş sınırından soru yok. Hamza: belirsiz sınırlar notta olduğu gibi kalsın, bu değerlerden soru yok |
@@ -201,21 +233,46 @@ Dosya: `bp_5_hafta.pdf`, 4 sayfa, Word belgesi (yazar bilgisi "laboratuvar"). Ka
 | K3 slayt 13 | Ekrana yazılacak mesajlar verilmemiş | "Ek" çözümde "Geçti" ve "Kaldı" kullanıldı ve mesajların slaytta olmadığı yazıldı |
 | K4 PDF bilgisi | Kapak yok; iç başlıkta "2021/2022 Bahar Yarıyılı"; dosya adının sonunda "_1" | Ders ağaçta Güz döneminde; içerik olduğu gibi işlendi. 🔶 Hamza'ya soruldu: eksik slayt (kapak, akış şeması sembolleri) var mı |
 | K5 genel | Çözümler ayrı bir Word belgesinde, yazarı "laboratuvar"; hocanın adı yok | Aynı soruların çözümü olduğu için hocanın çözümü sayıldı ("Hocanın çözümü"); 🔶 Hamza'ya soruldu |
-| K4 slayt 2, 9, 10 | Akış diyagramı/şeması isteniyor; ne slaytta ne çözüm belgesinde çizilmiş, semboller slaytlarda hiç anlatılmadı | ISO 5807 temel sembolleriyle "Ek" akış şemaları çizildi (denklem: düzeltilmiş hâl; Örnek 4 ve 5: hocanın çözümü); sembol şekli "Ek"; hocanın sembollerinin farklı olabileceği yazıldı; akış şemalarından soru yok. 🔶 Hamza'ya soruldu |
+| K4 slayt 2, 9, 10 | Akış diyagramı/şeması isteniyor; ne slaytta ne çözüm belgesinde çizilmiş | 5. haftada ISO 5807 sembolleriyle "Ek" şemalar çizilmişti. 6. hafta (Kaynak 6) hocanın sembollerini verince üç şema (denklem, Örnek 4, Örnek 5) hocanın sembolleriyle yeniden çizildi: BAŞLA/BİTİR elips, OKU klavyeden giriş sembolü, YAZ paralelkenar, karar çıkışları Evet/Hayır; faktöriyel şeması hocanın 6. hafta faktöriyel diyagramı gibi (iki işlem tek kutuda). ISO sembol şekli ve kartı kaldırıldı; şemalar yine "Ek" (hoca bu soruların diyagramını çizmedi); bu şemalardan soru yok |
 | K4 slayt 1 | KDV oranı %18 | Hocanın oranı korundu (sorunun verisi); güncel oranla ilgili bir şey yazılmadı |
 | K5 s1 | Tırnaklar kıvrık (“ ”) | Düz çift tırnakla yazıldı (bütün çözümlerde) |
 | K5 s1 Örnek 2 | `delta^1/2` (hocanın işlem önceliğine göre delta/2, karekök değil) ve `/2*a` (2'ye böl, a ile çarp; 2a'ya bölme değil) | Hocanın yazımı aynen verildi; doğru yazım (`delta^(1/2)`, `/(2*a)`) ve iki yazımın farklı sonuçları "Dikkat" kutusunda; iki yazım C++'ta (1,-5,6) ve (2,4,2) ile denendi. Sorular yalnızca düzeltilmiş yazım ve işlem önceliği üzerinden; hocanın yazımı "doğru" diye sorulmaz |
 | K5 s1 Örnek 2 | 9. ve 10. adım ayrı "Eğer", 11. adımda tek "Değilse": delta>0 iken kökler yazıldıktan sonra "reel kök yoktur" da yazılır | Hocanın adımları aynen verildi; sorun "Dikkat" kutusunda (K1 slayt 44'teki suyun durumuyla aynı); iki düzeltme yolu ("değilse eğer" ya da `Eğer (delta<0)`) K3 slayt 3 kararıyla uyumlu olarak "Ek" kutusunda; C++'ta denendi. Düzeltme yollarından soru yok; sorun hakkında soru var (alg-kdv-denklem.s12) |
 | K5 s1 Örnek 2 | `X2` (büyük harf), aynı adımda `Yaz x1, x2` | `x2` yazıldı; büyük-küçük harf farkı "Dikkat" kutusunda |
-| K5 s1 Örnek 2 | Köşeli parantez işlem parantezi olarak; "x^2 li", "x li" | Köşeli parantez korundu, C++'ta işlem parantezi olmadığı "Dikkat" kutusunda; mesajlar aynen |
+| K5 s1 Örnek 2 | Köşeli parantez işlem parantezi olarak; "x^2 li", "x li" | Köşeli parantez ve mesajlar aynen |
 | K5 s1–3 | "Yaz” biri sayı giriniz:”" (üç çözümde) | "bir sayı" diye düzeltildi |
 | K5 s1 Sayaç mantığı | Soru "Ekrana 5 kez merhaba yazan algoritmayı yazalım"; çözüm sayaçsız | "Sayaç mantığı: sayaçsız çözüm" başlığı; sayaçsız ve sayaçlı çözümün karşılaştırması "Ek" |
 | K4 slayt 5 | `Yaz: "Merhaba“` tırnağı karışık; 5. adımda `Sayac`, öbür adımlarda `SAYAC`; açıklamalar Her Kelimesi Büyük Harfle; "Hala", "Yukardan", "Arttırılır" | Tırnak düzeltildi; `SAYAC` diye birleştirildi ve "Dikkat" kutusunda söylendi; açıklamalar düz cümle olarak, "hâlâ", "yukarıdan", "artırılır" diye yazıldı |
-| K5 s2 Örnek 2 | Karenin iki yazımı: `sayi*sayi` ve `(yaz sayi^2)` | İkisi de verildi; C++'ta `^`'nin üs olmadığı "Dikkat" kutusunda (K2 ile aynı) |
+| K5 s2 Örnek 2 | Karenin iki yazımı: `sayi*sayi` ve `(yaz sayi^2)` | İkisi de verildi; algoritmada `^`'nin üs alma olduğu "Dikkat" kutusunda |
 | K5 s3 Örnek 3 | 8. adım büyük sayıyı `yenienbuyuk`'a yazıyor, `enbuyuk` hiç güncellenmiyor: sonuç ilk sayıdan büyük olan son sayı olur; ilk sayı en büyükse `yenienbuyuk` hiç atanmaz | Hocanın çözümü aynen verildi; hata, örnekleri ve düzeltmesi (`enbuyuk=sayi2`, `yaz enbuyuk`) ayrı başlıkta ve şekilde; iki hâl C++'ta beş girişle denendi. Sorular hatanın sonucu ve düzeltmesi üzerinden |
 | K5 s3 | "tamsayıları sayıları"; "1 den 100 e" | "1'den 100'e kadar olan tam sayıları" diye yazıldı |
 | K5 s4 Örnek 5 | 7. adımda "ise" eksik ("eğer sayac<=sayi 5. Adıma dön") | "ise" eklendi ve "Dikkat" kutusunda söylendi |
 | K5 s4 Örnek 5 | Faktöriyelin tanımı yok; 0 ve negatif giriş söylenmiyor | Tanım ve 0! = 1 "Ek" kutusunda; 0, 1, 3, 5, 10 için C++'ta denendi; negatif girişten soru yok |
+
+| K6 PDF bilgisi | Kapakta "2026/2027 Güz"; iç başlıkta "2021/2022 Bahar Yarıyılı"; dosya adının sonunda "_3" | Kapak esas alındı (K2, K3 ile aynı durum) |
+| K6 slayt 2 | "farklı yorumlanıp anlaşılamaması mümkün değildir" (çift olumsuz) | "farklı yorumlanması mümkün değildir" anlamıyla yazıldı; slayttaki ifade "Dikkat" kutusunda |
+| K6 slayt 2 | draw.io bağlantısı ("Başlıksız Diyagram - draw.io") | Notlarda bağlantı kullanılmadığı için adı yazıldı |
+| K6 slayt 3 | Sembol adları yok, yalnızca çizimleri; başla/bitir listede yuvarlak köşeli kutu, örneklerde elips (slayt 5'te uçları yuvarlak kutu) | Şekil tarifleri (paralelkenar, eşkenar dörtgen…) çizimlerden yazıldı ve "Ek"te söylendi; iki çizimin aynı anlamda olduğu "Dikkat" kutusunda |
+| K6 slayt 3 | Kart okuyucu sembolü düz dikdörtgen çizilmiş, hesaplama sembolüyle aynı görünür | Hocanın çizimi korundu; aynı göründüğü "Dikkat", standarttaki köşesi kesik kart "Ek"; şekil ayrımı soruları bu iki sembolü kullanmaz |
+| K6 slayt 3, 5–10 | Bağ sembolü elips; örneklerde BAŞLA/BİTİR de elips içinde | Aynı şekilde oldukları ve içindeki yazıdan ayırt edildikleri "Dikkat" kutusunda ve alg-akis.k2'de |
+| K6 slayt 3 | Bağ sembolünün açıklaması yok | Yalnızca adı verildi; ne işe yaradığı "Ek"; bağdan soru yok |
+| K6 slayt 3, 5–10 | Döngü (altıgen) sembolü listede var; örneklerde döngü karar ve geri okla çizilmiş | "Dikkat" kutusunda; sorular örneklerdeki çizime göre |
+| K6 slayt 4 | Adımlar madde işaretli; "Problem çözümü" (K1 slayt 25) listesinden farklı | Numaralandı ("Ek"); iki listenin farkı "Dikkat" kutusunda |
+| K6 slayt 6 | 3. adım "Karesı=a^2"; açıklamalar Her Kelimesi Büyük Harfle; "A^2işleminin"; "Ya Da" | `KARESI=A^2` yazıldı (açıklama ve şekle göre) ve "Dikkat" kutusunda söylendi; açıklamalar düz cümle, "ya da" |
+| K6 slayt 7 | "DEĞİLISEYAZ:B" | "DEĞİL İSE `YAZ:B`" diye yazıldı |
+| K6 slayt 8 | Tırnaklar karışık; "YAZ:“ Girilen sayı tektir.”" baştaki boşluk ve sondaki nokta; şekilde noktasız | Düz tırnak, boşluksuz ve noktasız (şekildeki gibi) yazıldı |
+| K6 slayt 9 | "YAZ:“ A sıfırdan küçüktür”" baştaki boşluk | Kaldırıldı |
+| K6 slayt 10 | "yaza" (yazan); `Yaz:"merhaba“` tırnak karışık; adımlarda `Sayac`/`sayac`, şekilde `SAYAC` ve "Merhaba" | "yazan" diye düzeltildi; tırnak düzeltildi; `SAYAC` diye birleştirildi ve "Dikkat" kutusunda söylendi (5. haftadaki kararla aynı) |
+| K6 slayt 11 | "%60 dir", "( Geçme Notu= 60 olarak kabul edilecektir.)" | "%60'tır", "(Geçme notu = 60 olarak kabul edilecektir.)" |
+| K7 genel | Yazar bilgisi "laboratuvar" (K5 ile aynı) | Hocanın çözümü sayıldı (K5 kararıyla aynı); 🔶 K5 ile birlikte sorulu |
+| K7 s1 | Tırnaklar kıvrık; " final notunu giriniz:" baştaki boşluk; "KALDINIZ ☹" (yüz simgesi) | Düz tırnak; boşluk ve simge kaldırıldı |
+| K7 s1 | Diyagramda iki mesaj tek paralelkenarda, iki okuma tek sembolde (algoritmada dört adım) | Hocanın diyagramı korundu; fark "Dikkat" kutusunda ve bir D/Y sorusunda |
+| K7 s1–3 | Diyagramlarda E/H; sembollerin içinde "Yaz"/"Oku" sözcüğü yok | Hocanın yazımı korundu; anlamı notta ve kartta |
+| K7 s2 | 5. adımda "ise" eksik | Eklendi ve "Dikkat" kutusunda söylendi |
+| K7 s2 | 4. adımda `a==c` gereksiz (a==b ve b==c ondan çıkar) | Hocanın koşulu korundu; sonucu değiştirmediği "Ek"; bundan soru yok |
+| K7 s2 | 4. ve 5. adım ayrı Eğer, 6. adımda tek Değilse: metin 3, 3, 3 için "eşkenar üçgen" ve "ikizkenar üçgen" yazar; diyagramda birinci kararın E çıkışı BİTİR'e gider, yalnızca "eşkenar üçgen" yazılır | Hocanın metni ve diyagramı aynen verildi; fark "Dikkat" kutusunda (K1 slayt 44, K5 Örnek 2 ile aynı durum); düzeltme yolu ("7. adıma git", hocanın slayt 9'daki yolu) "Ek"te. Sorular metnin ve diyagramın ayrı ayrı sonucu üzerinden |
+| K7 s2 | Diyagramda birinci kararın H çıkışı sağa çizilmiş | Telefona sığsın diye aşağıya çizildi; bağlantılar aynı, alt yazıda söylendi |
+| K7 s3 | Metinde ilk değerler 2. adımda (okumadan önce), diyagramda N okunduktan sonra; diyagramda 5. ve 6. adım tek kutuda | İkisi de aynen verildi; aynı sonucu verdiği "Dikkat" kutusunda; 0, 1, 3, 4, 5 için denendi |
 
 ## Slayt satırı olmayan başlıklar
 
@@ -223,11 +280,13 @@ Dosya: `bp_5_hafta.pdf`, 4 sayfa, Word belgesi (yazar bilgisi "laboratuvar"). Ka
 | --- | --- |
 | alg-algoritma › Çay yapma çözümü (Ek) | Slaytta çözüm yok; makarna algoritmasının kalıbıyla yazıldı |
 | alg-yazim › Örnek 2 çözümü (Ek), Örnek 3 çözümü (Ek) | Slaytta çözüm yok; Örnek 1'in kalıbıyla yazıldı |
-| alg-karar › C++ karşılığı (Ek) | Slaytta yok; hocanın çözümünün bu dersin dili C++'taki karşılığı, g++ ile derlenip üç girişle denendi |
 | alg-kdv-denklem › KDV'li fiyatın hesaplanması | K5 sayfa 1'deki çözümün 4. adımının açıklaması |
-| alg-kdv-denklem › C++ karşılığı: KDV (Ek), C++ karşılığı: denklemin kökleri (Ek) | Slaytta yok; hocanın çözümünün (denklemde düzeltilmiş hâlinin) C++ karşılığı, g++ ile denendi |
-| alg-kdv-denklem › Akış diyagramı: denklemin kökleri (Ek) | Hoca akış diyagramı istiyor ama çizmemiş; ISO 5807 sembolleriyle |
+| alg-kdv-denklem › Akış diyagramı: denklemin kökleri (Ek) | Hoca akış diyagramı istiyor ama çizmemiş; hocanın 6. hafta sembolleriyle |
 | alg-sayac › Adım adım izleme: 5 defa merhaba (Ek) | Slayt 5'teki çözümün izleme tablosu |
 | alg-sayac › Sayacın ilk değeri ve koşul | Slayt 5 ile K5'teki iki sorunun karşılaştırması |
-| alg-sayac › C++ karşılığı: for döngüsü (Ek) | Slayt 4'teki "for döngülerinde sıklıkla kullanılır" ifadesinin örneği, g++ ile denendi |
-| alg-sayac-ornekleri › Akış şeması: 3'er 3'er sayılar (Ek), Akış şeması: faktöriyel (Ek) | Hoca akış şeması istiyor ama çizmemiş; ISO 5807 sembolleriyle |
+| alg-sayac-ornekleri › Akış şeması: 3'er 3'er sayılar (Ek), Akış şeması: faktöriyel (Ek) | Hoca akış şeması istiyor ama çizmemiş; hocanın 6. hafta sembolleriyle |
+| alg-akis-ornekleri › Döngü ve ilk değerler | K7 s3'teki metin ile diyagramın karşılaştırması |
+
+## Bağımsız denetim (6. hafta)
+
+Konu 14–15, akış diyagramları ve eski konulardaki 6. hafta düzeltmeleri slaytlara ve çözüm belgesine karşı ayrı bir denetçiyle denetlendi: 0 KRİTİK, 2 ORTA, 8 DÜŞÜK. Hepsi kapatıldı (başla/bitir elipsiyle bağ sembolünün aynı şekli için Dikkat kutusu ve kart; çözüm belgesindeki paralelkenarın değişken de yazdığı; sembol şeklinin alt yazıları hocanın cümleleriyle; "Karar Yapıları: Örnekler" konusunun kaynağına 6. hafta slayt 8–9; "birinci/ikinci yol" yerine "değilse eğer" yolu; denklem şemasının alt yazısı; karar yapısı şeklinin akış diyagramı olmadığı; "sınavda beklenen" ifadesinin kaldırılması).

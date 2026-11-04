@@ -232,7 +232,7 @@
       "id": "alg-ifade.k5",
       "yer": "Örnek: suyun durumu",
       "on": "Hocanın suyun durumu sözde kodunu anlatın. Nerede hata çıkabilir?",
-      "arka": "Sıcaklık okunur; <0 ise Buz, >=100 ise Buhar, değilse Su.\nEk: iki Eğer ayrı ayrı çalıştırılırsa -5 için önce Buz, sonra Değilse ile Su olur. Doğrusu: Eğer <0 Buz, değilse eğer >=100 Buhar, değilse Su. Hocanın amacı ve sınavda -5 için beklenen cevap: Buz."
+      "arka": "Sıcaklık okunur; <0 ise Buz, >=100 ise Buhar, değilse Su.\nEk: iki Eğer ayrı ayrı çalıştırılırsa -5 için önce Buz, sonra Değilse ile Su olur. Doğrusu: Eğer <0 Buz, değilse eğer >=100 Buhar, değilse Su. Hocanın amacı: -5 için Buz."
     }
   ]
 }

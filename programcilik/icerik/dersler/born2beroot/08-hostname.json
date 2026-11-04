@@ -1,0 +1,52 @@
+{
+  "id": "b2r-hostname",
+  "baslik": "Hostname Yapılandırması",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "hostnamectl",
+      "izah": "Makine adını hem dosyada hem anlık olarak değiştiren komut.",
+      "yer": "Kalıcı değiştirme (hostnamectl) ve savunmada anlık değiştirme farkı"
+    },
+    {
+      "terim": "/etc/hostname",
+      "izah": "Makine adının tek satır olarak tutulduğu dosya.",
+      "yer": "hostname, /etc/hostname, /etc/hosts ilişkisi"
+    },
+    {
+      "terim": "/etc/hosts",
+      "izah": "IP ile isim eşleşmelerinin tutulduğu dosya. 127.0.1.1 satırında hostname geçmezse sudo gibi komutlar yavaşlar ya da hata verir.",
+      "yer": "hostname, /etc/hostname, /etc/hosts ilişkisi"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-hostname.s1",
+      "tip": "dizme",
+      "yer": "Kalıcı değiştirme (hostnamectl) ve savunmada anlık değiştirme farkı",
+      "soru": "Savunmada hostname'i canlı olarak değiştiren komutu dizin:",
+      "parcalar": [
+        "sudo",
+        "hostnamectl",
+        "set-hostname",
+        "yenihostname"
+      ],
+      "komut": true,
+      "izah": "Bu komut hem /etc/hostname'i günceller hem anlık uygular; reboot gerekmez."
+    },
+    {
+      "id": "b2r-hostname.s2",
+      "tip": "secme",
+      "yer": "hostname, /etc/hostname, /etc/hosts ilişkisi",
+      "soru": "/etc/hosts dosyasındaki 127.0.1.1 satırı neden önemli?",
+      "secenekler": [
+        "SSH bu satırı okuyarak hangi porttan dinleyeceğine karar verir",
+        "Hostname burada da geçmezse bazı komutlar (sudo dahil) yavaşlar ya da hata verir",
+        "Firewall kuralları bu satırdaki adrese göre uygulanır, yoksa 4242 kapanır",
+        "Hostname yalnızca burada tutulur; /etc/hostname sadece kurulum sırasında okunur"
+      ],
+      "dogru": 1,
+      "izah": "Hostname'i değiştirirken /etc/hostname ile birlikte bu satırı da tutarlı tutmak gerekir."
+    }
+  ]
+}

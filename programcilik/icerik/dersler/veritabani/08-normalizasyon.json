@@ -1,0 +1,217 @@
+{
+  "id": "vt-normalizasyon",
+  "baslik": "Normalizasyon: Tanım ve Amaçlar",
+  "kaynak": "normalizasyon_1.pdf, slayt 1–5",
+  "kavramlar": [
+    {
+      "terim": "Normalizasyon",
+      "izah": "Veritabanı tasarım aşamasında veri tekrarını, veri kaybını veya veri yetersizliğini önlemek için gerçekleştirilen işlemler.",
+      "yer": "Normalizasyon nedir"
+    },
+    {
+      "terim": "Ayrıştırma",
+      "izah": "Normalizasyonun tanımı: çok fazla sütun ve satırdan oluşan bir tabloyu tekrarlardan arındırmak için daha az satır ve sütun içeren alt kümelerine ayırma.",
+      "yer": "Normalizasyon nedir"
+    },
+    {
+      "terim": "Normal form",
+      "izah": "Normalizasyon yapılırken uyulması gereken kuralların her biri: 1NF, 2NF, 3NF.",
+      "yer": "Normal formlar"
+    },
+    {
+      "terim": "Uygulamadan bağımsızlık",
+      "izah": "Normalizasyonun amaçlarından biri: uygulama değişse bile veritabanı tutarlı olarak çalışmalı.",
+      "yer": "Normalizasyonun amaçları"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-normalizasyon.s1",
+      "tip": "secme",
+      "yer": "Normalizasyon nedir",
+      "soru": "Hocanın tanımına göre normalizasyon, veritabanı tasarım aşamasında ne amaçla gerçekleştirilen işlemlerdir?",
+      "secenekler": [
+        "Veri tekrarını, veri kaybını veya veri yetersizliğini önlemek için",
+        "Tabloları birleştirip bütün verileri tek tabloda toplamak için",
+        "Varlıklar arasındaki bağıntıların derecesini belirlemek için",
+        "Alanlara girilecek verilerin tiplerini belirlemek için"
+      ],
+      "dogru": 0,
+      "izah": "Normalizasyon; veri tekrarını, veri kaybını veya veri yetersizliğini önlemek için yapılan işlemlerdir. Tabloları birleştirmek değil, tam tersine ayrıştırmaktır."
+    },
+    {
+      "id": "vt-normalizasyon.s2",
+      "tip": "bosluk",
+      "yer": "Normalizasyon nedir",
+      "metin": "Normalizasyon tanım olarak ___ işlemidir: çok fazla sütun ve satırdan oluşan bir tablo, tekrarlardan arındırmak için daha az satır ve sütun içeren alt kümelerine ayrılır.",
+      "cevaplar": [
+        [
+          "ayrıştırma"
+        ]
+      ],
+      "izah": "Hocanın tanımında normalizasyonun diğer adı parantez içinde verilir: ayrıştırma."
+    },
+    {
+      "id": "vt-normalizasyon.s3",
+      "tip": "dy",
+      "yer": "Normalizasyon nedir",
+      "ifade": "Normalizasyonda tekrarları azaltmak için küçük tablolar tek bir büyük tabloda birleştirilir.",
+      "dogru": false,
+      "izah": "Tersidir: çok sütun ve satırdan oluşan büyük bir tablo, daha az satır ve sütun içeren alt kümelerine ayrıştırılır."
+    },
+    {
+      "id": "vt-normalizasyon.s4",
+      "tip": "bosluk",
+      "yer": "Normal formlar",
+      "metin": "Normalizasyon yapılırken uyulması gereken kuralların her birine ___ adı verilir.",
+      "cevaplar": [
+        [
+          "normal form"
+        ]
+      ],
+      "izah": "Bu derste üç normal form işlenir: 1NF, 2NF, 3NF."
+    },
+    {
+      "id": "vt-normalizasyon.s5",
+      "tip": "dy",
+      "yer": "Normal formlar",
+      "ifade": "Hocaya göre 3NF'den daha yüksek düzey normal formlar vardır ama çok fazla kullanılmaz.",
+      "dogru": true,
+      "izah": "Slayttaki ifade: daha yüksek düzey formlar var ama çok fazla kullanılmıyor."
+    },
+    {
+      "id": "vt-normalizasyon.s6",
+      "tip": "secme",
+      "yer": "Normal formlar arasındaki ilişki",
+      "soru": "3NF'de olan bir tablo için hangisi kesinlikle doğrudur?",
+      "secenekler": [
+        "1NF'ye ve 2NF'ye de uygundur",
+        "2NF'ye uygundur ama 1NF'ye uygun olmayabilir",
+        "1NF'ye uygundur ama 2NF'ye uygun olmayabilir",
+        "Yalnızca 3NF'ye uygundur; 1NF ve 2NF ona uygulanmaz"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre 3NF'de olan tablolar 1NF ve 2NF'ye uygundur; 2NF'de olan tablolar da 1NF'ye uygundur."
+    },
+    {
+      "id": "vt-normalizasyon.s7",
+      "tip": "dy",
+      "yer": "Normal formlar arasındaki ilişki",
+      "ifade": "1NF'ye uygun olan her tablo 2NF'ye de uygundur.",
+      "dogru": false,
+      "izah": "İlişki tek yönlüdür: 2NF'deki tablo 1NF'ye uygundur, ama 1NF'deki tablo 2NF'ye uygun olmayabilir. Hocanın örneğindeki müşteri tablosu 1NF'ye uygun, 2NF'ye uygun değildir."
+    },
+    {
+      "id": "vt-normalizasyon.s8",
+      "tip": "dy",
+      "yer": "İlk üç form ihlal edilirse",
+      "ifade": "Hocaya göre ilk üç normal form ihlal edilirse kayıt güncelleme, kayıt silme ve kayıt bulmada zorluk çekilir.",
+      "dogru": true,
+      "izah": "Slayttaki üç madde: kayıt güncelleme, kayıt silme, kayıt bulmada zorluk çekilir."
+    },
+    {
+      "id": "vt-normalizasyon.s9",
+      "tip": "esles",
+      "yer": "Normalizasyonun amaçları",
+      "soru": "Normalizasyonun amaçlarını açıklamalarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Veri bütünlüğünün sağlanması",
+          "Gereksiz veri tekrarını önleyerek verilerdeki bozulmaları önlemek"
+        ],
+        [
+          "Uygulamadan bağımsızlık",
+          "Uygulama değişse bile veritabanı tutarlı olarak çalışmalı"
+        ],
+        [
+          "Performansı artırmak",
+          "Veri tekrarı en aza iner ve arama hızlı olur"
+        ]
+      ],
+      "izah": "Hocanın saydığı üç amaç ve açıklamaları."
+    },
+    {
+      "id": "vt-normalizasyon.s10",
+      "tip": "secme",
+      "yer": "Normalizasyonun amaçları",
+      "soru": "Aşağıdakilerden hangisi hocanın saydığı normalizasyon amaçlarından biri **değildir**?",
+      "secenekler": [
+        "Tablo sayısını azaltmak",
+        "Veri bütünlüğünün sağlanması",
+        "Uygulamadan bağımsızlık",
+        "Performansı artırmak"
+      ],
+      "dogru": 0,
+      "izah": "Normalizasyon tabloları ayrıştırır; sonunda tablo sayısı genellikle artar. Hocanın saydığı amaçlar: veri bütünlüğü, uygulamadan bağımsızlık, performans."
+    },
+    {
+      "id": "vt-normalizasyon.s11",
+      "tip": "klasik",
+      "yer": "Normalizasyonun amaçları",
+      "soru": "Normalizasyonun amaçlarını açıklamalarıyla birlikte yazın.",
+      "cevap": "Veri bütünlüğünün sağlanması: gereksiz veri tekrarını önleyerek verilerdeki bozulmaları önlemek.\nUygulamadan bağımsızlık: uygulama değişse bile veritabanı tutarlı olarak çalışmalı.\nPerformansı artırmak: veri tekrarı en aza iner ve arama hızlı olur.",
+      "anahtarlar": [
+        "veri bütünlüğü",
+        "tekrar",
+        "uygulamadan bağımsızlık",
+        "tutarlı",
+        "performans",
+        "arama hızlı"
+      ]
+    },
+    {
+      "id": "vt-normalizasyon.s12",
+      "tip": "klasik",
+      "yer": "Normalizasyon nedir",
+      "soru": "Normalizasyonu hocanın iki tanımıyla açıklayın.",
+      "cevap": "Normalizasyon; veritabanı tasarım aşamasında veri tekrarını, veri kaybını veya veri yetersizliğini önlemek için gerçekleştirilen işlemlerdir.\nTanım olarak ise normalizasyon (ayrıştırma); veritabanlarında çok fazla sütun ve satırdan oluşan bir tabloyu tekrarlardan arındırmak için daha az satır ve sütun içeren alt kümelerine ayrıştırma işlemidir.",
+      "anahtarlar": [
+        "veri tekrarı",
+        "veri kaybı",
+        "veri yetersizliği",
+        "ayrıştırma",
+        "alt kümelerine"
+      ]
+    },
+    {
+      "id": "vt-normalizasyon.s13",
+      "tip": "dy",
+      "yer": "İlk üç form ihlal edilirse",
+      "ifade": "Hocanın \"ilk üç düzey ihlal edilirse\" listesinde kayıt eklemede zorluk da sayılır.",
+      "dogru": false,
+      "izah": "Bu listede kayıt güncelleme, kayıt silme ve kayıt bulma vardır. \"Veri ekleme\" 1NF anlatımındaki \"Sorunlar\" listesinde geçer; iki liste karıştırılmamalı."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-normalizasyon.k1",
+      "yer": "Normalizasyon nedir",
+      "on": "Normalizasyon nedir?",
+      "arka": "Veritabanı tasarım aşamasında **veri tekrarını, veri kaybını veya veri yetersizliğini** önlemek için yapılan işlemlerdir.\nTanım olarak (**ayrıştırma**): çok sütun ve satırdan oluşan bir tabloyu tekrarlardan arındırmak için daha az satır ve sütun içeren alt kümelerine ayırmaktır."
+    },
+    {
+      "id": "vt-normalizasyon.k2",
+      "yer": "Normal formlar",
+      "on": "Normal form nedir? Hangi normal formlar var?",
+      "arka": "Normalizasyon yapılırken uyulması gereken kuralların her birine normal form denir: 1NF, 2NF, 3NF. Daha yüksek düzey formlar da vardır ama çok kullanılmaz."
+    },
+    {
+      "id": "vt-normalizasyon.k3",
+      "yer": "İlk üç form ihlal edilirse",
+      "on": "İlk üç normal form ihlal edilirse ne olur?",
+      "arka": "Kayıt güncellemede, kayıt silmede ve kayıt bulmada zorluk çekilir."
+    },
+    {
+      "id": "vt-normalizasyon.k4",
+      "yer": "Normal formlar arasındaki ilişki",
+      "on": "3NF'deki bir tablo 1NF'ye uygun mudur? 1NF'deki bir tablo 2NF'ye uygun mudur?",
+      "arka": "3NF'deki tablo 1NF'ye ve 2NF'ye de uygundur; 2NF'deki tablo da 1NF'ye uygundur. Ama tersi doğru değildir: 1NF'deki bir tablo 2NF'ye uygun olmayabilir."
+    },
+    {
+      "id": "vt-normalizasyon.k5",
+      "yer": "Normalizasyonun amaçları",
+      "on": "Normalizasyonun amaçları nelerdir?",
+      "arka": "- Veri bütünlüğünün sağlanması: gereksiz tekrarı önleyerek bozulmaları önlemek.\n- Uygulamadan bağımsızlık: uygulama değişse bile veritabanı tutarlı çalışmalı.\n- Performansı artırmak: veri tekrarı en aza iner, arama hızlı olur."
+    }
+  ]
+}

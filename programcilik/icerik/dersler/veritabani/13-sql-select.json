@@ -1,0 +1,429 @@
+{
+  "id": "vt-sql-select",
+  "baslik": "SELECT, ORDER BY ve WHERE",
+  "kaynak": "sql_1.pdf, slayt 11–32",
+  "kavramlar": [
+    {
+      "terim": "SELECT",
+      "izah": "Bir tablodan kayıt çekmek için kullanılır: `SELECT * FROM tablo_adi`. `*` tablonun bütün alanları demektir; FROM'dan sonra tablonun adı yazılır.",
+      "yer": "SELECT ile kayıt çekmek"
+    },
+    {
+      "terim": "Belli alanları listelemek",
+      "izah": "`*` yerine alan adları virgülle yazılır: `SELECT alanadi1,alanadi2 FROM tablo_adi;` yalnızca bu alanları getirir.",
+      "yer": "Belli alanları listelemek"
+    },
+    {
+      "terim": "ORDER BY, ASC, DESC",
+      "izah": "ORDER BY kayıtları bir alana göre sıralar. ASC artan sıradır ve varsayılandır (yazılmasa da uygulanır); azalan sıra için DESC yazılır.",
+      "yer": "ORDER BY ile sıralamak"
+    },
+    {
+      "terim": "Birden fazla alana göre sıralama",
+      "izah": "`ORDER BY alanadi1 DESC, alanadi2 ASC`: önce birinci alana göre sıralanır; birinci alanı aynı olan kayıtlar kendi aralarında ikinci alana göre sıralanır.",
+      "yer": "Birden fazla alana göre sıralamak"
+    },
+    {
+      "terim": "WHERE",
+      "izah": "Bir alanın koşula uymasına göre kayıtları listeler: `SELECT * FROM tablo_adi WHERE alanadi1=koşul;`. Sayılar tırnaksız, metin değerleri tırnak içinde yazılır.",
+      "yer": "WHERE ile koşul"
+    },
+    {
+      "terim": "AND ve OR",
+      "izah": "AND: koşulların hepsi sağlanmalı; her AND sonucu daraltır ya da aynı bırakır. OR: koşullardan en az biri yeter; her OR sonucu genişletir ya da aynı bırakır.",
+      "yer": "AND ve OR"
+    },
+    {
+      "terim": "Parantezli koşul",
+      "izah": "Hangi koşulların birlikte değerlendirileceğini parantez belirler: `(a AND b) OR c` ile `a AND (b OR c)` farklı sonuç verebilir. Parantez yoksa AND, OR'dan önce değerlendirilir: `a AND b OR c`, `(a AND b) OR c` demektir.",
+      "yer": "Parantezli koşullar"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-sql-select.s1",
+      "tip": "secme",
+      "yer": "SELECT ile kayıt çekmek",
+      "soru": "`SELECT * FROM kullanici_bilgileri;` sorgusundaki `*` ne anlama gelir?",
+      "secenekler": [
+        "Tablonun bütün alanları",
+        "Tablodaki kayıtların sayısı",
+        "Yalnızca birincil anahtar alanı",
+        "Tablonun ilk kaydı"
+      ],
+      "dogru": 0,
+      "izah": "`*` tablonun bütün alanları demektir. Sorgu, kullanici_bilgileri tablosundaki kayıtları bütün alanlarıyla getirir. Kayıt sayısı COUNT(*) ile bulunur."
+    },
+    {
+      "id": "vt-sql-select.s2",
+      "tip": "secme",
+      "yer": "Belli alanları listelemek",
+      "soru": "notlar tablosundan yalnızca öğrenci numarasını (ogrno) ve not tarihini (tarih) listeleyen sorgu hangisidir?",
+      "secenekler": [
+        "SELECT ogrno,tarih FROM notlar;",
+        "SELECT * FROM notlar WHERE ogrno,tarih;",
+        "SELECT notlar FROM ogrno,tarih;",
+        "SELECT FROM notlar ogrno,tarih;"
+      ],
+      "dogru": 0,
+      "izah": "Belli alanlar için `*` yerine alan adları virgülle yazılır, ardından FROM ve tablo adı gelir: `SELECT ogrno,tarih FROM notlar;`."
+    },
+    {
+      "id": "vt-sql-select.s3",
+      "tip": "klasik",
+      "yer": "SELECT ile kayıt çekmek",
+      "soru": "Öğrencilerin aldığı notların tamamını, yani notlar tablosundaki bütün kayıtları bütün alanlarıyla listeleyen sorguyu yazın.",
+      "cevap": "SELECT * FROM notlar;\n`*` bütün alanları getirir; WHERE yazılmadığı için bütün kayıtlar listelenir.",
+      "anahtarlar": [
+        "SELECT *",
+        "FROM notlar"
+      ]
+    },
+    {
+      "id": "vt-sql-select.s4",
+      "tip": "secme",
+      "yer": "ORDER BY ile sıralamak",
+      "soru": "`SELECT * FROM notlar ORDER BY tarih;` sorgusu kayıtları nasıl sıralar?",
+      "secenekler": [
+        "Tarihe göre artan sırada (eskiden yeniye)",
+        "Tarihe göre azalan sırada (yeniden eskiye)",
+        "Tabloya eklenme sırasıyla, tarihe bakmadan",
+        "Yalnızca en son tarihli kaydı getirerek"
+      ],
+      "dogru": 0,
+      "izah": "Yön yazılmazsa ASC (artan) uygulanır. Hocanın notu: bu kod `ORDER BY tarih ASC` şeklinde de yazılabilir. Azalan sıra için DESC yazılır."
+    },
+    {
+      "id": "vt-sql-select.s5",
+      "tip": "dy",
+      "yer": "ORDER BY ile sıralamak",
+      "ifade": "`ORDER BY tarih` ile `ORDER BY tarih ASC` aynı sonucu verir.",
+      "dogru": true,
+      "izah": "ASC varsayılan sıralama yönüdür; hocanın notunda ikisi aynı sorgunun iki yazımı olarak verilmiştir."
+    },
+    {
+      "id": "vt-sql-select.s6",
+      "tip": "bosluk",
+      "yer": "ORDER BY ile sıralamak",
+      "metin": "Kayıtları bir alana göre azalan sırada listelemek için ORDER BY'dan sonra alan adı ve ___ yazılır.",
+      "cevaplar": [
+        [
+          "DESC"
+        ]
+      ],
+      "izah": "Azalan sıra DESC, artan sıra ASC ile belirtilir. Örnek: `SELECT * FROM notlar ORDER BY tarih DESC;`."
+    },
+    {
+      "id": "vt-sql-select.s7",
+      "tip": "izleme",
+      "yer": "ORDER BY ile sıralamak",
+      "soru": "Sorgunun sonucunda **ilk sırada** hangi kayıt gelir? (Tarihler gün.ay.yıl biçiminde.)",
+      "kod": "notlar\nogrno  icerikno  notu  tarih\n9801   1         70    01.03.2009\n9802   1         85    02.03.2009\n9803   2         90    03.03.2009\n9802   3         45    27.02.2009\n\nSELECT * FROM notlar\nORDER BY tarih DESC;",
+      "secenekler": [
+        "9803 (03.03.2009)",
+        "9802 (27.02.2009)",
+        "9801 (01.03.2009)",
+        "9802 (02.03.2009)"
+      ],
+      "dogru": 0,
+      "izah": "DESC azalan, yani yeniden eskiye sıralar. En yeni tarih 03.03.2009'dur; ilk sırada 9803 gelir, en sonda 27.02.2009 tarihli kayıt yer alır."
+    },
+    {
+      "id": "vt-sql-select.s8",
+      "tip": "izleme",
+      "yer": "Birden fazla alana göre sıralamak",
+      "soru": "Sonucun ilk üç satırı hangi sıradadır? (Satırlar ogrno/icerikno olarak yazıldı.)",
+      "kod": "notlar\nogrno  icerikno\n9801   1\n9802   1\n9801   2\n9803   2\n9802   3\n\nSELECT * FROM notlar\nORDER BY icerikno DESC, ogrno ASC;",
+      "secenekler": [
+        "9802/3, 9801/2, 9803/2",
+        "9802/3, 9803/2, 9801/2",
+        "9801/1, 9801/2, 9802/1",
+        "9801/1, 9802/1, 9801/2"
+      ],
+      "dogru": 0,
+      "izah": "Önce icerikno büyükten küçüğe: 3, sonra 2'ler, sonra 1'ler. İçerik numarası 2 olan iki kayıt kendi aralarında ogrno'ya göre artan sıralanır: 9801, sonra 9803."
+    },
+    {
+      "id": "vt-sql-select.s9",
+      "tip": "dy",
+      "yer": "Birden fazla alana göre sıralamak",
+      "ifade": "`ORDER BY icerikno DESC, ogrno ASC` sıralamasında ogrno, yalnızca içerik numarası aynı olan kayıtların kendi aralarındaki sırasını belirler.",
+      "dogru": true,
+      "izah": "İkinci alan, birinci alanı aynı olan kayıtlar arasındaki sırayı belirler. Alanların yazılış sırası bu yüzden önemlidir."
+    },
+    {
+      "id": "vt-sql-select.s10",
+      "tip": "dizme",
+      "yer": "Birden fazla alana göre sıralamak",
+      "soru": "Notları içerik numarasına göre azalan, içerik numarası aynı olanları öğrenci numarasına göre artan sırada listeleyen sorguyu dizin.",
+      "parcalar": [
+        "SELECT *",
+        "FROM notlar",
+        "ORDER BY",
+        "icerikno DESC,",
+        "ogrno ASC;"
+      ],
+      "komut": true,
+      "izah": "Hocanın örneği: `SELECT * FROM notlar ORDER BY icerikno DESC, ogrno ASC;`. Önce yazılan alan önce uygulanır."
+    },
+    {
+      "id": "vt-sql-select.s11",
+      "tip": "izleme",
+      "yer": "WHERE ile koşul",
+      "soru": "Sorgu hangi notları getirir?",
+      "kod": "notlar\nogrno  icerikno  notu\n9801   1         70\n9802   1         85\n9801   2         60\n9803   2         90\n\nSELECT * FROM notlar\nWHERE ogrno=9801;",
+      "secenekler": [
+        "70 ve 60",
+        "Yalnızca 70",
+        "70, 85, 60 ve 90",
+        "85 ve 90"
+      ],
+      "dogru": 0,
+      "izah": "WHERE yalnızca koşula uyan kayıtları getirir: ogrno değeri 9801 olan iki kayıt (notu 70 ve 60)."
+    },
+    {
+      "id": "vt-sql-select.s12",
+      "tip": "secme",
+      "yer": "WHERE ile koşul",
+      "soru": "`SELECT * FROM notlar WHERE ogrno=9801;` sorgusunda 9801 neden tırnaksız yazılmıştır?",
+      "secenekler": [
+        "Sayı olduğu için",
+        "Alan adı olduğu için",
+        "Tablo adı olduğu için",
+        "Birincil anahtar olduğu için"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın özetine göre WHERE koşulunda sayılar tırnaksız, metinler tırnak içinde yazılır."
+    },
+    {
+      "id": "vt-sql-select.s13",
+      "tip": "secme",
+      "yer": "Metin koşulları ve tırnak",
+      "soru": "Hocaya göre SQL kodlarında hangi değerler tırnak içinde yazılmalıdır?",
+      "secenekler": [
+        "Metin değerleri",
+        "Sayı değerleri",
+        "Sorgudaki bütün değerler",
+        "Yalnızca birincil anahtar değerleri"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın ifadesi: SQL kodlarında metin değerleri tırnak içinde yazılmalıdır. Hocanın örneği `WHERE ad=\"Sema\"`; standart SQL'de `WHERE ad='Sema'`. Sayılar tırnaksız yazılır (`WHERE ogrno=9801`)."
+    },
+    {
+      "id": "vt-sql-select.s14",
+      "tip": "secme",
+      "yer": "Metin koşulları ve tırnak",
+      "soru": "Adı Sema olan kullanıcıları getiren, standart SQL'de ve SQL Server'da da çalışan yazım hangisidir?",
+      "secenekler": [
+        "SELECT * FROM kullanici_bilgileri WHERE ad='Sema';",
+        "SELECT * FROM kullanici_bilgileri WHERE ad=Sema;",
+        "SELECT * FROM kullanici_bilgileri WHERE 'ad'=Sema;",
+        "SELECT * FROM kullanici_bilgileri WHERE ad=“Sema”;"
+      ],
+      "dogru": 0,
+      "izah": "Standart SQL'de ve SQL Server'da metin tek tırnakla yazılır. Tırnaksız Sema bir alan adı sanılır; kıvrık tırnak (“ ”) hiçbir VTYS'de çalışmaz. Hocanın kullandığı çift tırnak Access ve MySQL'de çalışır."
+    },
+    {
+      "id": "vt-sql-select.s15",
+      "tip": "izleme",
+      "yer": "AND ve OR",
+      "soru": "Sorgu hangi kayıtları getirir?",
+      "kod": "kullanici_bilgileri\nogrno  ad      soyad\n9802   Sema    Özdemir\n9803   Serdar  Gülpınar\n9806   Ulviye  Kubalı\n9807   Sema    Öztürk\n\nSELECT * FROM kullanici_bilgileri\nWHERE ad='Sema' AND soyad='Öztürk';",
+      "secenekler": [
+        "Yalnızca 9807",
+        "9802 ve 9807",
+        "9803 ve 9807",
+        "Hiçbir kayıt"
+      ],
+      "dogru": 0,
+      "izah": "AND, koşulların hepsini ister: adı Sema **ve** soyadı Öztürk olan tek kayıt 9807'dir. 9802'nin adı Sema ama soyadı Özdemir."
+    },
+    {
+      "id": "vt-sql-select.s16",
+      "tip": "izleme",
+      "yer": "AND ve OR",
+      "soru": "Sorgu hangi kayıtları getirir?",
+      "kod": "kullanici_bilgileri\nogrno  ad      soyad\n9802   Sema    Özdemir\n9803   Serdar  Gülpınar\n9806   Ulviye  Kubalı\n9807   Sema    Öztürk\n\nSELECT * FROM kullanici_bilgileri\nWHERE ad='Serdar' OR soyad='Kubalı';",
+      "secenekler": [
+        "9803 ve 9806",
+        "Yalnızca 9803",
+        "Hiçbir kayıt",
+        "Tablodaki bütün kayıtlar"
+      ],
+      "dogru": 0,
+      "izah": "OR, koşullardan birinin sağlanmasını yeterli sayar: 9803'ün adı Serdar, 9806'nın soyadı Kubalı."
+    },
+    {
+      "id": "vt-sql-select.s17",
+      "tip": "dy",
+      "yer": "AND ve OR",
+      "ifade": "Sorguya AND ile yeni bir koşul eklendikçe sonuç genişler.",
+      "dogru": false,
+      "izah": "AND koşulların hepsini istediği için her eklenen koşul sonucu daraltır ya da aynı bırakır; hiç genişletmez. Sonucu genişletebilen OR'dur."
+    },
+    {
+      "id": "vt-sql-select.s18",
+      "tip": "secme",
+      "yer": "AND ve OR",
+      "soru": "Adı Serdar, soyadı Öztürk olan kullanıcıları listelemek için WHERE koşulu nasıl yazılmalıdır?",
+      "secenekler": [
+        "ad='Serdar' AND soyad='Öztürk'",
+        "ad='Serdar' OR soyad='Öztürk'",
+        "ad='Sema' AND soyad='Öztürk'",
+        "ad='Serdar', soyad='Öztürk'"
+      ],
+      "dogru": 0,
+      "izah": "İki koşulun ikisi de sağlanmalı, bu yüzden AND kullanılır. OR, adı Serdar olan herkesi ve soyadı Öztürk olan herkesi getirirdi. Koşullar virgülle ayrılmaz."
+    },
+    {
+      "id": "vt-sql-select.s19",
+      "tip": "izleme",
+      "yer": "Parantezli koşullar",
+      "soru": "Sorgu hangi kayıtları getirir? (Kayıtlar ogrno/icerikno olarak yazıldı.)",
+      "kod": "onemli_sayfalar\nogrno  icerikno\n9801   1\n9802   1\n9802   3\n9803   1\n9801   2\n\nSELECT * FROM onemli_sayfalar\nWHERE (ogrno=9801 OR ogrno=9802)\nAND icerikno=1;",
+      "secenekler": [
+        "9801/1 ve 9802/1",
+        "9801/1, 9802/1 ve 9803/1",
+        "9801/1, 9802/1 ve 9801/2",
+        "9801/1, 9802/1, 9802/3 ve 9801/2"
+      ],
+      "dogru": 0,
+      "izah": "Parantez önce değerlendirilir: öğrenci 9801 ya da 9802 olmalı, ayrıca icerikno 1 olmalı. Bu ikisini birlikte sağlayan iki kayıt var: 9801/1 ve 9802/1."
+    },
+    {
+      "id": "vt-sql-select.s20",
+      "tip": "izleme",
+      "yer": "Parantezli koşullar",
+      "soru": "Parantez yazılmayan bu sorgu hangi kayıtları getirir? (Kayıtlar ogrno/icerikno olarak yazıldı.)",
+      "kod": "onemli_sayfalar\nogrno  icerikno\n9801   1\n9802   1\n9802   3\n9803   1\n9801   2\n\nSELECT * FROM onemli_sayfalar\nWHERE ogrno=9801 OR ogrno=9802\nAND icerikno=1;",
+      "secenekler": [
+        "9801/1, 9802/1 ve 9801/2",
+        "9801/1 ve 9802/1",
+        "9801/1, 9802/1 ve 9803/1",
+        "9801/1, 9802/1, 9802/3 ve 9801/2"
+      ],
+      "dogru": 0,
+      "izah": "Parantez yoksa AND, OR'dan önce değerlendirilir: koşul `ogrno=9801 OR (ogrno=9802 AND icerikno=1)` olur. 9801'in bütün kayıtları (9801/1, 9801/2) ve 9802/1 gelir: 3 kayıt."
+    },
+    {
+      "id": "vt-sql-select.s21",
+      "tip": "dizme",
+      "yer": "Özet: sorgunun parçaları",
+      "soru": "Sorgunun parçalarını yazılış sırasına göre dizin.",
+      "parcalar": [
+        "SELECT ogrno, tarih",
+        "FROM notlar",
+        "WHERE ogrno=9801",
+        "ORDER BY tarih DESC;"
+      ],
+      "komut": true,
+      "izah": "Parçaların yazılış sırası sabittir: SELECT → FROM → WHERE → ORDER BY."
+    },
+    {
+      "id": "vt-sql-select.s22",
+      "tip": "secme",
+      "yer": "Özet: sorgunun parçaları",
+      "soru": "Aşağıdaki sorgulardan hangisi doğru yazılmıştır?",
+      "secenekler": [
+        "SELECT * FROM notlar WHERE ogrno=9801 ORDER BY tarih;",
+        "SELECT * FROM notlar ORDER BY tarih WHERE ogrno=9801;",
+        "SELECT * WHERE ogrno=9801 FROM notlar ORDER BY tarih;",
+        "FROM notlar SELECT * WHERE ogrno=9801 ORDER BY tarih;"
+      ],
+      "dogru": 0,
+      "izah": "Doğru sıra SELECT → FROM → WHERE → ORDER BY'dır. ORDER BY, WHERE'den önce yazılamaz."
+    },
+    {
+      "id": "vt-sql-select.s23",
+      "tip": "klasik",
+      "yer": "Özet: sorgunun parçaları",
+      "soru": "kullanici_bilgileri tablosundan adı Sema olan kullanıcıları soyadına göre artan sırada listeleyen sorguyu yazın.",
+      "cevap": "SELECT * FROM kullanici_bilgileri WHERE ad='Sema' ORDER BY soyad ASC;\nASC yazılmasa da sonuç aynıdır. Hocanın yazımıyla ad=\"Sema\" de olur; standart SQL'de metin tek tırnakla yazılır.",
+      "anahtarlar": [
+        "FROM kullanici_bilgileri",
+        "Sema",
+        "ORDER BY soyad"
+      ]
+    },
+    {
+      "id": "vt-sql-select.s24",
+      "tip": "klasik",
+      "yer": "Parantezli koşullar",
+      "soru": "`(a AND b) OR c` ile `a AND (b OR c)` koşulları arasındaki farkı açıklayın.",
+      "cevap": "(a AND b) OR c: a ile b birlikte sağlanırsa ya da c sağlanırsa kayıt gelir; c tek başına yeter.\na AND (b OR c): a mutlaka sağlanmalıdır; yanında b ya da c'den biri yeter.\nParantez, hangi koşulların birlikte değerlendirileceğini belirler.",
+      "anahtarlar": [
+        "c tek başına",
+        "a mutlaka"
+      ]
+    },
+    {
+      "id": "vt-sql-select.s25",
+      "tip": "klasik",
+      "yer": "AND ve OR",
+      "soru": "kullanici_bilgileri tablosundan adı Serdar ya da soyadı Kubalı olan kullanıcıları listeleyen sorguyu yazın.",
+      "cevap": "SELECT * FROM kullanici_bilgileri WHERE ad='Serdar' OR soyad='Kubalı';\nİki koşuldan birinin sağlanması yettiği için OR kullanılır. Hocanın yazımıyla metinler çift tırnakla da yazılabilir (ad=\"Serdar\"); standart SQL'de tek tırnak kullanılır.",
+      "anahtarlar": [
+        "FROM kullanici_bilgileri",
+        "Serdar",
+        "OR",
+        "Kubalı"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-sql-select.k1",
+      "yer": "SELECT ile kayıt çekmek",
+      "on": "`SELECT * FROM tablo_adi` sorgusunun parçaları ne anlama gelir?",
+      "arka": "- SELECT: kayıt çek.\n- `*`: tablonun bütün alanları.\n- FROM tablo_adi: kayıtların çekileceği tablo.\nÖrnek: `SELECT * FROM kullanici_bilgileri;` bütün kullanıcı bilgilerini getirir."
+    },
+    {
+      "id": "vt-sql-select.k2",
+      "yer": "Belli alanları listelemek",
+      "on": "Tablodan yalnızca belli alanlar nasıl listelenir?",
+      "arka": "`*` yerine alan adları virgülle yazılır: `SELECT alanadi1,alanadi2 FROM tablo_adi;`\nÖrnek: `SELECT ogrno,tarih FROM notlar;`"
+    },
+    {
+      "id": "vt-sql-select.k3",
+      "yer": "ORDER BY ile sıralamak",
+      "on": "ORDER BY, ASC ve DESC ne işe yarar?",
+      "arka": "ORDER BY kayıtları bir alana göre sıralar. ASC artan sıradır ve varsayılandır; DESC azalan sıradır.\n`ORDER BY tarih` = `ORDER BY tarih ASC`\n`ORDER BY tarih DESC`: yeniden eskiye."
+    },
+    {
+      "id": "vt-sql-select.k4",
+      "yer": "Birden fazla alana göre sıralamak",
+      "on": "`ORDER BY icerikno DESC, ogrno ASC` nasıl sıralar?",
+      "arka": "Önce icerikno'ya göre büyükten küçüğe sıralar. İçerik numarası aynı olan kayıtları kendi aralarında ogrno'ya göre küçükten büyüğe sıralar. Alanların yazılış sırası önemlidir."
+    },
+    {
+      "id": "vt-sql-select.k5",
+      "yer": "WHERE ile koşul",
+      "on": "WHERE nasıl kullanılır? Sayı ve metin koşulu nasıl yazılır?",
+      "arka": "Koşula uyan kayıtları listeler: `SELECT * FROM tablo_adi WHERE alanadi1=koşul;`\n- Sayı tırnaksız: `WHERE ogrno=9801`\n- Metin tırnak içinde: `WHERE ad='Sema'`"
+    },
+    {
+      "id": "vt-sql-select.k6",
+      "yer": "Metin koşulları ve tırnak",
+      "on": "Hoca metinleri çift tırnakla yazıyor. Bu yazım her VTYS'de çalışır mı?",
+      "arka": "Dikkat: Hayır. Çift tırnak Access ve MySQL'de çalışır. Standart SQL'de ve SQL Server'da metin tek tırnakla yazılır: `WHERE ad='Sema'`. SQL Server'da çift tırnak içindeki yazı alan ya da tablo adı sayılır. Kıvrık tırnak (“ ”) hiçbir VTYS'de çalışmaz."
+    },
+    {
+      "id": "vt-sql-select.k7",
+      "yer": "AND ve OR",
+      "on": "AND ile OR arasındaki fark nedir?",
+      "arka": "AND: koşulların hepsi sağlanmalı; her AND sonucu daraltır ya da aynı bırakır.\nOR: koşullardan en az biri yeter; her OR sonucu genişletir ya da aynı bırakır.\nÖrnek: `ad='Sema' AND soyad='Öztürk'` yalnızca Sema Öztürk'ü, `ad='Serdar' OR soyad='Kubalı'` adı Serdar olanları ve soyadı Kubalı olanları getirir."
+    },
+    {
+      "id": "vt-sql-select.k8",
+      "yer": "Parantezli koşullar",
+      "on": "AND ile OR birlikte kullanılınca parantez neden önemlidir?",
+      "arka": "Parantez, hangi koşulların birlikte değerlendirileceğini belirler. Dikkat: parantez yoksa AND, OR'dan önce değerlendirilir.\n`(ogrno=9801 OR ogrno=9802) AND icerikno=1`: 9801 ya da 9802'nin yalnızca 1 numaralı içerikleri.\n`ogrno=9801 OR ogrno=9802 AND icerikno=1`: 9801'in bütün kayıtları ve 9802'nin 1 numaralı içeriği."
+    },
+    {
+      "id": "vt-sql-select.k9",
+      "yer": "Özet: sorgunun parçaları",
+      "on": "Bir SELECT sorgusunun parçaları hangi sırayla yazılır?",
+      "arka": "Dikkat (slaytlarda dördü bir arada geçmez): SELECT (hangi alanlar) → FROM (hangi tablo) → WHERE (hangi kayıtlar) → ORDER BY (hangi sırayla).\nÖrnek: `SELECT ogrno, tarih FROM notlar WHERE ogrno=9801 ORDER BY tarih DESC;`"
+    }
+  ]
+}

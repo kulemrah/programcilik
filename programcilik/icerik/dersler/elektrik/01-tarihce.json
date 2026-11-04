@@ -1,0 +1,296 @@
+{
+  "id": "el-tarihce",
+  "baslik": "Elektriğin Kısa Tarihçesi",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 4–11",
+  "kavramlar": [
+    {
+      "terim": "Elektron (kehribar)",
+      "izah": "Thales'in, sürtülen kehribarın hafif cisimleri çekmesi olayına verdiği ad; Yunanca kehribar demektir. Thales olayın yalnızca kehribarla ilgili olduğunu sanmıştır.",
+      "yer": "Elektriğin tanınması: kehribar ve Thales"
+    },
+    {
+      "terim": "Elektrik pili",
+      "izah": "Slaytta tanımı yok; 19. yüzyılın başında Alessandro Volta'nın icat ettiği buluş olarak geçer.",
+      "yer": "William Gilbert ve Alessandro Volta"
+    },
+    {
+      "terim": "Bobin",
+      "izah": "Slaytta tanımı yok; Joseph Henry 1829'da demir çekirdek etrafında tel sarımı suretiyle yaptığı bobinle güçlü manyetik alan yaratarak bir tondan fazla metali kaldırmıştır.",
+      "yer": "Henry ve Faraday: bobin, generatör, motor"
+    },
+    {
+      "terim": "Generatör",
+      "izah": "Slaytta tanımı yok; ilki 1831'de Michael Faraday'ın, bakır bir plakayı bir mıknatısın manyetik alanı içinde döndürerek elektrik ürettiği düzenek olarak geçer.",
+      "yer": "Henry ve Faraday: bobin, generatör, motor"
+    },
+    {
+      "terim": "Elektrik motoru",
+      "izah": "Slaytta tanımı yok; Joseph Henry'nin 1831'de Faraday'ın buluşunu tersine çevirerek, manyetik alandan elektrik akımı geçirmek suretiyle bakır bir çemberi döndürdüğü düzenek olarak geçer. Tarihte ilk kez elektrik enerjisi makinelere güç vererek iş yapılmasını sağlamıştır.",
+      "yer": "Henry ve Faraday: bobin, generatör, motor"
+    },
+    {
+      "terim": "Tesla bobini",
+      "izah": "Hocanın tanımı (kaynaklarda farklı anlatılır): elektriğin gerilimini dönüştürebilecek ve uzak mesafelere iletmeyi kolaylaştıracak bir transformatör; Tesla'nın alternatif akım projesinin önemli bir ayağıdır.",
+      "yer": "Thomas Edison ve Nikola Tesla"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-tarihce.s1",
+      "tip": "secme",
+      "yer": "Elektriğin önemi",
+      "soru": "Hocaya göre bugün ülkelerin **gelişmişlik düzeyinin** en önemli göstergelerinden biri nedir?",
+      "secenekler": [
+        "Elektrik enerjisi tüketimi",
+        "Elektrik santrallerinin sayısı",
+        "Elektrik iletim hatlarının uzunluğu",
+        "Termik santrallerin kurulum masrafı"
+      ],
+      "dogru": 0,
+      "izah": "Kullanım kolaylığı, istenildiği anda diğer enerji türlerine dönüştürülebilmesi ve günlük hayattaki yaygınlığıyla bugün elektrik enerjisi tüketimi, ülkelerin gelişmişlik düzeyinin en önemli göstergelerinden biridir."
+    },
+    {
+      "id": "el-tarihce.s2",
+      "tip": "bosluk",
+      "yer": "Elektriğin tanınması: kehribar ve Thales",
+      "metin": "Thales, kehribarla gözlediği olayın yalnızca kehribarla ilgili olduğunu sanmış ve ___ (Yunanca kehribar) adını kullanmıştır.",
+      "cevaplar": [
+        [
+          "Elektron"
+        ]
+      ],
+      "izah": "Elektron, Yunanca kehribar demektir."
+    },
+    {
+      "id": "el-tarihce.s3",
+      "tip": "secme",
+      "yer": "Elektriğin tanınması: kehribar ve Thales",
+      "soru": "İnsanların elektriği tanıdığı olayda, kumaşa sürtülen kehribar çubuk ne yapar?",
+      "secenekler": [
+        "Toz ve kıl gibi hafif cisimleri kendisine çeker",
+        "Demir parçalarını mıknatıs gibi kendisine çeker",
+        "Kumaşa değdiği yerde kıvılcım çıkarıp ışık verir",
+        "Yakınındaki bakır telde elektrik akımı oluşturur"
+      ],
+      "dogru": 0,
+      "izah": "İnsanlar elektriği yüzyıllar önce kehribar çubuğun kumaşa sürtünmesinden sonra toz ve kıl gibi hafif cisimleri kendisine çekmesi olayıyla tanımışlardır."
+    },
+    {
+      "id": "el-tarihce.s4",
+      "tip": "dy",
+      "yer": "Elektriğin tanınması: kehribar ve Thales",
+      "ifade": "Kehribar deneyini ilk yapan Thales, bu olayın yalnızca kehribarla ilgili olduğunu sanmıştır.",
+      "dogru": true,
+      "izah": "Yunanlı filozof ve bilgin Thales olayın yalnızca kehribarla ilgili olduğunu sanmış ve Elektron (Yunanca kehribar) adını kullanmıştır."
+    },
+    {
+      "id": "el-tarihce.s5",
+      "tip": "secme",
+      "yer": "William Gilbert ve Alessandro Volta",
+      "soru": "Elektriği ilk olarak **ciddi anlamda inceleyen** bilim adamı kimdir?",
+      "secenekler": [
+        "William Gilbert",
+        "Thales",
+        "Alessandro Volta",
+        "Michael Faraday"
+      ],
+      "dogru": 0,
+      "izah": "William Gilbert, 16. yüzyılın sonlarında statik elektrikle manyetizma arasındaki ilişki üzerinde araştırmalar yaparak elektriği ilk olarak ciddi anlamda inceleyen bilim adamı olmuştur. Thales kehribar deneyini ilk yapandır; Volta elektrik pilini icat etmiştir."
+    },
+    {
+      "id": "el-tarihce.s6",
+      "tip": "dy",
+      "yer": "William Gilbert ve Alessandro Volta",
+      "ifade": "William Gilbert, 19. yüzyılın başında elektrik pilini icat etmiştir.",
+      "dogru": false,
+      "izah": "Elektrik pilini 19. yüzyılın başında **Alessandro Volta** icat etmiştir. William Gilbert 16. yüzyılın sonlarında statik elektrikle manyetizma arasındaki ilişkiyi araştırmıştır."
+    },
+    {
+      "id": "el-tarihce.s7",
+      "tip": "esles",
+      "yer": "Tarih sırasıyla olaylar",
+      "soru": "Bilim insanlarını, slaytta onlara bağlanan buluş ya da çalışmayla eşleştirin.",
+      "ciftler": [
+        [
+          "William Gilbert",
+          "Statik elektrik ile manyetizma arasındaki ilişki"
+        ],
+        [
+          "Alessandro Volta",
+          "Elektrik pili"
+        ],
+        [
+          "Georg Simon Ohm",
+          "Akım, gerilim ve direnç arasındaki ilişkinin formülü"
+        ],
+        [
+          "Michael Faraday",
+          "İlk generatör"
+        ],
+        [
+          "Thomas Edison",
+          "Karbon flamanlı akkor lamba"
+        ],
+        [
+          "Nikola Tesla",
+          "Alternatif akım generatörü"
+        ]
+      ],
+      "izah": "Gilbert: statik elektrik ve manyetizma (16. yüzyılın sonları). Volta: elektrik pili (19. yüzyılın başı). Ohm: akım, gerilim ve direnç ilişkisi (1827). Faraday: ilk generatör (1831). Edison: karbon flamanlı akkor lamba (1879). Tesla: alternatif akım generatörü (1887)."
+    },
+    {
+      "id": "el-tarihce.s8",
+      "tip": "secme",
+      "yer": "Georg Simon Ohm",
+      "soru": "Ohm'un 1827'de formüle ettiği ilişkiye göre bir iletkenden geçen **akım** nasıldır?",
+      "secenekler": [
+        "Gerilimle doğru, dirençle ters orantılıdır",
+        "Gerilimle ters, dirençle doğru orantılıdır",
+        "Hem gerilimle hem dirençle doğru orantılıdır",
+        "Hem gerilimle hem dirençle ters orantılıdır"
+      ],
+      "dogru": 0,
+      "izah": "Ohm, bir iletkenden geçen akımın iletkenin uçları arasındaki gerilimle doğru, iletkenin direnciyle ters orantılı olduğunu formüle etmiştir."
+    },
+    {
+      "id": "el-tarihce.s9",
+      "tip": "secme",
+      "yer": "Henry ve Faraday: bobin, generatör, motor",
+      "soru": "Joseph Henry 1829'da, demir çekirdek etrafına tel sararak yaptığı bobinle neyi başarmıştır?",
+      "secenekler": [
+        "Güçlü manyetik alan yaratıp bir tondan fazla metali kaldırmayı",
+        "Bakır bir plakayı manyetik alanda döndürüp elektrik üretmeyi",
+        "Manyetik alandan akım geçirip bakır bir çemberi döndürmeyi",
+        "Statik elektrikle manyetizma arasındaki ilişkiyi araştırmayı"
+      ],
+      "dogru": 0,
+      "izah": "Henry 1829'da bobinle güçlü manyetik alan yaratarak bir tondan fazla metali kaldırmıştır. Bakır plakayı döndürüp elektrik üretmek Faraday'ın generatörü, bakır çemberi döndürmek Henry'nin 1831'deki motorudur. Statik elektrik ile manyetizma ilişkisini 16. yüzyılın sonlarında William Gilbert araştırmıştır."
+    },
+    {
+      "id": "el-tarihce.s10",
+      "tip": "dy",
+      "yer": "Henry ve Faraday: bobin, generatör, motor",
+      "ifade": "Faraday'ın 1831'de bakır bir plakayı manyetik alan içinde döndürerek elektrik ürettiği düzenek, ilk elektrik motorudur.",
+      "dogru": false,
+      "izah": "Faraday'ın bu düzeneği **ilk generatördür**: döndürme ile elektrik üretilir. Elektrik motorunu, Faraday'ın buluşunu tersine çevirerek Joseph Henry yapmıştır."
+    },
+    {
+      "id": "el-tarihce.s11",
+      "tip": "secme",
+      "yer": "Henry ve Faraday: bobin, generatör, motor",
+      "soru": "Joseph Henry'nin 1831'de, Faraday'ın buluşunu **tersine çevirerek** yaptığı düzenek nedir?",
+      "secenekler": [
+        "Elektrik motoru",
+        "Generatör",
+        "Tesla bobini",
+        "Elektrik pili"
+      ],
+      "dogru": 0,
+      "izah": "Henry, manyetik alandan elektrik akımı geçirerek bakır bir çemberi döndürmüştür. Bu bir elektrik motorudur; tarihte ilk kez elektrik enerjisi makinelere güç vererek iş yapılmasını sağlamıştır. Faraday'ınki ise generatördür."
+    },
+    {
+      "id": "el-tarihce.s12",
+      "tip": "secme",
+      "yer": "Thomas Edison ve Nikola Tesla",
+      "soru": "Hocaya göre elektrik bilgilerinin **pratiğe uygulanması** kimler tarafından gerçekleştirilmiştir?",
+      "secenekler": [
+        "Thomas Edison ve Nikola Tesla",
+        "Michael Faraday ve Joseph Henry",
+        "William Gilbert ve Alessandro Volta",
+        "Thales ve Georg Simon Ohm"
+      ],
+      "dogru": 0,
+      "izah": "Slaytta açıkça yazar: elektrik bilgilerinin pratiğe uygulanması Thomas Edison ve Nikola Tesla tarafından gerçekleştirilmiştir."
+    },
+    {
+      "id": "el-tarihce.s13",
+      "tip": "dy",
+      "yer": "İlk santral ve günlük kullanım",
+      "ifade": "Elektrik enerjisi ilk defa 1882 yılında günlük hayatta kullanılmaya başlamıştır.",
+      "dogru": false,
+      "izah": "Elektrik enerjisi ilk defa **1878** yılında günlük hayatta kullanılmaya başlamıştır. 1882, ilk elektrik santralinin Londra'da hizmete girdiği yıldır."
+    },
+    {
+      "id": "el-tarihce.s14",
+      "tip": "secme",
+      "yer": "Türkiye'de ilk elektrik üretimi",
+      "soru": "Ülkemizde **ilk elektrik üretimi** nasıl gerçekleşmiştir?",
+      "secenekler": [
+        "1902'de Tarsus'ta 2 kW gücündeki küçük bir su türbiniyle",
+        "1902'de Tarsus'ta 2 kW gücündeki küçük bir termik santralle",
+        "1902'de İstanbul'da 2 kW gücündeki küçük bir su türbiniyle",
+        "1878'de Tarsus'ta 2 kW gücündeki küçük bir su türbiniyle"
+      ],
+      "dogru": 0,
+      "izah": "Ülkemizde ilk elektrik üretimi 1902'de Tarsus'ta tesis edilen 2 kW gücündeki küçük bir su türbiniyle gerçekleşmiştir. Termik santral değil su türbinidir, yer İstanbul değil Tarsus'tur; 1878 ise elektrik enerjisinin ilk defa günlük hayatta kullanılmaya başladığı yıldır."
+    },
+    {
+      "id": "el-tarihce.s17",
+      "tip": "dizme",
+      "yer": "Tarih sırasıyla olaylar",
+      "soru": "Olayları tarih sırasına dizin (en eski en üstte).",
+      "parcalar": [
+        "Thales'in kehribar deneyi",
+        "Gilbert'in statik elektrik ve manyetizma araştırmaları",
+        "Volta'nın elektrik pilini icat etmesi",
+        "Edison'un akkor lamba için patent başvurusu",
+        "Tarsus'ta ülkemizdeki ilk elektrik üretimi",
+        "Silahtarağa'da ilk büyük santralin kurulması"
+      ],
+      "izah": "Thales: MÖ 640–546. Gilbert: 16. yüzyılın sonları. Volta: 19. yüzyılın başı. Edison: 1879. Tarsus: 1902. Silahtarağa: slayta göre 1913 (kaynaklarda hizmete girişi 1914); iki durumda da Tarsus'tan sonradır."
+    },
+    {
+      "id": "el-tarihce.s18",
+      "tip": "hesap",
+      "yer": "Thomas Edison ve Nikola Tesla",
+      "soru": "Edison 1879'da karbon flamanlı akkor lamba için patent başvurusu yaptı; üç yıl sonra bu lambalar New York sokaklarında ışıyordu. Ülkemizdeki ilk elektrik üretimi (Tarsus, 1902), New York sokaklarında bu lambaların ışımasından kaç yıl sonradır?",
+      "cevap": 20,
+      "birim": "yıl",
+      "izah": "Lambaların New York sokaklarında ışıdığı yıl: 1879 + 3 = 1882.\nAradaki süre: 1902 − 1882 = 20 yıl."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-tarihce.k1",
+      "yer": "Elektriğin tanınması: kehribar ve Thales",
+      "on": "İnsanlar elektriği nasıl tanıdı? Thales'in deneyini anlatın.",
+      "arka": "İnsanlar elektriği yüzyıllar önce **kehribar çubuğun kumaşa sürtünmesinden** sonra toz ve kıl gibi hafif cisimleri kendisine çekmesi olayıyla tanıdı. Bu deneyi ilk yapan Yunanlı filozof ve bilgin **Thales**'tir (MÖ 640–546). Thales olayın yalnızca kehribarla ilgili olduğunu sandı ve **Elektron** (Yunanca kehribar) adını kullandı."
+    },
+    {
+      "id": "el-tarihce.k2",
+      "yer": "William Gilbert ve Alessandro Volta",
+      "on": "Thales, William Gilbert ve Alessandro Volta'nın elektrik tarihindeki yerini karşılaştırın.",
+      "arka": "- Thales: kehribar deneyini ilk yapan; \"Elektron\" adını kullandı.\n- William Gilbert: elektriği ilk olarak ciddi anlamda inceleyen bilim adamı; 16. yüzyılın sonlarında statik elektrikle manyetizma arasındaki ilişkiyi araştırdı.\n- Alessandro Volta: 19. yüzyılın başında elektrik pilini icat etti."
+    },
+    {
+      "id": "el-tarihce.k3",
+      "yer": "Georg Simon Ohm",
+      "on": "Georg Simon Ohm 1827'de neyi formüle etti?",
+      "arka": "Bir iletkenden geçen **akımın**, iletkenin uçları arasındaki **gerilimle doğru**, iletkenin **direnciyle ters orantılı** olduğunu.\nEk: bu ilişki Ohm kanunu diye bilinir."
+    },
+    {
+      "id": "el-tarihce.k4",
+      "yer": "Henry ve Faraday: bobin, generatör, motor",
+      "on": "Faraday'ın generatörü ile Henry'nin elektrik motoru arasındaki fark nedir?",
+      "arka": "- Faraday (1831): bakır bir plakayı mıknatısın manyetik alanı içinde döndürerek **elektrik üretti**; bu ilk generatördür.\n- Henry (1831): Faraday'ın buluşunu tersine çevirdi; manyetik alandan **elektrik akımı geçirerek** bakır bir çemberi **döndürdü**. Bu bir elektrik motorudur; tarihte ilk kez elektrik enerjisi makinelere güç vererek iş yaptı.\nHenry daha önce, 1829'da, bobinle güçlü manyetik alan yaratıp bir tondan fazla metal kaldırmıştı."
+    },
+    {
+      "id": "el-tarihce.k5",
+      "yer": "Thomas Edison ve Nikola Tesla",
+      "on": "Edison ve Tesla'nın elektrik tarihindeki katkılarını anlatın.",
+      "arka": "Elektrik bilgilerinin pratiğe uygulanması Edison ve Tesla tarafından gerçekleştirilmiştir.\n- Edison: 1879'da karbon flamanlı akkor lamba için patent başvurusu yaptı; üç yıl sonra bu lambalar New York sokaklarında ışıyordu.\n- Tesla: Tesla bobini (slaytta 1883); hocaya göre gerilimi dönüştürüp uzak mesafelere iletmeyi kolaylaştıracak bir transformatör ve alternatif akım projesinin önemli bir ayağı. 1887'de alternatif akım generatörünü buldu.\nEk: kaynaklarda Tesla bobini 1891 yılıyla ve yüksek frekanslı, çok yüksek gerilim üreten bir transformatör olarak anlatılır."
+    },
+    {
+      "id": "el-tarihce.k6",
+      "yer": "Türkiye'de ilk elektrik üretimi",
+      "on": "Ülkemizde ilk elektrik üretimi ve ilk büyük santral hakkında bilgi verin.",
+      "arka": "- İlk elektrik üretimi: **1902**, **Tarsus**, **2 kW** gücündeki küçük bir **su türbini**.\n- İlk büyük santral: **1913**, **İstanbul Silahtarağa**, **15 MW** güce sahip **termik santral**.\nEk: kaynaklarda Silahtarağa santralinin 11 Şubat 1914'te hizmete girdiği ve başlangıçta üç adet 6 MW'lık generatörle çalıştığı da anlatılır; yukarıdakiler slayttaki değerlerdir."
+    },
+    {
+      "id": "el-tarihce.k7",
+      "yer": "Tarih sırasıyla olaylar",
+      "on": "Elektrik tarihindeki önemli olayları tarih sırasıyla sayın.",
+      "arka": "Thales, kehribar (MÖ 640–546) → Gilbert, statik elektrik ve manyetizma (16. yüzyılın sonları) → Volta, elektrik pili (19. yüzyılın başı) → Ohm (1827) → Henry, bobin (1829) → Faraday, ilk generatör ve Henry, elektrik motoru (1831) → elektrik günlük hayatta (1878) → Edison, akkor lamba patent başvurusu (1879) → ilk santral Londra'da (1882) → Tesla bobini (slaytta 1883; kaynaklarda 1891) → Tesla, alternatif akım generatörü (1887) → Tarsus (1902) → Silahtarağa (slaytta 1913)."
+    }
+  ]
+}

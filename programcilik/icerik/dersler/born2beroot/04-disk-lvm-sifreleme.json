@@ -1,0 +1,180 @@
+{
+  "id": "b2r-disk",
+  "baslik": "Disk Partisyonlama: LVM ve Şifreleme",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "swap",
+      "izah": "RAM yetmediğinde kullanılan disk alanı; bu projede ayrı bir LV olarak açılır.",
+      "yer": "Örnek şema (/boot, root, swap, home) ve boyutlandırma ilkesi"
+    },
+    {
+      "terim": "/boot",
+      "izah": "Çekirdek dosyalarının durduğu bölüm; bootloader okuyabilsin diye şifrelenmez.",
+      "yer": "Partition, dosya sistemi, mount point temel kavramları"
+    },
+    {
+      "terim": "bootloader",
+      "izah": "Açılışta çekirdeği belleğe yükleyen program; Debian'da GRUB. /boot bölümü şifrelenmez, çünkü bootloader'ın onu okuyabilmesi gerekir.",
+      "yer": "Partition, dosya sistemi, mount point temel kavramları"
+    },
+    {
+      "terim": "bölüm (partition)",
+      "izah": "Diskin ayrılmış bir parçası. Bu projede /boot ayrı bir bölümdür; gerisi tek bir şifreli bölümün içinde LVM ile ayrılır.",
+      "yer": "Partition, dosya sistemi, mount point temel kavramları"
+    },
+    {
+      "terim": "LV",
+      "izah": "Logical Volume: Volume Group havuzundan kesilen, mount edilip kullanılan mantıksal birim. root, swap ve home birer LV'dir; `lvs` ile listelenir.",
+      "yer": "LVM: Physical Volume / Volume Group / Logical Volume ilişkisi"
+    },
+    {
+      "terim": "PV",
+      "izah": "Physical Volume: LVM'e verilen ham disk ya da bölüm, zincirin ilk halkası. `pvs` ile listelenir.",
+      "yer": "LVM: Physical Volume / Volume Group / Logical Volume ilişkisi"
+    },
+    {
+      "terim": "VG",
+      "izah": "Volume Group: bir ya da daha çok PV'nin birleştiği havuz; mantıksal birimler bu havuzdan kesilir. `vgs` ile listelenir.",
+      "yer": "LVM: Physical Volume / Volume Group / Logical Volume ilişkisi"
+    },
+    {
+      "terim": "lvextend",
+      "izah": "Bir mantıksal birimi (LV) büyüten komut. LVM'in ayırt edici faydası budur: diski yeniden bölümlemeden alan eklenebilir.",
+      "yer": "Kurulum sihirbazının arka planda yaptığının komut karşılığı (kavramsal)"
+    },
+    {
+      "terim": "şifreleme",
+      "izah": "Diskteki verinin parolasız okunamaz hâle getirilmesi. Bu projede LUKS ile yapılır; disk başkasının eline geçse bile içerik okunamaz.",
+      "yer": "LUKS ile disk şifreleme mantığı"
+    },
+    {
+      "terim": "dosya sistemi",
+      "izah": "Bir bölüme dosyaların nasıl yazılıp okunacağını belirleyen düzen; Linux'ta yaygını ext4'tür.",
+      "yer": "Partition, dosya sistemi, mount point temel kavramları"
+    },
+    {
+      "terim": "ext4",
+      "izah": "Linux'un yaygın dosya sistemi; bu projede root ve home birimlerinde kullanılır.",
+      "yer": "Partition, dosya sistemi, mount point temel kavramları"
+    },
+    {
+      "terim": "lsblk",
+      "izah": "Diskleri, bölümleri ve LVM birimlerini ağaç hâlinde listeleyen komut. LVM'in aktif olduğunu göstermenin en hızlı yolu.",
+      "yer": "Doğrulama komutları: lsblk, pvs, vgs, lvs"
+    },
+    {
+      "terim": "/dev/sda5",
+      "izah": "Örnek bölüm aygıt adı: sda ilk diski, sondaki sayı o diskteki bölümü belirtir. LUKS şifrelemesi böyle bir aygıtın üzerine kurulur.",
+      "yer": "LUKS ile disk şifreleme mantığı"
+    },
+    {
+      "terim": "/home",
+      "izah": "Kullanıcıların kişisel dosyalarının durduğu dizin; bu projede genelde ayrı bir LV olarak ayrılır.",
+      "yer": "Partition, dosya sistemi, mount point temel kavramları"
+    },
+    {
+      "terim": "mount",
+      "izah": "Bir dosya sistemini dizin ağacının belirli bir noktasına bağlama işlemi. Hangi birimin nereye bağlandığı `lsblk` çıktısının son sütununda görünür.",
+      "yer": "Partition, dosya sistemi, mount point temel kavramları"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-disk.s1",
+      "tip": "dizme",
+      "yer": "Kurulum sihirbazının arka planda yaptığının komut karşılığı (kavramsal)",
+      "soru": "Bir bölümü LUKS ile şifreye hazırlayan komutu dizin:",
+      "parcalar": [
+        "cryptsetup",
+        "luksFormat",
+        "/dev/sda5"
+      ],
+      "komut": true,
+      "izah": "Kurulum sihirbazı bunu tıklamalarla yapar; ardından `cryptsetup open` ile açılıp içine LVM kurulur."
+    },
+    {
+      "id": "b2r-disk.s2",
+      "tip": "dizme",
+      "yer": "Kurulum sihirbazının arka planda yaptığının komut karşılığı (kavramsal)",
+      "soru": "Şifreli alanın içinde 10GB'lık root mantıksal birimini oluşturan komutu dizin:",
+      "parcalar": [
+        "lvcreate",
+        "-L 10G",
+        "-n root",
+        "VGname"
+      ],
+      "komut": true,
+      "izah": "-L boyutu, -n adı belirtir. Son parametre birimin açılacağı Volume Group'tur."
+    },
+    {
+      "id": "b2r-disk.s3",
+      "tip": "dizme",
+      "yer": "LUKS ile disk şifreleme mantığı",
+      "soru": "Diskin katmanlarını dıştan içe doğru sıralayın:",
+      "parcalar": [
+        "partition",
+        "LUKS şifreleme",
+        "LVM",
+        "dosya sistemi"
+      ],
+      "izah": "Önce bölüm LUKS ile şifrelenir (sda5_crypt oluşur), sonra o cihazın içine LVM kurulur, en sonda dosya sistemleri gelir."
+    },
+    {
+      "id": "b2r-disk.s4",
+      "tip": "secme",
+      "yer": "LVM: Physical Volume / Volume Group / Logical Volume ilişkisi",
+      "soru": "LVM'i neden tercih ediyorsunuz? Savunmada verilecek en güçlü cevap hangisi?",
+      "secenekler": [
+        "Okuma yazma hızını artırır; veriyi birden çok disk arasında paylaştırır",
+        "Disk alanını PV→VG→LV katmanlarıyla esnek yönetir; birim sonradan büyütülebilir",
+        "Bölümleri şifreleyerek verinin çalınmasını engeller, LUKS'a gerek bırakmaz",
+        "Bölümleri otomatik yedekler, bozulma hâlinde eski hâline döndürür"
+      ],
+      "dogru": 1,
+      "izah": "Şifrelemeyi LUKS yapar, LVM değil. LVM'in ayırt edici faydası esneklik ve sonradan büyütebilmedir."
+    },
+    {
+      "id": "b2r-disk.s5",
+      "tip": "secme",
+      "yer": "En az 2 şifreli LVM partisyonu kurulum sihirbazında nasıl oluşturulur",
+      "soru": "Disk şifreleme parolanız ile kullanıcı giriş parolanız aynı şey midir?",
+      "secenekler": [
+        "Evet; kurulumda tek parola belirlenir, hem disk hem hesap onunla açılır",
+        "Hayır — biri (LUKS) diski açılışta kilitten çıkarır, diğeri sisteme giriş yapar",
+        "Evet; yalnızca root hesabı için ayrı bir parola tanımlanması gerekir",
+        "Hayır ama ikisi de login.defs kurallarına tabidir, birlikte süresi dolar"
+      ],
+      "dogru": 1,
+      "izah": "Tamamen ayrı iki paroladır. LUKS parolası VM her açıldığında, kilidi çözmek için sorulur."
+    },
+    {
+      "id": "b2r-disk.s6",
+      "tip": "secme",
+      "yer": "Partition, dosya sistemi, mount point temel kavramları",
+      "soru": "/boot neden şifrelenmez?",
+      "secenekler": [
+        "İçinde hassas veri olmadığı için",
+        "Bootloader'ın onu okuyabilmesi gerektiği için",
+        "LVM desteklemediği için",
+        "Subject öyle istediği için, teknik sebebi yok"
+      ],
+      "dogru": 1,
+      "izah": "/boot çekirdek dosyalarını tutar; açılış yükleyicisi şifre çözemeden bunları okuyabilmelidir."
+    },
+    {
+      "id": "b2r-disk.s7",
+      "tip": "secme",
+      "yer": "\"En az 2 şifreli bölüm\" ne demek",
+      "soru": "Subject'in istediği “en az 2 şifreli bölüm” şartı nasıl karşılanır?",
+      "secenekler": [
+        "Diskte iki ayrı LUKS kabı açıp LVM kullanmadan doğrudan biçimlendirerek",
+        "Tek bir LUKS kabının içinde LVM ile en az iki mantıksal birim (LV) oluşturarak",
+        "/boot bölümünü de şifreleyip toplam şifreli bölüm sayısını ikiye çıkararak",
+        "VM'e ikinci bir sanal disk ekleyip onu LVM olmadan ayrıca şifreleyerek"
+      ],
+      "dogru": 1,
+      "izah": "Şart LVM ile en az iki şifreli bölümdür. root, swap ve home aynı şifreli kabın içindeki üç LV'dir; üçü de şifreli sayılır ve şart fazlasıyla karşılanır. LVM kullanılmayan çözümler şartı karşılamaz; /boot da bu sayıya dahil değildir."
+    }
+  ]
+}

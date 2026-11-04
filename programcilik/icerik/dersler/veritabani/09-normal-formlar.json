@@ -1,0 +1,377 @@
+{
+  "id": "vt-normal-formlar",
+  "baslik": "Birinci, İkinci ve Üçüncü Normal Form",
+  "kaynak": "normalizasyon_1.pdf, slayt 6–19",
+  "kavramlar": [
+    {
+      "terim": "Birinci normal form (1NF)",
+      "izah": "Tekrarlanan sütun yapıları olmamalı; birden fazla türde bilgi tek bir sütunda olamaz; bir alandaki bilgi özel karakterlerle ayrılarak tutulmamalı.",
+      "yer": "1NF kuralları"
+    },
+    {
+      "terim": "İkinci normal form (2NF)",
+      "izah": "Tabloda bir birincil anahtar olmalı ve anahtar olmayan sütunlar ona bağımlı olmalı; anahtar birden fazla sütundan oluşuyorsa veriler her iki sütuna da bağımlı olmalı.",
+      "yer": "2NF kuralları"
+    },
+    {
+      "terim": "Üçüncü normal form (3NF)",
+      "izah": "Anahtar olmayan sütunlar anahtar sütuna tam bağımlı olmalı, anahtar olmayan bir sütuna bağımlı olmamalı.",
+      "yer": "3NF kuralı"
+    },
+    {
+      "terim": "Birincil anahtar – yabancı anahtar ilişkisi",
+      "izah": "1NF'de ayrı tabloya taşınan veriyi ilgili tabloya bağlar. Ör. Ogrenci tablosundaki Ogr_ID birincil anahtar, Telefonlar tablosundaki Ogr_ID yabancı anahtar.",
+      "yer": "1NF örneği: telefonlar"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-normal-formlar.s1",
+      "tip": "secme",
+      "yer": "1NF kuralları",
+      "soru": "Aşağıdakilerden hangisi 1NF kurallarından biri **değildir**?",
+      "secenekler": [
+        "Anahtar olmayan sütunlar anahtara tam bağımlı olmalıdır",
+        "Tekrarlanan sütun yapıları olmamalıdır",
+        "Birden fazla türde bilgi tek bir sütunda olamaz",
+        "Bir alan içerisindeki bilgi özel karakterlerle ayrılarak tutulmamalıdır"
+      ],
+      "dogru": 0,
+      "izah": "\"Anahtar olmayan sütunlar anahtara tam bağımlı olmalıdır\" 3NF'nin kuralıdır. Tekrarlanan sütun yapıları, tek sütunda birden fazla türde bilgi ve özel karakterle ayrılmış bilgi yasağı ise hocanın saydığı 1NF kurallarıdır."
+    },
+    {
+      "id": "vt-normal-formlar.s2",
+      "tip": "secme",
+      "yer": "1NF kuralları",
+      "soru": "Öğrencilerin notları için `not1`, `not2`, `not3` diye ayrı alanlar tanımlamak hangi normal formun kuralına aykırıdır?",
+      "secenekler": [
+        "1NF",
+        "2NF",
+        "3NF"
+      ],
+      "dogru": 0,
+      "izah": "Bu, tekrarlanan sütun yapısıdır; 1NF'nin ilk kuralına aykırıdır. Hoca bu örneği 1NF'yi anlatırken verir."
+    },
+    {
+      "id": "vt-normal-formlar.s3",
+      "tip": "secme",
+      "yer": "1NF kuralları",
+      "soru": "Hocaya göre `not1`, `not2`, `not3` diye alan tanımlamanın sakıncası nedir?",
+      "secenekler": [
+        "Daha fazla not gerektiğinde eksikliğe, daha az not gerektiğinde gereksiz alan kullanımına yol açar",
+        "Notların ondalıklı sayı olarak saklanmasını imkânsız hâle getirir ve ortalamayı bozar",
+        "Öğrenci numarasının birincil anahtar olarak seçilmesini engeller ve ilişkiyi koparır",
+        "Not alanlarının NULL kalmasını zorunlu kılar ve kayıt eklenmesini engeller"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki gerekçe: daha fazla not girilmesi gerektiğinde eksiklik, daha az not girilmesi gerektiğinde gereksiz alan kullanımı."
+    },
+    {
+      "id": "vt-normal-formlar.s4",
+      "tip": "secme",
+      "yer": "1NF örneği: telefonlar",
+      "soru": "Hocanın başlangıç tablosunda (Ogr_ID, Adi, Soyadi, Adres, Telefonlar, Ders_Kodu, Dersin_Adi, Vize, Final) 1NF'ye aykırı olan alan hangisidir?",
+      "secenekler": [
+        "Telefonlar",
+        "Ders_Kodu",
+        "Adres",
+        "Vize"
+      ],
+      "dogru": 0,
+      "izah": "Telefonlar alanında birden fazla telefon numarası tek bir alanda, virgülle ayrılarak tutulmuştur (\"2159001, 2159002\")."
+    },
+    {
+      "id": "vt-normal-formlar.s5",
+      "tip": "secme",
+      "yer": "1NF örneği: telefonlar",
+      "soru": "1NF uygulandıktan sonra Telefonlar tablosundaki `Ogr_ID` alanı ne tür bir anahtardır?",
+      "secenekler": [
+        "Yabancı anahtar",
+        "Birincil anahtar",
+        "Anahtar değildir, sıradan bir alandır"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre bu ilişkide Ogrenci tablosundaki Ogr_ID birincil anahtar, Telefonlar tablosundaki Ogr_ID yabancı anahtardır."
+    },
+    {
+      "id": "vt-normal-formlar.s6",
+      "tip": "dy",
+      "yer": "1NF örneği: telefonlar",
+      "ifade": "Tek alanda tutulan telefonlar, Ogrenci tablosuna Telefon1 ve Telefon2 gibi yeni sütunlar eklenerek 1NF'ye uygun hâle getirilir.",
+      "dogru": false,
+      "izah": "Bu, tekrarlanan sütun yapısı olur ve 1NF'ye yine aykırıdır. Doğrusu telefonları yeni bir tabloya taşıyıp Ogr_ID ile ilişkilendirmektir."
+    },
+    {
+      "id": "vt-normal-formlar.s7",
+      "tip": "hesap",
+      "yer": "1NF örneği: telefonlar",
+      "soru": "Başlangıç tablosunda Ali'nin telefonları \"2159001, 2159002\", Mehmet'in telefonu \"3101510\" olarak tutuluyor. Telefonlar, her numara bir satır olacak şekilde ayrı tabloya taşınırsa Telefonlar tablosunda kaç kayıt olur?",
+      "cevap": 3,
+      "izah": "Ali'nin 2, Mehmet'in 1 numarası var: (1, 2159001), (1, 2159002), (2, 3101510) → 3 kayıt."
+    },
+    {
+      "id": "vt-normal-formlar.s8",
+      "tip": "dy",
+      "yer": "1NF örneği: telefonlar",
+      "ifade": "Telefonlar ayrı tabloya taşındıktan sonra iki tablo Ogr_ID alanına göre ilişkilendirilir.",
+      "dogru": true,
+      "izah": "Hocaya göre iki tablo öğrenci numarasına (Ogr_ID alanı) göre ilişkilendirilmiş olur."
+    },
+    {
+      "id": "vt-normal-formlar.s9",
+      "tip": "secme",
+      "yer": "2NF kuralları",
+      "soru": "Birincil anahtar birden fazla sütundan oluşuyorsa 2NF'ye göre ne gerekir?",
+      "secenekler": [
+        "Tablodaki veriler anahtarın her iki sütununa da bağımlı olmalıdır",
+        "Anahtar sütunlardan biri silinip tek sütunlu anahtara geçilmelidir",
+        "Anahtar olmayan sütunlar başka bir anahtar olmayan sütuna bağımlı olmalıdır",
+        "Anahtarı oluşturan sütunların değerleri NULL bırakılabilmelidir"
+      ],
+      "dogru": 0,
+      "izah": "2NF'nin ikinci kuralı: birincil anahtar birden fazla sütundan oluşuyorsa tablodaki veriler her iki sütuna da bağımlı olmalıdır."
+    },
+    {
+      "id": "vt-normal-formlar.s10",
+      "tip": "secme",
+      "yer": "2NF örneği: öğrenci ve notlar",
+      "soru": "OgrenciVeNot tablosunun (ogrNo, Ad, Bolum, DersKodu, Not) birincil anahtarı ogrNo ve DersKodu'dur. Hangi sütunlar 2NF'ye aykırıdır?",
+      "secenekler": [
+        "Ad ve Bolum",
+        "Not",
+        "DersKodu ve Not",
+        "ogrNo ve DersKodu"
+      ],
+      "dogru": 0,
+      "izah": "Ad ve Bolum yalnızca ogrNo'ya bağlıdır, anahtarın diğer parçası DersKodu'na bağlı değildir. Not ise iki sütuna birden bağlıdır."
+    },
+    {
+      "id": "vt-normal-formlar.s11",
+      "tip": "secme",
+      "yer": "2NF örneği: öğrenci ve notlar",
+      "soru": "OgrenciVeNot tablosu 2NF'ye uygun hâle getirilince hangi tablolar oluşur?",
+      "secenekler": [
+        "Ogrenci (ogrNo, Ad, Bolum) ve Not (ogrNo, DersKodu, Not)",
+        "Ogrenci (ogrNo, Ad) ve Bolum (Bolum, DersKodu, Not)",
+        "Ogrenci (ogrNo, Ad, Bolum, Not) ve Ders (DersKodu)",
+        "Ogrenci (ogrNo, DersKodu) ve Not (Ad, Bolum, Not)"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın çözümü: öğrenci bilgileri ve not bilgileri ayrılır. Öğrenci bilgileri ogrNo'ya, not ise ogrNo ve DersKodu ikilisine bağlıdır."
+    },
+    {
+      "id": "vt-normal-formlar.s12",
+      "tip": "secme",
+      "yer": "3NF kuralı",
+      "soru": "Hocanın 3NF için verdiği kural hangisidir?",
+      "secenekler": [
+        "Anahtar olmayan sütunlar anahtar sütuna tam bağımlı olmalı, anahtar olmayan sütuna bağımlı olmamalı",
+        "Birincil anahtar birden fazla sütundan oluşuyorsa veriler her iki sütuna da bağımlı olmalı",
+        "Bir alan içerisindeki bilgi özel karakterlerle ayrılarak tutulmamalı, tek bilgi olmalı",
+        "Tabloda tekrarlanan sütun yapıları olmamalı, her tablo en az üç sütundan oluşmalı"
+      ],
+      "dogru": 0,
+      "izah": "3NF'nin kuralı: anahtar olmayan sütunlar anahtar sütuna tam bağımlı olmalı, anahtar olmayan sütuna bağımlı olmamalı. Birden fazla sütunlu anahtarın her iki sütununa bağımlılık 2NF'nin, özel karakterle ayrılmış bilgi yasağı 1NF'nin kuralıdır; \"her tablo en az üç sütundan oluşmalı\" diye bir kural yoktur."
+    },
+    {
+      "id": "vt-normal-formlar.s13",
+      "tip": "secme",
+      "yer": "3NF örneği: ürün ve birim",
+      "soru": "Ürün tablosunda (ÜKodu, Ad, Birim, Birim Adı; anahtar ÜKodu) `Birim Adı` sütunu neden 3NF'ye aykırıdır?",
+      "secenekler": [
+        "Anahtar olmayan Birim sütununa bağımlı olduğu için",
+        "Anahtarın yalnızca bir parçasına bağımlı olduğu için",
+        "Bir hücrede birden çok bilgi tuttuğu için",
+        "Birincil anahtar olarak seçilmediği için"
+      ],
+      "dogru": 0,
+      "izah": "Birim Adı, ürünün koduna değil Birim değerine bağlıdır (birim 1 ise her zaman Kg). Birim anahtar olmayan bir sütundur. Anahtar tek sütun (ÜKodu) olduğu için \"anahtarın bir parçası\" durumu burada yoktur."
+    },
+    {
+      "id": "vt-normal-formlar.s14",
+      "tip": "esles",
+      "yer": "Normalizasyon kuralları",
+      "soru": "Hocanın örneklerindeki sorunları aykırı oldukları normal formla eşleştirin.",
+      "ciftler": [
+        [
+          "Birden çok telefon numarasının tek alanda tutulması",
+          "1NF"
+        ],
+        [
+          "Ad'ın, ogrNo + DersKodu anahtarının yalnızca ogrNo'suna bağlı olması",
+          "2NF"
+        ],
+        [
+          "Birim Adı'nın anahtar olmayan Birim sütununa bağlı olması",
+          "3NF"
+        ]
+      ],
+      "izah": "Tek alanda birden çok bilgi 1NF'ye; anahtarın bir parçasına bağlılık 2NF'ye; anahtar olmayan sütuna bağlılık 3NF'ye aykırıdır."
+    },
+    {
+      "id": "vt-normal-formlar.s15",
+      "tip": "dizme",
+      "yer": "Normalizasyon kuralları",
+      "soru": "Normalizasyon adımlarını uygulanma sırasına göre dizin.",
+      "parcalar": [
+        "Tekrarlanan sütunları ve tek alanda tutulan birden çok bilgiyi yeni tabloya taşı",
+        "Anahtarın yalnızca bir parçasına bağlı sütunları ayrı tabloya al",
+        "Anahtar olmayan bir sütuna bağlı sütunları ayrı tabloya al"
+      ],
+      "izah": "Sırasıyla 1NF, 2NF ve 3NF. Her adım bir öncekinin sonucuna uygulanır."
+    },
+    {
+      "id": "vt-normal-formlar.s16",
+      "tip": "secme",
+      "yer": "Başlangıç tablosu",
+      "soru": "Hocanın örneğindeki tablo (musteri, Urun_id, Sehir, SehirKodu, Miktar; anahtar musteri + Urun_id) için hangisi doğrudur?",
+      "secenekler": [
+        "1NF'ye uygundur, 2NF'ye uygun değildir",
+        "1NF'ye de uygun değildir",
+        "2NF'ye uygundur, 3NF'ye uygun değildir",
+        "3NF'ye uygundur"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın değerlendirmesi: 1NF uygun, 2NF değil. Sehir ve SehirKodu, anahtarın yalnızca musteri parçasına bağlıdır."
+    },
+    {
+      "id": "vt-normal-formlar.s17",
+      "tip": "secme",
+      "yer": "Başlangıç tablosu",
+      "soru": "Aynı tablo neden 2NF'ye uygun değildir?",
+      "secenekler": [
+        "Sehir ve SehirKodu, anahtarın yalnızca musteri parçasına bağlıdır",
+        "Miktar, anahtarı oluşturan iki sütunun ikisine birden bağlıdır",
+        "Urun_id sütunu tabloda tek başına birincil anahtar olarak seçilmiştir",
+        "Tabloda not1, not2 gibi tekrarlanan sütun yapıları bulunmaktadır"
+      ],
+      "dogru": 0,
+      "izah": "M145 hangi ürünü alırsa alsın Denizli'dedir: şehir bilgisi yalnızca müşteriye bağlıdır. Miktar'ın iki sütuna birden bağlı olması ise 2NF'nin istediği şeydir, aykırılık değildir."
+    },
+    {
+      "id": "vt-normal-formlar.s18",
+      "tip": "secme",
+      "yer": "2NF'ye geçiş",
+      "soru": "2NF'ye getirilince oluşan (musteri, Sehir, SehirKodu) tablosu neden 3NF'ye uygun değildir?",
+      "secenekler": [
+        "Sehir, anahtar olmayan SehirKodu sütununa bağlıdır",
+        "Sehir, anahtarın yalnızca bir parçasına bağlıdır",
+        "musteri sütunu bu tabloda birincil anahtar olamaz",
+        "Bir hücrede birden çok şehir adı tutulmuştur"
+      ],
+      "dogru": 0,
+      "izah": "Şehir kodu 2 olan her satırda şehir Tokat'tır: Sehir, anahtar olmayan SehirKodu'na bağlıdır. Hoca bunu \"2NF uygun, 3NF uygun değil\" diye değerlendirir."
+    },
+    {
+      "id": "vt-normal-formlar.s19",
+      "tip": "hesap",
+      "yer": "3NF'ye geçiş",
+      "soru": "Hocanın musteri–Urun_id örneği 3NF'ye getirildiğinde toplam kaç tablo oluşur?",
+      "cevap": 3,
+      "izah": "(musteri, Urun_id, Miktar), (musteri, SehirKodu) ve (SehirKodu, Sehir) → 3 tablo."
+    },
+    {
+      "id": "vt-normal-formlar.s20",
+      "tip": "klasik",
+      "yer": "Normalizasyon kuralları",
+      "soru": "1NF, 2NF ve 3NF'nin kurallarını yazın.",
+      "cevap": "1NF: tekrarlanan sütun yapıları olmamalı; birden fazla türde bilgi tek bir sütunda olamaz; bir alan içerisindeki bilgi özel karakterlerle ayrılarak tutulmamalı.\n2NF: tabloda bir birincil anahtar olmalı ve anahtar olmayan sütunlar birincil anahtara bağımlı olmalı; birincil anahtar birden fazla sütundan oluşuyorsa veriler her iki sütuna da bağımlı olmalı.\n3NF: anahtar olmayan sütunlar anahtar sütuna tam bağımlı olmalı, anahtar olmayan sütuna bağımlı olmamalı.",
+      "anahtarlar": [
+        "tekrarlanan sütun",
+        "tek bir sütunda",
+        "özel karakter",
+        "birincil anahtar",
+        "her iki sütuna",
+        "tam bağımlı",
+        "anahtar olmayan sütuna"
+      ]
+    },
+    {
+      "id": "vt-normal-formlar.s21",
+      "tip": "secme",
+      "yer": "Sorunlar",
+      "soru": "Hocanın 1NF anlatımındaki \"Sorunlar\" slaytında sayılan üç sorun hangileridir?",
+      "secenekler": [
+        "Veri ekleme, veri güncelleme, veri silme",
+        "Kayıt güncelleme, kayıt silme, kayıt bulma",
+        "Veri tekrarı, veri kaybı, veri yetersizliği",
+        "Veri bütünlüğü, uygulamadan bağımsızlık, performans"
+      ],
+      "dogru": 0,
+      "izah": "\"Sorunlar\" slaytı: veri ekleme, veri güncelleme, veri silme. \"Kayıt güncelleme, silme, bulma\" ilk üç form ihlal edildiğinde zorluk çekilen işlemlerdir; \"tekrar, kayıp, yetersizlik\" normalizasyonun önlediği şeyler; \"bütünlük, bağımsızlık, performans\" normalizasyonun amaçlarıdır."
+    },
+    {
+      "id": "vt-normal-formlar.s22",
+      "tip": "dy",
+      "yer": "Sorunlar",
+      "ifade": "Hocanın \"Sorunlar\" slaytına göre eklenen verinin daha önce olup olmadığının kontrolü zordur.",
+      "dogru": true,
+      "izah": "Slayttaki ilk sorun: veri ekleme, eklenen verinin daha önce olup olmadığının kontrolü zor."
+    },
+    {
+      "id": "vt-normal-formlar.s23",
+      "tip": "esles",
+      "yer": "Normalizasyon kuralları",
+      "soru": "Normal formları İngilizce adlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "1NF",
+          "First Normal Form"
+        ],
+        [
+          "2NF",
+          "Second Normal Form"
+        ],
+        [
+          "3NF",
+          "Third Normal Form"
+        ]
+      ],
+      "izah": "Birinci Normal Form (First Normal Form), İkinci Normal Form (Second Normal Form), Üçüncü Normal Form (Third Normal Form)."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-normal-formlar.k1",
+      "yer": "1NF kuralları",
+      "on": "1NF'nin kuralları nelerdir? Bir örnek verin.",
+      "arka": "- Tekrarlanan sütun yapıları olmamalı.\n- Birden fazla türde bilgi tek bir sütunda olamaz.\n- Bir alandaki bilgi özel karakterlerle ayrılarak tutulmamalı.\nÖrnek: notlar için `not1`, `not2`, `not3` alanları açılmaz; böyle veriler yeni bir tabloya aktarılıp birincil anahtar – yabancı anahtar ilişkisi kurulur."
+    },
+    {
+      "id": "vt-normal-formlar.k2",
+      "yer": "1NF örneği: telefonlar",
+      "on": "Hocanın telefon örneğinde 1NF nasıl uygulandı?",
+      "arka": "Telefonlar alanında birden çok numara virgülle tek alanda tutuluyordu. Telefonlar yeni bir tabloya taşındı ve kime ait olduğunu göstermek için `Ogr_ID` alanı eklendi. Ogrenci tablosundaki Ogr_ID birincil anahtar, Telefonlar tablosundaki Ogr_ID yabancı anahtar oldu."
+    },
+    {
+      "id": "vt-normal-formlar.k3",
+      "yer": "Sorunlar",
+      "on": "Hocanın \"Sorunlar\" slaytında hangi sorunlar sayılır?",
+      "arka": "- Veri ekleme: eklenen verinin daha önce olup olmadığının kontrolü zor.\n- Veri güncelleme: bir kişinin telefon numarası güncellenmek istendiğinde hangisinin güncelleneceği.\n- Veri silme: silinecek verinin hangisi olduğu."
+    },
+    {
+      "id": "vt-normal-formlar.k4",
+      "yer": "2NF kuralları",
+      "on": "2NF'nin kuralları nelerdir? Hocanın örneğiyle anlatın.",
+      "arka": "1. Tabloda bir birincil anahtar olmalı, anahtar olmayan sütunlar ona bağımlı olmalı.\n2. Anahtar birden fazla sütundansa veriler her iki sütuna da bağımlı olmalı.\nOgrenciVeNot'ta anahtar ogrNo + DersKodu; Ad ve Bolum yalnızca ogrNo'ya bağlı. Çözüm: Ogrenci (ogrNo, Ad, Bolum) ve Not (ogrNo, DersKodu, Not)."
+    },
+    {
+      "id": "vt-normal-formlar.k5",
+      "yer": "3NF kuralı",
+      "on": "3NF'nin kuralı nedir? Hocanın örneğiyle anlatın.",
+      "arka": "Anahtar olmayan sütunlar anahtar sütuna tam bağımlı olmalı, anahtar olmayan sütuna bağımlı olmamalı.\nÜrün tablosunda Birim Adı, anahtar olmayan Birim'e bağlı. Çözüm: Ürün (ÜKodu, Ad, Birim) ve Birim (Birim, Birim Adı)."
+    },
+    {
+      "id": "vt-normal-formlar.k6",
+      "yer": "3NF örneği: ürün ve birim",
+      "on": "2NF ihlali ile 3NF ihlali nasıl ayırt edilir?",
+      "arka": "Anahtar olmayan sütunun neye bağlı olduğuna bakılır:\n- **Anahtarın bir parçasına** bağlıysa 2NF'ye aykırı (Ad yalnızca ogrNo'ya bağlı).\n- **Anahtar olmayan başka bir sütuna** bağlıysa 3NF'ye aykırı (Birim Adı, Birim'e bağlı)."
+    },
+    {
+      "id": "vt-normal-formlar.k7",
+      "yer": "Örnek: adım adım normalizasyon",
+      "on": "Hocanın musteri – Urun_id örneğini adım adım normalize edin.",
+      "arka": "Başlangıç (musteri, Urun_id, Sehir, SehirKodu, Miktar): 1NF uygun, 2NF değil; Sehir ve SehirKodu yalnızca musteri'ye bağlı.\n2NF: (musteri, Urun_id, Miktar) + (musteri, Sehir, SehirKodu). 3NF değil; Sehir, SehirKodu'na bağlı.\n3NF: (musteri, Urun_id, Miktar) + (musteri, SehirKodu) + (SehirKodu, Sehir)."
+    }
+  ]
+}

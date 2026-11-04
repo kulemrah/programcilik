@@ -1,0 +1,223 @@
+{
+  "id": "vt-derece-kumelenme",
+  "baslik": "Bağıntı Derecesi ve Kümelenme",
+  "kaynak": "3_gereksinim_analizi (1)-2_1.pdf, slayt 49–57",
+  "kavramlar": [
+    {
+      "terim": "Özyineli bağıntı",
+      "izah": "Bir varlığın kendi içinde oluşturulan bağıntı. Ör. öğretmen ile zümre başkanı (o da bir öğretmen) arasındaki zümreBşk bağıntısı.",
+      "yer": "Özyineli bağıntı"
+    },
+    {
+      "terim": "Bağıntı derecesi",
+      "izah": "Bağıntıya katılan varlık sayısı: özyineli 1-li, iki varlık arasındaki 2-li, üç varlık arasındaki 3-lü, üçten fazla varlık arasındaki N-li.",
+      "yer": "Bağıntı derecesi"
+    },
+    {
+      "terim": "Üçüncü dereceden bağıntı",
+      "izah": "Üç varlık arasında kurulan bağıntı. Ör. projeler, malzemeler ve üretici firmalar arasındaki sağlar bağıntısı.",
+      "yer": "Üçüncü dereceden bağıntı"
+    },
+    {
+      "terim": "Kümelenme",
+      "izah": "Ders kitabındaki tanım (slaytta yalnızca örnek var): bir bağıntının bulutla çevrilip varlık gibi ele alınarak başka bir bağıntıya katılması. Hocanın örneği: öğrenciSınavları bağıntısının cevaplar bağıntısına katılması.",
+      "yer": "Kümelenme"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-derece-kumelenme.s1",
+      "tip": "secme",
+      "yer": "Özyineli bağıntı",
+      "soru": "**Özyineli bağıntı** nedir?",
+      "secenekler": [
+        "Bir varlığın kendi içinde oluşturulan bağıntı",
+        "Üç varlık arasında aynı anda kurulan bağıntı",
+        "Zayıf varlık ile onu var eden varlık arasındaki bağıntı",
+        "Bir bağıntının başka bir bağıntıya katılması"
+      ],
+      "dogru": 0,
+      "izah": "Özyineli bağıntı varlığın kendi içinde oluşturulur. Üç varlık arasındaki bağıntı üçüncü dereceden bağıntı, zayıf varlıkla kurulan bağıntı varolma bağıntısı, bir bağıntının başka bağıntıya katılması kümelenmedir."
+    },
+    {
+      "id": "vt-derece-kumelenme.s2",
+      "tip": "secme",
+      "yer": "Özyineli bağıntı",
+      "soru": "Öğretmenler varlığındaki her öğretmenin bir zümre başkanı olması gerekiyor ve zümre başkanı da yine bir öğretmen. Hangi bağıntı kurulur?",
+      "secenekler": [
+        "Özyineli bağıntı",
+        "Varolma bağıntısı",
+        "Üçüncü dereceden bağıntı",
+        "Kümelenme"
+      ],
+      "dogru": 0,
+      "izah": "Bağıntı tek bir varlığın (öğretmenler) kendi elemanları arasında kuruluyor; bu, hocanın özyineli bağıntı örneğidir (`zümreBşk`)."
+    },
+    {
+      "id": "vt-derece-kumelenme.s3",
+      "tip": "esles",
+      "yer": "Bağıntı derecesi",
+      "soru": "Bağıntı tiplerini dereceleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Özyineli",
+          "1-li"
+        ],
+        [
+          "İki varlık arasındaki",
+          "2-li"
+        ],
+        [
+          "Üç varlık arasındaki",
+          "3-lü"
+        ],
+        [
+          "Üçten fazla varlık arasındaki",
+          "N-li"
+        ]
+      ],
+      "izah": "Derece, bağıntıya katılan varlık sayısıdır. Özyineli bağıntıya tek varlık katıldığı için derecesi 1'dir."
+    },
+    {
+      "id": "vt-derece-kumelenme.s4",
+      "tip": "hesap",
+      "yer": "Bağıntı derecesi",
+      "soru": "Özyineli bir bağıntının derecesi kaçtır?",
+      "cevap": 1,
+      "izah": "Hocanın tablosunda özyineli bağıntı 1-lidir: şekilde varlığa iki çizgi gitse de bağıntıya katılan tek bir varlık vardır."
+    },
+    {
+      "id": "vt-derece-kumelenme.s5",
+      "tip": "dy",
+      "yer": "Bağıntı derecesi",
+      "ifade": "Özyineli bağıntıda varlık şekilde bağıntıya iki çizgiyle bağlandığı için bağıntının derecesi 2'dir.",
+      "dogru": false,
+      "izah": "Özyineli bağıntının derecesi **1**'dir; çizgi sayısı değil, bağıntıya katılan varlık sayısı önemlidir."
+    },
+    {
+      "id": "vt-derece-kumelenme.s6",
+      "tip": "dy",
+      "yer": "Bağıntı derecesi",
+      "ifade": "Bağıntılar yalnızca iki varlık arasında kurulabilir.",
+      "dogru": false,
+      "izah": "Slayta göre bağıntılar ikiden fazla varlık arasında da kurulabilir: üç varlık arasındaki 3-lü, üçten fazla varlık arasındaki N-li bağıntıdır."
+    },
+    {
+      "id": "vt-derece-kumelenme.s7",
+      "tip": "bosluk",
+      "yer": "Bağıntı derecesi",
+      "metin": "Üç varlık arasında kurulan bağıntı ___ dereceden bağıntıdır.",
+      "cevaplar": [
+        [
+          "üçüncü",
+          "3"
+        ]
+      ],
+      "izah": "Üç varlık arasındaki bağıntı 3-lüdür; hocanın başlığıyla \"üçüncü dereceden bağıntı\"."
+    },
+    {
+      "id": "vt-derece-kumelenme.s8",
+      "tip": "secme",
+      "yer": "Üçüncü dereceden bağıntı",
+      "soru": "Hocanın üçüncü dereceden bağıntı örneğindeki varlıklar hangileridir?",
+      "secenekler": [
+        "Projeler, malzemeler ve üretici firmalar",
+        "Öğrenciler, sınavlar ve sorular",
+        "Öğretmenler, ofisler ve zümre başkanları",
+        "Kitaplar, yazarlar ve üyeler"
+      ],
+      "dogru": 0,
+      "izah": "Örnek: projeler, malzemeler ve üretici firmalar; üçü `sağlar` bağıntısıyla birbirine bağlanır."
+    },
+    {
+      "id": "vt-derece-kumelenme.s9",
+      "tip": "secme",
+      "yer": "Üçüncü dereceden bağıntı",
+      "soru": "Hocanın üçüncü dereceden bağıntı örneği hangi soruyu cevaplamak için kurulur?",
+      "secenekler": [
+        "Hangi firma, hangi projedeki hangi malzemeyi sağladı?",
+        "Hangi öğrenci, hangi sınavda hangi seçeneği işaretledi?",
+        "Hangi öğretmenin zümre başkanı hangi öğretmendir?",
+        "Hangi soru, hangi soru tipine aittir?"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki soru: hangi firma hangi projedeki hangi malzemeyi sağladı. Üç bilgi birlikte gerektiği için üç varlığı bağlayan bir bağıntı kurulur."
+    },
+    {
+      "id": "vt-derece-kumelenme.s10",
+      "tip": "secme",
+      "yer": "Kümelenme",
+      "soru": "Hocanın kümelenme örneğinde (soru bankası) hangi bilgiler tutulmak isteniyor?",
+      "secenekler": [
+        "Öğrencinin bir sınavda hangi seçeneği işaretlediği, sınav süresi, tarih ve toplam puan",
+        "Hangi firmanın hangi projeye hangi malzemeyi sağladığı ve ne zaman sağladığı",
+        "Her öğretmenin zümre başkanının kim olduğu ve zümredeki öğretmen sayısı",
+        "Her öğretim elemanının hangi ofiste oturduğu ve ofisin hangi katta olduğu"
+      ],
+      "dogru": 0,
+      "izah": "Slaytta soru bankası örneği: öğrenciler, sınavlar; hangi seçeneği işaretledi, sınavı aldığı süre, tarih, toplam puan vb."
+    },
+    {
+      "id": "vt-derece-kumelenme.s11",
+      "tip": "secme",
+      "yer": "Kümelenme",
+      "soru": "Hocanın şeklinde kümelenme nasıl gösterilir?",
+      "secenekler": [
+        "Bağıntının (baklava diliminin) bir bulutun içine alınmasıyla",
+        "Bağıntının çift çizgili baklava dilimiyle çizilmesiyle",
+        "Bağıntıya kesikli çizgili bir elips eklenmesiyle",
+        "Varlığın çift çizgili dikdörtgenle çizilmesiyle"
+      ],
+      "dogru": 0,
+      "izah": "Şekilde `öğrenciSınavları` bağıntısı bir bulutun içine alınır; `öğrenciler` ve `sınavlar` varlıkları bulutun dışında kalıp ona bağlanır. Bulut, `soruSeçenekleri` ile birlikte `cevaplar` bağıntısına bağlanır."
+    },
+    {
+      "id": "vt-derece-kumelenme.s12",
+      "tip": "klasik",
+      "yer": "Bağıntı derecesi",
+      "soru": "Bağıntı derecelerini yazın ve üçüncü dereceden bağıntıya hocanın örneğini verin.",
+      "cevap": "Özyineli: 1-li. İki varlık arasındaki: 2-li. Üç varlık arasındaki: 3-lü. Üçten fazla varlık arasındaki: N-li.\nÜçüncü dereceden bağıntı örneği: projeler, malzemeler ve üretici firmalar arasındaki sağlar bağıntısı; \"hangi firma, hangi projedeki hangi malzemeyi sağladı?\" sorusunu cevaplar.",
+      "anahtarlar": [
+        "1-li",
+        "2-li",
+        "3-lü",
+        "N-li",
+        "proje",
+        "malzeme",
+        "üretici"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-derece-kumelenme.k1",
+      "yer": "Özyineli bağıntı",
+      "on": "Özyineli bağıntı nedir? Örnek verin.",
+      "arka": "Bir varlığın kendi içinde oluşturulan bağıntıdır. Ör. her öğretmenin bir zümre başkanı olması gerekiyor ve zümre başkanı da bir öğretmense, öğretmenler varlığı ile kendisi arasında `zümreBşk` bağıntısı kurulur."
+    },
+    {
+      "id": "vt-derece-kumelenme.k2",
+      "yer": "Bağıntı derecesi",
+      "on": "Bağıntı dereceleri nelerdir?",
+      "arka": "Bağıntıya katılan varlık sayısına göre:\n- Özyineli: 1-li\n- İki varlık arasındaki: 2-li\n- Üç varlık arasındaki: 3-lü\n- Üçten fazla varlık arasındaki: N-li"
+    },
+    {
+      "id": "vt-derece-kumelenme.k3",
+      "yer": "Bağıntı derecesi",
+      "on": "Özyineli bağıntının derecesi neden 1'dir?",
+      "arka": "Çünkü bağıntıya katılan **tek bir varlık** vardır. Şekilde varlıktan bağıntıya iki çizgi gitse de ikisi aynı varlığa aittir."
+    },
+    {
+      "id": "vt-derece-kumelenme.k4",
+      "yer": "Üçüncü dereceden bağıntı",
+      "on": "Üçüncü dereceden bağıntıya örnek verin. Neden ikili bağıntılar yetmez?",
+      "arka": "Projeler, malzemeler ve üretici firmalar arasındaki `sağlar` bağıntısı: hangi firma, hangi projedeki hangi malzemeyi sağladı?\nEk: ikili bağıntılar (firma–proje, firma–malzeme) ayrı tutulursa, firmanın o projeye **hangi** malzemeyi verdiği bilinemez; üçlü bağıntı üçünü tek kayıtta birlikte tutar."
+    },
+    {
+      "id": "vt-derece-kumelenme.k5",
+      "yer": "Kümelenme",
+      "on": "Kümelenme nedir? Hocanın örneğini anlatın.",
+      "arka": "Ders kitabındaki tanım (slaytta yazılı tanım yok): bir bağıntının bulutla çevrilip **tek bir varlık gibi** ele alınması ve böylece başka bir bağıntıya katılmasıdır.\nHocanın örneği soru bankası: `öğrenciler` ile `sınavlar` arasındaki `öğrenciSınavları` bağıntısı bulutun içindedir; bu yapı `soruSeçenekleri` ile birlikte `cevaplar` bağıntısına katılır. Böylece işaretlenen seçenek \"o öğrencinin o sınavına\" bağlanır."
+    }
+  ]
+}

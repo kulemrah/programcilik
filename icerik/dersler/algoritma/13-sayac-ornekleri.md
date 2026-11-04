@@ -18,7 +18,7 @@ Hocanın çözümü:
 
 > **Dikkat:** Toplam ekrana döngü **bittikten sonra**, 8. adımda bir kez yazılır. 8. adım döngünün içinde (3. ile 7. adım arasında) olsaydı her turda o ana kadarki toplam yazılırdı.
 
-> **Ek:** 1'den 10'a kadar sayılar girilince ekrana 55 yazılır (C++'ta denendi). `toplam=toplam+sayi` biçimindeki değişkene kimi kaynaklarda "toplayıcı" ya da "biriktirici" denir.
+> **Ek:** 1'den 10'a kadar sayılar girilince ekrana 55 yazılır. `toplam=toplam+sayi` biçimindeki değişkene kimi kaynaklarda "toplayıcı" ya da "biriktirici" denir.
 
 ### Örnek 2: çift sayıların karesi
 
@@ -39,7 +39,7 @@ Hocanın çözümü:
 
 > **Dikkat:** 6. adımdaki sayaç artırma Eğer'in içinde değildir: sayaç, sayı çift de olsa tek de olsa **her turda** artar. Sayaç çift sayıları değil **okunan sayıları** sayar; bu yüzden döngü tam 10 sayı okur.
 
-> **Dikkat:** Hoca karenin iki yazımını veriyor: `sayi*sayi` ve parantez içinde `sayi^2`. Algoritmada `^` üs almadır; ama C++'ta `^` üs alma değildir ("Temel Öğeler, Aritmetik İşlemler ve Atama" konusundaki "Aritmetik işlemler" başlığı). C++'ta `sayi*sayi` yazılır.
+> **Dikkat:** Hoca karenin iki yazımını veriyor: `sayi*sayi` ve parantez içinde `sayi^2`. Algoritmada `^` üs almadır ("Temel Öğeler, Aritmetik İşlemler ve Atama" konusundaki "Aritmetik işlemler" başlığı); iki yazım aynı sonucu verir.
 
 ### Örnek 3: en büyük sayı
 
@@ -60,7 +60,7 @@ Hocanın çözümü (hocanın yazdığı gibi):
 11. yaz yenienbuyuk
 12. bitir.
 
-> **Dikkat:** İlk sayı döngüden **önce** okunur (3.–5. adım) ve en büyük olarak kabul edilir; döngü 6. adıma döner. İlk sayı okunmuş olduğu için sayaç **1**'den başlar; döngü 9 sayı daha okur ve toplam 10 sayı okunmuş olur (C++'ta denendi).
+> **Dikkat:** İlk sayı döngüden **önce** okunur (3.–5. adım) ve en büyük olarak kabul edilir; döngü 6. adıma döner. İlk sayı okunmuş olduğu için sayaç **1**'den başlar; döngü 9 sayı daha okur ve toplam 10 sayı okunmuş olur.
 
 #### Hocanın çözümündeki hata ve düzeltmesi
 
@@ -72,7 +72,7 @@ Hocanın çözümünde 8. adım daha büyük sayıyı `enbuyuk`'a değil, `yenie
 
 ![En büyük sayı: hocanın çözümü ve düzeltilmiş hâli aynı girişle (Ek: örnek giriş değerleri)](gorseller/enbuyuk-izleme.svg)
 
-> **Dikkat:** Notta hocanın çözümü olduğu gibi korundu. Hocanın çözümü de düzeltilmiş hâli de C++'ta beş farklı girişle denendi; düzeltilmiş hâl hepsinde en büyük sayıyı verdi.
+> **Dikkat:** Notta hocanın çözümü olduğu gibi korundu.
 
 ### Örnek 4: 5'ten 20'ye 3'er 3'er
 
@@ -87,15 +87,15 @@ Hocanın çözümü:
 5. Eğer `Sayac<=20` ise 3. Adıma dön
 6. Bitir.
 
-> **Dikkat:** Sayaç bu örnekte 1 değil **3** artar ve ilk değeri **5**'tir. Ekrana 5, 8, 11, 14, 17, 20 yazılır (6 sayı); algoritma bittiğinde Sayac 23'tür (C++'ta denendi). Koşul `<=` olduğu için 20 de yazılır; `Sayac<20` yazılsaydı 20 yazılmazdı.
+> **Dikkat:** Sayaç bu örnekte 1 değil **3** artar ve ilk değeri **5**'tir. Ekrana 5, 8, 11, 14, 17, 20 yazılır (6 sayı); algoritma bittiğinde Sayac 23'tür. Koşul `<=` olduğu için 20 de yazılır; `Sayac<20` yazılsaydı 20 yazılmazdı.
 
 #### Akış şeması: 3'er 3'er sayılar (Ek)
 
-Hocanın belgesinde akış şeması çizilmemiş. Hocanın çözümünün akış şeması (semboller "Algoritma Örnekleri: KDV ve Denklem Kökleri" konusundaki "Akış diyagramı: denklemin kökleri (Ek)" başlığında):
+Hocanın belgesinde akış şeması çizilmemiş. Hocanın çözümünün akış şeması, hocanın 6. haftada gösterdiği sembollerle ("Akış Diyagramları (Akış Çizgeleri)" konusundaki "Akış diyagramı sembolleri" başlığı):
 
 ![5'ten 20'ye 3'er 3'er sayıları yazan algoritmanın akış şeması (Ek: hocanın belgesinde akış şeması yok)](gorseller/akis-ucer.svg)
 
-> **Ek:** "3. Adıma dön" akış şemasında karar sembolünün **doğru** çıkışından Yaz Sayac'a geri giden okla gösterilir; döngü bu geri dönüş okudur. **Yanlış** çıkışı Bitir'e gider.
+> **Ek:** "3. Adıma dön" akış şemasında karar sembolünün **Evet** çıkışından `YAZ: Sayac`'a geri giden okla gösterilir; döngü bu geri dönüş okudur. **Hayır** çıkışı BİTİR'e gider. Hoca 6. haftada "Ekrana 5 defa merhaba" örneğinin döngüsünü de böyle çizdi ("Akış Diyagramları (Akış Çizgeleri)" konusundaki "Örnek: ekrana 5 defa merhaba" başlığı).
 
 ### Örnek 5: faktöriyel
 
@@ -119,10 +119,12 @@ Hocanın çözümü:
 
 > **Dikkat:** Koşul `sayac<=sayi`'dir: sayaç girilen sayıya **eşit olduğunda da** çarpılmalıdır (4! için 4 ile de çarpılır). `sayac<sayi` yazılsaydı son çarpım yapılmazdı ve 4 için 6 çıkardı. Hocanın belgesinde 7. adımda "ise" sözcüğü eksik yazılmış; burada eklendi.
 
-> **Ek:** 5. adım koşuldan önce geldiği için en az bir kez yapılır: 0 ya da 1 girilince `fakto=1*1=1` olur, ardından koşul yanlış döner ve 1 yazılır (0! ve 1! 1'dir). 0, 1, 3, 5 ve 10 için C++'ta denendi: 1, 1, 6, 120, 3628800. C++'ta `int` ile 13! sığmaz ve yanlış sonuç çıkar; daha büyük sayılar için `long long` kullanılır.
+> **Ek:** 5. adım koşuldan önce geldiği için en az bir kez yapılır: 0 ya da 1 girilince `fakto=1*1=1` olur, ardından koşul yanlış döner ve 1 yazılır (0! ve 1! 1'dir). 0, 1, 3, 5 ve 10 girilince sırasıyla 1, 1, 6, 120, 3628800 yazılır.
 
 #### Akış şeması: faktöriyel (Ek)
 
-![Faktöriyel hesaplayan algoritmanın akış şeması (Ek: hocanın belgesinde akış şeması yok)](gorseller/akis-faktoriyel.svg)
+Hoca aynı soruyu 6. haftada akış diyagramıyla çözdü ("Akış Diyagramı Örnekleri" konusundaki "Örnek 3: faktöriyel" başlığı); aşağıdaki şema bu çözümün akış diyagramı gibi çizildi: döngüdeki iki işlem tek bir hesaplama sembolünde, Evet çıkışı bu sembole geri döner.
+
+![Faktöriyel hesaplayan algoritmanın akış şeması (Ek: bu çözüm belgesinde akış şeması yok)](gorseller/akis-faktoriyel.svg)
 
 > **Ek:** Geri dönüş oku 5. adıma (`fakto=fakto*sayac`) gider; 4. adımdaki ilk değer verme döngünün **dışındadır** ve yalnızca bir kez yapılır. İlk değerler döngünün içine alınsaydı her turda sıfırlanırdı.

@@ -1,0 +1,331 @@
+{
+  "id": "el-yuk-akim-gerilim",
+  "baslik": "Elektrik Yükü, Coulomb Kanunu, Akım ve Gerilim",
+  "kaynak": "temel_elektrik_elektronik_st_1.pdf, slayt 58–64",
+  "kavramlar": [
+    {
+      "terim": "Katyon (pozitif iyon)",
+      "izah": "Elektron kaybetmiş madde atomlarının geçtiği durum: pozitif (+) iyon veya katyon.",
+      "yer": "Nötr madde ve iyonlar"
+    },
+    {
+      "terim": "Anyon (negatif iyon)",
+      "izah": "Elektron kazanmış madde atomlarının geçtiği durum: negatif (−) iyon veya anyon.",
+      "yer": "Nötr madde ve iyonlar"
+    },
+    {
+      "terim": "Elektrik yükü",
+      "izah": "Bir maddedeki atomların yüklerinin toplamı. Q ya da q harfleri ile gösterilir; birimi Kulon (Coulomb), kısaltması C.",
+      "yer": "Elektrik yükü ve birimi"
+    },
+    {
+      "terim": "1 Coulomb",
+      "izah": "6,24 · 10¹⁸ tane elektronun taşıdığı yük miktarı.",
+      "yer": "Elektrik yükü ve birimi"
+    },
+    {
+      "terim": "Coulomb (Kulon) kanunu",
+      "izah": "Cisimlerin elektriksel yüklerinin birbirlerine etkisini tanımlayan ve açıklayan kanun: farklı iki yük arasında çekme, aynı iki yük arasında itme kuvveti vardır. Slayttaki şekilde formülü F = k · q₁ · q₂ / r².",
+      "yer": "Coulomb kanunu"
+    },
+    {
+      "terim": "Akım",
+      "izah": "Bir iletken maddede serbest elektronların bir noktadan başka bir noktaya hareketi; birimi amper (A) veya coulomb/s.",
+      "yer": "Akım"
+    },
+    {
+      "terim": "1 Amper",
+      "izah": "Bir iletken kesitinden 1 saniyede 6,24 · 10¹⁸ elektron (1 C) geçiyorsa bu akımın şiddeti 1 amperdir.",
+      "yer": "Taşınan yük miktarı ve amper"
+    },
+    {
+      "terim": "Gerilim",
+      "izah": "Gerilim başlığı altındaki maddelere göre (slaytta bu maddelerin öznesi yazmaz): elektronların hareketi için harcanan enerjinin birim yük başına değeri; birim yükü a noktasından b noktasına taşımak için gereken iş (enerji). Birimi volt; V = W / Q.",
+      "yer": "Gerilim, iş ve EMK"
+    },
+    {
+      "terim": "1 Volt",
+      "izah": "Bir noktadan başka bir noktaya 1 coulomb'luk yükü hareket ettirmek için 1 joule'lük enerji kullanıldığı zaman iki nokta arasındaki potansiyel fark miktarı.",
+      "yer": "Gerilim ve volt"
+    },
+    {
+      "terim": "EMK (elektromotor kuvveti)",
+      "izah": "İletken üzerinde elektronu belli bir yönde hareket ettirmek için gereken işi gerçekleştiren harici kuvvet; gerilim (voltage) ya da potansiyel farkı olarak da bilinir.",
+      "yer": "Gerilim, iş ve EMK"
+    },
+    {
+      "terim": "Gerilim kaynağı (kaynak, üreteç)",
+      "izah": "Uçları arasında potansiyel fark oluşturulan, yani gerilim üreten yapı.",
+      "yer": "Gerilim kaynağı"
+    },
+    {
+      "terim": "Elektron akış yönü",
+      "izah": "Gerilim kaynağı bir dirence (ampul) bağlanınca elektronların aktığı yön: (−) kutuptan (+) kutba.",
+      "yer": "Elektron akışı ve akımın sürekliliği"
+    },
+    {
+      "terim": "Kabul edilen akım yönü",
+      "izah": "Günümüze kadar kabul edilen akım yönü: pilin pozitif kutbundan negatif kutbuna. Pozitif yük yönüdür, elektron hareketinin tersidir.",
+      "yer": "Elektron akış yönü ve kabul edilen akım yönü"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "el-yuk-akim-gerilim.s1",
+      "tip": "secme",
+      "yer": "Nötr madde ve iyonlar",
+      "soru": "Hocaya göre madde atomları **elektron kaybetmişlerse** hangi duruma geçer?",
+      "secenekler": [
+        "Pozitif (+) iyon veya katyon",
+        "Negatif (−) iyon veya anyon",
+        "Yüksüz (nötr) hâl",
+        "Doymuş yörüngeli kararlı hâl"
+      ],
+      "dogru": 0,
+      "izah": "Elektron kaybeden atomlar pozitif (+) iyon veya katyon, elektron kazananlar negatif (−) iyon veya anyon durumuna geçer. Yüksüz (nötr) hâl, proton ve elektron sayıları eşit olan, bir etkiye maruz kalmamış maddelerin hâlidir."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s2",
+      "tip": "dy",
+      "yer": "Nötr madde ve iyonlar",
+      "ifade": "Elektron kazanmış madde atomları negatif (−) iyon veya anyon durumuna geçer.",
+      "dogru": true,
+      "izah": "Doğru. Elektron kazanan atomlar negatif (−) iyon veya anyon, elektron kaybedenler pozitif (+) iyon veya katyon olur."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s3",
+      "tip": "dy",
+      "yer": "Nötr madde ve iyonlar",
+      "ifade": "Hocaya göre atomların normal şartlarda proton ve nötron sayıları eşit olduğu için bir etkiye maruz kalmamış maddeler yüksüz (nötr) hâldedir.",
+      "dogru": false,
+      "izah": "Yanlış. Normal şartlarda eşit olan, atomların **proton ve elektron** sayılarıdır; bu yüzden bir etkiye maruz kalmamış maddeler yüksüz (nötr) hâldedir."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s4",
+      "tip": "esles",
+      "yer": "Yük, akım ve gerilimin karşılaştırması",
+      "soru": "Büyüklükleri hocanın verdiği birimleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "Elektrik yükü",
+          "Kulon (Coulomb), C"
+        ],
+        [
+          "Akım",
+          "Amper (A) veya Coulomb/s"
+        ],
+        [
+          "Gerilim",
+          "Volt"
+        ]
+      ],
+      "izah": "Elektrik yükünün birimi Kulon (Coulomb), akımın birimi amper (A) veya coulomb/s, gerilimin birimi volttur."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s5",
+      "tip": "bosluk",
+      "yer": "Elektrik yükü ve birimi",
+      "metin": "1 Coulomb, ___ · 10¹⁸ tane elektronun taşıdığı yük miktarıdır.",
+      "cevaplar": [
+        [
+          "6,24",
+          "6.24"
+        ]
+      ],
+      "izah": "1 Coulomb = 6,24 · 10¹⁸ tane elektronun taşıdığı yük. 1 amperlik akımda da bir iletken kesitinden 1 saniyede bu kadar elektron (1 C) geçer."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s6",
+      "tip": "secme",
+      "yer": "Gerilim, iş ve EMK",
+      "soru": "Hocaya göre iletken üzerinde elektronu belli bir yönde hareket ettirmek için gereken iş **neyle** gerçekleşir?",
+      "secenekler": [
+        "Harici bir elektromotor kuvveti (EMK) ile",
+        "Elektronların birbirini itme kuvvetiyle",
+        "İletkenin direncinin artırılmasıyla",
+        "Atomların elektron kaybederek iyonlaşmasıyla"
+      ],
+      "dogru": 0,
+      "izah": "Slayttaki madde: \"Bu iş harici bir elektromotor kuvveti (EMK) ile gerçekleşir.\" EMK, gerilim (voltage) ya da potansiyel farkı olarak da bilinir."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s7",
+      "tip": "dy",
+      "yer": "Coulomb kanunu",
+      "ifade": "Hocaya göre aynı iki yük arasında çekme, farklı iki yük arasında itme kuvveti vardır.",
+      "dogru": false,
+      "izah": "Yanlış; tersidir. **Farklı** iki yük arasında **çekme**, **aynı** iki yük arasında **itme** kuvveti vardır (şekilde \"Unlike charges attract\", \"Like charges repel\")."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s8",
+      "tip": "secme",
+      "yer": "Coulomb kanunu",
+      "soru": "Slayttaki şekilde verilen Coulomb kanunu formülünde (F = k · q₁ · q₂ / r²) **r** neyi gösterir?",
+      "secenekler": [
+        "Yük merkezleri arasındaki uzaklığı",
+        "Yüklerin birbirine uyguladığı kuvveti",
+        "Coulomb sabitini (9,0 · 10⁹ N · m²/C²)",
+        "Cisimlerin taşıdığı elektrik yükünü"
+      ],
+      "dogru": 0,
+      "izah": "Şekildeki açıklamaya göre r yük merkezleri arasındaki uzaklıktır (distance between charge centers). F elektrostatik kuvvet, k Coulomb sabiti, q elektrik yüküdür."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s9",
+      "tip": "secme",
+      "yer": "Akım",
+      "soru": "Hocanın tanımına göre **akım** nedir?",
+      "secenekler": [
+        "Bir iletken maddede serbest elektronların bir noktadan başka bir noktaya hareketi",
+        "Bir maddedeki atomların yüklerinin toplamı şeklinde tanımlanan büyüklük",
+        "Birim yükü a noktasından b noktasına taşımak için gereken iş (enerji)",
+        "Elektrik akımına zorluk gösteren elektronik devre elemanlarının özelliği"
+      ],
+      "dogru": 0,
+      "izah": "Akım, bir iletken maddede serbest elektronların bir noktadan başka bir noktaya hareketidir; birimi amperdir. Atomların yüklerinin toplamı elektrik yükü, birim yükü a noktasından b noktasına taşımak için gereken iş gerilimdir; akıma zorluk gösteren elemanlar dirençlerdir."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s10",
+      "tip": "hesap",
+      "yer": "Taşınan yük miktarı ve amper",
+      "soru": "Bir iletkenden 6 saniye boyunca 4 A akım geçiyor. Taşınan yük miktarı kaç coulombdur?",
+      "cevap": 24,
+      "birim": "C",
+      "izah": "Q = I · t = 4 · 6 = 24 C (amper · saniye = coulomb)."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s11",
+      "tip": "hesap",
+      "yer": "Taşınan yük miktarı ve amper",
+      "soru": "Bir iletken kesitinden 1 dakika boyunca 3 A akım geçiyor. Taşınan yük miktarı kaç coulombdur?",
+      "cevap": 180,
+      "birim": "C",
+      "izah": "Formüldeki süre saniyedir: t = 1 dakika = 60 saniye.\nQ = I · t = 3 · 60 = 180 C."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s12",
+      "tip": "hesap",
+      "yer": "Gerilim ve volt",
+      "soru": "İki nokta arasında 5 C'luk yükü hareket ettirmek için 45 J enerji kullanılıyor. İki nokta arasındaki gerilim kaç volttur?",
+      "cevap": 9,
+      "birim": "V",
+      "izah": "V = W / Q = 45 / 5 = 9 V (joule / coulomb = volt)."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s13",
+      "tip": "hesap",
+      "yer": "Gerilim ve volt",
+      "soru": "Bir alıcıdan 10 saniye boyunca 0,5 A akım geçiyor ve bu yükü hareket ettirmek için 60 J enerji kullanılıyor. Alıcının uçları arasındaki gerilim kaç volttur?",
+      "cevap": 12,
+      "birim": "V",
+      "izah": "Önce taşınan yük: Q = I · t = 0,5 · 10 = 5 C.\nSonra gerilim: V = W / Q = 60 / 5 = 12 V."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s14",
+      "tip": "secme",
+      "yer": "Gerilim kaynağı",
+      "soru": "Uçları arasında potansiyel fark oluşturulan, yani gerilim üreten yapılara ne ad verilir?",
+      "secenekler": [
+        "Gerilim kaynağı, kaynak veya üreteç",
+        "Direnç, potansiyometre veya reosta",
+        "İletken, yarı iletken veya yalıtkan",
+        "Katyon, anyon veya pozitif iyon"
+      ],
+      "dogru": 0,
+      "izah": "Uçları arasında potansiyel fark oluşturulan, yani gerilim üreten yapılara gerilim kaynağı, kaynak veya üreteç denir. İletkenin uçlarına böyle bir yapı bağlanınca elektronlar harekete geçer ve akım oluşur."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s15",
+      "tip": "dy",
+      "yer": "Elektron akış yönü ve kabul edilen akım yönü",
+      "ifade": "Hocaya göre devredeki akımın yönünün günümüze kadar pilin pozitif kutbundan negatif kutbuna doğru olduğu kabul edilmiştir.",
+      "dogru": true,
+      "izah": "Doğru. Akım yönü aslında elektron akış yönüdür; ancak bilim insanları yıllar önce akımın pozitif kutuptan negatif kutba doğru olduğunu düşünüp çalışmalarını buna göre yaptıkları için bu yön kabul edilmiştir."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s16",
+      "tip": "dy",
+      "yer": "Elektron akışı ve akımın sürekliliği",
+      "ifade": "Gerilim kaynağı, kendi elektromotor kuvveti yardımıyla (+) kutba ulaşan elektronları (−) kutba aktararak kutuplardaki elektron yoğunluklarının sabit kalmasını, böylece akımın sürekliliğini sağlar.",
+      "dogru": true,
+      "izah": "Doğru; slayttaki soldaki şeklin anlatımı budur. Pilin (+) ucunda elektron eksikliği, (−) ucunda elektron fazlalığı vardır; elektronlar dış devrede (−) kutuptan (+) kutba akar."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s17",
+      "tip": "secme",
+      "yer": "Elektron akışı ve akımın sürekliliği",
+      "soru": "Bir pil bir R direncine (ampul) bağlanınca **elektronlar** hangi yönde akar?",
+      "secenekler": [
+        "(−) kutuptan (+) kutba doğru",
+        "(+) kutuptan (−) kutba doğru",
+        "Pozitif yükün hareket yönünde",
+        "Yüksek potansiyelden düşük potansiyele"
+      ],
+      "dogru": 0,
+      "izah": "Kaynak bir R direncine (ampul) bağlanırsa (−) kutuptan (+) kutba doğru bir elektron akışı başlar. Pozitif kutuptan negatif kutba, yani pozitif yük yönünde ve yüksek potansiyelden düşük potansiyele doğru olan, kabul edilen **akım** yönüdür; elektron hareketi bunun tersidir."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.s18",
+      "tip": "klasik",
+      "yer": "Taşınan yük miktarı ve amper",
+      "soru": "Hocanın 1 amper tanımını yazın.",
+      "cevap": "Bir iletken kesitinden 1 saniyede 6,24 · 10¹⁸ elektron (1 C) geçiyorsa bu akımın şiddeti 1 amperdir.",
+      "anahtarlar": [
+        "iletken kesitinden",
+        "1 saniyede",
+        "6,24",
+        "1 C"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "el-yuk-akim-gerilim.k1",
+      "yer": "Nötr madde ve iyonlar",
+      "on": "Madde ne zaman yüksüz (nötr) olur? Atomlar elektron kaybedince ya da kazanınca ne olur?",
+      "arka": "Atomların normal şartlarda proton ve elektron sayıları eşittir; bu yüzden bir etkiye maruz kalmamış maddeler yüksüz (nötr) hâldedir.\n- Elektron kaybeden atom: pozitif (+) iyon veya katyon\n- Elektron kazanan atom: negatif (−) iyon veya anyon\nEk: Şekildeki örnekler: lityum bir elektron vererek katyon (net yük +1), flor bir elektron alarak anyon (net yük −1) olur."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.k2",
+      "yer": "Elektrik yükü ve birimi",
+      "on": "Elektrik yükü nedir? Harfi, birimi ve 1 coulomb'un tanımını söyleyin.",
+      "arka": "Elektrik yükü, bir maddedeki atomların yüklerinin toplamı şeklinde tanımlanabilir. Q ya da q harfleri ile gösterilir. Birimi Kulon (Coulomb)'dur, C ile gösterilir.\n1 Coulomb: 6,24 · 10¹⁸ tane elektronun taşıdığı yük miktarıdır."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.k3",
+      "yer": "Coulomb kanunu",
+      "on": "Coulomb kanunu neyi açıklar? Slayttaki formülü ve harflerini söyleyin.",
+      "arka": "Kulon Kanunu, cisimlerin elektriksel yüklerinin birbirlerine etkisini tanımlar ve açıklar: farklı iki yük arasında çekme, aynı iki yük arasında itme kuvveti vardır.\nŞekildeki formül: F = k · q₁ · q₂ / r²; F elektrostatik kuvvet, q elektrik yükü, r yük merkezleri arasındaki uzaklık, k Coulomb sabiti (9,0 · 10⁹ N · m²/C²)."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.k4",
+      "yer": "Akım",
+      "on": "Akım nedir? Birimini, 1 amperi ve taşınan yük formülünü söyleyin.",
+      "arka": "Akım, bir iletken maddede serbest elektronların bir noktadan başka bir noktaya hareketidir. Birimi amper (A) veya coulomb/s'dir.\nTaşınan yük miktarı: Q = I · t (amper · saniye = coulomb).\n1 Amper: bir iletken kesitinden 1 saniyede 6,24 · 10¹⁸ elektron (1 C) geçiyorsa akımın şiddeti 1 amperdir."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.k5",
+      "yer": "Gerilim ve volt",
+      "on": "Gerilim nedir? 1 volt nasıl tanımlanır?",
+      "arka": "Gerilim, elektronların hareketi için harcanan enerjinin birim yük başına değeridir; birim yükü a noktasından b noktasına taşımak için gereken iş (enerji) olarak tanımlanır. Birimi volttur: V = W / Q = Joule / Coulomb = Volt.\n1 Volt: bir noktadan başka bir noktaya 1 coulomb'luk yükü hareket ettirmek için 1 joule'lük enerji kullanıldığı zaman iki nokta arasındaki potansiyel fark.\nElektronu hareket ettiren iş harici bir elektromotor kuvveti (EMK) ile gerçekleşir; EMK gerilim ya da potansiyel farkı olarak da bilinir.\nEk: Slaytta \"birim yük başına enerji\" ve \"birim yükü a noktasından b noktasına taşıma işi\" maddelerinin öznesi yazmaz; maddeler gerilim başlığı altındadır."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.k6",
+      "yer": "Gerilim kaynağı",
+      "on": "Gerilim kaynağı nedir, bir iletkende akım oluşturmak için neden gerekir?",
+      "arka": "Elektrik yüklü taşıyıcıları harekete geçiren bir kuvvet olmalıdır. İletkende akım oluşturmak için iletkenin uçlarına iki ucu arasında elektron açısından potansiyel fark bulunan bir yapı bağlanır: gerilim kaynağı. Uçları arasında potansiyel fark oluşturulan, yani gerilim üreten bu yapılara gerilim kaynağı, kaynak veya üreteç denir."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.k7",
+      "yer": "Elektron akış yönü ve kabul edilen akım yönü",
+      "on": "Elektron akış yönü ile kabul edilen akım yönü arasındaki fark nedir?",
+      "arka": "Elektronlar (−) kutuptan (+) kutba akar; gerilim kaynağı (+) kutba ulaşan elektronları yeniden (−) kutba aktararak akımın sürekliliğini sağlar.\nAkım yönü aslında elektron akış yönüdür; ancak bilim insanları yıllar önce akımın pozitif kutuptan negatif kutba doğru olduğunu düşünüp çalışmalarını buna göre yaptıkları için akımın yönü günümüze kadar (+) kutuptan (−) kutba doğru kabul edilmiştir. Akım slaytında da: pozitif yük yönü akım yönünü verir, elektron hareketinin tersi akım yönüdür."
+    },
+    {
+      "id": "el-yuk-akim-gerilim.k8",
+      "yer": "Yük, akım ve gerilimin karşılaştırması",
+      "on": "Yük, akım ve gerilimin harflerini, birimlerini ve formüllerini karşılaştırın.",
+      "arka": "- Elektrik yükü: Q ya da q; Kulon (Coulomb), C; Q = I · t\n- Akım: I; amper (A) veya coulomb/s; Q = I · t\n- Gerilim: V (gerilim kaynağı ve elektriksel işte U); volt; V = W / Q"
+    }
+  ]
+}

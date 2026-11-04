@@ -1,0 +1,467 @@
+{
+  "id": "vt-sql-komutlar-2",
+  "baslik": "LIKE, DISTINCT, COUNT, BETWEEN ve INNER JOIN",
+  "kaynak": "sql2_1.pdf, slayt 1–14",
+  "kavramlar": [
+    {
+      "terim": "LIKE",
+      "izah": "\"Adı A ile başlayan\", \"soyadı B ile biten\" tarzında sorgular için kullanılır. Hocanın (Access) yazımında `'deger*'` deger ile başlayan, `'*deger'` deger ile biten demektir. Dikkat: SQL Server, MySQL ve PostgreSQL'de bu joker `%` işaretidir.",
+      "yer": "LIKE"
+    },
+    {
+      "terim": "DISTINCT",
+      "izah": "Tekrarlayan kayıtları yalnız bir kez çeker: `SELECT DISTINCT alanadi1 FROM tablo_adi`.",
+      "yer": "DISTINCT"
+    },
+    {
+      "terim": "COUNT",
+      "izah": "Tablodaki kayıtların toplam sayısını verir: `SELECT COUNT(*) FROM tablo_adi;`. Sonuç kayıtların kendisi değil, tek bir sayıdır.",
+      "yer": "COUNT"
+    },
+    {
+      "terim": "İç içe SELECT",
+      "izah": "Bir sorgunun içine parantezle yazılan ikinci SELECT. Hocanın çözümünde iç sorgu (`SELECT DISTINCT arayuzno ...`) seçilmiş arayüzleri tekrarsız listeler; IN, bir değerin bu listede olup olmadığına bakar; dış sorgu sayar.",
+      "yer": "İç içe SELECT"
+    },
+    {
+      "terim": "BETWEEN",
+      "izah": "Belli aralıktaki kayıtları seçer; sınırlar dahildir. `x BETWEEN a AND b` ile `x>=a AND x<=b` aynı anlamdadır.",
+      "yer": "BETWEEN"
+    },
+    {
+      "terim": "Tarih yazımı (ay/gün/yıl)",
+      "izah": "Hocanın notu: Tarih: ay/gün/yıl. `#03/01/2009#` 1 Mart 2009'dur.",
+      "yer": "Tarih yazımı"
+    },
+    {
+      "terim": "INNER JOIN",
+      "izah": "İki farklı tablodaki kayıtları, ON'dan sonra yazılan alanlara göre eşleştirir. Yalnızca eşleşen kayıtlar sonuca girer.",
+      "yer": "INNER JOIN"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-sql-komutlar-2.s1",
+      "tip": "klasik",
+      "yer": "LIKE",
+      "soru": "kullanici_bilgileri tablosundan adı S ile başlayan kullanıcıları hocanın (Access) yazımıyla listeleyen sorguyu yazın.",
+      "cevap": "SELECT * FROM kullanici_bilgileri WHERE ad LIKE 'S*';\nJoker sonda olduğu için S ile başlayanlar gelir. SQL Server, MySQL ve PostgreSQL'de joker yüzde işaretidir: LIKE 'S%'.",
+      "anahtarlar": [
+        "FROM kullanici_bilgileri",
+        "LIKE",
+        "S*"
+      ]
+    },
+    {
+      "id": "vt-sql-komutlar-2.s2",
+      "tip": "secme",
+      "yer": "LIKE",
+      "soru": "Hocanın notundaki `SELECT * FROM kullanici_bilgileri WHERE ad LIKE 'S*';` sorgusu neyi listeler?",
+      "secenekler": [
+        "Adı S ile başlayan kullanıcıları",
+        "Adı S ile biten kullanıcıları",
+        "Adı yalnızca S harfinden oluşan kullanıcıları",
+        "Adında S harfi geçmeyen kullanıcıları"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın (Access) yazımında joker `*` sonda ise değer o harf ile **başlar**: `'S*'` S ile başlayan. `'*S'` yazılsaydı S ile biten olurdu."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s3",
+      "tip": "secme",
+      "yer": "LIKE",
+      "soru": "Hocanın (Access) yazımında soyadı k ile **biten** kullanıcıları getiren koşul hangisidir?",
+      "secenekler": [
+        "soyad LIKE '*k'",
+        "soyad LIKE 'k*'",
+        "soyad LIKE '*k*'",
+        "soyad = '*k'"
+      ],
+      "dogru": 0,
+      "izah": "Joker başta, aranan değer sonda olunca \"ile biten\" anlamı çıkar: `'*k'`. `'k*'` k ile başlayanları getirir. LIKE yerine = yazılırsa `*` joker sayılmaz."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s4",
+      "tip": "secme",
+      "yer": "LIKE",
+      "soru": "SQL Server, MySQL ve PostgreSQL'de adı S ile başlayan kullanıcıları getiren koşul hangisidir?",
+      "secenekler": [
+        "ad LIKE 'S%'",
+        "ad LIKE '%S'",
+        "ad LIKE 'S_'",
+        "ad = 'S%'"
+      ],
+      "dogru": 0,
+      "izah": "Bu VTYS'lerde \"herhangi sayıda karakter\" jokeri `%`'dir: `'S%'` S ile başlayan. `'S_'` yalnızca iki harfli ve S ile başlayan adları getirir, çünkü `_` tek bir karakterin yerini tutar."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s5",
+      "tip": "izleme",
+      "yer": "LIKE",
+      "soru": "Hocanın (Access) yazımıyla verilen sorgu kaç kayıt getirir?",
+      "kod": "kullanici_bilgileri\nogrno  ad      soyad\n9801   Ayşe    Öztürk\n9802   Sema    Özdemir\n9803   Serdar  Gülpınar\n9804   Mehmet  Efe\n9807   Sema    Öztürk\n\nSELECT * FROM kullanici_bilgileri\nWHERE ad LIKE 'S*';",
+      "secenekler": [
+        "3",
+        "2",
+        "1",
+        "5"
+      ],
+      "dogru": 0,
+      "izah": "Adı S ile başlayanlar: 9802 Sema, 9803 Serdar ve 9807 Sema. Aynı ad iki kişide olsa da iki ayrı kayıttır: 3 kayıt."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s6",
+      "tip": "klasik",
+      "yer": "DISTINCT",
+      "soru": "Önemli sayfa yapılan içeriklerin numaralarını (onemli_sayfalar tablosundaki icerikno), her biri bir kez görünecek şekilde listeleyen sorguyu yazın.",
+      "cevap": "SELECT DISTINCT icerikno FROM onemli_sayfalar;\nDISTINCT, tekrarlayan değerleri bir kez getirir.",
+      "anahtarlar": [
+        "DISTINCT icerikno",
+        "FROM onemli_sayfalar"
+      ]
+    },
+    {
+      "id": "vt-sql-komutlar-2.s7",
+      "tip": "izleme",
+      "yer": "DISTINCT",
+      "soru": "Sorgu hangi değerleri getirir? (Sıra önemsiz.)",
+      "kod": "onemli_sayfalar\nogrno  icerikno\n9801   1\n9802   1\n9802   3\n9803   1\n9801   2\n\nSELECT DISTINCT icerikno\nFROM onemli_sayfalar;",
+      "secenekler": [
+        "1, 2, 3",
+        "1, 1, 3, 1, 2",
+        "Tek bir sayı: 3",
+        "Yalnızca 1"
+      ],
+      "dogru": 0,
+      "izah": "icerikno alanında 1, 1, 3, 1, 2 var. DISTINCT her değeri bir kez getirir: 1, 2 ve 3. Tek bir sayı döndüren COUNT'tur."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s8",
+      "tip": "hesap",
+      "yer": "DISTINCT",
+      "soru": "onemli_sayfalar tablosunda beş kayıt var; icerikno değerleri 1, 1, 3, 1, 2. DISTINCT **yazılmadan** `SELECT icerikno FROM onemli_sayfalar;` sorgusu kaç satır döndürür?",
+      "cevap": 5,
+      "izah": "DISTINCT yazılmazsa tekrarlar da gelir: beş kaydın beşi listelenir. DISTINCT yazılsaydı 3 satır (1, 2, 3) dönerdi."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s9",
+      "tip": "secme",
+      "yer": "COUNT",
+      "soru": "`SELECT COUNT(*) FROM kullanici_bilgileri;` sorgusu ne döndürür?",
+      "secenekler": [
+        "Tablodaki kayıtların toplam sayısını",
+        "Tablodaki bütün kayıtları ve alanları",
+        "Tablodaki alanların sayısını",
+        "Tekrarlayan kayıtları bir kez"
+      ],
+      "dogru": 0,
+      "izah": "COUNT(*) kayıtların toplam sayısını, tek bir sayı olarak döndürür. Hocanın örneğinde amaç kaç kullanıcı olduğunu belirlemektir."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s10",
+      "tip": "hesap",
+      "yer": "COUNT",
+      "soru": "kullanici_bilgileri tablosunda 7 kayıt var; bunlardan ikisinin adı Sema. `SELECT COUNT(*) FROM kullanici_bilgileri;` sorgusunun sonucu kaçtır?",
+      "cevap": 7,
+      "izah": "COUNT(*) bütün kayıtları sayar; adların aynı olması sonucu değiştirmez: 7."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s11",
+      "tip": "dy",
+      "yer": "COUNT",
+      "ifade": "`SELECT COUNT(*) FROM tablo_adi;` sorgusu tablodaki kayıtları listeler.",
+      "dogru": false,
+      "izah": "COUNT kayıtları listelemez; kayıtların toplam sayısını tek bir sayı olarak döndürür. Kayıtları listelemek için `SELECT * FROM tablo_adi;` yazılır."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s12",
+      "tip": "hesap",
+      "yer": "İç içe SELECT",
+      "soru": "3 öğrenci 3, 3 ve 5 numaralı arayüzü seçti. Seçilen **farklı** arayüz sayısı kaçtır?",
+      "cevap": 2,
+      "izah": "Hocanın örneği: 3 numara iki kez seçilse de bir kez sayılır. Farklı arayüzler 3 ve 5: 2."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s13",
+      "tip": "secme",
+      "yer": "İç içe SELECT",
+      "soru": "`WHERE id IN (SELECT DISTINCT arayuzno FROM arayuz_tercihleri)` koşulundaki IN ne işe yarar?",
+      "secenekler": [
+        "id değerinin iç sorgunun döndürdüğü listede olup olmadığına bakar",
+        "İç sorgunun döndürdüğü değerleri toplar",
+        "İç sorgunun sonucunu yeni bir tabloya ekler",
+        "id değerinin listedeki en büyük değere eşit olup olmadığına bakar"
+      ],
+      "dogru": 0,
+      "izah": "IN, bir değerin listede olup olmadığına bakar. İç sorgu listeyi üretir (ör. 3 ve 5); dış sorgu id'si bu listede olan kayıtları alır."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s14",
+      "tip": "izleme",
+      "yer": "İç içe SELECT",
+      "soru": "İç sorgu olarak kullanılan bu sorgu ne döndürür?",
+      "kod": "arayuz_tercihleri\nid  ogrno  arayuzno\n1   9801   3\n2   9802   3\n3   9803   5\n\nSELECT DISTINCT arayuzno\nFROM arayuz_tercihleri;",
+      "secenekler": [
+        "3 ve 5",
+        "3, 3 ve 5",
+        "1, 2 ve 3",
+        "Tek bir sayı: 2"
+      ],
+      "dogru": 0,
+      "izah": "DISTINCT, seçilmiş arayüz numaralarını tekrarsız listeler: 3 ve 5. 1, 2, 3 ise tercih kayıtlarının id'leridir."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s15",
+      "tip": "klasik",
+      "yer": "BETWEEN",
+      "soru": "notlar tablosundan 01.03.2009 ile 03.03.2009 tarihleri arasında not alan öğrencilerin numaralarını ve notlarını, hocanın (Access) yazımıyla BETWEEN kullanarak listeleyen sorguyu yazın.",
+      "cevap": "SELECT ogrno, notu FROM notlar WHERE tarih BETWEEN #03/01/2009# AND #03/03/2009#;\nTarih ay/gün/yıl sırasıyla yazılır: #03/01/2009# 1 Mart 2009'dur.",
+      "anahtarlar": [
+        "FROM notlar",
+        "BETWEEN",
+        "#03/01/2009#",
+        "#03/03/2009#"
+      ]
+    },
+    {
+      "id": "vt-sql-komutlar-2.s16",
+      "tip": "dy",
+      "yer": "BETWEEN",
+      "ifade": "`tarih BETWEEN a AND b` koşulu, tarihi tam olarak a ya da b olan kayıtları da kapsar.",
+      "dogru": true,
+      "izah": "BETWEEN sınırları da kapsar; `tarih>=a AND tarih<=b` ile aynı anlamdadır."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s17",
+      "tip": "secme",
+      "yer": "BETWEEN",
+      "soru": "`notu BETWEEN 60 AND 85` koşulunun eşdeğeri hangisidir?",
+      "secenekler": [
+        "notu>=60 AND notu<=85",
+        "notu>60 AND notu<85",
+        "notu>=60 OR notu<=85",
+        "notu>60 AND notu<=85"
+      ],
+      "dogru": 0,
+      "izah": "BETWEEN iki sınırı da kapsar, bu yüzden büyük-eşit ve küçük-eşit kullanılır; iki koşul AND ile bağlanır. OR ile bağlansaydı bütün notlar gelirdi."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s18",
+      "tip": "izleme",
+      "yer": "BETWEEN",
+      "soru": "Sorgu hangi notları getirir? (Tablodaki tarihler gün.ay.yıl biçiminde gösterildi.)",
+      "kod": "notlar\nogrno  notu  tarih\n9801   70    01.03.2009\n9802   85    02.03.2009\n9801   60    04.03.2009\n9803   90    03.03.2009\n9802   45    27.02.2009\n\nSELECT ogrno, notu FROM notlar\nWHERE tarih BETWEEN #03/01/2009#\nAND #03/03/2009#;",
+      "secenekler": [
+        "70, 85 ve 90",
+        "Yalnızca 85",
+        "70, 85, 60 ve 90",
+        "85 ve 90"
+      ],
+      "dogru": 0,
+      "izah": "`#03/01/2009#` 1 Mart, `#03/03/2009#` 3 Mart 2009'dur (ay/gün/yıl). Sınırlar dahil olduğu için 01.03, 02.03 ve 03.03 tarihli notlar gelir: 70, 85 ve 90. 27.02 ve 04.03 aralığın dışında."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s19",
+      "tip": "secme",
+      "yer": "Tarih yazımı",
+      "soru": "Hocanın notuna göre `#03/01/2009#` hangi tarihtir?",
+      "secenekler": [
+        "1 Mart 2009",
+        "3 Ocak 2009",
+        "1 Ocak 2003"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın notu: Tarih: ay/gün/yıl. 03 ay, 01 gün: 1 Mart 2009. Gün.ay.yıl alışkanlığıyla 3 Ocak okumak yanlıştır."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s20",
+      "tip": "bosluk",
+      "yer": "Tarih yazımı",
+      "metin": "Hocanın notuna göre `#03/01/2009#` yazımındaki sıra ___/gün/yıl şeklindedir.",
+      "cevaplar": [
+        [
+          "ay"
+        ]
+      ],
+      "izah": "Access tarih yazımında sıra ay/gün/yıl'dır; `#03/01/2009#` 1 Mart 2009'dur."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s21",
+      "tip": "klasik",
+      "yer": "INNER JOIN",
+      "soru": "Tartışma bölümünde sorulan soruları (tartisma_sorular.soru) ve bu sorulara verilen cevapları (tartisma_cevaplar.cevap) INNER JOIN ile listeleyen sorguyu yazın. Cevap tablosundaki soruno, soru tablosundaki id'ye karşılık gelir.",
+      "cevap": "SELECT tartisma_sorular.soru,tartisma_cevaplar.cevap FROM tartisma_sorular INNER JOIN tartisma_cevaplar ON tartisma_sorular.id=tartisma_cevaplar.soruno;\nON'dan sonra iki tablonun eşleşeceği alanlar yazılır.",
+      "anahtarlar": [
+        "INNER JOIN",
+        "tartisma_sorular.id",
+        "tartisma_cevaplar.soruno"
+      ]
+    },
+    {
+      "id": "vt-sql-komutlar-2.s22",
+      "tip": "izleme",
+      "yer": "INNER JOIN",
+      "soru": "Sorgu kaç satır döndürür?",
+      "kod": "tartisma_sorular\nid  soru\n1   SQL nedir?\n2   DISTINCT ne işe yarar?\n3   JOIN türleri nelerdir?\n\ntartisma_cevaplar\nid  soruno  cevap\n1   1       Yapısal sorgulama dili\n2   1       Veritabanı sorgu dili\n3   2       Tekrarları bir kez getirir\n\nSELECT tartisma_sorular.soru,\n       tartisma_cevaplar.cevap\nFROM tartisma_sorular\nINNER JOIN tartisma_cevaplar\nON tartisma_sorular.id =\n   tartisma_cevaplar.soruno;",
+      "secenekler": [
+        "3",
+        "2",
+        "4",
+        "9"
+      ],
+      "dogru": 0,
+      "izah": "Her cevap, soruno'su id'ye eşit olan soruyla eşleşir: 1 numaralı soru iki cevapla, 2 numaralı soru bir cevapla eşleşir. 3 numaralı sorunun cevabı yok, sonuca girmez: 3 satır."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s23",
+      "tip": "secme",
+      "yer": "INNER JOIN",
+      "soru": "Soru tablosundaki bir sorunun cevap tablosunda hiç cevabı yoksa, iki tabloyu INNER JOIN ile eşleştiren sorguda bu soruya ne olur?",
+      "secenekler": [
+        "Sonuçta yer almaz",
+        "Cevabı boş olarak bir kez listelenir",
+        "Sorgu hata verir ve çalışmaz",
+        "Tablodaki bütün cevaplarla eşleştirilir"
+      ],
+      "dogru": 0,
+      "izah": "INNER JOIN yalnızca eşleşen kayıtları getirir. Hocanın örneğinde cevabı olmayan soru sonuçta görünmez."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s24",
+      "tip": "dy",
+      "yer": "INNER JOIN",
+      "ifade": "INNER JOIN ile soruları ve cevapları eşleştiren sorguda, iki cevabı olan bir soru sonuçta iki kez görünür.",
+      "dogru": true,
+      "izah": "Her eşleşme ayrı bir satırdır: iki cevabı olan soru, her cevabıyla bir kez olmak üzere iki satırda yer alır."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s25",
+      "tip": "secme",
+      "yer": "INNER JOIN",
+      "soru": "`ON tartisma_sorular.id=tartisma_cevaplar.soruno` kısmı ne belirtir?",
+      "secenekler": [
+        "İki tablonun hangi alanlarla eşleşeceğini",
+        "Sonucun hangi alana göre sıralanacağını",
+        "Sonuçta hangi alanların listeleneceğini",
+        "Tekrarlayan kayıtların atılacağını"
+      ],
+      "dogru": 0,
+      "izah": "ON'dan sonra eşleştirme koşulu yazılır: cevabın soruno'su sorunun id'sine eşit olan kayıtlar eşleşir. Listelenecek alanlar SELECT'ten sonra yazılır."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s26",
+      "tip": "esles",
+      "yer": "Bu konudaki komutlar",
+      "soru": "Komutları işleriyle eşleştirin.",
+      "ciftler": [
+        [
+          "LIKE",
+          "Belli bir değerle başlayan ya da biten kayıtları arar"
+        ],
+        [
+          "DISTINCT",
+          "Tekrarlayan kayıtları bir kez getirir"
+        ],
+        [
+          "COUNT",
+          "Kayıtların toplam sayısını verir"
+        ],
+        [
+          "BETWEEN",
+          "Belli aralıktaki kayıtları seçer"
+        ],
+        [
+          "INNER JOIN",
+          "İki tablodaki kayıtları eşleştirir"
+        ]
+      ],
+      "izah": "Hocanın \"SQL Komutlar 2\" notundaki komutlar ve işleri."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s27",
+      "tip": "dizme",
+      "yer": "INNER JOIN",
+      "soru": "Soruları ve cevaplarını listeleyen sorguyu dizin.",
+      "parcalar": [
+        "SELECT tartisma_sorular.soru, tartisma_cevaplar.cevap",
+        "FROM tartisma_sorular",
+        "INNER JOIN tartisma_cevaplar",
+        "ON tartisma_sorular.id=tartisma_cevaplar.soruno;"
+      ],
+      "komut": true,
+      "izah": "Sıra: SELECT ile alanlar, FROM ile ilk tablo, INNER JOIN ile ikinci tablo, ON ile eşleştirme koşulu."
+    },
+    {
+      "id": "vt-sql-komutlar-2.s28",
+      "tip": "klasik",
+      "yer": "BETWEEN",
+      "soru": "notlar tablosundan notu 60 ile 85 arasında (60 ve 85 dahil) olan kayıtların öğrenci numaralarını ve notlarını listeleyen sorguyu BETWEEN ile yazın.",
+      "cevap": "SELECT ogrno, notu FROM notlar WHERE notu BETWEEN 60 AND 85;\nBETWEEN sınırları da kapsadığı için 60 ve 85 alan kayıtlar da gelir. Eşdeğeri: WHERE notu>=60 AND notu<=85.",
+      "anahtarlar": [
+        "FROM notlar",
+        "BETWEEN 60 AND 85"
+      ]
+    },
+    {
+      "id": "vt-sql-komutlar-2.s29",
+      "tip": "klasik",
+      "yer": "COUNT",
+      "soru": "kullanici_bilgileri tablosunda kaç kullanıcı olduğunu bulan sorguyu yazın.",
+      "cevap": "SELECT COUNT(*) FROM kullanici_bilgileri;\nSonuç tek bir sayıdır.",
+      "anahtarlar": [
+        "COUNT(*)",
+        "FROM kullanici_bilgileri"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-sql-komutlar-2.k1",
+      "yer": "Bu konudaki komutlar",
+      "on": "\"SQL Komutlar 2\" notundaki komutlar hangileri? Örnekler hangi VTYS'nin yazımıyla?",
+      "arka": "LIKE, DISTINCT, COUNT, iç içe SELECT, BETWEEN, INNER JOIN.\nDikkat: örnekler Microsoft Access yazımıyla: LIKE'ta joker `*`, tarih `#ay/gün/yıl#`."
+    },
+    {
+      "id": "vt-sql-komutlar-2.k2",
+      "yer": "LIKE",
+      "on": "LIKE ne işe yarar? Joker nasıl kullanılır?",
+      "arka": "\"Adı A ile başlayan\", \"soyadı B ile biten\" tarzında sorgular için.\n- Hocanın (Access) yazımı: `'S*'` S ile başlayan, `'*k'` k ile biten.\n- Dikkat: SQL Server, MySQL, PostgreSQL'de `'S%'`, `'%k'`; tek karakter için `_`."
+    },
+    {
+      "id": "vt-sql-komutlar-2.k3",
+      "yer": "DISTINCT",
+      "on": "DISTINCT ne işe yarar? Örnek verin.",
+      "arka": "Tekrarlayan kayıtları yalnız bir kez çeker: `SELECT DISTINCT alanadi1 FROM tablo_adi`\nÖrnek: icerikno değerleri 1, 1, 3, 1, 2 ise `SELECT DISTINCT icerikno FROM onemli_sayfalar;` 1, 2, 3 getirir."
+    },
+    {
+      "id": "vt-sql-komutlar-2.k4",
+      "yer": "COUNT",
+      "on": "COUNT ne döndürür?",
+      "arka": "Tablodaki kayıtların toplam sayısını, tek bir sayı olarak: `SELECT COUNT(*) FROM tablo_adi;`\nÖrnek: `SELECT COUNT(*) FROM kullanici_bilgileri;` kaç kullanıcı olduğunu verir."
+    },
+    {
+      "id": "vt-sql-komutlar-2.k5",
+      "yer": "İç içe SELECT",
+      "on": "İç içe SELECT nasıl çalışır? IN ne işe yarar?",
+      "arka": "Bir sorgunun içine parantezle ikinci bir SELECT yazılır. Hocanın çözümünde iç sorgu (DISTINCT) seçilmiş arayüzleri tekrarsız listeler: 3, 3 ve 5 seçildiyse 3 ve 5. IN, bir değerin bu listede olup olmadığına bakar; dış sorgu sayar. Farklı arayüz sayısı 2'dir.\nEk: dış sorgudan bağımsız bir iç sorgu önce çalışır, dış sorgu onun sonucunu kullanır.\nDikkat: hocanın sorgusunda dış sorgu da arayuz_tercihleri'ni sayıyor; amaçlanan sonucu veren yazım `SELECT COUNT(*) FROM (SELECT DISTINCT arayuzno FROM arayuz_tercihleri);`"
+    },
+    {
+      "id": "vt-sql-komutlar-2.k6",
+      "yer": "BETWEEN",
+      "on": "BETWEEN sınırları kapsar mı? Eşdeğeri ne?",
+      "arka": "Evet, iki sınır da dahildir.\n`tarih BETWEEN a AND b` = `tarih>=a AND tarih<=b`"
+    },
+    {
+      "id": "vt-sql-komutlar-2.k7",
+      "yer": "Tarih yazımı",
+      "on": "Hocanın notunda `#03/01/2009#` hangi tarihtir? Neden?",
+      "arka": "1 Mart 2009. Hocanın notu: Tarih: ay/gün/yıl. Gün.ay.yıl alışkanlığıyla 3 Ocak okunmamalı."
+    },
+    {
+      "id": "vt-sql-komutlar-2.k8",
+      "yer": "INNER JOIN",
+      "on": "INNER JOIN nasıl yazılır? Sonuca hangi kayıtlar girer?",
+      "arka": "`SELECT tablo1.alanadi1,tablo2.alanadi2 FROM tablo1 INNER JOIN tablo2 ON tablo1.alanadi3=tablo2.alanadi3;`\nYalnızca eşleşen kayıtlar girer: cevabı olmayan soru görünmez, iki cevabı olan soru iki kez görünür."
+    }
+  ]
+}

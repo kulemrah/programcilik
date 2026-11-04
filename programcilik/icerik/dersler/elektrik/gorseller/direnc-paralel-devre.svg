@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="370" viewBox="0 0 360 370" role="img">
+<title>Paralel devre: U geriliminde R1, R2, R3 paralel; kol akımları I1, I2, I3, toplam akım I; dirençlerin gerilimleri U1, U2, U3; eşdeğeri U ve Reş</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<polyline points="34.0,112.0 34.0,40.0 320.0,40.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="34.0" y1="112.0" x2="34.0" y2="119.5" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="34.0" y1="126.5" x2="34.0" y2="134.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="46.0" y1="119.5" x2="22.0" y2="119.5" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="40.0" y1="126.5" x2="28.0" y2="126.5" stroke="#1A202C" stroke-width="4"/>
+<text x="53.0" y="118.9" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="middle">+</text>
+<text x="53.0" y="137.1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="middle">−</text>
+<polyline points="34.0,134.0 34.0,210.0 320.0,210.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="80.0,40.0 72.0,44.4 72.0,35.6" fill="#1A202C"/>
+<text x="76.0" y="62.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">I</text>
+<text x="18.0" y="128.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="end">U</text>
+<polyline points="130.0,40.0 130.0,100.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="130.0,72.0 125.6,64.0 134.4,64.0" fill="#1A202C"/>
+<text x="122.0" y="70.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="end">I₁</text>
+<line x1="130.0" y1="100.0" x2="130.0" y2="106.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="130.0" y1="144.0" x2="130.0" y2="150.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="130.0,106.0 123.0,109.2 137.0,115.5 123.0,121.8 137.0,128.2 123.0,134.5 137.0,140.8 130.0,144.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="130.0,150.0 130.0,210.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="130.0" cy="40.0" r="3.2" fill="#1A202C"/>
+<circle cx="130.0" cy="210.0" r="3.2" fill="#1A202C"/>
+<text x="118.0" y="130.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="end">R₁</text>
+<text x="140.0" y="130.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="start">U₁</text>
+<text x="144.0" y="104.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">+</text>
+<text x="144.0" y="162.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">−</text>
+<polyline points="225.0,40.0 225.0,100.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="225.0,72.0 220.6,64.0 229.4,64.0" fill="#1A202C"/>
+<text x="217.0" y="70.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="end">I₂</text>
+<line x1="225.0" y1="100.0" x2="225.0" y2="106.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="225.0" y1="144.0" x2="225.0" y2="150.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="225.0,106.0 218.0,109.2 232.0,115.5 218.0,121.8 232.0,128.2 218.0,134.5 232.0,140.8 225.0,144.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="225.0,150.0 225.0,210.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="225.0" cy="40.0" r="3.2" fill="#1A202C"/>
+<circle cx="225.0" cy="210.0" r="3.2" fill="#1A202C"/>
+<text x="213.0" y="130.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="end">R₂</text>
+<text x="235.0" y="130.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="start">U₂</text>
+<text x="239.0" y="104.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">+</text>
+<text x="239.0" y="162.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">−</text>
+<polyline points="320.0,40.0 320.0,100.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="320.0,72.0 315.6,64.0 324.4,64.0" fill="#1A202C"/>
+<text x="312.0" y="70.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="end">I₃</text>
+<line x1="320.0" y1="100.0" x2="320.0" y2="106.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="320.0" y1="144.0" x2="320.0" y2="150.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="320.0,106.0 313.0,109.2 327.0,115.5 313.0,121.8 327.0,128.2 313.0,134.5 327.0,140.8 320.0,144.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="320.0,150.0 320.0,210.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="308.0" y="130.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="end">R₃</text>
+<text x="330.0" y="130.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" text-anchor="start">U₃</text>
+<text x="334.0" y="104.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">+</text>
+<text x="334.0" y="162.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" text-anchor="middle">−</text>
+<text x="120.0" y="302.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="30" fill="#1A202C" text-anchor="middle">≡</text>
+<polyline points="190.0,286.0 190.0,250.0 290.0,250.0 290.0,268.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="190.0" y1="286.0" x2="190.0" y2="293.5" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="190.0" y1="300.5" x2="190.0" y2="308.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="202.0" y1="293.5" x2="178.0" y2="293.5" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="196.0" y1="300.5" x2="184.0" y2="300.5" stroke="#1A202C" stroke-width="4"/>
+<text x="209.0" y="292.9" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="middle">+</text>
+<text x="209.0" y="311.1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1A202C" font-weight="600" text-anchor="middle">−</text>
+<polyline points="190.0,308.0 190.0,346.0 290.0,346.0 290.0,322.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="290.0" y1="268.0" x2="290.0" y2="275.0" stroke="#1A202C" stroke-width="1.8"/>
+<line x1="290.0" y1="315.0" x2="290.0" y2="322.0" stroke="#1A202C" stroke-width="1.8"/>
+<polyline points="290.0,275.0 283.0,278.3 297.0,285.0 283.0,291.7 297.0,298.3 283.0,305.0 297.0,311.7 290.0,315.0" fill="none" stroke="#1A202C" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="244.0,250.0 236.0,254.4 236.0,245.6" fill="#1A202C"/>
+<text x="236.0" y="272.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="middle">I</text>
+<text x="174.0" y="302.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="end">U</text>
+<text x="276.0" y="300.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" fill="#1A202C" text-anchor="end">Reş</text>
+</svg>

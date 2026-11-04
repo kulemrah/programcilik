@@ -1,0 +1,919 @@
+"""Algoritma ve Programlama Temelleri ders notlarının SVG şekillerini üretir.
+
+Kullanım:
+    python3 araclar/sekiller/algoritma.py icerik/dersler/algoritma/gorseller
+
+Şekiller elle değil bu dosyadan üretilir; bir şekli düzeltmek için burayı değiştirip
+yeniden çalıştır. Üstteki renkler ve yardımcılar veritabani.py'den aynen alındı;
+altındaki şekiller bu derse göre yazıldı. Kurallar: icerik/ISLEME.md, "Görseller".
+"""
+import math, os, sys
+
+HEDEF = sys.argv[1]
+os.makedirs(HEDEF, exist_ok=True)
+
+YAZI = "#1A202C"; SONUK = "#4A5568"; VURGU = "#C05621"
+VARLIK_D = "#DCEBFA"; CIZGI = "#2B6CB0"; NITELIK_D = "#EEF6FF"; BAG_D = "#FFF1DC"; BAG_C = "#B7791F"
+FONT = "system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif"
+MONO = "ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+
+def esc(s):
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+class Sekil:
+    def __init__(self, g, y, baslik):
+        self.g, self.y, self.baslik, self.p = g, y, baslik, []
+    def ekle(self, s): self.p.append(s)
+    def yazi(self, x, y, s, boy=14, renk=YAZI, kalin=False, hiza="middle", font=FONT, alti=False, egik=False):
+        self.ekle('<text x="%.1f" y="%.1f" font-family="%s" font-size="%s" fill="%s"%s text-anchor="%s"%s%s>%s</text>' % (
+            x, y, font, boy, renk, ' font-weight="600"' if kalin else "", hiza,
+            ' text-decoration="underline"' if alti else "", ' font-style="italic"' if egik else "", esc(s)))
+    def cizgi(self, x1, y1, x2, y2, renk=CIZGI, kal=1.6, kesik=False):
+        self.ekle('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="%s" stroke-width="%s"%s/>' % (
+            x1, y1, x2, y2, renk, kal, ' stroke-dasharray="5 4"' if kesik else ""))
+    def ok(self, x1, y1, x2, y2, renk=SONUK, kal=1.5):
+        self.cizgi(x1, y1, x2, y2, renk, kal)
+        a = math.atan2(y2 - y1, x2 - x1)
+        p1 = (x2 - 9 * math.cos(a - 0.4), y2 - 9 * math.sin(a - 0.4))
+        p2 = (x2 - 9 * math.cos(a + 0.4), y2 - 9 * math.sin(a + 0.4))
+        self.ekle('<polygon points="%.1f,%.1f %.1f,%.1f %.1f,%.1f" fill="%s"/>' % (x2, y2, p1[0], p1[1], p2[0], p2[1], renk))
+    def varlik(self, x, y, g, y_, ad, zayif=False, boy=14):
+        self.ekle('<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f" fill="%s" stroke="%s" stroke-width="1.6"/>' % (x, y, g, y_, VARLIK_D, CIZGI))
+        if zayif:
+            self.ekle('<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f" fill="none" stroke="%s" stroke-width="1.3"/>' % (x + 4, y + 4, g - 8, y_ - 8, CIZGI))
+        self.yazi(x + g / 2, y + y_ / 2 + boy * 0.35, ad, boy)
+    def nitelik(self, cx, cy, ad, tur="duz", rx=None, ry=14, boy=13):
+        rx = rx or max(30, len(ad) * 4.2 + 14)
+        kesik = ' stroke-dasharray="4 3"' if tur == "turetilmis" else ""
+        self.ekle('<ellipse cx="%.1f" cy="%.1f" rx="%.1f" ry="%.1f" fill="%s" stroke="%s" stroke-width="1.4"%s/>' % (cx, cy, rx, ry, NITELIK_D, CIZGI, kesik))
+        if tur == "cok":
+            self.ekle('<ellipse cx="%.1f" cy="%.1f" rx="%.1f" ry="%.1f" fill="none" stroke="%s" stroke-width="1.2"/>' % (cx, cy, rx - 4, ry - 4, CIZGI))
+        self.yazi(cx, cy + boy * 0.35, ad, boy, alti=(tur == "anahtar"))
+        return rx
+    def bag(self, cx, cy, ad, g=None, y_=46, cift=False, boy=13):
+        g = g or max(84, len(ad) * 7.2 + 30)
+        pts = "%.1f,%.1f %.1f,%.1f %.1f,%.1f %.1f,%.1f" % (cx, cy - y_ / 2, cx + g / 2, cy, cx, cy + y_ / 2, cx - g / 2, cy)
+        self.ekle('<polygon points="%s" fill="%s" stroke="%s" stroke-width="1.6"/>' % (pts, BAG_D, BAG_C))
+        if cift:
+            k = 0.8
+            pts2 = "%.1f,%.1f %.1f,%.1f %.1f,%.1f %.1f,%.1f" % (cx, cy - y_ / 2 * k, cx + g / 2 * k, cy, cx, cy + y_ / 2 * k, cx - g / 2 * k, cy)
+            self.ekle('<polygon points="%s" fill="none" stroke="%s" stroke-width="1.2"/>' % (pts2, BAG_C))
+        self.yazi(cx, cy + boy * 0.35, ad, boy)
+        return g
+    def isaret(self, ex, ey, ux, uy, tur, renk=CIZGI):
+        """ex,ey: çizginin varlığa değdiği nokta; ux,uy: varlıktan dışarı doğru birim yön.
+        tur: '||' bir ve yalnız bir, 'o|' sıfır ya da bir, '|<' bir ya da çok, 'o<' sıfır ya da çok"""
+        px, py = -uy, ux
+        def bar(d):
+            cx, cy = ex + ux * d, ey + uy * d
+            self.cizgi(cx - px * 7, cy - py * 7, cx + px * 7, cy + py * 7, renk, 1.6)
+        def daire(d):
+            cx, cy = ex + ux * d, ey + uy * d
+            self.ekle('<circle cx="%.1f" cy="%.1f" r="4.5" fill="#FFFFFF" stroke="%s" stroke-width="1.5"/>' % (cx, cy, renk))
+        def kaz():
+            tx, ty = ex + ux * 14, ey + uy * 14
+            for s in (-1, 0, 1):
+                self.cizgi(tx, ty, ex + px * 8 * s, ey + py * 8 * s, renk, 1.6)
+        if tur == "||": bar(7); bar(13)
+        elif tur == "o|": bar(7); daire(19)
+        elif tur == "|<": kaz(); bar(20)
+        elif tur == "o<": kaz(); daire(22)
+    def bulut(self, cx, cy, rx, ry, n=11):
+        nok = [(cx + rx * math.cos(2 * math.pi * i / n), cy + ry * math.sin(2 * math.pi * i / n)) for i in range(n)]
+        d = "M %.1f %.1f " % nok[0]
+        for i in range(n):
+            a, b = nok[i], nok[(i + 1) % n]
+            r = math.hypot(b[0] - a[0], b[1] - a[1]) * 0.58
+            d += "A %.1f %.1f 0 0 1 %.1f %.1f " % (r, r, b[0], b[1])
+        self.ekle('<path d="%s" fill="#E6F6F6" stroke="#2C7A7B" stroke-width="1.5"/>' % d)
+    def kaydet(self, ad):
+        svg = ('<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" role="img">\n'
+               '<title>%s</title>\n<rect width="100%%" height="100%%" fill="#FFFFFF"/>\n%s\n</svg>\n') % (
+            self.g, self.y, self.g, self.y, esc(self.baslik), "\n".join(self.p))
+        with open(os.path.join(HEDEF, ad), "w", encoding="utf-8") as f:
+            f.write(svg)
+
+def kutu(s, x, y, g, y_, dolgu="#F7FAFC", cizgi_="#CBD5E0", rx=8):
+    s.ekle('<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f" rx="%d" fill="%s" stroke="%s" stroke-width="1.2"/>' % (x, y, g, y_, rx, dolgu, cizgi_))
+
+def mini_tablo(s, x, y, ad, alanlar, satirlar, sg=60, sy=20, etiket_sag=False):
+    if etiket_sag: s.yazi(x + sg * len(alanlar) + 8, y + 15, ad, 12, kalin=True, hiza="start")
+    else: s.yazi(x, y - 6, ad, 12, kalin=True, hiza="start")
+    for j, a in enumerate(alanlar):
+        s.ekle('<rect x="%.1f" y="%.1f" width="%d" height="%d" fill="#4A7FBF" stroke="#FFFFFF"/>' % (x + j * sg, y, sg, sy))
+        s.yazi(x + j * sg + sg / 2, y + 14, a, 11, renk="#FFFFFF", kalin=True)
+    for i, r in enumerate(satirlar):
+        for j, h in enumerate(r):
+            s.ekle('<rect x="%.1f" y="%.1f" width="%d" height="%d" fill="%s" stroke="#FFFFFF"/>' % (x + j * sg, y + sy * (i + 1), sg, sy, "#E2ECF7" if i % 2 == 0 else "#F1F6FB"))
+            s.yazi(x + j * sg + sg / 2, y + sy * (i + 1) + 14, h, 11)
+
+YESIL = "#2F855A"; KIRMIZI = "#C53030"; TURUNCU = "#C05621"; MOR = "#6B46C1"
+
+def hucre_satiri(s, x, y, adlar, g, anahtarlar=(), y_=28, boy=12, isaretli=None):
+    """Yan yana başlık hücreleri çizer; her hücrenin orta x'ini döndürür.
+    g: tek sayı ya da hücre genişlikleri listesi; anahtarlar: altı çizili adlar;
+    isaretli: {ad: renk} kenarı renkli hücreler"""
+    gler = g if isinstance(g, (list, tuple)) else [g] * len(adlar)
+    ortalar, cx = [], x
+    for ad, gg in zip(adlar, gler):
+        renk = (isaretli or {}).get(ad)
+        s.ekle('<rect x="%.1f" y="%.1f" width="%.1f" height="%d" fill="%s" stroke="%s" stroke-width="%s"/>' % (
+            cx, y, gg, y_, "#FFF5F5" if renk else "#E2ECF7", renk or "#FFFFFF", 2 if renk else 1))
+        s.yazi(cx + gg / 2, y + y_ / 2 + boy * 0.36, ad, boy, kalin=True, alti=(ad in anahtarlar))
+        ortalar.append(cx + gg / 2)
+        cx += gg
+    return ortalar
+
+def kod_satiri(x, y, parcalar, boy=13):
+    """parcalar: [(metin, renk, kalin)] yan yana tek satır kod; tek aralıklı yazıda karakter genişliği ~0.6em"""
+    cx = x
+    for t, renk, kalin in parcalar:
+        s.yazi(cx, y, t, boy, renk, kalin=kalin, hiza="start", font=MONO)
+        cx += len(t) * boy * 0.6
+    return cx
+
+def isaret_imi(x, y, var):
+    if var:
+        s.ekle('<circle cx="%.1f" cy="%.1f" r="9" fill="%s"/>' % (x, y, YESIL))
+        s.ekle('<path d="M %.1f %.1f l 3.5 3.5 l 6 -7" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>' % (x - 5, y))
+    else:
+        s.ekle('<circle cx="%.1f" cy="%.1f" r="9" fill="#EDF2F7" stroke="#CBD5E0"/>' % (x, y))
+        s.ekle('<path d="M %.1f %.1f l 7 7 M %.1f %.1f l -7 7" fill="none" stroke="#A0AEC0" stroke-width="2"/>' % (x - 3.5, y - 3.5, x + 3.5, y - 3.5))
+
+# ================================================================ ŞEKİLLER
+TURUNCU_D = "#FFF4E5"
+
+def deger_kutusu(x, y, g, deger, eski=None, yeni=False, bos=False):
+    """Bellekteki bir değişkenin kutusu; yeni atanan değer turuncu, silinen eski değer üstü çizili."""
+    s.ekle('<rect x="%.1f" y="%.1f" width="%d" height="34" rx="6" fill="%s" stroke="%s" stroke-width="%s"/>' % (
+        x, y, g, TURUNCU_D if yeni else ("#F7FAFC" if bos else "#FFFFFF"), VURGU if yeni else "#CBD5E0", 1.8 if yeni else 1.2))
+    if bos:
+        s.yazi(x + g / 2, y + 22, "–", 13, "#A0AEC0")
+        return
+    s.yazi(x + g / 2 + (6 if eski else 0), y + 23, deger, 15, VURGU if yeni else YAZI, kalin=yeni, font=MONO)
+    if eski:
+        s.yazi(x + 10, y + 15, eski, 11, "#A0AEC0", hiza="start", font=MONO)
+        s.cizgi(x + 7, y + 11, x + 11 + len(eski) * 7, y + 11, "#A0AEC0", 1.2)
+
+# ---------------------------------------------------------------- 1) atama örnekleri
+s = Sekil(400, 336, "Atama: sağ taraf hesaplanır, sonuç soldaki değişkene yazılır")
+DEG = ["SAYI", "TOPLAM", "A"]; XD = [178, 252, 326]
+s.yazi(14, 24, "komut", 12, SONUK, kalin=True, hiza="start")
+for ad, x in zip(DEG, XD):
+    s.yazi(x + 33, 24, ad, 12, SONUK, kalin=True, font=MONO)
+adimlar = [("SAYI = 2", "", {"SAYI": ("2", None)}),
+           ("SAYI = 5", "2 silinir", {"SAYI": ("5", "2")}),
+           ("SAYI = SAYI+1", "5+1 = 6", {"SAYI": ("6", "5")}),
+           ("TOPLAM = SAYI+5", "6+5 = 11", {"TOPLAM": ("11", None)}),
+           ("A = 8*3", "8*3 = 24", {"A": ("24", None)})]
+durum = {}
+for i, (kod, hesap, degisen) in enumerate(adimlar):
+    y = 38 + i * 54
+    if i % 2 == 0: s.ekle('<rect x="6" y="%d" width="388" height="50" rx="8" fill="#F7FAFC"/>' % (y - 4))
+    s.yazi(14, y + 18, kod, 12.5, YAZI, kalin=True, hiza="start", font=MONO)
+    if hesap: s.yazi(14, y + 36, hesap, 11.5, SONUK, hiza="start", font=MONO)
+    for ad, x in zip(DEG, XD):
+        if ad in degisen:
+            yeni, eski = degisen[ad]; durum[ad] = yeni
+            deger_kutusu(x, y + 4, 66, yeni, eski, yeni=True)
+        elif ad in durum: deger_kutusu(x, y + 4, 66, durum[ad])
+        else: deger_kutusu(x, y + 4, 66, "", bos=True)
+s.yazi(200, 322, "eşittirin sağı hesaplanır → sonuç soldaki değişkene", 11.5, SONUK)
+s.kaydet("atama-sayi.svg")
+
+# ---------------------------------------------------------------- 2) işlem önceliği
+s = Sekil(400, 268, "İşlem önceliği: X=2*3/6+2")
+def ifade(y, parcalar, vurgu=None, renk=VURGU):
+    """parcalar: karakter dizileri; vurgu: (baş, son) vurgulanacak parça aralığı"""
+    boy = 18; gk = boy * 0.6; x0 = 30
+    tum = "".join(parcalar)
+    if vurgu:
+        a = len("".join(parcalar[:vurgu[0]])); b = len("".join(parcalar[:vurgu[1]]))
+        s.ekle('<rect x="%.1f" y="%d" width="%.1f" height="28" rx="5" fill="%s"/>' % (x0 + a * gk - 3, y - 20, (b - a) * gk + 6, TURUNCU_D))
+        s.cizgi(x0 + a * gk - 2, y + 6, x0 + b * gk + 2, y + 6, renk, 2)
+    s.yazi(x0, y, tum, boy, YAZI, hiza="start", font=MONO)
+satirlar_ = [(["X = ", "2*3", "/6+2"], (1, 2), "1. çarpma ve bölme önce;", "aynı öncelik: soldan sağa"),
+             (["X = ", "6/6", "+2"], (1, 2), "2. sıradaki bölme", ""),
+             (["X = ", "1+2"], (1, 2), "3. toplama en son", ""),
+             (["X = ", "3"], None, "sonuç", "")]
+for i, (p, v, n1, n2) in enumerate(satirlar_):
+    y = 40 + i * 58
+    ifade(y, p, v)
+    s.yazi(206, y - 4, n1, 12, SONUK, hiza="start")
+    if n2: s.yazi(206, y + 12, n2, 12, SONUK, hiza="start")
+    if i < 3: s.ok(60, y + 12, 60, y + 32, "#A0AEC0", 1.4)
+s.ekle('<rect x="20" y="%d" width="80" height="34" rx="6" fill="none" stroke="%s" stroke-width="1.8"/>' % (40 + 3 * 58 - 24, YESIL))
+s.yazi(200, 258, "öncelik: () → ^ → * / → + -", 12, VURGU, kalin=True)
+s.kaydet("islem-onceligi.svg")
+
+# ---------------------------------------------------------------- 3) mantıksal örnek
+s = Sekil(400, 262, "(5>6 && 2<=7) ifadesinin çözümü")
+s.ekle('<rect x="70" y="10" width="260" height="40" rx="8" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.6"/>')
+s.yazi(200, 37, "(5>6 && 2<=7)", 16, YAZI, kalin=True, font=MONO)
+for x, ust, alt, renk, zemin in ((24, "5>6", "yanlış → 0", KIRMIZI, "#FFF5F5"), (216, "2<=7", "doğru → 1", YESIL, "#F0FFF4")):
+    s.ok(200 + (x - 120) * 0.45, 52, x + 80, 84, SONUK, 1.5)
+    s.ekle('<rect x="%d" y="88" width="160" height="58" rx="8" fill="%s" stroke="%s" stroke-width="1.6"/>' % (x, zemin, renk))
+    s.yazi(x + 80, 112, ust, 15, YAZI, kalin=True, font=MONO)
+    s.yazi(x + 80, 134, alt, 13, renk, kalin=True)
+    s.ok(x + 80, 148, 200 + (x - 120) * 0.25, 176, SONUK, 1.5)
+s.ekle('<rect x="110" y="180" width="180" height="40" rx="8" fill="#FFF5F5" stroke="%s" stroke-width="1.8"/>' % KIRMIZI)
+s.yazi(200, 206, "0 VE 1 = 0", 15, KIRMIZI, kalin=True)
+s.yazi(200, 246, "sonuç: 0 (yanlış)", 13, SONUK, kalin=True)
+s.kaydet("mantiksal-ornek.svg")
+
+# ---------------------------------------------------------------- 4) örnek 1 izleme
+s = Sekil(400, 322, "Örnek 1'in adımları ve değişkenler")
+XS = [184, 230, 276, 340]; GS = [44, 44, 62, 52]
+basl = ["A", "B", "TOPLAM", "ekran"]
+s.yazi(14, 22, "adım", 12, SONUK, kalin=True, hiza="start")
+for b, x, g in zip(basl, XS, GS):
+    s.yazi(x + g / 2, 22, b, 11.5, SONUK, kalin=True, font=MONO if b != "ekran" else FONT)
+adim1 = [("1. BAŞLA", "", {}), ("2. OKU: A", "klavye: 4", {"A": "4"}), ("3. OKU: B", "klavye: 7", {"B": "7"}),
+         ("4. TOPLAM=A+B", "4+7 = 11", {"TOPLAM": "11"}), ("5. YAZ: TOPLAM", "", {"ekran": "11"}), ("6. BİTİR", "", {})]
+durum = {}
+for i, (ad, alt, deg) in enumerate(adim1):
+    y = 34 + i * 44
+    if i % 2 == 0: s.ekle('<rect x="6" y="%d" width="388" height="42" rx="8" fill="#F7FAFC"/>' % (y - 2))
+    s.yazi(14, y + (16 if alt else 24), ad, 12.5, YAZI, kalin=True, hiza="start", font=MONO)
+    if alt: s.yazi(26, y + 33, alt, 11, SONUK, hiza="start")
+    for b, x, g in zip(basl, XS, GS):
+        if b in deg:
+            durum[b] = deg[b]
+            s.ekle('<rect x="%d" y="%d" width="%d" height="30" rx="5" fill="%s" stroke="%s" stroke-width="1.8"/>' % (x + 2, y + 4, g - 4, TURUNCU_D, VURGU))
+            s.yazi(x + g / 2, y + 24, deg[b], 14, VURGU, kalin=True, font=MONO)
+        elif b in durum:
+            s.ekle('<rect x="%d" y="%d" width="%d" height="30" rx="5" fill="#FFFFFF" stroke="#CBD5E0"/>' % (x + 2, y + 4, g - 4))
+            s.yazi(x + g / 2, y + 24, durum[b], 14, YAZI, font=MONO)
+s.yazi(200, 314, "turuncu: o adımda değeri değişen yer", 11.5, SONUK)
+s.kaydet("ornek1-izleme.svg")
+
+# ---------------------------------------------------------------- 5) temel algoritma grupları
+s = Sekil(400, 470, "Hocanın verdiği temel algoritma grupları")
+gruplar_ = [("1. Sıralama", [("basit:", None), ("Bubble", 0), ("Selection", 0), ("Insertion", 0), ("\n", None), ("gelişmiş:", None), ("Quick", 1), ("Merge", 1)], "#2B6CB0"),
+            ("2. Arama", [("Linear", 0), ("Binary", 0)], "#2C7A7B"),
+            ("3. Graf", [("BFS", 0), ("DFS", 0), ("Dijkstra", 0), ("Floyd-Warshall", 0)], MOR),
+            ("4. Dinamik programlama", [("Fibonacci", 0), ("Knapsack", 0)], YESIL),
+            ("5. Karmaşık sınıflar", [("Greedy", 0), ("Hashing", 0), ("Şifreleme", 0), ("Makine öğrenimi", 0)], VURGU)]
+y = 10
+for ad, ogeler, renk in gruplar_:
+    # önce çipleri satırlara yerleştir
+    satir_, x = [[]], 16
+    for t, tur in ogeler:
+        if t == "\n": satir_.append([]); x = 16; continue
+        g = len(t) * 7.2 + (0 if tur is None else 20)
+        if x + g > 384: satir_.append([]); x = 16
+        satir_[-1].append((t, tur, x, g)); x += g + 6
+    yuk = 34 + len(satir_) * 32 + 6
+    s.ekle('<rect x="8" y="%d" width="384" height="%d" rx="10" fill="#FFFFFF" stroke="%s" stroke-width="1.6"/>' % (y, yuk, renk))
+    s.ekle('<rect x="8" y="%d" width="6" height="%d" rx="3" fill="%s"/>' % (y, yuk, renk))
+    s.yazi(22, y + 24, ad, 14, renk, kalin=True, hiza="start")
+    for k, sat in enumerate(satir_):
+        yy = y + 36 + k * 32
+        for t, tur, x, g in sat:
+            if tur is None:
+                s.yazi(x, yy + 18, t, 12, SONUK, hiza="start")
+            else:
+                s.ekle('<rect x="%.1f" y="%d" width="%.1f" height="26" rx="13" fill="%s" stroke="%s"/>' % (x, yy, g, "#F7FAFC", "#CBD5E0"))
+                s.yazi(x + g / 2, yy + 17.5, t, 12, YAZI)
+    y += yuk + 10
+s.y = y
+s.kaydet("temel-algoritmalar.svg")
+
+# ---------------------------------------------------------------- 6) ikili arama
+s = Sekil(400, 300, "İkili arama: arama alanı her adımda yarıya iner")
+dizi = [4, 8, 15, 16, 23, 31, 42, 50, 61]; aranan = 50
+s.yazi(14, 22, "sıralı dizi, aranan: 50", 13, YAZI, kalin=True, hiza="start")
+lo, hi, adim, y = 0, len(dizi) - 1, 1, 40
+while lo <= hi:
+    orta = (lo + hi) // 2
+    for k, d in enumerate(dizi):
+        x = 18 + k * 40
+        icinde = lo <= k <= hi
+        dolgu = TURUNCU_D if k == orta else ("#EBF4FF" if icinde else "#F7FAFC")
+        cizgi_ = VURGU if k == orta else ("#90CDF4" if icinde else "#E2E8F0")
+        s.ekle('<rect x="%d" y="%d" width="36" height="32" rx="5" fill="%s" stroke="%s" stroke-width="%s"/>' % (x, y, dolgu, cizgi_, 1.8 if k == orta else 1.2))
+        s.yazi(x + 18, y + 21, str(d), 13, YAZI if icinde else "#A0AEC0", kalin=(k == orta), font=MONO)
+    if dizi[orta] == aranan: not_ = "%d. adım: orta %d = 50 → bulundu" % (adim, dizi[orta]); renk = YESIL
+    elif dizi[orta] < aranan: not_ = "%d. adım: orta %d < 50 → sağ yarıda ara" % (adim, dizi[orta]); renk = SONUK
+    else: not_ = "%d. adım: orta %d > 50 → sol yarıda ara" % (adim, dizi[orta]); renk = SONUK
+    s.yazi(18, y + 52, not_, 12, renk, kalin=(renk == YESIL), hiza="start")
+    if dizi[orta] == aranan: break
+    if dizi[orta] < aranan: lo = orta + 1
+    else: hi = orta - 1
+    adim += 1; y += 78
+s.y = y + 70
+s.kaydet("ikili-arama.svg")
+
+# ================================================================ 1.–2. HAFTA
+MAVI = "#2B6CB0"; TURKUAZ = "#2C7A7B"
+
+def kutucuk(x, y, g, y_, baslik, alt, renk, zemin="#FFFFFF", boy=14):
+    s.ekle('<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f" rx="10" fill="%s" stroke="%s" stroke-width="1.8"/>' % (x, y, g, y_, zemin, renk))
+    satir = [alt] if isinstance(alt, str) else alt
+    ust = y + y_ / 2 - (len(satir) * 15) / 2 + (4 if satir and satir[0] else 10)
+    s.yazi(x + g / 2, ust, baslik, boy, renk, kalin=True)
+    for k, a in enumerate(satir):
+        if a: s.yazi(x + g / 2, ust + 18 + k * 15, a, 11.5, SONUK)
+
+# ---------------------------------------------------------------- 7) bilgisayarın birimleri
+s = Sekil(400, 414, "Bilgisayarın birimleri")
+kutucuk(10, 126, 92, 76, "Giriş", ["klavye, fare,", "mikrofon"], MAVI)
+kutucuk(298, 126, 92, 76, "Çıkış", ["ekran,", "yazıcı"], MAVI)
+s.ekle('<rect x="114" y="14" width="172" height="300" rx="12" fill="#F7FAFC" stroke="%s" stroke-width="2"/>' % MOR)
+s.yazi(200, 38, "CPU (işlemci)", 15, MOR, kalin=True)
+s.yazi(200, 55, "bilgisayarın beyni", 11.5, SONUK)
+kutucuk(126, 68, 148, 70, "CU", ["kontrol (denetim)", "birimi: komut sırası"], MOR, boy=13)
+kutucuk(126, 146, 148, 70, "ALU", ["aritmetik ve", "mantıksal işlemler"], MOR, boy=13)
+kutucuk(126, 224, 148, 76, "Registers", ["saklayıcılar: hızlı,", "geçici depo"], MOR, boy=13)
+s.ok(104, 164, 112, 164, SONUK, 1.8); s.ok(288, 164, 296, 164, SONUK, 1.8)
+s.ok(200, 316, 200, 334, SONUK, 1.8); s.ok(200, 334, 200, 316, SONUK, 1.8)
+s.ekle('<rect x="20" y="338" width="360" height="68" rx="12" fill="#F7FAFC" stroke="%s" stroke-width="2"/>' % YESIL)
+s.yazi(34, 358, "Bellek", 14, YESIL, kalin=True, hiza="start")
+s.yazi(120, 358, "birincil: RAM", 12.5, YAZI, kalin=True, hiza="start")
+s.yazi(120, 376, "geçici, hızlı; elektrik gidince silinir", 11.5, SONUK, hiza="start")
+s.yazi(120, 391, "ikincil: sabit disk (kalıcı)", 11.5, SONUK, hiza="start")
+s.kaydet("bilgisayar-birimleri.svg")
+
+# ---------------------------------------------------------------- 8) dil seviyeleri
+s = Sekil(400, 228, "Programlama dillerinin seviyeleri")
+for i, (ad, ornek, renk) in enumerate([("Yüksek seviyeli diller", "Basic, Fortran, Pascal", MAVI),
+                                        ("Orta seviyeli diller", "C/C++", MOR),
+                                        ("Düşük seviyeli diller", "makine dili, assembly", VURGU)]):
+    y = 12 + i * 70
+    s.ekle('<rect x="20" y="%d" width="360" height="60" rx="10" fill="#FFFFFF" stroke="%s" stroke-width="1.8"/>' % (y, renk))
+    s.ekle('<rect x="20" y="%d" width="8" height="60" rx="4" fill="%s"/>' % (y, renk))
+    s.yazi(44, y + 26, ad, 14, renk, kalin=True, hiza="start")
+    s.yazi(44, y + 46, ornek, 12.5, YAZI, hiza="start")
+s.kaydet("dil-seviyeleri.svg")
+
+# ---------------------------------------------------------------- 9) derleme
+s = Sekil(400, 296, "Kaynak koddan makine diline")
+adim_ = [("Kaynak kodu", "kolay yazılıp okunan kod", MAVI), ("Derleyici (compiler)", "makine diline çevirir", MOR),
+         ("Nesne kodu", "makine diline çevrilmiş kod", TURKUAZ), ("CPU yürütür", "0 ve 1'lerden oluşan yönergeler", YESIL)]
+for i, (b, a, renk) in enumerate(adim_):
+    y = 10 + i * 72
+    kutucuk(60, y, 280, 54, b, a, renk)
+    if i < 3: s.ok(200, y + 56, 200, y + 70, SONUK, 1.8)
+s.kaydet("derleme.svg")
+
+# ---------------------------------------------------------------- 10) derleyici ve yorumlayıcı
+s = Sekil(400, 300, "Derleyici ile yorumlayıcı arasındaki fark")
+for x, bas, renk, satir_, alt_ in ((10, "Derleyici", MOR, ["makine diline çevirir,", "söz dizimi hatası bulur", "makine dili kodu", "saklanır"], "Pascal, C/C++, Delphi"),
+                                   (206, "Yorumlayıcı", TURKUAZ, ["o anda çevirir; her", "çalıştırmada yeniden", "makine dili kodu", "saklanmaz"], "ASP, JavaScript, MATLAB")):
+    s.ekle('<rect x="%d" y="10" width="184" height="280" rx="12" fill="#FFFFFF" stroke="%s" stroke-width="1.8"/>' % (x, renk))
+    s.ekle('<rect x="%d" y="10" width="184" height="40" rx="12" fill="%s"/>' % (x, renk))
+    s.ekle('<rect x="%d" y="36" width="184" height="14" fill="%s"/>' % (x, renk))
+    s.yazi(x + 92, 36, bas, 15, "#FFFFFF", kalin=True)
+    for k, t_ in enumerate(satir_):
+        s.yazi(x + 92, 84 + k * 22 + (10 if k >= 2 else 0), t_, 12.5, YAZI, kalin=(k in (1, 3)))
+    s.cizgi(x + 20, 216, x + 164, 216, "#E2E8F0", 1.2)
+    s.yazi(x + 92, 240, "hocanın örnekleri:", 11.5, SONUK)
+    s.yazi(x + 92, 262, alt_, 12, YAZI)
+s.kaydet("derleyici-yorumlayici.svg")
+
+# ---------------------------------------------------------------- 11) problem çözümü
+s = Sekil(400, 520, "Problem çözümü adımları")
+pc = ["Sorunu net anla", "İhtiyaç ve istekleri belirle", "Zihinsel alıştırmalar yap", "En uygun çözümü seç",
+      "Çözümü algoritmayla ifade et", "Akış çizgesi oluştur", "Dil seç, bilgisayara aktar", "Verilerle test et", "Sorunları düzelt"]
+for i, t_ in enumerate(pc):
+    y = 10 + i * 56
+    son = i == len(pc) - 1
+    renk = VURGU if son else (MAVI if i < 4 else (MOR if i < 6 else YESIL))
+    s.ekle('<rect x="40" y="%d" width="270" height="42" rx="8" fill="#FFFFFF" stroke="%s" stroke-width="1.6"/>' % (y, renk))
+    s.ekle('<circle cx="62" cy="%d" r="12" fill="%s"/>' % (y + 21, renk))
+    s.yazi(62, y + 25.5, str(i + 1), 12, "#FFFFFF", kalin=True)
+    s.yazi(84, y + 26, t_, 13, YAZI, hiza="start")
+    if not son: s.ok(175, y + 43, 175, y + 54, "#A0AEC0", 1.4)
+# düzeltme döngüsü: 9'dan 8'e geri
+y8, y9 = 10 + 7 * 56 + 21, 10 + 8 * 56 + 21
+for k, t_ in enumerate(["ilgili", "kısımlar", "tekrar", "gözden", "geçirilir"]):
+    s.yazi(354, y9 - 30 + k * 14, t_, 11, VURGU, hiza="middle")
+s.kaydet("problem-cozumu.svg")
+
+# ---------------------------------------------------------------- 12) algoritmanın özellikleri
+s = Sekil(400, 384, "Algoritmanın beş özelliği")
+oz = [("Etkinlik", "adımlar anlaşılır, basit, kesin; yorum gerektirmez", MAVI),
+      ("Sonluluk", "başlangıç, adımlar, bitiş; sonsuz döngü yok", MOR),
+      ("Kesinlik", "aynı veriyle her çalıştırmada aynı sonuç", TURKUAZ),
+      ("Giriş/çıkış", "işlenecek değerler girer, sonuçlar çıkar", YESIL),
+      ("Başarım", "bellek ve süre dikkate alınır", VURGU)]
+for i, (ad, a, renk) in enumerate(oz):
+    y = 10 + i * 74
+    s.ekle('<rect x="10" y="%d" width="380" height="64" rx="10" fill="#FFFFFF" stroke="%s" stroke-width="1.6"/>' % (y, renk))
+    s.ekle('<rect x="10" y="%d" width="8" height="64" rx="4" fill="%s"/>' % (y, renk))
+    s.yazi(32, y + 27, ad, 15, renk, kalin=True, hiza="start")
+    s.yazi(32, y + 48, a, 12, YAZI, hiza="start")
+s.kaydet("algoritma-ozellikleri.svg")
+
+# ---------------------------------------------------------------- 13) suyun durumu
+s = Sekil(400, 340, "Suyun durumu: ayrı Eğer'ler ile değilse eğer zinciri")
+s.yazi(200, 22, "sıcaklık = -5 girildiğinde", 13, YAZI, kalin=True)
+for x, bas, renk, satir_, sonuc in ((8, "ayrı \"Eğer\"ler", KIRMIZI,
+                                     [("Eğer <0 → Buz", True), ("Eğer >=100 → Buhar", False), ("Değilse → Su", True)], "Su (yanlış)"),
+                                    (204, "\"değilse eğer\" zinciri", YESIL,
+                                     [("Eğer <0 → Buz", True), ("Değilse eğer >=100", None), ("Değilse → Su", None)], "Buz (doğru)")):
+    s.ekle('<rect x="%d" y="36" width="188" height="294" rx="12" fill="#FFFFFF" stroke="%s" stroke-width="1.8"/>' % (x, renk))
+    s.yazi(x + 94, 62, bas, 13, renk, kalin=True)
+    for k, (t_, calisti) in enumerate(satir_):
+        y = 84 + k * 58
+        dolgu = TURUNCU_D if calisti else "#F7FAFC"
+        cz = VURGU if calisti else "#CBD5E0"
+        s.ekle('<rect x="%d" y="%d" width="164" height="44" rx="8" fill="%s" stroke="%s" stroke-width="1.4"/>' % (x + 12, y, dolgu, cz))
+        s.yazi(x + 94, y + 20, t_, 12, YAZI if calisti is not None else "#A0AEC0", kalin=bool(calisti), font=MONO)
+        not_ = {True: "çalıştı", False: "koşul yanlış", None: "atlandı"}[calisti]
+        s.yazi(x + 94, y + 36, not_, 11, VURGU if calisti else SONUK)
+    s.yazi(x + 94, 286, "Durum =", 12, SONUK)
+    s.yazi(x + 94, 308, sonuc, 14, renk, kalin=True)
+s.kaydet("su-durumu.svg")
+
+# ================================================================ 4. HAFTA: KARAR YAPILARI
+YESIL_D = "#F0FFF4"; KIRMIZI_D = "#FFF5F5"
+
+# ---------------------------------------------------------------- 14) karar yapısı
+s = Sekil(400, 352, "Karar yapısı: koşuldan dönen değere göre iki kısımdan yalnızca biri")
+s.ekle('<rect x="90" y="10" width="220" height="62" rx="10" fill="#EBF4FF" stroke="%s" stroke-width="1.8"/>' % MAVI)
+s.yazi(200, 36, "EĞER (koşul) İSE", 15, MAVI, kalin=True)
+s.yazi(200, 58, "koşuldan dönen değer?", 12, SONUK)
+for x, etiket, renk, zemin, b1, b2, a1, a2 in (
+        (10, "doğru", YESIL, YESIL_D, "EĞER İSE kısmındaki", "işlemler gerçekleştirilir", "DEĞİL İSE kısmındaki", "işlemler gerçekleştirilmez"),
+        (206, "yanlış", KIRMIZI, KIRMIZI_D, "DEĞİL İSE kısmındaki", "işlemler gerçekleştirilir", "başka bir koşula", "bakılmadan")):
+    cx = x + 92
+    s.ok(200 + (cx - 200) * 0.35, 74, cx, 128, renk, 1.8)
+    s.yazi(cx + (-34 if x < 100 else 34), 104, etiket, 13, renk, kalin=True)
+    s.ekle('<rect x="%d" y="132" width="184" height="120" rx="10" fill="%s" stroke="%s" stroke-width="1.8"/>' % (x, zemin, renk))
+    s.yazi(cx, 162, b1, 12.5, YAZI, kalin=True)
+    s.yazi(cx, 182, b2, 12.5, YAZI, kalin=True)
+    s.cizgi(x + 20, 198, x + 164, 198, "#E2E8F0", 1.2)
+    s.yazi(cx, 220, a1, 11.5, SONUK)
+    s.yazi(cx, 237, a2, 11.5, SONUK)
+    s.ok(cx, 254, 200 + (cx - 200) * 0.3, 292, SONUK, 1.5)
+s.ekle('<rect x="120" y="296" width="160" height="40" rx="10" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.4"/>')
+s.yazi(200, 321, "sonraki adım", 13, SONUK, kalin=True)
+s.kaydet("karar-yapisi.svg")
+
+# ---------------------------------------------------------------- 15) hocanın örneği: iki sayıdan büyük olanı
+s = Sekil(400, 352, "Hocanın örneği üç farklı girişle")
+s.ekle('<rect x="8" y="8" width="384" height="104" rx="10" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.2"/>')
+for k, parca in enumerate([[("1.Başla", YAZI, False)],
+                           [("2.Oku : A, B", YAZI, False)],
+                           # boşluklar ayrı parça: SVG baştaki ve sondaki boşluğu yutar, kod_satiri ise genişliği sayar
+                           [("3.", YAZI, False), ("EĞER", MAVI, True), (" ", YAZI, False), ("A>B", YAZI, False), (" ", YAZI, False),
+                            ("İSE", MAVI, True), ("  ", YAZI, False), ("Yaz: A", YAZI, False)],
+                           [("  ", YAZI, False), ("DEĞİL İSE", MAVI, True), ("  ", YAZI, False), ("Yaz: B", YAZI, False)],
+                           [("4.Bitir.", YAZI, False)]]):
+    kod_satiri(22, 28 + k * 19, parca, 13)
+BAS = [("A, B", 16), ("A>B", 112), ("gerçekleşen kısım", 186), ("ekran", 344)]
+for t_, x in BAS:
+    s.yazi(x + (0 if t_ != "ekran" else 18), 138, t_, 12, SONUK, kalin=True, hiza="start" if t_ != "ekran" else "middle")
+for i, (a, b) in enumerate([(8, 3), (4, 9), (7, 7)]):
+    y = 150 + i * 62
+    dogru = a > b
+    renk = YESIL if dogru else KIRMIZI
+    if i % 2 == 0: s.ekle('<rect x="6" y="%d" width="388" height="56" rx="8" fill="#F7FAFC"/>' % y)
+    s.yazi(16, y + 34, "%d, %d" % (a, b), 15, YAZI, kalin=True, hiza="start", font=MONO)
+    s.yazi(112, y + 24, "%d>%d" % (a, b), 13, YAZI, hiza="start", font=MONO)
+    s.yazi(112, y + 42, "doğru" if dogru else "yanlış", 12, renk, kalin=True, hiza="start")
+    s.ekle('<rect x="184" y="%d" width="140" height="40" rx="8" fill="%s" stroke="%s" stroke-width="1.6"/>' % (y + 8, TURUNCU_D, VURGU))
+    s.yazi(254, y + 25, "EĞER İSE" if dogru else "DEĞİL İSE", 12, VURGU, kalin=True)
+    s.yazi(254, y + 41, "Yaz: A" if dogru else "Yaz: B", 12, YAZI, font=MONO)
+    s.ekle('<rect x="336" y="%d" width="52" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="1.4"/>' % (y + 8))
+    s.yazi(362, y + 34, str(a if dogru else b), 16, YAZI, kalin=True, font=MONO)
+s.yazi(200, 342, "7, 7: 7>7 yanlış → DEĞİL İSE, B yazılır", 11.5, SONUK)
+s.kaydet("buyuk-sayi.svg")
+
+def aralik_seridi(baslik, dilimler, ad):
+    """dilimler: [(etiket, alt yazı satırları, genişlik, renk)] soldan sağa yan yana dilimler."""
+    global s
+    s = Sekil(400, 150, baslik)
+    s.yazi(200, 22, baslik, 13, YAZI, kalin=True)
+    x = 20
+    for etiket, altlar, g, renk in dilimler:
+        s.ekle('<rect x="%d" y="36" width="%d" height="52" fill="%s" stroke="#FFFFFF" stroke-width="2"/>' % (x, g, renk))
+        s.yazi(x + g / 2, 68, etiket, 15 if len(etiket) <= 2 else 13, "#FFFFFF", kalin=True)
+        for k, a in enumerate(altlar):
+            s.yazi(x + g / 2, 108 + k * 15, a, 11.5, YAZI)
+        x += g
+    s.kaydet(ad)
+
+# ---------------------------------------------------------------- 16) Örnek 7: harf notu
+aralik_seridi("Örnek 7: not aralıkları",
+              [("F", ["60 altı"], 120, KIRMIZI), ("D", ["60 - 69"], 60, VURGU), ("C", ["70 - 79"], 60, MOR),
+               ("B", ["80 - 89"], 60, MAVI), ("A", ["90 ve", "üzeri"], 60, YESIL)], "harf-notu.svg")
+
+# ---------------------------------------------------------------- 17) Örnek 8: yaş grupları
+aralik_seridi("Örnek 8: yaş grupları",
+              [("Çocuk", ["0-12"], 80, TURKUAZ), ("Genç", ["13-19"], 80, MAVI), ("Yetişkin", ["20-64"], 120, MOR),
+               ("Yaşlı", ["65 ve", "üzeri"], 80, VURGU)], "yas-gruplari.svg")
+
+# ================================================================ AKIŞ DİYAGRAMLARI (6. hafta sembolleri)
+# Semboller hocanın 6. hafta slaytından (slayt 3) ve örneklerinden (slayt 5–10):
+# Başla/Bitir elips (slayt 3'te yuvarlak köşeli kutu), klavyeden okuma üstü eğik
+# dörtgen, araç belirtmeden giriş/çıkış (YAZ) paralelkenar, hesaplama dikdörtgen,
+# karar eşkenar dörtgen; karar çıkışları "Evet"/"Hayır" (çözüm belgesinde E/H).
+# 5. haftanın Ek akış şemaları da bu sembollerle çizilir.
+AKIS_D = "#EBF4FF"; ISLEM_D = "#F7FAFC"; GC_D = "#F0FFF4"; KARAR_D = "#FFF4E5"; DIGER_D = "#F5F0FF"
+A_BOY = 12.5
+
+def _satirlar(cx, cy, satirlar, boy=A_BOY, renk=YAZI, kalin=False, font=FONT):
+    for k, t in enumerate(satirlar):
+        s.yazi(cx, cy + boy * 0.36 - (boy + 3) / 2 * (len(satirlar) - 1) + (boy + 3) * k, t, boy, renk, kalin=kalin, font=font)
+
+def _liste(m): return m if isinstance(m, (list, tuple)) else [m]
+
+def a_uc(cx, cy, metin, g=110, y_=36, tur="elips"):
+    """Başla/Bitir. tur: elips (örneklerdeki), kapsul (slayt 5), kose (slayt 3)"""
+    if tur == "elips":
+        s.ekle('<ellipse cx="%.1f" cy="%.1f" rx="%.1f" ry="%.1f" fill="%s" stroke="%s" stroke-width="1.8"/>' % (cx, cy, g / 2, y_ / 2, AKIS_D, MAVI))
+    else:
+        rx = y_ / 2 if tur == "kapsul" else 10
+        s.ekle('<rect x="%.1f" y="%.1f" width="%d" height="%d" rx="%d" fill="%s" stroke="%s" stroke-width="1.8"/>' % (cx - g / 2, cy - y_ / 2, g, y_, rx, AKIS_D, MAVI))
+    _satirlar(cx, cy, _liste(metin), 13, MAVI, kalin=True)
+
+def a_islem(cx, cy, metin, g=170, y_=None):
+    m = _liste(metin); y_ = y_ or 16 + 16 * len(m)
+    s.ekle('<rect x="%.1f" y="%.1f" width="%d" height="%d" fill="%s" stroke="#4A5568" stroke-width="1.6"/>' % (cx - g / 2, cy - y_ / 2, g, y_, ISLEM_D))
+    _satirlar(cx, cy, m)
+    return y_
+
+def a_yaz(cx, cy, metin, g=170, y_=None, e=12):
+    """Araç belirtmeden giriş ya da çıkış: paralelkenar (YAZ)"""
+    m = _liste(metin); y_ = y_ or 16 + 16 * len(m)
+    s.ekle('<polygon points="%.1f,%.1f %.1f,%.1f %.1f,%.1f %.1f,%.1f" fill="%s" stroke="%s" stroke-width="1.6"/>' % (
+        cx - g / 2 + e, cy - y_ / 2, cx + g / 2 + e, cy - y_ / 2, cx + g / 2 - e, cy + y_ / 2, cx - g / 2 - e, cy + y_ / 2, GC_D, YESIL))
+    _satirlar(cx, cy, m)
+    return y_
+
+def a_oku(cx, cy, metin, g=150, y_=None, e=12):
+    """Klavye aracılığı ile giriş (okuma): üst kenarı sağa doğru yükselen dörtgen. cy: alt kısmın ortası"""
+    m = _liste(metin); y_ = y_ or 18 + 16 * len(m)
+    ust = cy - y_ / 2
+    s.ekle('<polygon points="%.1f,%.1f %.1f,%.1f %.1f,%.1f %.1f,%.1f" fill="%s" stroke="%s" stroke-width="1.6"/>' % (
+        cx - g / 2, ust + e, cx + g / 2, ust - 2, cx + g / 2, cy + y_ / 2, cx - g / 2, cy + y_ / 2, GC_D, YESIL))
+    _satirlar(cx, cy + 4, m)
+    return y_
+
+def a_karar(cx, cy, metin, g=150, y_=64):
+    s.ekle('<polygon points="%.1f,%.1f %.1f,%.1f %.1f,%.1f %.1f,%.1f" fill="%s" stroke="%s" stroke-width="1.8"/>' % (
+        cx, cy - y_ / 2, cx + g / 2, cy, cx, cy + y_ / 2, cx - g / 2, cy, KARAR_D, VURGU))
+    _satirlar(cx, cy, _liste(metin))
+
+def a_belge(cx, cy, metin, g=120, y_=44):
+    """Yazıcı aracılığı ile çıkış: alt kenarı dalgalı kutu"""
+    x0, x1, y0, y1 = cx - g / 2, cx + g / 2, cy - y_ / 2, cy + y_ / 2 - 6
+    s.ekle('<path d="M %.1f %.1f L %.1f %.1f L %.1f %.1f C %.1f %.1f %.1f %.1f %.1f %.1f C %.1f %.1f %.1f %.1f %.1f %.1f Z" fill="%s" stroke="%s" stroke-width="1.6"/>' % (
+        x0, y0, x1, y0, x1, y1, x1 - g * 0.25, y1 - 10, cx + g * 0.05, y1 - 8, cx, y1, cx - g * 0.1, y1 + 10, x0 + g * 0.15, y1 + 12, x0, y1 + 2, GC_D, YESIL))
+    _satirlar(cx, cy - 4, _liste(metin))
+
+def a_altigen(cx, cy, metin, g=130, y_=44):
+    e = 16
+    s.ekle('<polygon points="%.1f,%.1f %.1f,%.1f %.1f,%.1f %.1f,%.1f %.1f,%.1f %.1f,%.1f" fill="%s" stroke="%s" stroke-width="1.6"/>' % (
+        cx - g / 2, cy, cx - g / 2 + e, cy - y_ / 2, cx + g / 2 - e, cy - y_ / 2, cx + g / 2, cy, cx + g / 2 - e, cy + y_ / 2, cx - g / 2 + e, cy + y_ / 2, DIGER_D, MOR))
+    _satirlar(cx, cy, _liste(metin))
+
+def a_silindir(cx, cy, metin, g=90, y_=50):
+    ry = 7; x0, x1, y0, y1 = cx - g / 2, cx + g / 2, cy - y_ / 2 + ry, cy + y_ / 2 - ry
+    s.ekle('<path d="M %.1f %.1f L %.1f %.1f A %.1f %d 0 0 0 %.1f %.1f L %.1f %.1f A %.1f %d 0 0 0 %.1f %.1f Z" fill="%s" stroke="%s" stroke-width="1.6"/>' % (
+        x0, y0, x0, y1, g / 2, ry, x1, y1, x1, y0, g / 2, ry, x0, y0, DIGER_D, MOR))
+    s.ekle('<ellipse cx="%.1f" cy="%.1f" rx="%.1f" ry="%d" fill="%s" stroke="%s" stroke-width="1.6"/>' % (cx, y0, g / 2, ry, DIGER_D, MOR))
+    _satirlar(cx, cy + 4, _liste(metin))
+
+def a_bag(cx, cy, metin, g=56, y_=36):
+    s.ekle('<ellipse cx="%.1f" cy="%.1f" rx="%.1f" ry="%.1f" fill="%s" stroke="%s" stroke-width="1.6"/>' % (cx, cy, g / 2, y_ / 2, DIGER_D, MOR))
+    _satirlar(cx, cy, _liste(metin))
+
+def a_yol(noktalar, renk=SONUK, ok=True):
+    """Kırık çizgi; son parçada ok ucu"""
+    for (x1, y1), (x2, y2) in zip(noktalar[:-2], noktalar[1:-1]):
+        s.cizgi(x1, y1, x2, y2, renk, 1.5)
+    (x1, y1), (x2, y2) = noktalar[-2], noktalar[-1]
+    if ok: s.ok(x1, y1, x2, y2, renk, 1.5)
+    else: s.cizgi(x1, y1, x2, y2, renk, 1.5)
+
+def etiket(x, y, t):
+    """Karar çıkışının etiketi; hocanın yazdığı gibi (Evet/Hayır ya da E/H)"""
+    s.yazi(x, y, t, 12.5, SONUK, kalin=True)
+
+# ---------------------------------------------------------------- 18) hocanın sembolleri (slayt 3)
+SEMBOLLER = [
+    (lambda y: a_uc(72, y, "BAŞLA", 104, 34, "kose"), "Başla / Bitir", "algoritmanın başı ya da sonu"),
+    (lambda y: a_oku(72, y, "OKU: A", 112, 40), "Klavyeden giriş", "klavye aracılığı ile okuma"),
+    (lambda y: a_belge(72, y, "", 104, 40), "Yazıcıdan çıkış", "yazıcı aracılığı ile çıkış"),
+    (lambda y: a_islem(72, y, "", 104, 34), "Kart okuyucudan giriş", "kart okuyucu aracılığıyla giriş"),
+    (lambda y: a_altigen(72, y, "", 112, 40), "Döngü (çevrim)", "işler birden fazla yinelenecekse"),
+    (lambda y: s.ok(24, y, 120, y, SONUK, 1.8), "Oklar", "işin akış yönü"),
+    (lambda y: a_yaz(72, y, "YAZ: A", 108, 34), "Araç belirtmeden giriş/çıkış", "araç belirtmeden giriş ya da çıkış"),
+    (lambda y: a_islem(72, y, "TOPLAM = A + B", 120, 34), "Hesaplama / atama", "değerlerin değişkenlere aktarımı"),
+    (lambda y: a_karar(72, y, "A > B", 112, 46), "Karar / karşılaştırma", "aritmetik ve mantıksal ifadeler"),
+    (lambda y: a_silindir(72, y, "", 76, 44), "Disk", "diskten okuma, diskete yazma"),
+    (lambda y: a_bag(72, y, "Bağ", 60, 34), "Bağ", ""),
+]
+s = Sekil(400, 14 + 54 * len(SEMBOLLER), "Hocanın akış diyagramı sembolleri")
+for k, (ciz, ad, alt) in enumerate(SEMBOLLER):
+    y = 34 + k * 54
+    if k % 2 == 0: s.ekle('<rect x="4" y="%d" width="392" height="50" rx="8" fill="#F7FAFC"/>' % (y - 25))
+    ciz(y)
+    s.yazi(148, y - 3, ad, 13.5, YAZI, kalin=True, hiza="start")
+    s.yazi(148, y + 14, alt, 12.5, SONUK, hiza="start")
+s.kaydet("akis-semboller.svg")
+
+# ---------------------------------------------------------------- 18b) soru görselleri: tek sembol
+for ad, ciz in (("akis-sembol-oku.svg", lambda: a_oku(100, 54, "", 120, 52)),
+                ("akis-sembol-altigen.svg", lambda: a_altigen(100, 50, "", 140, 52)),
+):
+    s = Sekil(200, 100, "Akış diyagramı sembolü")
+    ciz()
+    s.kaydet(ad)
+
+# ---------------------------------------------------------------- 19) Örnek 2 (5. hafta): ikinci dereceden denklem (Ek, düzeltilmiş)
+s = Sekil(400, 570, "İkinci dereceden denklemin kökleri: akış diyagramı")
+a_uc(110, 24, "BAŞLA")
+s.ok(110, 42, 110, 60)
+a_oku(110, 82, "OKU: a, b, c", 150)
+s.ok(110, 105, 110, 122)
+a_islem(110, 140, "delta=(b^2)-(4*a*c)", 196, 34)
+s.ok(110, 157, 110, 178)
+a_karar(110, 212, "delta>0", 132, 64)
+a_yol([(176, 212), (290, 212), (290, 230)]); etiket(226, 204, "Evet")
+a_islem(290, 258, ["x1=(-b-delta^(1/2))/(2*a)", "x2=(-b+delta^(1/2))/(2*a)"], 204, 50)
+s.ok(290, 283, 290, 302)
+a_yaz(290, 319, "YAZ: x1, x2", 140, 34)
+s.ok(110, 244, 110, 306); etiket(136, 280, "Hayır")
+a_karar(110, 340, "delta==0", 140, 64)
+a_yol([(180, 340), (204, 340), (204, 378), (290, 378), (290, 390)]); etiket(238, 370, "Evet")
+a_islem(290, 410, ["x1=-b/(2*a)", "x2=-b/(2*a)"], 160, 44)
+s.ok(290, 432, 290, 450)
+a_yaz(290, 467, "YAZ: x1, x2", 140, 34)
+s.ok(110, 372, 110, 450); etiket(136, 410, "Hayır")
+a_yaz(114, 467, ['YAZ: "reel kök', 'yoktur"'], 150, 40)
+a_yol([(360, 319), (390, 319), (390, 506), (200, 506)], ok=False)
+a_yol([(290, 484), (290, 506)], ok=False)
+a_yol([(110, 487), (110, 506), (200, 506), (200, 524)])
+a_uc(200, 543, "BİTİR")
+s.kaydet("akis-denklem.svg")
+
+# ---------------------------------------------------------------- 20) Örnek 4 (5. hafta): 5'ten 20'ye 3'er 3'er (Ek)
+s = Sekil(400, 424, "5'ten 20'ye 3'er 3'er: akış diyagramı")
+a_uc(220, 24, "BAŞLA")
+s.ok(220, 42, 220, 62)
+a_islem(220, 80, "Sayac=5", 150, 34)
+s.ok(220, 97, 220, 124)
+a_yaz(220, 142, "YAZ: Sayac", 150, 34)
+s.ok(220, 159, 220, 180)
+a_islem(220, 198, "Sayac=Sayac+3", 170, 34)
+s.ok(220, 215, 220, 238)
+a_karar(220, 274, "Sayac<=20", 156, 68)
+a_yol([(142, 274), (60, 274), (60, 112), (220, 112), (220, 124)]); etiket(100, 266, "Evet")
+s.ok(220, 308, 220, 344); etiket(248, 330, "Hayır")
+a_uc(220, 363, "BİTİR")
+s.yazi(200, 408, "ekrana: 5 8 11 14 17 20", 12.5, SONUK)
+s.kaydet("akis-ucer.svg")
+
+# ---------------------------------------------------------------- 21) Örnek 5 (5. hafta): faktöriyel (Ek)
+# Hocanın 6. hafta faktöriyel diyagramı gibi: iki işlem tek kutuda, Hayır çıkışı YAZ fakto'ya
+s = Sekil(400, 560, "Faktöriyel: akış diyagramı")
+X = 230
+a_uc(X, 24, "BAŞLA")
+s.ok(X, 42, X, 60)
+a_yaz(X, 78, 'YAZ: "bir sayı giriniz:"', 230, 34)
+s.ok(X, 95, X, 114)
+a_oku(X, 136, "OKU: sayi", 150)
+s.ok(X, 159, X, 178)
+a_islem(X, 196, "sayac=1, fakto=1", 180, 34)
+s.ok(X, 213, X, 242)
+a_islem(X, 266, ["fakto=fakto*sayac", "sayac=sayac+1"], 190, 48)
+s.ok(X, 290, X, 316)
+a_karar(X, 354, "sayac<=sayi", 170, 72)
+a_yol([(X + 85, 354), (388, 354), (388, 228), (X, 228), (X, 242)]); etiket(350, 346, "Evet")
+a_yol([(X - 85, 354), (80, 354), (80, 414)]); etiket(112, 346, "Hayır")
+a_yaz(80, 432, "YAZ: fakto", 130, 34)
+s.ok(80, 449, 80, 474)
+a_uc(80, 493, "BİTİR")
+s.yazi(200, 540, "sayi=4 için: 1·1=1, ·2=2, ·3=6, ·4=24 → 24", 12.5, SONUK)
+s.kaydet("akis-faktoriyel.svg")
+
+# ================================================================ 6. hafta: hocanın akış diyagramları
+# ---------------------------------------------------------------- 24) iki sayının toplamı (slayt 5)
+s = Sekil(400, 404, "İki sayının toplamı: hocanın akış diyagramı")
+X = 200
+a_uc(X, 26, "BAŞLA", 120, 38, "kapsul")
+s.ok(X, 45, X, 66)
+a_oku(X, 90, "OKU: A", 130)
+s.ok(X, 114, X, 134)
+a_oku(X, 158, "OKU: B", 130)
+s.ok(X, 182, X, 202)
+a_islem(X, 222, "TOPLAM = A + B", 160, 38)
+s.ok(X, 241, X, 262)
+a_yaz(X, 284, ["YAZ:", "TOPLAM"], 130, 42)
+s.ok(X, 305, X, 330)
+a_uc(X, 352, "BİTİR", 120, 38, "kapsul")
+s.kaydet("akis-toplam.svg")
+
+# ---------------------------------------------------------------- 25) sayının karesi (slayt 6)
+s = Sekil(400, 334, "Sayının karesi: hocanın akış diyagramı")
+a_uc(X, 24, "BAŞLA", 130, 36)
+s.ok(X, 42, X, 64)
+a_oku(X, 90, "OKU: A", 130)
+s.ok(X, 114, X, 136)
+a_islem(X, 156, "KARESI = A ^ 2", 160, 38)
+s.ok(X, 175, X, 198)
+a_yaz(X, 216, "YAZ: KARESI", 150, 36)
+s.ok(X, 234, X, 264)
+a_uc(X, 282, "BİTİR", 130, 36)
+s.kaydet("akis-kare.svg")
+
+# ---------------------------------------------------------------- 26) iki sayıdan büyük olanı (slayt 7)
+s = Sekil(400, 330, "İki sayıdan büyük olanı: hocanın akış diyagramı")
+a_uc(X, 24, "BAŞLA", 130, 36)
+s.ok(X, 42, X, 62)
+a_oku(X, 88, "OKU: A, B", 130)
+s.ok(X, 112, X, 134)
+a_karar(X, 170, "A > B", 112, 72)
+a_yol([(X - 56, 170), (70, 170), (70, 202)]); etiket(110, 162, "Hayır")
+a_yol([(X + 56, 170), (330, 170), (330, 202)]); etiket(290, 162, "Evet")
+a_yaz(70, 220, "YAZ: B", 110, 36)
+a_yaz(330, 220, "YAZ: A", 110, 36)
+a_yol([(70, 238), (70, 288), (X - 66, 288)])
+a_yol([(330, 238), (330, 288), (X + 66, 288)])
+a_uc(X, 288, "BİTİR", 130, 36)
+s.kaydet("akis-buyuk.svg")
+
+# ---------------------------------------------------------------- 27) tek mi çift mi (slayt 8)
+s = Sekil(400, 348, "Tek mi çift mi: hocanın akış diyagramı")
+a_uc(X, 24, "BAŞLA", 130, 36)
+s.ok(X, 42, X, 62)
+a_oku(X, 88, "OKU: A", 130)
+s.ok(X, 112, X, 134)
+a_karar(X, 170, "A % 2 == 0", 128, 72)
+a_yol([(X - 64, 170), (100, 170), (100, 202)]); etiket(120, 162, "Hayır")
+a_yol([(X + 64, 170), (300, 170), (300, 202)]); etiket(280, 162, "Evet")
+a_yaz(100, 226, ["YAZ:", '"Girilen sayı tektir"'], 160, 46)
+a_yaz(300, 226, ["YAZ:", '"Girilen sayı çifttir"'], 160, 46)
+a_yol([(100, 249), (100, 306), (X - 66, 306)])
+a_yol([(300, 249), (300, 306), (X + 66, 306)])
+a_uc(X, 306, "BİTİR", 130, 36)
+s.kaydet("akis-tekcift.svg")
+
+# ---------------------------------------------------------------- 28) sıfıra göre durum (slayt 9)
+s = Sekil(400, 470, "Sayının sıfıra göre durumu: hocanın akış diyagramı")
+X = 110
+a_uc(X, 24, "BAŞLA", 130, 36)
+s.ok(X, 42, X, 62)
+a_oku(X, 88, "OKU: A", 130)
+s.ok(X, 112, X, 136)
+a_karar(X, 172, "A > 0", 112, 72)
+a_yol([(X + 56, 172), (212, 172)]); etiket(190, 164, "Evet")
+a_yaz(300, 172, ["YAZ: \"A sıfırdan", 'büyüktür"'], 172, 46)
+s.ok(X, 208, X, 250); etiket(X + 30, 232, "Hayır")
+a_karar(X, 286, "A < 0", 112, 72)
+a_yol([(X + 56, 286), (212, 286)]); etiket(190, 278, "Evet")
+a_yaz(300, 286, ["YAZ: \"A sıfırdan", 'küçüktür"'], 172, 46)
+s.ok(X, 322, X, 352); etiket(X + 30, 340, "Hayır")
+a_yaz(X, 375, ["YAZ:", '"A sıfıra eşittir"'], 172, 46)
+s.ok(X, 398, X, 424)
+a_uc(X, 442, "BİTİR", 130, 36)
+a_yol([(386, 172), (392, 172), (392, 442), (X + 66, 442)])
+a_yol([(300, 309), (300, 442)], ok=False)
+s.kaydet("akis-sifir.svg")
+
+# ---------------------------------------------------------------- 29) 5 defa merhaba (slayt 10)
+s = Sekil(400, 412, "Ekrana 5 defa merhaba: hocanın akış diyagramı")
+X = 240
+a_uc(X, 24, "BAŞLA", 130, 36)
+s.ok(X, 42, X, 62)
+a_islem(X, 80, "SAYAC = 0", 140, 34)
+s.ok(X, 97, X, 124)
+a_yaz(X, 146, ["YAZ:", '"Merhaba"'], 150, 44)
+s.ok(X, 168, X, 192)
+a_islem(X, 210, "SAYAC = SAYAC + 1", 180, 34)
+s.ok(X, 227, X, 252)
+a_karar(X, 290, "SAYAC < 5", 132, 74)
+a_yol([(X - 66, 290), (70, 290), (70, 136), (X - 70, 136)]); etiket(112, 282, "Evet")
+s.ok(X, 327, X, 358); etiket(X + 30, 346, "Hayır")
+a_uc(X, 376, "BİTİR", 130, 36)
+s.kaydet("akis-merhaba.svg")
+
+# ---------------------------------------------------------------- 30) Örnek 1: ortalama ve geçme (çözüm belgesi s.1)
+s = Sekil(400, 470, "Ders ortalaması ve geçme: hocanın akış diyagramı")
+X = 200
+a_uc(X, 24, "Başla", 120, 36)
+s.ok(X, 42, X, 62)
+a_yaz(X, 84, ["vize notunu ve final", "notunu giriniz"], 190, 44)
+s.ok(X, 106, X, 128)
+a_oku(X, 152, "vizenot, finalnot", 170)
+s.ok(X, 176, X, 200)
+a_islem(X, 224, ["ortalama=(vizenot*0.4)+", "(finalnot*0.6)"], 230, 48)
+s.ok(X, 248, X, 272)
+a_karar(X, 310, "ortalama>=60", 160, 76)
+a_yol([(X - 80, 310), (70, 310), (70, 348)]); etiket(100, 302, "E")
+a_yol([(X + 80, 310), (330, 310), (330, 348)]); etiket(300, 302, "H")
+a_yaz(70, 366, "GEÇTİNİZ", 110, 36)
+a_yaz(330, 366, "KALDINIZ", 110, 36)
+a_yol([(70, 384), (70, 432), (X - 61, 432)])
+a_yol([(330, 384), (330, 432), (X + 61, 432)])
+a_uc(X, 432, "BİTİR", 120, 36)
+s.kaydet("akis-ortalama.svg")
+
+# ---------------------------------------------------------------- 31) Örnek 2: üçgenin çeşidi (çözüm belgesi s.2)
+# Hocanın şeklinde 1. kararın H çıkışı sağa, 2. karara gider; burada telefona sığsın diye aşağıya.
+s = Sekil(400, 620, "Üçgenin çeşidi: hocanın akış diyagramı")
+X = 230
+a_uc(X, 24, "Başla", 120, 36)
+s.ok(X, 42, X, 62)
+a_yaz(X, 84, ["üçgenin üç kenar", "uzunluğunu giriniz"], 180, 44)
+s.ok(X, 106, X, 128)
+a_oku(X, 150, "a, b, c", 130)
+s.ok(X, 172, X, 196)
+a_karar(X, 240, ["a==b && b==c", "&& a==c"], 190, 88)
+a_yol([(X - 95, 240), (70, 240), (70, 290)]); etiket(108, 232, "E")
+a_yaz(70, 310, ["eşkenar", "üçgen"], 110, 42)
+s.ok(X, 284, X, 318); etiket(X + 18, 304, "H")
+a_karar(X, 362, ["a==b", "|| a==c || b==c"], 190, 88)
+s.ok(X, 406, X, 440); etiket(X + 18, 426, "E")
+a_yaz(X, 460, "ikizkenar üçgen", 160, 38)
+a_yol([(X + 95, 362), (326, 362), (326, 508)]); etiket(338, 352, "H")
+a_yaz(326, 528, ["çeşitkenar", "üçgen"], 110, 42)
+a_uc(X, 590, "BİTİR", 120, 36)
+a_yol([(70, 331), (70, 590), (X - 61, 590)])
+a_yol([(X, 479), (X, 572)])
+a_yol([(326, 549), (326, 590), (X + 61, 590)])
+s.kaydet("akis-ucgen.svg")
+
+# ---------------------------------------------------------------- 32) Örnek 3: faktöriyel (çözüm belgesi s.3)
+s = Sekil(400, 520, "Faktöriyel (N): hocanın akış diyagramı")
+X = 240
+a_uc(X, 24, "Başla", 120, 36)
+s.ok(X, 42, X, 62)
+a_yaz(X, 82, ["N sayısını", "giriniz:"], 150, 40)
+s.ok(X, 102, X, 122)
+a_oku(X, 144, "N", 120)
+s.ok(X, 166, X, 186)
+a_islem(X, 204, "sayac=1 fakto=1", 170, 34)
+s.ok(X, 221, X, 248)
+a_islem(X, 272, ["fakto=fakto*sayac", "sayac=sayac+1"], 180, 48)
+s.ok(X, 296, X, 320)
+a_karar(X, 356, "sayac<=N", 140, 70)
+a_yol([(X + 70, 356), (380, 356), (380, 234), (X, 234), (X, 248)]); etiket(346, 348, "E")
+a_yol([(X - 70, 356), (80, 356), (80, 400)]); etiket(130, 348, "H")
+a_yaz(80, 418, "fakto", 110, 34)
+s.ok(80, 435, 80, 468)
+a_uc(80, 487, "BİTİR", 120, 36)
+s.kaydet("akis-fakto-n.svg")
+
+# ================================================================ 5. hafta: sayaç izlemeleri
+# ---------------------------------------------------------------- 22) 5 defa merhaba: izleme (Ek)
+s = Sekil(400, 360, "Ekrana 5 defa merhaba: sayaç adım adım")
+s.yazi(16, 22, "tur", 12, SONUK, kalin=True, hiza="start")
+s.yazi(112, 22, "3. Yaz", 12, SONUK, kalin=True)
+s.yazi(204, 22, "4. SAYAC", 12, SONUK, kalin=True)
+s.yazi(318, 22, "5. SAYAC<5 ?", 12, SONUK, kalin=True)
+for i in range(5):
+    y = 34 + i * 56
+    if i % 2 == 0: s.ekle('<rect x="6" y="%d" width="388" height="52" rx="8" fill="#F7FAFC"/>' % y)
+    s.yazi(24, y + 32, str(i + 1), 15, YAZI, kalin=True)
+    s.yazi(112, y + 24, "Merhaba", 13, YAZI, font=MONO)
+    s.yazi(112, y + 42, "%d. kez" % (i + 1), 11.5, SONUK)
+    s.ekle('<rect x="164" y="%d" width="80" height="34" rx="6" fill="%s" stroke="%s" stroke-width="1.8"/>' % (y + 9, TURUNCU_D, VURGU))
+    s.yazi(204, y + 31, "%d → %d" % (i, i + 1), 14, VURGU, kalin=True, font=MONO)
+    son = i == 4
+    s.yazi(318, y + 24, "%d<5" % (i + 1), 13, YAZI, font=MONO)
+    s.yazi(318, y + 42, "yanlış → 6.Bitir" if son else "doğru → 3. adıma", 11.5, KIRMIZI if son else YESIL, kalin=True)
+s.yazi(200, 330, "SAYAC'ın ilk değeri 0; her turda 1 artar.", 12, SONUK)
+s.yazi(200, 348, "Merhaba 5 kez yazılır, döngü bittiğinde SAYAC 5'tir.", 12, SONUK)
+s.kaydet("sayac-merhaba.svg")
+
+# ---------------------------------------------------------------- 23) Örnek 3: en büyük sayı, hocanın çözümü ve düzeltmesi (Ek)
+s = Sekil(400, 470, "En büyük sayı: hocanın çözümü ve düzeltilmiş hâli")
+s.yazi(200, 20, "giriş: 3, 9, 2, 7, 1, 1, 1, 1, 1, 1", 12.5, YAZI, kalin=True)
+s.ekle('<rect x="122" y="32" width="152" height="40" rx="8" fill="#FFF5F5"/>')
+s.ekle('<rect x="282" y="32" width="112" height="40" rx="8" fill="#F0FFF4"/>')
+s.yazi(198, 48, "hocanın çözümü", 12, KIRMIZI, kalin=True)
+s.yazi(338, 48, "düzeltilmiş", 12, YESIL, kalin=True)
+s.yazi(160, 66, "enbuyuk", 11.5, SONUK, font=MONO)
+s.yazi(236, 66, "yenienbuyuk", 11.5, SONUK, font=MONO)
+s.yazi(338, 66, "enbuyuk", 11.5, SONUK, font=MONO)
+s.yazi(16, 66, "okunan", 11.5, SONUK, kalin=True, hiza="start")
+satirlar = [("sayi=3", "3", "–", "3"), ("sayi2=9", "3", "9", "9"), ("sayi2=2", "3", "9", "9"),
+            ("sayi2=7", "3", "7", "9"), ("sayi2=1 (6 kez)", "3", "7", "9")]
+onceki = ("", "", "", "")
+for i, (ok_, e, y_e, d) in enumerate(satirlar):
+    y = 78 + i * 50
+    if i % 2 == 0: s.ekle('<rect x="6" y="%d" width="388" height="46" rx="8" fill="#F7FAFC"/>' % y)
+    s.yazi(14, y + 28, ok_, 11.5, YAZI, hiza="start", font=MONO)
+    for x, deg, eski in ((160, e, onceki[1]), (236, y_e, onceki[2]), (338, d, onceki[3])):
+        yeni = deg != eski and deg != "–"
+        s.ekle('<rect x="%d" y="%d" width="56" height="32" rx="6" fill="%s" stroke="%s" stroke-width="%s"/>' % (
+            x - 28, y + 7, TURUNCU_D if yeni else "#FFFFFF", VURGU if yeni else "#CBD5E0", 1.8 if yeni else 1.2))
+        s.yazi(x, y + 29, deg, 15, VURGU if yeni else ("#A0AEC0" if deg == "–" else YAZI), kalin=yeni, font=MONO)
+    onceki = (ok_, e, y_e, d)
+y = 78 + 5 * 50 + 6
+s.cizgi(10, y, 390, y, "#CBD5E0", 1.2)
+s.yazi(16, y + 30, "ekrana", 12.5, YAZI, kalin=True, hiza="start")
+s.ekle('<rect x="200" y="%d" width="72" height="34" rx="6" fill="#FFF5F5" stroke="%s" stroke-width="1.8"/>' % (y + 10, KIRMIZI))
+s.yazi(236, y + 33, "7", 16, KIRMIZI, kalin=True, font=MONO)
+s.ekle('<rect x="302" y="%d" width="72" height="34" rx="6" fill="#F0FFF4" stroke="%s" stroke-width="1.8"/>' % (y + 10, YESIL))
+s.yazi(338, y + 33, "9", 16, YESIL, kalin=True, font=MONO)
+s.yazi(200, y + 72, "enbuyuk ilk sayıda (3) kalır; yenienbuyuk 3'ten büyük", 11.5, SONUK)
+s.yazi(200, y + 88, "son sayıyı tutar. Doğrusu: enbuyuk=sayi2.", 11.5, SONUK)
+s.kaydet("enbuyuk-izleme.svg")
+
+print("tamam: " + HEDEF)

@@ -189,13 +189,13 @@
       "id": "alg-kdv-denklem.k5",
       "yer": "Adım 10 ve 11: Değilse hangi Eğer'e bağlı",
       "on": "Örnek 2'de 10. adım ayrı bir Eğer olarak yazılınca ne olur? Nasıl düzeltilir?",
-      "arka": "11. adımdaki Değilse yalnızca 10. adıma (delta==0) bağlanır: delta>0 iken kökler yazıldıktan sonra \"reel kök yoktur\" da yazılır.\nEk: İki düzeltme yolu var: 10. adımı `Değilse eğer (delta==0) ise ...` diye yazmak ya da 11. adımı `Eğer (delta<0) ise yaz \"reel kök yoktur\"` yapmak. Hocanın hangisini beklediği kaynakta yazmıyor."
+      "arka": "11. adımdaki Değilse yalnızca 10. adıma (delta==0) bağlanır: delta>0 iken kökler yazıldıktan sonra \"reel kök yoktur\" da yazılır.\nEk: İki düzeltme yolu var: 10. adımı `Değilse eğer (delta==0) ise ...` diye yazmak ya da 11. adımı `Eğer (delta<0) ise yaz \"reel kök yoktur\"` yapmak. 6. haftada hoca benzer bir örnekte ilk Eğer'in sonuna \"adıma git\" yazdı; akış diyagramında ikinci karar birinci kararın Hayır çıkışına bağlıdır (\"değilse eğer\" yoluyla aynı sonuç)."
     },
     {
       "id": "alg-kdv-denklem.k6",
       "yer": "Akış diyagramı: denklemin kökleri (Ek)",
-      "on": "Akış diyagramının (akış şemasının) temel sembolleri nelerdir?",
-      "arka": "Slaytlarda semboller anlatılmadı; hoca akış diyagramı çizilmesini istiyor.\nEk: ISO 5807'ye göre Başla/Bitir yuvarlak uçlu kutu, Oku/Yaz paralelkenar, işlem (atama, hesap) dikdörtgen, karar (koşul) eşkenar dörtgen; kararın doğru ve yanlış iki çıkışı vardır."
+      "on": "Bu sorunun akış diyagramı hangi sembollerle çizilir?",
+      "arka": "Hocanın 6. haftada gösterdiği sembollerle: BAŞLA ve BİTİR elips; OKU: a, b, c klavyeden giriş sembolü (üst kenarı eğik dörtgen); delta ve köklerin hesabı dikdörtgen; delta>0 ve delta==0 kararları eşkenar dörtgen, Evet ve Hayır çıkışlarıyla; YAZ adımları paralelkenar.\nEk: Hocanın belgesinde bu sorunun diyagramı çizilmedi; nottaki diyagram düzeltilmiş formülle çizildi."
     }
   ]
 }

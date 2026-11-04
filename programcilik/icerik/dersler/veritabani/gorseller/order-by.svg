@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" role="img">
+<title>İki alana göre sıralama</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="14.0" y="24.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#6B46C1" font-weight="600" text-anchor="start">ORDER BY </text>
+<text x="81.5" y="24.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="start">icerikno </text>
+<text x="149.0" y="24.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#C53030" font-weight="600" text-anchor="start">DESC</text>
+<text x="179.0" y="24.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="start">, </text>
+<text x="194.0" y="24.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#1A202C" text-anchor="start">ogrno </text>
+<text x="239.0" y="24.0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#2F855A" font-weight="600" text-anchor="start">ASC</text>
+<rect x="14.0" y="40.0" width="90.0" height="28" fill="#E2ECF7" stroke="#FFFFFF" stroke-width="1"/>
+<text x="59.0" y="58.3" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">icerikno</text>
+<rect x="104.0" y="40.0" width="90.0" height="28" fill="#E2ECF7" stroke="#FFFFFF" stroke-width="1"/>
+<text x="149.0" y="58.3" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#1A202C" font-weight="600" text-anchor="middle">ogrno</text>
+<rect x="14" y="68" width="180" height="28" fill="#FFF5F5"/>
+<text x="59.0" y="87.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">3</text>
+<text x="149.0" y="87.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">9802</text>
+<rect x="14" y="98" width="180" height="28" fill="#FFFAF0"/>
+<text x="59.0" y="117.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">2</text>
+<text x="149.0" y="117.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">9801</text>
+<rect x="14" y="128" width="180" height="28" fill="#FFFAF0"/>
+<text x="59.0" y="147.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">2</text>
+<text x="149.0" y="147.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">9803</text>
+<rect x="14" y="158" width="180" height="28" fill="#F0FFF4"/>
+<text x="59.0" y="177.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">1</text>
+<text x="149.0" y="177.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">9801</text>
+<rect x="14" y="188" width="180" height="28" fill="#F0FFF4"/>
+<text x="59.0" y="207.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">1</text>
+<text x="149.0" y="207.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">9802</text>
+<rect x="14" y="218" width="180" height="28" fill="#F0FFF4"/>
+<text x="59.0" y="237.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" font-weight="600" text-anchor="middle">1</text>
+<text x="149.0" y="237.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#1A202C" text-anchor="middle">9804</text>
+<line x1="204.0" y1="70.0" x2="204.0" y2="94.0" stroke="#4A5568" stroke-width="1.4"/>
+<line x1="198.0" y1="70.0" x2="204.0" y2="70.0" stroke="#4A5568" stroke-width="1.4"/>
+<line x1="198.0" y1="94.0" x2="204.0" y2="94.0" stroke="#4A5568" stroke-width="1.4"/>
+<line x1="204.0" y1="100.0" x2="204.0" y2="154.0" stroke="#4A5568" stroke-width="1.4"/>
+<line x1="198.0" y1="100.0" x2="204.0" y2="100.0" stroke="#4A5568" stroke-width="1.4"/>
+<line x1="198.0" y1="154.0" x2="204.0" y2="154.0" stroke="#4A5568" stroke-width="1.4"/>
+<line x1="204.0" y1="160.0" x2="204.0" y2="244.0" stroke="#4A5568" stroke-width="1.4"/>
+<line x1="198.0" y1="160.0" x2="204.0" y2="160.0" stroke="#4A5568" stroke-width="1.4"/>
+<line x1="198.0" y1="244.0" x2="204.0" y2="244.0" stroke="#4A5568" stroke-width="1.4"/>
+<text x="214.0" y="86.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="start">icerikno 3</text>
+<text x="214.0" y="122.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="start">icerikno 2: kendi</text>
+<text x="214.0" y="137.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="start">içinde ogrno artan</text>
+<text x="214.0" y="197.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="start">icerikno 1: kendi</text>
+<text x="214.0" y="212.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" fill="#4A5568" text-anchor="start">içinde ogrno artan</text>
+<text x="14.0" y="270.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#C53030" text-anchor="start">1. önce icerikno büyükten küçüğe (DESC)</text>
+<text x="14.0" y="290.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#2F855A" text-anchor="start">2. icerikno aynıysa ogrno küçükten büyüğe (ASC)</text>
+</svg>

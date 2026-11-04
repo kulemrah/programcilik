@@ -1,0 +1,41 @@
+# icerik/ ya da araclar/ değişince: doğrula, sonra Supabase'e aktar.
+# Doğrulama bir hata bulursa hiçbir şey yüklenmez.
+name: İçeriği aktar
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "icerik/**"
+      - "araclar/**"
+      - ".github/workflows/icerik.yml"
+  workflow_dispatch:
+    inputs:
+      toplu_silme:
+        description: "Çok sayıda konunun silinmesine izin ver"
+        type: boolean
+        default: false
+
+concurrency:
+  group: icerik
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  aktar:
+    # Elle çalıştırma yalnızca ana daldan: başka daldaki yarım içerik canlıya gitmesin
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Doğrula ve aktar
+        run: node araclar/icerik-aktar.mjs
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_GIZLI_ANAHTAR: ${{ secrets.SUPABASE_GIZLI_ANAHTAR }}
+          TOPLU_SILME: ${{ inputs.toplu_silme && 'evet' || 'hayir' }}

@@ -1,0 +1,91 @@
+{
+  "id": "b2r-teslim",
+  "baslik": "Teslim Süreci: signature.txt ve Savunma",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "signature.txt",
+      "izah": "VM disk dosyasının sha1 özetini taşıyan teslim dosyası; makinenin kimlik kanıtıdır.",
+      "yer": "Neden sadece README.md + signature.txt teslim edilir"
+    },
+    {
+      "terim": "snapshot",
+      "izah": "VM'in o anki hâlinin kaydı; savunma snapshot'sız başlamalı, savunmaya özel olan sonunda silinir.",
+      "yer": "Snapshot kısıtlaması: savunma başında snapshot olmamalı"
+    },
+    {
+      "terim": "sha1",
+      "izah": "Bir dosyadan sabit uzunlukta özet üreten karma algoritması. signature.txt'ye yazılan imza budur.",
+      "yer": "İşletim sistemine göre imza alma komutları (Windows/Linux/Mac)"
+    },
+    {
+      "terim": "özet / hash",
+      "izah": "Bir dosyanın içeriğinden üretilen sabit uzunlukta parmak izi; içerik bir bit değişse özet tamamen değişir. VM her açıldığında imzanın değişmesinin sebebi budur.",
+      "yer": "VM her açıldığında imzanın değişmesi — disk kopyalama veya snapshot stratejisi"
+    },
+    {
+      "terim": "peer review",
+      "izah": "Projenin başka bir öğrenci tarafından canlı değerlendirilmesi: VM açılır, sorular sorulur, küçük değişiklikler istenir.",
+      "yer": "Savunmada beklenebilecek canlı görevler"
+    },
+    {
+      "terim": "git",
+      "izah": "Sürüm kontrol sistemi. Teslim, projenin git deposuna README.md ve signature.txt konularak yapılır.",
+      "yer": "Neden sadece README.md + signature.txt teslim edilir"
+    },
+    {
+      "terim": "repo",
+      "izah": "Git deposu. Bu projede yalnızca iki dosya içerir; VM'in disk dosyası kesinlikle konulmaz.",
+      "yer": "Neden sadece README.md + signature.txt teslim edilir"
+    },
+    {
+      "terim": "snapshot kısıtı",
+      "izah": "Savunma snapshot'sız başlamalı; savunmaya özel snapshot o sırada alınır ve bitince silinir.",
+      "yer": "Snapshot kısıtlaması: savunma başında snapshot olmamalı"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-teslim.s1",
+      "tip": "secme",
+      "yer": "Neden sadece README.md + signature.txt teslim edilir",
+      "soru": "signature.txt ne içerir ve ne işe yarar?",
+      "secenekler": [
+        "VM'in ağ yapılandırmasını; değerlendiricinin SSH ile bağlanabilmesi için",
+        "VM disk dosyasının sha1 özetini; makinenin sizin ürettiğiniz makine olduğunu kanıtlar",
+        "Kullanıcı ve root parolalarının özetini; politikaya uyduklarının kanıtı olarak",
+        "monitoring.sh çıktısının bir örneğini; betiğin çalıştığının kanıtı olarak"
+      ],
+      "dogru": 1,
+      "izah": "Savunmada bu imza canlı VM'inkiyle karşılaştırılır; tutmazsa not sıfır olur."
+    },
+    {
+      "id": "b2r-teslim.s2",
+      "tip": "secme",
+      "yer": "VM her açıldığında imzanın değişmesi — disk kopyalama veya snapshot stratejisi",
+      "soru": "İmzayı aldınız, sonra VM'i test için bir kez daha açtınız. Şimdi ne oldu?",
+      "secenekler": [
+        "Hiçbir şey; imza disk içeriğinden değil, VM'in kimlik bilgisinden üretilir",
+        "Disk dosyası değişti, imza artık tutmuyor; kopya ya da snapshot stratejisi gerekiyor",
+        "İmza yalnızca diske yazma olursa değişir; salt okunur açılışta aynen korunur",
+        "VM'i kapatınca disk eski hâline döner; imza kendiliğinden yeniden tutar"
+      ],
+      "dogru": 1,
+      "izah": "Çözüm: ya disk dosyasının bir kopyasını ayrı tutup imzayı ondan almak, ya da her değerlendirme öncesi snapshot kullanmak."
+    },
+    {
+      "id": "b2r-teslim.s3",
+      "tip": "secme",
+      "yer": "Snapshot kısıtlaması: savunma başında snapshot olmamalı",
+      "soru": "Savunma başlarken VM'de snapshot bulunmalı mı?",
+      "secenekler": [
+        "Evet — değerlendirmeye başlamadan önce bir yedek snapshot alınmış olmalıdır",
+        "Hayır — snapshot'sız başlar; savunmaya özel olan o sırada alınıp sonunda silinir",
+        "Evet — imza doğrulaması ancak mevcut bir snapshot üzerinden yapılabilir",
+        "Fark etmez; snapshot yalnızca sizin kullanımınız içindir, değerlendirmeyi etkilemez"
+      ],
+      "dogru": 1,
+      "izah": "Subject bunu açıkça kısıtlıyor. Snapshot alıp silmeyi savunmadan önce prova etmek gerekir."
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "id": "alg-algoritma",
+  "baslik": "Algoritma ve Özellikleri",
+  "kaynak": "1-2._hafta_algoritma_ve_programlama_temelleri_dersi_ders_slayt_.pdf, slayt 28–38",
+  "kavramlar": [
+    {
+      "terim": "Algoritma",
+      "izah": "Bir sorunu çözebilmek için gerekli olan sıralı mantıksal adımların tümü; ya da bir problemin çözümündeki adımların tümü.",
+      "yer": "Algoritma"
+    },
+    {
+      "terim": "Etkinlik",
+      "izah": "Algoritmanın her adımı anlaşılır, basit ve kesin ifade edilmeli; yorum gerektirmemeli, belirsiz olmamalı; gereksiz tekrar içermemeli, başka algoritmalarda da kullanılabilmeli.",
+      "yer": "Etkinlik"
+    },
+    {
+      "terim": "Sonluluk",
+      "izah": "Her algoritmanın bir başlangıç noktası, belirli işlem adımları ve bir bitiş noktası olmalı; sonsuz döngüye girmemeli.",
+      "yer": "Sonluluk"
+    },
+    {
+      "terim": "Kesinlik",
+      "izah": "İşlem sonucu kesin olmalı; aynı veri için her çalıştırmada aynı sonucu üretmeli.",
+      "yer": "Kesinlik"
+    },
+    {
+      "terim": "Giriş/çıkış",
+      "izah": "Algoritma giriş (işlem yapılacak değerler) ve çıkış (sonuç değerleri) değerlerine sahip olmalı.",
+      "yer": "Giriş/çıkış"
+    },
+    {
+      "terim": "Başarım/performans",
+      "izah": "Bellek kullanımı ve çalışma süresi gibi kriterleri dikkate alarak yüksek başarımlı program yazmak: doğru zamanda, doğru yerde, doğru şeyi kullanmak.",
+      "yer": "Başarım/performans"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "alg-algoritma.s1",
+      "tip": "secme",
+      "yer": "Algoritma",
+      "soru": "Hocaya göre bir sorunu çözebilmek için gerekli olan sıralı mantıksal adımların tümüne ne denir?",
+      "secenekler": [
+        "Algoritma",
+        "Program",
+        "Programlama dili",
+        "Derleyici"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın algoritma tanımı budur. Program sorunu bilgisayarda çözen üründür; programlama dili çözümün bilgisayara anlatılmasını sağlayan kurallar dizisidir."
+    },
+    {
+      "id": "alg-algoritma.s2",
+      "tip": "secme",
+      "yer": "Algoritma",
+      "soru": "Hocaya göre programlamanın en önemli kısmı nedir?",
+      "secenekler": [
+        "Problemin çözümü için algoritma hazırlayabilmek",
+        "Algoritmayı bir programlama diliyle kodlamak",
+        "En hızlı çalışan programlama dilini seçmek",
+        "Programı derleyip nesne koduna çevirmek"
+      ],
+      "dogru": 0,
+      "izah": "Hocaya göre programlamanın en önemli kısmı algoritma hazırlayabilmek ve geliştirebilmektir; algoritmanın bir dille kodlanması işin basit kısmıdır."
+    },
+    {
+      "id": "alg-algoritma.s3",
+      "tip": "dy",
+      "yer": "Algoritma",
+      "ifade": "Hocaya göre hazırlanan algoritmanın bir programlama diliyle kodlanması işin en zor kısmıdır.",
+      "dogru": false,
+      "izah": "Hocaya göre algoritmanın bir programlama diliyle kodlanması işin basit kısmıdır; zor ve önemli olan algoritmayı hazırlamaktır."
+    },
+    {
+      "id": "alg-algoritma.s4",
+      "tip": "dy",
+      "yer": "Algoritma ve akış şemaları",
+      "ifade": "Hocaya göre bilgisayara verilen çözüm yanlışsa çıkan sonuç da yanlış olur.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi: bilgisayara verilen çözüm yanlışsa çıkan sonuç yanlış, çözüm doğruysa çıkan sonuç da doğrudur. Bilgisayar yalnızca söylenen komutları uygular."
+    },
+    {
+      "id": "alg-algoritma.s5",
+      "tip": "esles",
+      "yer": "Algoritma nasıl olmalı",
+      "soru": "Algoritmanın özelliklerini hocanın tanımlarıyla eşleştirin.",
+      "ciftler": [
+        [
+          "Etkinlik",
+          "Her adım anlaşılır, basit ve yorum gerektirmeyecek biçimde"
+        ],
+        [
+          "Sonluluk",
+          "Başlangıç, adımlar ve bitiş var; sonsuz döngü yok"
+        ],
+        [
+          "Kesinlik",
+          "Aynı veriyle her çalıştırmada aynı sonuç"
+        ],
+        [
+          "Giriş/çıkış",
+          "İşlenecek değerler ve üretilen sonuç değerleri"
+        ],
+        [
+          "Başarım",
+          "Bellek kullanımı ve çalışma süresi dikkate alınır"
+        ]
+      ],
+      "izah": "Hocanın beş özelliği ve tanımları."
+    },
+    {
+      "id": "alg-algoritma.s6",
+      "tip": "secme",
+      "yer": "Sonluluk",
+      "soru": "Algoritmanın sonsuz döngüye girmemesi gerektiği hangi özellikte söylenir?",
+      "secenekler": [
+        "Sonluluk",
+        "Kesinlik",
+        "Etkinlik",
+        "Başarım"
+      ],
+      "dogru": 0,
+      "izah": "Sonluluk: her algoritmanın başlangıç noktası, belirli işlem adımları ve bitiş noktası olmalı; sonsuz döngüye girmemeli."
+    },
+    {
+      "id": "alg-algoritma.s7",
+      "tip": "secme",
+      "yer": "Kesinlik",
+      "soru": "Hocanın tanımlarına göre bir algoritmanın aynı veri için her yeni çalıştırmada aynı sonucu üretmesi hangi özelliktir?",
+      "secenekler": [
+        "Kesinlik",
+        "Etkinlik",
+        "Sonluluk",
+        "Giriş/çıkış"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın kesinlik tanımı: işlem sonucu kesin olmalı, aynı veri için her yeni çalıştırmada aynı sonucu üretmeli."
+    },
+    {
+      "id": "alg-algoritma.s8",
+      "tip": "secme",
+      "yer": "Etkinlik",
+      "soru": "Hocanın tanımlarına göre algoritmanın her adımının anlaşılır, basit ve yorum gerektirmeyecek biçimde ifade edilmesi hangi özelliktir?",
+      "secenekler": [
+        "Etkinlik",
+        "Kesinlik",
+        "Sonluluk",
+        "Başarım"
+      ],
+      "dogru": 0,
+      "izah": "Hoca bunu etkinlik başlığında veriyor: bilgisayarlar düşünemez, bu yüzden her adım anlaşılır, basit ve kesin ifade edilmelidir. Kesinlik ise sonucun her çalıştırmada aynı olmasıdır."
+    },
+    {
+      "id": "alg-algoritma.s9",
+      "tip": "secme",
+      "yer": "Başarım/performans",
+      "soru": "\"Doğru zamanda, doğru yerde, doğru şeyi kullanmak\" hangi özelliğin özetidir?",
+      "secenekler": [
+        "Başarım",
+        "Giriş/çıkış",
+        "Sonluluk",
+        "Kesinlik"
+      ],
+      "dogru": 0,
+      "izah": "Hoca başarım/performans özelliğini bu sözle özetliyor: bellek kullanımı ve çalışma süresi gibi kriterleri dikkate alarak yüksek başarımlı program yazmak."
+    },
+    {
+      "id": "alg-algoritma.s10",
+      "tip": "dy",
+      "yer": "Başarım/performans",
+      "ifade": "Başarım özelliği, algoritmanın sonsuz döngüye girmemesidir.",
+      "dogru": false,
+      "izah": "Başarım, bellek kullanımı ve çalışma süresi gibi performans kriterlerinin dikkate alınmasıdır. Sonsuz döngüye girmemek sonluluk özelliğidir."
+    },
+    {
+      "id": "alg-algoritma.s11",
+      "tip": "bosluk",
+      "yer": "Sonluluk",
+      "metin": "Her algoritmanın bir başlangıç noktası, belirli işlem adımları ve bir ___ noktası olmalıdır.",
+      "cevaplar": [
+        [
+          "bitiş"
+        ]
+      ],
+      "izah": "Sonluluk özelliği: başlangıç noktası, belirli işlem adımları, bitiş noktası; sonsuz döngüye girmemek."
+    },
+    {
+      "id": "alg-algoritma.s12",
+      "tip": "klasik",
+      "yer": "Algoritma nasıl olmalı",
+      "soru": "Hocaya göre bir algoritmanın taşıması gereken özellikleri yazın.",
+      "cevap": "Etkinlik, sonluluk, kesinlik, giriş/çıkış, başarım (performans).",
+      "anahtarlar": [
+        "etkinlik",
+        "sonluluk",
+        "kesinlik",
+        "giriş",
+        "başarım"
+      ]
+    },
+    {
+      "id": "alg-algoritma.s13",
+      "tip": "dizme",
+      "yer": "Makarna algoritması",
+      "soru": "Hocanın makarna algoritmasındaki adımları sıraya dizin.",
+      "parcalar": [
+        "Tencerenin içine su koy",
+        "Su kaynayana kadar bekle",
+        "Makarnayı tencereye dök",
+        "Haşlanan makarnaları süzgece dök",
+        "Servis et"
+      ],
+      "izah": "Hocanın makarna algoritmasında su konur, kaynaması beklenir, makarna dökülür, haşlanınca süzgece dökülür, en son servis edilir."
+    },
+    {
+      "id": "alg-algoritma.s14",
+      "tip": "dizme",
+      "yer": "Araba çalıştırma algoritması",
+      "soru": "Hocanın araba çalıştırma algoritmasındaki adımları sıraya dizin.",
+      "parcalar": [
+        "Arabanın kapısını aç",
+        "Koltuğa otur",
+        "Kontağı çevir",
+        "Debriyaja bas, vitesi 1'e al",
+        "Arabayı sür"
+      ],
+      "izah": "Hocanın algoritmasında kapı açılır, koltuğa oturulur, (kapı kapatılır, kemer takılır, vites kontrol edilir) kontak çevrilir, vites 1'e alınır ve en son araba sürülür."
+    },
+    {
+      "id": "alg-algoritma.s15",
+      "tip": "secme",
+      "yer": "Örnek soru: çay yapma",
+      "soru": "Hocanın çay yapma sorusu ve \"aynı soru için değişik çözüm yolları geliştirilebilir\" sözü neyi gösterir?",
+      "secenekler": [
+        "Bir problemin birden fazla doğru algoritması olabilir",
+        "Bir problemin yalnızca tek bir doğru algoritması vardır",
+        "Algoritmada adımların sırası önemli değildir",
+        "Algoritma yalnızca bir programlama diliyle yazılabilir"
+      ],
+      "dogru": 0,
+      "izah": "Hoca aynı soru için değişik çözüm yolları geliştirilebileceğini söylüyor; iki kişinin çay algoritması farklı olabilir. Algoritmada adımların sırası ise önemlidir."
+    },
+    {
+      "id": "alg-algoritma.s16",
+      "tip": "dy",
+      "yer": "Algoritma",
+      "ifade": "Hocaya göre kullanılan dilin Basic, Pascal ya da C olması algoritmayı değiştirmez.",
+      "dogru": true,
+      "izah": "Hocanın ifadesi: kullanılan dilin Basic, Pascal, C ya da başka bir programlama dili olması bir şeyi değiştirmez."
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "alg-algoritma.k1",
+      "yer": "Algoritma",
+      "on": "Algoritma nedir? Programlamanın en önemli kısmı nedir?",
+      "arka": "Bir sorunu çözebilmek için gerekli olan sıralı mantıksal adımların tümü. Programlamanın en önemli kısmı algoritma hazırlayabilmektir; bir dille kodlamak işin basit kısmıdır ve hangi dilin kullanıldığı bir şeyi değiştirmez."
+    },
+    {
+      "id": "alg-algoritma.k2",
+      "yer": "Algoritma ve akış şemaları",
+      "on": "Hoca bilgisayarla soru çözmek hakkında ne diyor?",
+      "arka": "Bilgisayar yalnızca söylenen komutları uygular; sonuca giden yol tam belirlenmelidir. Her adım söylenmesi gereken bir makine gibi düşünülmeli. Aynı soruya değişik çözümler olabilir. Çözüm yanlışsa sonuç yanlış, doğruysa sonuç doğrudur."
+    },
+    {
+      "id": "alg-algoritma.k3",
+      "yer": "Algoritma nasıl olmalı",
+      "on": "Algoritmanın beş özelliğini açıklayın.",
+      "arka": "- Etkinlik: adımlar anlaşılır, basit, kesin; yorum gerektirmez.\n- Sonluluk: başlangıç, adımlar, bitiş; sonsuz döngü yok.\n- Kesinlik: aynı veriyle her seferinde aynı sonuç.\n- Giriş/çıkış: işlenecek değerler ve sonuç değerleri.\n- Başarım: bellek ve süre dikkate alınır (doğru zamanda doğru yerde doğru şey)."
+    },
+    {
+      "id": "alg-algoritma.k4",
+      "yer": "Kesinlik",
+      "on": "Etkinlik ile kesinlik arasındaki fark nedir?",
+      "arka": "Etkinlik: adımların anlaşılır ve yorum gerektirmeyecek kadar kesin yazılması.\nKesinlik: sonucun, aynı veriyle her çalıştırmada aynı çıkması."
+    },
+    {
+      "id": "alg-algoritma.k5",
+      "yer": "Makarna algoritması",
+      "on": "Hocanın günlük hayattan algoritma örnekleri nelerdir?",
+      "arka": "Makarna algoritması (13 adım: tencereyi çıkar, su koy, ocağı aç ... servis et) ve araba çalıştırma algoritması (10 adım: kapıyı aç, otur ... arabayı sür). Adımların sırası önemlidir."
+    },
+    {
+      "id": "alg-algoritma.k6",
+      "yer": "Örnek soru: çay yapma",
+      "on": "Hocanın çay yapma sorusu nedir? Amacı ne?",
+      "arka": "Çay yapma algoritmasını oluşturmak ve algoritma bilen birinin algoritmasıyla karşılaştırmak. Hoca \"aynı soru için değişik çözüm yolları geliştirilebilir\" diyor; iki algoritma farklı olup ikisi de doğru olabilir."
+    }
+  ]
+}

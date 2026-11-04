@@ -1,0 +1,331 @@
+{
+  "id": "vt-gereksinim",
+  "baslik": "Tasarım Aşamaları ve Gereksinim Analizi",
+  "kaynak": "3_gereksinim_analizi (1)-2_1.pdf, slayt 1–18",
+  "kavramlar": [
+    {
+      "terim": "Tasarım aşamaları",
+      "izah": "Gereksinim belirlenmesi, kavramsal model, mantıksal model, fiziksel model.",
+      "yer": "Tasarım aşamaları"
+    },
+    {
+      "terim": "Gereksinim",
+      "izah": "Bir sistemin beklenen işlevleri yerine getirmesi için sahip olması gereken özellikler.",
+      "yer": "Gereksinim nedir"
+    },
+    {
+      "terim": "Gereksinimlerin belirlenmesi",
+      "izah": "İlk aşama; gereksinimlerin toplanması ve gereksinim analizinden oluşur.",
+      "yer": "İlk aşama: gereksinim belirleme"
+    },
+    {
+      "terim": "Gereksinim analisti",
+      "izah": "Gereksinimlerin toplanmasında görev alan kişi; görüştüğü kişileri yönlendirir, doğru soruları sorar, saklı ve unutulmuş gereksinimleri ortaya çıkarır.",
+      "yer": "Gereksinim analisti"
+    },
+    {
+      "terim": "Gereksinim analizi",
+      "izah": "Toplanan gereksinimlerin özelliklerine göre gruplanarak sistem tasarımına hazırlanması çalışmaları; Varlık Bağıntı Diyagramları kullanılır.",
+      "yer": "Gereksinim analizi"
+    },
+    {
+      "terim": "Veri gereksinimi (VG)",
+      "izah": "Elde edilen veriler doğrultusunda belirlenen gereksinim maddeleri. Ör. VG3: öğretmenlerin adı, yaşı, alanı ve e-posta bilgileri tutulacak.",
+      "yer": "Veri gereksinimleri"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "vt-gereksinim.s1",
+      "tip": "dizme",
+      "yer": "Tasarım aşamaları",
+      "soru": "Veritabanı tasarım aşamalarını sıralayın.",
+      "parcalar": [
+        "Gereksinim belirlenmesi",
+        "Kavramsal model",
+        "Mantıksal model",
+        "Fiziksel model"
+      ],
+      "izah": "Önce gereksinimler belirlenir, sonra kavramsal model (E-R diyagramları), ardından mantıksal ve fiziksel model gelir."
+    },
+    {
+      "id": "vt-gereksinim.s2",
+      "tip": "secme",
+      "yer": "İlk aşama: gereksinim belirleme",
+      "soru": "Veritabanı tasarımının **ilk aşamasında** ne yapılır?",
+      "secenekler": [
+        "Geliştirilmek istenen sistemin tam ve doğru tanımı yapılır",
+        "Kavramsal model, veritabanının fiziksel modeline dönüştürülür",
+        "Varlıklar arasındaki bağıntıların derecesi belirlenir",
+        "Veritabanı kurulur ve düzenli olarak yedeklenir"
+      ],
+      "dogru": 0,
+      "izah": "İlk aşama gereksinim belirlemedir: sistemin tam ve doğru tanımı yapılır. Bunun için kullanıcı kitlesi tanımlanır ve kullanıcı gereksinimleri belirlenir."
+    },
+    {
+      "id": "vt-gereksinim.s3",
+      "tip": "secme",
+      "yer": "İlk aşama: gereksinim belirleme",
+      "soru": "Gereksinimlerin belirlenmesi hangi iki adımdan oluşur?",
+      "secenekler": [
+        "Gereksinimlerin toplanması ve gereksinim analizi",
+        "Kavramsal modelin ve mantıksal modelin hazırlanması",
+        "Anketlerin yapılması ve beyin fırtınası",
+        "Gözden geçirme ve fiziksel modelin çizilmesi"
+      ],
+      "dogru": 0,
+      "izah": "Hocanın şeklinde \"Gereksinimlerin belirlenmesi\" iki kola ayrılır: gereksinimlerin toplanması ve gereksinim analizi."
+    },
+    {
+      "id": "vt-gereksinim.s4",
+      "tip": "secme",
+      "yer": "Gereksinim nedir",
+      "soru": "Hocanın tanımına göre **gereksinim** nedir?",
+      "secenekler": [
+        "Bir sistemin beklenen işlevleri yerine getirmesi için sahip olması gereken özellikler",
+        "Bir sistemi kullanacak kişilerin listesi ve bu kişilerin yetki düzeyleri",
+        "Bir sistemin veritabanında tutulan bütün kayıtlar ve bu kayıtların alanları",
+        "Bir sistemin geliştirilmesi sırasında harcanacak süre ve bütçe bilgileri"
+      ],
+      "dogru": 0,
+      "izah": "Gereksinimler, bir sistemin beklenen işlevleri yerine getirmesi için sahip olması gereken özelliklerdir."
+    },
+    {
+      "id": "vt-gereksinim.s5",
+      "tip": "secme",
+      "yer": "Gereksinim nedir",
+      "soru": "Hocaya göre beklenen işlevler nelerden anlaşılır? Aşağıdakilerden hangisi slaytta **sayılmaz**?",
+      "secenekler": [
+        "Sistemin geliştirileceği programlama dili",
+        "Kullanıcıların mevcut sistemde kullandıkları yöntemler",
+        "İş kuralları",
+        "Yaşanan sıkıntı ve problemler"
+      ],
+      "dogru": 0,
+      "izah": "Slaytta sayılanlar: kullanıcıların mevcut sistemde kullandıkları yöntemler, sistem yapısı, iş kuralları, yaşanan sıkıntı ve problemler."
+    },
+    {
+      "id": "vt-gereksinim.s6",
+      "tip": "secme",
+      "yer": "Toplama yöntemleri",
+      "soru": "Aşağıdakilerden hangisi **grupsal** bir gereksinim toplama yöntemidir?",
+      "secenekler": [
+        "Beyin fırtınası",
+        "Anketler",
+        "Açık uçlu görüşmeler",
+        "Doküman analizi"
+      ],
+      "dogru": 0,
+      "izah": "Grupsal yöntemler: beyin fırtınası ve prototipleme. Anketler, açık uçlu görüşmeler ve doküman analizi geleneksel yöntemlerdir."
+    },
+    {
+      "id": "vt-gereksinim.s7",
+      "tip": "secme",
+      "yer": "Toplama yöntemleri",
+      "soru": "Aşağıdakilerden hangisi **geleneksel** gereksinim toplama yöntemlerinden biridir?",
+      "secenekler": [
+        "Doküman analizi",
+        "Beyin fırtınası",
+        "Prototipleme"
+      ],
+      "dogru": 0,
+      "izah": "Geleneksel yöntemler: anketler, açık uçlu görüşmeler, doküman analizi. Beyin fırtınası ve prototipleme grupsal yöntemlerdir."
+    },
+    {
+      "id": "vt-gereksinim.s8",
+      "tip": "secme",
+      "yer": "Gereksinim analisti",
+      "soru": "Aşağıdakilerden hangisi **gereksinim analistinden beklenenler** arasında yer almaz?",
+      "secenekler": [
+        "Yalnızca kullanıcıların açıkça söylediği gereksinimleri kaydetmesi",
+        "Görüştüğü kişileri iyi yönlendirmesi",
+        "Doğru soruları sorması",
+        "Sorularla saklı ve unutulmuş gereksinimleri ortaya çıkarması"
+      ],
+      "dogru": 0,
+      "izah": "Gereksinim analisti görüştüğü kişileri iyi yönlendirmeli, doğru soruları sormalı, saklı ve unutulmuş gereksinimleri ortaya çıkarmalı, amaç, içerik ve fonksiyonları ele almalıdır. Yalnızca açıkça söyleneni kaydetmek, saklı ve unutulmuş gereksinimleri ortaya çıkarma görevine aykırıdır."
+    },
+    {
+      "id": "vt-gereksinim.s9",
+      "tip": "secme",
+      "yer": "Yanlış veya eksik gereksinimin sonuçları",
+      "soru": "Yanlış veya eksik toplanan gereksinimler neye yol açar?",
+      "secenekler": [
+        "İstenmeyen işleri yapan ya da istenen işleri yanlış yapan sistemlerin geliştirilmesine",
+        "Sistemin istenen işleri doğru yapıp yalnızca beklenenden daha yavaş çalışmasına",
+        "Yalnızca kullanıcı arayüzünün beğenilmemesine, işlevlerin ise doğru çalışmasına",
+        "Gereksinim analizinin atlanıp doğrudan fiziksel modelin hazırlanmasına"
+      ],
+      "dogru": 0,
+      "izah": "Slayta göre yanlış veya eksik toplanan gereksinimler, istenmeyen işleri yapan veya istenen işleri yanlış yapan sistemlerin geliştirilmesine neden olur."
+    },
+    {
+      "id": "vt-gereksinim.s10",
+      "tip": "dy",
+      "yer": "Gereksinim analizi",
+      "ifade": "Gereksinim analizinde Varlık Bağıntı Diyagramları kullanılır.",
+      "dogru": true,
+      "izah": "Gereksinim analizi, toplanan gereksinimlerin gruplanarak tasarıma hazırlanmasıdır; bu aşamada Varlık Bağıntı (E-R) Diyagramları kullanılır. Dikkat: E-R diyagramlarının **hazırlandığı** aşama kavramsal modeldir (kavramsal modellemede, gereksinim analizini temsil eden E-R diyagramları hazırlanır)."
+    },
+    {
+      "id": "vt-gereksinim.s11",
+      "tip": "secme",
+      "yer": "Kullanıcı grupları ve yöntem",
+      "soru": "Hocanın e-sınav sistemi örneğinde kullanıcı grupları hangileridir?",
+      "secenekler": [
+        "Öğretmenler, öğrenciler ve sistem yöneticileri",
+        "Öğretmenler, öğrenciler ve veliler",
+        "Öğrenciler, gereksinim analistleri ve proje sahipleri",
+        "Sistem yöneticileri, okul müdürü ve öğretmenler"
+      ],
+      "dogru": 0,
+      "izah": "E-sınav örneğinin kullanıcı grupları: öğretmenler, öğrenciler ve sistem yöneticileri. VG1 de bunu söyler: sistemi yönetici, öğretmen ve öğrenci kullanacak."
+    },
+    {
+      "id": "vt-gereksinim.s12",
+      "tip": "bosluk",
+      "yer": "Sorular ve uzlaşma",
+      "metin": "Hedef kitlenin görüşlerinde çelişkili ve tutarsız noktalar varsa, bu görüşler üzerinde ___ sağlanır.",
+      "cevaplar": [
+        [
+          "uzlaşma",
+          "uzlaşı"
+        ]
+      ],
+      "izah": "Soruların cevapları toplandıktan sonra çelişkili ve tutarsız görüşler üzerinde uzlaşma sağlanır."
+    },
+    {
+      "id": "vt-gereksinim.s13",
+      "tip": "secme",
+      "yer": "Veri gereksinimleri",
+      "soru": "E-sınav örneğindeki **VG2**'ye göre ana yönetici dışındaki yönetici neyi görebilir?",
+      "secenekler": [
+        "Yalnızca sınavların oluşturulmasıyla ilgili bilgileri",
+        "Sistemdeki her tür bilgiyi",
+        "Yalnızca öğretmenlerin ad, yaş, alan ve e-posta bilgilerini",
+        "Yalnızca öğrencilerin sınav sonuçlarını ve puanlarını"
+      ],
+      "dogru": 0,
+      "izah": "VG2: iki tür yönetici olacak; ana yönetici sistemdeki her tür bilgiye erişebilecek, diğer yönetici yalnızca sınavların oluşturulmasıyla ilgili bilgileri görebilecek."
+    },
+    {
+      "id": "vt-gereksinim.s14",
+      "tip": "dy",
+      "yer": "Gözden geçirme ve onay",
+      "ifade": "Veri gereksinimlerine ilişkin son rapor, onay için yalnızca veritabanı geliştirme ekibine sunulur.",
+      "dogru": false,
+      "izah": "Son rapor **kullanıcıların ve proje sahibinin** onayına sunulmalı; formlar, raporlar ve menüler için örnekler hazırlanarak kullanıcıların görüşleri alınmalıdır."
+    },
+    {
+      "id": "vt-gereksinim.s15",
+      "tip": "dy",
+      "yer": "Gözden geçirme ve onay",
+      "ifade": "Veritabanı geliştirme ekibi, veri gereksinimlerini gözden geçirirken ilgili olanları gruplamalı ve gereksiz olanları çıkarmalıdır.",
+      "dogru": true,
+      "izah": "Slayta göre ekip, elde ettiği bilgileri gözden geçirmeli, ilgili veri gereksinimlerini gruplamalı ve gereksiz olanları çıkarmalıdır."
+    },
+    {
+      "id": "vt-gereksinim.s16",
+      "tip": "dizme",
+      "yer": "Ödev",
+      "soru": "Hocanın verdiği ödevin adımlarını sıralayın.",
+      "parcalar": [
+        "Bilgi sistemi geliştirilecek bir konu alanı belirleme",
+        "Bu sistemi kullanacak hedef kitleyi tanımlama",
+        "Veri toplama yöntemlerini tanımlama",
+        "Veri toplama aracını geliştirme",
+        "Veriyi toplama",
+        "Veri gereksinimlerini sıralama ve gruplama"
+      ],
+      "izah": "Önce konu ve hedef kitle, sonra yöntem ve araç, ardından verinin toplanması ve en son veri gereksinimlerinin sıralanıp gruplanması."
+    },
+    {
+      "id": "vt-gereksinim.s17",
+      "tip": "klasik",
+      "yer": "Toplama yöntemleri",
+      "soru": "Gereksinimlerin toplanmasında kullanılan yöntemleri gruplarıyla birlikte yazın.",
+      "cevap": "Geleneksel yöntemler: anketler, açık uçlu görüşmeler, doküman analizi.\nGrupsal yöntemler: beyin fırtınası, prototipleme.",
+      "anahtarlar": [
+        "geleneksel",
+        "anket",
+        "açık uçlu görüşme",
+        "doküman analizi",
+        "grupsal",
+        "beyin fırtınası",
+        "prototipleme"
+      ]
+    },
+    {
+      "id": "vt-gereksinim.s18",
+      "tip": "klasik",
+      "yer": "Örnek: e-sınav sistemi",
+      "soru": "E-sınav sistemi örneği üzerinden gereksinim belirleme sürecini adım adım anlatın.",
+      "cevap": "1. Kullanıcı grupları belirlenir: öğretmenler, öğrenciler, sistem yöneticileri.\n2. Yöntem seçilir: beyin fırtınası, birebir görüşmeler, mevcut sınav sisteminin incelenmesi.\n3. Sorular oluşturulur (sistemi kimler kullanacak, kaç tip yönetici olacak, hangi bilgiler tutulacak...).\n4. Cevaplar toplanır; çelişkili ve tutarsız görüşler üzerinde uzlaşma sağlanır.\n5. Veri gereksinimleri yazılır (VG1, VG2, VG3...).\n6. Ekip gereksinimleri gözden geçirir, gruplar, gereksizleri çıkarır.\n7. Son rapor kullanıcıların ve proje sahibinin onayına sunulur; formlar, raporlar ve menüler için örneklerle görüş alınır.",
+      "anahtarlar": [
+        "kullanıcı grupları",
+        "yöntem",
+        "soru",
+        "uzlaşma",
+        "veri gereksinim",
+        "gözden geçir",
+        "onay"
+      ]
+    }
+  ],
+  "kartlar": [
+    {
+      "id": "vt-gereksinim.k1",
+      "yer": "Tasarım aşamaları",
+      "on": "Veritabanı tasarımının aşamaları neler?",
+      "arka": "1. Gereksinim belirlenmesi\n2. Kavramsal model\n3. Mantıksal model\n4. Fiziksel model"
+    },
+    {
+      "id": "vt-gereksinim.k2",
+      "yer": "İlk aşama: gereksinim belirleme",
+      "on": "Tasarımın ilk aşamasında ne yapılır, nasıl yapılır?",
+      "arka": "Geliştirilmek istenen sistemin **tam ve doğru tanımı** yapılır. Bunun için sistemin kullanıcı kitlesi tanımlanır ve kullanıcı gereksinimleri belirlenir. Gereksinimlerin belirlenmesi iki adımdır: toplama ve analiz."
+    },
+    {
+      "id": "vt-gereksinim.k3",
+      "yer": "Gereksinim nedir",
+      "on": "Gereksinim nedir? Beklenen işlevleri nereden anlarız?",
+      "arka": "Gereksinimler, bir sistemin beklenen işlevleri yerine getirmesi için sahip olması gereken özelliklerdir. Beklenen işlevler; kullanıcıların mevcut sistemde kullandıkları yöntemlerden, sistem yapısından, iş kurallarından ve yaşanan sıkıntı ve problemlerden anlaşılır."
+    },
+    {
+      "id": "vt-gereksinim.k4",
+      "yer": "Toplama yöntemleri",
+      "on": "Gereksinim toplama yöntemleri neler?",
+      "arka": "- Geleneksel: anketler, açık uçlu görüşmeler, doküman analizi.\n- Grupsal: beyin fırtınası, prototipleme."
+    },
+    {
+      "id": "vt-gereksinim.k5",
+      "yer": "Gereksinim analisti",
+      "on": "İyi bir gereksinim analisti nasıl çalışır?",
+      "arka": "Görüştüğü kişileri iyi yönlendirir, doğru soruları sorar, sorularla saklı ve unutulmuş gereksinimleri ortaya çıkarır; amaç, içerik ve fonksiyonları ele alır."
+    },
+    {
+      "id": "vt-gereksinim.k6",
+      "yer": "Gereksinim analizi",
+      "on": "Gereksinimlerin toplanması ile gereksinim analizi arasındaki fark nedir?",
+      "arka": "Toplama, bilgiyi kullanıcılardan almaktır (anket, görüşme, beyin fırtınası...). Analiz, toplanan gereksinimleri özelliklerine göre **gruplayıp** sistem tasarımına hazırlamaktır; bu aşamada Varlık Bağıntı Diyagramları kullanılır."
+    },
+    {
+      "id": "vt-gereksinim.k7",
+      "yer": "Yanlış veya eksik gereksinimin sonuçları",
+      "on": "Gereksinimler yanlış veya eksik toplanırsa ne olur?",
+      "arka": "İstenmeyen işleri yapan ya da istenen işleri yanlış yapan bir sistem geliştirilmiş olur."
+    },
+    {
+      "id": "vt-gereksinim.k8",
+      "yer": "Örnek: e-sınav sistemi",
+      "on": "E-sınav örneğinde gereksinimler nasıl belirlendi?",
+      "arka": "Kullanıcı grupları (öğretmen, öğrenci, sistem yöneticisi) belirlendi; beyin fırtınası, birebir görüşme ve mevcut sınav sisteminin incelenmesi yöntem olarak seçildi; sorular hazırlanıp cevaplar toplandı, çelişkili görüşlerde uzlaşma sağlandı; VG1–VG3 gibi veri gereksinimleri yazıldı; ekip bunları gözden geçirip grupladı ve son rapor kullanıcıların ve proje sahibinin onayına sunuldu."
+    },
+    {
+      "id": "vt-gereksinim.k9",
+      "yer": "Gözden geçirme ve onay",
+      "on": "Veri gereksinimleri yazıldıktan sonra ne yapılır?",
+      "arka": "Geliştirme ekibi bilgileri gözden geçirir, ilgili gereksinimleri gruplar, gereksizleri çıkarır. Son rapor kullanıcıların ve proje sahibinin onayına sunulur; formlar, raporlar ve menüler için örnekler hazırlanarak kullanıcıların görüşü alınır."
+    }
+  ]
+}

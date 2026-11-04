@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="520" viewBox="0 0 400 520" role="img">
+<title>Faktöriyel (N): hocanın akış diyagramı</title>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<ellipse cx="240.0" cy="24.0" rx="60.0" ry="18.0" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="240.0" y="28.7" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">Başla</text>
+<line x1="240.0" y1="42.0" x2="240.0" y2="62.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,62.0 236.5,53.7 243.5,53.7" fill="#4A5568"/>
+<polygon points="177.0,62.0 327.0,62.0 303.0,102.0 153.0,102.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="240.0" y="78.8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">N sayısını</text>
+<text x="240.0" y="94.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">giriniz:</text>
+<line x1="240.0" y1="102.0" x2="240.0" y2="122.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,122.0 236.5,113.7 243.5,113.7" fill="#4A5568"/>
+<polygon points="180.0,139.0 300.0,125.0 300.0,161.0 180.0,161.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="240.0" y="152.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">N</text>
+<line x1="240.0" y1="166.0" x2="240.0" y2="186.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,186.0 236.5,177.7 243.5,177.7" fill="#4A5568"/>
+<rect x="155.0" y="187.0" width="170" height="34" fill="#F7FAFC" stroke="#4A5568" stroke-width="1.6"/>
+<text x="240.0" y="208.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">sayac=1 fakto=1</text>
+<line x1="240.0" y1="221.0" x2="240.0" y2="248.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,248.0 236.5,239.7 243.5,239.7" fill="#4A5568"/>
+<rect x="150.0" y="248.0" width="180" height="48" fill="#F7FAFC" stroke="#4A5568" stroke-width="1.6"/>
+<text x="240.0" y="268.8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">fakto=fakto*sayac</text>
+<text x="240.0" y="284.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">sayac=sayac+1</text>
+<line x1="240.0" y1="296.0" x2="240.0" y2="320.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,320.0 236.5,311.7 243.5,311.7" fill="#4A5568"/>
+<polygon points="240.0,321.0 310.0,356.0 240.0,391.0 170.0,356.0" fill="#FFF4E5" stroke="#C05621" stroke-width="1.8"/>
+<text x="240.0" y="360.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">sayac&lt;=N</text>
+<line x1="310.0" y1="356.0" x2="380.0" y2="356.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="380.0" y1="356.0" x2="380.0" y2="234.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="380.0" y1="234.0" x2="240.0" y2="234.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="240.0" y1="234.0" x2="240.0" y2="248.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="240.0,248.0 236.5,239.7 243.5,239.7" fill="#4A5568"/>
+<text x="346.0" y="348.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">E</text>
+<line x1="170.0" y1="356.0" x2="80.0" y2="356.0" stroke="#4A5568" stroke-width="1.5"/>
+<line x1="80.0" y1="356.0" x2="80.0" y2="400.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="80.0,400.0 76.5,391.7 83.5,391.7" fill="#4A5568"/>
+<text x="130.0" y="348.0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#4A5568" font-weight="600" text-anchor="middle">H</text>
+<polygon points="37.0,401.0 147.0,401.0 123.0,435.0 13.0,435.0" fill="#F0FFF4" stroke="#2F855A" stroke-width="1.6"/>
+<text x="80.0" y="422.5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" fill="#1A202C" text-anchor="middle">fakto</text>
+<line x1="80.0" y1="435.0" x2="80.0" y2="468.0" stroke="#4A5568" stroke-width="1.5"/>
+<polygon points="80.0,468.0 76.5,459.7 83.5,459.7" fill="#4A5568"/>
+<ellipse cx="80.0" cy="487.0" rx="60.0" ry="18.0" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.8"/>
+<text x="80.0" y="491.7" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#2B6CB0" font-weight="600" text-anchor="middle">BİTİR</text>
+</svg>

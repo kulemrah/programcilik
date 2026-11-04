@@ -1,0 +1,70 @@
+{
+  "id": "b2r-readme",
+  "baslik": "README.md Hazırlığı",
+  "kaynak": "Born2beRoot Malumatnamesi",
+  "kavramlar": [
+    {
+      "terim": "README",
+      "izah": "Git deposunun kökünde bulunması zorunlu tanıtım dosyası. İlk satırı italik kalıpla başlar; dört karşılaştırmayı ve AI kullanımını içermek zorunda.",
+      "yer": "Zorunlu ilk italik satır formatı"
+    }
+  ],
+  "sorular": [
+    {
+      "id": "b2r-readme.s1",
+      "tip": "secme",
+      "yer": "Zorunlu ilk italik satır formatı",
+      "soru": "README.md'nin ilk satırı nasıl olmalı?",
+      "secenekler": [
+        "H1 başlık olarak projenin adı, hemen altında da tek cümlelik bir proje özeti yer alır",
+        "İtalik, şu kalıpta: This project has been created as part of the 42 curriculum by <login>.",
+        "Kullanılan işletim sistemi ve sürümü, ilk satırda bir kod bloğunun içinde yazılı olarak",
+        "42 logosu ve kampüs adını içeren, sayfaya ortalanmış bir kapak satırı olarak yazılır"
+      ],
+      "dogru": 1,
+      "izah": "Kalıp birebir korunmalı; birden fazla kişi varsa loginler virgülle ayrılır."
+    },
+    {
+      "id": "b2r-readme.s2",
+      "tip": "secme",
+      "yer": "AI kullanımının Resources bölümünde dürüstçe belgelenmesi",
+      "soru": "README'nin Resources bölümünde ayrıca ne bulunmalı?",
+      "secenekler": [
+        "VM disk imzası ve kurulum sırasında seçilen paketlerin eksiksiz listesi",
+        "AI'nin hangi görevlerde ve projenin hangi kısımlarında kullanıldığının açıklaması",
+        "monitoring.sh'in tam kodu ve betiğin satır satır nasıl çalıştığının açıklaması",
+        "Peer değerlendirmede aldığınız notlar ve sonradan düzeltilen eksiklerin listesi"
+      ],
+      "dogru": 1,
+      "izah": "Kaynak listesinin yanında AI kullanımının dürüstçe belgelenmesi subject'in açık şartıdır."
+    },
+    {
+      "id": "b2r-readme.s3",
+      "tip": "secme",
+      "yer": "İstenen dört karşılaştırma: Debian/Rocky, AppArmor/SELinux, UFW/firewalld, VirtualBox/UTM",
+      "soru": "Project description bölümünde hangi dört karşılaştırma zorunlu?",
+      "secenekler": [
+        "apt/dnf, bash/zsh, ext4/xfs, cron/systemd timer",
+        "Debian/Rocky, AppArmor/SELinux, UFW/firewalld, VirtualBox/UTM",
+        "LVM/LUKS, sudo/su, OpenSSH/telnet, UFW/iptables",
+        "Yalnızca Debian/Rocky; diğer karşılaştırmalar isteğe bağlıdır"
+      ],
+      "dogru": 1,
+      "izah": "Bu dördü subject'te tek tek sayılıyor; malumatnamenin 2, 5, 7 ve 1. bölümleri doğrudan taslak olarak kullanılabilir."
+    },
+    {
+      "id": "b2r-readme.s4",
+      "tip": "secme",
+      "yer": "Dil seçimi",
+      "soru": "README hangi dilde yazılmalı?",
+      "secenekler": [
+        "Yalnızca İngilizce; başka bir dilde yazılan README kabul edilmez",
+        "İngilizce önerilir; alternatif olarak kampüsünün ana dili de kabul edilir",
+        "Yalnızca kampüsün ana dili; değerlendirme yerel dilde yapılır",
+        "Dil şartı yoktur; istediğiniz dilde yazabilirsiniz, subject buna karışmaz"
+      ],
+      "dogru": 1,
+      "izah": "Subject İngilizceyi öneriyor ama kampüsün ana dilini de açıkça kabul ediyor."
+    }
+  ]
+}
