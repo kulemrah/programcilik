@@ -471,7 +471,7 @@ main{max-width:720px;margin:0 auto;padding:16px max(16px, env(safe-area-inset-ri
   font-family:var(--mono);font-size:12.5px;color:var(--sonuk);
 }
 .ilerleme .cubuk{flex:1;height:4px;border-radius:2px;background:var(--cizgi);overflow:hidden}
-.ilerleme .dolu{height:100%;background:var(--vurgu);transition:width .25s ease}
+.ilerleme .dolu{display:block;height:100%;background:var(--vurgu);transition:width .25s ease}
 
 .soru{
   border:1px solid var(--cizgi);border-radius:12px;background:var(--yuzey);
@@ -2165,6 +2165,24 @@ html.editor-acik,html.editor-acik body{overflow:hidden}
 .uyari-girdi{display:block;width:calc(100% - 36px);margin:8px 18px 18px;padding:10px 12px;border:1px solid var(--cizgi);border-radius:10px;background:var(--zemin);color:var(--yazi);font:inherit;font-size:16px;line-height:1.5}
 textarea.uyari-girdi{resize:vertical;min-height:140px}
 .uyari-girdi:focus{outline:2px solid var(--vurgu);outline-offset:1px}
+
+/* ---------- Temrin: Bilmiyorum, konu notunda ilgili bölümün yanıp sönmesi ---------- */
+.bilmiyorum-alan{display:flex;justify-content:center;margin-top:12px}
+.bilmiyorum-alan .bilmiyorum,.eylem button.bilmiyorum{
+  flex:0 0 auto;padding:11px 18px;border-radius:10px;border:1px solid var(--cizgi);
+  background:transparent;color:var(--sonuk);font-size:14.5px;font-weight:550;box-shadow:none;cursor:pointer
+}
+.bilmiyorum-alan .bilmiyorum:hover,.eylem button.bilmiyorum:hover{color:var(--yazi);border-color:var(--sonuk)}
+.esles-oge:disabled{cursor:default}
+.esles-dogrusu{margin:6px 0 2px;padding-left:18px}
+.esles-dogrusu li{margin:3px 0}
+.okuma .bolum-yanar{animation:yanipSon 1.9s ease-in-out;border-radius:6px}
+@keyframes yanipSon{
+  0%,100%{background:transparent;box-shadow:0 0 0 6px transparent}
+  18%,58%{background:var(--vurgu-zemin);box-shadow:0 0 0 6px var(--vurgu-zemin)}
+  38%{background:transparent;box-shadow:0 0 0 6px transparent}
+}
+@media (prefers-reduced-motion: reduce){.okuma .bolum-yanar{animation:parla 1.6s ease-out}}
 </style>
 </head>
 <body>
@@ -2605,6 +2623,59 @@ function kucult(s) {
 /* Cevap karşılaştırma: büyük/küçük harf, fazla boşluk ve sondaki noktalama önemsiz */
 function cevapNormal(s) {
   return kucult(String(s)).replace(/\s+/g, " ").trim().replace(/[.,;:!?]+$/, "").trim();
+}
+
+/* Yazılan cevabı karşılaştırma (boşluk doldurma, klasikteki anahtar kavramlar).
+   Önemsiz: büyük/küçük harf, ı/i, ş/s, ğ/g, ü/u, ö/o, ç/c, â/a, kesme işaretinin
+   türü. Ufak klavye hatası (eksik, fazla, yanlış ya da yer değiştirmiş harf)
+   5–7 harflik cevapta 1, 8 ve üstünde 2 harf kabul edilir; ilk harf tutmalıdır
+   (sütun/bütün karışmasın). Hata payı yok:
+   4 harf ve altında (RAM/ROM, TCP/UDP) ve rakam ya da işaretlerde
+   (chmod 755, -aG, IPv4/IPv6) cevap tam tutmalıdır. */
+function cevapSade(s) {
+  return cevapNormal(s).normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’‘`´]/g, "'");
+}
+function yazimPayi(n) { return n <= 4 ? 0 : n <= 7 ? 1 : 2; }
+const harfDisi = s => s.replace(/[\p{L}\s]/gu, "");
+/* Damerau-Levenshtein (komşu harf yer değişimi tek hata). onekMi: b'nin
+   herhangi bir başı ile en küçük fark (ekli kelime: "islemciye" ~ "işlemci") */
+function yazimFarki(a, b, onekMi) {
+  const n = a.length, m = b.length;
+  let iki = null, onceki = Array.from({ length: m + 1 }, (_, j) => j);
+  for (let i = 1; i <= n; i++) {
+    const simdi = [i];
+    for (let j = 1; j <= m; j++) {
+      let d = Math.min(onceki[j] + 1, simdi[j - 1] + 1, onceki[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (iki && i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d = Math.min(d, iki[j - 2] + 1);
+      simdi.push(d);
+    }
+    iki = onceki; onceki = simdi;
+  }
+  return onekMi ? Math.min.apply(null, onceki) : onceki[m];
+}
+/* "tam" (yazım aynı), "yakin" (ufak hata kabul edildi) ya da null */
+function cevapTutar(yazilan, kabulListesi) {
+  const y = cevapSade(yazilan);
+  if (!y) return null;
+  const sade = kabulListesi.map(cevapSade);
+  if (sade.indexOf(y) !== -1) return "tam";
+  return sade.some(k => {
+    const pay = yazimPayi(k.length);
+    return pay && k[0] === y[0] && harfDisi(k) === harfDisi(y) && Math.abs(k.length - y.length) <= pay && yazimFarki(k, y) <= pay;
+  }) ? "yakin" : null;
+}
+/* Anahtar kavram yazılan metinde geçiyor mu (eki olabilir, ufak hata kabul) */
+function metindeGeciyor(metin, anahtar) {
+  const m = cevapSade(metin), a = cevapSade(anahtar);
+  if (!a || !m) return false;
+  if (m.indexOf(a) !== -1) return true;
+  const pay = yazimPayi(a.length);
+  if (!pay || harfDisi(a)) return false;
+  for (let i = 0; i < m.length; i++) {
+    if (m[i] !== a[0] || (i > 0 && /\p{L}/u.test(m[i - 1]))) continue;   /* kelime başından, ilk harf tutarak */
+    if (yazimFarki(a, m.slice(i, i + a.length + pay), true) <= pay) return true;
+  }
+  return false;
 }
 
 /* Sunucu zamanı mikrosaniyeli gelebilir; her tarayıcı aynı okusun diye kırpılır */
@@ -7274,6 +7345,29 @@ function konuAc(konuId, geriIslev, vurguSorgusu, kaydirmaYeri, hedefBaslik) {
   if (kaydirilacak && typeof kaydirilacak.scrollIntoView === "function") {
     try { kaydirilacak.scrollIntoView({ block: kaydirilacak.tagName === "MARK" ? "center" : "start" }); } catch (e) {}
   } else window.scrollTo(0, okuKaydirma);
+  if (hedefBaslik && kaydirilacak && kaydirilacak.classList.contains("baslik-hedef")) {
+    /* Başlık yapışkan üst çubuğun altında kalmasın */
+    const ustCubuk = document.querySelector(".ust");
+    const ustAlt = ustCubuk ? ustCubuk.getBoundingClientRect().bottom : 0;
+    const fark = kaydirilacak.getBoundingClientRect().top - ustAlt - 10;
+    if (fark < 0) window.scrollBy(0, fark);
+    bolumuYak(kaydirilacak);
+  }
+}
+
+/* Temrinden gelinen başlık ve altındaki metin (bir sonraki aynı ya da üst
+   düzey başlığa kadar) kısaca iki kez yanıp söner, sonra iz bırakmaz */
+function bolumuYak(baslik) {
+  const ust = baslik.tagName === "H4" ? /^H[1-4]$/ : /^H[1-3]$/;
+  const ogeler = [baslik];
+  for (let s = baslik.nextElementSibling; s && !ust.test(s.tagName) && ogeler.length < 40; s = s.nextElementSibling) {
+    if (!s.classList.contains("icindekiler")) ogeler.push(s);
+  }
+  const bitir = () => ogeler.forEach(o => o.classList.remove("bolum-yanar"));
+  requestAnimationFrame(() => {
+    ogeler.forEach(o => { o.classList.remove("bolum-yanar"); void o.offsetWidth; o.classList.add("bolum-yanar"); });
+    setTimeout(bitir, 2100);
+  });
 }
 
 /* ==========================================================================
@@ -8596,6 +8690,9 @@ function sonucIsle(soru, dogruMu) {
   if (dogruMu) { oturum.dogru++; kayitSil("yanlis", soru.id); }
   else { oturum.yanlislar.push(soru); kayitYaz("yanlis", soru.id, true); }
   if (oturum.i < oturum.sorular.length) yarimYaz("calis", oturum);
+  /* Çubuk cevaplanan soru sayısını gösterir: cevap verilince bir adım dolar */
+  const dolu = document.querySelector("#sayfaCalis .ilerleme .dolu");
+  if (dolu) dolu.style.width = Math.round(((oturum.i + 1) / oturum.sorular.length) * 100) + "%";
   if (soru.konu) birikimeEkle(dogruMu ? "d" : "y", soru.konu.id, 1);
 }
 
@@ -9097,6 +9194,20 @@ function izahKutusu(soru) {
   return k;
 }
 
+/* "Bilmiyorum": cevap yanlış sayılır (yanlış defterine girer), doğrusu gösterilir */
+function bilmiyorumDugmesi(islev) {
+  const d = olustur("button", "bilmiyorum");
+  d.textContent = "Bilmiyorum";
+  d.addEventListener("click", islev);
+  return d;
+}
+/* Şıklı sorularda düğme şıkların altında, ayrı bir satırda durur */
+function bilmiyorumAlani(islev) {
+  const alan = olustur("div", "bilmiyorum-alan");
+  alan.appendChild(bilmiyorumDugmesi(() => { alan.remove(); islev(); }));
+  return alan;
+}
+
 function sonrakiDugmesi(hedef, etiket) {
   const alan = olustur("div", "eylem");
   const d = olustur("button", "ana");
@@ -9152,19 +9263,23 @@ function secmeCiz(sayfa, soru) {
     const d = olustur("button", "secenek");
     d.innerHTML = '<span class="harf">' + harfler[i] + "</span><span></span>";
     d.lastChild.innerHTML = satiriCiz(soru.secenekler[asil], soru.konu.ders);
-    d.addEventListener("click", () => {
-      if (d.disabled) return;
-      dugmeler.forEach(x => { x.disabled = true; });
-      dugmeler[dogruYer].classList.add("dogru");
-      if (i !== dogruYer) d.classList.add("yanlis");
-      sonucIsle(soru, i === dogruYer);
-      kutu.appendChild(izahKutusu(soru));
-      sonrakiDugmesi(sayfa);
-    });
+    d.addEventListener("click", () => { if (!d.disabled) sec(i); });
     dugmeler.push(d);
     secenekler.appendChild(d);
   });
-  kutu.appendChild(secenekler);
+  /* i: seçilen şık; null: "Bilmiyorum" */
+  function sec(i) {
+    if (dugmeler[0].disabled) return;
+    dugmeler.forEach(x => { x.disabled = true; });
+    if (bilmiyor.isConnected) bilmiyor.remove();
+    dugmeler[dogruYer].classList.add("dogru");
+    if (i !== null && i !== dogruYer) dugmeler[i].classList.add("yanlis");
+    sonucIsle(soru, i === dogruYer);
+    kutu.appendChild(izahKutusu(soru));
+    sonrakiDugmesi(sayfa);
+  }
+  const bilmiyor = bilmiyorumAlani(() => sec(null));
+  kutu.append(secenekler, bilmiyor);
   sayfa.appendChild(kutu);
 }
 
@@ -9175,12 +9290,14 @@ function dyCiz(sayfa, soru) {
   dogruD.textContent = "Doğru";
   const yanlisD = olustur("button", "secenek");
   yanlisD.textContent = "Yanlış";
+  /* cevap: true/false; null: "Bilmiyorum" */
   const sec = cevap => {
     if (dogruD.disabled) return;
     dogruD.disabled = yanlisD.disabled = true;
+    if (bilmiyor.isConnected) bilmiyor.remove();
     const bilen = cevap === soru.dogru;
     (soru.dogru ? dogruD : yanlisD).classList.add("dogru");
-    if (!bilen) (cevap ? dogruD : yanlisD).classList.add("yanlis");
+    if (!bilen && cevap !== null) (cevap ? dogruD : yanlisD).classList.add("yanlis");
     sonucIsle(soru, bilen);
     kutu.appendChild(izahKutusu(soru));
     sonrakiDugmesi(sayfa);
@@ -9188,7 +9305,8 @@ function dyCiz(sayfa, soru) {
   dogruD.addEventListener("click", () => sec(true));
   yanlisD.addEventListener("click", () => sec(false));
   alan.append(dogruD, yanlisD);
-  kutu.appendChild(alan);
+  const bilmiyor = bilmiyorumAlani(() => sec(null));
+  kutu.append(alan, bilmiyor);
   sayfa.appendChild(kutu);
 }
 
@@ -9218,19 +9336,19 @@ function boslukCiz(sayfa, soru) {
   const eylem = olustur("div", "eylem");
   const kontrol = olustur("button", "ana");
   kontrol.textContent = "Kontrol et";
-  const kontrolEt = () => {
-    let hepsi = true;
+  const kontrolEt = bilmiyor => {
+    let hepsi = !bilmiyor, yakin = false;
     girdiler.forEach((g, i) => {
-      const kabul = soru.cevaplar[i].map(cevapNormal);
-      const dogru = kabul.indexOf(cevapNormal(g.value)) !== -1;
-      g.classList.add(dogru ? "dogru" : "yanlis");
+      const t = bilmiyor ? null : cevapTutar(g.value, soru.cevaplar[i]);
+      if (t === "yakin") yakin = true;
+      g.classList.add(t ? "dogru" : "yanlis");
       g.readOnly = true;
-      if (!dogru) hepsi = false;
+      if (!t) hepsi = false;
     });
     sonucIsle(soru, hepsi);
-    if (!hepsi) {
+    if (!hepsi || yakin) {
       const d = olustur("div", "izah");
-      d.innerHTML = "<strong>Doğrusu:</strong> ";
+      d.innerHTML = hepsi ? "<strong>Doğru; yazımı:</strong> " : "<strong>Doğrusu:</strong> ";
       d.appendChild(document.createTextNode(soru.cevaplar.map(c => c[0]).join(" · ")));
       kutu.appendChild(d);
     }
@@ -9238,7 +9356,8 @@ function boslukCiz(sayfa, soru) {
     eylem.remove();
     sonrakiDugmesi(sayfa);
   };
-  kontrol.addEventListener("click", kontrolEt);
+  kontrol.addEventListener("click", () => kontrolEt(false));
+  eylem.appendChild(bilmiyorumDugmesi(() => kontrolEt(true)));
   /* preventDefault: aynı Enter, odağın geçtiği "Sonraki soru" düğmesine
      tıklama olarak ulaşıp sonucu göstermeden soruyu atlamasın */
   girdiler.forEach((g, i) => g.addEventListener("keydown", e => {
@@ -9299,8 +9418,8 @@ function dizmeCiz(sayfa, soru) {
   const eylem = olustur("div", "eylem");
   const kontrol = olustur("button", "ana");
   kontrol.textContent = "Kontrol et";
-  kontrol.addEventListener("click", () => {
-    const dogruMu = secilen.length === soru.parcalar.length &&
+  const kontrolEt = bilmiyor => {
+    const dogruMu = !bilmiyor && secilen.length === soru.parcalar.length &&
       secilen.every((p, i) => p === soru.parcalar[i]);
     alan.classList.add(dogruMu ? "dogru-alan" : "yanlis-alan");
     sonucIsle(soru, dogruMu);
@@ -9315,8 +9434,9 @@ function dizmeCiz(sayfa, soru) {
     kutu.appendChild(izahKutusu(soru));
     eylem.remove();
     sonrakiDugmesi(sayfa);
-  });
-  eylem.appendChild(kontrol);
+  };
+  kontrol.addEventListener("click", () => kontrolEt(false));
+  eylem.append(bilmiyorumDugmesi(() => kontrolEt(true)), kontrol);
   sayfa.appendChild(eylem);
 }
 
@@ -9358,13 +9478,33 @@ function eslesCiz(sayfa, soru) {
   });
 
   function bitir() {
+    if (bilmiyor.isConnected) bilmiyor.remove();
     sonucIsle(soru, !hataVar);
     kutu.appendChild(izahKutusu(soru));
     sonrakiDugmesi(sayfa);
   }
 
+  /* Bilmiyorum: kalan eşleşmeler durdurulur, doğru eşleşmelerin hepsi yazılır */
+  const bilmiyor = bilmiyorumAlani(() => {
+    if (kalan === 0) return;
+    kalan = 0;
+    hataVar = true;
+    izgara.querySelectorAll(".esles-oge").forEach(x => { x.classList.remove("secili"); x.disabled = true; });
+    const d = olustur("div", "izah");
+    d.innerHTML = "<strong>Doğrusu:</strong>";
+    const liste = olustur("ul", "esles-dogrusu");
+    soru.ciftler.forEach(c => {
+      const li = olustur("li");
+      li.innerHTML = satiriCiz(c[0], soru.konu.ders) + " → " + satiriCiz(c[1], soru.konu.ders);
+      liste.appendChild(li);
+    });
+    d.appendChild(liste);
+    kutu.appendChild(d);
+    bitir();
+  });
+
   izgara.append(solSutun, sagSutun);
-  kutu.appendChild(izgara);
+  kutu.append(izgara, bilmiyor);
   sayfa.appendChild(kutu);
 }
 
@@ -9396,18 +9536,18 @@ function hesapCiz(sayfa, soru) {
   const eylem = olustur("div", "eylem");
   const kontrol = olustur("button", "ana");
   kontrol.textContent = "Kontrol et";
-  const kontrolEt = () => {
+  const kontrolEt = bilmiyor => {
     /* "1.024" hem bin yirmi dört hem bir virgül sıfır yirmi dört okunabilir;
        sessizce yanlış okumak yerine sorulur */
-    if (/^[-+]?[1-9]\d{0,2}(\.\d{3})+$/.test(girdi.value.trim())) {
+    if (!bilmiyor && /^[-+]?[1-9]\d{0,2}(\.\d{3})+$/.test(girdi.value.trim())) {
       uyari.textContent = "Binlik ayırıcı kullanmayın (1.000 yerine 1000 yazın); ondalık için virgül kullanın.";
       return;
     }
-    const n = sayiOku(girdi.value);
-    if (n === null) { uyari.textContent = "Bir sayı yazın (ondalık için virgül ya da nokta)."; return; }
+    const n = bilmiyor ? null : sayiOku(girdi.value);
+    if (n === null && !bilmiyor) { uyari.textContent = "Bir sayı yazın (ondalık için virgül ya da nokta)."; return; }
     uyari.textContent = "";
     const pay = typeof soru.tolerans === "number" ? soru.tolerans : 0;
-    const dogruMu = Math.abs(n - soru.cevap) <= pay + 1e-9 * Math.max(1, Math.abs(soru.cevap));
+    const dogruMu = !bilmiyor && Math.abs(n - soru.cevap) <= pay + 1e-9 * Math.max(1, Math.abs(soru.cevap));
     girdi.classList.add(dogruMu ? "dogru" : "yanlis");
     girdi.readOnly = true;
     sonucIsle(soru, dogruMu);
@@ -9422,13 +9562,13 @@ function hesapCiz(sayfa, soru) {
     eylem.remove();
     sonrakiDugmesi(sayfa);
   };
-  kontrol.addEventListener("click", kontrolEt);
+  kontrol.addEventListener("click", () => kontrolEt(false));
   girdi.addEventListener("keydown", e => {
     if (e.key !== "Enter") return;
     e.preventDefault();
-    if (eylem.isConnected) kontrolEt();
+    if (eylem.isConnected) kontrolEt(false);
   });
-  eylem.appendChild(kontrol);
+  eylem.append(bilmiyorumDugmesi(() => kontrolEt(true)), kontrol);
   sayfa.appendChild(eylem);
   setTimeout(() => { try { girdi.focus({ preventScroll: true }); } catch (e) {} }, 60);
 }
@@ -9454,7 +9594,7 @@ function klasikCiz(sayfa, soru) {
       const yazilan = cevapNormal(yazi.value);
       const satir = olustur("div", "anahtarlar");
       soru.anahtarlar.forEach(a => {
-        const c = olustur("span", "anahtar" + (yazilan && yazilan.indexOf(cevapNormal(a)) !== -1 ? " var" : ""));
+        const c = olustur("span", "anahtar" + (yazilan && metindeGeciyor(yazilan, a) ? " var" : ""));
         c.textContent = a;
         satir.appendChild(c);
       });
@@ -10075,6 +10215,16 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
    pg.notSurumu'nda.
    ========================================================================== */
 const GUNCELLEMELER = [{
+  surum: "2.3",
+  tarih: "Kasım 2026",
+  baslik: "Temrinde iyileştirmeler",
+  maddeler: [
+    ["Bilmiyorum", "Kavram kartları ve klasik sorular dışındaki bütün temrinlerde (eşleştirme dahil) artık \u201cBilmiyorum\u201d düğmesi var. Basınca doğru cevap gösterilir, soru yanlış sayılır ve yanlış defterinize girer; tahminle doğru tutturmak yerine sonra tekrar edersiniz."],
+    ["Yazım hoşgörüsü", "Boşluk doldurmada ve klasik sorulardaki anahtar kavramlarda büyük/küçük harf ve ı/i, ş/s, ğ/g, ü/u, ö/o, ç/c farkı önemsizdir. Uzun kelimelerde ufak klavye hatası da kabul edilir; o zaman doğru yazımı gösterilir. Kısa kelimelerde, rakamlarda ve komut işaretlerinde cevap tam tutmalıdır."],
+    ["İlerleme çubuğu", "Soru sayacının yanındaki çubuk artık dolarak kaçıncı soruda olduğunuzu gösterir."],
+    ["Notta ilgili yer", "Cevaptan sonra çıkan konu bağlantısına basınca not, sorunun geldiği bölümde açılır ve o bölüm kısaca yanıp söner."]
+  ]
+}, {
   surum: "2.2",
   tarih: "Kasım 2026",
   baslik: "Yenilik: sınav takvimi",

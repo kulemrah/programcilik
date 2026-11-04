@@ -124,12 +124,12 @@ Bütün türlerde `id`, `tip` ve isteğe bağlı `yer` bulunur. Her tür isteğe
 | --- | --- | --- |
 | `secme` | `soru`, `secenekler` (2–6), `dogru` (0'dan başlayan sıra), `izah`, isteğe bağlı `kod` | Şıklar her gösterimde karışır |
 | `dy` | `ifade`, `dogru` (true/false), `izah` | Doğru mu, yanlış mı |
-| `bosluk` | `metin` (boşluk yerine `___`), `cevaplar` (her boşluk için kabul edilen cevaplar dizisi), isteğe bağlı `izah` | Büyük/küçük harf (I/ı/İ/i dahil), fazla boşluk ve sondaki nokta önemsiz; boşluk kod içinde de olabilir: `` `usermod ___ -aG sudo` `` |
+| `bosluk` | `metin` (boşluk yerine `___`), `cevaplar` (her boşluk için kabul edilen cevaplar dizisi), isteğe bağlı `izah` | Büyük/küçük harf (I/ı/İ/i dahil), ş/s, ğ/g, ü/u, ö/o, ç/c farkı, fazla boşluk ve sondaki nokta önemsiz; 5–7 harflik cevapta 1, 8+ harfte 2 harf yazım hatası kabul edilir (ilk harf, rakam ve işaretler tam tutmalı; 4 harf ve altı tam). Yazımı ayrı ama anlamı aynı karşılıklar ("geri besleme"/"geribesleme") yine `cevaplar`'a yazılır. Boşluk kod içinde de olabilir: `` `usermod ___ -aG sudo` `` |
 | `dizme` | `soru`, `parcalar` (doğru sırada, en az 2), isteğe bağlı `komut` (true ise parçalar boşlukla birleşir), `izah` | |
 | `esles` | `soru`, `ciftler` ([sol, sağ], 2–8 çift), isteğe bağlı `izah` | Sol ve sağ sütunda tekrar olmaz |
 | `izleme` | `soru`, `kod` (zorunlu), `secenekler`, `dogru`, `izah` | Kodun ya da akışın çıktısı sorulur |
 | `hesap` | `soru`, `cevap` (sayı), isteğe bağlı `tolerans` (≥0) ve `birim`, `izah` (çözüm yolu) | Virgül de ondalık ayırıcı sayılır; binlik ayırıcılı cevap (1.000) yazılırsa öğrenciye sorulur |
-| `klasik` | `soru`, `cevap` (örnek cevap), isteğe bağlı `anahtarlar` | Öğrenci kendini Bildim / Kısmen / Bilemedim diye puanlar |
+| `klasik` | `soru`, `cevap` (örnek cevap), isteğe bağlı `anahtarlar` | Öğrenci kendini Bildim / Kısmen / Bilemedim diye puanlar; `anahtarlar` aynı hoşgörüyle ve ekli hâliyle de ("işlemciye") yeşil olur |
 
 Örnek:
 

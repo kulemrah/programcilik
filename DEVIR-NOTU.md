@@ -33,16 +33,38 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
 
 ## 3. Teslim durumu
 
-- Çalışma kopyasının son hâli: `programcilik-son.zip` + guncelleme-30 + `KAYNAK_URL`'li `index.html`/`sw.js` (v19) + guncelleme-31 + guncelleme-32. GitHub'daki deponun bu hâle getirilmesi gerekir.
-- guncelleme-31: Kaynak → **Notlar**; bağlantısız çalışma (gönderilecekler sırası, her iş ayrı kayıt), 5 sn geri alınabilir silme, iki sütunlu kutucuklar (başlık, ön izleme, tarih), sağ altta + (simgeli seçenekler), biçimli not editörü (B/I/U/S, renk, madde, numaralı, ara başlık, metnin arasında resim, "- " ve "1. " kısayolları, geri al/yinele, otomatik kayıt), MB yalnızca Notlar kökünde ve Hesap'ta, Hesap › Notlar › Resimler paneli. Şema (01-sema.sql) ve Worker değişti: önce SQL, sonra `npx wrangler deploy`, sonra uygulama. Teslim edildi; yüklendiği teyit edilmedi.
-- guncelleme-32: Hesap › Bu cihaz (cihaz türü Bilgisayar/Tablet/Telefon ve ölçek; yalnızca cihazda), alt çubukta ve çekmecede kaydırarak sekme değiştirme (uçlarda döner), Bilgisayar modunda Alt kısayolları, geniş ekranda "Derslere göre süre" listesinin daralması düzeldi (kapsayıcı sorgusu). Ardından: ölçek üst başlık ve alt çubuğu etkilemez; menüde kaydırma yönü sayfa çevirir gibi (alt çubuğun tersi); güncelleme notu s2.1 ve Hesap › Yama Notları. Yalnızca uygulama değişti (SQL/Worker yok); sw v21. Hamza telefonda denedi: alt çubuk kaydırması ve kurulu uygulamada Alt sorunsuz.
-- algoritma-hafta-5: Algoritma 5. hafta (KDV ve denklem, sayaç, sayaçlı döngü örnekleri; konu 11–13; ISO 5807 sembolleriyle Ek akış şemaları; ardından bütün Algoritma notlarından C++ ekleri kaldırıldı). Yalnızca içerik; yükleme `node araclar/icerik-aktar.mjs`. Teslim edildi; yüklendiği teyit edilmedi.
-- guncelleme-34: sınav takvimi. `icerik/agac.json` › `sinavlar` (aktarıcı doğrular ve ağaçla yükler; hususi dersin sınavı hususi satıra), menü › Takvim'in altında gün gün kutular; yama notu s2.2; sw v22. Şema ve Worker değişmedi. Teslim edildi; yüklendiği teyit edilmedi.
-- Teslim edilen ama GitHub'a yüklendiği **teyit edilmeyen** paketler: guncelleme-20, 21, 22, 23, 24, aglar-ders-1, guncelleme-25. `programcilik-son.zip` bunların hepsini kapsar; tek tek yüklemeye gerek yok.
-- guncelleme-30 (26–29'u da kapsar): görsel dizilerinin yüksekliği görünen görsele uyar (en çok 60vh), sol ok düzeldi, büyüteçte dizinin görselleri arasında geçiş. Önceki 29: Kaynak sekmesi (tasnifler, resimler, notlar; Hesap'ta Kaynak resimleri), `kaynak-worker/`, şema 8. bölüm; pencerede metin alanı; soru penceresi açıkken geri tuşu yalnızca pencereyi kapatır; ayrıca 28'deki her şey (her sekmenin kendi geri geçmişi, Kıraat, 42 Tarzı seçimi, Hesap boşluğu, Elektrik 13–15, kurulum şeridi). Teslim edildi, GitHub'a yüklendiği teyit edilmedi. `programcilik-son.zip`'in üstüne yüklenir.
-- guncelleme-24'te eski ikonlar silindi: depoda `uygulama/ikon-*.png` ve `uygulama/apple-touch-icon.png` kaldıysa `git rm` ile silinir.
+- **Çalışma kopyasının son hâli `programcilik-son.zip`'tedir** (4 Kasım 2026; guncelleme-36'ya kadar her şey). GitHub'daki depo bu hâle getirilmelidir; aradaki paketlerin hiçbirinin yüklendiği teyit edilmedi. Paket, test ekran görüntülerini (`test/tarayici/*.png`), test sitesini (`site/`), aktarıcı çıktısını (`test/gercek/cikti/`) ve `node_modules`'ü içermez; bunlar testlerde yeniden üretilir.
+- Paketlerin sırası (hepsi teslim edildi; yüklendiği teyit edilmedi):
+  - guncelleme-31: Kaynak → **Notlar**; bağlantısız sıra, 5 sn geri al, iki sütunlu kutucuklar, + menüsü, biçimli not editörü, Hesap › Notlar › Resimler. **Şema ve Worker değişti:** önce SQL Editor'de `01-sema.sql`, sonra `kaynak-worker`'da `npx wrangler deploy`, sonra uygulama.
+  - guncelleme-32/33: Hesap › Bu cihaz (Bilgisayar/Tablet/Telefon, ölçek), alt çubukta ve çekmecede kaydırarak geçiş, Alt kısayolları, geniş ekranda "Derslere göre süre" düzeltmesi; ölçek üst başlık ve alt çubuğu etkilemez; çekmecede ters yön; yama notu s2.1 ve Hesap › Yama Notları. Hamza telefonda denedi: alt çubuk kaydırması ve Alt sorunsuz.
+  - algoritma-hafta-5: Algoritma konu 11–13 (KDV ve denklem, sayaç, sayaç örnekleri; Ek akış şemaları); bütün Algoritma notlarından C++ ekleri kaldırıldı. Yalnızca içerik.
+  - guncelleme-34: sınav takvimi (menü › Takvim'in altı; `agac.json › sinavlar`), yama notu s2.2, sw v22.
+  - guncelleme-35: Ekoloji 1. Kısa Sınav eklendi (yalnızca `agac.json` + `sinav_sina.py`).
+  - guncelleme-36: Temrin'de "Bilmiyorum" (klasik ve kavram kartları hariç her tür; yanlış sayılır, doğrusu gösterilir), yazım hoşgörüsü (`cevapTutar`, `metindeGeciyor`: büyük/küçük, ı/i ve Türkçe harf farkı; 5–7 harfte 1, 8+ harfte 2 harf hatası; ilk harf, rakam ve işaretler tam tutmalı; 4 harf ve altı tam), ilerleme çubuğu düzeltmesi (`.dolu` satır içi olduğu için genişlik almıyordu), notta ilgili bölümün yanıp sönmesi (`bolumuYak`) ve başlığın üst çubuğun altında kalmaması; yama notu s2.3, sw v23.
+- Depoda `uygulama/ikon-*.png` ya da `uygulama/apple-touch-icon.png` kaldıysa `git rm` ile silinir (guncelleme-24'te kaldırıldılar).
+- Sınav listesi şu an: Veritabanı 1. Kısa Sınav 6 Kasım 20:30, Ağlar 1. Kısa Sınav 6 Kasım 21:30, Ekoloji 1. Kısa Sınav 10 Kasım 19:00 (10 soru, 10 dk, 19:00–20:00 açık); üçü de LMS.
 
 ## 4. 🔶 Açık kalanlar
+
+### 4.1 Hamza'nın kararını bekleyenler (yeni)
+
+1. **Göz koruyucu yenilemesi:** şimdiki mod ekranın önüne sıcak renkli (turuncu) yarı saydam bir katman koyar (3 kademe). Kanıta göre mavi ışık süzmenin göz yorgunluğuna etkisi zayıf (Cochrane 2023); gerçekten işe yarayanlar 20-20-20 molası, göz kırpma, parlaklığı/parlamayı azaltmak, okuma rahatlığı. Önerilip **karar bekleyenler:**
+   - 20-20-20 mola hatırlatıcısı (20 dk'da bir "20 sn uzağa bakın") ve göz kırpma hatırlatıcısı: aralığı ne olsun, kapatılabilsin mi?
+   - Turuncu katmanın yerine siyah karartma kaydırıcısı mı, ikisi birlikte mi?
+   - Okuma rahatlığı ayarları (kontrast, satır aralığı, yazı boyu).
+   - Akşam otomatik açılma.
+   Hiçbiri yapılmadı.
+2. **Sınav listesi:** (a) günü geçen sınav şimdi gizleniyor; gri hâlde kalsın mı? (b) hocanın adı da yazsın mı?
+3. **Algoritma 5. hafta:**
+   - Sınıfta çizilen akış şeması sembolleri notlardaki ISO 5807 sembollerinden farklıysa Hamza fotoğraf gönderecek.
+   - Çözüm belgesinin (`bp_5_hafta.pdf`) yazarı "laboratuvar" mı, hoca mı? Notta "hocanın çözümü" yazıyor.
+   - 5. hafta slaytlarının "_2" kısmı gelmedi; varsa işlenecek.
+   - Hocaya sorulacaklar: KDV/denklem çözümünde `delta^1/2` ve `/2*a` yazımı (işlem önceliği), en büyük sayı çözümündeki `yenienbuyuk` hatası (notta Dikkat ile düzeltildi, hocanınki korundu).
+4. **Algoritma konu 02:** hocanın kendi slaytlarındaki C++ bölümleri (dil seviyeleri, "Neden C++") şimdilik duruyor; Hamza kaldırılmasını isterse kaldırılır.
+5. **Bu cihaz:** Tablet ve Telefon modlarının ayrı davranışı henüz yok (yalnızca Bilgisayar'da Alt kısayolları); ne farklı olsun?
+6. **guncelleme-31'den:** Notlar'da sıralama (şimdi en son değişen üstte), içi dolu tasnif silme onayı, öntanımlı kota (100 MB), + menüsünün etiketleri; Hamza denedikten sonra değiştirmek isterse.
+
+### 4.2 Eski açıklar
 
 1. **Kod e-postası paneli:** Supabase SMTP **Sender name** `Kostü - Ders` ve iki şablon (Confirm sign up, Magic link or OTP) KURULUM.md bölüm 2'ye göre güncellenecek; yapıldığı teyit edilmedi.
 2. **GitHub Pro:** öğrenci başvurusu bekleniyor; gelince depo private yapılacak.
@@ -54,7 +76,8 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
 5. **Bekleyen eski kararlar:** dondurma birikmesine üst sınır (şimdi yok), koyu temada beyaz saat kartları, iPhone'da yeni ikon için uygulamanın ana ekrana yeniden eklenmesi.
 6. **guncelleme-31'in sırası:** SQL Editor'de `01-sema.sql`, sonra `kaynak-worker`'da `npx wrangler deploy`, sonra uygulama. Yapıldığı teyit edilmedi.
 7. İsteğe bağlı: Supabase'in R2 yedeği kurulmadı (KURULUM.md "Yedek"); Kaynak resimlerinin tek kopyası R2'dedir.
-8. Gerçek cihazda denenmedi: Android/iPhone'da menü kapanması, Brave'de oturum, yana kaydırılan resimler ve büyüteç; her sekmenin kendi geri geçmişi (özellikle Kıraat kökündeki çıkış uyarısı); Notlar'da iPhone'dan resim ekleme (WebAssembly kodlayıcı); not editöründe klavye üstü çubuk (visualViewport), Gboard/iOS klavyesiyle "- " kısayolu, biçim düğmelerine dokununca klavyenin açık kalması; alt çubukta kaydırma (Android hareketli gezinmede alt kenar), ölçekle (zoom) yerleşim, kurulu masaüstü uygulamasında Alt'ın pencere menüsünü açmaması.
+8. Silinen hesapların R2'deki resimlerini temizleyecek yönetici komutu yazılmadı.
+9. Gerçek cihazda denenmedi: Android/iPhone'da menü kapanması, Brave'de oturum, yana kaydırılan resimler ve büyüteç; her sekmenin kendi geri geçmişi (özellikle Kıraat kökündeki çıkış uyarısı); Notlar'da iPhone'dan resim ekleme (WebAssembly kodlayıcı); not editöründe klavye üstü çubuk (visualViewport), Gboard/iOS klavyesiyle "- " kısayolu, biçim düğmelerine dokununca klavyenin açık kalması; alt çubukta kaydırma (Android hareketli gezinmede alt kenar), ölçekle (zoom) yerleşim, kurulu masaüstü uygulamasında Alt'ın pencere menüsünü açmaması.
 
 ## 5. Depo düzeni
 
@@ -73,7 +96,7 @@ icerik/
   envanter/<ders>.md slayt slayt döküm, sorunlar tablosu ve kararlar (uygulamaya gitmez)
 supabase/01-sema.sql tekrar çalıştırılabilir tam şema (8. bölüm Kaynak)
 kaynak-worker/       worker.js (R2 + kota, Cloudflare Worker), wrangler.toml, package.json
-uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v18), manifest,
+uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v23), manifest,
                      supabase.js, ikonlar kostu-192/512.png, kostu-maskable-512.png, kostu-apple-180.png
 test/tarayici/       Playwright testleri, test/gercek/sahte_supa.py
 test/sql/            şemanın yerel PostgreSQL denemesi (Supabase taklidi + Kaynak denemesi)
@@ -165,9 +188,9 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 - **Seçim ekranı (kapsam):** `kapsamCiz(alan)` / `dersKapsamiCiz(ders, alan)` Temrin (`calis`, bütün konular) ve 42 Tarzı (`kart`, yalnızca kartlı konular) için ortaktır; ayarları `KAPSAM_ALANLARI`'nda. Seçimler ayrı tutulur.
 - **42 Tarzı:** ana ekranda "Ders ve konular" düğmesi, iki anahtar (mühim yerler, bilemediklerim), "N kartla çalış" ve "Kartları liste hâlinde oku" (`kartListesiCiz`, ayrı ekran). Seçim yoksa yalnızca "Ders ve konu seç".
 - **Yüzen şeritler:** kurulum şeridi (`.kurulum`) ve okuma çubuğu (`.oynatma`) alt çubuğun üstünde sabit durur. `altBosluguAyarla` (MutationObserver + ResizeObserver) görünür şeridin yüksekliğini `--serit-alt` değişkenine yazar; `body`'nin alt boşluğu buna göre büyür ki en alttaki düğmeler (konu seçimindeki "Tamam" gibi) şeridin altında kalmasın. Yeni bir sabit alt şerit eklenirse `YUZEN_SERITLER` seçicisine eklenir.
-- **Service worker:** önbellek `programcilik-v22`; index.html değişince `sw.js`'teki sürüm bir artırılır.
+- **Service worker:** önbellek `programcilik-v23`; index.html değişince `sw.js`'teki sürüm bir artırılır.
 
-## 9. Test düzeneği (test-son.zip)
+## 9. Test düzeneği (programcilik-son.zip içinde)
 
 Proje `/home/claude/programcilik`, testler `test/tarayici` ve `test/gercek` altında varsayılır.
 
@@ -192,6 +215,7 @@ Proje `/home/claude/programcilik`, testler `test/tarayici` ve `test/gercek` alt�
    - `sina.py` (99)
    - dersler: `alg_sina.py`, `vt_sina.py`, `eko_sina.py`, `el_sina.py`, `ag_sina.py`, `dn_sina.py`
    - `tum_sorular_sina.py` (bütün soruların doğru cevapla doğru sayılması)
+   - `bilmiyorum_sina.py` (51: her türde Bilmiyorum, yazım hoşgörüsü, ilerleme çubuğu, notta bölümün yanıp sönmesi)
    - `galeri_sina.py` (dizi, büyüteç, soru görselleri)
    - `cevrimdisi_sina.py`, `buda_sina.py`
    - `hedef_sina.py`, `saat_cekmece_sina.py`, `takvim_gelecek_sina.py`
