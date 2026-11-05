@@ -5297,7 +5297,7 @@ function sinavListesi() {
   return liste
     .map(x => ({ ...x, t: Date.parse(x.zaman) }))
     .filter(x => x && typeof x.ad === "string" && !isNaN(x.t))
-    .sort((a, b) => a.t - b.t || String(a.ders).localeCompare(String(b.ders)));
+    .sort((a, b) => a.t - b.t || String(a.ders || a.dersAdi).localeCompare(String(b.ders || b.dersAdi)));
 }
 function sinavBolumu() {
   const kart = olustur("section", "ist-kart sinav-kart");
@@ -5334,12 +5334,13 @@ function sinavBolumu() {
       saat.textContent = new Date(x.t).toLocaleTimeString("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit" });
       const bilgi = olustur("div", "bilgi");
       const ders = olustur("div", "ders");
-      ders.textContent = DERSLER.has(x.ders) ? DERSLER.get(x.ders).ad : String(x.ders);
+      ders.textContent = DERSLER.has(x.ders) ? DERSLER.get(x.ders).ad : String(x.dersAdi || x.ders);
       const ad = olustur("div", "ad");
       ad.textContent = x.ad + (x.t < simdi ? " · saati geçti" : "");
       bilgi.append(ders, ad);
       const ek = (metin, sinif) => { const p = olustur("p", sinif); p.textContent = metin; bilgi.appendChild(p); };
       if (x.lms === true) ek("Sınav LMS üzerinden çevrimiçi olacak.", "lms");
+      else if (x.modul === true) ek("Sınav KOSTÜ Sınav Modülü üzerinden çevrimiçi olacak.", "lms");
       if (typeof x.yer === "string" && x.yer) ek("Yer: " + x.yer, "yer");
       if (typeof x.not === "string" && x.not) ek(x.not, "not");
       satir.append(saat, bilgi);

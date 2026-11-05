@@ -118,7 +118,7 @@ function agaciDogrula() {
   return { agac, dersler };
 }
 
-/* Sınav takvimi (isteğe bağlı): { ders, ad, zaman, lms?, yer?, not? }.
+/* Sınav takvimi (isteğe bağlı): { ders | dersAdi, ad, zaman, lms? | modul?, yer?, not? }.
    zaman Türkiye saatiyle ve saat dilimi yazılı: "2026-11-06T20:30+03:00".
    Uygulamada menü › Takvim'in altında gün gün gösterilir; geçmiş günler gizlenir. */
 const SINAV_ZAMANI = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::00)?\+03:00$/;
@@ -129,19 +129,24 @@ function sinavlariDogrula(yer, sinavlar, dersler) {
   sinavlar.forEach((s, i) => {
     const sy = yer + " > sinavlar[" + i + "]";
     if (!s || typeof s !== "object") { hata(sy, "nesne olmalı"); return; }
-    bilinmeyenAlanlar(sy, s, ["ders", "ad", "zaman", "lms", "yer", "not"]);
-    if (!dersler.has(s.ders)) hata(sy, "ders '" + s.ders + "' agac.json'da tanımlı değil");
+    bilinmeyenAlanlar(sy, s, ["ders", "dersAdi", "ad", "zaman", "lms", "modul", "yer", "not"]);
+    /* ders: ağaçtaki ders kimliği; uygulamada olmayan bir dersin sınavı için bunun yerine dersAdi (düz yazı) */
+    if (s.ders !== undefined && s.dersAdi !== undefined) hata(sy, "'ders' ile 'dersAdi' birlikte yazılamaz");
+    else if (s.ders === undefined) temizMetin(sy, "dersAdi", s.dersAdi);
+    else if (!dersler.has(s.ders)) hata(sy, "ders '" + s.ders + "' agac.json'da tanımlı değil");
     temizMetin(sy, "ad", s.ad);
     temizMetin(sy, "yer", s.yer, false);
     temizMetin(sy, "not", s.not, false);
     if (s.lms !== undefined && typeof s.lms !== "boolean") hata(sy, "'lms' true ya da false olmalı");
+    if (s.modul !== undefined && typeof s.modul !== "boolean") hata(sy, "'modul' true ya da false olmalı");
+    if (s.lms === true && s.modul === true) hata(sy, "'lms' ile 'modul' birlikte true olamaz");
     const m = typeof s.zaman === "string" ? s.zaman.match(SINAV_ZAMANI) : null;
     if (!m) { hata(sy, "'zaman' \"YYYY-AA-GGTSS:DD+03:00\" biçiminde olmalı (ör. 2026-11-06T20:30+03:00)"); return; }
     const [ , y, a, g, sa, dk] = m.map(Number);
     const t = new Date(Date.UTC(y, a - 1, g, sa - 3, dk));
     if (t.getUTCFullYear() !== y || t.getUTCMonth() !== a - 1 || sa > 23 || dk > 59 ||
         new Date(Date.UTC(y, a - 1, g)).getUTCDate() !== g) hata(sy, "'zaman' geçerli bir tarih ve saat değil");
-    const anahtar = s.ders + "|" + s.ad + "|" + s.zaman;
+    const anahtar = (s.ders || s.dersAdi) + "|" + s.ad + "|" + s.zaman;
     if (gorulen.has(anahtar)) hata(sy, "aynı sınav iki kez yazılmış");
     gorulen.add(anahtar);
   });

@@ -61,9 +61,11 @@ icerik/
 ```
 
 - `ders`: ağaçtaki bir ders kimliği; uygulamada dersin tam adı yazılır. Hususi bir dersin sınavı yalnızca hususi hesaplara gider.
+- `dersAdi`: uygulamada olmayan bir dersin sınavı için (ör. Matematik) `ders` yerine düz yazı ders adı; ikisi birlikte yazılmaz. Böyle sınav herkese gider.
 - `ad`: sınavın adı (1. Kısa Sınav, Vize, Final…).
 - `zaman`: Türkiye saatiyle, saat dilimi yazılarak: `YYYY-AA-GGTSS:DD+03:00`.
 - `lms`: `true` ise "Sınav LMS üzerinden çevrimiçi olacak." yazar.
+- `modul`: `true` ise "Sınav KOSTÜ Sınav Modülü üzerinden çevrimiçi olacak." yazar (`lms` ile birlikte true olamaz).
 - `yer`, `not`: isteğe bağlı; yazılırsa gösterilir.
 - Geçmiş sınavlar listeden silinmeyebilir; uygulama onları zaten göstermez.
 

@@ -35,6 +35,8 @@
   "sinavlar": [
     { "ders": "veritabani", "ad": "1. Kısa Sınav", "zaman": "2026-11-06T20:30+03:00", "lms": true },
     { "ders": "aglar", "ad": "1. Kısa Sınav", "zaman": "2026-11-06T21:30+03:00", "lms": true },
-    { "ders": "ekoloji", "ad": "1. Kısa Sınav", "zaman": "2026-11-10T19:00+03:00", "lms": true, "not": "10 soru, süre 10 dakika. Sınav 19:00'da açılır, 20:00'da kapanır." }
+    { "ders": "algoritma", "ad": "Sınav", "zaman": "2026-11-09T20:00+03:00", "modul": true, "not": "10 soru, süre 20 dakika, ağırlık %10. Sınav 20:00'da açılır, 21:00'da kapanır." },
+    { "ders": "ekoloji", "ad": "1. Kısa Sınav", "zaman": "2026-11-10T19:00+03:00", "lms": true, "not": "10 soru, süre 10 dakika. Sınav 19:00'da açılır, 20:00'da kapanır." },
+    { "dersAdi": "Matematik I ve Genel Matematik", "ad": "Kısa Sınav", "zaman": "2026-11-10T20:30+03:00", "modul": true, "not": "Sınav tarihinden önce sisteme giriş yaparak gerekli kontrolleri yapmanız önemlidir." }
   ]
 }

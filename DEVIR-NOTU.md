@@ -41,9 +41,10 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
   - guncelleme-34: sınav takvimi (menü › Takvim'in altı; `agac.json › sinavlar`), yama notu s2.2, sw v22.
   - guncelleme-35: Ekoloji 1. Kısa Sınav eklendi (yalnızca `agac.json` + `sinav_sina.py`).
   - algoritma-hafta-6: Algoritma konu 14–15 (Akış Diyagramları, Akış Diyagramı Örnekleri; hocanın sembolleri ve 9 akış diyagramı); 5. haftanın 3 Ek akış şeması hocanın sembolleriyle yeniden çizildi (ISO sembol şekli kaldırıldı); 02, 04, 07, 09, 10, 11, 12, 13. konularda 6. haftaya göre düzeltmeler (çok durumlu kararda hocanın "adıma git" yolu, Örnek 2 ve 4'ün hocanın çözümü). Yalnızca içerik.
+  - guncelleme-37: Algoritma Sınavı (9 Kasım) ve Matematik Kısa Sınavı (10 Kasım) eklendi; sınav satırına `modul` (Sınav Modülü cümlesi) ve `dersAdi` (ağaçta olmayan ders) alanları; sw v24.
   - guncelleme-36: Temrin'de "Bilmiyorum" (klasik ve kavram kartları hariç her tür; yanlış sayılır, doğrusu gösterilir), yazım hoşgörüsü (`cevapTutar`, `metindeGeciyor`: büyük/küçük, ı/i ve Türkçe harf farkı; 5–7 harfte 1, 8+ harfte 2 harf hatası; ilk harf, rakam ve işaretler tam tutmalı; 4 harf ve altı tam), ilerleme çubuğu düzeltmesi (`.dolu` satır içi olduğu için genişlik almıyordu), notta ilgili bölümün yanıp sönmesi (`bolumuYak`) ve başlığın üst çubuğun altında kalmaması; yama notu s2.3, sw v23.
 - Depoda `uygulama/ikon-*.png` ya da `uygulama/apple-touch-icon.png` kaldıysa `git rm` ile silinir (guncelleme-24'te kaldırıldılar).
-- Sınav listesi şu an: Veritabanı 1. Kısa Sınav 6 Kasım 20:30, Ağlar 1. Kısa Sınav 6 Kasım 21:30, Ekoloji 1. Kısa Sınav 10 Kasım 19:00 (10 soru, 10 dk, 19:00–20:00 açık); üçü de LMS.
+- Sınav listesi şu an: Veritabanı 1. Kısa Sınav 6 Kasım 20:30 ve Ağlar 1. Kısa Sınav 6 Kasım 21:30 (LMS); Algoritma "Sınav" 9 Kasım 20:00–21:00 (10 soru, 20 dk, %10; KOSTÜ Sınav Modülü); Ekoloji 1. Kısa Sınav 10 Kasım 19:00 (10 soru, 10 dk, 19:00–20:00 açık; LMS); Matematik I ve Genel Matematik Kısa Sınavı 10 Kasım 20:30 (KOSTÜ Sınav Modülü; ağaçta olmayan ders, `dersAdi`).
 
 ## 4. 🔶 Açık kalanlar
 

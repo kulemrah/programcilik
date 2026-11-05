@@ -14,8 +14,10 @@ def z(gun, saat, dk=0):
 # Gerçek aktarıcının yüklediği sınavlar (icerik/agac.json)
 genel = next(r for r in YUK["agac"] if r["id"] == 1)
 gercek = genel["veri"].get("sinavlar", [])
-kontrol("aktarıcı sınavları genel ağaca yazdı (3 sınav, zamana göre)",
-        [(x["ders"], x["zaman"]) for x in gercek] == [("veritabani", "2026-11-06T20:30+03:00"), ("aglar", "2026-11-06T21:30+03:00"), ("ekoloji", "2026-11-10T19:00+03:00")], gercek)
+kontrol("aktarıcı sınavları genel ağaca yazdı (5 sınav, zamana göre)",
+        [(x.get("ders") or x.get("dersAdi"), x["zaman"]) for x in gercek] == [("veritabani", "2026-11-06T20:30+03:00"), ("aglar", "2026-11-06T21:30+03:00"), ("algoritma", "2026-11-09T20:00+03:00"), ("ekoloji", "2026-11-10T19:00+03:00"), ("Matematik I ve Genel Matematik", "2026-11-10T20:30+03:00")], gercek)
+kontrol("Algoritma ve Matematik sınavı Sınav Modülü'nde, Matematik ağaçta olmayan ders adıyla",
+        [x.get("modul") for x in gercek[2:]] == [True, None, True] and gercek[4].get("dersAdi") and "ders" not in gercek[4] and not any(x.get("lms") and x.get("modul") for x in gercek), gercek)
 kontrol("hususi ağaçta sınav alanı yok (42 sınavı yok)", "sinavlar" not in next(r for r in YUK["agac"] if r["id"] == 2)["veri"])
 
 # Deneme verisi: bugüne göre kurulur; sıra karışık verilir (uygulama sıralamalı)
@@ -27,6 +29,7 @@ deneme = [
     {"ders": "aglar", "ad": "1. Kısa Sınav", "zaman": z(2, 21, 30), "lms": True},
     {"ders": "donanim", "ad": "Ödev teslimi", "zaman": z(2, 9, 0), "not": "Ödev kâğıt üzerinde getirilecek."},
     {"ders": "elektrik", "ad": "Saati geçen", "zaman": z(0, saat_gecen, 0)},
+    {"dersAdi": "Matematik I ve Genel Matematik", "ad": "Kısa Sınav", "zaman": z(9, 20, 30), "modul": True, "not": "Girişi önceden kontrol edin."},
 ]
 genel["veri"] = dict(genel["veri"], sinavlar=deneme)
 hususi = next(r for r in YUK["agac"] if r["id"] == 2)
@@ -64,6 +67,9 @@ with sync_playwright() as p:
     kontrol("LMS sınavında cümle yazar", vt_["lms"] and "Sınav LMS üzerinden çevrimiçi olacak." in vt_["metin"])
     kontrol("LMS olmayan sınavda cümle yok, not yazar", not iki["satir"][0]["lms"] and "Ödev kâğıt üzerinde getirilecek." in iki["satir"][0]["metin"])
     kontrol("yer yazar", "Yer: B-201" in g[2]["satir"][0]["metin"])
+    mm = g[2]["satir"][1]
+    kontrol("ağaçta olmayan ders düz adıyla yazılır, Sınav Modülü cümlesi çıkar, LMS cümlesi çıkmaz",
+            mm["ders"] == "Matematik I ve Genel Matematik" and "Sınav KOSTÜ Sınav Modülü üzerinden çevrimiçi olacak." in mm["metin"] and "LMS" not in mm["metin"] and "Girişi önceden kontrol edin." in mm["metin"], mm)
     tr_gun = s.evaluate("(z) => new Date(z).toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul', day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' })", z(2, 20, 30))
     kontrol("tarih Türkçe ve gün adıyla", iki["tarih"] == tr_gun and any(a in tr_gun for a in ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"]), iki["tarih"])
     bg = g[0]["satir"][0]
@@ -87,7 +93,7 @@ with sync_playwright() as p:
     # Başka saat diliminde tarayıcı: saat ve gün Türkiye'ye göre
     b = p.chromium.launch()
     c2 = b.new_context(service_workers="block", viewport={"width": 390, "height": 820}, timezone_id="America/New_York")
-    c2.add_init_script("try { localStorage.setItem('pg.kurulum', JSON.stringify('gizli')); localStorage.setItem('pg.notSurumu', JSON.stringify('2.2')) } catch (e) {}")
+    c2.add_init_script("try { localStorage.setItem('pg.kurulum', JSON.stringify('gizli')); localStorage.setItem('pg.notSurumu', JSON.stringify('2.3')) } catch (e) {}")
     c2.route(SUPA + "/**", isle)
     s2 = c2.new_page()
     D["oturumlar"].clear(); D["yerler"].clear(); time.sleep(SUNUCU_KOD_ARALIGI)
