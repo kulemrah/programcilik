@@ -28,12 +28,12 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
 | OTP | 6 hane, 900 sn; iki kod arası 60 sn |
 | Tashih adresi | birkulemrah@gmail.com |
 | Uygulama adı | Ana ekranda **Kostü - Ders**; uygulama içi başlık **Bilgisayar Programcılığı** |
-| Şema | `supabase/01-sema.sql` (sözleşme sürümü 2, kayıt türü `calisma`; 8. bölüm Kaynak: `kaynak_kota`, `kaynak_tasnif`, `kaynak_oge` — notta `baslik`, `bicim`, resimde `not_id`) |
-| Notlar / Kaynak (R2) | **Kuruldu (2 Kasım 2026).** Uygulamadaki adı **Notlar**, iç adı `kaynak`. Cloudflare hesabı birkulemrah@gmail.com, kova `kostu-kaynak`, Worker `https://kostu-kaynak.kostu.workers.dev` (`kaynak-worker/`, workers.dev alt alanı `kostu`), Worker sırrı `SUPABASE_GIZLI_ANAHTAR`. `AYAR.KAYNAK_URL` bu adres. Kişi başı hak `kaynak_kota.azami_mb` (öntanımlı 100). Şemayı ve Worker'ı değiştiren güncellemede sıra: SQL → `npx wrangler deploy` → uygulama |
+| Şema | `supabase/01-sema.sql` (sözleşme sürümü 2, kayıt türü `calisma`; 5b bölüm kodları: `bolum_kodlari`, `bolum_kodu_denemeleri`, `profiller.bolum_kodu`; ağaç kimliği metin `1/<bölüm>/<sınıf>`, `2/hususi`; `konular.programlar`, `konular.sinif`; 8. bölüm Kaynak: `kaynak_kota`, `kaynak_tasnif`, `kaynak_oge` — notta `baslik`, `bicim`, resimde `not_id`) |
+| Notlar / Kaynak (R2) | **Kuruldu (2 Kasım 2026).** Uygulamadaki adı **Notlar**, iç adı `kaynak`. Cloudflare hesabı birkulemrah@gmail.com, kova `kostu-kaynak`, Worker `https://kostu-kaynak.kostu.workers.dev` (`kaynak-worker/`, workers.dev alt alanı `kostu`), Worker sırrı `SUPABASE_GIZLI_ANAHTAR`. `AYAR.KAYNAK_URL` bu adres. Kişi başı hak `kaynak_kota.azami_mb` (öntanımlı 50). Şemayı ve Worker'ı değiştiren güncellemede sıra: SQL → `npx wrangler deploy` → uygulama |
 
 ## 3. Teslim durumu
 
-- **Çalışma kopyasının son hâli `programcilik-son.zip`'tedir** (4 Kasım 2026; guncelleme-36 ve algoritma-hafta-6'ya kadar her şey). GitHub'daki depo bu hâle getirilmelidir; aradaki paketlerin hiçbirinin yüklendiği teyit edilmedi. Paket, test ekran görüntülerini (`test/tarayici/*.png`), test sitesini (`site/`), aktarıcı çıktısını (`test/gercek/cikti/`) ve `node_modules`'ü içermez; bunlar testlerde yeniden üretilir.
+- **Çalışma kopyasının son hâli `programcilik-son.zip`'tedir** (5 Kasım 2026; guncelleme-39'a kadar her şey). GitHub'daki depo bu hâle getirilmelidir; aradaki paketlerin hiçbirinin yüklendiği teyit edilmedi. Paket, test ekran görüntülerini (`test/tarayici/*.png`), test sitesini (`site/`), aktarıcı çıktısını (`test/gercek/cikti/`) ve `node_modules`'ü içermez; bunlar testlerde yeniden üretilir.
 - Paketlerin sırası (hepsi teslim edildi; yüklendiği teyit edilmedi):
   - guncelleme-31: Kaynak → **Notlar**; bağlantısız sıra, 5 sn geri al, iki sütunlu kutucuklar, + menüsü, biçimli not editörü, Hesap › Notlar › Resimler. **Şema ve Worker değişti:** önce SQL Editor'de `01-sema.sql`, sonra `kaynak-worker`'da `npx wrangler deploy`, sonra uygulama.
   - guncelleme-32/33: Hesap › Bu cihaz (Bilgisayar/Tablet/Telefon, ölçek), alt çubukta ve çekmecede kaydırarak geçiş, Alt kısayolları, geniş ekranda "Derslere göre süre" düzeltmesi; ölçek üst başlık ve alt çubuğu etkilemez; çekmecede ters yön; yama notu s2.1 ve Hesap › Yama Notları. Hamza telefonda denedi: alt çubuk kaydırması ve Alt sorunsuz.
@@ -41,8 +41,10 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
   - guncelleme-34: sınav takvimi (menü › Takvim'in altı; `agac.json › sinavlar`), yama notu s2.2, sw v22.
   - guncelleme-35: Ekoloji 1. Kısa Sınav eklendi (yalnızca `agac.json` + `sinav_sina.py`).
   - algoritma-hafta-6: Algoritma konu 14–15 (Akış Diyagramları, Akış Diyagramı Örnekleri; hocanın sembolleri ve 9 akış diyagramı); 5. haftanın 3 Ek akış şeması hocanın sembolleriyle yeniden çizildi (ISO sembol şekli kaldırıldı); 02, 04, 07, 09, 10, 11, 12, 13. konularda 6. haftaya göre düzeltmeler (çok durumlu kararda hocanın "adıma git" yolu, Örnek 2 ve 4'ün hocanın çözümü). Yalnızca içerik.
-  - guncelleme-37: Algoritma Sınavı (9 Kasım) ve Matematik Kısa Sınavı (10 Kasım) eklendi; sınav satırına `modul` (Sınav Modülü cümlesi) ve `dersAdi` (ağaçta olmayan ders) alanları; sw v24.
-  - guncelleme-36: Temrin'de "Bilmiyorum" (klasik ve kavram kartları hariç her tür; yanlış sayılır, doğrusu gösterilir), yazım hoşgörüsü (`cevapTutar`, `metindeGeciyor`: büyük/küçük, ı/i ve Türkçe harf farkı; 5–7 harfte 1, 8+ harfte 2 harf hatası; ilk harf, rakam ve işaretler tam tutmalı; 4 harf ve altı tam), ilerleme çubuğu düzeltmesi (`.dolu` satır içi olduğu için genişlik almıyordu), notta ilgili bölümün yanıp sönmesi (`bolumuYak`) ve başlığın üst çubuğun altında kalmaması; yama notu s2.3, sw v23.
+  - guncelleme-37: Algoritma Sınavı (9 Kasım) ve Matematik Kısa Sınavı (10 Kasım) eklendi; sınav satırına `modul` (Sınav Modülü cümlesi) ve `dersAdi` (ağaçta olmayan ders) alanları.
+  - guncelleme-39: İdare'de kod listesinde oluşturulma, süre, kullanım, bitiş; yeni kodun ve etkin kodların yanında Kopyala; süresi dolmuş ya da dolu kod girilince bilgi mesajı (deneme sayılmaz); Notlar hakkı 100 → 50 MB (öntanımlı ve hâlâ 100'de olanlar; elle değiştirilenler kalır, tek seferlik); yazım hoşgörüsü yalnızca tek klavye hatası (komşu tuş, yer değiştirme, ortada eksik/fazla harf ya da boşluk; 6+ harf; ilk harf ve son üç harf, kısaltmalar, rakam ve işaretler tam; klasikte k/p/t yumuşaması, 5 harf ve altı kelime içinde aranmaz) — ders içeriğindeki bütün terimlerle çapraz tarandı, yanlış kabul yalnızca yazım çeşitleri; yama notu s2.5, sw v25. **Şema değişti:** önce SQL, sonra yükleme.
+  - guncelleme-38: bölüm doğrulama kodu ve İdare (KURULUM.md "Bölüm kodları"); bölüme ve sınıfa göre ağaç, konu ve görsel süzme; `agac.json › programlar`, grup `sinif`, ders `programlar`; sınav takvimi yalnızca BP 1. sınıf; yama notu s2.4, sw v24. **Şema değişti:** önce SQL Editor'de `01-sema.sql`, sonra depoya yükleme (aktarıcı yeni sütunlara yazar; şemadan önce çalışırsa durur, hiçbir şey yüklenmez).
+  - guncelleme-36: Temrin'de "Bilmiyorum" (klasik ve kavram kartları hariç her tür; yanlış sayılır, doğrusu gösterilir), yazım hoşgörüsü (`cevapTutar`, `metindeGeciyor`, `tekKlavyeHatasi`; kural guncelleme-39'da daraltıldı, bkz. orası), ilerleme çubuğu düzeltmesi (`.dolu` satır içi olduğu için genişlik almıyordu), notta ilgili bölümün yanıp sönmesi (`bolumuYak`) ve başlığın üst çubuğun altında kalmaması; yama notu s2.3, sw v23.
 - Depoda `uygulama/ikon-*.png` ya da `uygulama/apple-touch-icon.png` kaldıysa `git rm` ile silinir (guncelleme-24'te kaldırıldılar).
 - Sınav listesi şu an: Veritabanı 1. Kısa Sınav 6 Kasım 20:30 ve Ağlar 1. Kısa Sınav 6 Kasım 21:30 (LMS); Algoritma "Sınav" 9 Kasım 20:00–21:00 (10 soru, 20 dk, %10; KOSTÜ Sınav Modülü); Ekoloji 1. Kısa Sınav 10 Kasım 19:00 (10 soru, 10 dk, 19:00–20:00 açık; LMS); Matematik I ve Genel Matematik Kısa Sınavı 10 Kasım 20:30 (KOSTÜ Sınav Modülü; ağaçta olmayan ders, `dersAdi`).
 
@@ -63,7 +65,8 @@ Yeni sohbete geçiş içindir. Önce `YENI-SOHBET.md`'yi okuyun (kısa harita); 
    - Hocaya sorulacaklar: KDV/denklem çözümünde `delta^1/2` ve `/2*a` yazımı (işlem önceliği), en büyük sayı çözümündeki `yenienbuyuk` hatası, üçgen çözümünde metin (iki ayrı Eğer) ile akış diyagramının 3, 3, 3 girişinde farklı sonuç vermesi (notlarda Dikkat ile açıklandı, hocanınki korundu).
 4. **Algoritma konu 02:** hocanın kendi slaytlarındaki C++ bölümleri (dil seviyeleri, "Neden C++") şimdilik duruyor; Hamza kaldırılmasını isterse kaldırılır.
 5. **Bu cihaz:** Tablet ve Telefon modlarının ayrı davranışı henüz yok (yalnızca Bilgisayar'da Alt kısayolları); ne farklı olsun?
-6. **guncelleme-31'den:** Notlar'da sıralama (şimdi en son değişen üstte), içi dolu tasnif silme onayı, öntanımlı kota (100 MB), + menüsünün etiketleri; Hamza denedikten sonra değiştirmek isterse.
+6. **guncelleme-31'den:** Notlar'da sıralama (şimdi en son değişen üstte), içi dolu tasnif silme onayı, + menüsünün etiketleri; Hamza denedikten sonra değiştirmek isterse.
+7. **Sınav listesi (guncelleme-37):** Algoritma sınavının adı ekran görüntüsünde yazmıyor, "Sınav" yazıldı (1. Kısa Sınav mı?); Matematik Kısa Sınavı'nın süresi ve soru sayısı duyuruda yok.
 
 ### 4.2 Eski açıklar
 
@@ -97,7 +100,7 @@ icerik/
   envanter/<ders>.md slayt slayt döküm, sorunlar tablosu ve kararlar (uygulamaya gitmez)
 supabase/01-sema.sql tekrar çalıştırılabilir tam şema (8. bölüm Kaynak)
 kaynak-worker/       worker.js (R2 + kota, Cloudflare Worker), wrangler.toml, package.json
-uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v23), manifest,
+uygulama/            index.html (tek dosya PWA), sw.js (önbellek programcilik-v25), manifest,
                      supabase.js, ikonlar kostu-192/512.png, kostu-maskable-512.png, kostu-apple-180.png
 test/tarayici/       Playwright testleri, test/gercek/sahte_supa.py
 test/sql/            şemanın yerel PostgreSQL denemesi (Supabase taklidi + Kaynak denemesi)
@@ -109,7 +112,7 @@ DEVIR-NOTU.md, YENI-SOHBET.md
 
 ## 6. İçerik
 
-Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik, Ekoloji. 42 (hususi): Born2beRoot.
+Bölümler: Bilgisayar Programcılığı (`bp`, 2 sınıf). Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik, Ekoloji (hepsi yalnızca Bilgisayar Programcılığı). 42 (hususi): Born2beRoot. Yeni bölüm Hamza söyleyince eklenir: bölümün adı ve dersleri verilir; aynı hocadan aynı ders olanlar ortak kullanılır (dersin `programlar` listesine bölüm eklenir), olmayan dersi o bölüm görmez.
 
 | Ders (id) | Konu | Soru | Kart | Durum |
 | --- | --- | --- | --- | --- |
@@ -155,22 +158,24 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 
 ## 8. Uygulamanın mimarisi (uygulama/index.html)
 
-- **Giriş:** okul adresine OTP. Sözleşme sürüm 2 (`SOZLESME.surum` ile SQL'deki `sozlesme_surumu()` birlikte artırılır). iPhone Safari'de önce "ana ekrana ekle" adımları.
+- **Giriş:** okul adresine OTP, sonra bölüm doğrulama kodu (yalnızca bölümü yazılı olmayan hesapta; `profilEkraniAc` › `kodCiz`, sunucuda `bolum_kodu_kullan`), sonra sözleşme (istemci yalnızca `profiller.sozlesme_surumu`'nu yazabilir). Sözleşme sürüm 2 (`SOZLESME.surum` ile SQL'deki `sozlesme_surumu()` birlikte artırılır). Sıfırlanan hesap bir sonraki doğrulamada (`oturumuDogrula`) kod ekranına düşer. iPhone Safari'de önce "ana ekrana ekle" adımları.
+- **Bölüme göre içerik:** ağaç satırları kitleye göre (`1/<bölüm>/<sınıf>`, `2/hususi`; aktarıcı hazırlar), konu ve görsel kuralı `konu_gorunur` (bölüm dersin `programlar`'ında, sınıf ≥ dersin sınıfı). Uygulama satırları birleştirir; başka bölümün dersinden haberi olmaz. `programlar` tablosunu hesap yalnızca kendi bölümü için okur (yönetici hepsini). Sunucu "profil yok" deyince (sıfırlama) cihazdaki ağaç, konular, görseller ve profil silinir (`bolumuCihazdanSil`); kişisel kayıtlar kalır.
 - **Cihaz sınırı:** 1; doluysa e-postaya ikinci kodla devralma (`cihaz_yokla`, `devralma_iste`, `cihazi_sahiplen`). `KOD_ARALIGI = 60`.
 - **Veri:** içerik `konular`/`agac` tablolarından, IndexedDB'de (`vt`) internetsiz durur. Notlardaki ve sorulardaki bütün görseller eşitlemeden sonra arka planda iner (`gorselleriOnceIndir`, `konuGorselYollari`); kullanılmayanlar budanır (`gorselleriBuda`).
 - **İnternetsiz:** giriş yapılmış cihaz internetsiz açılır; oturum süresi dolsa da kapatılmaz; yapılanlar bekler, internet gelince gider.
 - **Kayıtlar** (`kayitlar`, tür + anahtar, son yazan kazanır, silme `silindi`): okundu, boya, yildiz, yanlis, kart, ayar, yer, muhim, calisma. `ayar/hedef` = `{gecmis:[{g,gun,hafta}]}`, `ayar/dondurma` = `{gunler:[...]}`, `ayar/kimlik`.
-- **Cihazda kalanlar (localStorage):** `pg.mod` (tema), `pg.gozFiltre`, `pg.olcek`, `pg.cihazTuru`, `pg.cekmeceEkrani`, `pg.dondurmaSoruldu`, `pg.yarimCalis`, `pg.yarimKart`, `pg.kapsam` (Temrin seçimi), `pg.kartKapsam` (42 Tarzı seçimi), `pg.muhimSuzgec`, `pg.kartMuhim`, `pg.kartBilemedik`. Eski `pg.kartDers` / `pg.kartKonular` ilk açılışta `pg.kartKapsam`'a taşınıp silinir (`kartKapsaminiTasi`).
+- **Cihazda kalanlar (localStorage):** `pg.mod` (tema), `pg.gozFiltre`, `pg.olcek`, `pg.cihazTuru`, `pg.cekmeceEkrani`, `pg.dondurmaSoruldu`, `pg.yarimCalis`, `pg.yarimKart`, `pg.kapsam` (Temrin seçimi), `pg.kartKapsam` (42 Tarzı seçimi), `pg.muhimSuzgec`, `pg.kartMuhim`, `pg.kartBilemedik`, `pg.yonetici`. Eski `pg.kartDers` / `pg.kartKonular` ilk açılışta `pg.kartKapsam`'a taşınıp silinir (`kartKapsaminiTasi`).
 - **Bu cihaz (Hesap'ta `cihazBolumu`):** hesaba gitmez.
   - *Ölçek:* %70–150, 10'ar; bütün arayüz `html`'e CSS `zoom` ile (`olcekUygula`; ilk boyama `<head>`'deki betikte, aynı kural). Büyütme yerleşim genişliğini 320 px'in altına indirmez (`olcekSiniri`; ekran döndürülünce yeniden). Zoom varken imleç/`getBoundingClientRect`/`visualViewport` ekran pikseli, `style` px'i ve `offsetWidth`/`clientWidth` CSS pikselidir: aradaki çeviri `ekranOrani()` ile (ipucu, kart sürükleme ve uçuşu, editörün klavyeye sığması ve resim çubuğu, çekmece sürükleme). vh/vw CSS'te `var(--zoom-olcek)`'e bölünür (`--olcek` adı istatistik çubuk rengine ait). Üst başlık (`header.ust`) ve alt çubuk ölçekten etkilenmez: onlarda zoom `var(--zoom-ters)` (= 1/ölçek) ile geri alınır; alt çubuğa göre konan her şey (sayfa sonu boşluğu, şeritler, kısa bildirim, + düğmesi, geri al, kenar tutamağı) px'i ölçeğe bölerek konur. Alt çubuğa göre yeni bir sabit konum eklenirse o da bölünmeli. Pikselle konum hesaplayan yeni kod `ekranOrani()`'yi kullanmalı.
   - *Cihaz türü:* `cihazTuru()` = seçilen ya da tahmin (fare+hover: bilgisayar; dokunmatik kısa kenar ≥ 600: tablet; değilse telefon); `html[data-cihaz]`. Şimdilik yalnızca Bilgisayar'da Alt kısayolları açılır.
   - *Alt kısayolları:* Alt basılıyken görünen ve tıklanabilen her öğeye (üstü kapalı olmayan; `elementFromPoint`) rozet (`.kisayol-katman`); Alt + harf `click()` (yazı alanına odak). Harf `e.code`'dan (klavye düzeninden bağımsız); D, E, F kullanılmaz; ad harfi önce (alt çubuk önce dağıtılır: K, A, T, 4, N); 33'ten çok öğede iki harf. Mac'te yazı alanındayken ve AltGr'de devreye girmez. Düğmeye odak verilmez (editörde seçim kalsın).
 - **Üst çubuk:** başlık, göz koruyucu (3 kademe), tema (açık, pembe, koyu, simsiyah), menü (≡).
-- **Çekmece:** menü düğmesi ya da sağ kenardan çekme (`#kenarTutamak`). Dışarıya tek dokunuşla kapanır (`perdeKapatmayiKur`, `cekmeceyiKapat`). Başlık satırında sağa çekmek kapatır; gövdede yana kaydırmak bölüm değiştirir (`cekmeceSurukleKur` + `bolumKaydir`; yön sayfa çevirir gibi, alt çubuğun tersi: parmak sola → sağdaki bölüm; uçlarda döner; çip satırı, girdi ve yana kayan alanlarda devreye girmez; grafiklerin üstünden de olur; gövdede `touch-action:pan-y`). İstatistik düzeni ekrana değil çekmecenin genişliğine bakar (`.hesap-ic` kapsayıcı, `@container`). Dört ekran:
+- **Çekmece:** menü düğmesi ya da sağ kenardan çekme (`#kenarTutamak`). Dışarıya tek dokunuşla kapanır (`perdeKapatmayiKur`, `cekmeceyiKapat`). Başlık satırında sağa çekmek kapatır; gövdede yana kaydırmak bölüm değiştirir (`cekmeceSurukleKur` + `bolumKaydir`; yön sayfa çevirir gibi, alt çubuğun tersi: parmak sola → sağdaki bölüm; uçlarda döner; çip satırı, girdi ve yana kayan alanlarda devreye girmez; grafiklerin üstünden de olur; gövdede `touch-action:pan-y`). İstatistik düzeni ekrana değil çekmecenin genişliğine bakar (`.hesap-ic` kapsayıcı, `@container`). Dört ekran (yöneticide beş):
   - **Hedef ve seri:** yapraklı geri sayan saat (`saatKarti`, `geriSayimSaati`; animasyonlar kapalıyken de döner).
   - **İstatistikler.**
   - **Çalışma takvimi:** günlük/haftalık; tarih her açılışta hesaplanır; ince çizgiler `vector-effect:non-scaling-stroke`. Altında **Sınavlar** (`sinavBolumu`): `AGAC.sinavlar` (ağaçla iner, cihazda kalır), Türkiye saatiyle (`trGunu`, UTC+3); yakından uzağa, aynı gün tek kutu (`.sinav-kutu`), günü geçen gizli, saati geçen sönük; dersin rengi soldaki şeritte. Yeni sınav: `icerik/agac.json`'a bir satır + push (BICIM.md "Sınav takvimi").
   - **Hesap.**
+  - **İdare** (yalnızca yönetici = hususi yetkili; `yoneticiligiSor` → `hususi_yetkili`, `pg.yonetici`'de hesap kimliğiyle; çıkışta silinir): kod üret, hesap bul, kodlar listesi, iptal, bölümü sıfırla (`idareEkrani`, durum `IDARE`). Beş sekmede `.cekmece-sekmeler.bes`.
 - **Dondurma:** ilk hedefin ayından itibaren her ay 3 hak, kullanılmayan birikir (`kalanDondurma`, `dondurmaYeterMi`).
 - **Seri:** günlük hedefe ulaşılan ardışık günler; dondurulan gün köprüdür.
 - **Süre ölçümü:** 5 sn'lik tik, `calisma/"GG|YAZICI"`; bir konuda günde 3 dakikadan azsa süre sayılmaz.
@@ -190,7 +195,7 @@ Ağaç: 1. Sınıf › Güz: Algoritma, Veritabanı, Donanım, Ağlar, Elektrik,
 - **Seçim ekranı (kapsam):** `kapsamCiz(alan)` / `dersKapsamiCiz(ders, alan)` Temrin (`calis`, bütün konular) ve 42 Tarzı (`kart`, yalnızca kartlı konular) için ortaktır; ayarları `KAPSAM_ALANLARI`'nda. Seçimler ayrı tutulur.
 - **42 Tarzı:** ana ekranda "Ders ve konular" düğmesi, iki anahtar (mühim yerler, bilemediklerim), "N kartla çalış" ve "Kartları liste hâlinde oku" (`kartListesiCiz`, ayrı ekran). Seçim yoksa yalnızca "Ders ve konu seç".
 - **Yüzen şeritler:** kurulum şeridi (`.kurulum`) ve okuma çubuğu (`.oynatma`) alt çubuğun üstünde sabit durur. `altBosluguAyarla` (MutationObserver + ResizeObserver) görünür şeridin yüksekliğini `--serit-alt` değişkenine yazar; `body`'nin alt boşluğu buna göre büyür ki en alttaki düğmeler (konu seçimindeki "Tamam" gibi) şeridin altında kalmasın. Yeni bir sabit alt şerit eklenirse `YUZEN_SERITLER` seçicisine eklenir.
-- **Service worker:** önbellek `programcilik-v23`; index.html değişince `sw.js`'teki sürüm bir artırılır.
+- **Service worker:** önbellek `programcilik-v25` (`sw.js`, `ONBELLEK = ON_EK + "v25"`); index.html değişince sürüm bir artırılır. Sayfa önce ağdan gelir, önbellek yedektir.
 
 ## 9. Test düzeneği (programcilik-son.zip içinde)
 
@@ -212,7 +217,7 @@ Proje `/home/claude/programcilik`, testler `test/tarayici` ve `test/gercek` alt�
    su pgk -c "/usr/lib/postgresql/16/bin/pg_ctl -D /home/claude/pgdeneme/veri -o '-p 5499 -k /tmp' -l /home/claude/pgdeneme/log start"
    cd test/kaynak && npm i      # taklit sunucunun PostgreSQL istemcisi (pg)
    ```
-   `sh test/sql/calistir.sh` şemayı Supabase taklidiyle iki kez kurar ve Kaynak SQL denemesini yapar ("KAYNAK SQL: TAMAM", 78 denetim); `node test/kaynak/worker_deneme.mjs` Worker'ı dener (39 kontrol). `kaynak_sina.py`, `notlar_editor_sina.py` ve `cihaz_sina.py` (ortak düzenek `kaynak_taban.py`) bunları kendisi kurar, taklit sunucuyu 8796'da açar.
+   `sh test/sql/calistir.sh` şemayı Supabase taklidiyle iki kez kurar ve Kaynak SQL denemesini yapar ("KAYNAK SQL: TAMAM", 78 denetim); ayrı veritabanlarında bölüm kodları ve bölüme göre içerik ("BÖLÜM SQL: TAMAM", `bolum-deneme.sql`) ile eski şemadan geçişi ("GEÇİŞ SQL: TAMAM", `gecis-deneme.sql`; eski şema `test/sql/eski/01-sema-bolumsuz.sql`) dener; `node test/kaynak/worker_deneme.mjs` Worker'ı dener (39 kontrol). `kaynak_sina.py`, `notlar_editor_sina.py` ve `cihaz_sina.py` (ortak düzenek `kaynak_taban.py`) bunları kendisi kurar, taklit sunucuyu 8796'da açar.
 4. Testler (hepsi son durumda geçiyor):
    - `sina.py` (99)
    - dersler: `alg_sina.py`, `vt_sina.py`, `eko_sina.py`, `el_sina.py`, `ag_sina.py`, `dn_sina.py`
@@ -227,7 +232,8 @@ Proje `/home/claude/programcilik`, testler `test/tarayici` ve `test/gercek` alt�
    - Ders testlerinin 42 Tarzı bölümü ortak `kart_kapsam_sina` (vt_taban.py) ile yapılır.
    - `kaynak_sina.py` (Notlar uçtan uca, 74: tasnif, 3 kademe, + menüsü, resim küçültme ve WebP, Safari yolu, kutucuklar, büyüteç sırası, 5 sn geri al, geri, bağlantısız sıra ve kalıcılığı, kota, kalıcı hata ve Yeniden dene, Hesap › Resimler paneli, tasnif silme, çıkış uyarısı, 358 px)
    - `notlar_editor_sina.py` (not editörü, 85: biçimler, kısayollar, renk, ara başlık, geri al/yinele, otomatik kayıt, tarihler, metindeki resim, yapıştırma süzgeci, kötü niyetli kayıt, düz notlar, boş/uzun not, silme, iki sekme, dar ekran ve klavye)
-   - `sinav_sina.py` (sınav takvimi, 18: sıralama, aynı gün tek kutu, LMS, yer/not, geçmiş gizli, saati geçen sönük, hususi süzme, sunucusuz açılış, başka saat dilimi)
+   - `bolum_sina.py` (bölüm kodu ve İdare, 33: kod ekranı sözleşmeden önce, yanlış/biçimsiz/iptal/süresi dolmuş/dolu kod, kilit, yapıştırılmış tam ad, sözleşme, İdare'de kod üretme/liste/iptal/hesap bul/sıfırla, yönetici olmayanda İdare yok, sıfırlanan hesabın kod ekranına düşmesi ve eski bölüm içeriğinin cihazdan silinmesi (`bolumuCihazdanSil`), 358 px). Taklitte (`vt_taban.py`) `D["profil"] = None` bölüm kodundan önce açılmış hesap (BP 1. sınıf, sözleşmesiz) demektir; kodsuz hesap için `D["kodsuz"] = True`.
+   - `sinav_sina.py` (sınav takvimi, 21: sıralama, aynı gün tek kutu, LMS, yer/not, geçmiş gizli, saati geçen sönük, hususi süzme, sunucusuz açılış, başka saat dilimi)
    - `cihaz_sina.py` (Bu cihaz, 88: alt çubukta ve çekmecede kaydırma, ölçek ve sınırı, cihaz türü, Alt kısayolları, geniş ekranda halka listesi, zoom'da ipucu/rozet/editör, çubukların ölçekten etkilenmemesi, güncelleme notu ve Yama Notları)
    - `serit_sina.py` (kurulum şeridi açıkken en alttaki düğmeler dokunulabilir mi; konu seçimi → Tamam → temrin yolları)
    - Ortak düzenek `vt_taban.py`: Supabase taklidi; görselleri uzantısına göre doğru türle verir. `akis-1.svg` (test görseli) `test/tarayici/` içinde durur.

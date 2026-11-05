@@ -27,7 +27,7 @@ try {
   r = await ist("/durum", "bozuk.belirtec");
   kontrol("bozuk belirteç 401", r.status === 401);
   r = await ist("/durum", A); const d = await r.json();
-  kontrol("durum: 100 MB, 0 kullanılan", r.status === 200 && d.azami_bayt === 104857600 && d.kullanilan_bayt === 0, d);
+  kontrol("durum: 50 MB, 0 kullanılan", r.status === 200 && d.azami_bayt === 52428800 && d.kullanilan_bayt === 0, d);
 
   // Tasnif (uygulamanın yaptığı gibi doğrudan Supabase'e)
   r = await rest("/kaynak_tasnif", A, { method: "POST", body: JSON.stringify({ ad: "Donanım" }) });
@@ -68,7 +68,7 @@ try {
   const kota = await r.json();
   kontrol("hak dolunca 413 ve kota işareti (300000 + 800000 bayt > 1 MB)", r.status === 413 && kota.kota === true, kota);
   kontrol("reddedilen resim R2'de kalmaz", (await (await fetch(K + "/r2")).json()).length === 1);
-  await sql("update public.kaynak_kota set azami_mb = 100 where eposta = 'wa@kocaelisaglik.edu.tr'");
+  await sql("update public.kaynak_kota set azami_mb = 50 where eposta = 'wa@kocaelisaglik.edu.tr'");
   r = await ist("/resim?tasnif=" + T2.id + "&en=10&boy=10", A, { method: "POST", body: webp(800000) });
   const R2y = await r.json();
   kontrol("hak artınca yüklenir", r.status === 201, R2y);

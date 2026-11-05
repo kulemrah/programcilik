@@ -32,10 +32,13 @@ icerik/
 
 ```json
 {
+  "programlar": [
+    { "id": "bilgisayar-programciligi", "ad": "Bilgisayar Programcılığı", "onek": "bp", "sinifSayisi": 2 }
+  ],
   "gruplar": [
-    { "id": "sinif-1", "ad": "1. Sınıf", "donemler": [
+    { "id": "sinif-1", "ad": "1. Sınıf", "sinif": 1, "donemler": [
       { "id": "sinif-1-guz", "ad": "Güz", "dersler": [
-        { "id": "algoritma", "ad": "Algoritma ve Programlama Temelleri", "kisa": "Algoritma" }
+        { "id": "algoritma", "ad": "Algoritma ve Programlama Temelleri", "kisa": "Algoritma", "programlar": ["bilgisayar-programciligi"] }
       ] }
     ] },
     { "id": "42", "ad": "42", "hususi": true, "dersler": [ { "id": "born2beroot", "ad": "Born2beRoot" } ] }
@@ -43,15 +46,18 @@ icerik/
 }
 ```
 
+- `programlar`: bölümler. `id` (kimlik), `ad`, `onek` (bölüm kodunun görünen adının başı, 2–4 küçük İngilizce harf, her bölümde başka: `bp` → `BP1_482913`), `sinifSayisi` (1–6). Sıra, listedeki sıradır. Aktarıcı Supabase'teki `programlar` tablosuna yazar; listeden çıkarılan bölüm sunucudan silinmez (hesaplar ona bağlı olabilir).
+- Hususi olmayan her grup bir sınıftır: `sinif` (1–6). Öğrenci kendi sınıfının ve alt sınıfların gruplarını görür. Bir bölümün `sinifSayisi` sonradan düşürülmez (o sınıftaki hesapların ağacı kaybolur, etkin kodları çalışmaz). İçi baştan boş grup ya da dönem her bölümün ağacına girer; adı bölüme özel olmamalı.
+- Hususi olmayan her ders `programlar` taşır: dersin okutulduğu bölümler. Bir bölüm, listesinde olmayan dersi (ağaçtaki adı, notları, soruları, kartları, görselleri) hiç görmez. Başka bölümde de aynen okutulan ders tek kopya olarak durur, o bölüm listeye eklenir. Bölüm ve sınıf, hesabın bölüm doğrulama kodundan gelir (KURULUM.md, "Bölüm kodları").
 - Bir grup ya `donemler` ya da doğrudan `dersler` taşır, ikisini birden taşımaz.
-- `"hususi": true` yazılan grup (ör. 42) yalnızca hususi yetkisi olan hesaplarda görünür; notları, soruları, kartları ve görselleri de yalnızca o hesaplara iner. Yetki Supabase'de verilir (KURULUM.md, "Hususi dersler"). Hususilik grup düzeyindedir; aynı grupta hem hususi hem herkese açık ders olmaz.
+- `"hususi": true` yazılan grup (ör. 42) yalnızca hususi yetkisi olan hesaplarda görünür; notları, soruları, kartları ve görselleri de yalnızca o hesaplara iner. Yetki Supabase'de verilir (KURULUM.md, "Hususi dersler"). Hususilik grup düzeyindedir; aynı grupta hem hususi hem herkese açık ders olmaz. Hususi grupta `sinif`, hususi derste `programlar` yazılmaz.
 - `kisa` isteğe bağlıdır; etiketlerde ve çiplerde uzun ad yerine kullanılır.
 - Kimlikler (`id`) küçük harf, rakam ve tireden oluşur; ağaçta tekildir.
 - Notu olmayan ders ağaçta durabilir; uygulamada "yakında" görünür.
 
 ### Sınav takvimi
 
-`agac.json` isteğe bağlı bir `sinavlar` listesi de taşır. Sınavlar uygulamada menünün Takvim bölümünün altında yakından uzağa gösterilir; aynı günün sınavları tek kutuda alt alta durur, günü geçen sınavlar gösterilmez.
+`agac.json` isteğe bağlı bir `sinavlar` listesi de taşır. Sınavlar uygulamada menünün Takvim bölümünün altında yakından uzağa gösterilir; aynı günün sınavları tek kutuda alt alta durur, günü geçen sınavlar gösterilmez. Sınav takvimi yalnızca **Bilgisayar Programcılığı 1. sınıfa** gider (aktarıcıda `SINAV_KITLESI`); başka bölümlerin sınavları yazılmaz. Sınavın dersi orada okutulmalıdır.
 
 ```json
 "sinavlar": [
@@ -61,7 +67,7 @@ icerik/
 ```
 
 - `ders`: ağaçtaki bir ders kimliği; uygulamada dersin tam adı yazılır. Hususi bir dersin sınavı yalnızca hususi hesaplara gider.
-- `dersAdi`: uygulamada olmayan bir dersin sınavı için (ör. Matematik) `ders` yerine düz yazı ders adı; ikisi birlikte yazılmaz. Böyle sınav herkese gider.
+- `dersAdi`: uygulamada olmayan bir dersin sınavı için (ör. Matematik) `ders` yerine düz yazı ders adı; ikisi birlikte yazılmaz.
 - `ad`: sınavın adı (1. Kısa Sınav, Vize, Final…).
 - `zaman`: Türkiye saatiyle, saat dilimi yazılarak: `YYYY-AA-GGTSS:DD+03:00`.
 - `lms`: `true` ise "Sınav LMS üzerinden çevrimiçi olacak." yazar.

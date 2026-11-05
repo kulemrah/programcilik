@@ -175,6 +175,19 @@ Yetki bir sonraki eşitlemede işler (uygulama açılınca, öne gelince ya da e
 
 Sıra önemli: dosyaları depoya **yüklemeden önce** `01-sema.sql`'i çalıştır ve kendine yetkiyi ver (bölüm 1, 2. ve 3. adım). Yükleme `icerik/` ve `araclar/` klasörlerine dokunduğu için *İçeriği aktar* hemen çalışır; şema yoksa iş durur ve hiçbir şey yüklenmez. Öyle olursa şemayı çalıştırıp işi **Actions › İçeriği aktar › Run workflow** ile yeniden başlat. Yetkiyi vermeden içerik aktarılırsa 42 grubu senin uygulamanda görünmez; yetkiyi verince bir sonraki eşitlemede gelir.
 
+## Bölüm kodları (İdare)
+
+Yeni bir hesap, e-postadaki giriş kodundan sonra **bölüm doğrulama kodu** ister; kod doğru girilmedikçe o ekrandan çıkılmaz, sonra sözleşme gelir. Hesabın bölümü ve sınıfı yalnızca koddan yazılır; öğrenci kendisi seçemez, sonradan değiştiremez. Kodsuz hesap hiçbir içerik görmez. Bölüm kodundan önce açılmış hesaplar Bilgisayar Programcılığı 1. sınıf sayılır, onlardan kod istenmez.
+
+Kodları uygulamada **menü › İdare** üretir. İdare yalnızca hususi yetkisi olan hesapta görünür (yönetici = `hususi_yetki`'deki, e-postası doğrulanmış adres; bkz. "Hususi dersler"); yetkiyi sunucu denetler.
+
+- **Kod üret:** bölüm, sınıf, geçerlilik süresi (saat + dakika; en çok 7 gün) ve kişi sınırı (en çok 300; öntanımlı 10). Kod 6 rakamdır; görünen adı bölüm önekini ve sınıfı da taşır (`BP1_482913`). Öğrenci yalnızca 6 rakamı yazar.
+- **Kodlar:** son 100 kod; her birinde durumu (Etkin, Kişi sınırı doldu, Süresi doldu, İptal edildi), bölüm ve sınıf, oluşturulma anı ve toplam süresi, kullanım (kullanan / kişi sınırı), bitiş anı ve kullananların adresleri. Etkin kodun ve yeni üretilen kodun yanında **Kopyala** düğmesi vardır (6 rakamı kopyalar). **İptal et** kodu süresinden önce kapatır; kodla girmiş hesaplara dokunmaz.
+- **Hesap bul:** okul adresiyle hesabın bölümünü, sınıfını, kodunu ve sözleşme durumunu gösterir.
+- **Bölümünü sıfırla:** hesabın bölümünü siler; öğrenci bir sonraki açılışında yeni bir kod girer ve sözleşmeyi yeniden onaylar. Notları ve kayıtları silinmez; harcadığı hak geri gelmez. Kendi hesabını sıfırlayamazsın (İdare'ye erişimin kapanırdı).
+
+Her hesap bir kodda bir hak harcar. Hesap başına 5 yanlış denemeden sonra 15 dakika beklenir. Süresi dolmuş ya da kişi sınırı dolmuş bir kod girilirse öğrenciye bunu söyleyen bir bilgi çıkar ve yeni kod istemesi söylenir; bu deneme sayılmaz. Sözleşmeyi hiç onaylamadan bırakmış eski hesaplar da kod girer. Supabase'te bakarken: `profiller` tablosunda `program`, `sinif` ve `bolum_kodu` (kodun satırı); `bolum_kodlari` tablosunda `etiket` (`BP1_482913`), `kullanim`/`azami`, `bitis`, `iptal`.
+
 ## Günlük kullanım
 
 - Yeni not, soru ya da kart: `icerik/dersler/<ders>/` altına dosyaları koy ve gönder. Görseli düzeltmek için aynı adla değiştirmen yeterli; cihazlar yenisini indirir. *İçeriği aktar* yalnızca değişen konuları yükler; bir hata varsa hiçbir şey yüklemez ve hatanın yerini yazar. Biçim: `icerik/BICIM.md`.
@@ -184,13 +197,13 @@ Sıra önemli: dosyaları depoya **yüklemeden önce** `01-sema.sql`'i çalışt
 - Uygulamada değişiklik yaptıktan sonra `uygulama/sw.js` içindeki `ONBELLEK` satırında sürümü bir artır (`"v2"` ise `"v3"` gibi); kurulu uygulamalar yeni sürümü böyle alır.
 - `supabase.js` kütüphanesini yenilersen `index.html` ve `sw.js` içindeki `supabase.js?v=…` sürümünü de değiştir; yoksa cihazlar bir açılış boyunca eski kütüphaneyle çalışır.
 - Sözleşme metnini değiştirirsen `SOZLESME.surum` (index.html) ve `public.sozlesme_surumu()` (SQL) birlikte artırılır; herkes yeni metni yeniden onaylar.
-- Yeni bir bölüm (program) eklemek: `public.programlar` tablosuna satır ekle. Birden fazla program olunca uygulama girişte bölüm sorar.
+- Yeni bir bölüm (program) eklemek: `icerik/agac.json › programlar`'a satır ekle ve o bölümde okutulan derslerin `programlar` listesine bölümü yaz (BICIM.md, "agac.json"); gönderince aktarıcı bölümü Supabase'e yazar. Sonra İdare'den o bölüm için kod üret.
 
 ## Kaynak (R2)
 
 Uygulamadaki adı **Notlar** (kod, tablolar, Worker ve R2 kovası "kaynak" adını taşır). Notlar sekmesinde her öğrenci kendi tasniflerini (en çok üç kademe iç içe) açar, içine biçimli notlarını ve derste çektiği resimleri koyar (resim bir notun metninin arasına da konabilir); hepsini yalnızca kendisi görür. Tasnifler ve notlar Supabase'dedir; resimler Cloudflare R2'dedir. Uygulama her değişikliği önce cihaza yazar, bağlantı olunca gönderir: sınıfta internet yokken de not yazılır, resim eklenir. Uygulama R2'ye doğrudan erişemez (anahtar uygulamaya yazılamaz): yükleme, okuma, silme ve kota denetimi `kaynak-worker/` klasöründeki küçük Cloudflare Worker'ı üzerinden yapılır. Worker her istekte öğrencinin oturumunu Supabase'e sorar; öğrenci okul üyesi değilse, sözleşmeyi onaylamamışsa ya da hesabın aktif cihazında değilse reddeder.
 
-Resimler yüklenmeden önce telefonda küçültülür: uzun kenar en çok 2048 px, WebP %80 kalite. Bir telefon fotoğrafı 3–5 MB'tan yaklaşık 0,25–0,4 MB'a iner; 100 MB'lık hak kabaca 250–400 fotoğraf eder.
+Resimler yüklenmeden önce telefonda küçültülür: uzun kenar en çok 2048 px, WebP %80 kalite. Bir telefon fotoğrafı 3–5 MB'tan yaklaşık 0,25–0,4 MB'a iner; 50 MB'lık hak kabaca 125–200 fotoğraf eder.
 
 Kurulum bir kez yapılır; sıra önemlidir.
 
@@ -217,7 +230,7 @@ Site adresi değişirse (ör. GitHub Pages'ten başka bir alan adına taşınır
 
 ### Kaynak hakkı
 
-Her öğrencinin hakkı `public.kaynak_kota` tablosundadır (`azami_mb`, öntanımlı 100). Satır, öğrenci Kaynak'ı ilk açtığında kendiliğinden açılır. **Table Editor › kaynak_kota**'da `eposta` ile bulup `azami_mb`'yi değiştirebilir ya da SQL Editor'de şunu çalıştırabilirsiniz:
+Her öğrencinin hakkı `public.kaynak_kota` tablosundadır (`azami_mb`, öntanımlı 50). Satır, öğrenci Kaynak'ı ilk açtığında kendiliğinden açılır. **Table Editor › kaynak_kota**'da `eposta` ile bulup `azami_mb`'yi değiştirebilir ya da SQL Editor'de şunu çalıştırabilirsiniz:
 
 ```sql
 update public.kaynak_kota set azami_mb = 300 where eposta = 'ad.soyad@kocaelisaglik.edu.tr';
@@ -231,11 +244,11 @@ select id, lower(email), 300 from auth.users where lower(email) = 'ad.soyad@koca
 on conflict (kullanici) do update set azami_mb = excluded.azami_mb;
 ```
 
-Herkesin öntanımlı hakkını değiştirmek (ör. 150 MB; yalnızca hâlâ 100'de olanlar değişir):
+Herkesin öntanımlı hakkını değiştirmek (ör. 75 MB; yalnızca hâlâ 50'de olanlar değişir):
 
 ```sql
-alter table public.kaynak_kota alter column azami_mb set default 150;
-update public.kaynak_kota set azami_mb = 150 where azami_mb = 100;
+alter table public.kaynak_kota alter column azami_mb set default 75;
+update public.kaynak_kota set azami_mb = 75 where azami_mb = 50;
 ```
 
 Kim ne kadar kullanıyor:

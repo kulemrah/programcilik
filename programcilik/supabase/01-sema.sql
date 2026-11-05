@@ -98,18 +98,26 @@ create trigger parola_engeli
 -- --------------------------------------------------------------------------
 -- 3) Programlar, profiller ve kullanım sözleşmesi
 -- --------------------------------------------------------------------------
--- Okunan bölüm (program). Yeni bir program eklemek için buraya satır eklenir;
--- uygulama listeyi buradan okur, birden fazla program olunca seçtirir.
+-- Okunan bölüm (program). Liste icerik/agac.json > programlar'dadır; içerik
+-- aktarıcı buraya yazar. kod_oneki, bölüm kodunun görünen adının başıdır
+-- ("bp" → "BP1_482913"); her bölümde başkadır.
 create table if not exists public.programlar (
   id           text primary key check (id ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
   ad           text not null,
   sinif_sayisi smallint not null default 2 check (sinif_sayisi between 1 and 6),
-  sira         smallint not null default 0
+  sira         smallint not null default 0,
+  kod_oneki    text
 );
+alter table public.programlar add column if not exists kod_oneki text;
 
-insert into public.programlar (id, ad, sinif_sayisi, sira)
-values ('bilgisayar-programciligi', 'Bilgisayar Programcılığı', 2, 1)
+insert into public.programlar (id, ad, sinif_sayisi, sira, kod_oneki)
+values ('bilgisayar-programciligi', 'Bilgisayar Programcılığı', 2, 1, 'bp')
 on conflict (id) do nothing;
+update public.programlar set kod_oneki = 'bp' where id = 'bilgisayar-programciligi' and kod_oneki is null;
+alter table public.programlar alter column kod_oneki set not null;
+alter table public.programlar drop constraint if exists programlar_kod_oneki_check;
+alter table public.programlar add constraint programlar_kod_oneki_check check (kod_oneki ~ '^[a-z]{2,4}$');
+create unique index if not exists programlar_kod_oneki on public.programlar (kod_oneki);
 
 -- Geçerli sözleşme sürümü. Sözleşme metni değişince burası ve uygulamadaki
 -- SOZLESME.surum birlikte artırılır; herkes yeni metni yeniden onaylar.
@@ -120,14 +128,42 @@ immutable
 set search_path = ''
 as $$ select '2'::text $$;
 
+-- Hesabın bölümü ve sınıfı yalnızca bölüm kodundan yazılır (3b, bolum_kodu_kullan);
+-- istemci yalnızca sözleşme onayını (sozlesme_surumu) yazabilir. Satır kod
+-- girilince açılır; sözleşme o sırada henüz onaylanmamıştır (boş).
 create table if not exists public.profiller (
   kullanici          uuid primary key default auth.uid() references auth.users(id) on delete cascade,
   program            text not null references public.programlar(id),
   sinif              smallint not null check (sinif between 1 and 6),
-  sozlesme_surumu    text not null,
-  sozlesme_onaylandi timestamptz not null default now(),
-  olusturuldu        timestamptz not null default now()
+  sozlesme_surumu    text,
+  sozlesme_onaylandi timestamptz,
+  olusturuldu        timestamptz not null default now(),
+  bolum_kodu         uuid,
+  bolum_yazildi      timestamptz
 );
+
+-- Bölüm kodu gelmeden önceki hesaplar: hepsi Bilgisayar Programcılığı 1. sınıf
+-- sayılır, kod istenmez. Yalnızca bir kez çalışır (bolum_yazildi sütunu
+-- yoksa); sonra kodla girmiş hesaplara dokunulmaz.
+do $$
+begin
+  if not exists (select 1 from information_schema.columns
+                 where table_schema = 'public' and table_name = 'profiller' and column_name = 'bolum_yazildi') then
+    alter table public.profiller add column bolum_kodu uuid, add column bolum_yazildi timestamptz;
+    /* Eski tetikleyici her güncellemede geçerli sözleşmeyi ister; eski sürümü
+       onaylamış hesap geçişi durdurmasın diye bu güncellemede kapatılır */
+    if exists (select 1 from pg_trigger where tgname = 'profil_denetle' and tgrelid = 'public.profiller'::regclass) then
+      alter table public.profiller disable trigger profil_denetle;
+    end if;
+    update public.profiller set program = 'bilgisayar-programciligi', sinif = 1, bolum_yazildi = olusturuldu;
+    if exists (select 1 from pg_trigger where tgname = 'profil_denetle' and tgrelid = 'public.profiller'::regclass) then
+      alter table public.profiller enable trigger profil_denetle;
+    end if;
+  end if;
+end $$;
+alter table public.profiller alter column sozlesme_surumu drop not null;
+alter table public.profiller alter column sozlesme_onaylandi drop not null;
+alter table public.profiller alter column sozlesme_onaylandi drop default;
 
 -- Onay anını sunucu yazar; yalnızca geçerli sürüm onaylanabilir;
 -- sınıf, programın sınıf sayısını aşamaz. security definer: program
@@ -141,7 +177,10 @@ as $$
 declare
   azami smallint;
 begin
-  if new.sozlesme_surumu is distinct from public.sozlesme_surumu() then
+  /* Sözleşme ya hiç onaylanmamıştır (boş) ya da geçerli sürüm onaylanır;
+     önceki onayı korumak (değiştirmemek) de serbesttir */
+  if new.sozlesme_surumu is not null and new.sozlesme_surumu is distinct from public.sozlesme_surumu()
+     and (tg_op = 'INSERT' or new.sozlesme_surumu is distinct from old.sozlesme_surumu) then
     raise exception 'Sözleşmenin geçerli sürümü onaylanmalı';
   end if;
   select p.sinif_sayisi into azami from public.programlar p where p.id = new.program;
@@ -149,12 +188,20 @@ begin
     raise exception 'Program ya da sınıf geçersiz';
   end if;
   if tg_op = 'INSERT' then
-    new.sozlesme_onaylandi := now();
+    new.sozlesme_onaylandi := case when new.sozlesme_surumu is null then null else now() end;
     new.olusturuldu := now();
   else
     new.kullanici := old.kullanici;
     new.olusturuldu := old.olusturuldu;
-    if new.sozlesme_surumu is distinct from old.sozlesme_surumu then
+    /* Bölüm alanları yalnızca koddan yazılır; istemci rolüyle güncellenemez
+       (sütun yetkisinin yanında ikinci kat) */
+    if current_setting('role', true) in ('authenticated', 'anon') then
+      new.program := old.program; new.sinif := old.sinif;
+      new.bolum_kodu := old.bolum_kodu; new.bolum_yazildi := old.bolum_yazildi;
+    end if;
+    if new.sozlesme_surumu is null then
+      new.sozlesme_onaylandi := null;
+    elsif new.sozlesme_surumu is distinct from old.sozlesme_surumu then
       new.sozlesme_onaylandi := now();
     else
       new.sozlesme_onaylandi := old.sozlesme_onaylandi;
@@ -172,20 +219,15 @@ create trigger profil_denetle
 alter table public.programlar enable row level security;
 alter table public.profiller  enable row level security;
 
-drop policy if exists "okul uyesi okur" on public.programlar;
-create policy "okul uyesi okur" on public.programlar
-  for select to authenticated
-  using ((select public.okul_uyesi()));
+-- programlar okuma kuralı 5. bölümdedir (hususi_yetkili orada tanımlanır)
 
 drop policy if exists "kendi profilini okur" on public.profiller;
 create policy "kendi profilini okur" on public.profiller
   for select to authenticated
   using (kullanici = (select auth.uid()) and (select public.okul_uyesi()));
 
+-- Satırı yalnızca bolum_kodu_kullan açar (istemcinin ekleme yetkisi yok)
 drop policy if exists "kendi profilini ekler" on public.profiller;
-create policy "kendi profilini ekler" on public.profiller
-  for insert to authenticated
-  with check (kullanici = (select auth.uid()) and (select public.okul_uyesi()));
 
 drop policy if exists "kendi profilini gunceller" on public.profiller;
 create policy "kendi profilini gunceller" on public.profiller
@@ -195,7 +237,9 @@ create policy "kendi profilini gunceller" on public.profiller
 
 revoke all on public.programlar, public.profiller from anon, authenticated;
 grant select on public.programlar to authenticated;
-grant select, insert, update on public.profiller to authenticated;
+-- Sütun yetkisi: istemci bölümü ve sınıfı değiştiremez, yalnızca sözleşmeyi onaylar
+grant select on public.profiller to authenticated;
+grant update (sozlesme_surumu) on public.profiller to authenticated;
 grant all on public.programlar, public.profiller to service_role;
 
 -- --------------------------------------------------------------------------
@@ -543,20 +587,37 @@ grant execute on function public.uye() to authenticated;
 -- --------------------------------------------------------------------------
 -- 5) İçerik tabloları — yalnızca GitHub Action (gizli anahtar) yazar
 -- --------------------------------------------------------------------------
--- Ağaç: Sınıf > Dönem > Ders yapısı. İki satır:
---   id 1: herkesin gördüğü gruplar
---   id 2: hususi gruplar (agac.json'da "hususi": true) — yalnızca hususi
---         yetkisi olan hesaplar görür
+-- Ağaç: Sınıf > Dönem > Ders yapısı. Görecek kitleye göre satırlara bölünür
+-- (içerik aktarıcı hazırlar); her hesap yalnızca kendi satırını okur:
+--   "1/<bölüm>/<sınıf>": o bölümün o sınıfı (kendi ve alt sınıfların
+--                        grupları, yalnızca o bölümde okutulan derslerle)
+--   "2/hususi":          hususi gruplar (agac.json'da "hususi": true) —
+--                        yalnızca hususi yetkisi olan hesaplar görür
 create table if not exists public.agac (
-  id          smallint primary key default 1,
+  id          text primary key,
   veri        jsonb not null,
   ozet        text not null,
   guncellendi timestamptz not null default now()
 );
 
--- Önceki sürümde kural tek satıra izin veriyordu (adsız; Postgres adı agac_id_check)
+-- Önceki sürümde kimlik sayıydı (1 genel, 2 hususi); bir kez çevrilir.
+-- Genel ağaç Bilgisayar Programcılığı 1. sınıfın satırı olur; aktarıcı
+-- ilk çalışmasında bütün satırları yeniden yazar.
+do $$
+begin
+  if (select data_type from information_schema.columns
+      where table_schema = 'public' and table_name = 'agac' and column_name = 'id') <> 'text' then
+    drop policy if exists "okul uyesi okur" on public.agac;   -- aşağıda yeniden kurulur
+    alter table public.agac drop constraint if exists agac_id_check;
+    alter table public.agac alter column id drop default;
+    alter table public.agac alter column id type text using id::text;
+    update public.agac set id = '1/bilgisayar-programciligi/1' where id = '1';
+    update public.agac set id = '2/hususi' where id = '2';
+  end if;
+end $$;
 alter table public.agac drop constraint if exists agac_id_check;
-alter table public.agac add constraint agac_id_check check (id in (1, 2));
+alter table public.agac add constraint agac_id_check
+  check (id ~ '^(1/[a-z0-9]+(-[a-z0-9]+)*/[1-6]|2/hususi)$');
 
 create table if not exists public.konular (
   id          text primary key,
@@ -574,6 +635,18 @@ create table if not exists public.konular (
 -- Hususi grubun konuları: yalnızca hususi yetkisi olan hesaplar okur
 alter table public.konular add column if not exists hususi boolean not null default false;
 create index if not exists konular_ders on public.konular (ders);
+
+-- Konunun dersi hangi bölümlerde okutuluyor ve kaçıncı sınıfta (aktarıcı
+-- agac.json'dan yazar). Hususi konuda boştur. İlk kurulumda var olan
+-- konular Bilgisayar Programcılığı 1. sınıf sayılır.
+do $$
+begin
+  if not exists (select 1 from information_schema.columns
+                 where table_schema = 'public' and table_name = 'konular' and column_name = 'programlar') then
+    alter table public.konular add column programlar text[] not null default '{}', add column sinif smallint;
+    update public.konular set programlar = '{bilgisayar-programciligi}', sinif = 1 where not hususi;
+  end if;
+end $$;
 
 -- Hususi yetki: bu tabloya okul adresi eklenen hesap hususi dersleri görür.
 -- Yalnızca yönetici (SQL Editor / Table Editor) yazar; uygulamanın yetkisi yok.
@@ -595,12 +668,54 @@ as $$
   select exists (
     select 1 from public.hususi_yetki y
     join auth.users u on lower(u.email) = y.eposta
-    where u.id = auth.uid()
+    where u.id = auth.uid() and u.email_confirmed_at is not null
   );
 $$;
 
 revoke execute on function public.hususi_yetkili() from public, anon;
 grant execute on function public.hususi_yetkili() to authenticated;
+
+-- Hesap yalnızca kendi bölümünü görür (başka bölümlerin varlığını bile);
+-- yönetici (hususi yetkili) hepsini görür (İdare'de kod üretmek için)
+drop policy if exists "okul uyesi okur" on public.programlar;
+create policy "okul uyesi okur" on public.programlar
+  for select to authenticated
+  using ((select public.okul_uyesi()) and (
+    exists (select 1 from public.profiller p where p.kullanici = (select auth.uid()) and p.program = programlar.id)
+    or (select public.hususi_yetkili())));
+
+-- Hesabın ağaç satırı: "1/<bölüm>/<sınıf>" (bölümü yazılı değilse boş)
+create or replace function public.hesap_kitlesi()
+returns text
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select '1/' || p.program || '/' || p.sinif from public.profiller p where p.kullanici = auth.uid();
+$$;
+
+-- Konu bu hesaba görünür mü: hususi konu hususi yetkiyle; öbürü, hesabın
+-- bölümü dersin bölümleri arasındaysa ve sınıfı en az dersin sınıfıysa.
+-- Bir bölüm, kendinde okutulmayan dersin konusunu hiç göremez.
+create or replace function public.konu_gorunur(k_hususi boolean, k_programlar text[], k_sinif smallint)
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select case when k_hususi then public.hususi_yetkili()
+    else exists (
+      select 1 from public.profiller p
+      where p.kullanici = auth.uid()
+        and p.program = any (k_programlar)
+        and k_sinif is not null and p.sinif >= k_sinif
+    ) end;
+$$;
+
+revoke execute on function public.hesap_kitlesi(), public.konu_gorunur(boolean, text[], smallint) from public, anon;
+grant execute on function public.hesap_kitlesi(), public.konu_gorunur(boolean, text[], smallint) to authenticated;
 
 alter table public.agac    enable row level security;
 alter table public.konular enable row level security;
@@ -608,17 +723,276 @@ alter table public.konular enable row level security;
 drop policy if exists "okul uyesi okur" on public.agac;
 create policy "okul uyesi okur" on public.agac
   for select to authenticated
-  using ((select public.uye()) and (id = 1 or (select public.hususi_yetkili())));
+  using ((select public.uye()) and (id = (select public.hesap_kitlesi())
+         or (id = '2/hususi' and (select public.hususi_yetkili()))));
 
 drop policy if exists "okul uyesi okur" on public.konular;
 create policy "okul uyesi okur" on public.konular
   for select to authenticated
-  using ((select public.uye()) and (not hususi or (select public.hususi_yetkili())));
+  using ((select public.uye()) and public.konu_gorunur(hususi, programlar, sinif));
 
 -- Yetkiler açıkça verilir; projenin varsayılan yetki ayarına güvenilmez.
 revoke all on public.agac, public.konular from anon, authenticated;
 grant select on public.agac, public.konular to authenticated;
 grant all    on public.agac, public.konular to service_role;
+
+-- --------------------------------------------------------------------------
+-- 5b) Bölüm kodları ve İdare
+-- --------------------------------------------------------------------------
+-- Hesabın bölümü ve sınıfı, yöneticinin ürettiği kısa ömürlü bir kodla
+-- yazılır; öğrenci bölümünü kendisi seçemez. Kod 6 rakamdır; görünen adı
+-- bölüm önekini ve sınıfı da taşır ("BP1_482913"), ama sır yalnızca 6
+-- rakamdır: bölüm ve sınıf kod satırındaki sütunlardan okunur. Öğrenci
+-- yalnızca 6 rakamı yazar (tam adı yapıştırırsa da kabul edilir).
+-- Her kodun bitiş anı ve kişi sınırı vardır; her hesap bir kodda bir hak
+-- harcar. Hesap başına 5 yanlış denemeden sonra 15 dakika beklenir.
+-- Yönetici: hususi yetkisi olan hesap (hususi_yetki). Kod üretme, liste,
+-- iptal ve hesap sıfırlama yalnızca aşağıdaki işlevlerle yapılır; tablolara
+-- istemcinin hiçbir yetkisi yoktur.
+create table if not exists public.bolum_kodlari (
+  id          uuid primary key default gen_random_uuid(),
+  kod         text not null check (kod ~ '^[0-9]{6}$'),
+  etiket      text not null,
+  program     text not null references public.programlar(id),
+  sinif       smallint not null check (sinif between 1 and 6),
+  olusturuldu timestamptz not null default now(),
+  bitis       timestamptz not null,
+  azami       smallint not null check (azami between 1 and 300),
+  kullanim    smallint not null default 0,
+  iptal       timestamptz,
+  ureten      uuid references auth.users(id) on delete set null,
+  constraint bolum_kodu_kullanim check (kullanim between 0 and azami)
+);
+create index if not exists bolum_kodlari_kod on public.bolum_kodlari (kod);
+
+create table if not exists public.bolum_kodu_denemeleri (
+  kullanici uuid primary key references auth.users(id) on delete cascade,
+  yanlis    smallint not null default 0,
+  kilit     timestamptz,
+  son       timestamptz not null default now()
+);
+
+alter table public.bolum_kodlari enable row level security;
+alter table public.bolum_kodu_denemeleri enable row level security;
+revoke all on public.bolum_kodlari, public.bolum_kodu_denemeleri from anon, authenticated;
+grant all on public.bolum_kodlari, public.bolum_kodu_denemeleri to service_role;
+
+-- Profilin hangi koddan yazıldığı (kod satırı silinirse boşalır)
+alter table public.profiller drop constraint if exists profiller_bolum_kodu_fkey;
+alter table public.profiller add constraint profiller_bolum_kodu_fkey
+  foreign key (bolum_kodu) references public.bolum_kodlari(id) on delete set null;
+create index if not exists profiller_bolum_kodu on public.profiller (bolum_kodu);
+
+-- Öğrenci kodu girer. Dönen durum:
+--   tamam (program, programAdi, sinif) | zaten (bölümü zaten yazılı)
+--   bicim (6 rakam değil; deneme sayılmaz)
+--   yanlis (kalan: kilide kadar kalan deneme)
+--   suresi_doldu | dolu (kod gerçek ama kullanılamaz; deneme sayılmaz)
+--   kilitli (saniye: kilidin bitmesine kalan)
+-- Yanlış deneme hata fırlatmaz ki sayaç kaydedilsin.
+create or replace function public.bolum_kodu_kullan(girilen text)
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  ben uuid := auth.uid();
+  sade text;
+  k public.bolum_kodlari%rowtype;
+  d public.bolum_kodu_denemeleri%rowtype;
+  neden text;
+  pad text;
+begin
+  if ben is null or not public.okul_uyesi() then
+    raise exception 'Yetkisiz';
+  end if;
+  if exists (select 1 from public.profiller p where p.kullanici = ben) then
+    return jsonb_build_object('durum', 'zaten');
+  end if;
+  /* "BP1_482913", "bp1-482913", "482 913" → 482913 (önek bilgi içindir) */
+  sade := regexp_replace(coalesce(girilen, ''), '^\s*[A-Za-z]{2,4}[1-6]\s*[_-]?', '');
+  sade := regexp_replace(sade, '\s', '', 'g');
+  if sade !~ '^[0-9]{6}$' then
+    return jsonb_build_object('durum', 'bicim');
+  end if;
+
+  /* Hesabın deneme satırı kilitlenir: aynı hesabın eşzamanlı denemeleri sırayla işler */
+  insert into public.bolum_kodu_denemeleri (kullanici) values (ben) on conflict (kullanici) do nothing;
+  select * into d from public.bolum_kodu_denemeleri where kullanici = ben for update;
+  if d.kilit is not null and d.kilit > now() then
+    return jsonb_build_object('durum', 'kilitli', 'saniye', ceil(extract(epoch from d.kilit - now()))::int);
+  end if;
+  if d.kilit is not null then
+    update public.bolum_kodu_denemeleri set yanlis = 0, kilit = null where kullanici = ben;
+    d.yanlis := 0;
+  end if;
+
+  /* Son hak için yarışan iki hesap: satır kilidi sırayla işletir, ikincisi
+     koşulu (kullanim < azami) güncel satırda yeniden sınar */
+  select * into k from public.bolum_kodlari b
+  where b.kod = sade and b.iptal is null and b.bitis > now() and b.kullanim < b.azami
+  order by b.olusturuldu desc
+  limit 1
+  for update;
+
+  if not found then
+    select case when b.bitis <= now() then 'suresi_doldu' when b.kullanim >= b.azami then 'dolu' end
+      into neden
+    from public.bolum_kodlari b
+    where b.kod = sade and b.iptal is null
+    order by b.olusturuldu desc
+    limit 1;
+    /* Süresi dolmuş ya da dolu bir kodu bilen, kodu gerçekten almıştır:
+       bilgilendirilir, deneme hakkı düşmez (kod artık kullanılamaz) */
+    if neden is not null then
+      return jsonb_build_object('durum', neden);
+    end if;
+    neden := 'yanlis';
+    if d.yanlis + 1 >= 5 then
+      update public.bolum_kodu_denemeleri set yanlis = 0, kilit = now() + interval '15 minutes', son = now() where kullanici = ben;
+      return jsonb_build_object('durum', neden, 'kalan', 0, 'saniye', 900);
+    end if;
+    update public.bolum_kodu_denemeleri set yanlis = d.yanlis + 1, son = now() where kullanici = ben;
+    return jsonb_build_object('durum', neden, 'kalan', 5 - (d.yanlis + 1));
+  end if;
+
+  update public.bolum_kodlari set kullanim = kullanim + 1 where id = k.id;
+  insert into public.profiller (kullanici, program, sinif, bolum_kodu, bolum_yazildi)
+  values (ben, k.program, k.sinif, k.id, now());
+  delete from public.bolum_kodu_denemeleri where kullanici = ben;
+  select p.ad into pad from public.programlar p where p.id = k.program;
+  return jsonb_build_object('durum', 'tamam', 'program', k.program, 'programAdi', pad, 'sinif', k.sinif);
+end;
+$$;
+
+-- Kod üretir (yönetici). dakika: 1–10080 (7 gün); azami: 1–300 kişi.
+-- Rakamlar gen_random_uuid'in rastgele bitlerinden alınır (random()
+-- tahmin edilebilir). Süresi bitmemiş bir kodla aynı rakamlar verilmez.
+create or replace function public.bolum_kodu_uret(p_program text, p_sinif integer, p_dakika integer, p_azami integer)
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  pr public.programlar%rowtype;
+  yeni text;
+  sonuc public.bolum_kodlari%rowtype;
+  deneme integer := 0;
+begin
+  if not public.hususi_yetkili() then raise exception 'Yetkisiz'; end if;
+  select * into pr from public.programlar where id = p_program;
+  if not found then raise exception 'Bölüm bulunamadı'; end if;
+  if p_sinif is null or p_sinif < 1 or p_sinif > pr.sinif_sayisi then raise exception 'Sınıf geçersiz'; end if;
+  if p_dakika is null or p_dakika < 1 or p_dakika > 10080 then raise exception 'Süre 1 dakika ile 7 gün arasında olmalı'; end if;
+  if p_azami is null or p_azami < 1 or p_azami > 300 then raise exception 'Kişi sınırı 1 ile 300 arasında olmalı'; end if;
+  /* İki üretim aynı anda aynı rakamları seçmesin */
+  perform pg_advisory_xact_lock(hashtext('bolum_kodu_uret'));
+  loop
+    deneme := deneme + 1;
+    yeni := lpad((('x' || substr(replace(gen_random_uuid()::text, '-', ''), 1, 8))::bit(32)::bigint % 1000000)::text, 6, '0');
+    exit when not exists (select 1 from public.bolum_kodlari b where b.kod = yeni and b.bitis > now());
+    if deneme >= 50 then raise exception 'Kod üretilemedi, yeniden deneyin'; end if;
+  end loop;
+  insert into public.bolum_kodlari (kod, etiket, program, sinif, bitis, azami, ureten)
+  values (yeni, upper(pr.kod_oneki) || p_sinif || '_' || yeni, pr.id, p_sinif,
+          now() + make_interval(mins => p_dakika), p_azami, auth.uid())
+  returning * into sonuc;
+  return jsonb_build_object('id', sonuc.id, 'kod', sonuc.kod, 'etiket', sonuc.etiket, 'bitis', sonuc.bitis, 'azami', sonuc.azami);
+end;
+$$;
+
+-- Son 100 kod, durumu ve kullanan hesaplarla (yönetici). Sıfırlanan hesap
+-- listeden düşer; harcadığı hak (kullanim) geri gelmez.
+create or replace function public.bolum_kodlari_listesi()
+returns jsonb
+language plpgsql
+stable
+security definer
+set search_path = ''
+as $$
+begin
+  if not public.hususi_yetkili() then raise exception 'Yetkisiz'; end if;
+  return coalesce((
+    select jsonb_agg(satir order by (satir->>'olusturuldu') desc)
+    from (
+      select jsonb_build_object(
+        'id', b.id, 'etiket', b.etiket, 'program', b.program, 'programAdi', pr.ad, 'sinif', b.sinif,
+        'olusturuldu', b.olusturuldu, 'bitis', b.bitis, 'azami', b.azami, 'kullanim', b.kullanim, 'iptal', b.iptal,
+        'durum', case when b.iptal is not null then 'iptal' when b.bitis <= now() then 'suresi_doldu'
+                      when b.kullanim >= b.azami then 'dolu' else 'etkin' end,
+        'kullananlar', coalesce((
+          select jsonb_agg(jsonb_build_object('kullanici', p.kullanici, 'eposta', u.email, 'zaman', p.bolum_yazildi) order by p.bolum_yazildi)
+          from public.profiller p join auth.users u on u.id = p.kullanici
+          where p.bolum_kodu = b.id), '[]'::jsonb)
+      ) as satir
+      from public.bolum_kodlari b join public.programlar pr on pr.id = b.program
+      order by b.olusturuldu desc
+      limit 100
+    ) t
+  ), '[]'::jsonb);
+end;
+$$;
+
+-- Kodu süresinden önce kapatır (yönetici). Kodla girmiş hesaplara dokunmaz.
+create or replace function public.bolum_kodu_iptal(p_id uuid)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if not public.hususi_yetkili() then raise exception 'Yetkisiz'; end if;
+  update public.bolum_kodlari set iptal = now() where id = p_id and iptal is null;
+end;
+$$;
+
+-- Hesabı e-posta adresiyle bulur (yönetici); yoksa boş döner
+create or replace function public.idare_hesap_bul(p_eposta text)
+returns jsonb
+language plpgsql
+stable
+security definer
+set search_path = ''
+as $$
+begin
+  if not public.hususi_yetkili() then raise exception 'Yetkisiz'; end if;
+  return (
+    select jsonb_build_object('kullanici', u.id, 'eposta', u.email, 'program', p.program, 'programAdi', pr.ad,
+      'sinif', p.sinif, 'etiket', b.etiket, 'sozlesme', p.sozlesme_surumu is not null)
+    from auth.users u
+    left join public.profiller p on p.kullanici = u.id
+    left join public.programlar pr on pr.id = p.program
+    left join public.bolum_kodlari b on b.id = p.bolum_kodu
+    where lower(u.email) = lower(btrim(p_eposta))
+    limit 1
+  );
+end;
+$$;
+
+-- Hesabın bölümünü siler (yönetici): öğrenci bir sonraki açılışta yeni kod
+-- girer, sonra sözleşmeyi yeniden onaylar. Notları ve kayıtları silinmez.
+-- Yönetici kendi hesabını sıfırlayamaz (İdare'ye erişimi kapanırdı).
+create or replace function public.idare_hesap_sifirla(p_kullanici uuid)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if not public.hususi_yetkili() then raise exception 'Yetkisiz'; end if;
+  if p_kullanici = auth.uid() then raise exception 'Kendi hesabınızı sıfırlayamazsınız'; end if;
+  delete from public.profiller where kullanici = p_kullanici;
+end;
+$$;
+
+revoke execute on function public.bolum_kodu_kullan(text), public.bolum_kodu_uret(text, integer, integer, integer),
+  public.bolum_kodlari_listesi(), public.bolum_kodu_iptal(uuid), public.idare_hesap_bul(text),
+  public.idare_hesap_sifirla(uuid) from public, anon;
+grant execute on function public.bolum_kodu_kullan(text), public.bolum_kodu_uret(text, integer, integer, integer),
+  public.bolum_kodlari_listesi(), public.bolum_kodu_iptal(uuid), public.idare_hesap_bul(text),
+  public.idare_hesap_sifirla(uuid) to authenticated;
 
 -- --------------------------------------------------------------------------
 -- 6) Kullanıcı kayıtları: okundu, boya, yıldız, yanlış, kart, ayar, yer, mühim, çalışma
@@ -721,7 +1095,7 @@ as $$
   select public.uye() and exists (
     select 1 from public.konular k
     where k.ders = split_part(ad, '/', 1)
-      and (not k.hususi or public.hususi_yetkili())
+      and public.konu_gorunur(k.hususi, k.programlar, k.sinif)
   );
 $$;
 
@@ -749,9 +1123,19 @@ create policy "okul uyesi gorsel okur" on storage.objects
 create table if not exists public.kaynak_kota (
   kullanici uuid primary key references auth.users(id) on delete cascade,
   eposta    text,
-  azami_mb  integer not null default 100 check (azami_mb between 0 and 10240),
+  azami_mb  integer not null default 50 check (azami_mb between 0 and 10240),
   olusma    timestamptz not null default now()
 );
+-- Öntanımlı hak 100 MB'tan 50 MB'a indi. Bir kez çalışır (öntanımlı hâlâ 100
+-- iken): hâlâ 100'de olan hesaplar 50 olur, elle değiştirilmiş haklar kalır.
+do $$
+begin
+  if (select column_default from information_schema.columns
+      where table_schema = 'public' and table_name = 'kaynak_kota' and column_name = 'azami_mb') = '100' then
+    update public.kaynak_kota set azami_mb = 50 where azami_mb = 100;
+    alter table public.kaynak_kota alter column azami_mb set default 50;
+  end if;
+end $$;
 
 create table if not exists public.kaynak_tasnif (
   id          uuid primary key default gen_random_uuid(),

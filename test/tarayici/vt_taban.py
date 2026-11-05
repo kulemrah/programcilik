@@ -20,9 +20,13 @@ D = {
     "oturumlar": {},            # oturum id → {"olusma": zaman, "yenileme": belirteç}
     "yerler": {},               # yer tutan oturum id → son görülme
     "azami": 1, "sayac": 0, "devralma": None, "gecmis": [],
-    "hususi": False,            # test hesabının hususi yetkisi
+    "hususi": False,            # test hesabının hususi yetkisi (yönetici)
     "gorsel_istek": [],
+    # Bölüm: profil None iken hesap, bölüm kodundan önce açılmış (BP 1. sınıf,
+    # sözleşmesiz) sayılır; kodsuz True ise bölümü yok ve kod ekranı açılır.
+    "kodsuz": False, "kodlar": [], "yanlis": 0, "sifirlanan": [],
 }
+BP = "bilgisayar-programciligi"
 sonuclar = []
 hatalar = []
 
@@ -99,9 +103,43 @@ def cihaz_durumu(sid):
     dolu = len([x for x in D["yerler"] if x in D["oturumlar"]])
     return "bos" if dolu < D["azami"] else "baska"
 
+def profil():
+    """01-sema.sql profiller satırı: kodla yazılan ya da (taklitte) eski hesap"""
+    if D["profil"] is None and not D["kodsuz"]:
+        return {"program": BP, "sinif": 1, "sozlesme_surumu": None}
+    return D["profil"]
+
 def uye(sid):
-    p = D["profil"]
+    p = profil()
     return bool(p and p["sozlesme_surumu"] == "2" and sid and sid in D["yerler"] and sid in D["oturumlar"])
+
+def konu_gorunur(k):
+    """01-sema.sql konu_gorunur"""
+    if k.get("hususi"): return D["hususi"]
+    p = profil()
+    return bool(p and p["program"] in (k.get("programlar") or []) and k.get("sinif") is not None and p["sinif"] >= k["sinif"])
+
+def kod_isle(girilen):
+    """01-sema.sql bolum_kodu_kullan (sadeleştirilmiş: kilit 5 yanlışta)"""
+    if profil(): return {"durum": "zaten"}
+    m = re.match(r"^\s*[A-Za-z]{2,4}[1-6]\s*[_-]?", girilen or "")
+    sade = re.sub(r"\s", "", (girilen or "")[m.end():] if m else (girilen or ""))
+    if not re.fullmatch(r"[0-9]{6}", sade): return {"durum": "bicim"}
+    if D["yanlis"] >= 5: return {"durum": "kilitli", "saniye": 900}
+    k = next((k for k in D["kodlar"] if k["kod"] == sade and not k.get("iptal")), None)
+    neden = None
+    if not k: neden = "yanlis"
+    elif k["bitis"] <= time.time(): neden = "suresi_doldu"
+    elif k["kullanim"] >= k["azami"]: neden = "dolu"
+    if neden in ("suresi_doldu", "dolu"): return {"durum": neden}   # deneme sayılmaz
+    if neden:
+        D["yanlis"] += 1
+        if D["yanlis"] >= 5: return {"durum": neden, "kalan": 0, "saniye": 900}
+        return {"durum": neden, "kalan": 5 - D["yanlis"]}
+    k["kullanim"] += 1; D["yanlis"] = 0
+    D["profil"] = {"program": k["program"], "sinif": k["sinif"], "sozlesme_surumu": None}
+    k.setdefault("kullananlar", []).append({"kullanici": UID, "eposta": EPOSTA, "zaman": simdi_iso()})
+    return {"durum": "tamam", "program": k["program"], "programAdi": "Bilgisayar Programcılığı" if k["program"] == BP else k["program"], "sinif": k["sinif"]}
 
 def isle(route, request):
     url = urllib.parse.urlparse(request.url)
@@ -120,7 +158,7 @@ def isle(route, request):
     if yol in ("/rest/v1/kaynak_tasnif", "/rest/v1/kaynak_oge") and yontem == "GET":
         return cevap([])
     if yol == "/rest/v1/rpc/kaynak_durum":
-        return cevap({"izin": True, "azami_bayt": 104857600, "kullanilan_bayt": 0})
+        return cevap({"izin": True, "azami_bayt": 52428800, "kullanilan_bayt": 0})
     govde = request.post_data
     tek = "vnd.pgrst.object" in (request.headers.get("accept") or "")
 
@@ -198,23 +236,76 @@ def isle(route, request):
         return cevap("bu")
 
     # ---- Tablolar ----
+    # ---- Bölüm kodu ve İdare (01-sema.sql, 5b) ----
+    if yol == "/rest/v1/rpc/hususi_yetkili":
+        return cevap(D["hususi"])
+    if yol == "/rest/v1/rpc/bolum_kodu_kullan":
+        if cihaz_durumu(sid) == "yetkisiz": return cevap({"code": "P0001", "message": "Yetkisiz"}, 400)
+        return cevap(kod_isle(json.loads(govde or "{}").get("girilen")))
+    if yol.startswith("/rest/v1/rpc/bolum_kodu_") or yol.startswith("/rest/v1/rpc/idare_") or yol == "/rest/v1/rpc/bolum_kodlari_listesi":
+        if not D["hususi"]: return cevap({"code": "P0001", "message": "Yetkisiz"}, 400)
+        g = json.loads(govde or "{}")
+        if yol.endswith("bolum_kodu_uret"):
+            sinir = {"bilgisayar-programciligi": 2}.get(g["p_program"])
+            if not sinir: return cevap({"code": "P0001", "message": "Bölüm bulunamadı"}, 400)
+            if not 1 <= g["p_sinif"] <= sinir: return cevap({"code": "P0001", "message": "Sınıf geçersiz"}, 400)
+            kod = "%06d" % (482913 + len(D["kodlar"]))
+            k = {"id": str(uuid.uuid4()), "kod": kod, "etiket": "BP%d_%s" % (g["p_sinif"], kod), "program": g["p_program"], "sinif": g["p_sinif"],
+                 "bitis": time.time() + g["p_dakika"] * 60, "azami": g["p_azami"], "kullanim": 0, "olusma": time.time(), "kullananlar": []}
+            D["kodlar"].append(k)
+            return cevap({"id": k["id"], "kod": kod, "etiket": k["etiket"], "bitis": datetime.datetime.fromtimestamp(k["bitis"], datetime.timezone.utc).isoformat(), "azami": k["azami"]})
+        if yol.endswith("bolum_kodlari_listesi"):
+            iso = lambda t: datetime.datetime.fromtimestamp(t, datetime.timezone.utc).isoformat()
+            def durum(k):
+                if k.get("iptal"): return "iptal"
+                if k["bitis"] <= time.time(): return "suresi_doldu"
+                return "dolu" if k["kullanim"] >= k["azami"] else "etkin"
+            return cevap([{"id": k["id"], "etiket": k["etiket"], "program": k["program"], "programAdi": "Bilgisayar Programcılığı", "sinif": k["sinif"],
+                           "olusturuldu": iso(k["olusma"]), "bitis": iso(k["bitis"]), "azami": k["azami"], "kullanim": k["kullanim"],
+                           "iptal": iso(k["iptal"]) if k.get("iptal") else None, "durum": durum(k), "kullananlar": k["kullananlar"]}
+                          for k in sorted(D["kodlar"], key=lambda k: -k["olusma"])])
+        if yol.endswith("bolum_kodu_iptal"):
+            for k in D["kodlar"]:
+                if k["id"] == g["p_id"] and not k.get("iptal"): k["iptal"] = time.time()
+            return route.fulfill(status=204, headers=baslik, body="")
+        if yol.endswith("idare_hesap_bul"):
+            a = g["p_eposta"].strip().lower()
+            if a == "kodlu@kocaelisaglik.edu.tr":
+                return cevap({"kullanici": "22222222-2222-2222-2222-222222222222", "eposta": a, "program": BP, "programAdi": "Bilgisayar Programcılığı",
+                              "sinif": 1, "etiket": "BP1_482913", "sozlesme": True})
+            return cevap(None)
+        if yol.endswith("idare_hesap_sifirla"):
+            if g["p_kullanici"] == UID: return cevap({"code": "P0001", "message": "Kendi hesabınızı sıfırlayamazsınız"}, 400)
+            D["sifirlanan"].append(g["p_kullanici"])
+            for k in D["kodlar"]: k["kullananlar"] = [u for u in k["kullananlar"] if u["kullanici"] != g["p_kullanici"]]
+            return route.fulfill(status=204, headers=baslik, body="")
+
+    # ---- Tablolar ----
     if yol == "/rest/v1/programlar":
-        return cevap([{"id": "bilgisayar-programciligi", "ad": "Bilgisayar Programcılığı", "sinif_sayisi": 2, "sira": 1}])
+        return cevap([{"id": BP, "ad": "Bilgisayar Programcılığı", "sinif_sayisi": 2, "sira": 1}])
     if yol == "/rest/v1/profiller":
         if yontem == "GET":
-            p = D["profil"]
+            p = profil()
             return cevap(p if tek else ([p] if p else []))
+        if yontem != "PATCH":   # 01-sema.sql: istemcinin ekleme yetkisi yok
+            return cevap({"code": "42501", "message": "permission denied for table profiller"}, 403)
         d = json.loads(govde); d = d[0] if isinstance(d, list) else d
+        if set(d) != {"sozlesme_surumu"}:
+            return cevap({"code": "42501", "message": "permission denied for table profiller"}, 403)
+        p = profil()
+        if not p: return cevap({"code": "PGRST116", "message": "JSON object requested, multiple (or no) rows returned"}, 406)
         if d["sozlesme_surumu"] != "2":
             return cevap({"message": "Sözleşmenin geçerli sürümü onaylanmalı"}, 400)
-        D["profil"] = {"program": d["program"], "sinif": d["sinif"], "sozlesme_surumu": d["sozlesme_surumu"]}
-        return cevap(D["profil"] if tek else [D["profil"]], 201)
+        D["profil"] = dict(p, sozlesme_surumu=d["sozlesme_surumu"])
+        return cevap(D["profil"] if tek else [D["profil"]], 200)
     if yol == "/rest/v1/agac":
         if not uye(sid): return cevap([])
-        return cevap([r for r in YUK["agac"] if r["id"] == 1 or D["hususi"]])
+        p = profil()
+        kitle = "1/%s/%d" % (p["program"], p["sinif"])
+        return cevap(sorted([r for r in YUK["agac"] if r["id"] == kitle or (r["id"] == "2/hususi" and D["hususi"])], key=lambda r: r["id"]))
     if yol == "/rest/v1/konular":
         if not uye(sid): return cevap([])
-        gorunen = [k for k in YUK["konular"] if D["hususi"] or not k["hususi"]]
+        gorunen = [k for k in YUK["konular"] if konu_gorunur(k)]
         if q.get("select", [""])[0] == "id,ozet":
             return cevap([{"id": k["id"], "ozet": k["ozet"]} for k in gorunen])
         m = re.match(r"in\.\((.*)\)$", q.get("id", [""])[0])
@@ -304,7 +395,7 @@ def kart_kapsam_sina(s, KONULAR_VT, onek):
     """42 Tarzı: ders ve konu seçimi Temrin'deki seçim ekranıyla yapılır (ayrı tutulur).
     Ders testleri (alg, vt, eko, el, ag, dn) bunu kendi dersleriyle çağırır."""
     ders = KONULAR_VT[0]["ders"]
-    agac = next(r for r in YUK["agac"] if r["id"] == 1)["veri"]
+    agac = next(r for r in YUK["agac"] if r["id"] == "1/" + BP + "/1")["veri"]
     dersler = [d for g in agac["gruplar"] if not g.get("hususi") for dn in g.get("donemler", [{"dersler": g.get("dersler", [])}]) for d in dn["dersler"]]
     bilgi = next(d for d in dersler if d["id"] == ders)
     kisa, tam = bilgi.get("kisa", bilgi["ad"]), bilgi["ad"]

@@ -72,7 +72,8 @@ function agaciDogrula() {
   const agac = jsonOku(join(ICERIK, "agac.json"), yer);
   const dersler = new Map();
   if (!agac) return { agac: null, dersler };
-  bilinmeyenAlanlar(yer, agac, ["gruplar", "sinavlar"]);
+  bilinmeyenAlanlar(yer, agac, ["programlar", "gruplar", "sinavlar"]);
+  const programlar = programlariDogrula(yer, agac.programlar);
   if (!Array.isArray(agac.gruplar) || !agac.gruplar.length) { hata(yer, "'gruplar' boş olmayan bir dizi olmalı"); return { agac, dersler }; }
   const kimlikler = new Set();
   const kimlikKaydet = (y, id) => {
@@ -80,30 +81,52 @@ function agaciDogrula() {
     else if (kimlikler.has(id)) hata(y, "kimlik '" + id + "' ağaçta birden fazla kez geçiyor");
     kimlikler.add(id);
   };
-  const dersleriOku = (y, liste, grup, donem, hususi) => {
+  /* Hususi olmayan her ders hangi bölümlerde okutulduğunu söyler ("programlar");
+     bir bölüm, listesinde olmayan dersi (konuları, görselleri, ağaçtaki adı)
+     hiç görmez. Aynı ders birden çok bölümde tek kopya olarak durur. */
+  const dersleriOku = (y, liste, grup, donem, hususi, sinif) => {
     if (!Array.isArray(liste)) { hata(y, "'dersler' bir dizi olmalı"); return; }
     liste.forEach((d, i) => {
       const dy = y + " > dersler[" + i + "]";
       if (!d || typeof d !== "object") { hata(dy, "nesne olmalı"); return; }
-      bilinmeyenAlanlar(dy, d, ["id", "ad", "kisa"]);
+      bilinmeyenAlanlar(dy, d, ["id", "ad", "kisa", "programlar"]);
       kimlikKaydet(dy, d.id);
       temizMetin(dy, "ad", d.ad);
       temizMetin(dy, "kisa", d.kisa, false);
-      dersler.set(d.id, { grup, donem, hususi });
+      let dp = [];
+      if (hususi) {
+        if (d.programlar !== undefined) hata(dy, "hususi derste 'programlar' olmaz (hususi yetkiyle görünür)");
+      } else if (!Array.isArray(d.programlar) || !d.programlar.length) {
+        hata(dy, "'programlar' boş olmayan bir dizi olmalı (dersin okutulduğu bölümler)");
+      } else {
+        if (new Set(d.programlar).size !== d.programlar.length) hata(dy, "'programlar' içinde aynı bölüm iki kez var");
+        d.programlar.forEach(pid => {
+          const pr = programlar.get(pid);
+          if (!pr) hata(dy, "bölüm '" + pid + "' agac.json > programlar'da tanımlı değil");
+          else if (sinif > pr.sinifSayisi) hata(dy, "'" + pid + "' " + pr.sinifSayisi + " yıllık; " + sinif + ". sınıf dersi olamaz");
+        });
+        dp = d.programlar.slice();
+      }
+      dersler.set(d.id, { grup, donem, hususi, sinif: hususi ? null : sinif, programlar: dp });
     });
   };
   agac.gruplar.forEach((g, i) => {
     const gy = yer + " > gruplar[" + i + "]";
     if (!g || typeof g !== "object") { hata(gy, "nesne olmalı"); return; }
-    bilinmeyenAlanlar(gy, g, ["id", "ad", "hususi", "donemler", "dersler"]);
+    bilinmeyenAlanlar(gy, g, ["id", "ad", "hususi", "sinif", "donemler", "dersler"]);
     kimlikKaydet(gy, g.id);
     temizMetin(gy, "ad", g.ad);
     /* Hususi grup yalnızca hususi yetkisi olan hesaplarda görünür */
     if (g.hususi !== undefined && typeof g.hususi !== "boolean") hata(gy, "'hususi' true ya da false olmalı");
     const hususi = g.hususi === true;
+    /* Hususi olmayan grup bir sınıftır: öğrenci kendi sınıfının ve alt
+       sınıfların gruplarını görür */
+    if (hususi) { if (g.sinif !== undefined) hata(gy, "hususi grupta 'sinif' olmaz"); }
+    else if (!Number.isInteger(g.sinif) || g.sinif < 1 || g.sinif > 6) hata(gy, "'sinif' 1–6 arası bir tam sayı olmalı");
+    const sinif = hususi ? null : g.sinif;
     const donemli = g.donemler !== undefined, dogrudan = g.dersler !== undefined;
     if (donemli === dogrudan) { hata(gy, "ya 'donemler' ya da 'dersler' olmalı (ikisi birden değil)"); return; }
-    if (dogrudan) { dersleriOku(gy, g.dersler, g.id, null, hususi); return; }
+    if (dogrudan) { dersleriOku(gy, g.dersler, g.id, null, hususi, sinif); return; }
     if (!Array.isArray(g.donemler)) { hata(gy, "'donemler' bir dizi olmalı"); return; }
     g.donemler.forEach((dn, j) => {
       const dny = gy + " > donemler[" + j + "]";
@@ -111,12 +134,40 @@ function agaciDogrula() {
       bilinmeyenAlanlar(dny, dn, ["id", "ad", "dersler"]);
       kimlikKaydet(dny, dn.id);
       temizMetin(dny, "ad", dn.ad);
-      dersleriOku(dny, dn.dersler, g.id, dn.id, hususi);
+      dersleriOku(dny, dn.dersler, g.id, dn.id, hususi, sinif);
     });
   });
   sinavlariDogrula(yer, agac.sinavlar, dersler);
-  return { agac, dersler };
+  return { agac, dersler, programlar };
 }
+
+/* Bölümler (programlar): { id, ad, onek, sinifSayisi }. Sıra, listedeki sıradır.
+   onek: bölüm kodlarının görünen adının başı ("bp" → "BP1_482913"); her
+   bölümde başka olmalı ("Bilgisayar Programcılığı" ile "Bilgisayar
+   Teknolojisi" ilk iki harfte çakışır, onek bu yüzden elle verilir). */
+const ONEK = /^[a-z]{2,4}$/;
+function programlariDogrula(yer, liste) {
+  const harita = new Map();
+  if (!Array.isArray(liste) || !liste.length) { hata(yer, "'programlar' boş olmayan bir dizi olmalı"); return harita; }
+  const onekler = new Set();
+  liste.forEach((p, i) => {
+    const py = yer + " > programlar[" + i + "]";
+    if (!p || typeof p !== "object") { hata(py, "nesne olmalı"); return; }
+    bilinmeyenAlanlar(py, p, ["id", "ad", "onek", "sinifSayisi"]);
+    if (typeof p.id !== "string" || !KIMLIK.test(p.id)) { hata(py, "kimlik '" + p.id + "' küçük harf, rakam ve tire içermeli"); return; }
+    if (harita.has(p.id)) hata(py, "bölüm '" + p.id + "' iki kez tanımlı");
+    temizMetin(py, "ad", p.ad);
+    if (typeof p.onek !== "string" || !ONEK.test(p.onek)) hata(py, "'onek' 2–4 küçük İngilizce harf olmalı (ör. \"bp\")");
+    else if (onekler.has(p.onek)) hata(py, "'onek' '" + p.onek + "' başka bir bölümde de var");
+    onekler.add(p.onek);
+    if (!Number.isInteger(p.sinifSayisi) || p.sinifSayisi < 1 || p.sinifSayisi > 6) hata(py, "'sinifSayisi' 1–6 arası bir tam sayı olmalı");
+    harita.set(p.id, { ad: p.ad, onek: p.onek, sinifSayisi: p.sinifSayisi, sira: i + 1 });
+  });
+  return harita;
+}
+
+/* Sınav takvimi yalnızca bu bölümün bu sınıfına gösterilir */
+const SINAV_KITLESI = { program: "bilgisayar-programciligi", sinif: 1 };
 
 /* Sınav takvimi (isteğe bağlı): { ders | dersAdi, ad, zaman, lms? | modul?, yer?, not? }.
    zaman Türkiye saatiyle ve saat dilimi yazılı: "2026-11-06T20:30+03:00".
@@ -134,6 +185,9 @@ function sinavlariDogrula(yer, sinavlar, dersler) {
     if (s.ders !== undefined && s.dersAdi !== undefined) hata(sy, "'ders' ile 'dersAdi' birlikte yazılamaz");
     else if (s.ders === undefined) temizMetin(sy, "dersAdi", s.dersAdi);
     else if (!dersler.has(s.ders)) hata(sy, "ders '" + s.ders + "' agac.json'da tanımlı değil");
+    else if (!dersler.get(s.ders).hususi && !(dersler.get(s.ders).programlar.includes(SINAV_KITLESI.program) && dersler.get(s.ders).sinif <= SINAV_KITLESI.sinif)) {
+      hata(sy, "ders '" + s.ders + "' " + SINAV_KITLESI.program + " " + SINAV_KITLESI.sinif + ". sınıfta yok; sınav takvimi yalnızca orada görünür");
+    }
     temizMetin(sy, "ad", s.ad);
     temizMetin(sy, "yer", s.yer, false);
     temizMetin(sy, "not", s.not, false);
@@ -448,6 +502,9 @@ function dersleriOku(agacDersleri) {
         (tum, on, ad) => dersGorselleri.has(ad) ? on + dersGorselleri.get(ad).depoAdi + ")" : tum);
       konular.push({
         id: konu.id, ders, sira, baslik: konu.baslik, metin: yuklenecekMetin, hususi: agacDersleri.get(ders).hususi,
+        /* Sunucu kuralı (01-sema.sql, konu_gorunur): öğrencinin bölümü bu listede
+           ve sınıfı en az bu sınıf olmalı. Hususi konuda ikisi de boştur. */
+        programlar: agacDersleri.get(ders).programlar, sinif: agacDersleri.get(ders).sinif,
         kavramlar: konu.kavramlar || [], sorular, kartlar: konu.kartlar || [],
         kaynak: konu.kaynak
       });
@@ -480,17 +537,29 @@ function baglanti() {
   };
 }
 
-async function yukle(agac, konular, gorseller) {
+async function yukle(agac, programlar, konular, gorseller) {
   const istek = baglanti();
+
+  /* Bölümler önce yazılır (profiller ve bölüm kodları onlara bağlıdır).
+     Listeden çıkarılan bölüm sunucudan silinmez: hesaplar ona bağlı olabilir. */
+  await istek("/rest/v1/programlar?on_conflict=id", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Prefer: "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify([...programlar].map(([id, p]) => ({ id, ad: p.ad, sinif_sayisi: p.sinifSayisi, sira: p.sira, kod_oneki: p.onek })))
+  });
+  console.log("Bölüm: " + programlar.size + " yazıldı");
   /* Sunucu tek seferde en çok 1000 satır verir: sayfa sayfa okunur.
      Eksik okunan liste silinecek konuları gözden kaçırırdı. */
   const uzak = [];
   for (let bas = 0; ; bas += 1000) {
-    const sayfa = await istek("/rest/v1/konular?select=id,ozet&order=id.asc&limit=1000&offset=" + bas, { method: "GET" });
+    const sayfa = await istek("/rest/v1/konular?select=id,ozet,programlar,sinif&order=id.asc&limit=1000&offset=" + bas, { method: "GET" });
     uzak.push(...sayfa);
     if (sayfa.length < 1000) break;
   }
   const uzakOzet = new Map(uzak.map(r => [r.id, r.ozet]));
+  /* Görünürlük (programlar, sinif) özete girmez: cihazlar bölüm etiketi
+     değişti diye konuyu yeniden indirmesin. Sunucudakiyle ayrıca karşılaştırılır. */
+  const uzakKitle = new Map(uzak.map(r => [r.id, JSON.stringify([r.programlar || [], r.sinif === undefined ? null : r.sinif])]));
   const yerelKimlikler = new Set(konular.map(k => k.id));
   const simdi = new Date().toISOString();
 
@@ -498,7 +567,7 @@ async function yukle(agac, konular, gorseller) {
     const { kaynak, ...satir } = k;
     return { ...satir, ozet: ozet([k.ders, k.sira, k.baslik, k.metin, k.kavramlar, k.sorular, k.kartlar, k.hususi]), guncellendi: simdi };
   });
-  const degisen = satirlar.filter(s => uzakOzet.get(s.id) !== s.ozet);
+  const degisen = satirlar.filter(s => uzakOzet.get(s.id) !== s.ozet || uzakKitle.get(s.id) !== JSON.stringify([s.programlar, s.sinif]));
   const silinecek = uzak.map(r => r.id).filter(id => !yerelKimlikler.has(id));
 
   /* Toplu silme koruması: depo bir hata yüzünden boş okunduysa her şey silinmesin */
@@ -525,23 +594,50 @@ async function yukle(agac, konular, gorseller) {
   }
   console.log("Konu: " + degisen.length + " güncellendi, " + (satirlar.length - degisen.length) + " aynı");
 
-  /* Ağaç iki satıra bölünür: 1 herkesin gördüğü gruplar, 2 hususi gruplar.
-     Konular (hususi işaretiyle) ağaçtan önce yüklendiği için, hususiye
-     alınan bir grup hiçbir an yetkisiz hesaba açık kalmaz. */
+  /* Ağaç, görecek kitleye göre satırlara bölünür; sunucu her hesaba yalnızca
+     kendi satırını verir (01-sema.sql, agac kuralı):
+       "1/<bölüm>/<sınıf>": o bölümün o sınıfı. Sınıfın ve alt sınıfların
+                            grupları, yalnızca o bölümde okutulan dersleriyle.
+       "2/hususi":          hususi gruplar (hususi yetkisi olan hesaplar).
+     Sınav takvimi yalnızca SINAV_KITLESI'nin satırına (ve hususi sınavlar
+     hususi satıra) yazılır. Dersin "programlar" listesi cihaza gitmez.
+     Konular (görünürlük alanlarıyla) ağaçtan önce yüklendiği için, bir
+     bölümden çıkarılan ders hiçbir an o bölüme açık kalmaz. */
   const hususiDers = new Set(agac.gruplar.filter(g => g.hususi === true)
     .flatMap(g => (g.dersler || []).concat(...(g.donemler || []).map(d => d.dersler || []))).map(d => d.id));
   const sinavlar = (agac.sinavlar || []).slice().sort((a, b) => a.zaman < b.zaman ? -1 : a.zaman > b.zaman ? 1 : 0);
-  const satirVerisi = hususi => {
-    const v = { gruplar: agac.gruplar.filter(g => (g.hususi === true) === hususi) };
-    const s = sinavlar.filter(x => hususiDers.has(x.ders) === hususi);
-    if (s.length) v.sinavlar = s;   /* sınav yoksa alan yazılmaz: eski özet değişmesin */
+  const dersSuz = (liste, pid) => liste.filter(d => (d.programlar || []).includes(pid)).map(({ programlar, ...d }) => d);
+  const kitleAgaci = (pid, sinif) => {
+    const gruplar = [];
+    agac.gruplar.filter(g => g.hususi !== true && g.sinif <= sinif).forEach(g => {
+      if (g.dersler) {
+        const d = dersSuz(g.dersler, pid);
+        if (d.length || !g.dersler.length) gruplar.push({ ...g, dersler: d });
+        return;
+      }
+      /* İçi baştan boş dönem (ör. henüz dersi girilmemiş Bahar) korunur;
+         bu bölümde dersi olmadığı için boşalan dönem yazılmaz */
+      const donemler = g.donemler.map(dn => ({ ...dn, dersler: dersSuz(dn.dersler, pid), bos: !dn.dersler.length }))
+        .filter(dn => dn.dersler.length || dn.bos).map(({ bos, ...dn }) => dn);
+      if (donemler.some(dn => dn.dersler.length)) gruplar.push({ ...g, donemler });
+    });
+    const v = { gruplar };
+    if (pid === SINAV_KITLESI.program && sinif === SINAV_KITLESI.sinif) {
+      const s = sinavlar.filter(x => !hususiDers.has(x.ders));
+      if (s.length) v.sinavlar = s;   /* sınav yoksa alan yazılmaz */
+    }
     return v;
   };
-  const agacSatirlari = [
-    { id: 1, veri: satirVerisi(false) },
-    { id: 2, veri: satirVerisi(true) }
-  ].filter(r => r.id === 1 || r.veri.gruplar.length);
-  const uzakAgac = new Map((await istek("/rest/v1/agac?select=id,ozet", { method: "GET" })).map(r => [r.id, r.ozet]));
+  const agacSatirlari = [];
+  programlar.forEach((p, pid) => {
+    for (let n = 1; n <= p.sinifSayisi; n++) agacSatirlari.push({ id: "1/" + pid + "/" + n, veri: kitleAgaci(pid, n) });
+  });
+  const hususiVeri = { gruplar: agac.gruplar.filter(g => g.hususi === true) };
+  const hususiSinav = sinavlar.filter(x => hususiDers.has(x.ders));
+  if (hususiSinav.length) hususiVeri.sinavlar = hususiSinav;
+  if (hususiVeri.gruplar.length) agacSatirlari.push({ id: "2/hususi", veri: hususiVeri });
+
+  const uzakAgac = new Map((await istek("/rest/v1/agac?select=id,ozet", { method: "GET" })).map(r => [String(r.id), r.ozet]));
   const degisenAgac = agacSatirlari
     .map(r => ({ ...r, ozet: ozet(r.veri), guncellendi: simdi }))
     .filter(r => uzakAgac.get(r.id) !== r.ozet);
@@ -552,11 +648,14 @@ async function yukle(agac, konular, gorseller) {
       body: JSON.stringify(degisenAgac)
     });
   }
-  if (uzakAgac.has(2) && !agacSatirlari.some(r => r.id === 2)) {
-    await istek("/rest/v1/agac?id=eq.2", { method: "DELETE", headers: { Prefer: "return=minimal" } });
+  /* Artık olmayan kitlenin satırı (ve şemanın eski "1"/"2" satırları) silinir */
+  const yerelAgac = new Set(agacSatirlari.map(r => r.id));
+  const silinecekAgac = [...uzakAgac.keys()].filter(id => !yerelAgac.has(id));
+  for (const id of silinecekAgac) {
+    await istek("/rest/v1/agac?id=eq." + encodeURIComponent(id), { method: "DELETE", headers: { Prefer: "return=minimal" } });
   }
-  console.log("Ağaç: " + (degisenAgac.length ? "güncellendi (" + degisenAgac.map(r => r.id === 1 ? "genel" : "hususi").join(", ") + ")" : "aynı") +
-    (uzakAgac.has(2) && !agacSatirlari.some(r => r.id === 2) ? ", hususi ağaç silindi" : ""));
+  console.log("Ağaç: " + (degisenAgac.length ? "güncellendi (" + degisenAgac.map(r => r.id).join(", ") + ")" : "aynı") +
+    (silinecekAgac.length ? "; silindi: " + silinecekAgac.join(", ") : ""));
 
   /* Adres çok uzamasın diye silme 100'er konuluk parçalarla yapılır */
   for (let i = 0; i < silinecek.length; i += 100) {
@@ -569,7 +668,7 @@ async function yukle(agac, konular, gorseller) {
 }
 
 /* ---------- Akış ---------- */
-const { agac, dersler } = agaciDogrula();
+const { agac, dersler, programlar } = agaciDogrula();
 const { konular, gorseller } = agac ? dersleriOku(dersler) : { konular: [], gorseller: [] };
 
 if (hatalar.length) {
@@ -586,6 +685,6 @@ console.log("Doğrulama tamam: " + dersler.size + " ders, " + konular.length + "
   (agac && agac.sinavlar && agac.sinavlar.length ? ", " + agac.sinavlar.length + " sınav" : ""));
 
 if (!KURU) {
-  try { await yukle(agac, konular, gorseller); }
+  try { await yukle(agac, programlar, konular, gorseller); }
   catch (e) { console.error("Yükleme durdu: " + e.message); process.exit(1); }
 }

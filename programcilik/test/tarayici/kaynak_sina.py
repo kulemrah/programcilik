@@ -20,8 +20,8 @@ try:
         etiketler = s.locator(".alt-cubuk button span").all_inner_texts()
         kontrol("alt çubukta Notlar beşinci sekme", etiketler == ["Kıraat", "Ara", "Temrin", "42 Tarzı", "Notlar"], etiketler)
         notlara_git(s)
-        kontrol("kökte başlık 'Notlar', boş durum ve hak (0 / 100 MB)", baslik(s) == "Notlar" and "Henüz tasnif yok" in s.inner_text("#sayfaKaynak")
-                and "0,0 MB / 100 MB" in s.inner_text("#sayfaKaynak .kaynak-kota-yazi"), s.inner_text("#sayfaKaynak")[:200])
+        kontrol("kökte başlık 'Notlar', boş durum ve hak (0 / 50 MB)", baslik(s) == "Notlar" and "Henüz tasnif yok" in s.inner_text("#sayfaKaynak")
+                and "0,0 MB / 50 MB" in s.inner_text("#sayfaKaynak .kaynak-kota-yazi"), s.inner_text("#sayfaKaynak")[:200])
         kontrol("kökte + doğrudan tasnif açar (menüsüz)", s.locator("#sayfaKaynak .kaynak-fab-secenek").count() == 0
                 and s.get_attribute("#sayfaKaynak .kaynak-fab-ana", "aria-label") == "Yeni tasnif")
 
@@ -187,7 +187,7 @@ try:
         kontrol("hak dolunca uyarı", "hakkınız doldu" in s.inner_text(".uyari-perde"), s.inner_text(".uyari-perde"))
         s.click(".uyari-perde .evet")
         kontrol("reddedilen resim sırada da cihazda da yok", kuyruk(s) == 0 and s.locator("#sayfaKaynak .kaynak-resim-kart").count() == 2)
-        sql("update public.kaynak_kota set azami_mb = 100")
+        sql("update public.kaynak_kota set azami_mb = 50")
         s.evaluate("() => kaynakYenile()"); s.wait_for_timeout(500)
 
         # ---- Sunucu reddederse (kalıcı hata) cihazda kalır, gösterilir ----
@@ -196,7 +196,7 @@ try:
         resim_ekle(s, [F2])
         kontrol("sunucu reddedince resim kutucuğu 'gönderilemedi' olur", bekle_ki(s, lambda: s.locator("#sayfaKaynak .kaynak-resim-kart.hata").count() == 1, 40))
         kontrol("üstte 'gönderilemedi' uyarısı ve Yeniden dene", "gönderilemedi" in s.inner_text("#sayfaKaynak .kaynak-uyari.hata"), s.inner_text("#sayfaKaynak"))
-        sql("update public.kaynak_kota set azami_mb = 100")
+        sql("update public.kaynak_kota set azami_mb = 50")
         s.click("#sayfaKaynak .kaynak-uyari.hata button")
         kontrol("Yeniden dene: hak açılınca yüklenir", kuyruk_bossa(s, 30) and s.locator("#sayfaKaynak .kaynak-resim-kart.hata").count() == 0
                 and s.locator("#sayfaKaynak .kaynak-resim-kart").count() == 3)
@@ -254,7 +254,7 @@ try:
         kontrol("5 sn sonra tasnif bütün içiyle silinir: tablolar ve R2 boş",
                 tek("select count(*)::int as n from public.kaynak_tasnif")["n"] == 0 and tek("select count(*)::int as n from public.kaynak_oge")["n"] == 0
                 and len(r2()) == 0, r2())
-        kontrol("hak sıfıra döner", "0,0 MB / 100 MB" in s.inner_text("#sayfaKaynak .kaynak-kota-yazi"), s.inner_text("#sayfaKaynak .kaynak-kota-yazi"))
+        kontrol("hak sıfıra döner", "0,0 MB / 50 MB" in s.inner_text("#sayfaKaynak .kaynak-kota-yazi"), s.inner_text("#sayfaKaynak .kaynak-kota-yazi"))
 
         # ---- Boş tasnif onaysız silinir; uygulama arka plana geçince silme hemen sıraya girer ----
         tasnif_ac(s, "Geçici")

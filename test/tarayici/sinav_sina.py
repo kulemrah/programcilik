@@ -12,13 +12,14 @@ def z(gun, saat, dk=0):
     return t.strftime("%Y-%m-%dT%H:%M+03:00")
 
 # Gerçek aktarıcının yüklediği sınavlar (icerik/agac.json)
-genel = next(r for r in YUK["agac"] if r["id"] == 1)
+genel = next(r for r in YUK["agac"] if r["id"] == "1/" + BP + "/1")
 gercek = genel["veri"].get("sinavlar", [])
 kontrol("aktarıcı sınavları genel ağaca yazdı (5 sınav, zamana göre)",
         [(x.get("ders") or x.get("dersAdi"), x["zaman"]) for x in gercek] == [("veritabani", "2026-11-06T20:30+03:00"), ("aglar", "2026-11-06T21:30+03:00"), ("algoritma", "2026-11-09T20:00+03:00"), ("ekoloji", "2026-11-10T19:00+03:00"), ("Matematik I ve Genel Matematik", "2026-11-10T20:30+03:00")], gercek)
 kontrol("Algoritma ve Matematik sınavı Sınav Modülü'nde, Matematik ağaçta olmayan ders adıyla",
         [x.get("modul") for x in gercek[2:]] == [True, None, True] and gercek[4].get("dersAdi") and "ders" not in gercek[4] and not any(x.get("lms") and x.get("modul") for x in gercek), gercek)
-kontrol("hususi ağaçta sınav alanı yok (42 sınavı yok)", "sinavlar" not in next(r for r in YUK["agac"] if r["id"] == 2)["veri"])
+kontrol("hususi ağaçta sınav alanı yok (42 sınavı yok)", "sinavlar" not in next(r for r in YUK["agac"] if r["id"] == "2/hususi")["veri"])
+kontrol("sınavlar yalnızca BP 1. sınıf satırında", "sinavlar" not in next(r for r in YUK["agac"] if r["id"] == "1/" + BP + "/2")["veri"])
 
 # Deneme verisi: bugüne göre kurulur; sıra karışık verilir (uygulama sıralamalı)
 saat_gecen = max(0, simdi.hour - 1)
@@ -32,7 +33,7 @@ deneme = [
     {"dersAdi": "Matematik I ve Genel Matematik", "ad": "Kısa Sınav", "zaman": z(9, 20, 30), "modul": True, "not": "Girişi önceden kontrol edin."},
 ]
 genel["veri"] = dict(genel["veri"], sinavlar=deneme)
-hususi = next(r for r in YUK["agac"] if r["id"] == 2)
+hususi = next(r for r in YUK["agac"] if r["id"] == "2/hususi")
 hususi["veri"] = dict(hususi["veri"], sinavlar=[{"ders": "born2beroot", "ad": "Savunma", "zaman": z(3, 14), "lms": False}])
 for r in YUK["agac"]: r["ozet"] = "deneme-" + str(r["id"])
 
@@ -93,7 +94,7 @@ with sync_playwright() as p:
     # Başka saat diliminde tarayıcı: saat ve gün Türkiye'ye göre
     b = p.chromium.launch()
     c2 = b.new_context(service_workers="block", viewport={"width": 390, "height": 820}, timezone_id="America/New_York")
-    c2.add_init_script("try { localStorage.setItem('pg.kurulum', JSON.stringify('gizli')); localStorage.setItem('pg.notSurumu', JSON.stringify('2.3')) } catch (e) {}")
+    c2.add_init_script("try { localStorage.setItem('pg.kurulum', JSON.stringify('gizli')); localStorage.setItem('pg.notSurumu', JSON.stringify('2.5')) } catch (e) {}")
     c2.route(SUPA + "/**", isle)
     s2 = c2.new_page()
     D["oturumlar"].clear(); D["yerler"].clear(); time.sleep(SUNUCU_KOD_ARALIGI)

@@ -188,21 +188,27 @@ def isle(route, request):
     if yol == "/rest/v1/programlar":
         return cevap([{"id": "bilgisayar-programciligi", "ad": "Bilgisayar Programcılığı", "sinif_sayisi": 2, "sira": 1}])
     if yol == "/rest/v1/profiller":
+        # 01-sema.sql: satırı bölüm kodu açar (burada: bölüm kodundan önce açılmış
+        # hesap, BP 1. sınıf); istemci yalnızca sözleşme onayını yazabilir
+        p = D["profil"] or {"program": "bilgisayar-programciligi", "sinif": 1, "sozlesme_surumu": None}
         if yontem == "GET":
-            p = D["profil"]
-            return cevap(p if tek else ([p] if p else []))
+            return cevap(p if tek else [p])
         d = json.loads(govde); d = d[0] if isinstance(d, list) else d
+        if yontem != "PATCH" or set(d) != {"sozlesme_surumu"}:
+            return cevap({"code": "42501", "message": "permission denied for table profiller"}, 403)
         if d["sozlesme_surumu"] != "2":
             return cevap({"message": "Sözleşmenin geçerli sürümü onaylanmalı"}, 400)
-        D["profil"] = {"program": d["program"], "sinif": d["sinif"], "sozlesme_surumu": d["sozlesme_surumu"]}
-        return cevap(D["profil"] if tek else [D["profil"]], 201)
+        D["profil"] = dict(p, sozlesme_surumu=d["sozlesme_surumu"])
+        return cevap(D["profil"] if tek else [D["profil"]], 200)
+    if yol == "/rest/v1/rpc/hususi_yetkili":
+        return cevap(D["hususi"])
     if yol == "/rest/v1/agac":
         # 01-sema.sql: satır 1 genel gruplar, satır 2 hususi gruplar (yalnızca yetkiliye)
         if not uye(sid): return cevap([])
         genel = {"gruplar": [g for g in VERI["agac"]["gruplar"] if g["id"] != "42"]}
         hususi = {"gruplar": [dict(g, hususi=True) for g in VERI["agac"]["gruplar"] if g["id"] == "42"]}
-        satirlar = [{"id": 1, "veri": genel, "ozet": "agac-1"}]
-        if D["hususi"]: satirlar.append({"id": 2, "veri": hususi, "ozet": "agac-2"})
+        satirlar = [{"id": "1/bilgisayar-programciligi/1", "veri": genel, "ozet": "agac-1"}]
+        if D["hususi"]: satirlar.append({"id": "2/hususi", "veri": hususi, "ozet": "agac-2"})
         return cevap(satirlar)
     if yol == "/rest/v1/konular":
         if not uye(sid): return cevap([])

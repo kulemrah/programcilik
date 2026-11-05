@@ -2166,6 +2166,43 @@ html.editor-acik,html.editor-acik body{overflow:hidden}
 textarea.uyari-girdi{resize:vertical;min-height:140px}
 .uyari-girdi:focus{outline:2px solid var(--vurgu);outline-offset:1px}
 
+/* ---------- Bölüm doğrulama kodu, İdare ---------- */
+.giris-bilgi.bolum-satiri{font-weight:600;color:var(--yazi)}
+.idare-kart .giris-girdi{background:var(--dolgu)}
+.idare-kart select.giris-girdi{appearance:auto;padding:12px 14px}
+.idare-sure{display:grid;grid-template-columns:1fr auto 1fr auto;gap:8px;align-items:center;margin-bottom:12px}
+.idare-sure .giris-girdi{margin:0;text-align:center}
+.idare-birim{font-size:14px;color:var(--sonuk)}
+.idare-sonuc{margin-top:14px;padding:14px;border-radius:var(--r);background:var(--vurgu-zemin);text-align:center}
+.idare-rakam{font-family:var(--mono);font-size:34px;font-weight:700;letter-spacing:.18em;color:var(--yazi)}
+.idare-etiket{font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.04em}
+.idare-sonuc .idare-etiket{color:var(--sonuk);margin:2px 0 6px}
+.idare-rakam-satiri{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.idare-kopya{padding:5px 11px;border-radius:8px;border:1px solid var(--cizgi);background:var(--yuzey);color:var(--yazi);font-size:13px;font-weight:600;cursor:pointer}
+.idare-kopya.buyuk{padding:8px 14px;font-size:14px}
+.idare-kopya:hover{border-color:var(--vurgu);color:var(--vurgu)}
+.idare-kod-ad{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+.idare-bilgi{margin:0 0 2px}
+.kod-bilgisi{font-weight:550}
+.idare-yenile{position:absolute;top:12px;right:12px;margin:0}
+.idare-kod{padding:12px 0;border-top:1px solid var(--ayrac)}
+.idare-kod:first-of-type{border-top:0}
+.idare-kod-ust{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:4px}
+.idare-kod.gecmis .idare-etiket{color:var(--sonuk)}
+.idare-durum{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--dolgu);color:var(--sonuk);white-space:nowrap}
+.idare-durum.etkin{background:var(--dogru-zemin);color:var(--dogru)}
+.idare-kod .dene-dugme{margin:6px 0 0}
+.dene-dugme.tehlike{color:var(--yanlis)}
+.idare-kullananlar{margin-top:8px;font-size:13.5px}
+.idare-kullananlar summary{cursor:pointer;color:var(--sonuk);padding:4px 0}
+.idare-kullanan{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px;padding:6px 0;border-top:1px solid var(--ayrac);word-break:break-all}
+.idare-kullanan .dene-dugme{margin:0;padding:6px 10px;font-size:13px}
+.idare-yenile,.idare-kod .dene-dugme,.idare-kullanan .dene-dugme{width:auto}
+/* Beş sekme (İdare'li): sütun sayısı sekme sayısına uyar */
+.cekmece-sekmeler.bes{grid-template-columns:repeat(5,minmax(0,1fr))}
+.cekmece-sekmeler.bes .cekmece-sekme{font-size:12px;padding-left:1px;padding-right:1px}
+.idare-yenile{padding:7px 12px;font-size:13px}
+
 /* ---------- Temrin: Bilmiyorum, konu notunda ilgili bölümün yanıp sönmesi ---------- */
 .bilmiyorum-alan{display:flex;justify-content:center;margin-top:12px}
 .bilmiyorum-alan .bilmiyorum,.eylem button.bilmiyorum{
@@ -2224,7 +2261,6 @@ const AYAR = {
 };
 
 /* Şimdilik herkes 1. sınıf kaydedilir; sınıf sorulmaz */
-const VARSAYILAN_SINIF = 1;
 
 /* Kullanım sözleşmesi. Metin değişince "surum" artırılır ve veritabanındaki
    public.sozlesme_surumu() da aynı değere getirilir; herkes yeniden onaylar. */
@@ -2627,53 +2663,96 @@ function cevapNormal(s) {
 
 /* Yazılan cevabı karşılaştırma (boşluk doldurma, klasikteki anahtar kavramlar).
    Önemsiz: büyük/küçük harf, ı/i, ş/s, ğ/g, ü/u, ö/o, ç/c, â/a, kesme işaretinin
-   türü. Ufak klavye hatası (eksik, fazla, yanlış ya da yer değiştirmiş harf)
-   5–7 harflik cevapta 1, 8 ve üstünde 2 harf kabul edilir; ilk harf tutmalıdır
-   (sütun/bütün karışmasın). Hata payı yok:
-   4 harf ve altında (RAM/ROM, TCP/UDP) ve rakam ya da işaretlerde
-   (chmod 755, -aG, IPv4/IPv6) cevap tam tutmalıdır. */
+   türü. 6 harf ve üstündeki cevapta yalnızca tek bir KLAVYE HATASI kabul edilir:
+   komşu tuşa basma (ör. "derleyicu"), yan yana iki harfin yer değiştirmesi
+   ("derelyici"), ortada bir harfin eksik ya da fazla olması ("derleyci",
+   "derrleyici"), arada boşluk ("mor ötesi" / "morötesi"). Sınavda yanlış cevabı
+   doğru saymamak için ilk harf ve son üç harf değişemez (Türkçede ek ve anlam
+   orada değişir: "zamanla"/"zamana", "işletme"/"işleme", "yazılım"/"yazılır");
+   5 harf ve altında (RAM/ROM, TCP/UDP), büyük harfle yazılan kısaltmalarda
+   (EEPROM/EPROM), rakam ve işaretlerde (chmod 755, -aG, IPv4/IPv6) cevap tam
+   tutmalıdır. Bu kurallar ders içeriğindeki bütün terimlerle çapraz taranarak
+   konmuştur (yanlış kabul: yalnızca yazım çeşitleri). */
 function cevapSade(s) {
-  return cevapNormal(s).normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’‘`´]/g, "'");
+  return cevapNormal(s).normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[’‘`´]/g, "'");
 }
-function yazimPayi(n) { return n <= 4 ? 0 : n <= 7 ? 1 : 2; }
+const HATA_ESIGI = 6;
 const harfDisi = s => s.replace(/[\p{L}\s]/gu, "");
-/* Damerau-Levenshtein (komşu harf yer değişimi tek hata). onekMi: b'nin
-   herhangi bir başı ile en küçük fark (ekli kelime: "islemciye" ~ "işlemci") */
-function yazimFarki(a, b, onekMi) {
-  const n = a.length, m = b.length;
-  let iki = null, onceki = Array.from({ length: m + 1 }, (_, j) => j);
-  for (let i = 1; i <= n; i++) {
-    const simdi = [i];
-    for (let j = 1; j <= m; j++) {
-      let d = Math.min(onceki[j] + 1, simdi[j - 1] + 1, onceki[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
-      if (iki && i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d = Math.min(d, iki[j - 2] + 1);
-      simdi.push(d);
-    }
-    iki = onceki; onceki = simdi;
+/* Türkçe Q klavyede komşu tuşlar (yan yana ve alt/üst sıradaki çapraz komşular),
+   sadeleştirilmiş harflerle */
+const KLAVYE_KOMSU = (() => {
+  const siralar = ["qwertyuıopğü", "asdfghjklşi", "zxcvbnmöç"].map(x => [...x].map(cevapSade));
+  const m = new Map();
+  const ekle = (x, y) => { if (x === y) return; if (!m.has(x)) m.set(x, new Set()); if (!m.has(y)) m.set(y, new Set()); m.get(x).add(y); m.get(y).add(x); };
+  siralar.forEach((sira, r) => sira.forEach((c, j) => {
+    if (j > 0) ekle(c, sira[j - 1]);
+    const alt = siralar[r + 1];
+    if (alt) [j - 1, j].forEach(x => { if (alt[x]) ekle(c, alt[x]); });
+  }));
+  return m;
+})();
+const komsuMu = (x, y) => !!(KLAVYE_KOMSU.get(x) && KLAVYE_KOMSU.get(x).has(y));
+/* y, k'den tek bir klavye hatasıyla mı oluşmuş (ilk harf ve son üç harf korunarak) */
+function tekKlavyeHatasi(k, y) {
+  const n = k.length, m = y.length, son = n - 4;   /* hata en çok bu sıradaki harfte olabilir */
+  if (k[0] !== y[0] || k.slice(-3) !== y.slice(-3)) return false;
+  if (n === m) {
+    let i = 0; while (i < n && k[i] === y[i]) i++;
+    if (i === n || i > son) return false;
+    let j = n - 1; while (k[j] === y[j]) j--;
+    if (i === j) return komsuMu(k[i], y[i]);
+    return j === i + 1 && j <= son && k[i] === y[j] && k[j] === y[i];
   }
-  return onekMi ? Math.min.apply(null, onceki) : onceki[m];
+  if (m === n - 1) {   /* eksik harf ya da boşluk */
+    for (let i = 1; i <= son; i++) if (k.slice(0, i) + k.slice(i + 1) === y) return true;
+    return false;
+  }
+  if (m === n + 1) {   /* fazla harf: komşu tuş, yinelenen harf ya da boşluk */
+    for (let i = 1; i <= son + 1; i++) {
+      if (y.slice(0, i) + y.slice(i + 1) !== k) continue;
+      const c = y[i];
+      if (c === " " || c === y[i - 1] || c === y[i + 1] || komsuMu(c, y[i - 1]) || komsuMu(c, y[i + 1])) return true;
+    }
+  }
+  return false;
 }
-/* "tam" (yazım aynı), "yakin" (ufak hata kabul edildi) ya da null */
+/* "tam" (yazım aynı), "yakin" (tek klavye hatası kabul edildi) ya da null */
 function cevapTutar(yazilan, kabulListesi) {
   const y = cevapSade(yazilan);
   if (!y) return null;
   const sade = kabulListesi.map(cevapSade);
   if (sade.indexOf(y) !== -1) return "tam";
-  return sade.some(k => {
-    const pay = yazimPayi(k.length);
-    return pay && k[0] === y[0] && harfDisi(k) === harfDisi(y) && Math.abs(k.length - y.length) <= pay && yazimFarki(k, y) <= pay;
-  }) ? "yakin" : null;
+  return kabulListesi.some((ham, i) => hataKabulMu(ham) && !harfDisi(y) && tekKlavyeHatasi(sade[i], y)) ? "yakin" : null;
 }
-/* Anahtar kavram yazılan metinde geçiyor mu (eki olabilir, ufak hata kabul) */
+/* Hata payı tanınır mı: 6+ harf, yalnızca harf ve boşluk, kısaltma değil */
+function hataKabulMu(ham) {
+  const k = cevapSade(ham);
+  return k.length >= HATA_ESIGI && !harfDisi(k) && !/^[A-ZÇĞİÖŞÜ]+$/.test(String(ham).trim());
+}
+/* a, m'de bir kelimenin başında geçiyor mu (ardından ek gelebilir) */
+function kelimeBasinda(m, a) {
+  for (let i = m.indexOf(a); i !== -1; i = m.indexOf(a, i + 1)) if (i === 0 || !/\p{L}/u.test(m[i - 1])) return true;
+  return false;
+}
+/* Anahtar kavram yazılan metinde geçiyor mu. Kelime ek alabilir ("işlemciye");
+   sonu k/p/t ile biten kavram yumuşamış hâliyle de bulunur ("kaynağı", "kitabı",
+   "kanadı"); 6 harf ve üstünde tek klavye hatası kabul edilir. */
 function metindeGeciyor(metin, anahtar) {
   const m = cevapSade(metin), a = cevapSade(anahtar);
   if (!a || !m) return false;
-  if (m.indexOf(a) !== -1) return true;
-  const pay = yazimPayi(a.length);
-  if (!pay || harfDisi(a)) return false;
+  /* Kısa kelime başka kelimenin içinde aranmaz ("çeşit" içindeki "eşit");
+     uzun kavram ve işaret her yerde bulunur ("Mikroişlemci yuvası", "*") */
+  const gecer = x => (x.length < HATA_ESIGI && /^\p{L}/u.test(x)) ? kelimeBasinda(m, x) : m.indexOf(x) !== -1;
+  if (gecer(a)) return true;
+  const yumusak = { k: "g", p: "b", t: "d" }[a[a.length - 1]];
+  if (yumusak && a.length >= 3 && gecer(a.slice(0, -1) + yumusak)) return true;
+  if (!hataKabulMu(anahtar)) return false;
   for (let i = 0; i < m.length; i++) {
-    if (m[i] !== a[0] || (i > 0 && /\p{L}/u.test(m[i - 1]))) continue;   /* kelime başından, ilk harf tutarak */
-    if (yazimFarki(a, m.slice(i, i + a.length + pay), true) <= pay) return true;
+    if (m[i] !== a[0] || (i > 0 && /\p{L}/u.test(m[i - 1]))) continue;   /* kelime başından */
+    for (let L = a.length - 1; L <= a.length + 1; L++) {
+      const p = m.slice(i, i + L);
+      if (p.length === L && tekKlavyeHatasi(a, p)) return true;
+    }
   }
   return false;
 }
@@ -3845,6 +3924,7 @@ async function cikisIsi(mesaj) {
   bilerekCikiliyor = false;
   sesDurdur();
   await yerelVeriyiSil();
+  yoneticiMi = null; idareSifirla(); depo.sil("pg.yonetici");
   uygulamayiKapat();
   cikisBekliyor = false;
   girisEkraniAc(mesaj);
@@ -4424,6 +4504,30 @@ function sozlesmeMaddeleri(hedef) {
   hedef.appendChild(liste);
 }
 
+/* Sunucu "bu hesabın bölümü yok" dedi (yönetici sıfırladı): eski bölümün
+   ağacı, konuları ve görselleri cihazda kalmasın; internetsiz açılışta da
+   eski profille açılmasın. Kişisel kayıtlar (okundu, boya…) hesapta kalır. */
+async function bolumuCihazdanSil() {
+  try {
+    const [ik, gk] = await Promise.all([vt.anahtarlar("icerik"), vt.anahtarlar("gorsel")]);
+    await vt.coklu("icerik", [], ik);
+    await vt.coklu("gorsel", [], gk);
+    await vt.coklu("durum", [], ["profil"]);
+  } catch (e) { console.warn("bölüm içeriği silinemedi", e); }
+  KONU_SATIRLARI.clear(); AGAC = null; AGAC_OZET = null; veriKur();
+  if (KULLANICI) KULLANICI.profil = null;
+}
+
+/* Bölüm doğrulama kodu: "BP1_482913" yapıştırılırsa da 6 rakam alınır */
+function bolumKoduSade(metin) {
+  const m = /^\s*[A-Za-z]{2,4}[1-6]\s*[_-]?\s*(\d{3})\s*(\d{3})\s*$/.exec(metin || "");
+  if (m) return m[1] + m[2];
+  return String(metin || "").replace(/\D/g, "");
+}
+
+/* Hesabı tamamlama: önce bölüm doğrulama kodu (bölümü ve sınıfı yalnızca kod
+   belirler; öğrenci seçemez), sonra kullanım sözleşmesi. Kod doğru girilmedikçe
+   bu ekrandan çıkılmaz. Sözleşme değişince yalnızca sözleşme sorulur. */
 function profilEkraniAc() {
   if (girisPerdesi) girisPerdesi.remove();
   const perde = olustur("div", "giris-perde");
@@ -4432,40 +4536,45 @@ function profilEkraniAc() {
   document.body.appendChild(perde);
   girisPerdesi = perde;
 
-  let programlar = null, mevcut = null, secilenProgram = null, onay = false;
+  let programlar = null, mevcut = null, onay = false, yuklendi = false, kodBilgisi = null;
 
   async function yukle() {
     ciz(null, true);
     try {
       [mevcut, programlar] = await Promise.all([profilGetir(), programlariGetir()]);
-      if (!programlar.length) throw new Error("Program listesi boş");
-      secilenProgram = (mevcut && programlar.some(p => p.id === mevcut.program)) ? mevcut.program
-        : programlar.length === 1 ? programlar[0].id : null;
+      if (!mevcut) await bolumuCihazdanSil();
+      yuklendi = true;
       if (profilGecerli(mevcut)) { await bitir(mevcut); return; }
       ciz();
     } catch (e) {
+      yuklendi = false;
       ciz(navigator.onLine ? "Hesap bilgileri alınamadı: " + ((e && e.message) || "bilinmeyen hata")
-        : "Sözleşmeyi onaylamak için internet bağlantısı gerekiyor.");
+        : "Hesabınızı tamamlamak için internet bağlantısı gerekiyor.");
     }
   }
 
+  const programAdi = id => { const p = (programlar || []).find(x => x.id === id); return p ? p.ad : id; };
+
   async function bitir(p) {
-    const program = programlar.find(x => x.id === p.program);
-    await profiliCihazaYaz(p, program ? program.ad : p.program);
+    await profiliCihazaYaz(p, programAdi(p.program));
     girisEkraniniKapat();
     uygulamayiAc();
     esitle();
   }
 
-  function ciz(hata, yukleniyor) {
+  function ciz(hata, yukleniyor, uyariBilgi) {
     kutu.innerHTML = "";
+    const kodAsamasi = yuklendi && !mevcut;
     const baslik = olustur("h2", "giris-baslik");
-    baslik.textContent = mevcut ? "Sözleşme güncellendi" : "Hesabınızı tamamlayın";
+    baslik.textContent = kodAsamasi ? "Bölüm doğrulama kodu"
+      : (mevcut && mevcut.sozlesme_surumu) ? "Sözleşme güncellendi" : "Hesabınızı tamamlayın";
     kutu.appendChild(baslik);
     const alt = olustur("p", "giris-alt");
-    alt.textContent = mevcut
-      ? "Kullanım sözleşmesi değişti. Devam etmek için yeni metni okuyup onaylamanız gerekiyor."
-      : "Notlara geçmeden önce okuduğunuz bölümü ve kullanım sözleşmesini onaylayın.";
+    alt.textContent = kodAsamasi
+      ? "Okuduğunuz bölümün ve sınıfın doğrulama kodunu girin. Kod 6 rakamdır; bölümünüz ve sınıfınız koddan belirlenir."
+      : (mevcut && mevcut.sozlesme_surumu)
+        ? "Kullanım sözleşmesi değişti. Devam etmek için yeni metni okuyup onaylamanız gerekiyor."
+        : "Notlara geçmeden önce kullanım sözleşmesini okuyup onaylayın.";
     kutu.appendChild(alt);
     if (yukleniyor) {
       const y = olustur("div", "yukleniyor");
@@ -4474,8 +4583,9 @@ function profilEkraniAc() {
       return;
     }
     if (hata) { const h = olustur("p", "giris-hata"); h.setAttribute("role", "alert"); h.textContent = hata; kutu.appendChild(h); }
+    if (uyariBilgi) { const b = olustur("p", "giris-bilgi kod-bilgisi"); b.setAttribute("role", "status"); b.textContent = uyariBilgi; kutu.appendChild(b); }
 
-    if (!programlar) {
+    if (!yuklendi) {
       const eylem = olustur("div", "eylem");
       const tekrar = olustur("button", "ana");
       tekrar.textContent = "Yeniden dene";
@@ -4485,24 +4595,12 @@ function profilEkraniAc() {
       cikisBagi();
       return;
     }
+    if (kodAsamasi) { kodCiz(); return; }
 
-    /* Tek program varken sorulmaz; ileride bölüm eklenince seçtirilir */
-    if (programlar.length > 1 && !mevcut) {
-      const etiket = olustur("div", "giris-etiket");
-      etiket.textContent = "Okuduğunuz bölüm";
-      kutu.appendChild(etiket);
-      const liste = olustur("div", "kontrol");
-      liste.style.marginBottom = "18px";
-      programlar.forEach(p => {
-        const d = olustur("button", "kontrol-oge" + (secilenProgram === p.id ? " tikli" : ""));
-        d.innerHTML = '<span class="kutucuk">✓</span><span></span>';
-        d.lastChild.textContent = p.ad;
-        d.setAttribute("aria-pressed", secilenProgram === p.id ? "true" : "false");
-        d.addEventListener("click", () => { secilenProgram = p.id; ciz(); });
-        liste.appendChild(d);
-      });
-      kutu.appendChild(liste);
-    }
+    if (kodBilgisi) { const b = olustur("p", "giris-bilgi"); b.textContent = kodBilgisi; kutu.appendChild(b); }
+    const bolum = olustur("p", "giris-bilgi bolum-satiri");
+    bolum.textContent = "Bölüm: " + programAdi(mevcut.program) + ", " + mevcut.sinif + ". sınıf";
+    if (!kodBilgisi) kutu.appendChild(bolum);
 
     const sozlesme = olustur("div", "sozlesme");
     const sb = olustur("h3");
@@ -4522,17 +4620,13 @@ function profilEkraniAc() {
     const eylem = olustur("div", "eylem");
     const devam = olustur("button", "ana");
     devam.textContent = "Kabul et ve devam et";
-    devam.disabled = !onay || !secilenProgram;
+    devam.disabled = !onay;
     devam.addEventListener("click", async () => {
       devam.disabled = true; devam.textContent = "Kaydediliyor…";
-      const satir = {
-        kullanici: KULLANICI.id,
-        program: mevcut ? mevcut.program : secilenProgram,
-        sinif: mevcut ? mevcut.sinif : VARSAYILAN_SINIF,
-        sozlesme_surumu: SOZLESME.surum
-      };
       try {
-        const r = await istemci.from("profiller").upsert(satir, { onConflict: "kullanici" }).select("program,sinif,sozlesme_surumu").single();
+        /* İstemci yalnızca sözleşme onayını yazabilir (bölüm ve sınıf koddan gelir) */
+        const r = await istemci.from("profiller").update({ sozlesme_surumu: SOZLESME.surum })
+          .eq("kullanici", KULLANICI.id).select("program,sinif,sozlesme_surumu").single();
         if (r.error) throw r.error;
         await bitir(r.data);
       } catch (e) {
@@ -4543,6 +4637,56 @@ function profilEkraniAc() {
     });
     eylem.appendChild(devam);
     kutu.appendChild(eylem);
+    cikisBagi();
+  }
+
+  function kodCiz() {
+    const etiket = olustur("label", "giris-etiket");
+    etiket.textContent = "Doğrulama kodu";
+    etiket.htmlFor = "bolumKodu";
+    const girdi = olustur("input", "giris-girdi kod");
+    girdi.id = "bolumKodu";
+    girdi.inputMode = "numeric";
+    girdi.autocomplete = "off";
+    girdi.maxLength = 14;
+    girdi.placeholder = "••••••";
+    girdi.spellcheck = false;
+    const eylem = olustur("div", "eylem");
+    const dogrula = olustur("button", "ana");
+    dogrula.textContent = "Doğrula";
+    eylem.appendChild(dogrula);
+    kutu.append(etiket, girdi, eylem);
+    const gonder = async () => {
+      if (dogrula.disabled) return;
+      const kod = bolumKoduSade(girdi.value);
+      if (!/^\d{6}$/.test(kod)) { ciz("Kod 6 rakam olmalı."); return; }
+      dogrula.disabled = true; dogrula.textContent = "Doğrulanıyor…";
+      try {
+        const r = await istemci.rpc("bolum_kodu_kullan", { girilen: kod });
+        if (r.error) throw r.error;
+        const d = r.data || {};
+        const kalan = typeof d.kalan === "number" && d.kalan > 0 ? " " + d.kalan + " deneme hakkınız kaldı." : "";
+        const kilit = s => "Çok fazla yanlış deneme yapıldı. " + Math.max(1, Math.ceil((s || 0) / 60)) + " dakika sonra yeniden deneyin.";
+        if (d.durum === "tamam") {
+          mevcut = { program: d.program, sinif: d.sinif, sozlesme_surumu: null };
+          kodBilgisi = (d.programAdi || programAdi(d.program)) + ", " + d.sinif + ". sınıf olarak kaydedildiniz.";
+          ciz();
+          return;
+        }
+        if (d.durum === "zaten") { await yukle(); return; }
+        if (d.durum === "kilitli" || d.kalan === 0) { ciz(kilit(d.saniye)); return; }
+        if (d.durum === "suresi_doldu") { ciz(null, null, "Bu kodun geçerlilik süresi dolmuş, artık kullanılamaz. Kodu aldığınız kişiden yeni bir kod isteyin."); return; }
+        if (d.durum === "dolu") { ciz(null, null, "Bu kodun kişi sınırı dolmuş, artık kullanılamaz. Kodu aldığınız kişiden yeni bir kod isteyin."); return; }
+        if (d.durum === "bicim") { ciz("Kod 6 rakam olmalı."); return; }
+        ciz("Kod yanlış." + kalan);
+      } catch (e) {
+        ciz(!navigator.onLine ? "Kodu doğrulamak için internet bağlantısı gerekiyor."
+          : "Kod doğrulanamadı: " + ((e && e.message) || "bilinmeyen hata"));
+      }
+    };
+    dogrula.addEventListener("click", gonder);
+    girdi.addEventListener("keydown", e => { if (e.key === "Enter") gonder(); });
+    setTimeout(() => girdi.focus(), 50);
     cikisBagi();
   }
 
@@ -5887,16 +6031,271 @@ function hedefEkrani(ic, tumu, yenidenCiz) {
   goster();
   ic.appendChild(hk);
 }
-/* Çekmecenin ekranları; en son açılan ekran bu cihazda hatırlanır */
+/* ---------- İdare: bölüm kodları (yalnızca yönetici) ----------
+   Yönetici, hususi yetkisi olan hesaptır (01-sema.sql, hususi_yetki). Yetkiyi
+   sunucu denetler; buradaki bilgi yalnızca çekmecede sekmeyi göstermek içindir.
+   Bütün işler sunucu işlevleriyle yapılır (01-sema.sql, 5b). */
+let yoneticiMi = null;   /* null: bu hesap için henüz bilinmiyor */
+function yoneticiOku() {
+  const k = depo.oku("pg.yonetici", null);
+  return !!(k && KULLANICI && k.kullanici === KULLANICI.id && k.deger === true);
+}
+async function yoneticiligiSor() {
+  if (!istemci || !navigator.onLine || !KULLANICI) return yoneticiMi;
+  try {
+    const r = await istemci.rpc("hususi_yetkili");
+    if (!r.error) { yoneticiMi = r.data === true; depo.yaz("pg.yonetici", { kullanici: KULLANICI.id, deger: yoneticiMi }); }
+  } catch (e) {}
+  return yoneticiMi;
+}
+
+const IDARE = { programlar: null, liste: null, sonKod: null, hesap: null, aranan: "", hata: null, bilgi: null, mesgul: false,
+  form: { program: null, sinif: 1, saat: 2, dakika: 0, azami: 10 } };
+function idareSifirla() { Object.assign(IDARE, { programlar: null, liste: null, sonKod: null, hesap: null, aranan: "", hata: null, bilgi: null, mesgul: false }); }
+
+const idareZamani = z => new Date(z).toLocaleString("tr-TR", { timeZone: "Europe/Istanbul", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
+const IDARE_DURUM = { etkin: "Etkin", dolu: "Kişi sınırı doldu", suresi_doldu: "Süresi doldu", iptal: "İptal edildi" };
+/* Kodun toplam geçerlilik süresi: "1 sa 30 dk", "2 gün 3 sa" */
+function idareSuresi(bas, bit) {
+  let dk = Math.round((new Date(bit) - new Date(bas)) / 60000);
+  const gun = Math.floor(dk / 1440); dk -= gun * 1440;
+  const sa = Math.floor(dk / 60); dk -= sa * 60;
+  return [gun ? gun + " gün" : "", sa ? sa + " sa" : "", dk ? dk + " dk" : ""].filter(Boolean).join(" ") || "1 dk'dan az";
+}
+/* Kodu panoya kopyalayan düğme; kısa süre "Kopyalandı" yazar */
+function kopyaDugmesi(metin, sinif) {
+  const b = olustur("button", sinif);
+  b.type = "button";
+  b.textContent = "Kopyala";
+  b.setAttribute("aria-label", metin + " kodunu kopyala");
+  b.addEventListener("click", async () => {
+    let oldu = false;
+    try { await navigator.clipboard.writeText(metin); oldu = true; } catch (e) {}
+    b.textContent = oldu ? "Kopyalandı" : "Kopyalanamadı";
+    setTimeout(() => { if (b.isConnected) b.textContent = "Kopyala"; }, 1600);
+  });
+  return b;
+}
+
+async function idareYukle() {
+  const [p, l] = await Promise.all([programlariGetir(), istemci.rpc("bolum_kodlari_listesi")]);
+  if (l.error) throw l.error;
+  IDARE.programlar = p;
+  IDARE.liste = l.data || [];
+  if (!IDARE.form.program || !p.some(x => x.id === IDARE.form.program)) IDARE.form.program = p.length ? p[0].id : null;
+}
+
+function idareEkrani(ic, yeniden) {
+  const hataGoster = e => { IDARE.hata = (e && e.message) || String(e); IDARE.bilgi = null; };
+  /* Bir işi yapıp ekranı yeniden çizer; iş sürerken düğmeler kapalıdır */
+  const is = async (fn) => {
+    if (IDARE.mesgul) return;
+    IDARE.mesgul = true; IDARE.hata = null; setTimeout(yeniden, 0);   /* çizim sürerken iç içe çizilmesin */
+    try { await fn(); } catch (e) { hataGoster(e); }
+    IDARE.mesgul = false; yeniden();
+  };
+  if (!navigator.onLine || !istemci) {
+    const p = olustur("p", "ist-bos"); p.textContent = "İdare için internet bağlantısı gerekiyor."; ic.appendChild(p); return;
+  }
+  if (!IDARE.programlar || !IDARE.liste) {
+    const y = olustur("div", "yukleniyor"); y.innerHTML = '<span class="halka"></span>'; ic.appendChild(y);
+    if (IDARE.hata) { const h = olustur("p", "giris-hata"); h.textContent = IDARE.hata; ic.appendChild(h); }
+    if (!IDARE.mesgul && !IDARE.hata) is(idareYukle);
+    else if (IDARE.hata) {
+      const d = olustur("button", "dene-dugme"); d.textContent = "Yeniden dene";
+      d.addEventListener("click", () => { IDARE.hata = null; is(idareYukle); }); ic.appendChild(d);
+    }
+    return;
+  }
+  if (IDARE.hata) { const h = olustur("p", "giris-hata"); h.setAttribute("role", "alert"); h.textContent = IDARE.hata; ic.appendChild(h); }
+  if (IDARE.bilgi) { const b = olustur("p", "giris-bilgi"); b.textContent = IDARE.bilgi; ic.appendChild(b); }
+
+  /* --- Yeni kod --- */
+  const f = IDARE.form;
+  const kart = olustur("section", "ist-kart idare-kart");
+  const h = olustur("h3", "ist-baslik"); h.textContent = "Yeni bölüm kodu"; kart.appendChild(h);
+  const alan = (etiket, girdi, id) => {
+    const l = olustur("label", "giris-etiket"); l.textContent = etiket; l.htmlFor = id; girdi.id = id;
+    kart.append(l, girdi); return girdi;
+  };
+  const programSec = alan("Bölüm", olustur("select", "giris-girdi"), "idareProgram");
+  IDARE.programlar.forEach(p => { const o = olustur("option"); o.value = p.id; o.textContent = p.ad; programSec.appendChild(o); });
+  programSec.value = f.program;
+  const secili = () => IDARE.programlar.find(p => p.id === f.program) || IDARE.programlar[0];
+  if (f.sinif > secili().sinif_sayisi) f.sinif = 1;
+  const sinifSec = alan("Sınıf", olustur("select", "giris-girdi"), "idareSinif");
+  for (let n = 1; n <= secili().sinif_sayisi; n++) { const o = olustur("option"); o.value = String(n); o.textContent = n + ". sınıf"; sinifSec.appendChild(o); }
+  sinifSec.value = String(f.sinif);
+  programSec.addEventListener("change", () => { f.program = programSec.value; f.sinif = 1; yeniden(); });
+  sinifSec.addEventListener("change", () => { f.sinif = Number(sinifSec.value); });
+
+  const sureEt = olustur("div", "giris-etiket"); sureEt.textContent = "Geçerlilik süresi"; kart.appendChild(sureEt);
+  const sure = olustur("div", "idare-sure");
+  const sayi = (deger, azami, ad, birim) => {
+    const g = olustur("input", "giris-girdi"); g.type = "number"; g.inputMode = "numeric"; g.min = "0"; g.max = String(azami);
+    g.value = String(deger); g.id = ad; g.setAttribute("aria-label", birim);
+    const b = olustur("span", "idare-birim"); b.textContent = birim;
+    sure.append(g, b); return g;
+  };
+  const saatG = sayi(f.saat, 168, "idareSaat", "saat");
+  const dakikaG = sayi(f.dakika, 59, "idareDakika", "dakika");
+  kart.appendChild(sure);
+  const azamiG = alan("Kişi sınırı", olustur("input", "giris-girdi"), "idareAzami");
+  azamiG.type = "number"; azamiG.inputMode = "numeric"; azamiG.min = "1"; azamiG.max = "300"; azamiG.value = String(f.azami);
+  const oku = () => { f.saat = Math.floor(Number(saatG.value) || 0); f.dakika = Math.floor(Number(dakikaG.value) || 0); f.azami = Math.floor(Number(azamiG.value) || 0); };
+  [saatG, dakikaG, azamiG].forEach(g => g.addEventListener("input", oku));
+  const not = olustur("p", "hesap-durum");
+  not.textContent = "Süre en çok 7 gün, kişi sınırı en çok 300. Her hesap bir kodda bir hak harcar; kodla giren hesabın bölümü ve sınıfı bu koddan yazılır.";
+  kart.appendChild(not);
+  const eylem = olustur("div", "eylem");
+  const uret = olustur("button", "ana"); uret.textContent = IDARE.mesgul ? "Bekleyin…" : "Kod üret"; uret.disabled = IDARE.mesgul;
+  uret.addEventListener("click", () => {
+    oku();
+    const dakika = f.saat * 60 + f.dakika;
+    if (dakika < 1 || dakika > 10080 || f.dakika > 59 || f.saat < 0 || f.dakika < 0) { IDARE.hata = "Süre 1 dakika ile 7 gün arasında olmalı."; yeniden(); return; }
+    if (f.azami < 1 || f.azami > 300) { IDARE.hata = "Kişi sınırı 1 ile 300 arasında olmalı."; yeniden(); return; }
+    is(async () => {
+      const r = await istemci.rpc("bolum_kodu_uret", { p_program: f.program, p_sinif: f.sinif, p_dakika: dakika, p_azami: f.azami });
+      if (r.error) throw r.error;
+      IDARE.sonKod = r.data;
+      IDARE.bilgi = null;
+      await idareYukle();
+    });
+  });
+  eylem.appendChild(uret);
+  kart.appendChild(eylem);
+  if (IDARE.sonKod) {
+    const k = IDARE.sonKod;
+    const s = olustur("div", "idare-sonuc");
+    const satir = olustur("div", "idare-rakam-satiri");
+    const rakam = olustur("div", "idare-rakam"); rakam.textContent = k.kod;
+    satir.append(rakam, kopyaDugmesi(k.kod, "idare-kopya buyuk"));
+    const et = olustur("div", "idare-etiket"); et.textContent = k.etiket;
+    const bilgi = olustur("div", "hesap-durum"); bilgi.textContent = "Bitiş: " + idareZamani(k.bitis) + " · " + k.azami + " kişi";
+    s.append(satir, et, bilgi);
+    kart.appendChild(s);
+  }
+  ic.appendChild(kart);
+
+  /* --- Hesap bul --- */
+  const hk = olustur("section", "ist-kart idare-kart");
+  const hh = olustur("h3", "ist-baslik"); hh.textContent = "Hesap bul"; hk.appendChild(hh);
+  const el = olustur("label", "giris-etiket"); el.textContent = "Okul e-posta adresi"; el.htmlFor = "idareEposta";
+  const eg = olustur("input", "giris-girdi"); eg.id = "idareEposta"; eg.type = "email"; eg.autocomplete = "off"; eg.spellcheck = false;
+  eg.value = IDARE.aranan; eg.placeholder = "ad.soyad@" + AYAR.OKUL_ALANI;
+  eg.addEventListener("input", () => { IDARE.aranan = eg.value; });
+  const bul = olustur("button", "dene-dugme"); bul.textContent = "Bul"; bul.disabled = IDARE.mesgul;
+  const ara = () => {
+    const a = eg.value.trim();
+    if (!a) return;
+    is(async () => {
+      const r = await istemci.rpc("idare_hesap_bul", { p_eposta: a });
+      if (r.error) throw r.error;
+      IDARE.hesap = r.data || { yok: true, eposta: a };
+    });
+  };
+  bul.addEventListener("click", ara);
+  eg.addEventListener("keydown", e => { if (e.key === "Enter") ara(); });
+  hk.append(el, eg, bul);
+  if (IDARE.hesap) {
+    const x = IDARE.hesap;
+    const satir = t => { const p = olustur("p", "hesap-durum"); p.textContent = t; hk.appendChild(p); };
+    if (x.yok) satir(x.eposta + ": bu adresle açılmış hesap yok.");
+    else {
+      satir(x.eposta);
+      satir(x.program ? "Bölüm: " + (x.programAdi || x.program) + ", " + x.sinif + ". sınıf" : "Bölümü yazılı değil (bölüm kodu bekliyor).");
+      if (x.program) satir(x.etiket ? "Kod: " + x.etiket : "Kodsuz (bölüm kodundan önce açılmış hesap).");
+      if (x.program) satir(x.sozlesme ? "Sözleşme onaylı." : "Sözleşme henüz onaylanmadı.");
+      if (x.program && x.kullanici !== (KULLANICI && KULLANICI.id)) hk.appendChild(sifirlaDugmesi(x.kullanici, x.eposta));
+    }
+  }
+  ic.appendChild(hk);
+
+  /* --- Kodlar --- */
+  const lk = olustur("section", "ist-kart idare-kart");
+  const lh = olustur("h3", "ist-baslik"); lh.textContent = "Kodlar"; lk.appendChild(lh);
+  const yenile = olustur("button", "dene-dugme idare-yenile"); yenile.textContent = "Yenile"; yenile.disabled = IDARE.mesgul;
+  yenile.addEventListener("click", () => is(idareYukle));
+  lk.appendChild(yenile);
+  if (!IDARE.liste.length) { const b = olustur("p", "ist-bos"); b.textContent = "Henüz kod üretilmedi."; lk.appendChild(b); }
+  IDARE.liste.forEach(k => {
+    const o = olustur("div", "idare-kod" + (k.durum === "etkin" ? "" : " gecmis"));
+    o.dataset.etiket = k.etiket;
+    const ust = olustur("div", "idare-kod-ust");
+    const sol = olustur("span", "idare-kod-ad");
+    const ad = olustur("span", "idare-etiket"); ad.textContent = k.etiket;
+    sol.appendChild(ad);
+    if (k.durum === "etkin") sol.appendChild(kopyaDugmesi(k.etiket.split("_").pop(), "idare-kopya"));
+    const d = olustur("span", "idare-durum " + k.durum); d.textContent = IDARE_DURUM[k.durum] || k.durum;
+    ust.append(sol, d);
+    const satirEkle = metin => { const p = olustur("div", "hesap-durum idare-bilgi"); p.textContent = metin; o.appendChild(p); };
+    o.appendChild(ust);
+    satirEkle(k.programAdi + ", " + k.sinif + ". sınıf");
+    satirEkle("Oluşturuldu: " + idareZamani(k.olusturuldu) + " · Süre: " + idareSuresi(k.olusturuldu, k.bitis));
+    satirEkle("Kullanım: " + k.kullanim + " / " + k.azami + " kişi");
+    satirEkle(k.iptal ? "İptal: " + idareZamani(k.iptal) : (k.durum === "suresi_doldu" ? "Bitti: " : "Bitiş: ") + idareZamani(k.bitis));
+    if (k.durum === "etkin" || k.durum === "dolu") {
+      const ipt = olustur("button", "dene-dugme tehlike"); ipt.textContent = "İptal et"; ipt.disabled = IDARE.mesgul;
+      ipt.addEventListener("click", async () => {
+        const evet = await pencereAc({ baslik: k.etiket + " iptal edilsin mi?", metin: "Bu kodla artık giriş yapılamaz. Kodla girmiş hesaplar etkilenmez.", evet: "İptal et", hayir: "Vazgeç", tehlike: true });
+        if (!evet) return;
+        is(async () => {
+          const r = await istemci.rpc("bolum_kodu_iptal", { p_id: k.id });
+          if (r.error) throw r.error;
+          IDARE.bilgi = k.etiket + " iptal edildi.";
+          await idareYukle();
+        });
+      });
+      o.appendChild(ipt);
+    }
+    if (k.kullananlar && k.kullananlar.length) {
+      const ay = olustur("details", "idare-kullananlar");
+      const oz = olustur("summary"); oz.textContent = "Kullananlar (" + k.kullananlar.length + ")"; ay.appendChild(oz);
+      k.kullananlar.forEach(u => {
+        const s = olustur("div", "idare-kullanan");
+        const t = olustur("span"); t.textContent = u.eposta + " · " + idareZamani(u.zaman);
+        s.appendChild(t);
+        if (u.kullanici !== (KULLANICI && KULLANICI.id)) s.appendChild(sifirlaDugmesi(u.kullanici, u.eposta));
+        ay.appendChild(s);
+      });
+      o.appendChild(ay);
+    }
+    lk.appendChild(o);
+  });
+  ic.appendChild(lk);
+
+  function sifirlaDugmesi(kullanici, eposta) {
+    const b = olustur("button", "dene-dugme tehlike"); b.textContent = "Bölümünü sıfırla"; b.disabled = IDARE.mesgul;
+    b.addEventListener("click", async () => {
+      const evet = await pencereAc({ baslik: "Bölüm sıfırlansın mı?", metin: eposta + " bir sonraki açılışında yeni bir bölüm kodu girecek ve sözleşmeyi yeniden onaylayacak. Notları ve kayıtları silinmez. Harcadığı hak geri gelmez.", evet: "Sıfırla", hayir: "Vazgeç", tehlike: true });
+      if (!evet) return;
+      is(async () => {
+        const r = await istemci.rpc("idare_hesap_sifirla", { p_kullanici: kullanici });
+        if (r.error) throw r.error;
+        IDARE.bilgi = eposta + " hesabının bölümü sıfırlandı.";
+        if (IDARE.hesap && IDARE.hesap.kullanici === kullanici) IDARE.hesap = null;
+        await idareYukle();
+      });
+    });
+    return b;
+  }
+}
+
+/* Çekmecenin ekranları; en son açılan ekran bu cihazda hatırlanır.
+   İdare yalnızca yönetici hesabında görünür. */
 const CEKMECE_EKRANLARI = [
   ["hedef", "Hedef", "Hedef ve seri"],
   ["istatistik", "İstatistik", "Çalışma istatistikleri"],
   ["takvim", "Takvim", "Çalışma takvimi"],
   ["hesap", "Hesap", "Hesap"]
 ];
+function cekmeceEkranlari() {
+  const yonetici = yoneticiMi === null ? yoneticiOku() : yoneticiMi;
+  return yonetici ? CEKMECE_EKRANLARI.concat([["idare", "İdare", "İdare"]]) : CEKMECE_EKRANLARI;
+}
 function cekmeceEkraniOku() {
   const e = depo.oku("pg.cekmeceEkrani", "hedef");
-  return CEKMECE_EKRANLARI.some(x => x[0] === e) ? e : "hedef";
+  return cekmeceEkranlari().some(x => x[0] === e) ? e : "hedef";
 }
 
 /* Sağdan açılan çekmece: menü düğmesi ya da sağ kenardan sola çekmek açar.
@@ -5933,26 +6332,41 @@ function hesapSayfasiAc(secenek) {
   try { kapat.focus({ preventScroll: true }); } catch (h) {}
 
   let ekran = cekmeceEkraniOku();
-  CEKMECE_EKRANLARI.forEach(([ad, etiket]) => {
-    const b = olustur("button", "cekmece-sekme");
-    b.dataset.ekran = ad;
-    b.setAttribute("role", "tab");
-    b.textContent = etiket;
-    b.addEventListener("click", () => {
-      if (ekran === ad) return;
-      ekran = ad; depo.yaz("pg.cekmeceEkrani", ad);
-      govde.scrollTop = 0;
-      ciz();
+  let ekranlar = cekmeceEkranlari();
+  const sekmeleriKur = () => {
+    sekmeler.innerHTML = "";
+    sekmeler.classList.toggle("bes", ekranlar.length === 5);
+    ekranlar.forEach(([ad, etiket]) => {
+      const b = olustur("button", "cekmece-sekme");
+      b.dataset.ekran = ad;
+      b.setAttribute("role", "tab");
+      b.textContent = etiket;
+      b.addEventListener("click", () => {
+        if (ekran === ad) return;
+        ekran = ad; depo.yaz("pg.cekmeceEkrani", ad);
+        govde.scrollTop = 0;
+        ciz();
+      });
+      sekmeler.appendChild(b);
     });
-    sekmeler.appendChild(b);
+  };
+  sekmeleriKur();
+  /* Yöneticilik sunucuya sorulur; değiştiyse sekmeler yeniden kurulur */
+  yoneticiligiSor().then(() => {
+    if (hesapSayfasi !== sayfa) return;
+    const yeni = cekmeceEkranlari();
+    if (yeni.length === ekranlar.length) return;
+    ekranlar = yeni;
+    if (!ekranlar.some(x => x[0] === ekran)) ekran = "hedef";
+    sekmeleriKur(); ciz();
   });
   /* Kaydırarak bölüm değiştirme: yon -1 soldaki, +1 sağdaki bölüm (uçlarda döner);
      giris: yeni bölümün hangi yandan gireceği (parmağın gittiği yönün tersi;
      parmak sola gidince sağdaki bölüm sağdan gelir) */
   const bolumKaydir = (yon, giris) => {
-    const n = CEKMECE_EKRANLARI.length;
-    const i = CEKMECE_EKRANLARI.findIndex(x => x[0] === ekran);
-    ekran = CEKMECE_EKRANLARI[((i + yon) % n + n) % n][0];
+    const n = ekranlar.length;
+    const i = ekranlar.findIndex(x => x[0] === ekran);
+    ekran = ekranlar[((i + yon) % n + n) % n][0];
     depo.yaz("pg.cekmeceEkrani", ekran);
     kimlikDuzenle = false;
     govde.scrollTop = 0;
@@ -6293,7 +6707,8 @@ function hesapSayfasiAc(secenek) {
   function ciz() {
     const kaydirma = govde.scrollTop;
     govde.innerHTML = "";
-    const tanim = CEKMECE_EKRANLARI.find(x => x[0] === ekran);
+    const tanim = ekranlar.find(x => x[0] === ekran) || ekranlar[0];
+    ekran = tanim[0];
     baslik.textContent = tanim[2];
     panel.setAttribute("aria-label", tanim[2]);
     sekmeler.querySelectorAll(".cekmece-sekme").forEach(b => {
@@ -6325,6 +6740,8 @@ function hesapSayfasiAc(secenek) {
       ic.appendChild(takvimBolumu(tumu));
       ic.appendChild(haftaTakvimiBolumu(tumu));
       ic.appendChild(sinavBolumu());
+    } else if (ekran === "idare") {
+      idareEkrani(ic, () => { if (hesapSayfasi === sayfa && ekran === "idare") ciz(); });
     } else {
       ic.appendChild(kimlikBolumu());
       ic.appendChild(cihazBolumu());
@@ -10216,6 +10633,21 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
    pg.notSurumu'nda.
    ========================================================================== */
 const GUNCELLEMELER = [{
+  surum: "2.5",
+  tarih: "Kasım 2026",
+  baslik: "Yazım kontrolü ve Notlar hakkı",
+  maddeler: [
+    ["Yazım hoşgörüsü", "Boşluk doldurmada ve klasik sorulardaki anahtar kavramlarda artık yalnızca tek bir klavye hatası kabul edilir: komşu tuşa basma, yan yana iki harfin yer değişmesi ya da ortada bir harfin eksik veya fazla olması. Kelimenin ilk harfi ve son üç harfi tam tutmalıdır; ekler ve kısaltmalar (EEPROM/EPROM gibi) birbirine karışmasın diye."],
+    ["Notlar hakkı", "Notlar'daki resimler için kişi başı hak 50 MB oldu."]
+  ]
+}, {
+  surum: "2.4",
+  tarih: "Kasım 2026",
+  baslik: "Bölüm doğrulama",
+  maddeler: [
+    ["Bölüm kodu", "Uygulamaya yeni katılan hesaplar, okuduğu bölümün ve sınıfın doğrulama koduyla açılır; her bölüm yalnızca kendi derslerini görür. Hesabınız Bilgisayar Programcılığı 1. sınıf olarak kayıtlı; sizin bir şey yapmanız gerekmez."]
+  ]
+}, {
   surum: "2.3",
   tarih: "Kasım 2026",
   baslik: "Temrinde iyileştirmeler",
@@ -10340,7 +10772,7 @@ function guncellemeNotuGoster() {
    içlerine notlarını ve derste çektiği resimleri koyar. Hepsini yalnızca
    kendisi görür. Tasnifler ve notlar Supabase'de (kaynak_tasnif, kaynak_oge);
    resimler R2'de, Worker üzerinden (AYAR.KAYNAK_URL). Kişi başı resim hakkı
-   kaynak_kota tablosundadır (öntanımlı 100 MB).
+   kaynak_kota tablosundadır (öntanımlı 50 MB).
 
    Önce cihaz, sonra sunucu: her değişiklik (tasnif açma, not yazma, resim
    ekleme, silme) önce cihaza yazılır ve "gönderilecekler sırası"na

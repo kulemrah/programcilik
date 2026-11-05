@@ -75,17 +75,19 @@ with sync_playwright() as p:
 
     # --- Yazım hoşgörüsü (doğrudan işlevle) ---
     durum = s.evaluate("""() => [
-      cevapTutar('ISLEMCI', ['işlemci']), cevapTutar('islemic', ['işlemci']), cevapTutar('sutun', ['sütun']),
+      cevapTutar('ISLEMCI', ['işlemci']), cevapTutar('ilsemci', ['işlemci']), cevapTutar('sutun', ['sütun']),
       cevapTutar('bütün', ['sütun']), cevapTutar('ROM', ['RAM']), cevapTutar('IPv6', ['IPv4']),
-      cevapTutar('chmod 754', ['chmod 755']), cevapTutar('derleycii', ['derleyici']), cevapTutar('yorumlayici', ['derleyici']),
+      cevapTutar('chmod 754', ['chmod 755']), cevapTutar('derelyici', ['derleyici']), cevapTutar('yorumlayici', ['derleyici']),
+      cevapTutar('zamana', ['zamanla']), cevapTutar('isleme', ['işletme']), cevapTutar('EPROM', ['EEPROM']), cevapTutar('derleyicu', ['derleyici']),
+      metindeGeciyor('çeşidi', 'eşit'), metindeGeciyor('kaynağın gerilimi', 'kaynak'),
       metindeGeciyor('Islemciye gonderilir', 'işlemci'), metindeGeciyor('islmciye gider', 'işlemci'),
       metindeGeciyor('islem yapar', 'işlemci'), metindeGeciyor('IPv6 kullanir', 'IPv4')]""")
-    kontrol("yazım: tam/yakın/ret beklendiği gibi", durum == ["tam", "yakin", "tam", None, None, None, None, "yakin", None, True, True, False, False], durum)
+    kontrol("yazım: tam/yakın/ret beklendiği gibi (ek, kısaltma, son harf, kelime ortası korunur; yumuşama bulunur)", durum == ["tam", "yakin", "tam", None, None, None, None, "yakin", None, None, None, None, None, False, True, True, True, False, False], durum)
 
     # Boşluk doldurma uçtan uca: ilk cevabın ı/i ve harf hatalı hâli
-    q = ilk("bosluk", lambda q: len(q["cevaplar"]) == 1 and len(q["cevaplar"][0][0]) >= 8 and re.fullmatch(r"[A-Za-zÇĞİÖŞÜçğıöşü ]+", q["cevaplar"][0][0]))
+    q = ilk("bosluk", lambda q: len(q["cevaplar"]) == 1 and len(q["cevaplar"][0][0]) >= 8 and re.fullmatch(r"[A-Za-zÇĞİÖŞÜçğıöşü]+", q["cevaplar"][0][0]) and not q["cevaplar"][0][0].isupper() and q["cevaplar"][0][0][1] != q["cevaplar"][0][0][2])
     asil = q["cevaplar"][0][0]
-    bozuk = asil.upper().replace("I", "i")[:-1]   # büyük harf + son harf eksik
+    bozuk = (asil[0] + asil[2] + asil[1] + asil[3:]).upper().replace("I", "i")   # büyük harf + 2. ve 3. harf yer değişmiş
     tek_soru(s, q["id"])
     s.fill(".bosluk-girdi", bozuk)
     s.click(".eylem button:has-text('Kontrol et')")

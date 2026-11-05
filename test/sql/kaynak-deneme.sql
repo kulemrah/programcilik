@@ -44,8 +44,8 @@ set role authenticated;
 select set_config('request.jwt.claims', '{"sub":"aaaaaaaa-0000-0000-0000-000000000001","session_id":"aaaaaaaa-1111-0000-0000-000000000001","role":"authenticated"}', false);
 
 select pg_temp.denetle('A üye', public.uye());
-select pg_temp.denetle('kaynak_durum: izin, 100 MB, 0 kullanılan',
-  (select (d->>'izin')::boolean and (d->>'azami_bayt')::bigint = 104857600 and (d->>'kullanilan_bayt')::bigint = 0 from public.kaynak_durum() d));
+select pg_temp.denetle('kaynak_durum: izin, 50 MB, 0 kullanılan',
+  (select (d->>'izin')::boolean and (d->>'azami_bayt')::bigint = 52428800 and (d->>'kullanilan_bayt')::bigint = 0 from public.kaynak_durum() d));
 
 insert into public.kaynak_tasnif (id, ad) values ('a0000000-0000-0000-0000-00000000000a', 'Algoritma');
 insert into public.kaynak_tasnif (id, ust, ad) values ('a0000000-0000-0000-0000-00000000000b', 'a0000000-0000-0000-0000-00000000000a', '3. hafta');
@@ -100,12 +100,12 @@ select pg_temp.denetle('aktif cihazı olmayan oturum: izin yok, satır görmez',
 reset role;
 set role service_role;
 select pg_temp.denetle('B yazamadı: A''nın notu yerinde', (select metin = 'Düzeltildi' from public.kaynak_oge where id = 'a1000000-0000-0000-0000-000000000001'));
-select pg_temp.denetle('resim eklenir (60 MB)',
-  (select (public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', 'a2000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-00000000000c', 60 * 1048576, 2048, 1536)->>'bayt')::bigint = 60 * 1048576));
-select pg_temp.hata_beklenir('100 MB aşılamaz (60 + 41)',
-  $$select public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', gen_random_uuid(), 'a0000000-0000-0000-0000-00000000000c', 41 * 1048576, 1, 1)$$, 'kota');
-select pg_temp.denetle('tam sınıra kadar eklenir (60 + 40)',
-  (select public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', 'a2000000-0000-0000-0000-000000000002', 'a0000000-0000-0000-0000-00000000000c', 40 * 1048576, 1, 1) is not null));
+select pg_temp.denetle('resim eklenir (30 MB)',
+  (select (public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', 'a2000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-00000000000c', 30 * 1048576, 2048, 1536)->>'bayt')::bigint = 30 * 1048576));
+select pg_temp.hata_beklenir('50 MB aşılamaz (30 + 21)',
+  $$select public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', gen_random_uuid(), 'a0000000-0000-0000-0000-00000000000c', 21 * 1048576, 1, 1)$$, 'kota');
+select pg_temp.denetle('tam sınıra kadar eklenir (30 + 20)',
+  (select public.kaynak_resim_ekle('aaaaaaaa-0000-0000-0000-000000000001', 'a2000000-0000-0000-0000-000000000002', 'a0000000-0000-0000-0000-00000000000c', 20 * 1048576, 1, 1) is not null));
 select pg_temp.hata_beklenir('B''nin kota satırı yokken resim eklenemez',
   $$select public.kaynak_resim_ekle('bbbbbbbb-0000-0000-0000-000000000002', gen_random_uuid(), 'a0000000-0000-0000-0000-00000000000c', 1, 1, 1)$$, 'Kota satırı yok');
 
@@ -120,8 +120,8 @@ select pg_temp.denetle('hak 300 MB olunca yeni resim eklenir',
 reset role;
 set role authenticated;
 select set_config('request.jwt.claims', '{"sub":"aaaaaaaa-0000-0000-0000-000000000001","session_id":"aaaaaaaa-1111-0000-0000-000000000001","role":"authenticated"}', false);
-select pg_temp.denetle('kaynak_durum: 300 MB hak, 105 MB kullanılan',
-  (select (d->>'azami_bayt')::bigint = 300 * 1048576 and (d->>'kullanilan_bayt')::bigint = 105 * 1048576 from public.kaynak_durum() d));
+select pg_temp.denetle('kaynak_durum: 300 MB hak, 55 MB kullanılan',
+  (select (d->>'azami_bayt')::bigint = 300 * 1048576 and (d->>'kullanilan_bayt')::bigint = 55 * 1048576 from public.kaynak_durum() d));
 select pg_temp.denetle('A resim satırlarını görür', (select count(*) = 3 from public.kaynak_oge where tur = 'resim'));
 delete from public.kaynak_oge where tur = 'resim';
 select pg_temp.denetle('A resim satırını doğrudan silemez (RLS: hiçbiri silinmez)', (select count(*) = 3 from public.kaynak_oge where tur = 'resim'));

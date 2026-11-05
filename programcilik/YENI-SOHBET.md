@@ -19,7 +19,7 @@ Bu dosya kısa haritadır. Ayrıntı `DEVIR-NOTU.md`'de: yalnızca işin gerekti
 - Türkçe; Hamza'ya ve uygulamada öğrenciye **"siz"**.
 - **Hata payı yok** (sınav konusu): uydurma yok, hocanın ifadesi korunur; slayt hatası **Dikkat** kutusunda düzeltilir, slaytta olmayan bilgi **Ek** kutusuna gider.
 - Algoritma'da **C++ yok** (derste henüz girilmedi). Yalnızca hocanın kendi slaytlarındaki C++ kalır.
-- Teslimde **yalnızca değişen dosyalar**, depodaki yollarıyla zip (`guncelleme-NN.zip`; son verilen **37**).
+- Teslimde **yalnızca değişen dosyalar**, depodaki yollarıyla zip (`guncelleme-NN.zip`; son verilen **39**).
 - Verilen **her komut açıklanır**: ne yapar, bayraklar/işaretler, beklenen çıktı.
 - Hamza'nın kararları **🔶 Sizin karar vermeniz gerekenler** başlığıyla, belirgin.
 - Plan/rehber belgelerinde yalnızca son durum yazılır.
@@ -50,7 +50,7 @@ programcilik/
 │   └── sekiller/<ders>.py    ← SVG/görsel üreticiler (donanim-kaynak/ = fotoğraf kaynakları)
 ├── uygulama/
 │   ├── index.html            ← tek dosya uygulama (~12.400 satır; harita §4)
-│   ├── sw.js                 ← önbellek programcilik-v24 (index.html değişince +1)
+│   ├── sw.js                 ← önbellek programcilik-v25 (index.html değişince +1)
 │   ├── supabase.js, manifest.webmanifest, kostu-*.png, webp/ (iPhone WebP kodlayıcı)
 ├── supabase/01-sema.sql      ← tekrar çalıştırılabilir tam şema (8. bölüm: Notlar/Kaynak)
 ├── kaynak-worker/            ← worker.js (R2 + kota), wrangler.toml
@@ -60,7 +60,7 @@ programcilik/
     ├── sql/, kaynak/         ← şemanın yerel PostgreSQL denemesi, Notlar taklit sunucusu
 ```
 
-Ders kimlikleri: `algoritma`, `veritabani`, `donanim`, `aglar`, `elektrik`, `ekoloji` (1. Sınıf › Güz); `born2beroot` (42, hususi).
+Ders kimlikleri: `algoritma`, `veritabani`, `donanim`, `aglar`, `elektrik`, `ekoloji` (1. Sınıf › Güz; hepsi Bilgisayar Programcılığı); `born2beroot` (42, hususi). Bölümler `agac.json › programlar`'da; şu an yalnızca `bilgisayar-programciligi` (`bp`).
 
 ## 4. index.html haritası
 
@@ -92,6 +92,8 @@ Arama için işlev adları: `GUNCELLEMELER` (yama notları; yeni sürümde başa
 **Yeni sınav:** `icerik/agac.json › sinavlar`'a bir satır:
 `{ "ders": "aglar", "ad": "1. Kısa Sınav", "zaman": "2026-11-06T21:30+03:00", "lms": true }` (Sınav Modülü'nde ise `"modul": true`; uygulamada olmayan ders için `"dersAdi": "..."` ve `ders` yok) (+ isteğe bağlı `"yer"`, `"not"`). Sonra `node araclar/icerik-aktar.mjs --kuru`; `test/tarayici/sinav_sina.py`'nin 1. kontrolü gerçek listeyi beklediği için o satır da güncellenir.
 
+**Yeni bölüm** (Hamza adını ve derslerini verir): `agac.json › programlar`'a `{ "id", "ad", "onek", "sinifSayisi" }`; ortak derslerin `programlar` listesine bölüm eklenir, yeni dersler o bölümle açılır; `--kuru`. Kodu Hamza İdare'den üretir (KURULUM.md "Bölüm kodları"). Sınav takvimi yalnızca BP 1. sınıfa gider.
+
 **Yeni ders notu:** ISLEME.md'yi oku → envanter → plan → `.md` → şekiller (358 px'te bak) → `.json` (10–18 soru, 4–9 kart) → `--kuru` + `icerik-denetle.py` → taklit yükleme + ders testi + `tum_sorular_sina.py` → bağımsız denetim ajanı → teslim + 🔶.
 
 **Uygulama değişikliği:** `index.html` + `sw.js` sürümü +1; yeni özellikse `GUNCELLEMELER`'e not; ilgili test + `cihaz_sina.py` (yama notu sürümünü bekler).
@@ -109,6 +111,6 @@ Yeni konteynerde PostgreSQL kurulu değilse ya da `pgk` kullanıcısı yoksa: DE
 
 ## 6. Durum (4 Kasım 2026)
 
-- Son teslimler: guncelleme-31…37, algoritma-hafta-5, algoritma-hafta-6. GitHub'a yüklendiği **teyit edilmedi** (DEVIR-NOTU §3). `programcilik-son.zip` bütün bunları kapsar.
+- Son teslimler: guncelleme-31…39, algoritma-hafta-5, algoritma-hafta-6. GitHub'a yüklendiği **teyit edilmedi** (DEVIR-NOTU §3). `programcilik-son.zip` bütün bunları kapsar.
 - Sınav listesinde: Veritabanı ve Ağlar 1. Kısa Sınav (6 Kasım 20:30 / 21:30, LMS), Algoritma Sınavı (9 Kasım 20:00, Sınav Modülü), Ekoloji 1. Kısa Sınav (10 Kasım 19:00, LMS), Matematik Kısa Sınavı (10 Kasım 20:30, Sınav Modülü).
 - 🔶 Bekleyen kararlar: DEVIR-NOTU §4 (göz koruyucu yenilemesi, sınav listesi ayrıntıları, Algoritma 5. hafta soruları, hocaya sorulacaklar, eski kararlar).
