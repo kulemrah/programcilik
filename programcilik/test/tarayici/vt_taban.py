@@ -27,6 +27,10 @@ D = {
     "kodsuz": False, "kodlar": [], "yanlis": 0, "sifirlanan": [],
 }
 BP = "bilgisayar-programciligi"
+HE = "hibrit-ve-elektrikli-araclar"
+PROGRAMLAR = [{"id": BP, "ad": "Bilgisayar Programcılığı", "sinif_sayisi": 2, "sira": 1, "onek": "BP"},
+              {"id": HE, "ad": "Hibrit ve Elektrikli Araçlar Teknolojisi", "sinif_sayisi": 2, "sira": 2, "onek": "HE"}]
+PROGRAM = {p["id"]: p for p in PROGRAMLAR}
 sonuclar = []
 hatalar = []
 
@@ -139,7 +143,7 @@ def kod_isle(girilen):
     k["kullanim"] += 1; D["yanlis"] = 0
     D["profil"] = {"program": k["program"], "sinif": k["sinif"], "sozlesme_surumu": None}
     k.setdefault("kullananlar", []).append({"kullanici": UID, "eposta": EPOSTA, "zaman": simdi_iso()})
-    return {"durum": "tamam", "program": k["program"], "programAdi": "Bilgisayar Programcılığı" if k["program"] == BP else k["program"], "sinif": k["sinif"]}
+    return {"durum": "tamam", "program": k["program"], "programAdi": PROGRAM[k["program"]]["ad"], "sinif": k["sinif"]}
 
 def isle(route, request):
     url = urllib.parse.urlparse(request.url)
@@ -246,11 +250,11 @@ def isle(route, request):
         if not D["hususi"]: return cevap({"code": "P0001", "message": "Yetkisiz"}, 400)
         g = json.loads(govde or "{}")
         if yol.endswith("bolum_kodu_uret"):
-            sinir = {"bilgisayar-programciligi": 2}.get(g["p_program"])
+            sinir = PROGRAM[g["p_program"]]["sinif_sayisi"] if g["p_program"] in PROGRAM else None
             if not sinir: return cevap({"code": "P0001", "message": "Bölüm bulunamadı"}, 400)
             if not 1 <= g["p_sinif"] <= sinir: return cevap({"code": "P0001", "message": "Sınıf geçersiz"}, 400)
             kod = "%06d" % (482913 + len(D["kodlar"]))
-            k = {"id": str(uuid.uuid4()), "kod": kod, "etiket": "BP%d_%s" % (g["p_sinif"], kod), "program": g["p_program"], "sinif": g["p_sinif"],
+            k = {"id": str(uuid.uuid4()), "kod": kod, "etiket": "%s%d_%s" % (PROGRAM[g["p_program"]]["onek"], g["p_sinif"], kod), "program": g["p_program"], "sinif": g["p_sinif"],
                  "bitis": time.time() + g["p_dakika"] * 60, "azami": g["p_azami"], "kullanim": 0, "olusma": time.time(), "kullananlar": []}
             D["kodlar"].append(k)
             return cevap({"id": k["id"], "kod": kod, "etiket": k["etiket"], "bitis": datetime.datetime.fromtimestamp(k["bitis"], datetime.timezone.utc).isoformat(), "azami": k["azami"]})
@@ -260,7 +264,7 @@ def isle(route, request):
                 if k.get("iptal"): return "iptal"
                 if k["bitis"] <= time.time(): return "suresi_doldu"
                 return "dolu" if k["kullanim"] >= k["azami"] else "etkin"
-            return cevap([{"id": k["id"], "etiket": k["etiket"], "program": k["program"], "programAdi": "Bilgisayar Programcılığı", "sinif": k["sinif"],
+            return cevap([{"id": k["id"], "etiket": k["etiket"], "program": k["program"], "programAdi": PROGRAM[k["program"]]["ad"], "sinif": k["sinif"],
                            "olusturuldu": iso(k["olusma"]), "bitis": iso(k["bitis"]), "azami": k["azami"], "kullanim": k["kullanim"],
                            "iptal": iso(k["iptal"]) if k.get("iptal") else None, "durum": durum(k), "kullananlar": k["kullananlar"]}
                           for k in sorted(D["kodlar"], key=lambda k: -k["olusma"])])
@@ -282,7 +286,9 @@ def isle(route, request):
 
     # ---- Tablolar ----
     if yol == "/rest/v1/programlar":
-        return cevap([{"id": BP, "ad": "Bilgisayar Programcılığı", "sinif_sayisi": 2, "sira": 1}])
+        # 01-sema.sql: hesap yalnızca kendi bölümünü, yönetici hepsini görür
+        p = profil()
+        return cevap([{k: v for k, v in x.items() if k != "onek"} for x in PROGRAMLAR if D["hususi"] or (p and p["program"] == x["id"])])
     if yol == "/rest/v1/profiller":
         if yontem == "GET":
             p = profil()

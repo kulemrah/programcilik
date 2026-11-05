@@ -46,6 +46,7 @@ with sync_playwright() as p:
     sozlesme_kabul(s)
     s.wait_for_selector(".not-perde"); s.click("button:has-text('Anladım')"); s.wait_for_selector(".grup-baslik")
     kontrol("eski hesap: kod sorulmadan sözleşmeye geçti, BP 1. sınıf", D["profil"] == {"program": BP, "sinif": 1, "sozlesme_surumu": "2"}, D["profil"])
+    kontrol("üst çubuk: 'Kostü - Ders', altında bölüm adı", s.inner_text(".ust h1") == "Kostü - Ders" and s.inner_text("#ustBolum") == "Bilgisayar Programcılığı", s.inner_text(".ust-baslik"))
     s.click("#hesapDugme"); s.wait_for_selector(".hesap-sayfa.acik")
     bekle_ki(s, lambda: "idare" in sekmeler(s))
     kontrol("yönetici çekmecesinde İdare sekmesi son sırada", sekmeler(s) == ["hedef", "istatistik", "takvim", "hesap", "idare"], sekmeler(s))
@@ -89,9 +90,10 @@ with sync_playwright() as p:
             and s.locator(".idare-kod[data-etiket='%s'] .idare-kopya" % k2["etiket"]).count() == 0
             and "İptal: " in s.inner_text(".idare-kod[data-etiket='%s']" % k2["etiket"]))
     # Hesap bul ve sıfırla
-    s.fill("#idareEposta", "KODLU@kocaelisaglik.edu.tr"); s.click(".hesap-ic button:has-text('Bul')")
+    s.fill("#idareEposta", "KODLU"); s.click(".hesap-ic button:has-text('Bul')")
     s.wait_for_selector(".hesap-ic button:has-text('Bölümünü sıfırla')")
     metin = s.inner_text(".hesap-ic[data-ekran=idare]")
+    kontrol("hesap bul: yalnızca kullanıcı adı yazılınca okul alanı eklenip arandı", any("idare_hesap_bul" in g for g in D["gunluk"]))
     kontrol("hesap bul: bölüm, sınıf, kod, sözleşme", "Bölüm: Bilgisayar Programcılığı, 1. sınıf" in metin and "Kod: BP1_482913" in metin and "Sözleşme onaylı." in metin)
     s.click(".hesap-ic button:has-text('Bölümünü sıfırla')"); onayla(s)
     bekle_ki(s, lambda: D["sifirlanan"])
@@ -100,6 +102,40 @@ with sync_playwright() as p:
     s.fill("#idareEposta", "yok@kocaelisaglik.edu.tr"); s.click(".hesap-ic button:has-text('Bul')")
     s.wait_for_function("() => document.querySelector('.hesap-ic[data-ekran=idare]').innerText.includes('hesap yok')")
     kontrol("hesap bul: olmayan adres", True)
+    # Hibrit kodu: en son kod açıkta, öncekiler Mazi'de
+    s.select_option("#idareProgram", HE); s.wait_for_timeout(200)
+    kontrol("İdare: Hibrit seçilince 2 sınıf", s.locator("#idareSinif option").count() == 2)
+    s.click(".hesap-ic button.ana:has-text('Kod üret')")
+    bekle_ki(s, lambda: len(D["kodlar"]) == 3)
+    k3 = D["kodlar"][2]
+    s.wait_for_selector(".idare-kod[data-etiket='%s']" % k3["etiket"])
+    kontrol("Hibrit kodu HE1_ ile başlar, Son kod'da yalnızca o", k3["etiket"].startswith("HE1_") and k3["program"] == HE
+            and s.locator(".hesap-ic .idare-kod").count() == 1)
+    kontrol("Mazi düğmesi önceki 2 kodu sayar", s.inner_text(".idare-mazi") == "Mazi (2 kod)", s.inner_text(".idare-mazi"))
+    s.click(".idare-mazi"); s.wait_for_selector("#maziPerde")
+    mz = lambda: s.evaluate("() => [...document.querySelectorAll('#maziPerde .idare-kod')].map(e => e.dataset.etiket)")
+    kontrol("Mazi: iki önceki kod, yeniden eskiye", mz() == [k2["etiket"], k0["etiket"]], mz())
+    s.select_option("#maziPerde label:has-text('Sınıf') select", "2"); s.wait_for_timeout(150)
+    kontrol("Mazi: sınıf süzgeci (2. sınıf)", mz() == [k2["etiket"]], mz())
+    s.select_option("#maziPerde label:has-text('Bölüm') select", HE); s.wait_for_timeout(150)
+    kontrol("Mazi: bölüm süzgeci (Hibrit: önceki kod yok)", mz() == [] and "Bu süzgece uyan kod yok." in s.inner_text("#maziPerde"), mz())
+    s.click("#maziPerde button:has-text('Süzgeci temizle')"); s.wait_for_timeout(150)
+    dun = s.evaluate("() => new Date(Date.now() - 86400000).toLocaleDateString('sv-SE', { timeZone: 'Europe/Istanbul' })")
+    s.fill("#maziPerde label:has-text('bitiş') input", dun); s.dispatch_event("#maziPerde label:has-text('bitiş') input", "change"); s.wait_for_timeout(150)
+    kontrol("Mazi: tarih süzgeci (dün ve öncesi: yok)", mz() == [], mz())
+    bugun = s.evaluate("() => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Istanbul' })")
+    s.fill("#maziPerde label:has-text('başlangıç') input", bugun); s.dispatch_event("#maziPerde label:has-text('başlangıç') input", "change")
+    s.fill("#maziPerde label:has-text('bitiş') input", bugun); s.dispatch_event("#maziPerde label:has-text('bitiş') input", "change"); s.wait_for_timeout(150)
+    kontrol("Mazi: tarih süzgeci (bugün: ikisi)", len(mz()) == 2, mz())
+    ekran(s, "idare-mazi")
+    s.keyboard.press("Escape"); s.wait_for_timeout(200)
+    kontrol("Escape Mazi'yi kapatır, çekmece açık kalır", s.locator("#maziPerde").count() == 0 and s.locator(".hesap-sayfa.acik").count() == 1)
+    # Siyah temada seçim kutularının yazısı okunur
+    s.evaluate("() => document.documentElement.setAttribute('data-mod', 'siyah')"); s.wait_for_timeout(100)
+    renk = s.evaluate("() => [getComputedStyle(document.querySelector('#idareProgram')).color, getComputedStyle(document.querySelector('#idareSaat')).color]")
+    kontrol("siyah temada Bölüm/Sınıf yazısı Süre kutusuyla aynı (açık) renk", renk[0] == renk[1] and renk[0] != "rgb(0, 0, 0)", renk)
+    ekran(s, "idare-siyah")
+    s.evaluate("() => document.documentElement.setAttribute('data-mod', 'gunduz')")
     s.set_viewport_size({"width": 358, "height": 800}); s.wait_for_timeout(300)
     tasma = s.evaluate("() => { const g = document.querySelector('.hesap-govde'); return g.scrollWidth - g.clientWidth; }")
     kontrol("358 px'te İdare yatay taşmaz", tasma <= 1, tasma)
@@ -166,6 +202,24 @@ with sync_playwright() as p:
     kontrol("5. yanlışta kilit: dakika uyarısı", hata_metni(s) == "Çok fazla yanlış deneme yapıldı. 15 dakika sonra yeniden deneyin.", hata_metni(s))
     kod_gir(s, "000003")
     kontrol("kilitliyken yine kilit uyarısı", "15 dakika" in hata_metni(s))
+
+    # ===== 4) Hibrit öğrencisi: yalnızca ortak dersler =====
+    D["yanlis"] = 0
+    kod_gir(s, k3["kod"])
+    sozlesme_kabul(s)
+    s.wait_for_selector(".not-perde, .grup-baslik")
+    if s.locator(".not-perde").count(): s.click("button:has-text('Anladım')")
+    s.wait_for_selector(".grup-baslik")
+    bekle_ki(s, lambda: s.locator(".ders-satiri").count() >= 2)
+    dersler = [d for d in s.evaluate("() => [...document.querySelectorAll('.ders-satiri')].map(e => e.innerText.split('\\n')[0])") if "henüz eklenmedi" not in d]
+    kontrol("Hibrit: yalnızca Algoritma ve Temel Elektrik görünür",
+            len(dersler) == 2 and any("Algoritma" in d for d in dersler) and any("Elektrik" in d for d in dersler), dersler)
+    kontrol("Hibrit: Veritabanı yok, konusu da cihaza inmedi",
+            "Veritabanı" not in s.inner_text("#sayfaOku") and s.evaluate("() => [...KONU_SATIRLARI.keys()].every(id => /^(alg|el)-/.test(id))"),
+            s.evaluate("() => [...KONU_SATIRLARI.keys()].slice(0, 5)"))
+    kontrol("Hibrit: üst çubukta bölüm adı", s.inner_text("#ustBolum") == "Hibrit ve Elektrikli Araçlar Teknolojisi")
+    kontrol("Hibrit: sınav takvimi yok (yalnız BP 1. sınıf)", not s.evaluate("() => (AGAC && AGAC.sinavlar || []).length"))
+    ekran(s, "hibrit-ana")
     c.close()
 
 for h in hatalar: print("  !", h)

@@ -903,7 +903,7 @@ begin
 end;
 $$;
 
--- Son 100 kod, durumu ve kullanan hesaplarla (yönetici). Sıfırlanan hesap
+-- Son 300 kod, durumu ve kullanan hesaplarla (yönetici). Sıfırlanan hesap
 -- listeden düşer; harcadığı hak (kullanim) geri gelmez.
 create or replace function public.bolum_kodlari_listesi()
 returns jsonb
@@ -929,7 +929,7 @@ begin
       ) as satir
       from public.bolum_kodlari b join public.programlar pr on pr.id = b.program
       order by b.olusturuldu desc
-      limit 100
+      limit 300
     ) t
   ), '[]'::jsonb);
 end;

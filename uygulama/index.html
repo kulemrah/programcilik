@@ -186,6 +186,11 @@ code,kbd,pre{font-family:var(--mono)}
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .ust .kok{font-family:var(--mono);color:var(--vurgu);font-weight:400}
+/* Başlık ve altında hesabın bölümü (küçük) */
+.ust-baslik{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.ust-baslik h1{flex:none}
+.ust-bolum{font-size:11px;line-height:1.25;font-weight:500;color:var(--sonuk);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ust-bolum:empty{display:none}
 .mod-dugme{
   width:38px;height:38px;border-radius:10px;border:1px solid var(--cizgi);
   display:grid;place-items:center;background:var(--yuzey);flex:none;
@@ -2168,8 +2173,9 @@ textarea.uyari-girdi{resize:vertical;min-height:140px}
 
 /* ---------- Bölüm doğrulama kodu, İdare ---------- */
 .giris-bilgi.bolum-satiri{font-weight:600;color:var(--yazi)}
-.idare-kart .giris-girdi{background:var(--dolgu)}
-.idare-kart select.giris-girdi{appearance:auto;padding:12px 14px}
+.idare-kart .giris-girdi{background:var(--dolgu);color:var(--yazi)}
+.idare-kart select.giris-girdi,.mazi-suzgec select,.mazi-suzgec input{appearance:auto;padding:12px 14px;color:var(--yazi);color-scheme:light dark}
+.idare-kart select.giris-girdi option,.mazi-suzgec select option{background:var(--yuzey);color:var(--yazi)}
 .idare-sure{display:grid;grid-template-columns:1fr auto 1fr auto;gap:8px;align-items:center;margin-bottom:12px}
 .idare-sure .giris-girdi{margin:0;text-align:center}
 .idare-birim{font-size:14px;color:var(--sonuk)}
@@ -2198,6 +2204,21 @@ textarea.uyari-girdi{resize:vertical;min-height:140px}
 .idare-kullanan{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px;padding:6px 0;border-top:1px solid var(--ayrac);word-break:break-all}
 .idare-kullanan .dene-dugme{margin:0;padding:6px 10px;font-size:13px}
 .idare-yenile,.idare-kod .dene-dugme,.idare-kullanan .dene-dugme{width:auto}
+.idare-mazi{margin-top:12px}
+/* Mazi: önceki kodların ön paneli (çekmecenin üstünde, onay penceresinin altında) */
+.mazi-perde{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.42)}
+.mazi-kutu{width:min(560px,100%);max-height:92vh;max-height:92dvh;display:flex;flex-direction:column;background:var(--zemin);color:var(--yazi);
+  border-radius:18px 18px 0 0;padding:14px 16px 0;box-shadow:0 -8px 30px rgba(0,0,0,.25)}
+@media (min-width:640px){.mazi-perde{align-items:center}.mazi-kutu{border-radius:18px;max-height:86vh}}
+.mazi-ust{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.mazi-ust h3{margin:0;font-size:18px}
+.mazi-kapat{width:auto;margin:0;padding:7px 14px}
+.mazi-suzgec{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+.mazi-suzgec label{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--sonuk);min-width:0}
+.mazi-suzgec select,.mazi-suzgec input{width:100%;min-width:0;box-sizing:border-box;border-radius:10px;border:1px solid var(--cizgi);background:var(--dolgu);font:inherit;font-size:14px;padding:9px 10px}
+.mazi-temizle{width:auto;margin:8px 0 0;padding:6px 12px;font-size:13px}
+.mazi-govde{overflow-y:auto;overscroll-behavior:contain;margin-top:10px;padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+.mazi-sayi{margin:0 0 4px}
 /* Beş sekme (İdare'li): sütun sayısı sekme sayısına uyar */
 .cekmece-sekmeler.bes{grid-template-columns:repeat(5,minmax(0,1fr))}
 .cekmece-sekmeler.bes .cekmece-sekme{font-size:12px;padding-left:1px;padding-right:1px}
@@ -2224,7 +2245,7 @@ textarea.uyari-girdi{resize:vertical;min-height:140px}
 </head>
 <body>
 <header class="ust">
-  <h1>Bilgisayar Programcılığı</h1>
+  <div class="ust-baslik"><h1>Kostü - Ders</h1><span class="ust-bolum" id="ustBolum"></span></div>
   <button class="goz-dugme" id="gozDugme" aria-label="Göz koruyucu"><svg viewBox="0 0 24 24"><path d="M2.6 12S6 5.6 12 5.6 21.4 12 21.4 12 18 18.4 12 18.4 2.6 12 2.6 12Z"/><circle cx="12" cy="12" r="2.9"/></svg><span class="kademe-rozet"></span></button>
   <button class="mod-dugme" id="modDugme" aria-label="Temayı değiştir"></button>
   <button class="hesap-dugme" id="hesapDugme" aria-label="Menü: hedef, istatistik, takvim ve hesap"><svg viewBox="0 0 24 24"><path d="M4.5 7h15M4.5 12h15M4.5 17h15"/></svg><span class="nokta"></span></button>
@@ -3925,6 +3946,7 @@ async function cikisIsi(mesaj) {
   sesDurdur();
   await yerelVeriyiSil();
   yoneticiMi = null; idareSifirla(); depo.sil("pg.yonetici");
+  const ub = document.getElementById("ustBolum"); if (ub) ub.textContent = "";
   uygulamayiKapat();
   cikisBekliyor = false;
   girisEkraniAc(mesaj);
@@ -4472,6 +4494,13 @@ async function profiliCihazaYaz(p, programAdi) {
   const kayitli = { program: p.program, programAdi: programAdi || p.program, sinif: p.sinif, sozlesme_surumu: p.sozlesme_surumu };
   await vt.yaz("durum", { ad: "profil", deger: kayitli });
   KULLANICI.profil = kayitli;
+  ustBolumuYaz();
+}
+
+/* Üst çubukta başlığın altında hesabın bölümü */
+function ustBolumuYaz() {
+  const e = document.getElementById("ustBolum");
+  if (e) e.textContent = (KULLANICI && KULLANICI.profil && KULLANICI.profil.programAdi) || "";
 }
 
 /* Profil cihazda geçerliyse uygulama hemen açılır, sunucuyla arka planda
@@ -4516,6 +4545,7 @@ async function bolumuCihazdanSil() {
   } catch (e) { console.warn("bölüm içeriği silinemedi", e); }
   KONU_SATIRLARI.clear(); AGAC = null; AGAC_OZET = null; veriKur();
   if (KULLANICI) KULLANICI.profil = null;
+  ustBolumuYaz();
 }
 
 /* Bölüm doğrulama kodu: "BP1_482913" yapıştırılırsa da 6 rakam alınır */
@@ -4669,6 +4699,8 @@ function profilEkraniAc() {
         const kilit = s => "Çok fazla yanlış deneme yapıldı. " + Math.max(1, Math.ceil((s || 0) / 60)) + " dakika sonra yeniden deneyin.";
         if (d.durum === "tamam") {
           mevcut = { program: d.program, sinif: d.sinif, sozlesme_surumu: null };
+          /* Bölüm listesini sunucu kodsuz hesaba göstermez; adı koddan gelir */
+          if (d.programAdi && !(programlar || []).some(x => x.id === d.program)) (programlar = programlar || []).push({ id: d.program, ad: d.programAdi });
           kodBilgisi = (d.programAdi || programAdi(d.program)) + ", " + d.sinif + ". sınıf olarak kaydedildiniz.";
           ciz();
           return;
@@ -6050,8 +6082,23 @@ async function yoneticiligiSor() {
 }
 
 const IDARE = { programlar: null, liste: null, sonKod: null, hesap: null, aranan: "", hata: null, bilgi: null, mesgul: false,
-  form: { program: null, sinif: 1, saat: 2, dakika: 0, azami: 10 } };
-function idareSifirla() { Object.assign(IDARE, { programlar: null, liste: null, sonKod: null, hesap: null, aranan: "", hata: null, bilgi: null, mesgul: false }); }
+  form: { program: null, sinif: 1, saat: 2, dakika: 0, azami: 10 },
+  mazi: { acik: false, program: "", sinif: "", bas: "", bit: "" } };
+function idareSifirla() {
+  maziKapat();
+  Object.assign(IDARE, { programlar: null, liste: null, sonKod: null, hesap: null, aranan: "", hata: null, bilgi: null, mesgul: false });
+  Object.assign(IDARE.mazi, { program: "", sinif: "", bas: "", bit: "" });
+}
+function maziKapat() {
+  IDARE.mazi.acik = false;
+  const p = document.getElementById("maziPerde");
+  if (p) p.remove();
+  document.removeEventListener("keydown", maziTusu, true);
+}
+function maziTusu(e) {
+  if (e.key !== "Escape" || document.querySelector(".uyari-perde")) return;
+  e.preventDefault(); e.stopPropagation(); maziKapat();
+}
 
 const idareZamani = z => new Date(z).toLocaleString("tr-TR", { timeZone: "Europe/Istanbul", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
 const IDARE_DURUM = { etkin: "Etkin", dolu: "Kişi sınırı doldu", suresi_doldu: "Süresi doldu", iptal: "İptal edildi" };
@@ -6180,14 +6227,16 @@ function idareEkrani(ic, yeniden) {
   /* --- Hesap bul --- */
   const hk = olustur("section", "ist-kart idare-kart");
   const hh = olustur("h3", "ist-baslik"); hh.textContent = "Hesap bul"; hk.appendChild(hh);
-  const el = olustur("label", "giris-etiket"); el.textContent = "Okul e-posta adresi"; el.htmlFor = "idareEposta";
-  const eg = olustur("input", "giris-girdi"); eg.id = "idareEposta"; eg.type = "email"; eg.autocomplete = "off"; eg.spellcheck = false;
-  eg.value = IDARE.aranan; eg.placeholder = "ad.soyad@" + AYAR.OKUL_ALANI;
+  const el = olustur("label", "giris-etiket"); el.textContent = "Okul e-posta adresi ya da kullanıcı adı"; el.htmlFor = "idareEposta";
+  const eg = olustur("input", "giris-girdi"); eg.id = "idareEposta"; eg.type = "text"; eg.autocomplete = "off"; eg.spellcheck = false;
+  eg.autocapitalize = "none";
+  eg.value = IDARE.aranan; eg.placeholder = "ogrenci_no (@" + AYAR.OKUL_ALANI + " kendiliğinden eklenir)";
   eg.addEventListener("input", () => { IDARE.aranan = eg.value; });
   const bul = olustur("button", "dene-dugme"); bul.textContent = "Bul"; bul.disabled = IDARE.mesgul;
   const ara = () => {
-    const a = eg.value.trim();
+    let a = eg.value.trim();
     if (!a) return;
+    if (a.indexOf("@") === -1) a += "@" + AYAR.OKUL_ALANI;   /* yalnızca kullanıcı adı yazıldıysa */
     is(async () => {
       const r = await istemci.rpc("idare_hesap_bul", { p_eposta: a });
       if (r.error) throw r.error;
@@ -6211,14 +6260,25 @@ function idareEkrani(ic, yeniden) {
   }
   ic.appendChild(hk);
 
-  /* --- Kodlar --- */
+  /* --- Kodlar: en son üretilen açıkta; öncekiler "Mazi" panelinde --- */
   const lk = olustur("section", "ist-kart idare-kart");
-  const lh = olustur("h3", "ist-baslik"); lh.textContent = "Kodlar"; lk.appendChild(lh);
+  const lh = olustur("h3", "ist-baslik"); lh.textContent = "Son kod"; lk.appendChild(lh);
   const yenile = olustur("button", "dene-dugme idare-yenile"); yenile.textContent = "Yenile"; yenile.disabled = IDARE.mesgul;
   yenile.addEventListener("click", () => is(idareYukle));
   lk.appendChild(yenile);
   if (!IDARE.liste.length) { const b = olustur("p", "ist-bos"); b.textContent = "Henüz kod üretilmedi."; lk.appendChild(b); }
-  IDARE.liste.forEach(k => {
+  else lk.appendChild(kodOgesi(IDARE.liste[0]));
+  if (IDARE.liste.length > 1) {
+    const mz = olustur("button", "dene-dugme idare-mazi");
+    mz.textContent = "Mazi (" + (IDARE.liste.length - 1) + " kod)";
+    mz.addEventListener("click", () => { IDARE.mazi.acik = true; maziCiz(); });
+    lk.appendChild(mz);
+  }
+  ic.appendChild(lk);
+  /* Çekmece yeniden çizildiğinde (iptal, sıfırlama, yenileme) açık panel de tazelenir */
+  if (IDARE.mazi.acik) maziCiz();
+
+  function kodOgesi(k) {
     const o = olustur("div", "idare-kod" + (k.durum === "etkin" ? "" : " gecmis"));
     o.dataset.etiket = k.etiket;
     const ust = olustur("div", "idare-kod-ust");
@@ -6260,10 +6320,65 @@ function idareEkrani(ic, yeniden) {
       });
       o.appendChild(ay);
     }
-    lk.appendChild(o);
-  });
-  ic.appendChild(lk);
+    return o;
+  }
 
+  /* Mazi: en son kod dışındaki kodlar, ön panelde; bölüm, sınıf ve
+     oluşturulma tarihine göre süzülür (tarih İstanbul saatiyle gündür) */
+  function maziCiz() {
+    const z = IDARE.mazi;
+    let perde = document.getElementById("maziPerde");
+    if (!perde) {
+      perde = olustur("div", "mazi-perde"); perde.id = "maziPerde";
+      perde.setAttribute("role", "dialog"); perde.setAttribute("aria-modal", "true"); perde.setAttribute("aria-label", "Mazi: önceki kodlar");
+      perde.addEventListener("click", e => { if (e.target === perde) maziKapat(); });
+      document.body.appendChild(perde);
+      document.addEventListener("keydown", maziTusu, true);
+    }
+    const eskiGovde = perde.querySelector(".mazi-govde");
+    const kaydirma = eskiGovde ? eskiGovde.scrollTop : 0;
+    perde.innerHTML = "";
+    const kutu = olustur("div", "mazi-kutu");
+    const ust = olustur("div", "mazi-ust");
+    const bas = olustur("h3"); bas.textContent = "Mazi";
+    const kapat = olustur("button", "dene-dugme mazi-kapat"); kapat.textContent = "Kapat";
+    kapat.addEventListener("click", maziKapat);
+    ust.append(bas, kapat);
+    kutu.appendChild(ust);
+
+    const suz = olustur("div", "mazi-suzgec");
+    const alan = (etiket, girdi) => { const l = olustur("label"); const t = olustur("span"); t.textContent = etiket; l.append(t, girdi); suz.appendChild(l); return girdi; };
+    const pSec = alan("Bölüm", olustur("select"));
+    [["", "Hepsi"]].concat(IDARE.programlar.map(p => [p.id, p.ad])).forEach(([v, t]) => { const o = olustur("option"); o.value = v; o.textContent = t; pSec.appendChild(o); });
+    pSec.value = z.program;
+    const sSec = alan("Sınıf", olustur("select"));
+    const enCok = Math.max(1, ...IDARE.programlar.map(p => p.sinif_sayisi));
+    [["", "Hepsi"]].concat(Array.from({ length: enCok }, (_, i) => [String(i + 1), (i + 1) + ". sınıf"])).forEach(([v, t]) => { const o = olustur("option"); o.value = v; o.textContent = t; sSec.appendChild(o); });
+    sSec.value = z.sinif;
+    const bGir = alan("Oluşturulma: başlangıç", olustur("input")); bGir.type = "date"; bGir.value = z.bas;
+    const sGir = alan("Oluşturulma: bitiş", olustur("input")); sGir.type = "date"; sGir.value = z.bit;
+    const degis = () => { z.program = pSec.value; z.sinif = sSec.value; z.bas = bGir.value; z.bit = sGir.value; maziCiz(); };
+    [pSec, sSec, bGir, sGir].forEach(g => g.addEventListener("change", degis));
+    kutu.appendChild(suz);
+    if (z.program || z.sinif || z.bas || z.bit) {
+      const tem = olustur("button", "dene-dugme mazi-temizle"); tem.textContent = "Süzgeci temizle";
+      tem.addEventListener("click", () => { Object.assign(z, { program: "", sinif: "", bas: "", bit: "" }); maziCiz(); });
+      kutu.appendChild(tem);
+    }
+
+    const gun = t => new Date(t).toLocaleDateString("sv-SE", { timeZone: "Europe/Istanbul" });
+    const liste = IDARE.liste.slice(1).filter(k =>
+      (!z.program || k.program === z.program) && (!z.sinif || String(k.sinif) === z.sinif) &&
+      (!z.bas || gun(k.olusturuldu) >= z.bas) && (!z.bit || gun(k.olusturuldu) <= z.bit));
+    const govde = olustur("div", "mazi-govde");
+    const sayi = olustur("p", "hesap-durum mazi-sayi"); sayi.textContent = liste.length + " kod";
+    govde.appendChild(sayi);
+    if (!liste.length) { const b = olustur("p", "ist-bos"); b.textContent = "Bu süzgece uyan kod yok."; govde.appendChild(b); }
+    liste.forEach(k => govde.appendChild(kodOgesi(k)));
+    kutu.appendChild(govde);
+    perde.appendChild(kutu);
+    govde.scrollTop = kaydirma;
+  }
   function sifirlaDugmesi(kullanici, eposta) {
     const b = olustur("button", "dene-dugme tehlike"); b.textContent = "Bölümünü sıfırla"; b.disabled = IDARE.mesgul;
     b.addEventListener("click", async () => {
@@ -7196,6 +7311,7 @@ function sekmeyiTazele(sekmeDegisti, kokeDon) {
 
 function uygulamayiAc() {
   uygulamaAcik = true;
+  ustBolumuYaz();
   /* Yeni bir yüklemede bulunulan adım taban olur, üstüne bekçi kurulur
      (altındaki eski adımlar geri basılınca sessizce atlanır). Aynı yüklemede
      çıkış yapılıp yeniden girildiyse bulunulan yer tutucu olduğu gibi kalır. */
@@ -10633,6 +10749,14 @@ function kartOturumu(kartlar, baslik, sayfa, secenek) {
    pg.notSurumu'nda.
    ========================================================================== */
 const GUNCELLEMELER = [{
+  surum: "2.6",
+  tarih: "Kasım 2026",
+  baslik: "Yeni bölüm",
+  maddeler: [
+    ["Hibrit ve Elektrikli Araçlar Teknolojisi", "Bu bölümün öğrencileri de uygulamaya katılabilir; ortak dersler (Algoritma ve Programlama Temelleri, Temel Elektrik ve Elektronik) aynı notlarla iki bölümde de görünür."],
+    ["Başlık", "Üst çubukta uygulamanın adı, altında küçük harflerle okuduğunuz bölüm yazar."]
+  ]
+}, {
   surum: "2.5",
   tarih: "Kasım 2026",
   baslik: "Yazım kontrolü ve Notlar hakkı",

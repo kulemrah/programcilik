@@ -1,6 +1,6 @@
 # Yeni sohbet: buradan başlayın
 
-**Proje:** "Kostü - Ders" (uygulama içi başlık "Bilgisayar Programcılığı"): KOSTÜ Bilgisayar Programcılığı sınıfı için ders notu (Kıraat), soru (Temrin), kart (42 Tarzı), kişisel not (Notlar) PWA'sı. Depo `kulemrah/programcilik` → `https://kulemrah.github.io/programcilik/`. Arka uç: Supabase (giriş, içerik, kayıtlar) + Cloudflare Worker/R2 (Notlar resimleri).
+**Proje:** "Kostü - Ders" (üst çubukta bu ad, altında hesabın bölümü): KOSTÜ Bilgisayar Programcılığı sınıfı için ders notu (Kıraat), soru (Temrin), kart (42 Tarzı), kişisel not (Notlar) PWA'sı. Depo `kulemrah/programcilik` → `https://kulemrah.github.io/programcilik/`. Arka uç: Supabase (giriş, içerik, kayıtlar) + Cloudflare Worker/R2 (Notlar resimleri).
 
 Bu dosya kısa haritadır. Ayrıntı `DEVIR-NOTU.md`'de: yalnızca işin gerektirdiği bölümü okuyun (bölüm numaraları aşağıda).
 
@@ -19,7 +19,7 @@ Bu dosya kısa haritadır. Ayrıntı `DEVIR-NOTU.md`'de: yalnızca işin gerekti
 - Türkçe; Hamza'ya ve uygulamada öğrenciye **"siz"**.
 - **Hata payı yok** (sınav konusu): uydurma yok, hocanın ifadesi korunur; slayt hatası **Dikkat** kutusunda düzeltilir, slaytta olmayan bilgi **Ek** kutusuna gider.
 - Algoritma'da **C++ yok** (derste henüz girilmedi). Yalnızca hocanın kendi slaytlarındaki C++ kalır.
-- Teslimde **yalnızca değişen dosyalar**, depodaki yollarıyla zip (`guncelleme-NN.zip`; son verilen **39**).
+- Teslimde **yalnızca değişen dosyalar**, depodaki yollarıyla zip (`guncelleme-NN.zip`; son verilen **40**).
 - Verilen **her komut açıklanır**: ne yapar, bayraklar/işaretler, beklenen çıktı.
 - Hamza'nın kararları **🔶 Sizin karar vermeniz gerekenler** başlığıyla, belirgin.
 - Plan/rehber belgelerinde yalnızca son durum yazılır.
@@ -50,7 +50,7 @@ programcilik/
 │   └── sekiller/<ders>.py    ← SVG/görsel üreticiler (donanim-kaynak/ = fotoğraf kaynakları)
 ├── uygulama/
 │   ├── index.html            ← tek dosya uygulama (~12.400 satır; harita §4)
-│   ├── sw.js                 ← önbellek programcilik-v25 (index.html değişince +1)
+│   ├── sw.js                 ← önbellek programcilik-v26 (index.html değişince +1)
 │   ├── supabase.js, manifest.webmanifest, kostu-*.png, webp/ (iPhone WebP kodlayıcı)
 ├── supabase/01-sema.sql      ← tekrar çalıştırılabilir tam şema (8. bölüm: Notlar/Kaynak)
 ├── kaynak-worker/            ← worker.js (R2 + kota), wrangler.toml
@@ -60,7 +60,7 @@ programcilik/
     ├── sql/, kaynak/         ← şemanın yerel PostgreSQL denemesi, Notlar taklit sunucusu
 ```
 
-Ders kimlikleri: `algoritma`, `veritabani`, `donanim`, `aglar`, `elektrik`, `ekoloji` (1. Sınıf › Güz; hepsi Bilgisayar Programcılığı); `born2beroot` (42, hususi). Bölümler `agac.json › programlar`'da; şu an yalnızca `bilgisayar-programciligi` (`bp`).
+Ders kimlikleri: `algoritma`, `veritabani`, `donanim`, `aglar`, `elektrik`, `ekoloji` (1. Sınıf › Güz; hepsi Bilgisayar Programcılığı); `born2beroot` (42, hususi). Bölümler `agac.json › programlar`'da: `bilgisayar-programciligi` (`bp`), `hibrit-ve-elektrikli-araclar` (`he`; ortak: `algoritma`, `elektrik`).
 
 ## 4. index.html haritası
 
@@ -111,6 +111,6 @@ Yeni konteynerde PostgreSQL kurulu değilse ya da `pgk` kullanıcısı yoksa: DE
 
 ## 6. Durum (4 Kasım 2026)
 
-- Son teslimler: guncelleme-31…39, algoritma-hafta-5, algoritma-hafta-6. GitHub'a yüklendiği **teyit edilmedi** (DEVIR-NOTU §3). `programcilik-son.zip` bütün bunları kapsar.
+- Son teslimler: guncelleme-31…40, algoritma-hafta-5, algoritma-hafta-6. GitHub'a yüklendiği **teyit edilmedi** (DEVIR-NOTU §3). `programcilik-son.zip` bütün bunları kapsar.
 - Sınav listesinde: Veritabanı ve Ağlar 1. Kısa Sınav (6 Kasım 20:30 / 21:30, LMS), Algoritma Sınavı (9 Kasım 20:00, Sınav Modülü), Ekoloji 1. Kısa Sınav (10 Kasım 19:00, LMS), Matematik Kısa Sınavı (10 Kasım 20:30, Sınav Modülü).
 - 🔶 Bekleyen kararlar: DEVIR-NOTU §4 (göz koruyucu yenilemesi, sınav listesi ayrıntıları, Algoritma 5. hafta soruları, hocaya sorulacaklar, eski kararlar).

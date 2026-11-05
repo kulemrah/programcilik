@@ -1,19 +1,24 @@
 {
+  "programlar": [
+    { "id": "bilgisayar-programciligi", "ad": "Bilgisayar Programcılığı", "onek": "bp", "sinifSayisi": 2 },
+    { "id": "hibrit-ve-elektrikli-araclar", "ad": "Hibrit ve Elektrikli Araçlar Teknolojisi", "onek": "he", "sinifSayisi": 2 }
+  ],
   "gruplar": [
     {
       "id": "sinif-1",
       "ad": "1. Sınıf",
+      "sinif": 1,
       "donemler": [
         {
           "id": "sinif-1-guz",
           "ad": "Güz",
           "dersler": [
-            { "id": "algoritma", "ad": "Algoritma ve Programlama Temelleri", "kisa": "Algoritma" },
-            { "id": "veritabani", "ad": "Veritabanı Yönetimi", "kisa": "Veritabanı" },
-            { "id": "donanim", "ad": "Bilgisayar Donanımı", "kisa": "Donanım" },
-            { "id": "aglar", "ad": "Bilgisayar Ağları", "kisa": "Ağlar" },
-            { "id": "elektrik", "ad": "Temel Elektrik ve Elektronik", "kisa": "Elektrik" },
-            { "id": "ekoloji", "ad": "Ekoloji Bilgisi", "kisa": "Ekoloji" }
+            { "id": "algoritma", "ad": "Algoritma ve Programlama Temelleri", "kisa": "Algoritma", "programlar": ["bilgisayar-programciligi", "hibrit-ve-elektrikli-araclar"] },
+            { "id": "veritabani", "ad": "Veritabanı Yönetimi", "kisa": "Veritabanı", "programlar": ["bilgisayar-programciligi"] },
+            { "id": "donanim", "ad": "Bilgisayar Donanımı", "kisa": "Donanım", "programlar": ["bilgisayar-programciligi"] },
+            { "id": "aglar", "ad": "Bilgisayar Ağları", "kisa": "Ağlar", "programlar": ["bilgisayar-programciligi"] },
+            { "id": "elektrik", "ad": "Temel Elektrik ve Elektronik", "kisa": "Elektrik", "programlar": ["bilgisayar-programciligi", "hibrit-ve-elektrikli-araclar"] },
+            { "id": "ekoloji", "ad": "Ekoloji Bilgisi", "kisa": "Ekoloji", "programlar": ["bilgisayar-programciligi"] }
           ]
         },
         {

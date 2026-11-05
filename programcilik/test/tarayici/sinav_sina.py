@@ -94,7 +94,7 @@ with sync_playwright() as p:
     # Başka saat diliminde tarayıcı: saat ve gün Türkiye'ye göre
     b = p.chromium.launch()
     c2 = b.new_context(service_workers="block", viewport={"width": 390, "height": 820}, timezone_id="America/New_York")
-    c2.add_init_script("try { localStorage.setItem('pg.kurulum', JSON.stringify('gizli')); localStorage.setItem('pg.notSurumu', JSON.stringify('2.5')) } catch (e) {}")
+    c2.add_init_script("try { localStorage.setItem('pg.kurulum', JSON.stringify('gizli')); localStorage.setItem('pg.notSurumu', JSON.stringify('2.6')) } catch (e) {}")
     c2.route(SUPA + "/**", isle)
     s2 = c2.new_page()
     D["oturumlar"].clear(); D["yerler"].clear(); time.sleep(SUNUCU_KOD_ARALIGI)

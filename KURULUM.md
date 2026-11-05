@@ -182,8 +182,8 @@ Yeni bir hesap, e-postadaki giriş kodundan sonra **bölüm doğrulama kodu** is
 Kodları uygulamada **menü › İdare** üretir. İdare yalnızca hususi yetkisi olan hesapta görünür (yönetici = `hususi_yetki`'deki, e-postası doğrulanmış adres; bkz. "Hususi dersler"); yetkiyi sunucu denetler.
 
 - **Kod üret:** bölüm, sınıf, geçerlilik süresi (saat + dakika; en çok 7 gün) ve kişi sınırı (en çok 300; öntanımlı 10). Kod 6 rakamdır; görünen adı bölüm önekini ve sınıfı da taşır (`BP1_482913`). Öğrenci yalnızca 6 rakamı yazar.
-- **Kodlar:** son 100 kod; her birinde durumu (Etkin, Kişi sınırı doldu, Süresi doldu, İptal edildi), bölüm ve sınıf, oluşturulma anı ve toplam süresi, kullanım (kullanan / kişi sınırı), bitiş anı ve kullananların adresleri. Etkin kodun ve yeni üretilen kodun yanında **Kopyala** düğmesi vardır (6 rakamı kopyalar). **İptal et** kodu süresinden önce kapatır; kodla girmiş hesaplara dokunmaz.
-- **Hesap bul:** okul adresiyle hesabın bölümünü, sınıfını, kodunu ve sözleşme durumunu gösterir.
+- **Son kod ve Mazi:** en son üretilen kod açıkta görünür; öncekiler **Mazi** düğmesiyle açılan ön panelde, bölüm, sınıf ve oluşturulma tarihi (başlangıç–bitiş günü) süzgeciyle (son 300 kod). Her kodda durumu (Etkin, Kişi sınırı doldu, Süresi doldu, İptal edildi), bölüm ve sınıf, oluşturulma anı ve toplam süresi, kullanım (kullanan / kişi sınırı), bitiş anı ve kullananların adresleri. Etkin kodun ve yeni üretilen kodun yanında **Kopyala** düğmesi vardır (6 rakamı kopyalar). **İptal et** kodu süresinden önce kapatır; kodla girmiş hesaplara dokunmaz.
+- **Hesap bul:** okul adresiyle ya da yalnızca kullanıcı adıyla (`@kocaelisaglik.edu.tr` kendiliğinden eklenir) hesabın bölümünü, sınıfını, kodunu ve sözleşme durumunu gösterir.
 - **Bölümünü sıfırla:** hesabın bölümünü siler; öğrenci bir sonraki açılışında yeni bir kod girer ve sözleşmeyi yeniden onaylar. Notları ve kayıtları silinmez; harcadığı hak geri gelmez. Kendi hesabını sıfırlayamazsın (İdare'ye erişimin kapanırdı).
 
 Her hesap bir kodda bir hak harcar. Hesap başına 5 yanlış denemeden sonra 15 dakika beklenir. Süresi dolmuş ya da kişi sınırı dolmuş bir kod girilirse öğrenciye bunu söyleyen bir bilgi çıkar ve yeni kod istemesi söylenir; bu deneme sayılmaz. Sözleşmeyi hiç onaylamadan bırakmış eski hesaplar da kod girer. Supabase'te bakarken: `profiller` tablosunda `program`, `sinif` ve `bolum_kodu` (kodun satırı); `bolum_kodlari` tablosunda `etiket` (`BP1_482913`), `kullanim`/`azami`, `bitis`, `iptal`.
@@ -197,6 +197,7 @@ Her hesap bir kodda bir hak harcar. Hesap başına 5 yanlış denemeden sonra 15
 - Uygulamada değişiklik yaptıktan sonra `uygulama/sw.js` içindeki `ONBELLEK` satırında sürümü bir artır (`"v2"` ise `"v3"` gibi); kurulu uygulamalar yeni sürümü böyle alır.
 - `supabase.js` kütüphanesini yenilersen `index.html` ve `sw.js` içindeki `supabase.js?v=…` sürümünü de değiştir; yoksa cihazlar bir açılış boyunca eski kütüphaneyle çalışır.
 - Sözleşme metnini değiştirirsen `SOZLESME.surum` (index.html) ve `public.sozlesme_surumu()` (SQL) birlikte artırılır; herkes yeni metni yeniden onaylar.
+- Bölümler: Bilgisayar Programcılığı (`BP`), Hibrit ve Elektrikli Araçlar Teknolojisi (`HE`; ortak dersler: Algoritma ve Programlama Temelleri, Temel Elektrik ve Elektronik).
 - Yeni bir bölüm (program) eklemek: `icerik/agac.json › programlar`'a satır ekle ve o bölümde okutulan derslerin `programlar` listesine bölümü yaz (BICIM.md, "agac.json"); gönderince aktarıcı bölümü Supabase'e yazar. Sonra İdare'den o bölüm için kod üret.
 
 ## Kaynak (R2)
